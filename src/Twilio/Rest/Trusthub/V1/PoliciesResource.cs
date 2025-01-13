@@ -67,10 +67,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch Policies parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
-        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(FetchPoliciesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(FetchPoliciesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="pathSid"> The unique string that identifies the Policy resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
-        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPoliciesOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read Policies parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(ReadPoliciesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(ReadPoliciesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<PoliciesResource>.FromJson("results", response.Content);
             return new ResourceSet<PoliciesResource>(page, options, client);
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Trusthub.V1
         public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadPoliciesOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -67,10 +67,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="options"> Fetch WorkersStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -112,10 +112,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="taskChannel"> Only calculate statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){ Minutes = minutes,StartDate = startDate,EndDate = endDate,TaskQueueSid = taskQueueSid,TaskQueueName = taskQueueName,FriendlyName = friendlyName,TaskChannel = taskChannel };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -110,11 +110,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -138,10 +139,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteRecordingOptions(pathConferenceSid, pathSid)  { PathAccountSid = pathAccountSid };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -182,10 +183,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -212,10 +213,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathConferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathConferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchRecordingOptions(pathConferenceSid, pathSid){ PathAccountSid = pathAccountSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -254,10 +255,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<RecordingResource>.FromJson("recordings", response.Content);
             return new ResourceSet<RecordingResource>(page, options, client);
@@ -306,10 +307,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                              DateTime? dateCreatedAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadRecordingOptions(pathConferenceSid){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -400,11 +401,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(UpdateRecordingOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(UpdateRecordingOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -444,10 +446,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                               RecordingResource.StatusEnum status,
                                                                               string pathAccountSid = null,
                                                                               string pauseBehavior = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateRecordingOptions(pathConferenceSid, pathSid, status){ PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

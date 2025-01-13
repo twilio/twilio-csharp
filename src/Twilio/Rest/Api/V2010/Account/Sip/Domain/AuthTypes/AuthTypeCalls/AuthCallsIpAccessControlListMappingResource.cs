@@ -70,10 +70,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="options"> Create AuthCallsIpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> CreateAsync(CreateAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> CreateAsync(CreateAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -105,10 +105,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
                                                                                   string pathDomainSid,
                                                                                   string ipAccessControlListSid,
                                                                                   string pathAccountSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAuthCallsIpAccessControlListMappingOptions(pathDomainSid, ipAccessControlListSid){  PathAccountSid = pathAccountSid };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -153,11 +153,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="options"> Delete AuthCallsIpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAuthCallsIpAccessControlListMappingOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAuthCallsIpAccessControlListMappingOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -181,10 +182,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAuthCallsIpAccessControlListMappingOptions(pathDomainSid, pathSid)  { PathAccountSid = pathAccountSid };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -225,10 +226,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="options"> Fetch AuthCallsIpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> FetchAsync(FetchAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> FetchAsync(FetchAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -255,10 +256,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> FetchAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthCallsIpAccessControlListMappingResource> FetchAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAuthCallsIpAccessControlListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -297,10 +298,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <param name="options"> Read AuthCallsIpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsIpAccessControlListMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthCallsIpAccessControlListMappingResource>> ReadAsync(ReadAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthCallsIpAccessControlListMappingResource>> ReadAsync(ReadAuthCallsIpAccessControlListMappingOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AuthCallsIpAccessControlListMappingResource>.FromJson("contents", response.Content);
             return new ResourceSet<AuthCallsIpAccessControlListMappingResource>(page, options, client);
@@ -337,10 +338,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAuthCallsIpAccessControlListMappingOptions(pathDomainSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

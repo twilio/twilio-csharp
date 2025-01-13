@@ -102,11 +102,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Delete UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserChannelOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserChannelOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -130,10 +131,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="pathChannelSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathUserSid, string pathChannelSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathUserSid, string pathChannelSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -174,10 +175,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Fetch UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(FetchUserChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(FetchUserChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -204,10 +205,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="pathChannelSid">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid, string pathUserSid, string pathChannelSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid, string pathUserSid, string pathChannelSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -246,10 +247,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<UserChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<UserChannelResource>(page, options, client);
@@ -286,10 +287,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                                                                                              string pathUserSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -380,11 +381,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(UpdateUserChannelOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(UpdateUserChannelOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -428,10 +430,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                                                                               UserChannelResource.NotificationLevelEnum notificationLevel = null,
                                                                               int? lastConsumedMessageIndex = null,
                                                                               DateTime? lastConsumptionTimestamp = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){ NotificationLevel = notificationLevel, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

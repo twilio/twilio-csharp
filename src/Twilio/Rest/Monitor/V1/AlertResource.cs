@@ -67,10 +67,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="options"> Fetch Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns>
-        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(FetchAlertOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(FetchAlertOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="pathSid"> The SID of the Alert resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns>
-        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAlertOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="options"> Read Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ReadAlertOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ReadAlertOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AlertResource>.FromJson("alerts", response.Content);
             return new ResourceSet<AlertResource>(page, options, client);
@@ -173,10 +173,10 @@ namespace Twilio.Rest.Monitor.V1
                                                                                              DateTime? endDate = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAlertOptions(){ LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

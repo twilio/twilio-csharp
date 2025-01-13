@@ -94,10 +94,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="options"> Create SyncListItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                                                                   string pathServiceSid,
                                                                                   string pathListSid,
                                                                                   object data,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -177,11 +177,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="options"> Delete SyncListItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -207,10 +208,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathListSid, int? pathIndex, string ifMatch = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathListSid, int? pathIndex, string ifMatch = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSyncListItemOptions(pathServiceSid, pathListSid, pathIndex)  { IfMatch = ifMatch };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -251,10 +252,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="options"> Fetch SyncListItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -281,10 +282,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="pathIndex">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string pathServiceSid, string pathListSid, int? pathIndex, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string pathServiceSid, string pathListSid, int? pathIndex, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -323,10 +324,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="options"> Read SyncListItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SyncListItemResource>.FromJson("items", response.Content);
             return new ResourceSet<SyncListItemResource>(page, options, client);
@@ -375,10 +376,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                                                                              SyncListItemResource.QueryFromBoundTypeEnum bounds = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSyncListItemOptions(pathServiceSid, pathListSid){ Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -469,11 +470,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -513,10 +515,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                                                               int? pathIndex,
                                                                               object data,
                                                                               string ifMatch = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex, data){ IfMatch = ifMatch };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

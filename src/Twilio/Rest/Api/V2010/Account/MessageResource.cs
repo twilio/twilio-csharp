@@ -165,10 +165,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -284,10 +284,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   bool? sendAsMms = null,
                                                                                   string contentVariables = null,
                                                                                   MessageResource.RiskCheckEnum riskCheck = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -330,11 +330,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -356,10 +357,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteMessageOptions(pathSid)  { PathAccountSid = pathAccountSid };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -398,10 +399,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -425,10 +426,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchMessageOptions(pathSid){ PathAccountSid = pathAccountSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -465,10 +466,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<MessageResource>.FromJson("messages", response.Content);
             return new ResourceSet<MessageResource>(page, options, client);
@@ -521,10 +522,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              DateTime? dateSentAfter = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadMessageOptions(){ PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -613,11 +614,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -653,10 +655,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               string pathAccountSid = null,
                                                                               string body = null,
                                                                               MessageResource.UpdateStatusEnum status = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateMessageOptions(pathSid){ PathAccountSid = pathAccountSid, Body = body, Status = status };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

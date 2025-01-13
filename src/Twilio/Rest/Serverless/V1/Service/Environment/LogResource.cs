@@ -85,10 +85,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Fetch Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(FetchLogOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -115,10 +115,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathSid"> The SID of the Log resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LogResource> FetchAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -157,10 +157,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="options"> Read Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(ReadLogOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<LogResource>.FromJson("logs", response.Content);
             return new ResourceSet<LogResource>(page, options, client);
@@ -209,10 +209,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                              DateTime? endDate = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){ FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

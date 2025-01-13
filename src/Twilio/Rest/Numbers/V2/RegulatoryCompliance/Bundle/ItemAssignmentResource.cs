@@ -68,10 +68,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(CreateItemAssignmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(CreateItemAssignmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<ItemAssignmentResource> CreateAsync(
                                                                                   string pathBundleSid,
                                                                                   string objectSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateItemAssignmentOptions(pathBundleSid, objectSid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -145,11 +145,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Delete ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteItemAssignmentOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteItemAssignmentOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -171,10 +172,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteItemAssignmentOptions(pathBundleSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -213,10 +214,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Fetch ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(FetchItemAssignmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(FetchItemAssignmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -240,10 +241,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="pathSid"> The unique string that we created to identify the Identity resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ItemAssignmentResource> FetchAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchItemAssignmentOptions(pathBundleSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -280,10 +281,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Read ItemAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ItemAssignment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ItemAssignmentResource>> ReadAsync(ReadItemAssignmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ItemAssignmentResource>> ReadAsync(ReadItemAssignmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ItemAssignmentResource>.FromJson("results", response.Content);
             return new ResourceSet<ItemAssignmentResource>(page, options, client);
@@ -316,10 +317,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                                                                                              string pathBundleSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadItemAssignmentOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

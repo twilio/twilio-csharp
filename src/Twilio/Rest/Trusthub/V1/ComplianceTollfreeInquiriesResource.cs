@@ -81,10 +81,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceTollfreeInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -196,10 +196,10 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   Types.PhoneNumber businessContactPhone = null,
                                                                                   string themeSetId = null,
                                                                                   bool? skipMessagingUseCase = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Create Transcription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
-        public static async System.Threading.Tasks.Task<TranscriptionResource> CreateAsync(CreateTranscriptionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptionResource> CreateAsync(CreateTranscriptionOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string hints = null,
                                                                                   bool? enableAutomaticPunctuation = null,
                                                                                   string intelligenceService = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService };
             return await CreateAsync(options, client);
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TranscriptionResource> UpdateAsync(UpdateTranscriptionOptions options,
-                                                                                                    ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                               string pathSid,
                                                                               TranscriptionResource.UpdateStatusEnum status,
                                                                               string pathAccountSid = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateTranscriptionOptions(pathCallSid, pathSid, status){ PathAccountSid = pathAccountSid };
             return await UpdateAsync(options, client);

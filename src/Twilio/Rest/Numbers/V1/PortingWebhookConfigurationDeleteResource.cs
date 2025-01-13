@@ -83,11 +83,12 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Delete PortingWebhookConfigurationDelete parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationDelete </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingWebhookConfigurationDeleteOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePortingWebhookConfigurationDeleteOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -107,10 +108,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="pathWebhookType"> The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingWebhookConfigurationDelete </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeletePortingWebhookConfigurationDeleteOptions(pathWebhookType) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
     

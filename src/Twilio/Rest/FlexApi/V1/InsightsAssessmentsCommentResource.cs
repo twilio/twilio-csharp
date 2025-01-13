@@ -66,10 +66,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create InsightsAssessmentsComment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsAssessmentsComment </returns>
-        public static async System.Threading.Tasks.Task<InsightsAssessmentsCommentResource> CreateAsync(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsAssessmentsCommentResource> CreateAsync(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -117,10 +117,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string agentId,
                                                                                   decimal? offset,
                                                                                   string authorization = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, agentId, offset){  Authorization = authorization };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -155,10 +155,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsAssessmentsComment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsAssessmentsComment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsAssessmentsCommentResource>> ReadAsync(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsAssessmentsCommentResource>> ReadAsync(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<InsightsAssessmentsCommentResource>.FromJson("comments", response.Content);
             return new ResourceSet<InsightsAssessmentsCommentResource>(page, options, client);
@@ -199,10 +199,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              string agentId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadInsightsAssessmentsCommentOptions(){ Authorization = authorization, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -329,10 +329,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="options"> Read ThisMonth parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ThisMonth </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ThisMonthResource>> ReadAsync(ReadThisMonthOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ThisMonthResource>> ReadAsync(ReadThisMonthOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ThisMonthResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<ThisMonthResource>(page, options, client);
@@ -381,10 +381,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                                                              bool? includeSubaccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadThisMonthOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

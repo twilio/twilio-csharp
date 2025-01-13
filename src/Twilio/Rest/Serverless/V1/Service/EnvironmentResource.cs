@@ -68,10 +68,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Create Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<EnvironmentResource> CreateAsync(CreateEnvironmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EnvironmentResource> CreateAsync(CreateEnvironmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -103,10 +103,10 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                                   string pathServiceSid,
                                                                                   string uniqueName,
                                                                                   string domainSuffix = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateEnvironmentOptions(pathServiceSid, uniqueName){  DomainSuffix = domainSuffix };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -149,11 +149,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Delete Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEnvironmentOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEnvironmentOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -175,10 +176,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> The SID of the Environment resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteEnvironmentOptions(pathServiceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -217,10 +218,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Fetch Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<EnvironmentResource> FetchAsync(FetchEnvironmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EnvironmentResource> FetchAsync(FetchEnvironmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -244,10 +245,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> The SID of the Environment resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<EnvironmentResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EnvironmentResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEnvironmentOptions(pathServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -284,10 +285,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Read Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EnvironmentResource>> ReadAsync(ReadEnvironmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EnvironmentResource>> ReadAsync(ReadEnvironmentOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<EnvironmentResource>.FromJson("environments", response.Content);
             return new ResourceSet<EnvironmentResource>(page, options, client);
@@ -320,10 +321,10 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEnvironmentOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

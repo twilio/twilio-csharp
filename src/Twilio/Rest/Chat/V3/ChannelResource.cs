@@ -96,7 +96,7 @@ namespace Twilio.Rest.Chat.V3
         /// <returns> Task that resolves to A single instance of Channel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(UpdateChannelOptions options,
-                                                                                                    ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Chat.V3
                                                                               ChannelResource.ChannelTypeEnum type = null,
                                                                               string messagingServiceSid = null,
                                                                               ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateChannelOptions(pathServiceSid, pathSid){ Type = type, MessagingServiceSid = messagingServiceSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);

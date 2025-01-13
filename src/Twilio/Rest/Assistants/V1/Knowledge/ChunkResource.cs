@@ -67,10 +67,10 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
         /// <param name="options"> Read Chunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Chunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChunkResource>> ReadAsync(ReadChunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChunkResource>> ReadAsync(ReadChunkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ChunkResource>.FromJson("chunks", response.Content);
             return new ResourceSet<ChunkResource>(page, options, client);
@@ -103,10 +103,10 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
                                                                                              string pathId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadChunkOptions(pathId){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

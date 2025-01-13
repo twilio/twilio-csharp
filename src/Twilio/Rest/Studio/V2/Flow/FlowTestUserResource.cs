@@ -67,10 +67,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="options"> Fetch FlowTestUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowTestUser </returns>
-        public static async System.Threading.Tasks.Task<FlowTestUserResource> FetchAsync(FetchFlowTestUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowTestUserResource> FetchAsync(FetchFlowTestUserOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="pathSid"> Unique identifier of the flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowTestUser </returns>
-        public static async System.Threading.Tasks.Task<FlowTestUserResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowTestUserResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFlowTestUserOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -132,11 +132,12 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowTestUser </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<FlowTestUserResource> UpdateAsync(UpdateFlowTestUserOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowTestUserResource> UpdateAsync(UpdateFlowTestUserOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -164,10 +165,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         public static async System.Threading.Tasks.Task<FlowTestUserResource> UpdateAsync(
                                                                               string pathSid,
                                                                               List<string> testUsers,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateFlowTestUserOptions(pathSid, testUsers){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

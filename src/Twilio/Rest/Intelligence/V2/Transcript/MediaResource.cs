@@ -67,10 +67,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Fetch Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
-        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -94,10 +94,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="redacted"> Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
-        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string pathSid, bool? redacted = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string pathSid, bool? redacted = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchMediaOptions(pathSid){ Redacted = redacted };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

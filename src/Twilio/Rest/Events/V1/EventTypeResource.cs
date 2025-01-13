@@ -67,10 +67,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(string pathType, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(string pathType, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEventTypeOptions(pathType){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<EventTypeResource>.FromJson("types", response.Content);
             return new ResourceSet<EventTypeResource>(page, options, client);
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Events.V1
                                                                                              string schemaId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

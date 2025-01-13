@@ -121,10 +121,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="options"> Fetch Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -151,10 +151,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -193,10 +193,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="options"> Read Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ReservationResource>.FromJson("reservations", response.Content);
             return new ResourceSet<ReservationResource>(page, options, client);
@@ -237,10 +237,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                                                              ReservationResource.StatusEnum reservationStatus = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadReservationOptions(pathWorkspaceSid, pathWorkerSid){ ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -331,11 +331,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -579,10 +580,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                                                               bool? beepOnCustomerEntrance = null,
                                                                               string jitterBufferSize = null,
                                                                               string ifMatch = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -50,7 +50,7 @@ namespace Twilio.Tests.Http
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-                                                               CancellationToken cancellationToken)
+                                                               System.Threading.CancellationToken cancellationToken)
         {
             // Uri will contain query params, only lookup on the uri route
             var route = request.RequestUri.ToString().Split('?')[0];

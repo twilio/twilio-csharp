@@ -65,10 +65,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch Usecase parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Usecase </returns>
-        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(FetchUsecaseOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(FetchUsecaseOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> fetch </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Usecase </returns>
-        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsecaseResource> FetchAsync(ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchUsecaseOptions(){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

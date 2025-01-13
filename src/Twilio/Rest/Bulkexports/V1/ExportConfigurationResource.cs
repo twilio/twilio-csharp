@@ -67,10 +67,10 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="options"> Fetch ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(FetchExportConfigurationOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(FetchExportConfigurationOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
-        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(string pathResourceType, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(string pathResourceType, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchExportConfigurationOptions(pathResourceType){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -132,11 +132,12 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(UpdateExportConfigurationOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(UpdateExportConfigurationOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -172,10 +173,10 @@ namespace Twilio.Rest.Bulkexports.V1
                                                                               bool? enabled = null,
                                                                               Uri webhookUrl = null,
                                                                               string webhookMethod = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

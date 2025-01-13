@@ -66,10 +66,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create InsightsSession parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSession </returns>
-        public static async System.Threading.Tasks.Task<InsightsSessionResource> CreateAsync(CreateInsightsSessionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InsightsSessionResource> CreateAsync(CreateInsightsSessionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -93,10 +93,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of InsightsSession </returns>
         public static async System.Threading.Tasks.Task<InsightsSessionResource> CreateAsync(
                                                                                   string authorization = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateInsightsSessionOptions(){  Authorization = authorization };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     

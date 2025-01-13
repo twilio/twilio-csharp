@@ -68,10 +68,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Create ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ChannelSenderResource> CreateAsync(CreateChannelSenderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> CreateAsync(CreateChannelSenderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         public static async System.Threading.Tasks.Task<ChannelSenderResource> CreateAsync(
                                                                                   string pathMessagingServiceSid,
                                                                                   string sid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateChannelSenderOptions(pathMessagingServiceSid, sid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -145,11 +145,12 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Delete ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChannelSenderOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChannelSenderOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -171,10 +172,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathSid"> The SID of the Channel Sender resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteChannelSenderOptions(pathMessagingServiceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -213,10 +214,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(FetchChannelSenderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(FetchChannelSenderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -240,10 +241,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathSid"> The SID of the ChannelSender resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchChannelSenderOptions(pathMessagingServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -280,10 +281,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Read ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChannelSenderResource>> ReadAsync(ReadChannelSenderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChannelSenderResource>> ReadAsync(ReadChannelSenderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ChannelSenderResource>.FromJson("senders", response.Content);
             return new ResourceSet<ChannelSenderResource>(page, options, client);
@@ -316,10 +317,10 @@ namespace Twilio.Rest.Messaging.V1.Service
                                                                                              string pathMessagingServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadChannelSenderOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -67,10 +67,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -94,10 +94,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, string taskChannel = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, string taskChannel = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){ TaskChannel = taskChannel };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

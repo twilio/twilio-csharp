@@ -68,10 +68,10 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Create ExportCustomJob parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
-        public static async System.Threading.Tasks.Task<ExportCustomJobResource> CreateAsync(CreateExportCustomJobOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportCustomJobResource> CreateAsync(CreateExportCustomJobOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -119,10 +119,10 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                                                   string webhookUrl = null,
                                                                                   string webhookMethod = null,
                                                                                   string email = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){  WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -159,10 +159,10 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Read ExportCustomJob parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(ReadExportCustomJobOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(ReadExportCustomJobOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ExportCustomJobResource>.FromJson("jobs", response.Content);
             return new ResourceSet<ExportCustomJobResource>(page, options, client);
@@ -195,10 +195,10 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                                                              string pathResourceType,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadExportCustomJobOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

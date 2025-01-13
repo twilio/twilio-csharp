@@ -67,10 +67,10 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <param name="options"> Read DataSession parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DataSession </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(ReadDataSessionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(ReadDataSessionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<DataSessionResource>.FromJson("data_sessions", response.Content);
             return new ResourceSet<DataSessionResource>(page, options, client);
@@ -103,10 +103,11 @@ namespace Twilio.Rest.Wireless.V1.Sim
                                                                                              string pathSimSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDataSessionOptions(pathSimSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

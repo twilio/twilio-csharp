@@ -81,10 +81,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Create Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(CreateExecutionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(CreateExecutionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -120,10 +120,10 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                   Types.PhoneNumber to,
                                                                                   Types.PhoneNumber from,
                                                                                   object parameters = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateExecutionOptions(pathFlowSid, to, from){  Parameters = parameters };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -166,11 +166,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Delete Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteExecutionOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteExecutionOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -192,10 +193,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathSid"> The SID of the Execution resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteExecutionOptions(pathFlowSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -234,10 +235,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Fetch Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(FetchExecutionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(FetchExecutionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -261,10 +262,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathSid"> The SID of the Execution resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchExecutionOptions(pathFlowSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -301,10 +302,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Read Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(ReadExecutionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(ReadExecutionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<ExecutionResource>.FromJson("executions", response.Content);
             return new ResourceSet<ExecutionResource>(page, options, client);
@@ -345,10 +346,10 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                              DateTime? dateCreatedTo = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadExecutionOptions(pathFlowSid){ DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -437,11 +438,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ExecutionResource> UpdateAsync(UpdateExecutionOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExecutionResource> UpdateAsync(UpdateExecutionOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -473,10 +475,10 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                               string pathFlowSid,
                                                                               string pathSid,
                                                                               ExecutionResource.StatusEnum status,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

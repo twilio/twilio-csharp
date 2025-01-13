@@ -82,10 +82,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="options"> Fetch FlowRevision parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
-        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(FetchFlowRevisionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(FetchFlowRevisionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -109,10 +109,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="pathRevision"> Specific Revision number or can be `LatestPublished` and `LatestRevision`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
-        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(string pathSid, string pathRevision, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowRevisionResource> FetchAsync(string pathSid, string pathRevision, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFlowRevisionOptions(pathSid, pathRevision){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -149,10 +149,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <param name="options"> Read FlowRevision parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(ReadFlowRevisionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(ReadFlowRevisionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<FlowRevisionResource>.FromJson("revisions", response.Content);
             return new ResourceSet<FlowRevisionResource>(page, options, client);
@@ -185,10 +185,10 @@ namespace Twilio.Rest.Studio.V2.Flow
                                                                                              string pathSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadFlowRevisionOptions(pathSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

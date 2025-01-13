@@ -66,10 +66,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Create Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(CreateSubscriptionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(CreateSubscriptionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Events.V1
                                                                                   string description,
                                                                                   string sinkSid,
                                                                                   List<object> types,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -145,11 +145,12 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Delete Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscriptionOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSubscriptionOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -169,10 +170,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteSubscriptionOptions(pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -209,10 +210,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(FetchSubscriptionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(FetchSubscriptionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -233,10 +234,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSubscriptionOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -271,10 +272,10 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(ReadSubscriptionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(ReadSubscriptionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SubscriptionResource>.FromJson("subscriptions", response.Content);
             return new ResourceSet<SubscriptionResource>(page, options, client);
@@ -307,10 +308,10 @@ namespace Twilio.Rest.Events.V1
                                                                                              string sinkSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSubscriptionOptions(){ SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -397,11 +398,12 @@ namespace Twilio.Rest.Events.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(UpdateSubscriptionOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(UpdateSubscriptionOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -433,10 +435,10 @@ namespace Twilio.Rest.Events.V1
                                                                               string pathSid,
                                                                               string description = null,
                                                                               string sinkSid = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

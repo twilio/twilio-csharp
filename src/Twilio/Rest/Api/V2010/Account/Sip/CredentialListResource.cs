@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Create CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
-        public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(CreateCredentialListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(CreateCredentialListOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(
                                                                                   string friendlyName,
                                                                                   string pathAccountSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateCredentialListOptions(friendlyName){  PathAccountSid = pathAccountSid };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialListOptions options,
-                                                                        ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteCredentialListOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Fetch CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
-        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(FetchCredentialListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(FetchCredentialListOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
-        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchCredentialListOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Read CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(ReadCredentialListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(ReadCredentialListOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadCredentialListOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CredentialListResource> UpdateAsync(UpdateCredentialListOptions options,
-                                                                                                    ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -444,7 +444,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                               string pathSid,
                                                                               string friendlyName,
                                                                               string pathAccountSid = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateCredentialListOptions(pathSid, friendlyName){ PathAccountSid = pathAccountSid };
             return await UpdateAsync(options, client);

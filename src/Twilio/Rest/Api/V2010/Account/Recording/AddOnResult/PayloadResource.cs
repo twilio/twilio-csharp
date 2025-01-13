@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePayloadOptions options,
-                                                                        ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathReferenceSid, string pathAddOnResultSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathReferenceSid, string pathAddOnResultSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeletePayloadOptions(pathReferenceSid, pathAddOnResultSid, pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="options"> Fetch Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(FetchPayloadOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(FetchPayloadOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(string pathReferenceSid, string pathAddOnResultSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(string pathReferenceSid, string pathAddOnResultSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPayloadOptions(pathReferenceSid, pathAddOnResultSid, pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="options"> Read Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PayloadResource>> ReadAsync(ReadPayloadOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PayloadResource>> ReadAsync(ReadPayloadOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                                                                              string pathAccountSid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadPayloadOptions(pathReferenceSid, pathAddOnResultSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

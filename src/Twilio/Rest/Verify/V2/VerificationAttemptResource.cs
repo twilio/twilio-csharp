@@ -95,10 +95,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Fetch VerificationAttempt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
-        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(FetchVerificationAttemptOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(FetchVerificationAttemptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -119,10 +119,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pathSid"> The unique SID identifier of a Verification Attempt </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
-        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationAttemptResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchVerificationAttemptOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -157,10 +157,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="options"> Read VerificationAttempt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttempt </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(ReadVerificationAttemptOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<VerificationAttemptResource>> ReadAsync(ReadVerificationAttemptOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<VerificationAttemptResource>.FromJson("attempts", response.Content);
             return new ResourceSet<VerificationAttemptResource>(page, options, client);
@@ -221,10 +221,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                              VerificationAttemptResource.ConversionStatusEnum status = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadVerificationAttemptOptions(){ DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

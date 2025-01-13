@@ -67,10 +67,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch EndUserType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(FetchEndUserTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(FetchEndUserTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="pathSid"> The unique string that identifies the End-User Type resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EndUserTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEndUserTypeOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read EndUserType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUserType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(ReadEndUserTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(ReadEndUserTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<EndUserTypeResource>.FromJson("end_user_types", response.Content);
             return new ResourceSet<EndUserTypeResource>(page, options, client);
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         public static async System.Threading.Tasks.Task<ResourceSet<EndUserTypeResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEndUserTypeOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

@@ -65,10 +65,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsSegments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsSegments </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsSegmentsResource>> ReadAsync(ReadInsightsSegmentsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsSegmentsResource>> ReadAsync(ReadInsightsSegmentsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
             return new ResourceSet<InsightsSegmentsResource>(page, options, client);
@@ -109,10 +109,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              List<string> reservationId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadInsightsSegmentsOptions(){ Authorization = authorization, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

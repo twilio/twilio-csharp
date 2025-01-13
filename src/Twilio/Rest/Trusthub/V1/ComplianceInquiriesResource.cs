@@ -66,10 +66,10 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(CreateComplianceInquiriesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(CreateComplianceInquiriesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string primaryProfileSid,
                                                                                   string notificationEmail = null,
                                                                                   string themeSetId = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -142,11 +142,12 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> UpdateAsync(UpdateComplianceInquiriesOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> UpdateAsync(UpdateComplianceInquiriesOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -178,10 +179,10 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               string pathCustomerId,
                                                                               string primaryProfileSid,
                                                                               string themeSetId = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     
