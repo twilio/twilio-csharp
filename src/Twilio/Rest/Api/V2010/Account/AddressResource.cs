@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns>
-        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteAddressOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
             return Delete(options, client);
@@ -267,7 +267,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static AddressResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                        ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string isoCountry = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -497,7 +497,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           bool? emergencyEnabled = null,
                                           bool? autoCorrectAddress = null,
                                           string streetSecondary = null,
-                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return Update(options, client);
