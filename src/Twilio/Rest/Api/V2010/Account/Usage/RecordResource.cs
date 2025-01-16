@@ -329,10 +329,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="options"> Read Record parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Record </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<RecordResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<RecordResource>(page, options, client);
@@ -381,10 +381,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                              bool? includeSubaccounts = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadRecordOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

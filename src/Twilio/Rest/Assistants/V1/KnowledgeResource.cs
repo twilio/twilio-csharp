@@ -238,10 +238,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Create Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(CreateKnowledgeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(CreateKnowledgeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -265,10 +265,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<KnowledgeResource> CreateAsync(
                                                                                   KnowledgeResource.AssistantsV1ServiceCreateKnowledgeRequest assistantsV1ServiceCreateKnowledgeRequest,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateKnowledgeOptions(assistantsV1ServiceCreateKnowledgeRequest){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -309,11 +309,12 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Delete Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKnowledgeOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteKnowledgeOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -333,10 +334,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId"> the Knowledge ID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteKnowledgeOptions(pathId) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -373,10 +374,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Fetch Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(FetchKnowledgeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(FetchKnowledgeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -397,10 +398,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(string pathId, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> FetchAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchKnowledgeOptions(pathId){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -435,10 +436,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="options"> Read Knowledge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<KnowledgeResource>> ReadAsync(ReadKnowledgeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<KnowledgeResource>> ReadAsync(ReadKnowledgeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<KnowledgeResource>.FromJson("knowledge", response.Content);
             return new ResourceSet<KnowledgeResource>(page, options, client);
@@ -471,10 +472,10 @@ namespace Twilio.Rest.Assistants.V1
                                                                                              string assistantId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadKnowledgeOptions(){ AssistantId = assistantId, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -562,11 +563,12 @@ namespace Twilio.Rest.Assistants.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<KnowledgeResource> UpdateAsync(UpdateKnowledgeOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeResource> UpdateAsync(UpdateKnowledgeOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -590,10 +592,10 @@ namespace Twilio.Rest.Assistants.V1
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<KnowledgeResource> UpdateAsync(
                                                                               string pathId,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateKnowledgeOptions(pathId){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

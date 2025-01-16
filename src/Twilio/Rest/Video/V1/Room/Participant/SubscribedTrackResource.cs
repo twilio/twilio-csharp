@@ -85,10 +85,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -115,10 +115,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathSid"> The SID of the RoomParticipantSubscribedTrack resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(string pathRoomSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(string pathRoomSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -157,10 +157,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SubscribedTrackResource>.FromJson("subscribed_tracks", response.Content);
             return new ResourceSet<SubscribedTrackResource>(page, options, client);
@@ -197,10 +197,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                                                                              string pathParticipantSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

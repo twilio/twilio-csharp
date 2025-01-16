@@ -69,10 +69,10 @@ namespace Twilio.Rest.FlexApi.V2
         /// <param name="options"> Fetch FlexUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexUser </returns>
-        public static async System.Threading.Tasks.Task<FlexUserResource> FetchAsync(FetchFlexUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexUserResource> FetchAsync(FetchFlexUserOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -96,10 +96,10 @@ namespace Twilio.Rest.FlexApi.V2
         /// <param name="pathFlexUserSid"> The unique id for the flex user to be retrieved. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexUser </returns>
-        public static async System.Threading.Tasks.Task<FlexUserResource> FetchAsync(string pathInstanceSid, string pathFlexUserSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexUserResource> FetchAsync(string pathInstanceSid, string pathFlexUserSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFlexUserOptions(pathInstanceSid, pathFlexUserSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -139,11 +139,12 @@ namespace Twilio.Rest.FlexApi.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexUser </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<FlexUserResource> UpdateAsync(UpdateFlexUserOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlexUserResource> UpdateAsync(UpdateFlexUserOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -195,10 +196,10 @@ namespace Twilio.Rest.FlexApi.V2
                                                                               string friendlyName = null,
                                                                               string userSid = null,
                                                                               string locale = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ FirstName = firstName, LastName = lastName, Email = email, FriendlyName = friendlyName, UserSid = userSid, Locale = locale };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

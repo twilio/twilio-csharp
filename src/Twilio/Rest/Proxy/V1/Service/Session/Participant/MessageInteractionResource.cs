@@ -118,10 +118,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(CreateMessageInteractionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(CreateMessageInteractionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                                                                                   string pathParticipantSid,
                                                                                   string body = null,
                                                                                   List<Uri> mediaUrl = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){  Body = body, MediaUrl = mediaUrl };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -207,10 +207,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="options"> Fetch MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(FetchMessageInteractionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(FetchMessageInteractionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -240,10 +240,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(string pathServiceSid, string pathSessionSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(string pathServiceSid, string pathSessionSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -284,10 +284,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="options"> Read MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(ReadMessageInteractionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(ReadMessageInteractionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<MessageInteractionResource>.FromJson("interactions", response.Content);
             return new ResourceSet<MessageInteractionResource>(page, options, client);
@@ -328,10 +328,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                                                                                              string pathParticipantSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

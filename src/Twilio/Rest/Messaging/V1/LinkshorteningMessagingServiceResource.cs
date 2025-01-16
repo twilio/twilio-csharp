@@ -70,10 +70,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create LinkshorteningMessagingService parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingService </returns>
-        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(CreateLinkshorteningMessagingServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(CreateLinkshorteningMessagingServiceOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(
                                                                                   string pathDomainSid,
                                                                                   string pathMessagingServiceSid,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateLinkshorteningMessagingServiceOptions(pathDomainSid, pathMessagingServiceSid){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -147,11 +147,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Delete LinkshorteningMessagingService parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingService </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteLinkshorteningMessagingServiceOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteLinkshorteningMessagingServiceOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -173,10 +174,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathMessagingServiceSid"> A messaging service SID to dissociate from a domain. With URL shortening enabled, links in messages sent with the provided messaging service will be shortened to the associated domain </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingService </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathMessagingServiceSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathMessagingServiceSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteLinkshorteningMessagingServiceOptions(pathDomainSid, pathMessagingServiceSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -80,10 +80,10 @@ namespace Twilio.Rest.Supersim.V1.Sim
         /// <param name="options"> Read SimIpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SimIpAddress </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SimIpAddressResource>> ReadAsync(ReadSimIpAddressOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SimIpAddressResource>> ReadAsync(ReadSimIpAddressOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<SimIpAddressResource>.FromJson("ip_addresses", response.Content);
             return new ResourceSet<SimIpAddressResource>(page, options, client);
@@ -116,10 +116,10 @@ namespace Twilio.Rest.Supersim.V1.Sim
                                                                                              string pathSimSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadSimIpAddressOptions(pathSimSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

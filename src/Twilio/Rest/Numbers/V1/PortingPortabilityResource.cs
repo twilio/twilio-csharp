@@ -82,10 +82,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="options"> Fetch PortingPortability parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -112,10 +112,10 @@ namespace Twilio.Rest.Numbers.V1
         /// <param name="addressSid"> Address Sid of customer to which the number will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, string addressSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, string addressSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

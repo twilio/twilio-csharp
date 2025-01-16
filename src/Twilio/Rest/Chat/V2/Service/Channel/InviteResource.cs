@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="options"> Create Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                                                   string pathChannelSid,
                                                                                   string identity,
                                                                                   string roleSid = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){  RoleSid = roleSid };
             return await CreateAsync(options, client);
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options,
-                                                                        ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathSid"> The SID of the Invite resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteInviteOptions(pathServiceSid, pathChannelSid, pathSid) ;
             return await DeleteAsync(options, client);
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="options"> Fetch Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathSid"> The SID of the Invite resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchInviteOptions(pathServiceSid, pathChannelSid, pathSid){  };
             return await FetchAsync(options, client);
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="options"> Read Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                                                              List<string> identity = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){ Identity = identity, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

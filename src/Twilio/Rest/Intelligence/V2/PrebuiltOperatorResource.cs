@@ -82,10 +82,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch PrebuiltOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -106,10 +106,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Pre-built Operator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PrebuiltOperatorResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchPrebuiltOperatorOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read PrebuiltOperator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PrebuiltOperator </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PrebuiltOperatorResource>> ReadAsync(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PrebuiltOperatorResource>> ReadAsync(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<PrebuiltOperatorResource>.FromJson("operators", response.Content);
             return new ResourceSet<PrebuiltOperatorResource>(page, options, client);
@@ -184,10 +184,10 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string languageCode = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadPrebuiltOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

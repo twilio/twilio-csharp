@@ -66,11 +66,12 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(UpdateAuthTokenPromotionOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(UpdateAuthTokenPromotionOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -90,10 +91,11 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null,
+                                                                                System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAuthTokenPromotionOptions(){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

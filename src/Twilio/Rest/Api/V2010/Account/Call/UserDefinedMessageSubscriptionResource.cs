@@ -70,10 +70,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Create UserDefinedMessageSubscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
-        public static async System.Threading.Tasks.Task<UserDefinedMessageSubscriptionResource> CreateAsync(CreateUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserDefinedMessageSubscriptionResource> CreateAsync(CreateUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -113,10 +113,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string pathAccountSid = null,
                                                                                   string idempotencyKey = null,
                                                                                   Twilio.Http.HttpMethod method = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -161,11 +161,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Delete UserDefinedMessageSubscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserDefinedMessageSubscriptionOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserDefinedMessageSubscriptionOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -189,10 +190,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteUserDefinedMessageSubscriptionOptions(pathCallSid, pathSid)  { PathAccountSid = pathAccountSid };
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
     

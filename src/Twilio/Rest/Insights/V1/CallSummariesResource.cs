@@ -157,10 +157,10 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Read CallSummaries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummaries </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CallSummariesResource>> ReadAsync(ReadCallSummariesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CallSummariesResource>> ReadAsync(ReadCallSummariesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<CallSummariesResource>.FromJson("call_summaries", response.Content);
             return new ResourceSet<CallSummariesResource>(page, options, client);
@@ -317,10 +317,10 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string businessProfileType = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, BrandedEnabled = brandedEnabled, VoiceIntegrityEnabled = voiceIntegrityEnabled, BrandedBundleSid = brandedBundleSid, VoiceIntegrityBundleSid = voiceIntegrityBundleSid, VoiceIntegrityUseCase = voiceIntegrityUseCase, BusinessProfileIdentity = businessProfileIdentity, BusinessProfileIndustry = businessProfileIndustry, BusinessProfileBundleSid = businessProfileBundleSid, BusinessProfileType = businessProfileType, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

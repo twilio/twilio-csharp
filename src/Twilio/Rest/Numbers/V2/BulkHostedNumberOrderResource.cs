@@ -81,10 +81,10 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Create BulkHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -104,10 +104,11 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
         public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> CreateAsync(
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateBulkHostedNumberOrderOptions(){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -144,10 +145,10 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="options"> Fetch BulkHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -171,10 +172,10 @@ namespace Twilio.Rest.Numbers.V2
         /// <param name="orderStatus"> Order status can be used for filtering on Hosted Number Order status values. To see a complete list of order statuses, please check 'https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values'. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(string pathBulkHostingSid, string orderStatus = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BulkHostedNumberOrderResource> FetchAsync(string pathBulkHostingSid, string orderStatus = null, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

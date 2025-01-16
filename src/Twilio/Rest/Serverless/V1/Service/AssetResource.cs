@@ -68,10 +68,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Create Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(CreateAssetOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(CreateAssetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(
                                                                                   string pathServiceSid,
                                                                                   string friendlyName,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateAssetOptions(pathServiceSid, friendlyName){  };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -145,11 +145,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Delete Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssetOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssetOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -171,10 +172,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> The SID that identifies the Asset resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteAssetOptions(pathServiceSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -213,10 +214,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Fetch Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(FetchAssetOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(FetchAssetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -240,10 +241,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> The SID that identifies the Asset resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchAssetOptions(pathServiceSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -280,10 +281,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Read Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssetResource>> ReadAsync(ReadAssetOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssetResource>> ReadAsync(ReadAssetOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<AssetResource>.FromJson("assets", response.Content);
             return new ResourceSet<AssetResource>(page, options, client);
@@ -316,10 +317,10 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                                              string pathServiceSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadAssetOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -408,11 +409,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AssetResource> UpdateAsync(UpdateAssetOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> UpdateAsync(UpdateAssetOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -444,10 +446,10 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               string friendlyName,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateAssetOptions(pathServiceSid, pathSid, friendlyName){  };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

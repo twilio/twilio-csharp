@@ -112,10 +112,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch OperatorType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
-        public static async System.Threading.Tasks.Task<OperatorTypeResource> FetchAsync(FetchOperatorTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorTypeResource> FetchAsync(FetchOperatorTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -136,10 +136,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="pathSid"> Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
-        public static async System.Threading.Tasks.Task<OperatorTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorTypeResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchOperatorTypeOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -174,10 +174,10 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read OperatorType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<OperatorTypeResource>> ReadAsync(ReadOperatorTypeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<OperatorTypeResource>> ReadAsync(ReadOperatorTypeOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<OperatorTypeResource>.FromJson("operator_types", response.Content);
             return new ResourceSet<OperatorTypeResource>(page, options, client);
@@ -206,10 +206,10 @@ namespace Twilio.Rest.Intelligence.V2
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorTypeResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

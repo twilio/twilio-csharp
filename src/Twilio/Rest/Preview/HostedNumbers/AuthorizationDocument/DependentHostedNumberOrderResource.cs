@@ -100,10 +100,10 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// <param name="options"> Read DependentHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<DependentHostedNumberOrderResource>.FromJson("items", response.Content);
             return new ResourceSet<DependentHostedNumberOrderResource>(page, options, client);
@@ -156,10 +156,10 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
                                                                                              string uniqueName = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){ Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

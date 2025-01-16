@@ -66,10 +66,10 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create RecordingSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -113,10 +113,10 @@ namespace Twilio.Rest.Video.V1
                                                                                   Uri awsS3Url = null,
                                                                                   bool? awsStorageEnabled = null,
                                                                                   bool? encryptionEnabled = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateRecordingSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -151,10 +151,10 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch RecordingSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -172,10 +172,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary> fetch </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(ITwilioRestClient client = null, System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchRecordingSettingsOptions(){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

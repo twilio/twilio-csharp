@@ -236,7 +236,7 @@ namespace Twilio.Clients.BearerToken
         ///
         /// <param name="request">request to make</param>
         /// <returns>Task that resolves to the response of the request</returns>
-        public async Task<Response> RequestAsync(TokenRequest request)
+        public async Task<Response> RequestAsync(TokenRequest request, System.Threading.CancellationToken cancellationToken = default)
         {
             request.SetAuth(_accessToken);
 
@@ -252,7 +252,7 @@ namespace Twilio.Clients.BearerToken
             Response response;
             try
             {
-                response = await HttpClient.MakeRequestAsync(request);
+                response = await HttpClient.MakeRequestAsync(request, cancellationToken);
             }
             catch (Exception clientException)
             {

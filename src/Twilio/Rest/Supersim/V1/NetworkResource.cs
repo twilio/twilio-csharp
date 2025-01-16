@@ -67,10 +67,10 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch Network parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
-        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(FetchNetworkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(FetchNetworkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="pathSid"> The SID of the Network resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
-        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(string pathSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchNetworkOptions(pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -129,10 +129,10 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read Network parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<NetworkResource>> ReadAsync(ReadNetworkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<NetworkResource>> ReadAsync(ReadNetworkOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<NetworkResource>.FromJson("networks", response.Content);
             return new ResourceSet<NetworkResource>(page, options, client);
@@ -173,10 +173,10 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string mnc = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadNetworkOptions(){ IsoCountry = isoCountry, Mcc = mcc, Mnc = mnc, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

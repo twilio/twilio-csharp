@@ -69,10 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="options"> Read MachineToMachine parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MachineToMachine </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(ReadMachineToMachineOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(ReadMachineToMachineOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<MachineToMachineResource>.FromJson("available_phone_numbers", response.Content);
             return new ResourceSet<MachineToMachineResource>(page, options, client);
@@ -181,10 +181,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                                                                              bool? faxEnabled = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null,
+                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadMachineToMachineOptions(pathCountryCode){ PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

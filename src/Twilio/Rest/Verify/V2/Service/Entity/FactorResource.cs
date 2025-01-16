@@ -114,11 +114,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Delete Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFactorOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFactorOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -142,10 +143,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -186,10 +187,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Fetch Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
-        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(FetchFactorOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(FetchFactorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -216,10 +217,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
-        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -258,10 +259,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="options"> Read Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(ReadFactorOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(ReadFactorOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<FactorResource>.FromJson("factors", response.Content);
             return new ResourceSet<FactorResource>(page, options, client);
@@ -298,10 +299,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                              string pathIdentity,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadFactorOptions(pathServiceSid, pathIdentity){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 
@@ -392,11 +393,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(UpdateFactorOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(UpdateFactorOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -464,10 +466,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                               int? configCodeLength = null,
                                                                               FactorResource.TotpAlgorithmsEnum configAlg = null,
                                                                               string configNotificationPlatform = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, ConfigNotificationPlatform = configNotificationPlatform };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

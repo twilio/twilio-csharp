@@ -37,7 +37,7 @@ namespace Twilio.Clients
         ///
         /// <param name="request">Request to make</param>
         /// <returns>response of the request</returns>
-        System.Threading.Tasks.Task<Response> RequestAsync(Request request);
+        System.Threading.Tasks.Task<Response> RequestAsync(Request request, System.Threading.CancellationToken cancellationToken = default);
 #endif
     }
 }

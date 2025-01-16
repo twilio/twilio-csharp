@@ -67,10 +67,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="options"> Fetch RecordingRules parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingRules </returns>
-        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(FetchRecordingRulesOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(FetchRecordingRulesOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> The SID of the Room resource where the recording rules to fetch apply. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingRules </returns>
-        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(string pathRoomSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingRulesResource> FetchAsync(string pathRoomSid, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchRecordingRulesOptions(pathRoomSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -132,11 +132,12 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingRules </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<RecordingRulesResource> UpdateAsync(UpdateRecordingRulesOptions options,
-                                                                                                    ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingRulesResource> UpdateAsync(UpdateRecordingRulesOptions options, 
+                                                                                                    ITwilioRestClient client = null,
+                                                                                                    System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -164,10 +165,10 @@ namespace Twilio.Rest.Video.V1.Room
         public static async System.Threading.Tasks.Task<RecordingRulesResource> UpdateAsync(
                                                                               string pathRoomSid,
                                                                               object rules = null,
-                                                                                ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
-            return await UpdateAsync(options, client);
+            return await UpdateAsync(options, client, cancellationToken);
         }
         #endif
     

@@ -67,10 +67,10 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
         /// <param name="options"> Fetch KnowledgeStatus parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of KnowledgeStatus </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeStatusResource> FetchAsync(FetchKnowledgeStatusOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeStatusResource> FetchAsync(FetchKnowledgeStatusOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
         /// <param name="pathId"> the Knowledge ID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of KnowledgeStatus </returns>
-        public static async System.Threading.Tasks.Task<KnowledgeStatusResource> FetchAsync(string pathId, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<KnowledgeStatusResource> FetchAsync(string pathId, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchKnowledgeStatusOptions(pathId){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

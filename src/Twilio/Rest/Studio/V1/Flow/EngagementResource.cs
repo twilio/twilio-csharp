@@ -81,10 +81,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Create Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(CreateEngagementOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(CreateEngagementOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -120,10 +120,10 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                   Types.PhoneNumber to,
                                                                                   Types.PhoneNumber from,
                                                                                   object parameters = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateEngagementOptions(pathFlowSid, to, from){  Parameters = parameters };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -166,11 +166,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Delete Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEngagementOptions options,
-                                                                        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEngagementOptions options, 
+                                                                        ITwilioRestClient client = null,
+                                                                        System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client), cancellationToken);
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
@@ -192,10 +193,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathSid"> The SID of the Engagement resource to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new DeleteEngagementOptions(pathFlowSid, pathSid) ;
-            return await DeleteAsync(options, client);
+            return await DeleteAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -234,10 +235,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Fetch Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(FetchEngagementOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(FetchEngagementOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -261,10 +262,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathSid"> The SID of the Engagement resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchEngagementOptions(pathFlowSid, pathSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
         
@@ -301,10 +302,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="options"> Read Engagement parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EngagementResource>> ReadAsync(ReadEngagementOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EngagementResource>> ReadAsync(ReadEngagementOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            var response = await client.RequestAsync(BuildReadRequest(options, client), cancellationToken);
 
             var page = Page<EngagementResource>.FromJson("engagements", response.Content);
             return new ResourceSet<EngagementResource>(page, options, client);
@@ -337,10 +338,10 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                              string pathFlowSid,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                            ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new ReadEngagementOptions(pathFlowSid){ PageSize = pageSize, Limit = limit};
-            return await ReadAsync(options, client);
+            return await ReadAsync(options, client, cancellationToken);
         }
         #endif
 

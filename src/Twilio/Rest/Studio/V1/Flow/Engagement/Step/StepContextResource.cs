@@ -71,10 +71,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <param name="options"> Fetch StepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StepContext </returns>
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var response = await client.RequestAsync(BuildFetchRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <param name="pathStepSid"> The SID of the Step to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StepContext </returns>
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid, string pathEngagementSid, string pathStepSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid, string pathEngagementSid, string pathStepSid, ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
             var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid){  };
-            return await FetchAsync(options, client);
+            return await FetchAsync(options, client, cancellationToken);
         }
         #endif
     

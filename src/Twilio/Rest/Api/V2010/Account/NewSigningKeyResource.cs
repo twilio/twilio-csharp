@@ -68,10 +68,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create NewSigningKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewSigningKey </returns>
-        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(CreateNewSigningKeyOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(CreateNewSigningKeyOptions options, ITwilioRestClient client = null,  System.Threading.CancellationToken cancellationToken = default)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildCreateRequest(options, client), cancellationToken);
             return FromJson(response.Content);
         }
         #endif
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(
                                                                                   string pathAccountSid = null,
                                                                                   string friendlyName = null,
-                                                                                    ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null , System.Threading.CancellationToken cancellationToken = default)
         {
         var options = new CreateNewSigningKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
-            return await CreateAsync(options, client);
+            return await CreateAsync(options, client, cancellationToken);
         }
         #endif
     
