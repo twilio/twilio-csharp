@@ -42,6 +42,7 @@ namespace Twilio.Rest.Insights.V1
                 return new RegionEnum(value);
             }
             public static readonly RegionEnum Us1 = new RegionEnum("us1");
+            public static readonly RegionEnum Us2 = new RegionEnum("us2");
             public static readonly RegionEnum Au1 = new RegionEnum("au1");
             public static readonly RegionEnum Br1 = new RegionEnum("br1");
             public static readonly RegionEnum Ie1 = new RegionEnum("ie1");

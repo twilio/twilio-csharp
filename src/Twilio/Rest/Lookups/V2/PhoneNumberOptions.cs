@@ -72,6 +72,9 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests. </summary> 
         public string VerificationSid { get; set; }
 
+        ///<summary> The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis. </summary> 
+        public string PartnerSubId { get; set; }
+
 
 
         /// <summary> Construct a new FetchPhoneNumberOptions </summary>
@@ -142,6 +145,10 @@ namespace Twilio.Rest.Lookups.V2
             if (VerificationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerificationSid", VerificationSid));
+            }
+            if (PartnerSubId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PartnerSubId", PartnerSubId));
             }
             return p;
         }

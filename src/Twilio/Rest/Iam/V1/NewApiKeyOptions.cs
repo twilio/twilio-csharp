@@ -25,7 +25,7 @@ namespace Twilio.Rest.Iam.V1
 {
 
     /// <summary> Create a new Signing Key for the account making the request. </summary>
-    public class CreateKeyOptions : IOptions<KeyResource>
+    public class CreateNewApiKeyOptions : IOptions<NewApiKeyResource>
     {
         
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Payments resource. </summary> 
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Iam.V1
         public string FriendlyName { get; set; }
 
         
-        public KeyResource.KeytypeEnum KeyType { get; set; }
+        public NewApiKeyResource.KeytypeEnum KeyType { get; set; }
 
         ///<summary> The \\\\`Policy\\\\` object is a collection that specifies the allowed Twilio permissions for the restricted key. For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys). </summary> 
         public object Policy { get; set; }
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Iam.V1
 
         /// <summary> Construct a new CreateNewKeyOptions </summary>
         /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Payments resource. </param>
-        public CreateKeyOptions(string accountSid)
+        public CreateNewApiKeyOptions(string accountSid)
         {
             AccountSid = accountSid;
         }

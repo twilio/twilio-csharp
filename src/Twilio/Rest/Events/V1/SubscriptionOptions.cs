@@ -37,6 +37,9 @@ namespace Twilio.Rest.Events.V1
         ///<summary> An array of objects containing the subscribed Event Types </summary> 
         public List<object> Types { get; }
 
+        ///<summary> Receive events from all children accounts in the parent account subscription. </summary> 
+        public bool? ReceiveEventsFromSubaccounts { get; set; }
+
 
         /// <summary> Construct a new CreateSubscriptionOptions </summary>
         /// <param name="description"> A human readable description for the Subscription **This value should not contain PII.** </param>
@@ -66,6 +69,10 @@ namespace Twilio.Rest.Events.V1
             if (Types != null)
             {
                 p.AddRange(Types.Select(Types => new KeyValuePair<string, string>("Types", Serializers.JsonObject(Types))));
+            }
+            if (ReceiveEventsFromSubaccounts != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReceiveEventsFromSubaccounts", ReceiveEventsFromSubaccounts.Value.ToString().ToLower()));
             }
             return p;
         }
@@ -177,6 +184,9 @@ namespace Twilio.Rest.Events.V1
         ///<summary> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </summary> 
         public string SinkSid { get; set; }
 
+        ///<summary> Receive events from all children accounts in the parent account subscription. </summary> 
+        public bool? ReceiveEventsFromSubaccounts { get; set; }
+
 
 
         /// <summary> Construct a new UpdateSubscriptionOptions </summary>
@@ -199,6 +209,10 @@ namespace Twilio.Rest.Events.V1
             if (SinkSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid));
+            }
+            if (ReceiveEventsFromSubaccounts != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReceiveEventsFromSubaccounts", ReceiveEventsFromSubaccounts.Value.ToString().ToLower()));
             }
             return p;
         }

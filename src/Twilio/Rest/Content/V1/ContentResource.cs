@@ -809,6 +809,42 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class TwilioSchedule
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
+            [JsonProperty("timeSlots")]
+            private string TimeSlots {get; set;}
+            public TwilioSchedule() { }
+            public class Builder
+            {
+                private TwilioSchedule _twilioSchedule = new TwilioSchedule();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _twilioSchedule.Id= id;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _twilioSchedule.Title= title;
+                    return this;
+                }
+                public Builder WithTimeSlots(string timeSlots)
+                {
+                    _twilioSchedule.TimeSlots= timeSlots;
+                    return this;
+                }
+                public TwilioSchedule Build()
+                {
+                    return _twilioSchedule;
+                }
+            }
+        }
         public class WhatsappCard
         {
             [JsonProperty("body")]
@@ -947,6 +983,8 @@ namespace Twilio.Rest.Content.V1
             private TwilioCarousel TwilioCarousel {get; set;}
             [JsonProperty("twilio/flows")]
             private TwilioFlows TwilioFlows {get; set;}
+            [JsonProperty("twilio/schedule")]
+            private TwilioSchedule TwilioSchedule {get; set;}
             [JsonProperty("whatsapp/card")]
             private WhatsappCard WhatsappCard {get; set;}
             [JsonProperty("whatsapp/authentication")]
@@ -1006,6 +1044,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithTwilioFlows(TwilioFlows twilioFlows)
                 {
                     _types.TwilioFlows= twilioFlows;
+                    return this;
+                }
+                public Builder WithTwilioSchedule(TwilioSchedule twilioSchedule)
+                {
+                    _types.TwilioSchedule= twilioSchedule;
                     return this;
                 }
                 public Builder WithWhatsappCard(WhatsappCard whatsappCard)
