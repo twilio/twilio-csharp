@@ -58,7 +58,6 @@ namespace Twilio.Rest.Conversations.V1
             public static readonly TypeEnum Gbm = new TypeEnum("gbm");
             public static readonly TypeEnum Email = new TypeEnum("email");
             public static readonly TypeEnum Rcs = new TypeEnum("rcs");
-            public static readonly TypeEnum Apple = new TypeEnum("apple");
 
         }
         public sealed class AutoCreationTypeEnum : StringEnum

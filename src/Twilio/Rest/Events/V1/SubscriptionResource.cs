@@ -78,17 +78,15 @@ namespace Twilio.Rest.Events.V1
         /// <param name="description"> A human readable description for the Subscription **This value should not contain PII.** </param>
         /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
         /// <param name="types"> An array of objects containing the subscribed Event Types </param>
-        /// <param name="receiveEventsFromSubaccounts"> Receive events from all children accounts in the parent account subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Create(
                                           string description,
                                           string sinkSid,
                                           List<object> types,
-                                          bool? receiveEventsFromSubaccounts = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateSubscriptionOptions(description, sinkSid, types){  ReceiveEventsFromSubaccounts = receiveEventsFromSubaccounts };
+            var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
             return Create(options, client);
         }
 
@@ -97,17 +95,15 @@ namespace Twilio.Rest.Events.V1
         /// <param name="description"> A human readable description for the Subscription **This value should not contain PII.** </param>
         /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
         /// <param name="types"> An array of objects containing the subscribed Event Types </param>
-        /// <param name="receiveEventsFromSubaccounts"> Receive events from all children accounts in the parent account subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(
                                                                                   string description,
                                                                                   string sinkSid,
                                                                                   List<object> types,
-                                                                                  bool? receiveEventsFromSubaccounts = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateSubscriptionOptions(description, sinkSid, types){  ReceiveEventsFromSubaccounts = receiveEventsFromSubaccounts };
+        var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -414,17 +410,15 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="description"> A human readable description for the Subscription. </param>
         /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
-        /// <param name="receiveEventsFromSubaccounts"> Receive events from all children accounts in the parent account subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Update(
                                           string pathSid,
                                           string description = null,
                                           string sinkSid = null,
-                                          bool? receiveEventsFromSubaccounts = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid, ReceiveEventsFromSubaccounts = receiveEventsFromSubaccounts };
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
             return Update(options, client);
         }
 
@@ -433,17 +427,15 @@ namespace Twilio.Rest.Events.V1
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="description"> A human readable description for the Subscription. </param>
         /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
-        /// <param name="receiveEventsFromSubaccounts"> Receive events from all children accounts in the parent account subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string description = null,
                                                                               string sinkSid = null,
-                                                                              bool? receiveEventsFromSubaccounts = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid, ReceiveEventsFromSubaccounts = receiveEventsFromSubaccounts };
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -513,10 +505,6 @@ namespace Twilio.Rest.Events.V1
         ///<summary> Contains a dictionary of URL links to nested resources of this Subscription. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-
-        ///<summary> Receive events from all children accounts in the parent account subscription. </summary> 
-        [JsonProperty("receive_events_from_subaccounts")]
-        public bool? ReceiveEventsFromSubaccounts { get; private set; }
 
 
 

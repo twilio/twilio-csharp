@@ -223,7 +223,7 @@ namespace Twilio.TwiML
                                     bool? bargeIn = null,
                                     bool? debug = null,
                                     bool? actionOnEmptyResult = null,
-                                    Gather.SpeechModelEnum speechModel = null,
+                                    string speechModel = null,
                                     bool? enhanced = null)
         {
             var newChild = new Gather(
