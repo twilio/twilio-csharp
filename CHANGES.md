@@ -1,6 +1,30 @@
 twilio-csharp Changelog
 =======================
 
+[2025-01-31] Version 7.9.0
+--------------------------
+**Library - Chore**
+- [PR #773](https://github.com/twilio/twilio-csharp/pull/773): added bug report issue template. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Api**
+- Add open-api file tag to `conference/call recordings` and `recording_transcriptions`.
+
+**Events**
+- Add support for subaccount subscriptions (beta)
+
+**Insights**
+- add new region to conference APIs
+
+**Lookups**
+- Add new `parnter_sub_id` query parameter to the lookup request
+
+**Messaging**
+- Adds validity period Default value in service resource documentation
+
+**Twiml**
+- Convert Twiml Attribute `speechModel` of type enum to string **(breaking change)**
+
+
 [2025-01-28] Version 7.8.3
 --------------------------
 **Library - Chore**

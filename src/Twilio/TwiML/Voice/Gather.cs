@@ -174,22 +174,6 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum ZuZa = new LanguageEnum("zu-ZA");
         }
 
-        public sealed class SpeechModelEnum : StringEnum
-        {
-            private SpeechModelEnum(string value) : base(value) {}
-            public SpeechModelEnum() {}
-            public static implicit operator SpeechModelEnum(string value)
-            {
-                return new SpeechModelEnum(value);
-            }
-
-            public static readonly SpeechModelEnum Default = new SpeechModelEnum("default");
-            public static readonly SpeechModelEnum NumbersAndCommands = new SpeechModelEnum("numbers_and_commands");
-            public static readonly SpeechModelEnum PhoneCall = new SpeechModelEnum("phone_call");
-            public static readonly SpeechModelEnum ExperimentalConversations = new SpeechModelEnum("experimental_conversations");
-            public static readonly SpeechModelEnum ExperimentalUtterances = new SpeechModelEnum("experimental_utterances");
-        }
-
         /// <summary>
         /// Input type Twilio should accept
         /// </summary>
@@ -257,7 +241,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Specify the model that is best suited for your use case
         /// </summary>
-        public Gather.SpeechModelEnum SpeechModel { get; set; }
+        public string SpeechModel { get; set; }
         /// <summary>
         /// Use enhanced speech model
         /// </summary>
@@ -301,7 +285,7 @@ namespace Twilio.TwiML.Voice
                       bool? bargeIn = null,
                       bool? debug = null,
                       bool? actionOnEmptyResult = null,
-                      Gather.SpeechModelEnum speechModel = null,
+                      string speechModel = null,
                       bool? enhanced = null) : base("Gather")
         {
             this.Input = input;
@@ -396,7 +380,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.SpeechModel != null)
             {
-                attributes.Add(new XAttribute("speechModel", this.SpeechModel.ToString()));
+                attributes.Add(new XAttribute("speechModel", this.SpeechModel));
             }
             if (this.Enhanced != null)
             {
