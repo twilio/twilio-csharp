@@ -468,7 +468,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary> update </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Address resource to update. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the address. It can be up to 64 characters long. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </param>
         /// <param name="customerName"> The name to associate with the address. </param>
         /// <param name="street"> The number and street address of the address. </param>
         /// <param name="city"> The city of the address. </param>
@@ -501,7 +501,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary> update </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Address resource to update. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the address. It can be up to 64 characters long. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </param>
         /// <param name="customerName"> The name to associate with the address. </param>
         /// <param name="street"> The number and street address of the address. </param>
         /// <param name="city"> The city of the address. </param>

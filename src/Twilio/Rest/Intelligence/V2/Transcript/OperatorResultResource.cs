@@ -46,6 +46,8 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             public static readonly OperatorTypeEnum Extract = new OperatorTypeEnum("extract");
             public static readonly OperatorTypeEnum ExtractNormalize = new OperatorTypeEnum("extract_normalize");
             public static readonly OperatorTypeEnum PiiExtract = new OperatorTypeEnum("pii_extract");
+            public static readonly OperatorTypeEnum TextGeneration = new OperatorTypeEnum("text_generation");
+            public static readonly OperatorTypeEnum Json = new OperatorTypeEnum("json");
 
         }
 
@@ -336,6 +338,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> Output of a text generation operator for example Conversation Sumamary. </summary> 
         [JsonProperty("text_generation_results")]
         public object TextGenerationResults { get; private set; }
+
+        ///<summary> The json_results </summary> 
+        [JsonProperty("json_results")]
+        public object JsonResults { get; private set; }
 
         ///<summary> A 34 character string that uniquely identifies this Transcript. </summary> 
         [JsonProperty("transcript_sid")]

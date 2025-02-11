@@ -255,7 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update. </summary> 
         public string PathAccountSid { get; set; }
 
-        ///<summary> A descriptive string that you create to describe the address. It can be up to 64 characters long. </summary> 
+        ///<summary> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </summary> 
         public string FriendlyName { get; set; }
 
         ///<summary> The name to associate with the address. </summary> 
