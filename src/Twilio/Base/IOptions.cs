@@ -23,12 +23,12 @@ namespace Twilio.Base
     /// <typeparam name="T">Resource type</typeparam>
     public abstract class ReadOptions<T> : IOptions<T> where T : Resource
     {
-        private int? _pageSize;
+        private long? _pageSize;
 
         /// <summary>
         /// Page size to read
         /// </summary>
-        public int? PageSize
+        public long? PageSize
         {
             get { return _pageSize; }
             set
