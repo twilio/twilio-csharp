@@ -43,7 +43,7 @@ namespace Twilio.Tests
             oAuthClientSecret = Environment.GetEnvironmentVariable("TWILIO_CLIENT_SECRET");
             oAuthMessageId = Environment.GetEnvironmentVariable("TWILIO_MESSAGE_SID");
             TwilioClient.Init(username:apiKey,password:secret,accountSid:accountSid);
-            TwilioOrgsTokenAuthClient.Init(clientId, clientSecret);
+            //TwilioOrgsTokenAuthClient.Init(clientId, clientSecret);
         }
         
 
