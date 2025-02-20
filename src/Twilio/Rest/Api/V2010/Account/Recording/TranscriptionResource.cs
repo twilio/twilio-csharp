@@ -252,7 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public static ResourceSet<TranscriptionResource> Read(
                                                      string pathRecordingSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(
                                                                                              string pathRecordingSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

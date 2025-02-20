@@ -346,7 +346,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <returns> A single instance of Webhook </returns>
         public static ResourceSet<WebhookResource> Read(
                                                      string pathConversationSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -363,7 +363,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(
                                                                                              string pathConversationSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

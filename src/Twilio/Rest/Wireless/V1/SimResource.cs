@@ -253,7 +253,7 @@ namespace Twilio.Rest.Wireless.V1
                                                      string ratePlan = null,
                                                      string eId = null,
                                                      string simRegistrationCode = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Wireless.V1
                                                                                              string ratePlan = null,
                                                                                              string eId = null,
                                                                                              string simRegistrationCode = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

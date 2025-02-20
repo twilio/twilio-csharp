@@ -175,7 +175,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string workflowSid = null,
                                                      string taskChannel = null,
                                                      string sid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string workflowSid = null,
                                                                                              string taskChannel = null,
                                                                                              string sid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -286,7 +286,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpRecord </returns>
         public static ResourceSet<IpRecordResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

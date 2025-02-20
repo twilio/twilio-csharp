@@ -527,7 +527,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                      bool? muted = null,
                                                      bool? hold = null,
                                                      bool? coaching = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -552,7 +552,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                              bool? muted = null,
                                                                                              bool? hold = null,
                                                                                              bool? coaching = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

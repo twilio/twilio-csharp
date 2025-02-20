@@ -314,7 +314,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ByocTrunk </returns>
         public static ResourceSet<ByocTrunkResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

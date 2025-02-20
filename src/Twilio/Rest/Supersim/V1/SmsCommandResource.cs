@@ -257,7 +257,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      string sim = null,
                                                      SmsCommandResource.StatusEnum status = null,
                                                      SmsCommandResource.DirectionEnum direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string sim = null,
                                                                                              SmsCommandResource.StatusEnum status = null,
                                                                                              SmsCommandResource.DirectionEnum direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

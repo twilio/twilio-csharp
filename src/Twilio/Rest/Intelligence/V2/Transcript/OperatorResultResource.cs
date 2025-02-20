@@ -176,7 +176,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static ResourceSet<OperatorResultResource> Read(
                                                      string pathTranscriptSid,
                                                      bool? redacted = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(
                                                                                              string pathTranscriptSid,
                                                                                              bool? redacted = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

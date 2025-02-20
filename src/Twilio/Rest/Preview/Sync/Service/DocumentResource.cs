@@ -301,7 +301,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <returns> A single instance of Document </returns>
         public static ResourceSet<DocumentResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

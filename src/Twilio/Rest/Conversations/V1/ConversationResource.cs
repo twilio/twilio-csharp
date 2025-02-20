@@ -356,7 +356,7 @@ namespace Twilio.Rest.Conversations.V1
                                                      string startDate = null,
                                                      string endDate = null,
                                                      ConversationResource.StateEnum state = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Conversations.V1
                                                                                              string startDate = null,
                                                                                              string endDate = null,
                                                                                              ConversationResource.StateEnum state = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

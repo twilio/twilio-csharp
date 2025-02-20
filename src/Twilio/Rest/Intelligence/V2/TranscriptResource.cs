@@ -322,7 +322,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                      string status = null,
                                                      string languageCode = null,
                                                      string sourceSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -353,7 +353,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                              string status = null,
                                                                                              string languageCode = null,
                                                                                              string sourceSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -366,7 +366,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <returns> A single instance of AddressConfiguration </returns>
         public static ResourceSet<AddressConfigurationResource> Read(
                                                      string type = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -383,7 +383,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <returns> Task that resolves to A single instance of AddressConfiguration </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AddressConfigurationResource>> ReadAsync(
                                                                                              string type = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

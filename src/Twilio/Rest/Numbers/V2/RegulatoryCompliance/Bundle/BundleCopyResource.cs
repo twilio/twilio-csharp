@@ -173,7 +173,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <returns> A single instance of BundleCopy </returns>
         public static ResourceSet<BundleCopyResource> Read(
                                                      string pathBundleSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <returns> Task that resolves to A single instance of BundleCopy </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BundleCopyResource>> ReadAsync(
                                                                                              string pathBundleSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

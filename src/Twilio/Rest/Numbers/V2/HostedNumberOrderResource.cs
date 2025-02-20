@@ -379,7 +379,7 @@ namespace Twilio.Rest.Numbers.V2
                                                      Types.PhoneNumber phoneNumber = null,
                                                      string incomingPhoneNumberSid = null,
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -404,7 +404,7 @@ namespace Twilio.Rest.Numbers.V2
                                                                                              Types.PhoneNumber phoneNumber = null,
                                                                                              string incomingPhoneNumberSid = null,
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

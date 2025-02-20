@@ -144,7 +144,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Country </returns>
         public static ResourceSet<CountryResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Country </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

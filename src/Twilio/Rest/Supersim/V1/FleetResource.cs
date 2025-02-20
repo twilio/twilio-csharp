@@ -256,7 +256,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of Fleet </returns>
         public static ResourceSet<FleetResource> Read(
                                                      string networkAccessProfile = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -273,7 +273,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(
                                                                                              string networkAccessProfile = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

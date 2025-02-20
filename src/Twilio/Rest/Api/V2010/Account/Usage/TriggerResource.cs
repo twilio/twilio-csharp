@@ -618,7 +618,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                      TriggerResource.RecurringEnum recurring = null,
                                                      TriggerResource.TriggerFieldEnum triggerBy = null,
                                                      TriggerResource.UsageCategoryEnum usageCategory = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -641,7 +641,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                              TriggerResource.RecurringEnum recurring = null,
                                                                                              TriggerResource.TriggerFieldEnum triggerBy = null,
                                                                                              TriggerResource.UsageCategoryEnum usageCategory = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

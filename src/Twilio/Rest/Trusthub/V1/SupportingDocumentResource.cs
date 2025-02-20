@@ -41,12 +41,12 @@ namespace Twilio.Rest.Trusthub.V1
             {
                 return new StatusEnum(value);
             }
-            public static readonly StatusEnum Draft = new StatusEnum("draft");
-            public static readonly StatusEnum PendingReview = new StatusEnum("pending-review");
-            public static readonly StatusEnum Rejected = new StatusEnum("rejected");
-            public static readonly StatusEnum Approved = new StatusEnum("approved");
-            public static readonly StatusEnum Expired = new StatusEnum("expired");
-            public static readonly StatusEnum ProvisionallyApproved = new StatusEnum("provisionally-approved");
+            public static readonly StatusEnum Draft = new StatusEnum("DRAFT");
+            public static readonly StatusEnum PendingReview = new StatusEnum("PENDING_REVIEW");
+            public static readonly StatusEnum Rejected = new StatusEnum("REJECTED");
+            public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
+            public static readonly StatusEnum Expired = new StatusEnum("EXPIRED");
+            public static readonly StatusEnum ProvisionallyApproved = new StatusEnum("PROVISIONALLY_APPROVED");
 
         }
 
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SupportingDocument </returns>
         public static ResourceSet<SupportingDocumentResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

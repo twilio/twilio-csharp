@@ -318,7 +318,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <returns> A single instance of Engagement </returns>
         public static ResourceSet<EngagementResource> Read(
                                                      string pathFlowSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <returns> Task that resolves to A single instance of Engagement </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EngagementResource>> ReadAsync(
                                                                                              string pathFlowSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

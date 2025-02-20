@@ -238,7 +238,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <returns> A single instance of CustomerProfilesEvaluations </returns>
         public static ResourceSet<CustomerProfilesEvaluationsResource> Read(
                                                      string pathCustomerProfileSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <returns> Task that resolves to A single instance of CustomerProfilesEvaluations </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesEvaluationsResource>> ReadAsync(
                                                                                              string pathCustomerProfileSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

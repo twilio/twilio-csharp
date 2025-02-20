@@ -492,7 +492,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      DateTime? dateSentBefore = null,
                                                      DateTime? dateSent = null,
                                                      DateTime? dateSentAfter = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -519,7 +519,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              DateTime? dateSentBefore = null,
                                                                                              DateTime? dateSent = null,
                                                                                              DateTime? dateSentAfter = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

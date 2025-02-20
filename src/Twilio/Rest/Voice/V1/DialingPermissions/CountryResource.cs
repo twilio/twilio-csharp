@@ -156,7 +156,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                                                      bool? lowRiskNumbersEnabled = null,
                                                      bool? highRiskSpecialNumbersEnabled = null,
                                                      bool? highRiskTollfraudNumbersEnabled = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                                                                                              bool? lowRiskNumbersEnabled = null,
                                                                                              bool? highRiskSpecialNumbersEnabled = null,
                                                                                              bool? highRiskTollfraudNumbersEnabled = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

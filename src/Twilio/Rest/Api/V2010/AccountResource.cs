@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010
         public static ResourceSet<AccountResource> Read(
                                                      string friendlyName = null,
                                                      AccountResource.StatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Api.V2010
         public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(
                                                                                              string friendlyName = null,
                                                                                              AccountResource.StatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

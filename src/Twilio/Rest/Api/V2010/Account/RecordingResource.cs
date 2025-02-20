@@ -276,7 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string callSid = null,
                                                      string conferenceSid = null,
                                                      bool? includeSoftDeleted = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string callSid = null,
                                                                                              string conferenceSid = null,
                                                                                              bool? includeSoftDeleted = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

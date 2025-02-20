@@ -238,7 +238,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         public static ResourceSet<DocumentPermissionResource> Read(
                                                      string pathServiceSid,
                                                      string pathDocumentSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathDocumentSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

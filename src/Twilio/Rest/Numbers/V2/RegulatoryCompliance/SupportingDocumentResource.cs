@@ -303,7 +303,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SupportingDocument </returns>
         public static ResourceSet<SupportingDocumentResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -123,7 +123,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      UsageRecordResource.GranularityEnum granularity = null,
                                                      DateTime? startTime = null,
                                                      DateTime? endTime = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              UsageRecordResource.GranularityEnum granularity = null,
                                                                                              DateTime? startTime = null,
                                                                                              DateTime? endTime = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

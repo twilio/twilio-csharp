@@ -368,7 +368,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string routingTarget = null,
                                                      string ordering = null,
                                                      bool? hasAddons = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -405,7 +405,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string routingTarget = null,
                                                                                              string ordering = null,
                                                                                              bool? hasAddons = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

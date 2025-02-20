@@ -154,7 +154,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                      string ratePlan = null,
                                                      string eId = null,
                                                      string simRegistrationCode = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                              string ratePlan = null,
                                                                                              string eId = null,
                                                                                              string simRegistrationCode = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

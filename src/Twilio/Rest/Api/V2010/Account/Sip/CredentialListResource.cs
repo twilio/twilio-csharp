@@ -297,7 +297,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns>
         public static ResourceSet<CredentialListResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

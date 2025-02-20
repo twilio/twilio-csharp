@@ -244,7 +244,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static ResourceSet<DeploymentResource> Read(
                                                      string pathServiceSid,
                                                      string pathEnvironmentSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathEnvironmentSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

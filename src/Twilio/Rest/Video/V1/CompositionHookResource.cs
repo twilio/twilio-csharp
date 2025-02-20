@@ -335,7 +335,7 @@ namespace Twilio.Rest.Video.V1
                                                      DateTime? dateCreatedAfter = null,
                                                      DateTime? dateCreatedBefore = null,
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Video.V1
                                                                                              DateTime? dateCreatedAfter = null,
                                                                                              DateTime? dateCreatedBefore = null,
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

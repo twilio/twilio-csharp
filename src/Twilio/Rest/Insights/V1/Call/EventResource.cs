@@ -118,7 +118,7 @@ namespace Twilio.Rest.Insights.V1.Call
         public static ResourceSet<EventResource> Read(
                                                      string pathCallSid,
                                                      EventResource.TwilioEdgeEnum edge = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Insights.V1.Call
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(
                                                                                              string pathCallSid,
                                                                                              EventResource.TwilioEdgeEnum edge = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

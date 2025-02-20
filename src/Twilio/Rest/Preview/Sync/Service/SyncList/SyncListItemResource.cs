@@ -348,7 +348,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                                      SyncListItemResource.QueryResultOrderEnum order = null,
                                                      string from = null,
                                                      SyncListItemResource.QueryFromBoundTypeEnum bounds = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                                                                              SyncListItemResource.QueryResultOrderEnum order = null,
                                                                                              string from = null,
                                                                                              SyncListItemResource.QueryFromBoundTypeEnum bounds = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

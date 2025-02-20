@@ -323,7 +323,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string taskQueueName = null,
                                                      string taskQueueSid = null,
                                                      string ordering = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string taskQueueName = null,
                                                                                              string taskQueueSid = null,
                                                                                              string ordering = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

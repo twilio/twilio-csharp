@@ -297,7 +297,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
         public static ResourceSet<NetworkAccessProfileNetworkResource> Read(
                                                      string pathNetworkAccessProfileSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<NetworkAccessProfileNetworkResource>> ReadAsync(
                                                                                              string pathNetworkAccessProfileSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

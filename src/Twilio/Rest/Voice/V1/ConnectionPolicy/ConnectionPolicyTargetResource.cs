@@ -313,7 +313,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <returns> A single instance of ConnectionPolicyTarget </returns>
         public static ResourceSet<ConnectionPolicyTargetResource> Read(
                                                      string pathConnectionPolicySid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         /// <returns> Task that resolves to A single instance of ConnectionPolicyTarget </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ConnectionPolicyTargetResource>> ReadAsync(
                                                                                              string pathConnectionPolicySid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

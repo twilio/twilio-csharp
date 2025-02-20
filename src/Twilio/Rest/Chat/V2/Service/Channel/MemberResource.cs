@@ -360,7 +360,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                      string pathServiceSid,
                                                      string pathChannelSid,
                                                      List<string> identity = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                                                              string pathServiceSid,
                                                                                              string pathChannelSid,
                                                                                              List<string> identity = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

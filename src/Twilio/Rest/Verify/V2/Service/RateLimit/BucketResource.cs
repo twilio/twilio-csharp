@@ -320,7 +320,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         public static ResourceSet<BucketResource> Read(
                                                      string pathServiceSid,
                                                      string pathRateLimitSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         public static async System.Threading.Tasks.Task<ResourceSet<BucketResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathRateLimitSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

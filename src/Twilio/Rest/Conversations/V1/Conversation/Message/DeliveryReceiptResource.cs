@@ -178,7 +178,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         public static ResourceSet<DeliveryReceiptResource> Read(
                                                      string pathConversationSid,
                                                      string pathMessageSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         public static async System.Threading.Tasks.Task<ResourceSet<DeliveryReceiptResource>> ReadAsync(
                                                                                              string pathConversationSid,
                                                                                              string pathMessageSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

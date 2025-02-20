@@ -290,7 +290,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static ResourceSet<InstalledAddOnResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

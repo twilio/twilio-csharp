@@ -301,7 +301,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> A single instance of DeviceConfig </returns>
         public static ResourceSet<DeviceConfigResource> Read(
                                                      string pathDeviceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> Task that resolves to A single instance of DeviceConfig </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DeviceConfigResource>> ReadAsync(
                                                                                              string pathDeviceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

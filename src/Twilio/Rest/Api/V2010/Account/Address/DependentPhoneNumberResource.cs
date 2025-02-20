@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         public static ResourceSet<DependentPhoneNumberResource> Read(
                                                      string pathAddressSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(
                                                                                              string pathAddressSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

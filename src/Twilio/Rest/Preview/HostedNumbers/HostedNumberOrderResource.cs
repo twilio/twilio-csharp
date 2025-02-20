@@ -385,7 +385,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                      string incomingPhoneNumberSid = null,
                                                      string friendlyName = null,
                                                      string uniqueName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -410,7 +410,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                              string incomingPhoneNumberSid = null,
                                                                                              string friendlyName = null,
                                                                                              string uniqueName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

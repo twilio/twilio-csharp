@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2025-02-20] Version 7.8.5
+--------------------------
+**Library - Chore**
+- [PR #779](https://github.com/twilio/twilio-csharp/pull/779): upgraded jwt. Thanks to [@sbansla](https://github.com/sbansla)!
+- [PR #776](https://github.com/twilio/twilio-csharp/pull/776): convert pageSize from int to long. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Flex**
+- Adding Digital Transfers APIs under v1/Interactions
+
+**Numbers**
+- Convert webhook_type to ienum type in v1/Porting/Configuration/Webhook/{webhook_type}
+
+**Trusthub**
+- Changing TrustHub SupportingDocument status enum from lowercase to uppercase since kyc-orch returns status capitalized and rest proxy requires strict casing
+
+
 [2025-02-11] Version 7.8.4
 --------------------------
 **Api**

@@ -176,7 +176,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static ResourceSet<SubscribedTrackResource> Read(
                                                      string pathRoomSid,
                                                      string pathParticipantSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(
                                                                                              string pathRoomSid,
                                                                                              string pathParticipantSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

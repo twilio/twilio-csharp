@@ -312,7 +312,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                      TrustProductsResource.StatusEnum status = null,
                                                      string friendlyName = null,
                                                      string policySid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                              TrustProductsResource.StatusEnum status = null,
                                                                                              string friendlyName = null,
                                                                                              string policySid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

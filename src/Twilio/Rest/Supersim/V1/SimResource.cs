@@ -249,7 +249,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      SimResource.StatusEnum status = null,
                                                      string fleet = null,
                                                      string iccid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              SimResource.StatusEnum status = null,
                                                                                              string fleet = null,
                                                                                              string iccid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

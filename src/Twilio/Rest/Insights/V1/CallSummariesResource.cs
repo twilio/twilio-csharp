@@ -236,7 +236,7 @@ namespace Twilio.Rest.Insights.V1
                                                      string businessProfileIndustry = null,
                                                      string businessProfileBundleSid = null,
                                                      string businessProfileType = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -315,7 +315,7 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string businessProfileIndustry = null,
                                                                                              string businessProfileBundleSid = null,
                                                                                              string businessProfileType = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

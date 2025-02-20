@@ -82,7 +82,7 @@ namespace Twilio.Rest.Verify.V2
         /// <returns> A single instance of Template </returns>
         public static ResourceSet<TemplateResource> Read(
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Verify.V2
         /// <returns> Task that resolves to A single instance of Template </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

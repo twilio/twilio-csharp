@@ -243,7 +243,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         public static ResourceSet<BrandVettingResource> Read(
                                                      string pathBrandSid,
                                                      BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         public static async System.Threading.Tasks.Task<ResourceSet<BrandVettingResource>> ReadAsync(
                                                                                              string pathBrandSid,
                                                                                              BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

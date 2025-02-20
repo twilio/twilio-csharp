@@ -328,7 +328,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public static ResourceSet<ParticipantResource> Read(
                                                      string pathServiceSid,
                                                      string pathSessionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathSessionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

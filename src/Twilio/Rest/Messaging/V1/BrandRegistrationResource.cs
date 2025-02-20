@@ -273,7 +273,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static ResourceSet<BrandRegistrationResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

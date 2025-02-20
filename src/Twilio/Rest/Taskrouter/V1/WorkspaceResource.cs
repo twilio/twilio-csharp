@@ -313,7 +313,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <returns> A single instance of Workspace </returns>
         public static ResourceSet<WorkspaceResource> Read(
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <returns> Task that resolves to A single instance of Workspace </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<WorkspaceResource>> ReadAsync(
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

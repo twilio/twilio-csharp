@@ -305,7 +305,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string pathWorkspaceSid,
                                                      string friendlyName = null,
                                                      string available = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string pathWorkspaceSid,
                                                                                              string friendlyName = null,
                                                                                              string available = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

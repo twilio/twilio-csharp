@@ -292,7 +292,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of Subscription </returns>
         public static ResourceSet<SubscriptionResource> Read(
                                                      string sinkSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(
                                                                                              string sinkSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -176,7 +176,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         public static ResourceSet<FunctionVersionResource> Read(
                                                      string pathServiceSid,
                                                      string pathFunctionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathFunctionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

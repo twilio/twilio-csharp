@@ -189,7 +189,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OperatorType </returns>
         public static ResourceSet<OperatorTypeResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorTypeResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

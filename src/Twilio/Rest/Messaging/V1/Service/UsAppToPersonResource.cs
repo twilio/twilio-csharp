@@ -357,7 +357,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> A single instance of UsAppToPerson </returns>
         public static ResourceSet<UsAppToPersonResource> Read(
                                                      string pathMessagingServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -374,7 +374,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(
                                                                                              string pathMessagingServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

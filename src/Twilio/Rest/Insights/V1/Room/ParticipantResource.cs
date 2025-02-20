@@ -224,7 +224,7 @@ namespace Twilio.Rest.Insights.V1.Room
         /// <returns> A single instance of Participant </returns>
         public static ResourceSet<ParticipantResource> Read(
                                                      string pathRoomSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Insights.V1.Room
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(
                                                                                              string pathRoomSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

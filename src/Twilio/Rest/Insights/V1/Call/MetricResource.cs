@@ -119,7 +119,7 @@ namespace Twilio.Rest.Insights.V1.Call
                                                      string pathCallSid,
                                                      MetricResource.TwilioEdgeEnum edge = null,
                                                      MetricResource.StreamDirectionEnum direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Insights.V1.Call
                                                                                              string pathCallSid,
                                                                                              MetricResource.TwilioEdgeEnum edge = null,
                                                                                              MetricResource.StreamDirectionEnum direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

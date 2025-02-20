@@ -153,7 +153,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <returns> A single instance of SchemaVersion </returns>
         public static ResourceSet<SchemaVersionResource> Read(
                                                      string pathId,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(
                                                                                              string pathId,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

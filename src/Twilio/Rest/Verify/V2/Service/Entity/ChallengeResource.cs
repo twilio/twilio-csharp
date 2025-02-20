@@ -320,7 +320,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                      string factorSid = null,
                                                      ChallengeResource.ChallengeStatusesEnum status = null,
                                                      ChallengeResource.ListOrdersEnum order = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                              string factorSid = null,
                                                                                              ChallengeResource.ChallengeStatusesEnum status = null,
                                                                                              ChallengeResource.ListOrdersEnum order = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

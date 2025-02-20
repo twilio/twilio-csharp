@@ -301,7 +301,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> A single instance of SyncStream </returns>
         public static ResourceSet<SyncStreamResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

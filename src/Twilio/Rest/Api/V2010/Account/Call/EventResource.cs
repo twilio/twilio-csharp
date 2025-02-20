@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public static ResourceSet<EventResource> Read(
                                                      string pathCallSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(
                                                                                              string pathCallSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

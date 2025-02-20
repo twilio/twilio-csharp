@@ -305,7 +305,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                      string pathTrustProductSid,
                                                      string channelEndpointSid = null,
                                                      string channelEndpointSids = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                                                                                              string pathTrustProductSid,
                                                                                              string channelEndpointSid = null,
                                                                                              string channelEndpointSids = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

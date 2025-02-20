@@ -380,7 +380,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                      string pathChatServiceSid,
                                                      string pathConversationSid,
                                                      MessageResource.OrderTypeEnum order = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                                              string pathChatServiceSid,
                                                                                              string pathConversationSid,
                                                                                              MessageResource.OrderTypeEnum order = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

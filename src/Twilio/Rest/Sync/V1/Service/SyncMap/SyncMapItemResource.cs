@@ -364,7 +364,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                      SyncMapItemResource.QueryResultOrderEnum order = null,
                                                      string from = null,
                                                      SyncMapItemResource.QueryFromBoundTypeEnum bounds = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -389,7 +389,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                                                              SyncMapItemResource.QueryResultOrderEnum order = null,
                                                                                              string from = null,
                                                                                              SyncMapItemResource.QueryFromBoundTypeEnum bounds = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

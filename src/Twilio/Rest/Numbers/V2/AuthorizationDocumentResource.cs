@@ -318,7 +318,7 @@ namespace Twilio.Rest.Numbers.V2
         public static ResourceSet<AuthorizationDocumentResource> Read(
                                                      string email = null,
                                                      AuthorizationDocumentResource.StatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Numbers.V2
         public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(
                                                                                              string email = null,
                                                                                              AuthorizationDocumentResource.StatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -238,7 +238,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of ConnectApp </returns>
         public static ResourceSet<ConnectAppResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of ConnectApp </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

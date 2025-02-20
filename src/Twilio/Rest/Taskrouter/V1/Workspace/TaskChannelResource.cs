@@ -305,7 +305,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> A single instance of TaskChannel </returns>
         public static ResourceSet<TaskChannelResource> Read(
                                                      string pathWorkspaceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

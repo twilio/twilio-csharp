@@ -301,7 +301,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <returns> A single instance of SubscribedEvent </returns>
         public static ResourceSet<SubscribedEventResource> Read(
                                                      string pathSubscriptionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SubscribedEventResource>> ReadAsync(
                                                                                              string pathSubscriptionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

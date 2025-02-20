@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                                      string inLata = null,
                                                      string inLocality = null,
                                                      bool? faxEnabled = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                                                                              string inLata = null,
                                                                                              string inLocality = null,
                                                                                              bool? faxEnabled = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

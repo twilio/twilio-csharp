@@ -225,7 +225,7 @@ namespace Twilio.Rest.Studio.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static ResourceSet<FlowResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Studio.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

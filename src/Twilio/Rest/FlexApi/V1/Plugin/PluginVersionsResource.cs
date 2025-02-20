@@ -254,7 +254,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         public static ResourceSet<PluginVersionsResource> Read(
                                                      string pathPluginSid,
                                                      string flexMetadata = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -273,7 +273,7 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         public static async System.Threading.Tasks.Task<ResourceSet<PluginVersionsResource>> ReadAsync(
                                                                                              string pathPluginSid,
                                                                                              string flexMetadata = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

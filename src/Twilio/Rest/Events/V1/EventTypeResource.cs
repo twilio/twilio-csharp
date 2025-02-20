@@ -146,7 +146,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of EventType </returns>
         public static ResourceSet<EventTypeResource> Read(
                                                      string schemaId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of EventType </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(
                                                                                              string schemaId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

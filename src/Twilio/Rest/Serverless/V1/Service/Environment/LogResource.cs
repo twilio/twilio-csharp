@@ -182,7 +182,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                      string functionSid = null,
                                                      DateTime? startDate = null,
                                                      DateTime? endDate = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                                                                                              string functionSid = null,
                                                                                              DateTime? startDate = null,
                                                                                              DateTime? endDate = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

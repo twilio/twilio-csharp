@@ -176,7 +176,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         public static ResourceSet<AssetVersionResource> Read(
                                                      string pathServiceSid,
                                                      string pathAssetSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         public static async System.Threading.Tasks.Task<ResourceSet<AssetVersionResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathAssetSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

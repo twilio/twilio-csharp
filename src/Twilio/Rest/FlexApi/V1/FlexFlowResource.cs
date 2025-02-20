@@ -375,7 +375,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of FlexFlow </returns>
         public static ResourceSet<FlexFlowResource> Read(
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -392,7 +392,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

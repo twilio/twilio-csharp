@@ -318,7 +318,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
         public static ResourceSet<RatePlanResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

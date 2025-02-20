@@ -252,7 +252,7 @@ namespace Twilio.Rest.Conversations.V1.User
         /// <returns> A single instance of UserConversation </returns>
         public static ResourceSet<UserConversationResource> Read(
                                                      string pathUserSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -269,7 +269,7 @@ namespace Twilio.Rest.Conversations.V1.User
         /// <returns> Task that resolves to A single instance of UserConversation </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UserConversationResource>> ReadAsync(
                                                                                              string pathUserSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

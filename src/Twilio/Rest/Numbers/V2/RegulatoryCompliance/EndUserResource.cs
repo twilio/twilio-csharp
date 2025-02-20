@@ -299,7 +299,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EndUser </returns>
         public static ResourceSet<EndUserResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EndUserResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -312,7 +312,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <returns> A single instance of PhoneNumber </returns>
         public static ResourceSet<PhoneNumberResource> Read(
                                                      string pathTrunkSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(
                                                                                              string pathTrunkSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

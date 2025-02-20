@@ -365,7 +365,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         public static ResourceSet<WebhookResource> Read(
                                                      string pathServiceSid,
                                                      string pathChannelSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -384,7 +384,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathChannelSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

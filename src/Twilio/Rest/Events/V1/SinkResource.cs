@@ -319,7 +319,7 @@ namespace Twilio.Rest.Events.V1
         public static ResourceSet<SinkResource> Read(
                                                      bool? inUse = null,
                                                      string status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Events.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(
                                                                                              bool? inUse = null,
                                                                                              string status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -82,7 +82,7 @@ namespace Twilio.Rest.Iam.V1
         /// <returns> A single instance of GetApiKeys </returns>
         public static ResourceSet<GetApiKeysResource> Read(
                                                      string accountSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Iam.V1
         /// <returns> Task that resolves to A single instance of GetApiKeys </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<GetApiKeysResource>> ReadAsync(
                                                                                              string accountSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

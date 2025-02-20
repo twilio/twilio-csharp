@@ -297,7 +297,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> A single instance of Function </returns>
         public static ResourceSet<FunctionResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> Task that resolves to A single instance of Function </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FunctionResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

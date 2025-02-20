@@ -153,7 +153,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <returns> A single instance of InstalledAddOnExtension </returns>
         public static ResourceSet<InstalledAddOnExtensionResource> Read(
                                                      string pathInstalledAddOnSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnExtensionResource>> ReadAsync(
                                                                                              string pathInstalledAddOnSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

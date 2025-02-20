@@ -338,7 +338,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string evaluateWorkerAttributes = null,
                                                      string workerSid = null,
                                                      string ordering = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -363,7 +363,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string evaluateWorkerAttributes = null,
                                                                                              string workerSid = null,
                                                                                              string ordering = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

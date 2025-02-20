@@ -324,7 +324,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public static ResourceSet<IpAddressResource> Read(
                                                      string pathIpAccessControlListSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public static async System.Threading.Tasks.Task<ResourceSet<IpAddressResource>> ReadAsync(
                                                                                              string pathIpAccessControlListSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

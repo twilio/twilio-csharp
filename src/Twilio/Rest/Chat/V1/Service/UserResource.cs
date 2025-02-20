@@ -309,7 +309,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <returns> A single instance of User </returns>
         public static ResourceSet<UserResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

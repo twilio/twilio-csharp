@@ -251,7 +251,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                                      string pathReferenceSid,
                                                      string pathAddOnResultSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                                                                                              string pathReferenceSid,
                                                                                              string pathAddOnResultSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -299,7 +299,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static ResourceSet<CustomerProfilesEntityAssignmentsResource> Read(
                                                      string pathCustomerProfileSid,
                                                      string objectType = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesEntityAssignmentsResource>> ReadAsync(
                                                                                              string pathCustomerProfileSid,
                                                                                              string objectType = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

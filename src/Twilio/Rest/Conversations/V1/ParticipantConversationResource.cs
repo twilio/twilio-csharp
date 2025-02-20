@@ -98,7 +98,7 @@ namespace Twilio.Rest.Conversations.V1
         public static ResourceSet<ParticipantConversationResource> Read(
                                                      string identity = null,
                                                      string address = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantConversationResource>> ReadAsync(
                                                                                              string identity = null,
                                                                                              string address = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

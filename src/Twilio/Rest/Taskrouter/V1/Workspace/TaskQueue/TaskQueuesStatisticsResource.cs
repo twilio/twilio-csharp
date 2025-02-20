@@ -96,7 +96,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                                                      DateTime? startDate = null,
                                                      string taskChannel = null,
                                                      string splitByWaitTime = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                                                                                              DateTime? startDate = null,
                                                                                              string taskChannel = null,
                                                                                              string splitByWaitTime = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

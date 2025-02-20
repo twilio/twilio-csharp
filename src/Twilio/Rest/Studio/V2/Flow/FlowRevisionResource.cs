@@ -166,7 +166,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <returns> A single instance of FlowRevision </returns>
         public static ResourceSet<FlowRevisionResource> Read(
                                                      string pathSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <returns> Task that resolves to A single instance of FlowRevision </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlowRevisionResource>> ReadAsync(
                                                                                              string pathSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

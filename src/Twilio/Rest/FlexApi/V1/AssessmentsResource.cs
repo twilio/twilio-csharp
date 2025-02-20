@@ -190,7 +190,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static ResourceSet<AssessmentsResource> Read(
                                                      string authorization = null,
                                                      string segmentId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -209,7 +209,7 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(
                                                                                              string authorization = null,
                                                                                              string segmentId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -222,7 +222,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of InsightsQuestionnairesCategory </returns>
         public static ResourceSet<InsightsQuestionnairesCategoryResource> Read(
                                                      string authorization = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -239,7 +239,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of InsightsQuestionnairesCategory </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsQuestionnairesCategoryResource>> ReadAsync(
                                                                                              string authorization = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

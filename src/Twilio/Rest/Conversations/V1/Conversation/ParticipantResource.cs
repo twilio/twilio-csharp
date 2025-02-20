@@ -343,7 +343,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <returns> A single instance of Participant </returns>
         public static ResourceSet<ParticipantResource> Read(
                                                      string pathConversationSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(
                                                                                              string pathConversationSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

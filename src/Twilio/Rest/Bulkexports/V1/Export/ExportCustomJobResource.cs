@@ -176,7 +176,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> A single instance of ExportCustomJob </returns>
         public static ResourceSet<ExportCustomJobResource> Read(
                                                      string pathResourceType,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(
                                                                                              string pathResourceType,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

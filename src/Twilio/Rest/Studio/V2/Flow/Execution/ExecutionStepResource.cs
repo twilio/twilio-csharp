@@ -162,7 +162,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         public static ResourceSet<ExecutionStepResource> Read(
                                                      string pathFlowSid,
                                                      string pathExecutionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         public static async System.Threading.Tasks.Task<ResourceSet<ExecutionStepResource>> ReadAsync(
                                                                                              string pathFlowSid,
                                                                                              string pathExecutionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

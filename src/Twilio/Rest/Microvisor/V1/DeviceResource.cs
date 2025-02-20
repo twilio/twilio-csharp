@@ -144,7 +144,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns>
         public static ResourceSet<DeviceResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -277,7 +277,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public static ResourceSet<FactorResource> Read(
                                                      string pathServiceSid,
                                                      string pathIdentity,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathIdentity,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

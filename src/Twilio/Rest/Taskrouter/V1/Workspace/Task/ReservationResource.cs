@@ -229,7 +229,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                      string pathTaskSid,
                                                      ReservationResource.StatusEnum reservationStatus = null,
                                                      string workerSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                                              string pathTaskSid,
                                                                                              ReservationResource.StatusEnum reservationStatus = null,
                                                                                              string workerSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

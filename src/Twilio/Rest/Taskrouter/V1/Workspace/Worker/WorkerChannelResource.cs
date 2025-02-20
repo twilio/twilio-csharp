@@ -162,7 +162,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static ResourceSet<WorkerChannelResource> Read(
                                                      string pathWorkspaceSid,
                                                      string pathWorkerSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,
                                                                                              string pathWorkerSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

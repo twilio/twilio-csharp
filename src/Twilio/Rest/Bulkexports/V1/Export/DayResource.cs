@@ -153,7 +153,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> A single instance of Day </returns>
         public static ResourceSet<DayResource> Read(
                                                      string pathResourceType,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> Task that resolves to A single instance of Day </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(
                                                                                              string pathResourceType,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -305,7 +305,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> A single instance of SyncMap </returns>
         public static ResourceSet<SyncMapResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

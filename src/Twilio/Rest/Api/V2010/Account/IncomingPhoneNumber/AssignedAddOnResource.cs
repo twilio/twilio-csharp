@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public static ResourceSet<AssignedAddOnResource> Read(
                                                      string pathResourceSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         public static async System.Threading.Tasks.Task<ResourceSet<AssignedAddOnResource>> ReadAsync(
                                                                                              string pathResourceSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

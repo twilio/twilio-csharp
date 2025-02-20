@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public static ResourceSet<CredentialListMappingResource> Read(
                                                      string pathDomainSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(
                                                                                              string pathDomainSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

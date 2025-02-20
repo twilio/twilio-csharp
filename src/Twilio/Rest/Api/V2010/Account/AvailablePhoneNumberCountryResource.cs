@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of AvailablePhoneNumberCountry </returns>
         public static ResourceSet<AvailablePhoneNumberCountryResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AvailablePhoneNumberCountryResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

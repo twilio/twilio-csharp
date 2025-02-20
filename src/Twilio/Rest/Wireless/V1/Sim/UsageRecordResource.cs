@@ -103,7 +103,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
                                                      DateTime? end = null,
                                                      DateTime? start = null,
                                                      UsageRecordResource.GranularityEnum granularity = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
                                                                                              DateTime? end = null,
                                                                                              DateTime? start = null,
                                                                                              UsageRecordResource.GranularityEnum granularity = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

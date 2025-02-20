@@ -406,7 +406,7 @@ namespace Twilio.Rest.Messaging.V1
                                                      TollfreeVerificationResource.StatusEnum status = null,
                                                      string externalReferenceId = null,
                                                      bool? includeSubAccounts = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -429,7 +429,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                              TollfreeVerificationResource.StatusEnum status = null,
                                                                                              string externalReferenceId = null,
                                                                                              bool? includeSubAccounts = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -243,7 +243,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                      string pathServiceSid,
                                                      List<BindingResource.BindingTypeEnum> bindingType = null,
                                                      List<string> identity = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -264,7 +264,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                                                              string pathServiceSid,
                                                                                              List<BindingResource.BindingTypeEnum> bindingType = null,
                                                                                              List<string> identity = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

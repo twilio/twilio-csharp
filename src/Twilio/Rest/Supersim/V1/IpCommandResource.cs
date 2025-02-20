@@ -279,7 +279,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      string simIccid = null,
                                                      IpCommandResource.StatusEnum status = null,
                                                      IpCommandResource.DirectionEnum direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -302,7 +302,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string simIccid = null,
                                                                                              IpCommandResource.StatusEnum status = null,
                                                                                              IpCommandResource.DirectionEnum direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

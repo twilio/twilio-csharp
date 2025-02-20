@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                      DateTime? dateCreatedBefore = null,
                                                      DateTime? dateCreated = null,
                                                      DateTime? dateCreatedAfter = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                              DateTime? dateCreatedBefore = null,
                                                                                              DateTime? dateCreated = null,
                                                                                              DateTime? dateCreatedAfter = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

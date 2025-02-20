@@ -265,7 +265,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         public static ResourceSet<UserConversationResource> Read(
                                                      string pathChatServiceSid,
                                                      string pathUserSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         public static async System.Threading.Tasks.Task<ResourceSet<UserConversationResource>> ReadAsync(
                                                                                              string pathChatServiceSid,
                                                                                              string pathUserSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

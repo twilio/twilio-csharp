@@ -280,7 +280,7 @@ namespace Twilio.Rest.Insights.V1
                                                      string roomName = null,
                                                      DateTime? createdAfter = null,
                                                      DateTime? createdBefore = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string roomName = null,
                                                                                              DateTime? createdAfter = null,
                                                                                              DateTime? createdBefore = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

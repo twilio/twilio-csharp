@@ -279,7 +279,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         public static ResourceSet<UserChannelResource> Read(
                                                      string pathServiceSid,
                                                      string pathUserSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathUserSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

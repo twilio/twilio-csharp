@@ -84,7 +84,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <returns> A single instance of DataSession </returns>
         public static ResourceSet<DataSessionResource> Read(
                                                      string pathSimSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <returns> Task that resolves to A single instance of DataSession </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(
                                                                                              string pathSimSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

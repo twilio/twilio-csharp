@@ -227,7 +227,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of Plugin </returns>
         public static ResourceSet<PluginResource> Read(
                                                      string flexMetadata = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -244,7 +244,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of Plugin </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<PluginResource>> ReadAsync(
                                                                                              string flexMetadata = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

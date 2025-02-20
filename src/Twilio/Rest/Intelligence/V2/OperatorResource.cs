@@ -163,7 +163,7 @@ namespace Twilio.Rest.Intelligence.V2
         public static ResourceSet<OperatorResource> Read(
                                                      OperatorResource.AvailabilityEnum availability = null,
                                                      string languageCode = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Intelligence.V2
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorResource>> ReadAsync(
                                                                                              OperatorResource.AvailabilityEnum availability = null,
                                                                                              string languageCode = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

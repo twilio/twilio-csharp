@@ -200,7 +200,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <returns> A single instance of InteractionChannel </returns>
         public static ResourceSet<InteractionChannelResource> Read(
                                                      string pathInteractionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -217,7 +217,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         /// <returns> Task that resolves to A single instance of InteractionChannel </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelResource>> ReadAsync(
                                                                                              string pathInteractionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

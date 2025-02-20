@@ -238,7 +238,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         public static ResourceSet<SyncMapPermissionResource> Read(
                                                      string pathServiceSid,
                                                      string pathMapSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         public static async System.Threading.Tasks.Task<ResourceSet<SyncMapPermissionResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathMapSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -245,7 +245,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      string eid = null,
                                                      string simSid = null,
                                                      EsimProfileResource.StatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string eid = null,
                                                                                              string simSid = null,
                                                                                              EsimProfileResource.StatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

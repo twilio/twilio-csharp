@@ -301,7 +301,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> A single instance of MessagingConfiguration </returns>
         public static ResourceSet<MessagingConfigurationResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of MessagingConfiguration </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<MessagingConfigurationResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

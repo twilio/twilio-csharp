@@ -372,7 +372,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                                      string pathServiceSid,
                                                      string pathChannelSid,
                                                      MessageResource.OrderTypeEnum order = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -393,7 +393,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                                                                              string pathServiceSid,
                                                                                              string pathChannelSid,
                                                                                              MessageResource.OrderTypeEnum order = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

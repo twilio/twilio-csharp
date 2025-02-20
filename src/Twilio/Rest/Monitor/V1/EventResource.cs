@@ -156,7 +156,7 @@ namespace Twilio.Rest.Monitor.V1
                                                      string sourceIpAddress = null,
                                                      DateTime? startDate = null,
                                                      DateTime? endDate = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Monitor.V1
                                                                                              string sourceIpAddress = null,
                                                                                              DateTime? startDate = null,
                                                                                              DateTime? endDate = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

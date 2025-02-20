@@ -84,7 +84,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <returns> A single instance of HighriskSpecialPrefix </returns>
         public static ResourceSet<HighriskSpecialPrefixResource> Read(
                                                      string pathIsoCode,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(
                                                                                              string pathIsoCode,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

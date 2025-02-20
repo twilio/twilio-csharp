@@ -333,7 +333,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns>
         public static ResourceSet<TrunkResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -348,7 +348,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

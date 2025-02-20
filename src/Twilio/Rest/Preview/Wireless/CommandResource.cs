@@ -242,7 +242,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                      string sim = null,
                                                      string status = null,
                                                      string direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                              string sim = null,
                                                                                              string status = null,
                                                                                              string direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

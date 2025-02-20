@@ -345,7 +345,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                                      DateTime? endDate = null,
                                                      List<string> identity = null,
                                                      List<string> tag = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -370,7 +370,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                                                                              DateTime? endDate = null,
                                                                                              List<string> identity = null,
                                                                                              List<string> tag = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

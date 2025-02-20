@@ -188,7 +188,7 @@ namespace Twilio.Rest.Verify.V2
                                                      string verifyServiceSid = null,
                                                      string verificationSid = null,
                                                      VerificationAttemptResource.ConversionStatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -219,7 +219,7 @@ namespace Twilio.Rest.Verify.V2
                                                                                              string verifyServiceSid = null,
                                                                                              string verificationSid = null,
                                                                                              VerificationAttemptResource.ConversionStatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -254,7 +254,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                                                      string pathServiceSid,
                                                      string pathUserSid,
                                                      List<UserBindingResource.BindingTypeEnum> bindingType = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
                                                                                              string pathServiceSid,
                                                                                              string pathUserSid,
                                                                                              List<UserBindingResource.BindingTypeEnum> bindingType = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

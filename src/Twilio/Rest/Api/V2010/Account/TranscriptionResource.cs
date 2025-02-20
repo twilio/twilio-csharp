@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Transcription </returns>
         public static ResourceSet<TranscriptionResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

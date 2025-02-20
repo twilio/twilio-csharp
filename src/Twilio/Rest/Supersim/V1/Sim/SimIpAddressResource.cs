@@ -97,7 +97,7 @@ namespace Twilio.Rest.Supersim.V1.Sim
         /// <returns> A single instance of SimIpAddress </returns>
         public static ResourceSet<SimIpAddressResource> Read(
                                                      string pathSimSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Supersim.V1.Sim
         /// <returns> Task that resolves to A single instance of SimIpAddress </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SimIpAddressResource>> ReadAsync(
                                                                                              string pathSimSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

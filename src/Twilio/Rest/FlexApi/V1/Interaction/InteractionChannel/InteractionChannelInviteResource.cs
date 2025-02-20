@@ -166,7 +166,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         public static ResourceSet<InteractionChannelInviteResource> Read(
                                                      string pathInteractionSid,
                                                      string pathChannelSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -185,7 +185,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         public static async System.Threading.Tasks.Task<ResourceSet<InteractionChannelInviteResource>> ReadAsync(
                                                                                              string pathInteractionSid,
                                                                                              string pathChannelSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

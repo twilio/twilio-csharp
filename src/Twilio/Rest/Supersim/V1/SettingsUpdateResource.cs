@@ -99,7 +99,7 @@ namespace Twilio.Rest.Supersim.V1
         public static ResourceSet<SettingsUpdateResource> Read(
                                                      string sim = null,
                                                      SettingsUpdateResource.StatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Supersim.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SettingsUpdateResource>> ReadAsync(
                                                                                              string sim = null,
                                                                                              SettingsUpdateResource.StatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

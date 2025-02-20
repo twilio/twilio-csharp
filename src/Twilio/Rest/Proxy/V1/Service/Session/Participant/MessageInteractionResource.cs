@@ -305,7 +305,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                                                      string pathServiceSid,
                                                      string pathSessionSid,
                                                      string pathParticipantSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                                                                                              string pathServiceSid,
                                                                                              string pathSessionSid,
                                                                                              string pathParticipantSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

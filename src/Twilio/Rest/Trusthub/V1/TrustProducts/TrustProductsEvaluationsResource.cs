@@ -238,7 +238,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <returns> A single instance of TrustProductsEvaluations </returns>
         public static ResourceSet<TrustProductsEvaluationsResource> Read(
                                                      string pathTrustProductSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(
                                                                                              string pathTrustProductSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

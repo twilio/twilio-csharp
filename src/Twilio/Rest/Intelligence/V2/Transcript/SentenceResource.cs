@@ -88,7 +88,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
                                                      string pathTranscriptSid,
                                                      bool? redacted = null,
                                                      bool? wordTimestamps = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
                                                                                              string pathTranscriptSid,
                                                                                              bool? redacted = null,
                                                                                              bool? wordTimestamps = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -315,7 +315,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static ResourceSet<WorkflowResource> Read(
                                                      string pathWorkspaceSid,
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -334,7 +334,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(
                                                                                              string pathWorkspaceSid,
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

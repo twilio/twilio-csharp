@@ -86,7 +86,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                      string authorization = null,
                                                      string segmentId = null,
                                                      List<string> reservationId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -107,7 +107,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                              string authorization = null,
                                                                                              string segmentId = null,
                                                                                              List<string> reservationId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

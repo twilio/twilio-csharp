@@ -332,7 +332,7 @@ namespace Twilio.Rest.Notify.V1
         /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(
                                                      string friendlyName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Notify.V1
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(
                                                                                              string friendlyName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -174,7 +174,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                      string identity = null,
                                                      DateTime? dateCreatedAfter = null,
                                                      DateTime? dateCreatedBefore = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Video.V1.Room
                                                                                              string identity = null,
                                                                                              DateTime? dateCreatedAfter = null,
                                                                                              DateTime? dateCreatedBefore = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

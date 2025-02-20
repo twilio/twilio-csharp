@@ -282,7 +282,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccountConfig </returns>
         public static ResourceSet<AccountConfigResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -354,7 +354,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                      DateTime? startDate = null,
                                                      DateTime? endDate = null,
                                                      bool? includeSubaccounts = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -379,7 +379,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                              DateTime? startDate = null,
                                                                                              DateTime? endDate = null,
                                                                                              bool? includeSubaccounts = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

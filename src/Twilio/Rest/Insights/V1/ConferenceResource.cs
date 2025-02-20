@@ -251,7 +251,7 @@ namespace Twilio.Rest.Insights.V1
                                                      string subaccount = null,
                                                      string detectedIssues = null,
                                                      string endReason = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string subaccount = null,
                                                                                              string detectedIssues = null,
                                                                                              string endReason = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

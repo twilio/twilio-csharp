@@ -354,7 +354,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         public static ResourceSet<ChannelResource> Read(
                                                      string pathServiceSid,
                                                      List<ChannelResource.ChannelTypeEnum> type = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -373,7 +373,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              List<ChannelResource.ChannelTypeEnum> type = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

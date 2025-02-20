@@ -322,7 +322,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                      string pathFlowSid,
                                                      DateTime? dateCreatedFrom = null,
                                                      DateTime? dateCreatedTo = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Studio.V1.Flow
                                                                                              string pathFlowSid,
                                                                                              DateTime? dateCreatedFrom = null,
                                                                                              DateTime? dateCreatedTo = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

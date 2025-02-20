@@ -258,7 +258,7 @@ namespace Twilio.Rest.Insights.V1.Conference
                                                      string participantSid = null,
                                                      string label = null,
                                                      string events = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Insights.V1.Conference
                                                                                              string participantSid = null,
                                                                                              string label = null,
                                                                                              string events = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

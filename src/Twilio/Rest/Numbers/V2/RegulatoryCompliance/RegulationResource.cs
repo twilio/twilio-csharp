@@ -168,7 +168,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      string isoCountry = null,
                                                      string numberType = null,
                                                      bool? includeConstraints = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              string isoCountry = null,
                                                                                              string numberType = null,
                                                                                              bool? includeConstraints = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

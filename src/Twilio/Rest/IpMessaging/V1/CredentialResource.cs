@@ -316,7 +316,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns>
         public static ResourceSet<CredentialResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -331,7 +331,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

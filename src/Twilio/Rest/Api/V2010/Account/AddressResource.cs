@@ -339,7 +339,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string customerName = null,
                                                      string friendlyName = null,
                                                      string isoCountry = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -362,7 +362,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string customerName = null,
                                                                                              string friendlyName = null,
                                                                                              string isoCountry = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

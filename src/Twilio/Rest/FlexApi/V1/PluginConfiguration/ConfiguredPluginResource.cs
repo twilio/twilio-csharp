@@ -158,7 +158,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
         public static ResourceSet<ConfiguredPluginResource> Read(
                                                      string pathConfigurationSid,
                                                      string flexMetadata = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -177,7 +177,7 @@ namespace Twilio.Rest.FlexApi.V1.PluginConfiguration
         public static async System.Threading.Tasks.Task<ResourceSet<ConfiguredPluginResource>> ReadAsync(
                                                                                              string pathConfigurationSid,
                                                                                              string flexMetadata = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

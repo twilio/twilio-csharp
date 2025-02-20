@@ -150,7 +150,7 @@ namespace Twilio.Rest.Supersim.V1
                                                      string isoCountry = null,
                                                      string mcc = null,
                                                      string mnc = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string isoCountry = null,
                                                                                              string mcc = null,
                                                                                              string mnc = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

@@ -381,7 +381,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      DateTime? validUntilDateBefore = null,
                                                      DateTime? validUntilDate = null,
                                                      DateTime? validUntilDateAfter = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -418,7 +418,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              DateTime? validUntilDateBefore = null,
                                                                                              DateTime? validUntilDate = null,
                                                                                              DateTime? validUntilDateAfter = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

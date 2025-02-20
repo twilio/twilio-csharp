@@ -455,7 +455,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string friendlyName = null,
                                                      Types.PhoneNumber phoneNumber = null,
                                                      string origin = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -480,7 +480,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string friendlyName = null,
                                                                                              Types.PhoneNumber phoneNumber = null,
                                                                                              string origin = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

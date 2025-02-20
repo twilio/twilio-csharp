@@ -147,7 +147,7 @@ namespace Twilio.Rest.Numbers.V1
         public static ResourceSet<SigningRequestConfigurationResource> Read(
                                                      string country = null,
                                                      string product = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Numbers.V1
         public static async System.Threading.Tasks.Task<ResourceSet<SigningRequestConfigurationResource>> ReadAsync(
                                                                                              string country = null,
                                                                                              string product = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

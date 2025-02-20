@@ -301,7 +301,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> A single instance of Environment </returns>
         public static ResourceSet<EnvironmentResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> Task that resolves to A single instance of Environment </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EnvironmentResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

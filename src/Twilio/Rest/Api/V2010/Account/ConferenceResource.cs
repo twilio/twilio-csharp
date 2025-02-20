@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      DateTime? dateUpdatedAfter = null,
                                                      string friendlyName = null,
                                                      ConferenceResource.StatusEnum status = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              DateTime? dateUpdatedAfter = null,
                                                                                              string friendlyName = null,
                                                                                              ConferenceResource.StatusEnum status = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
