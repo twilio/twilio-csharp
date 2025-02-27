@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Net;
-using System.Linq;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
 using Twilio.Http.BearerToken;
-using Twilio.Jwt;
-using Twilio.Clients;
 using Twilio.Annotations;
 
-#if !NET35
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
-#endif
+
 
 using Twilio.Http;
-using Twilio.Http.BearerToken;
-#if NET35
-using Twilio.Http.Net35;
-using System.Collections.Generic;
-using System.Text;
-using System.Web.Script.Serialization;
-#endif
+
 
 
 namespace Twilio.Clients.BearerToken

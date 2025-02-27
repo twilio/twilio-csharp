@@ -6,11 +6,8 @@ using Twilio.Constant;
 using Twilio.Rest;
 using Twilio.AuthStrategies;
 
-#if !NET35
+
 using System.Net;
-#else
-using System.Web;
-#endif
 
 namespace Twilio.Http
 {
