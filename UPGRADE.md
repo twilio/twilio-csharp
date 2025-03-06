@@ -2,6 +2,15 @@
 
 _`MAJOR` version bumps will have upgrade notes posted here._
 
+[2025-03-XX] 7.x.x to 8.x.x
+----------------------------
+### Overview
+
+#### Twilio Csharp Helper Library’s major version 8.0.0 is now available. 
+#### We ensured that you can upgrade to Csharp helper Library 8.0.0 version without any api breaking changes
+
+Twiml Attribute speechModel is now of type string.
+
 [2024-02-XX] 6.x.x to 7.x.x
 ----------------------------
 ### Overview
