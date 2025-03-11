@@ -45,7 +45,9 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
             public static readonly StatusEnum InReview = new StatusEnum("IN_REVIEW");
-            public static readonly StatusEnum Deleted = new StatusEnum("DELETED");
+            public static readonly StatusEnum DeletionPending = new StatusEnum("DELETION_PENDING");
+            public static readonly StatusEnum DeletionFailed = new StatusEnum("DELETION_FAILED");
+            public static readonly StatusEnum Suspended = new StatusEnum("SUSPENDED");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

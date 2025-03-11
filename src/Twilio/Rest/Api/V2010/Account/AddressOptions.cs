@@ -210,6 +210,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The string that identifies the Address resources to read. </summary> 
         public string FriendlyName { get; set; }
 
+        ///<summary> Whether the address can be associated to a number for emergency calling. </summary> 
+        public bool? EmergencyEnabled { get; set; }
+
         ///<summary> The ISO country code of the Address resources to read. </summary> 
         public string IsoCountry { get; set; }
 
@@ -229,6 +232,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+            if (EmergencyEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
             }
             if (IsoCountry != null)
             {

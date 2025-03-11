@@ -42,6 +42,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                 return new VettingProviderEnum(value);
             }
             public static readonly VettingProviderEnum CampaignVerify = new VettingProviderEnum("campaign-verify");
+            public static readonly VettingProviderEnum Aegis = new VettingProviderEnum("aegis");
 
         }
 

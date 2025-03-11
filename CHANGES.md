@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2025-03-11] Version 7.9.0
+--------------------------
+**Api**
+- Add the missing `emergency_enabled` field for `Address Service` endpoints
+
+**Messaging**
+- Add missing enums for A2P and TF
+
+**Numbers**
+- add missing enum values to hosted_number_order_status
+
+**Twiml**
+- Convert Twiml Attribute `speechModel` of type enum to string **(breaking change)**
+
+
 [2025-02-20] Version 7.8.5
 --------------------------
 **Library - Chore**
