@@ -68,17 +68,8 @@ namespace Twilio.Rest.FlexApi.V2
         ///<summary> The unique id for the flex user. </summary> 
         public string PathFlexUserSid { get; }
 
-        ///<summary> First name of the User. </summary> 
-        public string FirstName { get; set; }
-
-        ///<summary> Last name of the User. </summary> 
-        public string LastName { get; set; }
-
         ///<summary> Email of the User. </summary> 
         public string Email { get; set; }
-
-        ///<summary> Friendly name of the User. </summary> 
-        public string FriendlyName { get; set; }
 
         ///<summary> The unique SID identifier of the Twilio Unified User. </summary> 
         public string UserSid { get; set; }
@@ -103,21 +94,9 @@ namespace Twilio.Rest.FlexApi.V2
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (FirstName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FirstName", FirstName));
-            }
-            if (LastName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LastName", LastName));
-            }
             if (Email != null)
             {
                 p.Add(new KeyValuePair<string, string>("Email", Email));
-            }
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
             if (UserSid != null)
             {

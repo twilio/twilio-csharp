@@ -50,7 +50,7 @@ namespace Twilio.Rest.Accounts.V1
             );
         }
 
-        /// <summary> Add a new phone number to SafeList. </summary>
+        /// <summary> Add a new phone number or phone number 1k prefix to SafeList. </summary>
         /// <param name="options"> Create Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Add a new phone number to SafeList. </summary>
+        /// <summary> Add a new phone number or phone number 1k prefix to SafeList. </summary>
         /// <param name="options"> Create Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
@@ -74,8 +74,8 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
-        /// <summary> Add a new phone number to SafeList. </summary>
-        /// <param name="phoneNumber"> The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <summary> Add a new phone number or phone number 1k prefix to SafeList. </summary>
+        /// <param name="phoneNumber"> The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
         public static SafelistResource Create(
@@ -87,8 +87,8 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Add a new phone number to SafeList. </summary>
-        /// <param name="phoneNumber"> The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <summary> Add a new phone number or phone number 1k prefix to SafeList. </summary>
+        /// <param name="phoneNumber"> The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
         public static async System.Threading.Tasks.Task<SafelistResource> CreateAsync(
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
         
-        /// <summary> Remove a phone number from SafeList. </summary>
+        /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Accounts.V1
             );
         }
 
-        /// <summary> Remove a phone number from SafeList. </summary>
+        /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Remove a phone number from SafeList. </summary>
+        /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
-        /// <summary> Remove a phone number from SafeList. </summary>
+        /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
         public static bool Delete(ITwilioRestClient client = null)
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Remove a phone number from SafeList. </summary>
+        /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(ITwilioRestClient client = null)
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Accounts.V1
             );
         }
 
-        /// <summary> Check if a phone number exists in SafeList. </summary>
+        /// <summary> Check if a phone number or phone number 1k prefix exists in SafeList. </summary>
         /// <param name="options"> Fetch Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Check if a phone number exists in SafeList. </summary>
+        /// <summary> Check if a phone number or phone number 1k prefix exists in SafeList. </summary>
         /// <param name="options"> Fetch Safelist parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
@@ -202,8 +202,8 @@ namespace Twilio.Rest.Accounts.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Check if a phone number exists in SafeList. </summary>
-        /// <param name="phoneNumber"> The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <summary> Check if a phone number or phone number 1k prefix exists in SafeList. </summary>
+        /// <param name="phoneNumber"> The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Safelist </returns>
         public static SafelistResource Fetch(
@@ -215,8 +215,8 @@ namespace Twilio.Rest.Accounts.V1
         }
 
         #if !NET35
-        /// <summary> Check if a phone number exists in SafeList. </summary>
-        /// <param name="phoneNumber"> The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <summary> Check if a phone number or phone number 1k prefix exists in SafeList. </summary>
+        /// <param name="phoneNumber"> The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Safelist </returns>
         public static async System.Threading.Tasks.Task<SafelistResource> FetchAsync(string phoneNumber = null, ITwilioRestClient client = null)
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Accounts.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The phone number in SafeList. </summary> 
+        ///<summary> The phone number or phone number 1k prefix in SafeList. </summary> 
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
 

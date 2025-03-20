@@ -68,6 +68,17 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly ContentRetentionEnum Discard = new ContentRetentionEnum("discard");
 
         }
+        public sealed class TrafficTypeEnum : StringEnum
+        {
+            private TrafficTypeEnum(string value) : base(value) {}
+            public TrafficTypeEnum() {}
+            public static implicit operator TrafficTypeEnum(string value)
+            {
+                return new TrafficTypeEnum(value);
+            }
+            public static readonly TrafficTypeEnum Free = new TrafficTypeEnum("free");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class DirectionEnum : StringEnum
         {
@@ -192,6 +203,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="addressRetention">  </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`. </param>
         /// <param name="persistentAction"> Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp). </param>
+        /// <param name="trafficType">  </param>
         /// <param name="shortenUrls"> For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided. </param>
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
@@ -219,6 +231,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           MessageResource.AddressRetentionEnum addressRetention = null,
                                           bool? smartEncoded = null,
                                           List<string> persistentAction = null,
+                                          MessageResource.TrafficTypeEnum trafficType = null,
                                           bool? shortenUrls = null,
                                           MessageResource.ScheduleTypeEnum scheduleType = null,
                                           DateTime? sendAt = null,
@@ -227,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           MessageResource.RiskCheckEnum riskCheck = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
+            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return Create(options, client);
         }
 
@@ -251,6 +264,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="addressRetention">  </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`. </param>
         /// <param name="persistentAction"> Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp). </param>
+        /// <param name="trafficType">  </param>
         /// <param name="shortenUrls"> For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided. </param>
         /// <param name="scheduleType">  </param>
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
@@ -278,6 +292,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   MessageResource.AddressRetentionEnum addressRetention = null,
                                                                                   bool? smartEncoded = null,
                                                                                   List<string> persistentAction = null,
+                                                                                  MessageResource.TrafficTypeEnum trafficType = null,
                                                                                   bool? shortenUrls = null,
                                                                                   MessageResource.ScheduleTypeEnum scheduleType = null,
                                                                                   DateTime? sendAt = null,
@@ -286,7 +301,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   MessageResource.RiskCheckEnum riskCheck = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
             return await CreateAsync(options, client);
         }
         #endif

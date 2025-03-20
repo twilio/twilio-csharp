@@ -43,6 +43,7 @@ namespace Twilio.Rest.Video.V1.Room
             }
             public static readonly StatusEnum Connected = new StatusEnum("connected");
             public static readonly StatusEnum Disconnected = new StatusEnum("disconnected");
+            public static readonly StatusEnum Reconnecting = new StatusEnum("reconnecting");
 
         }
 
