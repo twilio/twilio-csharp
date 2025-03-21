@@ -16,6 +16,11 @@
         public static readonly HttpMethod Post = new HttpMethod("POST");
         
         /// <summary>
+        /// Constant for PATCH method
+        /// </summary>
+        public static readonly HttpMethod Patch = new HttpMethod("PATCH");
+        
+        /// <summary>
         /// Constant for PUT method
         /// </summary>
         public static readonly HttpMethod Put = new HttpMethod("PUT");
