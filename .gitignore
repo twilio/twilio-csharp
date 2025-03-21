@@ -235,3 +235,4 @@ html/
 
 # sonar cloud stuff
 .sonarqube
+/test/Twilio.Benchmark/BenchmarkDotNet.Artifacts
