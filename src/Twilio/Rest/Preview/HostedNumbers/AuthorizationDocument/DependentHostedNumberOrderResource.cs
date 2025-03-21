@@ -100,8 +100,7 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// <param name="options"> Read DependentHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -128,9 +127,9 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
                                                      string incomingPhoneNumberSid = null,
                                                      string friendlyName = null,
                                                      string uniqueName = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){ Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -155,9 +154,9 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
                                                                                              string incomingPhoneNumberSid = null,
                                                                                              string friendlyName = null,
                                                                                              string uniqueName = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){ Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -85,8 +85,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +102,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                          string pathRoomSid, 
                                          string pathParticipantSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid){  };
             return Fetch(options, client);
@@ -158,8 +157,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -178,9 +176,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static ResourceSet<SubscribedTrackResource> Read(
                                                      string pathRoomSid,
                                                      string pathParticipantSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -197,9 +195,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(
                                                                                              string pathRoomSid,
                                                                                              string pathParticipantSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

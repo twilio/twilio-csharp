@@ -34,6 +34,150 @@ namespace Twilio.Rest.Messaging.V1.Service
     
 
         
+        private static Request BuildCreateRequest(CreateChannelSenderOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Services/{MessagingServiceSid}/ChannelSenders";
+
+            string PathMessagingServiceSid = options.PathMessagingServiceSid;
+            path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Messaging,
+                path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> create </summary>
+        /// <param name="options"> Create ChannelSender parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ChannelSender </returns>
+        public static ChannelSenderResource Create(CreateChannelSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> create </summary>
+        /// <param name="options"> Create ChannelSender parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ChannelSender </returns>
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> CreateAsync(CreateChannelSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> create </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>
+        /// <param name="sid"> The SID of the Channel Sender being added to the Service. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ChannelSender </returns>
+        public static ChannelSenderResource Create(
+                                          string pathMessagingServiceSid,
+                                          string sid,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new CreateChannelSenderOptions(pathMessagingServiceSid, sid){  };
+            return Create(options, client);
+        }
+
+        #if !NET35
+        /// <summary> create </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>
+        /// <param name="sid"> The SID of the Channel Sender being added to the Service. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ChannelSender </returns>
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> CreateAsync(
+                                                                                  string pathMessagingServiceSid,
+                                                                                  string sid,
+                                                                                    ITwilioRestClient client = null)
+        {
+        var options = new CreateChannelSenderOptions(pathMessagingServiceSid, sid){  };
+            return await CreateAsync(options, client);
+        }
+        #endif
+        
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete ChannelSender parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ChannelSender </returns>
+        private static Request BuildDeleteRequest(DeleteChannelSenderOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Services/{MessagingServiceSid}/ChannelSenders/{Sid}";
+
+            string PathMessagingServiceSid = options.PathMessagingServiceSid;
+            path = path.Replace("{"+"MessagingServiceSid"+"}", PathMessagingServiceSid);
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Messaging,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete ChannelSender parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ChannelSender </returns>
+        public static bool Delete(DeleteChannelSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary> delete </summary>
+        /// <param name="options"> Delete ChannelSender parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ChannelSender </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChannelSenderOptions options,
+                                                                        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary> delete </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the Channel Sender resource to delete. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ChannelSender </returns>
+        public static bool Delete(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteChannelSenderOptions(pathMessagingServiceSid, pathSid)        ;
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary> delete </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the Channel Sender resource to delete. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ChannelSender </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteChannelSenderOptions(pathMessagingServiceSid, pathSid) ;
+            return await DeleteAsync(options, client);
+        }
+        #endif
+        
         private static Request BuildFetchRequest(FetchChannelSenderOptions options, ITwilioRestClient client)
         {
             
@@ -69,8 +213,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Fetch ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(FetchChannelSenderOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelSenderResource> FetchAsync(FetchChannelSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +228,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         public static ChannelSenderResource Fetch(
                                          string pathMessagingServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchChannelSenderOptions(pathMessagingServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -137,8 +280,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="options"> Read ChannelSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ChannelSenderResource>> ReadAsync(ReadChannelSenderOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChannelSenderResource>> ReadAsync(ReadChannelSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -155,9 +297,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> A single instance of ChannelSender </returns>
         public static ResourceSet<ChannelSenderResource> Read(
                                                      string pathMessagingServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadChannelSenderOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -172,9 +314,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <returns> Task that resolves to A single instance of ChannelSender </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelSenderResource>> ReadAsync(
                                                                                              string pathMessagingServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadChannelSenderOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

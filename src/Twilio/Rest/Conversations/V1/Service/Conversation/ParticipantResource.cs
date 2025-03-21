@@ -60,6 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -81,8 +82,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                           string messagingBindingProjectedAddress = null,
                                           string roleSid = null,
                                           ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateParticipantOptions(pathChatServiceSid, pathConversationSid){  Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Create(options, client);
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                                   string messagingBindingProjectedAddress = null,
                                                                                   string roleSid = null,
                                                                                   ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateParticipantOptions(pathChatServiceSid, pathConversationSid){  Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client);
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -271,8 +271,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -289,7 +288,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                          string pathChatServiceSid, 
                                          string pathConversationSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){  };
             return Fetch(options, client);
@@ -344,8 +343,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -364,9 +362,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         public static ResourceSet<ParticipantResource> Read(
                                                      string pathChatServiceSid,
                                                      string pathConversationSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathChatServiceSid, pathConversationSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -383,9 +381,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(
                                                                                              string pathChatServiceSid,
                                                                                              string pathConversationSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathChatServiceSid, pathConversationSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -457,6 +455,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -479,7 +478,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <returns> Task that resolves to A single instance of Participant </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -517,7 +516,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                           int? lastReadMessageIndex = null,
                                           string lastReadTimestamp = null,
                                           ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){ DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Update(options, client);
@@ -554,7 +553,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                               int? lastReadMessageIndex = null,
                                                                               string lastReadTimestamp = null,
                                                                               ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){ DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);

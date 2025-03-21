@@ -62,6 +62,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -83,8 +84,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -99,6 +99,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified. </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </param>
+        /// <param name="snaClientToken"> A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns>
         public static VerificationCheckResource Create(
@@ -108,9 +109,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string verificationSid = null,
                                           string amount = null,
                                           string payee = null,
-                                          ITwilioRestClient client = null)
+                                          string snaClientToken = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
+            var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, SnaClientToken = snaClientToken };
             return Create(options, client);
         }
 
@@ -122,6 +124,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified. </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled. </param>
+        /// <param name="snaClientToken"> A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
         public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(
@@ -131,9 +134,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string verificationSid = null,
                                                                                   string amount = null,
                                                                                   string payee = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  string snaClientToken = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee };
+        var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, SnaClientToken = snaClientToken };
             return await CreateAsync(options, client);
         }
         #endif
@@ -192,7 +196,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("channel")]
         public VerificationCheckResource.ChannelEnum Channel { get; private set; }
 
-        ///<summary> The status of the verification. Can be: `pending`, `approved`, or `canceled`. </summary> 
+        ///<summary> The status of the verification. Can be: `pending`, `approved`, `canceled`, `max_attempts_reached`, `deleted`, `failed` or `expired`. </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
 

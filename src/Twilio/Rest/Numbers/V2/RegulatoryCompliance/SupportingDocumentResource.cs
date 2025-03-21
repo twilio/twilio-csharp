@@ -61,6 +61,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -82,8 +83,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Create SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> CreateAsync(CreateSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           string friendlyName,
                                           string type,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
             return Create(options, client);
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                   string friendlyName,
                                                                                   string type,
                                                                                   object attributes = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
             return await CreateAsync(options, client);
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSupportingDocumentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -226,8 +226,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentResource> FetchAsync(FetchSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -240,7 +239,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> A single instance of SupportingDocument </returns>
         public static SupportingDocumentResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSupportingDocumentOptions(pathSid){  };
             return Fetch(options, client);
@@ -289,8 +288,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read SupportingDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(ReadSupportingDocumentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -305,9 +303,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SupportingDocument </returns>
         public static ResourceSet<SupportingDocumentResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -320,9 +318,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -390,6 +388,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -412,7 +411,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SupportingDocumentResource> UpdateAsync(UpdateSupportingDocumentOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -430,7 +429,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           string pathSid,
                                           string friendlyName = null,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return Update(options, client);
@@ -447,7 +446,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               object attributes = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return await UpdateAsync(options, client);
@@ -511,6 +510,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         ///<summary> The failure reason of the Supporting Document Resource. </summary> 
         [JsonProperty("failure_reason")]
         public string FailureReason { get; private set; }
+
+        ///<summary> A list of errors that occurred during the registering RC Bundle </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
         ///<summary> The type of the Supporting Document. </summary> 
         [JsonProperty("type")]

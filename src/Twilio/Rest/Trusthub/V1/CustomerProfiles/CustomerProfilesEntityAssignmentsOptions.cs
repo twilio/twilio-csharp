@@ -90,7 +90,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return p;
         }
 
-        
+    
 
     }
 
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return p;
         }
 
-        
+    
 
     }
 
@@ -136,6 +136,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
     
         ///<summary> The unique string that we created to identify the CustomerProfile resource. </summary> 
         public string PathCustomerProfileSid { get; }
+
+        ///<summary> A string to filter the results by (EndUserType or SupportingDocumentType) machine-name. This is useful when you want to retrieve the entity-assignment of a specific end-user or supporting document. </summary> 
+        public string ObjectType { get; set; }
 
 
 
@@ -152,6 +155,10 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (ObjectType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ObjectType", ObjectType));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -159,7 +166,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return p;
         }
 
-        
+    
 
     }
 

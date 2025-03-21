@@ -48,6 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -69,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Create AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> CreateAsync(CreateAuthRegistrationsCredentialListMappingOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> CreateAsync(CreateAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                                           string pathDomainSid,
                                           string credentialListSid,
                                           string pathAccountSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAuthRegistrationsCredentialListMappingOptions(pathDomainSid, credentialListSid){  PathAccountSid = pathAccountSid };
             return Create(options, client);
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                                                                                   string pathDomainSid,
                                                                                   string credentialListSid,
                                                                                   string pathAccountSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAuthRegistrationsCredentialListMappingOptions(pathDomainSid, credentialListSid){  PathAccountSid = pathAccountSid };
             return await CreateAsync(options, client);
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAuthRegistrationsCredentialListMappingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -225,8 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Fetch AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(FetchAuthRegistrationsCredentialListMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthRegistrationsCredentialListMappingResource> FetchAsync(FetchAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -243,7 +242,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
                                          string pathDomainSid, 
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAuthRegistrationsCredentialListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -298,8 +297,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         /// <param name="options"> Read AuthRegistrationsCredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthRegistrationsCredentialListMapping </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthRegistrationsCredentialListMappingResource>> ReadAsync(ReadAuthRegistrationsCredentialListMappingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthRegistrationsCredentialListMappingResource>> ReadAsync(ReadAuthRegistrationsCredentialListMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -318,9 +316,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         public static ResourceSet<AuthRegistrationsCredentialListMappingResource> Read(
                                                      string pathDomainSid,
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAuthRegistrationsCredentialListMappingOptions(pathDomainSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -337,9 +335,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         public static async System.Threading.Tasks.Task<ResourceSet<AuthRegistrationsCredentialListMappingResource>> ReadAsync(
                                                                                              string pathDomainSid,
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAuthRegistrationsCredentialListMappingOptions(pathDomainSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

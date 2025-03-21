@@ -67,6 +67,7 @@ namespace Twilio.Rest.Insights.V1.Conference
             public static readonly RegionEnum Jp1 = new RegionEnum("jp1");
             public static readonly RegionEnum Sg1 = new RegionEnum("sg1");
             public static readonly RegionEnum De1 = new RegionEnum("de1");
+            public static readonly RegionEnum In1 = new RegionEnum("in1");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -162,8 +163,7 @@ namespace Twilio.Rest.Insights.V1.Conference
         /// <param name="options"> Fetch ConferenceParticipant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConferenceParticipant </returns>
-        public static async System.Threading.Tasks.Task<ConferenceParticipantResource> FetchAsync(FetchConferenceParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConferenceParticipantResource> FetchAsync(FetchConferenceParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Insights.V1.Conference
                                          string pathParticipantSid, 
                                          string events = null, 
                                          string metrics = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchConferenceParticipantOptions(pathConferenceSid, pathParticipantSid){ Events = events,Metrics = metrics };
             return Fetch(options, client);
@@ -236,8 +236,7 @@ namespace Twilio.Rest.Insights.V1.Conference
         /// <param name="options"> Read ConferenceParticipant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ConferenceParticipant </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceParticipantResource>> ReadAsync(ReadConferenceParticipantOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceParticipantResource>> ReadAsync(ReadConferenceParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -260,9 +259,9 @@ namespace Twilio.Rest.Insights.V1.Conference
                                                      string participantSid = null,
                                                      string label = null,
                                                      string events = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadConferenceParticipantOptions(pathConferenceSid){ ParticipantSid = participantSid, Label = label, Events = events, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -283,9 +282,9 @@ namespace Twilio.Rest.Insights.V1.Conference
                                                                                              string participantSid = null,
                                                                                              string label = null,
                                                                                              string events = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadConferenceParticipantOptions(pathConferenceSid){ ParticipantSid = participantSid, Label = label, Events = events, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

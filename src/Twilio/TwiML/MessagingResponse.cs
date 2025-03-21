@@ -31,7 +31,8 @@ namespace Twilio.TwiML
         /// <param name="body"> Message Body, the body of the TwiML Element. </param>
         /// <param name="to"> Phone Number to send Message to. Also accepts stringified Types.PhoneNumber </param>
         /// <param name="from"> Phone Number to send Message from. Also accepts stringified Types.PhoneNumber </param>
-        /// <param name="action"> Action URL </param>
+        /// <param name="action"> A URL specifying where Twilio should send status callbacks for the created outbound message.
+        ///              </param>
         /// <param name="method"> Action URL Method </param>
         /// <param name="statusCallback"> Status callback URL. Deprecated in favor of action. </param>
         public MessagingResponse Message(string body = null,

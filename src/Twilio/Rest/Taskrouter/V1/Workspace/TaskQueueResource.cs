@@ -59,6 +59,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -80,8 +81,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Create TaskQueue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns>
-        public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(CreateTaskQueueOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(CreateTaskQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           TaskQueueResource.TaskOrderEnum taskOrder = null,
                                           string reservationActivitySid = null,
                                           string assignmentActivitySid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName){  TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid };
             return Create(options, client);
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                   TaskQueueResource.TaskOrderEnum taskOrder = null,
                                                                                   string reservationActivitySid = null,
                                                                                   string assignmentActivitySid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName){  TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid };
             return await CreateAsync(options, client);
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskQueueOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -246,8 +246,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch TaskQueue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns>
-        public static async System.Threading.Tasks.Task<TaskQueueResource> FetchAsync(FetchTaskQueueOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueResource> FetchAsync(FetchTaskQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -262,7 +261,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static TaskQueueResource Fetch(
                                          string pathWorkspaceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueOptions(pathWorkspaceSid, pathSid){  };
             return Fetch(options, client);
@@ -314,8 +313,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Read TaskQueue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueueResource>> ReadAsync(ReadTaskQueueOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueueResource>> ReadAsync(ReadTaskQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -340,9 +338,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string evaluateWorkerAttributes = null,
                                                      string workerSid = null,
                                                      string ordering = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueueOptions(pathWorkspaceSid){ FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -365,9 +363,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string evaluateWorkerAttributes = null,
                                                                                              string workerSid = null,
                                                                                              string ordering = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueueOptions(pathWorkspaceSid){ FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, Ordering = ordering, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -437,6 +435,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -459,7 +458,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> Task that resolves to A single instance of TaskQueue </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TaskQueueResource> UpdateAsync(UpdateTaskQueueOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -487,7 +486,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string assignmentActivitySid = null,
                                           int? maxReservedWorkers = null,
                                           TaskQueueResource.TaskOrderEnum taskOrder = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTaskQueueOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName, TargetWorkers = targetWorkers, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder };
             return Update(options, client);
@@ -514,7 +513,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                               string assignmentActivitySid = null,
                                                                               int? maxReservedWorkers = null,
                                                                               TaskQueueResource.TaskOrderEnum taskOrder = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTaskQueueOptions(pathWorkspaceSid, pathSid){ FriendlyName = friendlyName, TargetWorkers = targetWorkers, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder };
             return await UpdateAsync(options, client);

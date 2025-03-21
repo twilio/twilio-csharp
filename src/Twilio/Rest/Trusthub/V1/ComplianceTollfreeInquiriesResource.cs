@@ -59,6 +59,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -80,8 +81,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceTollfreeInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -111,6 +111,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="skipMessagingUseCase"> Skip the messaging use case screen of the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceTollfreeInquiries </returns>
         public static ComplianceTollfreeInquiriesResource Create(
@@ -135,9 +137,11 @@ namespace Twilio.Rest.Trusthub.V1
                                           string businessContactLastName = null,
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
-                                          ITwilioRestClient client = null)
+                                          string themeSetId = null,
+                                          bool? skipMessagingUseCase = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return Create(options, client);
         }
 
@@ -164,6 +168,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="businessContactLastName"> The last name of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The phone number of the contact for the business or organization using the Tollfree number. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="skipMessagingUseCase"> Skip the messaging use case screen of the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(
@@ -188,9 +194,11 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string businessContactLastName = null,
                                                                                   string businessContactEmail = null,
                                                                                   Types.PhoneNumber businessContactPhone = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  string themeSetId = null,
+                                                                                  bool? skipMessagingUseCase = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone };
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return await CreateAsync(options, client);
         }
         #endif

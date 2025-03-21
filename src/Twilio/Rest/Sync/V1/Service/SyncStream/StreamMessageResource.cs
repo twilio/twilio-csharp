@@ -48,6 +48,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -69,8 +70,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <param name="options"> Create StreamMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StreamMessage </returns>
-        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
                                           string pathServiceSid,
                                           string pathStreamSid,
                                           object data,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data){  };
             return Create(options, client);
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
                                                                                   string pathServiceSid,
                                                                                   string pathStreamSid,
                                                                                   object data,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data){  };
             return await CreateAsync(options, client);

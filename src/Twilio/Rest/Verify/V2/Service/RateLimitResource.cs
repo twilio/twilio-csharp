@@ -46,6 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create RateLimit parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
-        public static async System.Threading.Tasks.Task<RateLimitResource> CreateAsync(CreateRateLimitOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RateLimitResource> CreateAsync(CreateRateLimitOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string pathServiceSid,
                                           string uniqueName,
                                           string description = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateRateLimitOptions(pathServiceSid, uniqueName){  Description = description };
             return Create(options, client);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string pathServiceSid,
                                                                                   string uniqueName,
                                                                                   string description = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateRateLimitOptions(pathServiceSid, uniqueName){  Description = description };
             return await CreateAsync(options, client);
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRateLimitOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -217,8 +217,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch RateLimit parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
-        public static async System.Threading.Tasks.Task<RateLimitResource> FetchAsync(FetchRateLimitOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RateLimitResource> FetchAsync(FetchRateLimitOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -233,7 +232,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static RateLimitResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRateLimitOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -285,8 +284,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Read RateLimit parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RateLimitResource>> ReadAsync(ReadRateLimitOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RateLimitResource>> ReadAsync(ReadRateLimitOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -303,9 +301,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> A single instance of RateLimit </returns>
         public static ResourceSet<RateLimitResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRateLimitOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -320,9 +318,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<RateLimitResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRateLimitOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -392,6 +390,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -414,7 +413,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of RateLimit </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<RateLimitResource> UpdateAsync(UpdateRateLimitOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -432,7 +431,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string pathServiceSid,
                                           string pathSid,
                                           string description = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateRateLimitOptions(pathServiceSid, pathSid){ Description = description };
             return Update(options, client);
@@ -449,7 +448,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               string description = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateRateLimitOptions(pathServiceSid, pathSid){ Description = description };
             return await UpdateAsync(options, client);

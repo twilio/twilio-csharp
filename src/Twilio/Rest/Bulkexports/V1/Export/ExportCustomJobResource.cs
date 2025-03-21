@@ -46,6 +46,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Post,
                 Rest.Domain.Bulkexports,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Create ExportCustomJob parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
-        public static async System.Threading.Tasks.Task<ExportCustomJobResource> CreateAsync(CreateExportCustomJobOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportCustomJobResource> CreateAsync(CreateExportCustomJobOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                           string webhookUrl = null,
                                           string webhookMethod = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){  WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email };
             return Create(options, client);
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                                                                                   string webhookUrl = null,
                                                                                   string webhookMethod = null,
                                                                                   string email = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){  WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email };
             return await CreateAsync(options, client);
@@ -159,8 +159,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <param name="options"> Read ExportCustomJob parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(ReadExportCustomJobOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(ReadExportCustomJobOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -177,9 +176,9 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> A single instance of ExportCustomJob </returns>
         public static ResourceSet<ExportCustomJobResource> Read(
                                                      string pathResourceType,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadExportCustomJobOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -194,9 +193,9 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(
                                                                                              string pathResourceType,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadExportCustomJobOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

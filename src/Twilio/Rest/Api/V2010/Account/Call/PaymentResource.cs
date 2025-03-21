@@ -66,6 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
             public static readonly TokenTypeEnum OneTime = new TokenTypeEnum("one-time");
             public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
+            public static readonly TokenTypeEnum PaymentMethod = new TokenTypeEnum("payment-method");
 
         }
         public sealed class BankAccountTypeEnum : StringEnum
@@ -113,6 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -134,8 +136,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Create Payment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payment </returns>
-        public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(CreatePaymentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(CreatePaymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -183,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           int? timeout = null,
                                           PaymentResource.TokenTypeEnum tokenType = null,
                                           string validCardTypes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
             return Create(options, client);
@@ -230,7 +231,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   int? timeout = null,
                                                                                   PaymentResource.TokenTypeEnum tokenType = null,
                                                                                   string validCardTypes = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
             return await CreateAsync(options, client);
@@ -253,6 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -275,7 +277,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of Payment </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(UpdatePaymentOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -301,7 +303,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           string pathAccountSid = null,
                                           PaymentResource.CaptureEnum capture = null,
                                           PaymentResource.StatusEnum status = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){ PathAccountSid = pathAccountSid, Capture = capture, Status = status };
             return Update(options, client);
@@ -326,7 +328,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                               string pathAccountSid = null,
                                                                               PaymentResource.CaptureEnum capture = null,
                                                                               PaymentResource.StatusEnum status = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){ PathAccountSid = pathAccountSid, Capture = capture, Status = status };
             return await UpdateAsync(options, client);

@@ -88,6 +88,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum GroupRoomsParticipantMinutes = new CategoryEnum("group-rooms-participant-minutes");
             public static readonly CategoryEnum GroupRoomsRecordedMinutes = new CategoryEnum("group-rooms-recorded-minutes");
             public static readonly CategoryEnum ImpV1Usage = new CategoryEnum("imp-v1-usage");
+            public static readonly CategoryEnum IvrVirtualAgentCustomVoices = new CategoryEnum("ivr-virtual-agent-custom-voices");
+            public static readonly CategoryEnum IvrVirtualAgentGenai = new CategoryEnum("ivr-virtual-agent-genai");
             public static readonly CategoryEnum Lookups = new CategoryEnum("lookups");
             public static readonly CategoryEnum Marketplace = new CategoryEnum("marketplace");
             public static readonly CategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new CategoryEnum("marketplace-algorithmia-named-entity-recognition");
@@ -327,8 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="options"> Read Record parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Record </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -353,9 +354,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                      DateTime? startDate = null,
                                                      DateTime? endDate = null,
                                                      bool? includeSubaccounts = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRecordOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -378,9 +379,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                              DateTime? startDate = null,
                                                                                              DateTime? endDate = null,
                                                                                              bool? includeSubaccounts = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRecordOptions(){ PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

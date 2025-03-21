@@ -86,6 +86,7 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -107,8 +108,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(CreateRoomOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(CreateRoomOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -120,14 +120,14 @@ namespace Twilio.Rest.Video.V1
         /// <param name="enableTurn"> Deprecated, now always considered to be true. </param>
         /// <param name="type">  </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`. </param>
-        /// <param name="statusCallback"> The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`. </param>
-        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants. </param>
-        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </param>
-        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </param>
-        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
+        /// <param name="statusCallback"> The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`. </param>
+        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50. </param>
+        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. </param>
+        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </param>
+        /// <param name="mediaRegion"> The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
-        /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </param>
+        /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
         /// <param name="emptyRoomTimeout"> Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions). </param>
         /// <param name="unusedRoomTimeout"> Configures how long (in minutes) a room will remain active if no one joins. Valid values range from 1 to 60 minutes (no fractions). </param>
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Video.V1
                                           int? emptyRoomTimeout = null,
                                           int? unusedRoomTimeout = null,
                                           bool? largeRoom = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
             return Create(options, client);
@@ -161,14 +161,14 @@ namespace Twilio.Rest.Video.V1
         /// <param name="enableTurn"> Deprecated, now always considered to be true. </param>
         /// <param name="type">  </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`. </param>
-        /// <param name="statusCallback"> The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`. </param>
-        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants. </param>
-        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </param>
-        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </param>
-        /// <param name="mediaRegion"> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </param>
+        /// <param name="statusCallback"> The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`. </param>
+        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50. </param>
+        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. </param>
+        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </param>
+        /// <param name="mediaRegion"> The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
-        /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </param>
+        /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
         /// <param name="emptyRoomTimeout"> Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions). </param>
         /// <param name="unusedRoomTimeout"> Configures how long (in minutes) a room will remain active if no one joins. Valid values range from 1 to 60 minutes (no fractions). </param>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   int? emptyRoomTimeout = null,
                                                                                   int? unusedRoomTimeout = null,
                                                                                   bool? largeRoom = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
             return await CreateAsync(options, client);
@@ -231,8 +231,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -245,7 +244,7 @@ namespace Twilio.Rest.Video.V1
         /// <returns> A single instance of Room </returns>
         public static RoomResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRoomOptions(pathSid){  };
             return Fetch(options, client);
@@ -294,8 +293,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Read Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -318,9 +316,9 @@ namespace Twilio.Rest.Video.V1
                                                      string uniqueName = null,
                                                      DateTime? dateCreatedAfter = null,
                                                      DateTime? dateCreatedBefore = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRoomOptions(){ Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -341,9 +339,9 @@ namespace Twilio.Rest.Video.V1
                                                                                              string uniqueName = null,
                                                                                              DateTime? dateCreatedAfter = null,
                                                                                              DateTime? dateCreatedBefore = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRoomOptions(){ Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -411,6 +409,7 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -433,7 +432,7 @@ namespace Twilio.Rest.Video.V1
         /// <returns> Task that resolves to A single instance of Room </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<RoomResource> UpdateAsync(UpdateRoomOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -449,7 +448,7 @@ namespace Twilio.Rest.Video.V1
         public static RoomResource Update(
                                           string pathSid,
                                           RoomResource.RoomStatusEnum status,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateRoomOptions(pathSid, status){  };
             return Update(options, client);
@@ -464,7 +463,7 @@ namespace Twilio.Rest.Video.V1
         public static async System.Threading.Tasks.Task<RoomResource> UpdateAsync(
                                                                               string pathSid,
                                                                               RoomResource.RoomStatusEnum status,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateRoomOptions(pathSid, status){  };
             return await UpdateAsync(options, client);
@@ -505,7 +504,7 @@ namespace Twilio.Rest.Video.V1
     }
 
     
-        ///<summary> The unique string that we created to identify the Room resource. </summary> 
+        ///<summary> The unique string that Twilio created to identify the Room resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
@@ -533,11 +532,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
 
-        ///<summary> The URL we call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </summary> 
+        ///<summary> The URL Twilio calls using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info. </summary> 
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
 
-        ///<summary> The HTTP method we use to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`. </summary> 
+        ///<summary> The HTTP method Twilio uses to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`. </summary> 
         [JsonProperty("status_callback_method")]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
 
@@ -565,19 +564,19 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("max_concurrent_published_tracks")]
         public int? MaxConcurrentPublishedTracks { get; private set; }
 
-        ///<summary> Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
+        ///<summary> Whether to start recording when Participants connect. </summary> 
         [JsonProperty("record_participants_on_connect")]
         public bool? RecordParticipantsOnConnect { get; private set; }
 
-        ///<summary> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms*** </summary> 
+        ///<summary> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </summary> 
         [JsonProperty("video_codecs")]
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
 
-        ///<summary> The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#media-servers). ***This feature is not available in `peer-to-peer` rooms.*** </summary> 
+        ///<summary> The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#media-servers). </summary> 
         [JsonProperty("media_region")]
         public string MediaRegion { get; private set; }
 
-        ///<summary> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only. </summary> 
+        ///<summary> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </summary> 
         [JsonProperty("audio_only")]
         public bool? AudioOnly { get; private set; }
 

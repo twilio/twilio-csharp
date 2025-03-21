@@ -69,8 +69,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="options"> Fetch SubscribeRules parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
-        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(FetchSubscribeRulesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +84,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static SubscribeRulesResource Fetch(
                                          string pathRoomSid, 
                                          string pathParticipantSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid){  };
             return Fetch(options, client);
@@ -118,6 +117,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(UpdateSubscribeRulesOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                           string pathRoomSid,
                                           string pathParticipantSid,
                                           object rules = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
             return Update(options, client);
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                                                                               string pathRoomSid,
                                                                               string pathParticipantSid,
                                                                               object rules = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
             return await UpdateAsync(options, client);

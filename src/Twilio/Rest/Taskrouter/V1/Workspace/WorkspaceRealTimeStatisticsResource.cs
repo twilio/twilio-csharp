@@ -67,8 +67,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch WorkspaceRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -83,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static WorkspaceRealTimeStatisticsResource Fetch(
                                          string pathWorkspaceSid, 
                                          string taskChannel = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){ TaskChannel = taskChannel };
             return Fetch(options, client);

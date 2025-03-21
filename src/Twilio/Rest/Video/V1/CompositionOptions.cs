@@ -138,7 +138,7 @@ namespace Twilio.Rest.Video.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Video.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Video.V1
             return p;
         }
 
-        
+    
 
     }
 

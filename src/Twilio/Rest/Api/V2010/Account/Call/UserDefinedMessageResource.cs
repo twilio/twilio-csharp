@@ -48,6 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -69,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Create UserDefinedMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessage </returns>
-        public static async System.Threading.Tasks.Task<UserDefinedMessageResource> CreateAsync(CreateUserDefinedMessageOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserDefinedMessageResource> CreateAsync(CreateUserDefinedMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           string content,
                                           string pathAccountSid = null,
                                           string idempotencyKey = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateUserDefinedMessageOptions(pathCallSid, content){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
             return Create(options, client);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string content,
                                                                                   string pathAccountSid = null,
                                                                                   string idempotencyKey = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateUserDefinedMessageOptions(pathCallSid, content){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
             return await CreateAsync(options, client);

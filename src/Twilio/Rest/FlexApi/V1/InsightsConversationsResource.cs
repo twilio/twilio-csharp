@@ -65,8 +65,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read InsightsConversations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InsightsConversations </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(ReadInsightsConversationsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(ReadInsightsConversationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -85,9 +84,9 @@ namespace Twilio.Rest.FlexApi.V1
         public static ResourceSet<InsightsConversationsResource> Read(
                                                      string authorization = null,
                                                      string segmentId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadInsightsConversationsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -104,9 +103,9 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<ResourceSet<InsightsConversationsResource>> ReadAsync(
                                                                                              string authorization = null,
                                                                                              string segmentId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadInsightsConversationsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

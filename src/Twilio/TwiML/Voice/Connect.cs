@@ -232,6 +232,146 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <ConversationRelay/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="url"> URL of the remote service where the session is connected to </param>
+        /// <param name="language"> Language to be used for both text-to-speech and transcription </param>
+        /// <param name="ttsLanguage"> Language to be used for text-to-speech </param>
+        /// <param name="transcriptionLanguage"> Language to be used for transcription </param>
+        /// <param name="ttsProvider"> Provider to be used for text-to-speech </param>
+        /// <param name="voice"> Voice to be used for text-to-speech </param>
+        /// <param name="transcriptionProvider"> Provider to be used for transcription </param>
+        /// <param name="speechModel"> Speech model to be used for transcription </param>
+        /// <param name="profanityFilter"> Whether profanities should be filtered out of the speech transcription </param>
+        /// <param name="dtmfDetection"> Whether DTMF tones should be detected and reported in speech transcription </param>
+        /// <param name="welcomeGreeting"> The sentence to be played automatically when the session is connected </param>
+        /// <param name="partialPrompts"> Whether partial prompts should be reported to WebSocket server before the caller
+        ///                      finishes speaking </param>
+        /// <param name="interruptible"> Whether caller's speaking can interrupt the play of text-to-speech </param>
+        /// <param name="interruptByDtmf"> Whether DTMF tone can interrupt the play of text-to-speech </param>
+        /// <param name="welcomeGreetingInterruptible"> Whether caller's speaking can interrupt the welcome greeting </param>
+        /// <param name="debug"> Whether debugging on the session is enabled </param>
+        public Connect ConversationRelay(string url = null,
+                                         string language = null,
+                                         string ttsLanguage = null,
+                                         string transcriptionLanguage = null,
+                                         string ttsProvider = null,
+                                         string voice = null,
+                                         string transcriptionProvider = null,
+                                         string speechModel = null,
+                                         bool? profanityFilter = null,
+                                         bool? dtmfDetection = null,
+                                         string welcomeGreeting = null,
+                                         bool? partialPrompts = null,
+                                         bool? interruptible = null,
+                                         bool? interruptByDtmf = null,
+                                         bool? welcomeGreetingInterruptible = null,
+                                         bool? debug = null)
+        {
+            var newChild = new ConversationRelay(
+                url,
+                language,
+                ttsLanguage,
+                transcriptionLanguage,
+                ttsProvider,
+                voice,
+                transcriptionProvider,
+                speechModel,
+                profanityFilter,
+                dtmfDetection,
+                welcomeGreeting,
+                partialPrompts,
+                interruptible,
+                interruptByDtmf,
+                welcomeGreetingInterruptible,
+                debug
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <ConversationRelay/> element as a child of this element
+        /// </summary>
+        /// <param name="conversationRelay"> A ConversationRelay instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect ConversationRelay(ConversationRelay conversationRelay)
+        {
+            this.Append(conversationRelay);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Assistant/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="id"> The assistant ID of the AI Assistant </param>
+        /// <param name="language"> Language to be used for both text-to-speech and transcription </param>
+        /// <param name="ttsLanguage"> Language to be used for text-to-speech </param>
+        /// <param name="transcriptionLanguage"> Language to be used for transcription </param>
+        /// <param name="ttsProvider"> Provider to be used for text-to-speech </param>
+        /// <param name="voice"> Voice to be used for text-to-speech </param>
+        /// <param name="transcriptionProvider"> Provider to be used for transcription </param>
+        /// <param name="speechModel"> Speech model to be used for transcription </param>
+        /// <param name="profanityFilter"> Whether profanities should be filtered out of the speech transcription </param>
+        /// <param name="dtmfDetection"> Whether DTMF tones should be detected and reported in speech transcription </param>
+        /// <param name="welcomeGreeting"> The sentence to be played automatically when the session is connected </param>
+        /// <param name="partialPrompts"> Whether partial prompts should be reported to WebSocket server before the caller
+        ///                      finishes speaking </param>
+        /// <param name="interruptible"> Whether caller's speaking can interrupt the play of text-to-speech </param>
+        /// <param name="interruptByDtmf"> Whether DTMF tone can interrupt the play of text-to-speech </param>
+        /// <param name="welcomeGreetingInterruptible"> Whether caller's speaking can interrupt the welcome greeting </param>
+        /// <param name="debug"> Whether debugging on the session is enabled </param>
+        public Connect Assistant(string id = null,
+                                 string language = null,
+                                 string ttsLanguage = null,
+                                 string transcriptionLanguage = null,
+                                 string ttsProvider = null,
+                                 string voice = null,
+                                 string transcriptionProvider = null,
+                                 string speechModel = null,
+                                 bool? profanityFilter = null,
+                                 bool? dtmfDetection = null,
+                                 string welcomeGreeting = null,
+                                 bool? partialPrompts = null,
+                                 bool? interruptible = null,
+                                 bool? interruptByDtmf = null,
+                                 bool? welcomeGreetingInterruptible = null,
+                                 bool? debug = null)
+        {
+            var newChild = new Assistant(
+                id,
+                language,
+                ttsLanguage,
+                transcriptionLanguage,
+                ttsProvider,
+                voice,
+                transcriptionProvider,
+                speechModel,
+                profanityFilter,
+                dtmfDetection,
+                welcomeGreeting,
+                partialPrompts,
+                interruptible,
+                interruptByDtmf,
+                welcomeGreetingInterruptible,
+                debug
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Assistant/> element as a child of this element
+        /// </summary>
+        /// <param name="assistant"> A Assistant instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect Assistant(Assistant assistant)
+        {
+            this.Append(assistant);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

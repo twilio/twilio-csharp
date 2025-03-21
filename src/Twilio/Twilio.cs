@@ -1,5 +1,8 @@
 ﻿using Twilio.Clients;
 using Twilio.Exceptions;
+using Twilio.Credential;
+using Twilio.AuthStrategies;
+using Twilio.Annotations;
 
 namespace Twilio
 {
@@ -10,11 +13,14 @@ namespace Twilio
     {
         private static string _username;
         private static string _password;
+        private static AuthStrategy _authstrategy;
         private static string _accountSid;
         private static string _region;
         private static string _edge;
         private static ITwilioRestClient _restClient;
+        private static ITwilioRestClient _noAuthRestClient;
         private static string _logLevel;
+        private static CredentialProvider _credentialProvider;
 
         private TwilioClient() { }
 
@@ -43,6 +49,45 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Initialize base client with credentialProvider
+        /// </summary>
+        /// <param name="credentialProvider">credentialProvider with credential information</param>
+        public static void Init(CredentialProvider credentialProvider)
+        {
+            SetCredentialProvider(credentialProvider);
+        }
+
+        /// <summary>
+        /// Initialize base client with credentialProvider and account sid
+        /// </summary>
+        /// <param name="credentialProvider">credentialProvider with credential information</param>
+        public static void Init(CredentialProvider credentialProvider, string accountSid)
+        {
+            SetCredentialProvider(credentialProvider);
+            SetAccountSid(accountSid);
+        }
+
+        /// <summary>
+        /// Set the credential provider
+        /// </summary>
+        /// <param name="credentialProvider">credentialProvider with credential information</param>
+        public static void SetCredentialProvider(CredentialProvider credentialProvider)
+        {
+            if (credentialProvider == null)
+            {
+                throw new AuthenticationException("Credential Provider can not be null");
+            }
+
+            if (credentialProvider != _credentialProvider)
+            {
+                Invalidate();
+            }
+            InvalidateBasicCreds();
+
+            _credentialProvider = credentialProvider;
+        }
+
+        /// <summary>
         /// Set the client username
         /// </summary>
         /// <param name="username">Auth username</param>
@@ -57,6 +102,7 @@ namespace Twilio
             {
                 Invalidate();
             }
+            InvalidateOAuthCreds();
 
             _username = username;
         }
@@ -76,6 +122,7 @@ namespace Twilio
             {
                 Invalidate();
             }
+            InvalidateOAuthCreds();
 
             _password = password;
         }
@@ -108,6 +155,7 @@ namespace Twilio
             if (region != _region)
             {
                 Invalidate();
+                InvalidateNoAuth();
             }
 
             _region = region;
@@ -122,6 +170,7 @@ namespace Twilio
             if (edge != _edge)
             {
                 Invalidate();
+                InvalidateNoAuth();
             }
 
             _edge = edge;
@@ -136,9 +185,31 @@ namespace Twilio
             if (loglevel != _logLevel)
             {
                 Invalidate();
+                InvalidateNoAuth();
             }
 
             _logLevel = loglevel;
+        }
+
+
+        /// <summary>
+        /// Get the no auth rest client
+        /// </summary>
+        /// <returns>The no auth rest client</returns>
+        public static ITwilioRestClient GetNoAuthRestClient()
+        {
+            if (_noAuthRestClient != null)
+            {
+                return _noAuthRestClient;
+            }
+
+            AuthStrategy noauthstrategy = new NoAuthStrategy();
+           _noAuthRestClient = new TwilioRestClient(_username, _password, authstrategy: noauthstrategy, accountSid: _accountSid, region: _region, edge: _edge)
+           {
+               LogLevel = _logLevel
+           };
+
+            return _noAuthRestClient;
         }
 
         /// <summary>
@@ -154,15 +225,27 @@ namespace Twilio
 
             if (_username == null || _password == null)
             {
-                throw new AuthenticationException(
-                    "TwilioRestClient was used before AccountSid and AuthToken were set, please call TwilioClient.init()"
-                );
+                if(_credentialProvider == null){
+                    throw new AuthenticationException(
+                                    "Credentials have not been initialized or changed, please call TwilioClient.init()"
+                                );
+                }
             }
 
-            _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge)
-            {
-                LogLevel = _logLevel
-            };
+            if(_username != null && _password != null){
+                _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge)
+                {
+                    LogLevel = _logLevel
+                };
+            }
+            else if(_credentialProvider != null){
+                AuthStrategy authstrategy = _credentialProvider.ToAuthStrategy();
+               _restClient = new TwilioRestClient(_username, _password, authstrategy: _credentialProvider.ToAuthStrategy(), accountSid: _accountSid, region: _region, edge: _edge)
+               {
+                   LogLevel = _logLevel
+               };
+            }
+
             return _restClient;
         }
 
@@ -181,6 +264,31 @@ namespace Twilio
         public static void Invalidate()
         {
             _restClient = null;
+        }
+
+        /// <summary>
+        /// Clear out the No Auth Rest Client
+        /// </summary>
+        public static void InvalidateNoAuth()
+        {
+            _noAuthRestClient = null;
+        }
+
+        /// <summary>
+        /// Clear out the credential provider
+        /// </summary>
+        public static void InvalidateOAuthCreds()
+        {
+            _credentialProvider = null;
+        }
+
+        /// <summary>
+        /// Clear out the basic credentials username and password
+        /// </summary>
+        public static void InvalidateBasicCreds()
+        {
+            _username = null;
+            _password = null;
         }
 
         /// <summary>

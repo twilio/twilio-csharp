@@ -73,6 +73,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -94,8 +95,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Create Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(CreateSimOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(CreateSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Supersim.V1
         public static SimResource Create(
                                           string iccid,
                                           string registrationCode,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSimOptions(iccid, registrationCode){  };
             return Create(options, client);
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Supersim.V1
         public static async System.Threading.Tasks.Task<SimResource> CreateAsync(
                                                                                   string iccid,
                                                                                   string registrationCode,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSimOptions(iccid, registrationCode){  };
             return await CreateAsync(options, client);
@@ -166,8 +166,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -180,7 +179,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of Sim </returns>
         public static SimResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSimOptions(pathSid){  };
             return Fetch(options, client);
@@ -229,8 +228,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -251,9 +249,9 @@ namespace Twilio.Rest.Supersim.V1
                                                      SimResource.StatusEnum status = null,
                                                      string fleet = null,
                                                      string iccid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){ Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -272,9 +270,9 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              SimResource.StatusEnum status = null,
                                                                                              string fleet = null,
                                                                                              string iccid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){ Status = status, Fleet = fleet, Iccid = iccid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -342,6 +340,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -364,7 +363,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> Task that resolves to A single instance of Sim </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -390,7 +389,7 @@ namespace Twilio.Rest.Supersim.V1
                                           Uri callbackUrl = null,
                                           Twilio.Http.HttpMethod callbackMethod = null,
                                           string accountSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid };
             return Update(options, client);
@@ -415,7 +414,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                               Uri callbackUrl = null,
                                                                               Twilio.Http.HttpMethod callbackMethod = null,
                                                                               string accountSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, AccountSid = accountSid };
             return await UpdateAsync(options, client);

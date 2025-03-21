@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Text;
+using Twilio.Constant;
 
 namespace Twilio.Http
 {
@@ -13,8 +15,8 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-#if NET451
-        private string PlatVersion = ".NET Framework 4.5.1+";
+#if NET462
+        private string PlatVersion = ".NET Framework 4.6.2+";
 #else
         private string PlatVersion = RuntimeInformation.FrameworkDescription;
 #endif
@@ -61,7 +63,14 @@ namespace Twilio.Http
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
             {
-                httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
+                if (request.ContentType == null)
+                    request.ContentType = EnumConstants.ContentTypeEnum.FORM_URLENCODED;
+
+                if (Equals(request.ContentType, EnumConstants.ContentTypeEnum.JSON))
+                    httpRequest.Content = new StringContent(request.Body, Encoding.UTF8, "application/json");
+                
+                else if(Equals(request.ContentType, EnumConstants.ContentTypeEnum.FORM_URLENCODED))
+                    httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
             }
 
             this.LastRequest = request;
@@ -85,8 +94,14 @@ namespace Twilio.Http
                 request.ConstructUrl()
             );
 
-            var authBytes = Authentication(request.Username, request.Password);
-            httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", authBytes);
+            if(request.Username != null && request.Password != null){
+                var authBytes = Authentication(request.Username, request.Password);
+                httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", authBytes);
+            }
+            else if(request.AuthStrategy != null && request.AuthStrategy.RequiresAuthentication()){
+                string authHeader = request.AuthStrategy.GetAuthString();
+                httpRequest.Headers.Add("Authorization", authHeader);
+            }
 
             httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
@@ -98,25 +113,10 @@ namespace Twilio.Http
             string helperLibVersion = AssemblyInfomation.AssemblyInformationalVersion;
 
             string osName = "Unknown";
-#if !NETSTANDARD1_4
             osName = Environment.OSVersion.Platform.ToString();
-#else       
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                osName = "Windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                osName = "MacOS";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                osName = "Linux";
-            }
-#endif
 
             string osArch;
-#if !NET451
+#if !NET462
             osArch = RuntimeInformation.OSArchitecture.ToString();
 #else
             osArch = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") ?? "Unknown"; 

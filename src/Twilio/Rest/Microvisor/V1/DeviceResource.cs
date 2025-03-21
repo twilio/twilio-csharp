@@ -67,8 +67,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns>
-        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> A single instance of Device </returns>
         public static DeviceResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDeviceOptions(pathSid){  };
             return Fetch(options, client);
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -146,9 +144,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns>
         public static ResourceSet<DeviceResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDeviceOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -161,9 +159,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDeviceOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -231,6 +229,7 @@ namespace Twilio.Rest.Microvisor.V1
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -253,7 +252,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> Task that resolves to A single instance of Device </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(UpdateDeviceOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -275,7 +274,7 @@ namespace Twilio.Rest.Microvisor.V1
                                           string targetApp = null,
                                           bool? loggingEnabled = null,
                                           bool? restartApp = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled, RestartApp = restartApp };
             return Update(options, client);
@@ -296,7 +295,7 @@ namespace Twilio.Rest.Microvisor.V1
                                                                               string targetApp = null,
                                                                               bool? loggingEnabled = null,
                                                                               bool? restartApp = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceOptions(pathSid){ UniqueName = uniqueName, TargetApp = targetApp, LoggingEnabled = loggingEnabled, RestartApp = restartApp };
             return await UpdateAsync(options, client);

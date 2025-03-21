@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMediaOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -147,8 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="options"> Fetch Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
-        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(FetchMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -165,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                          string pathMessageSid, 
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchMediaOptions(pathMessageSid, pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -220,8 +219,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="options"> Read Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(ReadMediaOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(ReadMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -246,9 +244,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                                      DateTime? dateCreatedBefore = null,
                                                      DateTime? dateCreated = null,
                                                      DateTime? dateCreatedAfter = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMediaOptions(pathMessageSid){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -271,9 +269,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                                                                              DateTime? dateCreatedBefore = null,
                                                                                              DateTime? dateCreated = null,
                                                                                              DateTime? dateCreatedAfter = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMediaOptions(pathMessageSid){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

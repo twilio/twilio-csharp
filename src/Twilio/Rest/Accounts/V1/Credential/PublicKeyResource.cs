@@ -44,6 +44,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Create PublicKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
-        public static async System.Threading.Tasks.Task<PublicKeyResource> CreateAsync(CreatePublicKeyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PublicKeyResource> CreateAsync(CreatePublicKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                                           string publicKey,
                                           string friendlyName = null,
                                           string accountSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreatePublicKeyOptions(publicKey){  FriendlyName = friendlyName, AccountSid = accountSid };
             return Create(options, client);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                                                                                   string publicKey,
                                                                                   string friendlyName = null,
                                                                                   string accountSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreatePublicKeyOptions(publicKey){  FriendlyName = friendlyName, AccountSid = accountSid };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePublicKeyOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -209,8 +209,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Fetch PublicKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
-        public static async System.Threading.Tasks.Task<PublicKeyResource> FetchAsync(FetchPublicKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PublicKeyResource> FetchAsync(FetchPublicKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -223,7 +222,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <returns> A single instance of PublicKey </returns>
         public static PublicKeyResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPublicKeyOptions(pathSid){  };
             return Fetch(options, client);
@@ -272,8 +271,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Read PublicKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PublicKeyResource>> ReadAsync(ReadPublicKeyOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PublicKeyResource>> ReadAsync(ReadPublicKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -288,9 +286,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns>
         public static ResourceSet<PublicKeyResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPublicKeyOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -303,9 +301,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<PublicKeyResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPublicKeyOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -373,6 +371,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -395,7 +394,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <returns> Task that resolves to A single instance of PublicKey </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<PublicKeyResource> UpdateAsync(UpdatePublicKeyOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -411,7 +410,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         public static PublicKeyResource Update(
                                           string pathSid,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdatePublicKeyOptions(pathSid){ FriendlyName = friendlyName };
             return Update(options, client);
@@ -426,7 +425,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         public static async System.Threading.Tasks.Task<PublicKeyResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdatePublicKeyOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

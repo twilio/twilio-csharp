@@ -44,6 +44,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
-        public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(CreateInteractionOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(CreateInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -82,11 +82,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Create(
                                           object channel,
-                                          object routing,
+                                          object routing = null,
                                           string interactionContextSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
+            var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
             return Create(options, client);
         }
 
@@ -99,11 +99,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of Interaction </returns>
         public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(
                                                                                   object channel,
-                                                                                  object routing,
+                                                                                  object routing = null,
                                                                                   string interactionContextSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateInteractionOptions(channel, routing){  InteractionContextSid = interactionContextSid };
+        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -141,8 +141,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
-        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -155,7 +154,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchInteractionOptions(pathSid){  };
             return Fetch(options, client);

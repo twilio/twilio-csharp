@@ -42,12 +42,14 @@ namespace Twilio.Rest.Insights.V1
                 return new RegionEnum(value);
             }
             public static readonly RegionEnum Us1 = new RegionEnum("us1");
+            public static readonly RegionEnum Us2 = new RegionEnum("us2");
             public static readonly RegionEnum Au1 = new RegionEnum("au1");
             public static readonly RegionEnum Br1 = new RegionEnum("br1");
             public static readonly RegionEnum Ie1 = new RegionEnum("ie1");
             public static readonly RegionEnum Jp1 = new RegionEnum("jp1");
             public static readonly RegionEnum Sg1 = new RegionEnum("sg1");
             public static readonly RegionEnum De1 = new RegionEnum("de1");
+            public static readonly RegionEnum In1 = new RegionEnum("in1");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -87,6 +89,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly TagEnum HighLatency = new TagEnum("high_latency");
             public static readonly TagEnum LowMos = new TagEnum("low_mos");
             public static readonly TagEnum DetectedSilence = new TagEnum("detected_silence");
+            public static readonly TagEnum NoConcurrentParticipants = new TagEnum("no_concurrent_participants");
         }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ConferenceStatusEnum : StringEnum
@@ -152,8 +155,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Fetch Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
-        public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(FetchConferenceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(FetchConferenceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -166,7 +168,7 @@ namespace Twilio.Rest.Insights.V1
         /// <returns> A single instance of Conference </returns>
         public static ConferenceResource Fetch(
                                          string pathConferenceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchConferenceOptions(pathConferenceSid){  };
             return Fetch(options, client);
@@ -215,8 +217,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Read Conference parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(ReadConferenceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(ReadConferenceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -251,9 +252,9 @@ namespace Twilio.Rest.Insights.V1
                                                      string subaccount = null,
                                                      string detectedIssues = null,
                                                      string endReason = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadConferenceOptions(){ ConferenceSid = conferenceSid, FriendlyName = friendlyName, Status = status, CreatedAfter = createdAfter, CreatedBefore = createdBefore, MixerRegion = mixerRegion, Tags = tags, Subaccount = subaccount, DetectedIssues = detectedIssues, EndReason = endReason, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -286,9 +287,9 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string subaccount = null,
                                                                                              string detectedIssues = null,
                                                                                              string endReason = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadConferenceOptions(){ ConferenceSid = conferenceSid, FriendlyName = friendlyName, Status = status, CreatedAfter = createdAfter, CreatedBefore = createdBefore, MixerRegion = mixerRegion, Tags = tags, Subaccount = subaccount, DetectedIssues = detectedIssues, EndReason = endReason, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

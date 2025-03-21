@@ -57,6 +57,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -78,8 +79,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Create Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(CreateFlowOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(CreateFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Studio.V2
                                           FlowResource.StatusEnum status,
                                           object definition,
                                           string commitMessage = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
             return Create(options, client);
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Studio.V2
                                                                                   FlowResource.StatusEnum status,
                                                                                   object definition,
                                                                                   string commitMessage = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
             return await CreateAsync(options, client);
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlowOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -226,8 +226,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Fetch Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(FetchFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -240,7 +239,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFlowOptions(pathSid){  };
             return Fetch(options, client);
@@ -289,8 +288,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="options"> Read Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(ReadFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -305,9 +303,9 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static ResourceSet<FlowResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -320,9 +318,9 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FlowResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -390,6 +388,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -412,7 +411,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> Task that resolves to A single instance of Flow </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<FlowResource> UpdateAsync(UpdateFlowOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -434,7 +433,7 @@ namespace Twilio.Rest.Studio.V2
                                           string friendlyName = null,
                                           object definition = null,
                                           string commitMessage = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
             return Update(options, client);
@@ -455,7 +454,7 @@ namespace Twilio.Rest.Studio.V2
                                                                               string friendlyName = null,
                                                                               object definition = null,
                                                                               string commitMessage = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
             return await UpdateAsync(options, client);

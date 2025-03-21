@@ -159,7 +159,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return p;
         }
 
-        
+    
 
     }
 
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return p;
         }
 
-        
+    
 
     }
 
@@ -209,6 +209,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
         ///<summary> The string that identifies the Address resources to read. </summary> 
         public string FriendlyName { get; set; }
+
+        ///<summary> Whether the address can be associated to a number for emergency calling. </summary> 
+        public bool? EmergencyEnabled { get; set; }
 
         ///<summary> The ISO country code of the Address resources to read. </summary> 
         public string IsoCountry { get; set; }
@@ -230,6 +233,10 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
+            if (EmergencyEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
+            }
             if (IsoCountry != null)
             {
                 p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
@@ -241,7 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return p;
         }
 
-        
+    
 
     }
 
@@ -255,7 +262,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update. </summary> 
         public string PathAccountSid { get; set; }
 
-        ///<summary> A descriptive string that you create to describe the address. It can be up to 64 characters long. </summary> 
+        ///<summary> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </summary> 
         public string FriendlyName { get; set; }
 
         ///<summary> The name to associate with the address. </summary> 

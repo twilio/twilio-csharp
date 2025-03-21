@@ -67,8 +67,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(FetchEventTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of EventType </returns>
         public static EventTypeResource Fetch(
                                          string pathType, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEventTypeOptions(pathType){  };
             return Fetch(options, client);
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Read EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(ReadEventTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -148,9 +146,9 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of EventType </returns>
         public static ResourceSet<EventTypeResource> Read(
                                                      string schemaId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -165,9 +163,9 @@ namespace Twilio.Rest.Events.V1
         /// <returns> Task that resolves to A single instance of EventType </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(
                                                                                              string schemaId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -276,6 +274,14 @@ namespace Twilio.Rest.Events.V1
         ///<summary> A human readable description for this Event Type. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
+
+        ///<summary> A string that describes how this Event Type can be used. For example: `available`, `deprecated`, `restricted`, `discontinued`. When the status is `available`, the Event Type can be used normally. </summary> 
+        [JsonProperty("status")]
+        public string Status { get; private set; }
+
+        ///<summary> The URL to the documentation or to the most relevant Twilio Changelog entry of this Event Type. </summary> 
+        [JsonProperty("documentation_url")]
+        public string DocumentationUrl { get; private set; }
 
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]

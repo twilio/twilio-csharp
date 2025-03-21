@@ -94,7 +94,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return p;
         }
 
-        
+    
 
     }
 
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return p;
         }
 
-        
+    
 
     }
 
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return p;
         }
 
-        
+    
 
     }
 

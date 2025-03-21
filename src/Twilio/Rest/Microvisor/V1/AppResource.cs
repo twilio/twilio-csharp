@@ -72,7 +72,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAppOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -135,8 +135,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AppResource> FetchAsync(FetchAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -149,7 +148,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> A single instance of App </returns>
         public static AppResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAppOptions(pathSid){  };
             return Fetch(options, client);
@@ -198,8 +197,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read App parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(ReadAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -214,9 +212,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of App </returns>
         public static ResourceSet<AppResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAppOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -229,9 +227,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of App </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AppResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAppOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

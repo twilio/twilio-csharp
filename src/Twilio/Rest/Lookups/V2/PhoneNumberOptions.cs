@@ -30,7 +30,7 @@ namespace Twilio.Rest.Lookups.V2
         ///<summary> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </summary> 
         public string PathPhoneNumber { get; }
 
-        ///<summary> A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number. </summary> 
+        ///<summary> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill. </summary> 
         public string Fields { get; set; }
 
         ///<summary> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </summary> 
@@ -68,6 +68,12 @@ namespace Twilio.Rest.Lookups.V2
 
         ///<summary> The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests. </summary> 
         public string LastVerifiedDate { get; set; }
+
+        ///<summary> The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests. </summary> 
+        public string VerificationSid { get; set; }
+
+        ///<summary> The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis. </summary> 
+        public string PartnerSubId { get; set; }
 
 
 
@@ -136,10 +142,18 @@ namespace Twilio.Rest.Lookups.V2
             {
                 p.Add(new KeyValuePair<string, string>("LastVerifiedDate", LastVerifiedDate));
             }
+            if (VerificationSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationSid", VerificationSid));
+            }
+            if (PartnerSubId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PartnerSubId", PartnerSubId));
+            }
             return p;
         }
 
-        
+    
 
     }
 

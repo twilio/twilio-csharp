@@ -23,6 +23,37 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Content.V1
 {
+
+    /// <summary> Create a Content resource </summary>
+    public class CreateContentOptions : IOptions<ContentResource>
+    {
+        
+        
+        public ContentResource.ContentCreateRequest ContentCreateRequest { get; }
+
+
+        /// <summary> Construct a new CreateContentOptions </summary>
+        /// <param name="contentCreateRequest">  </param>
+        public CreateContentOptions(ContentResource.ContentCreateRequest contentCreateRequest)
+        {
+            ContentCreateRequest = contentCreateRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (ContentCreateRequest != null)
+            {
+                body = ContentResource.ToJson(ContentCreateRequest);
+            }
+            return body;
+        }
+        
+
+    }
     /// <summary> Deletes a Content resource </summary>
     public class DeleteContentOptions : IOptions<ContentResource>
     {
@@ -48,7 +79,7 @@ namespace Twilio.Rest.Content.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -78,7 +109,7 @@ namespace Twilio.Rest.Content.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -103,7 +134,7 @@ namespace Twilio.Rest.Content.V1
             return p;
         }
 
-        
+    
 
     }
 

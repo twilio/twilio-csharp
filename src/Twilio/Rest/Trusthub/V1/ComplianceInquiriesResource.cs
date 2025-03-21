@@ -44,6 +44,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create ComplianceInquiries parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
-        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(CreateComplianceInquiriesOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(CreateComplianceInquiriesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -76,26 +76,34 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
+        /// <param name="notificationEmail"> The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceInquiries </returns>
         public static ComplianceInquiriesResource Create(
                                           string primaryProfileSid,
-                                          ITwilioRestClient client = null)
+                                          string notificationEmail = null,
+                                          string themeSetId = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  };
+            var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
+        /// <param name="notificationEmail"> The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(
                                                                                   string primaryProfileSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  string notificationEmail = null,
+                                                                                  string themeSetId = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  };
+        var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId };
             return await CreateAsync(options, client);
         }
         #endif
@@ -112,6 +120,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -134,7 +143,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> UpdateAsync(UpdateComplianceInquiriesOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -145,14 +154,16 @@ namespace Twilio.Rest.Trusthub.V1
         /// <summary> Resume a specific Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
         /// <param name="pathCustomerId"> The unique CustomerId matching the Customer Profile/Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Inquiry creation call. </param>
         /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceInquiries </returns>
         public static ComplianceInquiriesResource Update(
                                           string pathCustomerId,
                                           string primaryProfileSid,
-                                          ITwilioRestClient client = null)
+                                          string themeSetId = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){  };
+            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
             return Update(options, client);
         }
 
@@ -160,14 +171,16 @@ namespace Twilio.Rest.Trusthub.V1
         /// <summary> Resume a specific Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
         /// <param name="pathCustomerId"> The unique CustomerId matching the Customer Profile/Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Inquiry creation call. </param>
         /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
+        /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> UpdateAsync(
                                                                               string pathCustomerId,
                                                                               string primaryProfileSid,
-                                                                              ITwilioRestClient client = null)
+                                                                              string themeSetId = null,
+                                                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){  };
+            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
             return await UpdateAsync(options, client);
         }
         #endif

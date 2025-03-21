@@ -58,7 +58,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
             return p;
         }
 
-        
+    
 
     }
 
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
             return p;
         }
 
-        
+    
 
     }
 

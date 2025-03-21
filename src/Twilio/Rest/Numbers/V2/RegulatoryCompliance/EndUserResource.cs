@@ -57,6 +57,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -78,8 +79,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Create EndUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
-        public static async System.Threading.Tasks.Task<EndUserResource> CreateAsync(CreateEndUserOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EndUserResource> CreateAsync(CreateEndUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           string friendlyName,
                                           EndUserResource.TypeEnum type,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateEndUserOptions(friendlyName, type){  Attributes = attributes };
             return Create(options, client);
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                   string friendlyName,
                                                                                   EndUserResource.TypeEnum type,
                                                                                   object attributes = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateEndUserOptions(friendlyName, type){  Attributes = attributes };
             return await CreateAsync(options, client);
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEndUserOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -222,8 +222,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch EndUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
-        public static async System.Threading.Tasks.Task<EndUserResource> FetchAsync(FetchEndUserOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EndUserResource> FetchAsync(FetchEndUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -236,7 +235,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> A single instance of EndUser </returns>
         public static EndUserResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEndUserOptions(pathSid){  };
             return Fetch(options, client);
@@ -285,8 +284,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read EndUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EndUserResource>> ReadAsync(ReadEndUserOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EndUserResource>> ReadAsync(ReadEndUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -301,9 +299,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EndUser </returns>
         public static ResourceSet<EndUserResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadEndUserOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EndUser </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EndUserResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadEndUserOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -386,6 +384,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -408,7 +407,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> Task that resolves to A single instance of EndUser </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<EndUserResource> UpdateAsync(UpdateEndUserOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -426,7 +425,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           string pathSid,
                                           string friendlyName = null,
                                           object attributes = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateEndUserOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return Update(options, client);
@@ -443,7 +442,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                               object attributes = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateEndUserOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return await UpdateAsync(options, client);

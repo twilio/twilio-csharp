@@ -44,6 +44,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create ExternalCampaign parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
-        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(CreateExternalCampaignOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -77,14 +77,16 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> create </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
         /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </param>
+        /// <param name="cnpMigration"> Customers should use this flag during the ERC registration process to indicate to Twilio that the campaign being registered is undergoing CNP migration. It is important for the user to first trigger the CNP migration process for said campaign in their CSP portal and have Twilio accept the sharing request, before making this api call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExternalCampaign </returns>
         public static ExternalCampaignResource Create(
                                           string campaignId,
                                           string messagingServiceSid,
-                                          ITwilioRestClient client = null)
+                                          bool? cnpMigration = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  };
+            var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  CnpMigration = cnpMigration };
             return Create(options, client);
         }
 
@@ -92,14 +94,16 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary> create </summary>
         /// <param name="campaignId"> ID of the preregistered campaign. </param>
         /// <param name="messagingServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </param>
+        /// <param name="cnpMigration"> Customers should use this flag during the ERC registration process to indicate to Twilio that the campaign being registered is undergoing CNP migration. It is important for the user to first trigger the CNP migration process for said campaign in their CSP portal and have Twilio accept the sharing request, before making this api call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExternalCampaign </returns>
         public static async System.Threading.Tasks.Task<ExternalCampaignResource> CreateAsync(
                                                                                   string campaignId,
                                                                                   string messagingServiceSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  bool? cnpMigration = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  };
+        var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  CnpMigration = cnpMigration };
             return await CreateAsync(options, client);
         }
         #endif

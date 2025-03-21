@@ -23,20 +23,23 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V1
 {
-    /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
+    /// <summary> Check if a single phone number can be ported to Twilio </summary>
     public class FetchPortingPortabilityOptions : IOptions<PortingPortabilityResource>
     {
     
-        ///<summary> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </summary> 
+        ///<summary> Phone number to check portability in e164 format. </summary> 
         public Types.PhoneNumber PathPhoneNumber { get; }
 
-        ///<summary> The SID of the account where the phone number(s) will be ported. </summary> 
+        ///<summary> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </summary> 
         public string TargetAccountSid { get; set; }
+
+        ///<summary> Address Sid of customer to which the number will be ported. </summary> 
+        public string AddressSid { get; set; }
 
 
 
         /// <summary> Construct a new FetchPortingPortabilityOptions </summary>
-        /// <param name="pathPhoneNumber"> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </param>
+        /// <param name="pathPhoneNumber"> Phone number to check portability in e164 format. </param>
         public FetchPortingPortabilityOptions(Types.PhoneNumber pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;
@@ -52,10 +55,14 @@ namespace Twilio.Rest.Numbers.V1
             {
                 p.Add(new KeyValuePair<string, string>("TargetAccountSid", TargetAccountSid));
             }
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid));
+            }
             return p;
         }
 
-        
+    
 
     }
 

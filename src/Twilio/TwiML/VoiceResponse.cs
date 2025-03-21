@@ -73,6 +73,7 @@ namespace Twilio.TwiML
         ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
         /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
         /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
+        /// <param name="events"> Subscription to events </param>
         public VoiceResponse Dial(string number = null,
                                   Uri action = null,
                                   Twilio.Http.HttpMethod method = null,
@@ -90,7 +91,8 @@ namespace Twilio.TwiML
                                   Dial.RecordingTrackEnum recordingTrack = null,
                                   bool? sequential = null,
                                   Uri referUrl = null,
-                                  Twilio.Http.HttpMethod referMethod = null)
+                                  Twilio.Http.HttpMethod referMethod = null,
+                                  Dial.EventsEnum events = null)
         {
             var newChild = new Dial(
                 number,
@@ -110,7 +112,8 @@ namespace Twilio.TwiML
                 recordingTrack,
                 sequential,
                 referUrl,
-                referMethod
+                referMethod,
+                events
             );
             this.Append(newChild);
             return this;
@@ -220,7 +223,7 @@ namespace Twilio.TwiML
                                     bool? bargeIn = null,
                                     bool? debug = null,
                                     bool? actionOnEmptyResult = null,
-                                    Gather.SpeechModelEnum speechModel = null,
+                                    string speechModel = null,
                                     bool? enhanced = null)
         {
             var newChild = new Gather(

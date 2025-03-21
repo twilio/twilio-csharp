@@ -67,8 +67,7 @@ namespace Twilio.Rest.Events.V1
         /// <param name="options"> Fetch Schema parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Schema </returns>
-        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(FetchSchemaOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SchemaResource> FetchAsync(FetchSchemaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Events.V1
         /// <returns> A single instance of Schema </returns>
         public static SchemaResource Fetch(
                                          string pathId, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSchemaOptions(pathId){  };
             return Fetch(options, client);

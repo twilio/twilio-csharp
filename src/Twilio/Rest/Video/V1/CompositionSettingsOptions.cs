@@ -37,7 +37,7 @@ namespace Twilio.Rest.Video.V1
         ///<summary> The SID of the Public Key resource to use for encryption. </summary> 
         public string EncryptionKeySid { get; set; }
 
-        ///<summary> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </summary> 
+        ///<summary> The URL of the AWS S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </summary> 
         public Uri AwsS3Url { get; set; }
 
         ///<summary> Whether all compositions should be written to the `aws_s3_url`. When `false`, all compositions are stored in our cloud. </summary> 
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Video.V1
             return p;
         }
 
-        
+    
 
     }
 

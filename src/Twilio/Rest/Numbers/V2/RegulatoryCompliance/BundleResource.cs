@@ -97,6 +97,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -118,8 +119,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Create Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<BundleResource> CreateAsync(CreateBundleOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleResource> CreateAsync(CreateBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -134,7 +134,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="regulationSid"> The unique string of a regulation that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
         /// <param name="endUserType">  </param>
-        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`. </param>
+        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
+        /// <param name="isTest"> Indicates that Bundle is a Test Bundle and will be Auto-Rejected </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Bundle </returns>
         public static BundleResource Create(
@@ -145,9 +146,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           string isoCountry = null,
                                           BundleResource.EndUserTypeEnum endUserType = null,
                                           string numberType = null,
-                                          ITwilioRestClient client = null)
+                                          bool? isTest = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType };
+            var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
             return Create(options, client);
         }
 
@@ -159,7 +161,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="regulationSid"> The unique string of a regulation that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
         /// <param name="endUserType">  </param>
-        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll free`. </param>
+        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
+        /// <param name="isTest"> Indicates that Bundle is a Test Bundle and will be Auto-Rejected </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         public static async System.Threading.Tasks.Task<BundleResource> CreateAsync(
@@ -170,9 +173,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                   string isoCountry = null,
                                                                                   BundleResource.EndUserTypeEnum endUserType = null,
                                                                                   string numberType = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  bool? isTest = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType };
+        var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
             return await CreateAsync(options, client);
         }
         #endif
@@ -215,7 +219,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBundleOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -278,8 +282,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<BundleResource> FetchAsync(FetchBundleOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BundleResource> FetchAsync(FetchBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -292,7 +295,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> A single instance of Bundle </returns>
         public static BundleResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBundleOptions(pathSid){  };
             return Fetch(options, client);
@@ -341,8 +344,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read Bundle parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Bundle </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BundleResource>> ReadAsync(ReadBundleOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BundleResource>> ReadAsync(ReadBundleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -356,7 +358,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="friendlyName"> The string that you assigned to describe the resource. The column can contain 255 variable characters. </param>
         /// <param name="regulationSid"> The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
-        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`. </param>
+        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
@@ -379,9 +381,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      DateTime? validUntilDateBefore = null,
                                                      DateTime? validUntilDate = null,
                                                      DateTime? validUntilDateAfter = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -393,7 +395,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="friendlyName"> The string that you assigned to describe the resource. The column can contain 255 variable characters. </param>
         /// <param name="regulationSid"> The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
-        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `tollfree`. </param>
+        /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
@@ -416,9 +418,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              DateTime? validUntilDateBefore = null,
                                                                                              DateTime? validUntilDate = null,
                                                                                              DateTime? validUntilDateAfter = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -486,6 +488,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -508,7 +511,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<BundleResource> UpdateAsync(UpdateBundleOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -530,7 +533,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                           Uri statusCallback = null,
                                           string friendlyName = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return Update(options, client);
@@ -551,7 +554,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);

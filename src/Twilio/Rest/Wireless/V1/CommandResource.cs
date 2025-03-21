@@ -99,6 +99,7 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Post,
                 Rest.Domain.Wireless,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -120,8 +121,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="options"> Create Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Wireless.V1
                                           CommandResource.CommandModeEnum commandMode = null,
                                           string includeSid = null,
                                           bool? deliveryReceiptRequested = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCommandOptions(command){  Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested };
             return Create(options, client);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Wireless.V1
                                                                                   CommandResource.CommandModeEnum commandMode = null,
                                                                                   string includeSid = null,
                                                                                   bool? deliveryReceiptRequested = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCommandOptions(command){  Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested };
             return await CreateAsync(options, client);
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCommandOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -280,8 +280,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="options"> Fetch Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -294,7 +293,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <returns> A single instance of Command </returns>
         public static CommandResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCommandOptions(pathSid){  };
             return Fetch(options, client);
@@ -343,8 +342,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="options"> Read Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -367,9 +365,9 @@ namespace Twilio.Rest.Wireless.V1
                                                      CommandResource.StatusEnum status = null,
                                                      CommandResource.DirectionEnum direction = null,
                                                      CommandResource.TransportEnum transport = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions(){ Sim = sim, Status = status, Direction = direction, Transport = transport, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -390,9 +388,9 @@ namespace Twilio.Rest.Wireless.V1
                                                                                              CommandResource.StatusEnum status = null,
                                                                                              CommandResource.DirectionEnum direction = null,
                                                                                              CommandResource.TransportEnum transport = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions(){ Sim = sim, Status = status, Direction = direction, Transport = transport, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

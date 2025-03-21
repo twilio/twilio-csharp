@@ -67,8 +67,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch LinkshorteningMessagingServiceDomainAssociation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingServiceDomainAssociation </returns>
-        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(FetchLinkshorteningMessagingServiceDomainAssociationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceDomainAssociationResource> FetchAsync(FetchLinkshorteningMessagingServiceDomainAssociationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of LinkshorteningMessagingServiceDomainAssociation </returns>
         public static LinkshorteningMessagingServiceDomainAssociationResource Fetch(
                                          string pathMessagingServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchLinkshorteningMessagingServiceDomainAssociationOptions(pathMessagingServiceSid){  };
             return Fetch(options, client);

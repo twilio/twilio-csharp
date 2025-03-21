@@ -91,7 +91,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
         public string BusinessContactEmail { get; set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        ///<summary> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
         ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Messaging.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -261,13 +261,13 @@ namespace Twilio.Rest.Messaging.V1
     public class FetchTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
     
-        ///<summary> The unique string to identify Tollfree Verification. </summary> 
+        ///<summary> A unique string identifying a Tollfree Verification. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchTollfreeVerificationOptions </summary>
-        /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
+        /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         public FetchTollfreeVerificationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Messaging.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -296,6 +296,12 @@ namespace Twilio.Rest.Messaging.V1
 
         ///<summary> The compliance status of the Tollfree Verification record. </summary> 
         public TollfreeVerificationResource.StatusEnum Status { get; set; }
+
+        ///<summary> Customer supplied reference id for the Tollfree Verification record. </summary> 
+        public string ExternalReferenceId { get; set; }
+
+        ///<summary> Whether to include Tollfree Verifications from sub accounts in list response. </summary> 
+        public bool? IncludeSubAccounts { get; set; }
 
 
 
@@ -314,6 +320,14 @@ namespace Twilio.Rest.Messaging.V1
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
+            if (ExternalReferenceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ExternalReferenceId", ExternalReferenceId));
+            }
+            if (IncludeSubAccounts != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeSubAccounts", IncludeSubAccounts.Value.ToString().ToLower()));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -321,7 +335,7 @@ namespace Twilio.Rest.Messaging.V1
             return p;
         }
 
-        
+    
 
     }
 
@@ -389,7 +403,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address of the contact for the business or organization using the Tollfree number. </summary> 
         public string BusinessContactEmail { get; set; }
 
-        ///<summary> The phone number of the contact for the business or organization using the Tollfree number. </summary> 
+        ///<summary> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </summary> 
         public Types.PhoneNumber BusinessContactPhone { get; set; }
 
         ///<summary> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </summary> 

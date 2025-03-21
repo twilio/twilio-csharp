@@ -46,6 +46,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Create DeviceSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
-        public static async System.Threading.Tasks.Task<DeviceSecretResource> CreateAsync(CreateDeviceSecretOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceSecretResource> CreateAsync(CreateDeviceSecretOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                           string pathDeviceSid,
                                           string key,
                                           string value,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateDeviceSecretOptions(pathDeviceSid, key, value){  };
             return Create(options, client);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                                                                   string pathDeviceSid,
                                                                                   string key,
                                                                                   string value,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateDeviceSecretOptions(pathDeviceSid, key, value){  };
             return await CreateAsync(options, client);
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeviceSecretOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -217,8 +217,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Fetch DeviceSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
-        public static async System.Threading.Tasks.Task<DeviceSecretResource> FetchAsync(FetchDeviceSecretOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceSecretResource> FetchAsync(FetchDeviceSecretOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -233,7 +232,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         public static DeviceSecretResource Fetch(
                                          string pathDeviceSid, 
                                          string pathKey, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDeviceSecretOptions(pathDeviceSid, pathKey){  };
             return Fetch(options, client);
@@ -285,8 +284,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <param name="options"> Read DeviceSecret parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceSecretResource>> ReadAsync(ReadDeviceSecretOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceSecretResource>> ReadAsync(ReadDeviceSecretOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -303,9 +301,9 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> A single instance of DeviceSecret </returns>
         public static ResourceSet<DeviceSecretResource> Read(
                                                      string pathDeviceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDeviceSecretOptions(pathDeviceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -320,9 +318,9 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DeviceSecretResource>> ReadAsync(
                                                                                              string pathDeviceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDeviceSecretOptions(pathDeviceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -392,6 +390,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -414,7 +413,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
         /// <returns> Task that resolves to A single instance of DeviceSecret </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<DeviceSecretResource> UpdateAsync(UpdateDeviceSecretOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -432,7 +431,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                           string pathDeviceSid,
                                           string pathKey,
                                           string value,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceSecretOptions(pathDeviceSid, pathKey, value){  };
             return Update(options, client);
@@ -449,7 +448,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
                                                                               string pathDeviceSid,
                                                                               string pathKey,
                                                                               string value,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceSecretOptions(pathDeviceSid, pathKey, value){  };
             return await UpdateAsync(options, client);

@@ -44,6 +44,7 @@ namespace Twilio.Rest.Microvisor.V1
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Create AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(CreateAccountConfigOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(CreateAccountConfigOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static AccountConfigResource Create(
                                           string key,
                                           string value,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAccountConfigOptions(key, value){  };
             return Create(options, client);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<AccountConfigResource> CreateAsync(
                                                                                   string key,
                                                                                   string value,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAccountConfigOptions(key, value){  };
             return await CreateAsync(options, client);
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAccountConfigOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -205,8 +205,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Fetch AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(FetchAccountConfigOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountConfigResource> FetchAsync(FetchAccountConfigOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -219,7 +218,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> A single instance of AccountConfig </returns>
         public static AccountConfigResource Fetch(
                                          string pathKey, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAccountConfigOptions(pathKey){  };
             return Fetch(options, client);
@@ -268,8 +267,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="options"> Read AccountConfig parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(ReadAccountConfigOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(ReadAccountConfigOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -284,9 +282,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccountConfig </returns>
         public static ResourceSet<AccountConfigResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAccountConfigOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -299,9 +297,9 @@ namespace Twilio.Rest.Microvisor.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AccountConfigResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAccountConfigOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -369,6 +367,7 @@ namespace Twilio.Rest.Microvisor.V1
                 HttpMethod.Post,
                 Rest.Domain.Microvisor,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -391,7 +390,7 @@ namespace Twilio.Rest.Microvisor.V1
         /// <returns> Task that resolves to A single instance of AccountConfig </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(UpdateAccountConfigOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -407,7 +406,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static AccountConfigResource Update(
                                           string pathKey,
                                           string value,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAccountConfigOptions(pathKey, value){  };
             return Update(options, client);
@@ -422,7 +421,7 @@ namespace Twilio.Rest.Microvisor.V1
         public static async System.Threading.Tasks.Task<AccountConfigResource> UpdateAsync(
                                                                               string pathKey,
                                                                               string value,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAccountConfigOptions(pathKey, value){  };
             return await UpdateAsync(options, client);

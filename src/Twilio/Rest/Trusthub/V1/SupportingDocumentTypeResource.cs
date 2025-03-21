@@ -67,8 +67,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch SupportingDocumentType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocumentType </returns>
-        public static async System.Threading.Tasks.Task<SupportingDocumentTypeResource> FetchAsync(FetchSupportingDocumentTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SupportingDocumentTypeResource> FetchAsync(FetchSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> A single instance of SupportingDocumentType </returns>
         public static SupportingDocumentTypeResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchSupportingDocumentTypeOptions(pathSid){  };
             return Fetch(options, client);
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read SupportingDocumentType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocumentType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentTypeResource>> ReadAsync(ReadSupportingDocumentTypeOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentTypeResource>> ReadAsync(ReadSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -146,9 +144,9 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SupportingDocumentType </returns>
         public static ResourceSet<SupportingDocumentTypeResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentTypeOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -161,9 +159,9 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SupportingDocumentType </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SupportingDocumentTypeResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSupportingDocumentTypeOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

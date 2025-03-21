@@ -61,6 +61,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <returns> Task that resolves to A single instance of Anonymize </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AnonymizeResource> UpdateAsync(UpdateAnonymizeOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -99,7 +100,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static AnonymizeResource Update(
                                           string pathRoomSid,
                                           string pathSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAnonymizeOptions(pathRoomSid, pathSid){  };
             return Update(options, client);
@@ -114,7 +115,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public static async System.Threading.Tasks.Task<AnonymizeResource> UpdateAsync(
                                                                               string pathRoomSid,
                                                                               string pathSid,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAnonymizeOptions(pathRoomSid, pathSid){  };
             return await UpdateAsync(options, client);

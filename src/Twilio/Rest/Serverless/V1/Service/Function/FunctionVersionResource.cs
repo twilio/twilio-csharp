@@ -85,8 +85,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +102,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
                                          string pathServiceSid, 
                                          string pathFunctionSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid){  };
             return Fetch(options, client);
@@ -158,8 +157,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -178,9 +176,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         public static ResourceSet<FunctionVersionResource> Read(
                                                      string pathServiceSid,
                                                      string pathFunctionSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -197,9 +195,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(
                                                                                              string pathServiceSid,
                                                                                              string pathFunctionSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

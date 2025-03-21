@@ -23,6 +23,78 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Messaging.V1.Service
 {
+
+    /// <summary> create </summary>
+    public class CreateChannelSenderOptions : IOptions<ChannelSenderResource>
+    {
+        
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </summary> 
+        public string PathMessagingServiceSid { get; }
+
+        ///<summary> The SID of the Channel Sender being added to the Service. </summary> 
+        public string Sid { get; }
+
+
+        /// <summary> Construct a new CreateChannelSenderOptions </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under. </param>
+        /// <param name="sid"> The SID of the Channel Sender being added to the Service. </param>
+        public CreateChannelSenderOptions(string pathMessagingServiceSid, string sid)
+        {
+            PathMessagingServiceSid = pathMessagingServiceSid;
+            Sid = sid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (Sid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Sid", Sid));
+            }
+            return p;
+        }
+
+        
+
+    }
+    /// <summary> delete </summary>
+    public class DeleteChannelSenderOptions : IOptions<ChannelSenderResource>
+    {
+        
+        ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </summary> 
+        public string PathMessagingServiceSid { get; }
+
+        ///<summary> The SID of the Channel Sender resource to delete. </summary> 
+        public string PathSid { get; }
+
+
+
+        /// <summary> Construct a new DeleteChannelSenderOptions </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete the resource from. </param>
+        /// <param name="pathSid"> The SID of the Channel Sender resource to delete. </param>
+        public DeleteChannelSenderOptions(string pathMessagingServiceSid, string pathSid)
+        {
+            PathMessagingServiceSid = pathMessagingServiceSid;
+            PathSid = pathSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+    
+
+    }
+
+
     /// <summary> fetch </summary>
     public class FetchChannelSenderOptions : IOptions<ChannelSenderResource>
     {
@@ -53,7 +125,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             return p;
         }
 
-        
+    
 
     }
 
@@ -87,7 +159,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             return p;
         }
 
-        
+    
 
     }
 

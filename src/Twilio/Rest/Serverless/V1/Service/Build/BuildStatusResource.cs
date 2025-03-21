@@ -83,8 +83,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         /// <param name="options"> Fetch BuildStatus parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BuildStatus </returns>
-        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(FetchBuildStatusOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BuildStatusResource> FetchAsync(FetchBuildStatusOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -99,7 +98,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Build
         public static BuildStatusResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBuildStatusOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);

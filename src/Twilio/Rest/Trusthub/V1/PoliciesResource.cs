@@ -67,8 +67,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch Policies parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
-        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(FetchPoliciesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PoliciesResource> FetchAsync(FetchPoliciesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> A single instance of Policies </returns>
         public static PoliciesResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchPoliciesOptions(pathSid){  };
             return Fetch(options, client);
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read Policies parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(ReadPoliciesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(ReadPoliciesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -146,9 +144,9 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Policies </returns>
         public static ResourceSet<PoliciesResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadPoliciesOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -161,9 +159,9 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Policies </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<PoliciesResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadPoliciesOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

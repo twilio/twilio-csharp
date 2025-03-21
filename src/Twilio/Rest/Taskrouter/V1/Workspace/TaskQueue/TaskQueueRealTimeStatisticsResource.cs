@@ -69,8 +69,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="options"> Fetch TaskQueueRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueRealTimeStatistics </returns>
-        public static async System.Threading.Tasks.Task<TaskQueueRealTimeStatisticsResource> FetchAsync(FetchTaskQueueRealTimeStatisticsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueRealTimeStatisticsResource> FetchAsync(FetchTaskQueueRealTimeStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -87,7 +86,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                                          string pathWorkspaceSid, 
                                          string pathTaskQueueSid, 
                                          string taskChannel = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueRealTimeStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){ TaskChannel = taskChannel };
             return Fetch(options, client);
@@ -177,7 +176,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
 
-        ///<summary> The total number of Workers available for Tasks in the TaskQueue. </summary> 
+        ///<summary> The total number of Workers in the TaskQueue with an `available` status. Workers with an `available` status may already have active interactions or may have none. </summary> 
         [JsonProperty("total_available_workers")]
         public int? TotalAvailableWorkers { get; private set; }
 

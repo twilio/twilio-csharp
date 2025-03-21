@@ -118,6 +118,69 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Transcription/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> Friendly name given to the Transcription </param>
+        /// <param name="track"> Track to be analyze by the provider </param>
+        /// <param name="statusCallbackUrl"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        /// <param name="inboundTrackLabel"> Friendly name given to the Inbound Track </param>
+        /// <param name="outboundTrackLabel"> Friendly name given to the Outbound Track Label </param>
+        /// <param name="partialResults"> Indicates if partial results are going to be send to the customer </param>
+        /// <param name="languageCode"> Language Code used by the transcription engine </param>
+        /// <param name="transcriptionEngine"> Transcription Engine to be used </param>
+        /// <param name="profanityFilter"> Enable Profanity Filter </param>
+        /// <param name="speechModel"> Speech Model used by the transcription engine </param>
+        /// <param name="hints"> Hints to be provided to the transcription engine </param>
+        /// <param name="enableAutomaticPunctuation"> Enable Automatic Punctuation </param>
+        /// <param name="intelligenceService"> The SID or the unique name of the Intelligence Service to be used </param>
+        public Start Transcription(string name = null,
+                                   Transcription.TrackEnum track = null,
+                                   string statusCallbackUrl = null,
+                                   Transcription.StatusCallbackMethodEnum statusCallbackMethod = null,
+                                   string inboundTrackLabel = null,
+                                   string outboundTrackLabel = null,
+                                   bool? partialResults = null,
+                                   string languageCode = null,
+                                   string transcriptionEngine = null,
+                                   bool? profanityFilter = null,
+                                   string speechModel = null,
+                                   string hints = null,
+                                   bool? enableAutomaticPunctuation = null,
+                                   string intelligenceService = null)
+        {
+            var newChild = new Transcription(
+                name,
+                track,
+                statusCallbackUrl,
+                statusCallbackMethod,
+                inboundTrackLabel,
+                outboundTrackLabel,
+                partialResults,
+                languageCode,
+                transcriptionEngine,
+                profanityFilter,
+                speechModel,
+                hints,
+                enableAutomaticPunctuation,
+                intelligenceService
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Transcription/> element as a child of this element
+        /// </summary>
+        /// <param name="transcription"> A Transcription instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Start Transcription(Transcription transcription)
+        {
+            this.Append(transcription);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

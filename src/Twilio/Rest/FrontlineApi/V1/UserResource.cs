@@ -80,8 +80,7 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -94,7 +93,7 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// <returns> A single instance of User </returns>
         public static UserResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathSid){  };
             return Fetch(options, client);
@@ -124,6 +123,7 @@ namespace Twilio.Rest.FrontlineApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FrontlineApi,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -146,7 +146,7 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// <returns> Task that resolves to A single instance of User </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -168,7 +168,7 @@ namespace Twilio.Rest.FrontlineApi.V1
                                           string avatar = null,
                                           UserResource.StateTypeEnum state = null,
                                           bool? isAvailable = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathSid){ FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable };
             return Update(options, client);
@@ -189,7 +189,7 @@ namespace Twilio.Rest.FrontlineApi.V1
                                                                               string avatar = null,
                                                                               UserResource.StateTypeEnum state = null,
                                                                               bool? isAvailable = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathSid){ FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable };
             return await UpdateAsync(options, client);

@@ -69,8 +69,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="options"> Fetch EngagementContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EngagementContext </returns>
-        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +84,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         public static EngagementContextResource Fetch(
                                          string pathFlowSid, 
                                          string pathEngagementSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid){  };
             return Fetch(options, client);

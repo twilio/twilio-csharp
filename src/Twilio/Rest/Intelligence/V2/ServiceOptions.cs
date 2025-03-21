@@ -40,7 +40,7 @@ namespace Twilio.Rest.Intelligence.V2
         ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The default language code of the audio. </summary> 
+        ///<summary> The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set. </summary> 
         public string LanguageCode { get; set; }
 
         ///<summary> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </summary> 
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Intelligence.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Intelligence.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Intelligence.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -213,9 +213,6 @@ namespace Twilio.Rest.Intelligence.V2
 
         ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
         public string FriendlyName { get; set; }
-
-        ///<summary> The default language code of the audio. </summary> 
-        public string LanguageCode { get; set; }
 
         ///<summary> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </summary> 
         public string UniqueName { get; set; }
@@ -258,10 +255,6 @@ namespace Twilio.Rest.Intelligence.V2
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-            if (LanguageCode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LanguageCode", LanguageCode));
             }
             if (UniqueName != null)
             {

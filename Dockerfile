@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+# Below dependecies are added from Dependencies menetion at
+# https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-1604
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         apt-transport-https \
@@ -27,7 +29,6 @@ RUN apt-get update \
     && dpkg -i packages-microsoft-prod.deb  \
     && apt-get update \
     && apt-get install -y \
-        dotnet-sdk-3.1 \
         dotnet-sdk-6.0 \
         mono-complete \
     && rm -rf /var/lib/apt/lists/*

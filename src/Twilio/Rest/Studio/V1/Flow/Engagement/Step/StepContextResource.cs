@@ -71,8 +71,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <param name="options"> Fetch StepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StepContext </returns>
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +88,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
                                          string pathFlowSid, 
                                          string pathEngagementSid, 
                                          string pathStepSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid){  };
             return Fetch(options, client);

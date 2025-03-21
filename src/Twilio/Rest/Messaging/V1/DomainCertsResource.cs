@@ -72,7 +72,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainCertsOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -135,8 +135,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch DomainCerts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
-        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(FetchDomainCertsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainCertsResource> FetchAsync(FetchDomainCertsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -149,7 +148,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of DomainCerts </returns>
         public static DomainCertsResource Fetch(
                                          string pathDomainSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchDomainCertsOptions(pathDomainSid){  };
             return Fetch(options, client);
@@ -179,6 +178,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of DomainCerts </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<DomainCertsResource> UpdateAsync(UpdateDomainCertsOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Messaging.V1
         public static DomainCertsResource Update(
                                           string pathDomainSid,
                                           string tlsCert,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
             return Update(options, client);
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<DomainCertsResource> UpdateAsync(
                                                                               string pathDomainSid,
                                                                               string tlsCert,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
             return await UpdateAsync(options, client);

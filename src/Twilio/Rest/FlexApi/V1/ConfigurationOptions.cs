@@ -46,6 +46,33 @@ namespace Twilio.Rest.FlexApi.V1
             return p;
         }
 
+    
+
+    }
+
+
+    /// <summary> update </summary>
+    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
+    {
+    
+        
+        public object Body { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (Body != null)
+            {
+                body = ConfigurationResource.ToJson(Body);
+            }
+            return body;
+        }
         
 
     }

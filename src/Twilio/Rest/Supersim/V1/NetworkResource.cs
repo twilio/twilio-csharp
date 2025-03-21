@@ -67,8 +67,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch Network parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
-        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(FetchNetworkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NetworkResource> FetchAsync(FetchNetworkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of Network </returns>
         public static NetworkResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchNetworkOptions(pathSid){  };
             return Fetch(options, client);
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read Network parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Network </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<NetworkResource>> ReadAsync(ReadNetworkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<NetworkResource>> ReadAsync(ReadNetworkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -152,9 +150,9 @@ namespace Twilio.Rest.Supersim.V1
                                                      string isoCountry = null,
                                                      string mcc = null,
                                                      string mnc = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadNetworkOptions(){ IsoCountry = isoCountry, Mcc = mcc, Mnc = mnc, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -173,9 +171,9 @@ namespace Twilio.Rest.Supersim.V1
                                                                                              string isoCountry = null,
                                                                                              string mcc = null,
                                                                                              string mnc = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadNetworkOptions(){ IsoCountry = isoCountry, Mcc = mcc, Mnc = mnc, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

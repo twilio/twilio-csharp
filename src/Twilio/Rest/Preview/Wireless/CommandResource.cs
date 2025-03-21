@@ -44,6 +44,7 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="options"> Create Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Preview.Wireless
                                           Uri callbackUrl = null,
                                           string commandMode = null,
                                           string includeSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCommandOptions(command){  Device = device, Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid };
             return Create(options, client);
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                   Uri callbackUrl = null,
                                                                                   string commandMode = null,
                                                                                   string includeSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCommandOptions(command){  Device = device, Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid };
             return await CreateAsync(options, client);
@@ -157,8 +157,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="options"> Fetch Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -171,7 +170,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <returns> A single instance of Command </returns>
         public static CommandResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCommandOptions(pathSid){  };
             return Fetch(options, client);
@@ -220,8 +219,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="options"> Read Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -244,9 +242,9 @@ namespace Twilio.Rest.Preview.Wireless
                                                      string sim = null,
                                                      string status = null,
                                                      string direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions(){ Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -267,9 +265,9 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                              string sim = null,
                                                                                              string status = null,
                                                                                              string direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions(){ Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

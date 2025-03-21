@@ -86,6 +86,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -107,8 +108,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
-        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -133,6 +133,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="enableSnaClientToken"> An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification. </param>
         /// <param name="riskCheck">  </param>
         /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -154,11 +155,12 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string templateSid = null,
                                           string templateCustomSubstitutions = null,
                                           string deviceIp = null,
+                                          bool? enableSnaClientToken = null,
                                           VerificationResource.RiskCheckEnum riskCheck = null,
                                           string tags = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, EnableSnaClientToken = enableSnaClientToken, RiskCheck = riskCheck, Tags = tags };
             return Create(options, client);
         }
 
@@ -180,6 +182,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="templateSid"> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </param>
         /// <param name="templateCustomSubstitutions"> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </param>
         /// <param name="deviceIp"> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </param>
+        /// <param name="enableSnaClientToken"> An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification. </param>
         /// <param name="riskCheck">  </param>
         /// <param name="tags"> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,11 +204,12 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   string templateSid = null,
                                                                                   string templateCustomSubstitutions = null,
                                                                                   string deviceIp = null,
+                                                                                  bool? enableSnaClientToken = null,
                                                                                   VerificationResource.RiskCheckEnum riskCheck = null,
                                                                                   string tags = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, RiskCheck = riskCheck, Tags = tags };
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, EnableSnaClientToken = enableSnaClientToken, RiskCheck = riskCheck, Tags = tags };
             return await CreateAsync(options, client);
         }
         #endif
@@ -245,8 +249,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
-        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -261,7 +264,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static VerificationResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchVerificationOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -294,6 +297,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -316,7 +320,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of Verification </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(UpdateVerificationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -334,7 +338,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           string pathServiceSid,
                                           string pathSid,
                                           VerificationResource.StatusEnum status,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
             return Update(options, client);
@@ -351,7 +355,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               VerificationResource.StatusEnum status,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
             return await UpdateAsync(options, client);
@@ -412,7 +416,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("channel")]
         public VerificationResource.ChannelEnum Channel { get; private set; }
 
-        ///<summary> The status of the verification. One of: `pending`, `approved`, or `canceled` </summary> 
+        ///<summary> The status of the verification. Can be: `pending`, `approved`, `canceled`, `max_attempts_reached`, `deleted`, `failed` or `expired`. </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
 

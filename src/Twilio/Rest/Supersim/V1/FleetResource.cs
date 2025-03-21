@@ -56,6 +56,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -77,8 +78,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Create Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Supersim.V1
                                           bool? smsCommandsEnabled = null,
                                           Uri smsCommandsUrl = null,
                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateFleetOptions(networkAccessProfile){  UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
             return Create(options, client);
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                   bool? smsCommandsEnabled = null,
                                                                                   Uri smsCommandsUrl = null,
                                                                                   Twilio.Http.HttpMethod smsCommandsMethod = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateFleetOptions(networkAccessProfile){  UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
             return await CreateAsync(options, client);
@@ -177,8 +177,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Fetch Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -191,7 +190,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of Fleet </returns>
         public static FleetResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFleetOptions(pathSid){  };
             return Fetch(options, client);
@@ -240,8 +239,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="options"> Read Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -258,9 +256,9 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> A single instance of Fleet </returns>
         public static ResourceSet<FleetResource> Read(
                                                      string networkAccessProfile = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFleetOptions(){ NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -275,9 +273,9 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(
                                                                                              string networkAccessProfile = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFleetOptions(){ NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -345,6 +343,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -367,7 +366,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(UpdateFleetOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -395,7 +394,7 @@ namespace Twilio.Rest.Supersim.V1
                                           Uri smsCommandsUrl = null,
                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
                                           int? dataLimit = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateFleetOptions(pathSid){ UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit };
             return Update(options, client);
@@ -422,7 +421,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                               Uri smsCommandsUrl = null,
                                                                               Twilio.Http.HttpMethod smsCommandsMethod = null,
                                                                               int? dataLimit = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateFleetOptions(pathSid){ UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit };
             return await UpdateAsync(options, client);

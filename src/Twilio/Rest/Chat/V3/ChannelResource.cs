@@ -73,6 +73,7 @@ namespace Twilio.Rest.Chat.V3
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -95,7 +96,7 @@ namespace Twilio.Rest.Chat.V3
         /// <returns> Task that resolves to A single instance of Channel </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(UpdateChannelOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Chat.V3
                                           ChannelResource.ChannelTypeEnum type = null,
                                           string messagingServiceSid = null,
                                           ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateChannelOptions(pathServiceSid, pathSid){ Type = type, MessagingServiceSid = messagingServiceSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Update(options, client);
@@ -138,7 +139,7 @@ namespace Twilio.Rest.Chat.V3
                                                                               ChannelResource.ChannelTypeEnum type = null,
                                                                               string messagingServiceSid = null,
                                                                               ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateChannelOptions(pathServiceSid, pathSid){ Type = type, MessagingServiceSid = messagingServiceSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);

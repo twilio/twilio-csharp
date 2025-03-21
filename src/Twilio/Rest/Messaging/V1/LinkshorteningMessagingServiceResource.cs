@@ -48,6 +48,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -69,8 +70,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create LinkshorteningMessagingService parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingService </returns>
-        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(CreateLinkshorteningMessagingServiceOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(CreateLinkshorteningMessagingServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Messaging.V1
         public static LinkshorteningMessagingServiceResource Create(
                                           string pathDomainSid,
                                           string pathMessagingServiceSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateLinkshorteningMessagingServiceOptions(pathDomainSid, pathMessagingServiceSid){  };
             return Create(options, client);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Messaging.V1
         public static async System.Threading.Tasks.Task<LinkshorteningMessagingServiceResource> CreateAsync(
                                                                                   string pathDomainSid,
                                                                                   string pathMessagingServiceSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateLinkshorteningMessagingServiceOptions(pathDomainSid, pathMessagingServiceSid){  };
             return await CreateAsync(options, client);
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LinkshorteningMessagingService </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteLinkshorteningMessagingServiceOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));

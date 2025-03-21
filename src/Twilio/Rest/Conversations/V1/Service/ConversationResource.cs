@@ -72,6 +72,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -93,8 +94,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(CreateConversationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(CreateConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                           string bindingsEmailAddress = null,
                                           string bindingsEmailName = null,
                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateConversationOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, MessagingServiceSid = messagingServiceSid, DateCreated = dateCreated, DateUpdated = dateUpdated, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Create(options, client);
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                   string bindingsEmailAddress = null,
                                                                                   string bindingsEmailName = null,
                                                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateConversationOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, MessagingServiceSid = messagingServiceSid, DateCreated = dateCreated, DateUpdated = dateUpdated, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await CreateAsync(options, client);
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConversationOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -285,8 +285,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(FetchConversationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConversationResource> FetchAsync(FetchConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -301,7 +300,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         public static ConversationResource Fetch(
                                          string pathChatServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchConversationOptions(pathChatServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -353,8 +352,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ConversationResource>> ReadAsync(ReadConversationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConversationResource>> ReadAsync(ReadConversationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -365,8 +363,8 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
         /// <summary> Retrieve a list of conversations in your service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
-        /// <param name="startDate"> Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters. </param>
-        /// <param name="endDate"> End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters. </param>
+        /// <param name="startDate"> Specifies the beginning of the date range for filtering Conversations based on their creation date. Conversations that were created on or after this date will be included in the results. The date must be in ISO8601 format, specifically starting at the beginning of the specified date (YYYY-MM-DDT00:00:00Z), for precise filtering. This parameter can be combined with other filters. If this filter is used, the returned list is sorted by latest conversation creation date in descending order. </param>
+        /// <param name="endDate"> Defines the end of the date range for filtering conversations by their creation date. Only conversations that were created on or before this date will appear in the results.  The date must be in ISO8601 format, specifically capturing up to the end of the specified date (YYYY-MM-DDT23:59:59Z), to ensure that conversations from the entire end day are included. This parameter can be combined with other filters. If this filter is used, the returned list is sorted by latest conversation creation date in descending order. </param>
         /// <param name="state"> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -377,9 +375,9 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                      string startDate = null,
                                                      string endDate = null,
                                                      ConversationResource.StateEnum state = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadConversationOptions(pathChatServiceSid){ StartDate = startDate, EndDate = endDate, State = state, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -388,8 +386,8 @@ namespace Twilio.Rest.Conversations.V1.Service
         #if !NET35
         /// <summary> Retrieve a list of conversations in your service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with. </param>
-        /// <param name="startDate"> Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters. </param>
-        /// <param name="endDate"> End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters. </param>
+        /// <param name="startDate"> Specifies the beginning of the date range for filtering Conversations based on their creation date. Conversations that were created on or after this date will be included in the results. The date must be in ISO8601 format, specifically starting at the beginning of the specified date (YYYY-MM-DDT00:00:00Z), for precise filtering. This parameter can be combined with other filters. If this filter is used, the returned list is sorted by latest conversation creation date in descending order. </param>
+        /// <param name="endDate"> Defines the end of the date range for filtering conversations by their creation date. Only conversations that were created on or before this date will appear in the results.  The date must be in ISO8601 format, specifically capturing up to the end of the specified date (YYYY-MM-DDT23:59:59Z), to ensure that conversations from the entire end day are included. This parameter can be combined with other filters. If this filter is used, the returned list is sorted by latest conversation creation date in descending order. </param>
         /// <param name="state"> State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed` </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -400,9 +398,9 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                              string startDate = null,
                                                                                              string endDate = null,
                                                                                              ConversationResource.StateEnum state = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadConversationOptions(pathChatServiceSid){ StartDate = startDate, EndDate = endDate, State = state, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -472,6 +470,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -494,7 +493,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(UpdateConversationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -534,7 +533,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                           string bindingsEmailAddress = null,
                                           string bindingsEmailName = null,
                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return Update(options, client);
@@ -573,7 +572,7 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                               string bindingsEmailAddress = null,
                                                                               string bindingsEmailName = null,
                                                                               ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){ FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);

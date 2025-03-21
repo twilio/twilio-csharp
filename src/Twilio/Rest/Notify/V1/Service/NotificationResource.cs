@@ -59,6 +59,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -80,8 +81,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="options"> Create Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                           object alexa = null,
                                           List<string> toBinding = null,
                                           string deliveryCallbackUrl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(pathServiceSid){  Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
             return Create(options, client);
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                                                                   object alexa = null,
                                                                                   List<string> toBinding = null,
                                                                                   string deliveryCallbackUrl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNotificationOptions(pathServiceSid){  Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
             return await CreateAsync(options, client);

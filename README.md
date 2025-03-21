@@ -29,7 +29,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 ### Supported .NET versions
 
-This library supports .NET applications that utilize .NET Framework 3.5+ or .NET Core 1.0+ (.NET Standard 1.4).
+This library supports .NET applications that utilize .NET6+.
 
 ## Installation
 
@@ -72,6 +72,12 @@ var message = MessageResource.Create(
 );
 Console.WriteLine(message.Sid);
 ```
+## OAuth Feature for Twilio APIs
+We are introducing Client Credentials Flow-based OAuth 2.0 authentication. This feature is currently in beta and its implementation is subject to change.
+
+API examples [here](https://github.com/twilio/twilio-csharp/blob/main/examples/PublicOAuthAuthentication.md)
+
+Organisation API examples [here](https://github.com/twilio/twilio-csharp/blob/main/examples/BearerTokenAuthentication.md)
 
 ## Specify Region and/or Edge
 
@@ -82,7 +88,7 @@ TwilioClient.SetRegion("au1");
 TwilioClient.SetEdge("sydney");
 ```
 
-This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
+This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`. Use appropriate client depending on the type of authentication used
 
 ## Enable debug logging
 
@@ -139,6 +145,17 @@ Console.WriteLine(response);
 ## Use a custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
+
+## Annotations
+
+### Beta
+Features marked with the `[Beta]` attribute are in a beta stage and may undergo changes in future releases. Use these features with caution as they may not be stable.
+
+### Deprecated
+Features marked with the `[Deprecated]` attribute are deprecated and are not encouraged to use
+
+### Preview
+Features marked with the `[Preview]` attribute are in a preview stage and are intended for evaluation purposes. They are subject to change and should not be used in production without thorough testing.
 
 ## Docker Image
 

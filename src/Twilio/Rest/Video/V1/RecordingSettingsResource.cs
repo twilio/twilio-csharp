@@ -44,6 +44,7 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Create RecordingSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingSettingsResource> CreateAsync(CreateRecordingSettingsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource and be shown to users in the console </param>
         /// <param name="awsCredentialsSid"> The SID of the stored Credential resource. </param>
         /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption. </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </param>
         /// <param name="awsStorageEnabled"> Whether all recordings should be written to the `aws_s3_url`. When `false`, all recordings are stored in our cloud. </param>
         /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Video.V1
                                           Uri awsS3Url = null,
                                           bool? awsStorageEnabled = null,
                                           bool? encryptionEnabled = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateRecordingSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
             return Create(options, client);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource and be shown to users in the console </param>
         /// <param name="awsCredentialsSid"> The SID of the stored Credential resource. </param>
         /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption. </param>
-        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the recordings should be stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </param>
         /// <param name="awsStorageEnabled"> Whether all recordings should be written to the `aws_s3_url`. When `false`, all recordings are stored in our cloud. </param>
         /// <param name="encryptionEnabled"> Whether all recordings should be stored in an encrypted form. The default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   Uri awsS3Url = null,
                                                                                   bool? awsStorageEnabled = null,
                                                                                   bool? encryptionEnabled = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateRecordingSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
             return await CreateAsync(options, client);
@@ -151,8 +151,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="options"> Fetch RecordingSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RecordingSettings </returns>
-        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingSettingsResource> FetchAsync(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -163,7 +162,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RecordingSettings </returns>
         public static RecordingSettingsResource Fetch(
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingSettingsOptions(){  };
             return Fetch(options, client);
@@ -226,7 +225,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("aws_credentials_sid")]
         public string AwsCredentialsSid { get; private set; }
 
-        ///<summary> The URL of the AWS S3 bucket where the recordings are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the <a href='https://tools.ietf.org/html/rfc3986#section-2'>RFC 3986</a>. </summary> 
+        ///<summary> The URL of the AWS S3 bucket where the recordings are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2). </summary> 
         [JsonProperty("aws_s3_url")]
         public Uri AwsS3Url { get; private set; }
 

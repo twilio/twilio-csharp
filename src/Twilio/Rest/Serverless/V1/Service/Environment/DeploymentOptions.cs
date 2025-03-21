@@ -37,6 +37,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         ///<summary> The SID of the Build for the Deployment. </summary> 
         public string BuildSid { get; set; }
 
+        ///<summary> Whether the Deployment is a plugin. </summary> 
+        public bool? IsPlugin { get; set; }
+
 
         /// <summary> Construct a new CreateDeploymentOptions </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under. </param>
@@ -56,6 +59,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             if (BuildSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("BuildSid", BuildSid));
+            }
+            if (IsPlugin != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsPlugin", IsPlugin.Value.ToString().ToLower()));
             }
             return p;
         }
@@ -98,7 +105,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return p;
         }
 
-        
+    
 
     }
 
@@ -137,7 +144,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return p;
         }
 
-        
+    
 
     }
 

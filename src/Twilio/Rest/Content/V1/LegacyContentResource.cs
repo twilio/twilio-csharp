@@ -65,8 +65,7 @@ namespace Twilio.Rest.Content.V1
         /// <param name="options"> Read LegacyContent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of LegacyContent </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(ReadLegacyContentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(ReadLegacyContentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -83,7 +82,7 @@ namespace Twilio.Rest.Content.V1
         public static ResourceSet<LegacyContentResource> Read(
                                                      int? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadLegacyContentOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -98,7 +97,7 @@ namespace Twilio.Rest.Content.V1
         public static async System.Threading.Tasks.Task<ResourceSet<LegacyContentResource>> ReadAsync(
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadLegacyContentOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -216,7 +215,7 @@ namespace Twilio.Rest.Content.V1
         [JsonProperty("variables")]
         public object Variables { get; private set; }
 
-        ///<summary> The [Content types](https://www.twilio.com/docs/content/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
+        ///<summary> The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource. </summary> 
         [JsonProperty("types")]
         public object Types { get; private set; }
 

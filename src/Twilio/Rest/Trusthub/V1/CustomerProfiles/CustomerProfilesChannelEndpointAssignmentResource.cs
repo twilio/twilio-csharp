@@ -46,6 +46,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Create CustomerProfilesChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesChannelEndpointAssignmentResource> CreateAsync(CreateCustomerProfilesChannelEndpointAssignmentOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesChannelEndpointAssignmentResource> CreateAsync(CreateCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                           string pathCustomerProfileSid,
                                           string channelEndpointType,
                                           string channelEndpointSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, channelEndpointType, channelEndpointSid){  };
             return Create(options, client);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                                                                   string pathCustomerProfileSid,
                                                                                   string channelEndpointType,
                                                                                   string channelEndpointSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, channelEndpointType, channelEndpointSid){  };
             return await CreateAsync(options, client);
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesChannelEndpointAssignment </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCustomerProfilesChannelEndpointAssignmentOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -217,8 +217,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Fetch CustomerProfilesChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesChannelEndpointAssignmentResource> FetchAsync(FetchCustomerProfilesChannelEndpointAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesChannelEndpointAssignmentResource> FetchAsync(FetchCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -233,7 +232,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         public static CustomerProfilesChannelEndpointAssignmentResource Fetch(
                                          string pathCustomerProfileSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid){  };
             return Fetch(options, client);
@@ -285,8 +284,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         /// <param name="options"> Read CustomerProfilesChannelEndpointAssignment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfilesChannelEndpointAssignment </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesChannelEndpointAssignmentResource>> ReadAsync(ReadCustomerProfilesChannelEndpointAssignmentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesChannelEndpointAssignmentResource>> ReadAsync(ReadCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -307,9 +305,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                                      string pathCustomerProfileSid,
                                                      string channelEndpointSid = null,
                                                      string channelEndpointSids = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid){ ChannelEndpointSid = channelEndpointSid, ChannelEndpointSids = channelEndpointSids, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -328,9 +326,9 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
                                                                                              string pathCustomerProfileSid,
                                                                                              string channelEndpointSid = null,
                                                                                              string channelEndpointSids = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid){ ChannelEndpointSid = channelEndpointSid, ChannelEndpointSids = channelEndpointSids, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

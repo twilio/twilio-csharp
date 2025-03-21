@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Twilio.Constant;
 using Twilio.Rest;
+using Twilio.AuthStrategies;
 
 #if !NET35
 using System.Net;
@@ -37,6 +39,11 @@ namespace Twilio.Http
         public string Password { get; set; }
 
         /// <summary>
+        /// Auth Strategy
+        /// </summary>
+        public AuthStrategy AuthStrategy { get; set; }
+
+        /// <summary>
         /// Twilio region
         /// </summary>
         public string Region { get; set; }
@@ -67,6 +74,16 @@ namespace Twilio.Http
         public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
 
         /// <summary>
+        /// Content Type
+        /// </summary>
+        public EnumConstants.ContentTypeEnum ContentType { get; set; }
+
+        /// <summary>
+        /// Body
+        /// </summary>
+        public string Body { get; set; }
+
+        /// <summary>
         /// Create a new Twilio request
         /// </summary>
         /// <param name="method">HTTP Method</param>
@@ -91,6 +108,8 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
+        /// <param name="contentType">Content Type</param>
+        /// <param name="body">Request Body</param>
         public Request(
             HttpMethod method,
             Domain domain,
@@ -99,7 +118,9 @@ namespace Twilio.Http
             List<KeyValuePair<string, string>> queryParams = null,
             List<KeyValuePair<string, string>> postParams = null,
             string edge = null,
-            List<KeyValuePair<string, string>> headerParams = null
+            List<KeyValuePair<string, string>> headerParams = null,
+            EnumConstants.ContentTypeEnum contentType = null,
+            string body = null
         )
         {
             Method = method;
@@ -110,6 +131,9 @@ namespace Twilio.Http
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
             HeaderParams = headerParams ?? new List<KeyValuePair<string, string>>();
+
+            ContentType = contentType;
+            Body = body;
         }
 
         /// <summary>
@@ -167,6 +191,19 @@ namespace Twilio.Http
         {
             Username = username;
             Password = password;
+            AuthStrategy = null;
+        }
+
+        /// <summary>
+        /// Set auth for the request
+        /// </summary>
+        /// <param name="username">Auth username</param>
+        /// <param name="password">Auth password</param>
+        public void SetAuth(AuthStrategy authStrategy)
+        {
+            AuthStrategy = authStrategy;
+            Username = null;
+            Password = null;
         }
 
         private static string EncodeParameters(IEnumerable<KeyValuePair<string, string>> data)

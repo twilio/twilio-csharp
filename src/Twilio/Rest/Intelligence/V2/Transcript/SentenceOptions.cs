@@ -33,6 +33,9 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </summary> 
         public bool? Redacted { get; set; }
 
+        ///<summary> Returns word level timestamps information, if word_timestamps is enabled. The default is `false`. </summary> 
+        public bool? WordTimestamps { get; set; }
+
 
 
         /// <summary> Construct a new ListSentenceOptions </summary>
@@ -52,6 +55,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             {
                 p.Add(new KeyValuePair<string, string>("Redacted", Redacted.Value.ToString().ToLower()));
             }
+            if (WordTimestamps != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WordTimestamps", WordTimestamps.Value.ToString().ToLower()));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -59,7 +66,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             return p;
         }
 
-        
+    
 
     }
 

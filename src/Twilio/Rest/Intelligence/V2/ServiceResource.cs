@@ -58,6 +58,7 @@ namespace Twilio.Rest.Intelligence.V2
                 HttpMethod.Post,
                 Rest.Domain.Intelligence,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -79,8 +80,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
         /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
-        /// <param name="languageCode"> The default language code of the audio. </param>
+        /// <param name="languageCode"> The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Intelligence.V2
                                           bool? mediaRedaction = null,
                                           string webhookUrl = null,
                                           ServiceResource.HttpMethodEnum webhookHttpMethod = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod };
             return Create(options, client);
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
         /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
-        /// <param name="languageCode"> The default language code of the audio. </param>
+        /// <param name="languageCode"> The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                   bool? mediaRedaction = null,
                                                                                   string webhookUrl = null,
                                                                                   ServiceResource.HttpMethodEnum webhookHttpMethod = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod };
             return await CreateAsync(options, client);
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -247,8 +247,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -261,7 +260,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid){  };
             return Fetch(options, client);
@@ -310,8 +309,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -326,9 +324,9 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -341,9 +339,9 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -411,6 +409,7 @@ namespace Twilio.Rest.Intelligence.V2
                 HttpMethod.Post,
                 Rest.Domain.Intelligence,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -433,7 +432,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <returns> Task that resolves to A single instance of Service </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -446,7 +445,6 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
         /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
-        /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
@@ -460,16 +458,15 @@ namespace Twilio.Rest.Intelligence.V2
                                           bool? autoTranscribe = null,
                                           bool? dataLogging = null,
                                           string friendlyName = null,
-                                          string languageCode = null,
                                           string uniqueName = null,
                                           bool? autoRedaction = null,
                                           bool? mediaRedaction = null,
                                           string webhookUrl = null,
                                           ServiceResource.HttpMethodEnum webhookHttpMethod = null,
                                           string ifMatch = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
+            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
             return Update(options, client);
         }
 
@@ -479,7 +476,6 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="autoTranscribe"> Instructs the Speech Recognition service to automatically transcribe all recordings made on the account. </param>
         /// <param name="dataLogging"> Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent. </param>
         /// <param name="friendlyName"> A human readable description of this resource, up to 64 characters. </param>
-        /// <param name="languageCode"> The default language code of the audio. </param>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
         /// <param name="autoRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service. </param>
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
@@ -493,16 +489,15 @@ namespace Twilio.Rest.Intelligence.V2
                                                                               bool? autoTranscribe = null,
                                                                               bool? dataLogging = null,
                                                                               string friendlyName = null,
-                                                                              string languageCode = null,
                                                                               string uniqueName = null,
                                                                               bool? autoRedaction = null,
                                                                               bool? mediaRedaction = null,
                                                                               string webhookUrl = null,
                                                                               ServiceResource.HttpMethodEnum webhookHttpMethod = null,
                                                                               string ifMatch = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
+            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -573,7 +568,7 @@ namespace Twilio.Rest.Intelligence.V2
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
 
-        ///<summary> The default language code of the audio. </summary> 
+        ///<summary> The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set. </summary> 
         [JsonProperty("language_code")]
         public string LanguageCode { get; private set; }
 
@@ -596,6 +591,10 @@ namespace Twilio.Rest.Intelligence.V2
         
         [JsonProperty("webhook_http_method")]
         public ServiceResource.HttpMethodEnum WebhookHttpMethod { get; private set; }
+
+        ///<summary> Operator sids attached to this service, read only </summary> 
+        [JsonProperty("read_only_attached_operator_sids")]
+        public List<string> ReadOnlyAttachedOperatorSids { get; private set; }
 
         ///<summary> The version number of this Service. </summary> 
         [JsonProperty("version")]

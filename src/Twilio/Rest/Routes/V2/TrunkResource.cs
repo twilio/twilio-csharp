@@ -67,8 +67,7 @@ namespace Twilio.Rest.Routes.V2
         /// <param name="options"> Fetch Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
-        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Routes.V2
         /// <returns> A single instance of Trunk </returns>
         public static TrunkResource Fetch(
                                          string pathSipTrunkDomain, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrunkOptions(pathSipTrunkDomain){  };
             return Fetch(options, client);
@@ -111,6 +110,7 @@ namespace Twilio.Rest.Routes.V2
                 HttpMethod.Post,
                 Rest.Domain.Routes,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Routes.V2
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(UpdateTrunkOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Routes.V2
                                           string pathSipTrunkDomain,
                                           string voiceRegion = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSipTrunkDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return Update(options, client);
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Routes.V2
                                                                               string pathSipTrunkDomain,
                                                                               string voiceRegion = null,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSipTrunkDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

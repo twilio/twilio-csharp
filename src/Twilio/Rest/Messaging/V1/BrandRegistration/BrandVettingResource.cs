@@ -42,6 +42,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                 return new VettingProviderEnum(value);
             }
             public static readonly VettingProviderEnum CampaignVerify = new VettingProviderEnum("campaign-verify");
+            public static readonly VettingProviderEnum Aegis = new VettingProviderEnum("aegis");
 
         }
 
@@ -58,6 +59,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -79,8 +81,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <param name="options"> Create BrandVetting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandVetting </returns>
-        public static async System.Threading.Tasks.Task<BrandVettingResource> CreateAsync(CreateBrandVettingOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandVettingResource> CreateAsync(CreateBrandVettingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                                           string pathBrandSid,
                                           BrandVettingResource.VettingProviderEnum vettingProvider,
                                           string vettingId = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBrandVettingOptions(pathBrandSid, vettingProvider){  VettingId = vettingId };
             return Create(options, client);
@@ -115,7 +116,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
                                                                                   string pathBrandSid,
                                                                                   BrandVettingResource.VettingProviderEnum vettingProvider,
                                                                                   string vettingId = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBrandVettingOptions(pathBrandSid, vettingProvider){  VettingId = vettingId };
             return await CreateAsync(options, client);
@@ -157,8 +158,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <param name="options"> Fetch BrandVetting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandVetting </returns>
-        public static async System.Threading.Tasks.Task<BrandVettingResource> FetchAsync(FetchBrandVettingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandVettingResource> FetchAsync(FetchBrandVettingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         public static BrandVettingResource Fetch(
                                          string pathBrandSid, 
                                          string pathBrandVettingSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBrandVettingOptions(pathBrandSid, pathBrandVettingSid){  };
             return Fetch(options, client);
@@ -225,8 +225,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <param name="options"> Read BrandVetting parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandVetting </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BrandVettingResource>> ReadAsync(ReadBrandVettingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BrandVettingResource>> ReadAsync(ReadBrandVettingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -245,9 +244,9 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         public static ResourceSet<BrandVettingResource> Read(
                                                      string pathBrandSid,
                                                      BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -264,9 +263,9 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         public static async System.Threading.Tasks.Task<ResourceSet<BrandVettingResource>> ReadAsync(
                                                                                              string pathBrandSid,
                                                                                              BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -103,6 +103,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum GroupRoomsParticipantMinutes = new UsageCategoryEnum("group-rooms-participant-minutes");
             public static readonly UsageCategoryEnum GroupRoomsRecordedMinutes = new UsageCategoryEnum("group-rooms-recorded-minutes");
             public static readonly UsageCategoryEnum ImpV1Usage = new UsageCategoryEnum("imp-v1-usage");
+            public static readonly UsageCategoryEnum IvrVirtualAgentCustomVoices = new UsageCategoryEnum("ivr-virtual-agent-custom-voices");
+            public static readonly UsageCategoryEnum IvrVirtualAgentGenai = new UsageCategoryEnum("ivr-virtual-agent-genai");
             public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
             public static readonly UsageCategoryEnum Marketplace = new UsageCategoryEnum("marketplace");
             public static readonly UsageCategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new UsageCategoryEnum("marketplace-algorithmia-named-entity-recognition");
@@ -335,6 +337,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -356,8 +359,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="options"> Create Trigger parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trigger </returns>
-        public static async System.Threading.Tasks.Task<TriggerResource> CreateAsync(CreateTriggerOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TriggerResource> CreateAsync(CreateTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -385,7 +387,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                           string friendlyName = null,
                                           TriggerResource.RecurringEnum recurring = null,
                                           TriggerResource.TriggerFieldEnum triggerBy = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){  PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy };
             return Create(options, client);
@@ -412,7 +414,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                   string friendlyName = null,
                                                                                   TriggerResource.RecurringEnum recurring = null,
                                                                                   TriggerResource.TriggerFieldEnum triggerBy = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){  PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy };
             return await CreateAsync(options, client);
@@ -459,7 +461,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trigger </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTriggerOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -526,8 +528,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="options"> Fetch Trigger parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trigger </returns>
-        public static async System.Threading.Tasks.Task<TriggerResource> FetchAsync(FetchTriggerOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TriggerResource> FetchAsync(FetchTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -542,7 +543,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public static TriggerResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTriggerOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -594,8 +595,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="options"> Read Trigger parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trigger </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ReadTriggerOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ReadTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -618,9 +618,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                      TriggerResource.RecurringEnum recurring = null,
                                                      TriggerResource.TriggerFieldEnum triggerBy = null,
                                                      TriggerResource.UsageCategoryEnum usageCategory = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTriggerOptions(){ PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -641,9 +641,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                              TriggerResource.RecurringEnum recurring = null,
                                                                                              TriggerResource.TriggerFieldEnum triggerBy = null,
                                                                                              TriggerResource.UsageCategoryEnum usageCategory = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTriggerOptions(){ PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -713,6 +713,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -735,7 +736,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TriggerResource> UpdateAsync(UpdateTriggerOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -757,7 +758,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                           Twilio.Http.HttpMethod callbackMethod = null,
                                           Uri callbackUrl = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTriggerOptions(pathSid){ PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName };
             return Update(options, client);
@@ -778,7 +779,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                               Twilio.Http.HttpMethod callbackMethod = null,
                                                                               Uri callbackUrl = null,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTriggerOptions(pathSid){ PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

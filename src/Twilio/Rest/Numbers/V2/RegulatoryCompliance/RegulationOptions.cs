@@ -30,6 +30,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         ///<summary> The unique string that identifies the Regulation resource. </summary> 
         public string PathSid { get; }
 
+        ///<summary> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </summary> 
+        public bool? IncludeConstraints { get; set; }
+
 
 
         /// <summary> Construct a new FetchRegulationOptions </summary>
@@ -45,10 +48,14 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (IncludeConstraints != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeConstraints", IncludeConstraints.Value.ToString().ToLower()));
+            }
             return p;
         }
 
-        
+    
 
     }
 
@@ -65,6 +72,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         ///<summary> The type of phone number that the regulatory requiremnt is restricting. </summary> 
         public string NumberType { get; set; }
+
+        ///<summary> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </summary> 
+        public bool? IncludeConstraints { get; set; }
 
 
 
@@ -87,6 +97,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             {
                 p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
             }
+            if (IncludeConstraints != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeConstraints", IncludeConstraints.Value.ToString().ToLower()));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -94,7 +108,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return p;
         }
 
-        
+    
 
     }
 

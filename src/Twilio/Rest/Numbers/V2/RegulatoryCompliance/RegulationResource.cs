@@ -80,8 +80,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Fetch Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(FetchRegulationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -90,24 +89,27 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         #endif
         /// <summary> Fetch specific Regulation Instance. </summary>
         /// <param name="pathSid"> The unique string that identifies the Regulation resource. </param>
+        /// <param name="includeConstraints"> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Regulation </returns>
         public static RegulationResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                         bool? includeConstraints = null, 
+                                        ITwilioRestClient client = null)
         {
-            var options = new FetchRegulationOptions(pathSid){  };
+            var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Fetch specific Regulation Instance. </summary>
         /// <param name="pathSid"> The unique string that identifies the Regulation resource. </param>
+        /// <param name="includeConstraints"> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RegulationResource> FetchAsync(string pathSid, bool? includeConstraints = null, ITwilioRestClient client = null)
         {
-            var options = new FetchRegulationOptions(pathSid){  };
+            var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
             return await FetchAsync(options, client);
         }
         #endif
@@ -143,8 +145,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="options"> Read Regulation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Regulation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RegulationResource>> ReadAsync(ReadRegulationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -157,6 +158,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="endUserType"> The type of End User the regulation requires - can be `individual` or `business`. </param>
         /// <param name="isoCountry"> The ISO country code of the phone number's country. </param>
         /// <param name="numberType"> The type of phone number that the regulatory requiremnt is restricting. </param>
+        /// <param name="includeConstraints"> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -165,11 +167,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      RegulationResource.EndUserTypeEnum endUserType = null,
                                                      string isoCountry = null,
                                                      string numberType = null,
-                                                     int? pageSize = null,
+                                                     bool? includeConstraints = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
-            var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, PageSize = pageSize, Limit = limit};
+            var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -178,6 +181,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <param name="endUserType"> The type of End User the regulation requires - can be `individual` or `business`. </param>
         /// <param name="isoCountry"> The ISO country code of the phone number's country. </param>
         /// <param name="numberType"> The type of phone number that the regulatory requiremnt is restricting. </param>
+        /// <param name="includeConstraints"> A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -186,11 +190,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              RegulationResource.EndUserTypeEnum endUserType = null,
                                                                                              string isoCountry = null,
                                                                                              string numberType = null,
-                                                                                             int? pageSize = null,
+                                                                                             bool? includeConstraints = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
-            var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, PageSize = pageSize, Limit = limit};
+            var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -46,6 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create Queue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
-        public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(CreateQueueOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(CreateQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string friendlyName,
                                           string pathAccountSid = null,
                                           int? maxSize = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateQueueOptions(friendlyName){  PathAccountSid = pathAccountSid, MaxSize = maxSize };
             return Create(options, client);
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string friendlyName,
                                                                                   string pathAccountSid = null,
                                                                                   int? maxSize = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateQueueOptions(friendlyName){  PathAccountSid = pathAccountSid, MaxSize = maxSize };
             return await CreateAsync(options, client);
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteQueueOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -217,8 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Queue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
-        public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(FetchQueueOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(FetchQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -233,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static QueueResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchQueueOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -285,8 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Queue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(ReadQueueOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(ReadQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -303,9 +301,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Queue </returns>
         public static ResourceSet<QueueResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadQueueOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -320,9 +318,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Queue </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadQueueOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -392,6 +390,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -414,7 +413,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Queue </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(UpdateQueueOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -434,7 +433,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string pathAccountSid = null,
                                           string friendlyName = null,
                                           int? maxSize = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateQueueOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, MaxSize = maxSize };
             return Update(options, client);
@@ -453,7 +452,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                               string pathAccountSid = null,
                                                                               string friendlyName = null,
                                                                               int? maxSize = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateQueueOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, MaxSize = maxSize };
             return await UpdateAsync(options, client);

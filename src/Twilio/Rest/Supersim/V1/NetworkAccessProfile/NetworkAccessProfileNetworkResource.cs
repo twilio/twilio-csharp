@@ -46,6 +46,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <param name="options"> Create NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
-        public static async System.Threading.Tasks.Task<NetworkAccessProfileNetworkResource> CreateAsync(CreateNetworkAccessProfileNetworkOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NetworkAccessProfileNetworkResource> CreateAsync(CreateNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         public static NetworkAccessProfileNetworkResource Create(
                                           string pathNetworkAccessProfileSid,
                                           string network,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, network){  };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         public static async System.Threading.Tasks.Task<NetworkAccessProfileNetworkResource> CreateAsync(
                                                                                   string pathNetworkAccessProfileSid,
                                                                                   string network,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, network){  };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteNetworkAccessProfileNetworkOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -213,8 +213,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <param name="options"> Fetch NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
-        public static async System.Threading.Tasks.Task<NetworkAccessProfileNetworkResource> FetchAsync(FetchNetworkAccessProfileNetworkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NetworkAccessProfileNetworkResource> FetchAsync(FetchNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -229,7 +228,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         public static NetworkAccessProfileNetworkResource Fetch(
                                          string pathNetworkAccessProfileSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid){  };
             return Fetch(options, client);
@@ -281,8 +280,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <param name="options"> Read NetworkAccessProfileNetwork parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<NetworkAccessProfileNetworkResource>> ReadAsync(ReadNetworkAccessProfileNetworkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<NetworkAccessProfileNetworkResource>> ReadAsync(ReadNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -299,9 +297,9 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
         public static ResourceSet<NetworkAccessProfileNetworkResource> Read(
                                                      string pathNetworkAccessProfileSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<NetworkAccessProfileNetworkResource>> ReadAsync(
                                                                                              string pathNetworkAccessProfileSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

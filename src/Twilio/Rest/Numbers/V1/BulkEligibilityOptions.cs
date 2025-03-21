@@ -23,6 +23,31 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V1
 {
+
+    /// <summary> Create a bulk eligibility check for a set of numbers that you want to host in Twilio. </summary>
+    public class CreateBulkEligibilityOptions : IOptions<BulkEligibilityResource>
+    {
+        
+        
+        public object Body { get; set; }
+
+
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (Body != null)
+            {
+                body = BulkEligibilityResource.ToJson(Body);
+            }
+            return body;
+        }
+        
+
+    }
     /// <summary> Fetch an eligibility bulk check that you requested to host in Twilio. </summary>
     public class FetchBulkEligibilityOptions : IOptions<BulkEligibilityResource>
     {
@@ -48,7 +73,7 @@ namespace Twilio.Rest.Numbers.V1
             return p;
         }
 
-        
+    
 
     }
 

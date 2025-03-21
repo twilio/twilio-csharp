@@ -62,6 +62,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -83,8 +84,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="options"> Create Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(CreateBindingOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(CreateBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                           string notificationProtocolVersion = null,
                                           string credentialSid = null,
                                           string endpoint = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){  Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint };
             return Create(options, client);
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Notify.V1.Service
                                                                                   string notificationProtocolVersion = null,
                                                                                   string credentialSid = null,
                                                                                   string endpoint = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){  Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint };
             return await CreateAsync(options, client);
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -253,8 +253,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -269,7 +268,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public static BindingResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -321,8 +320,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -347,9 +345,9 @@ namespace Twilio.Rest.Notify.V1.Service
                                                      DateTime? endDate = null,
                                                      List<string> identity = null,
                                                      List<string> tag = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){ StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -372,9 +370,9 @@ namespace Twilio.Rest.Notify.V1.Service
                                                                                              DateTime? endDate = null,
                                                                                              List<string> identity = null,
                                                                                              List<string> tag = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){ StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

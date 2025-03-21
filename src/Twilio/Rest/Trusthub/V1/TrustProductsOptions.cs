@@ -24,17 +24,17 @@ using Twilio.Converters;
 namespace Twilio.Rest.Trusthub.V1
 {
 
-    /// <summary> Create a new Customer-Profile. </summary>
+    /// <summary> Create a new Trust Product. </summary>
     public class CreateTrustProductsOptions : IOptions<TrustProductsResource>
     {
         
         ///<summary> The string that you assigned to describe the resource. </summary> 
         public string FriendlyName { get; }
 
-        ///<summary> The email address that will receive updates when the Customer-Profile resource changes status. </summary> 
+        ///<summary> The email address that will receive updates when the Trust Product resource changes status. </summary> 
         public string Email { get; }
 
-        ///<summary> The unique string of a policy that is associated to the Customer-Profile resource. </summary> 
+        ///<summary> The unique string of a policy that is associated to the Trust Product resource. </summary> 
         public string PolicySid { get; }
 
         ///<summary> The URL we call to inform your application of status changes. </summary> 
@@ -43,8 +43,8 @@ namespace Twilio.Rest.Trusthub.V1
 
         /// <summary> Construct a new CreateTrustProductOptions </summary>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
-        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Trust Product resource changes status. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Trust Product resource. </param>
         public CreateTrustProductsOptions(string friendlyName, string email, string policySid)
         {
             FriendlyName = friendlyName;
@@ -80,17 +80,17 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
-    /// <summary> Delete a specific Customer-Profile. </summary>
+    /// <summary> Delete a specific Trust Product. </summary>
     public class DeleteTrustProductsOptions : IOptions<TrustProductsResource>
     {
         
-        ///<summary> The unique string that we created to identify the Customer-Profile resource. </summary> 
+        ///<summary> The unique string that we created to identify the Trust Product resource. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new DeleteTrustProductOptions </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         public DeleteTrustProductsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -105,22 +105,22 @@ namespace Twilio.Rest.Trusthub.V1
             return p;
         }
 
-        
+    
 
     }
 
 
-    /// <summary> Fetch a specific Customer-Profile instance. </summary>
+    /// <summary> Fetch a specific Trust Product instance. </summary>
     public class FetchTrustProductsOptions : IOptions<TrustProductsResource>
     {
     
-        ///<summary> The unique string that we created to identify the Customer-Profile resource. </summary> 
+        ///<summary> The unique string that we created to identify the Trust Product resource. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchTrustProductOptions </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         public FetchTrustProductsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -135,22 +135,22 @@ namespace Twilio.Rest.Trusthub.V1
             return p;
         }
 
-        
+    
 
     }
 
 
-    /// <summary> Retrieve a list of all Customer-Profiles for an account. </summary>
+    /// <summary> Retrieve a list of all Trust Products for an account. </summary>
     public class ReadTrustProductsOptions : ReadOptions<TrustProductsResource>
     {
     
-        ///<summary> The verification status of the Customer-Profile resource. </summary> 
+        ///<summary> The verification status of the Trust Product resource. </summary> 
         public TrustProductsResource.StatusEnum Status { get; set; }
 
         ///<summary> The string that you assigned to describe the resource. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The unique string of a policy that is associated to the Customer-Profile resource. </summary> 
+        ///<summary> The unique string of a policy that is associated to the Trust Product resource. </summary> 
         public string PolicySid { get; set; }
 
 
@@ -181,15 +181,15 @@ namespace Twilio.Rest.Trusthub.V1
             return p;
         }
 
-        
+    
 
     }
 
-    /// <summary> Updates a Customer-Profile in an account. </summary>
+    /// <summary> Updates a Trust Product in an account. </summary>
     public class UpdateTrustProductsOptions : IOptions<TrustProductsResource>
     {
     
-        ///<summary> The unique string that we created to identify the Customer-Profile resource. </summary> 
+        ///<summary> The unique string that we created to identify the Trust Product resource. </summary> 
         public string PathSid { get; }
 
         
@@ -201,13 +201,13 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The string that you assigned to describe the resource. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The email address that will receive updates when the Customer-Profile resource changes status. </summary> 
+        ///<summary> The email address that will receive updates when the Trust Product resource changes status. </summary> 
         public string Email { get; set; }
 
 
 
         /// <summary> Construct a new UpdateTrustProductOptions </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         public UpdateTrustProductsOptions(string pathSid)
         {
             PathSid = pathSid;

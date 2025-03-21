@@ -40,6 +40,9 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         ///<summary> JSON representing the Media Properties for the new Participant. </summary> 
         public object MediaProperties { get; }
 
+        ///<summary> Object representing the Routing Properties for the new Participant. </summary> 
+        public object RoutingProperties { get; set; }
+
 
         /// <summary> Construct a new CreateInteractionChannelParticipantOptions </summary>
         /// <param name="pathInteractionSid"> The Interaction Sid for the new Channel Participant. </param>
@@ -67,6 +70,10 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             if (MediaProperties != null)
             {
                 p.Add(new KeyValuePair<string, string>("MediaProperties", Serializers.JsonObject(MediaProperties)));
+            }
+            if (RoutingProperties != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RoutingProperties", Serializers.JsonObject(RoutingProperties)));
             }
             return p;
         }
@@ -108,7 +115,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             return p;
         }
 
-        
+    
 
     }
 

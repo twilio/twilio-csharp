@@ -44,6 +44,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<IpRecordResource> CreateAsync(CreateIpRecordOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpRecordResource> CreateAsync(CreateIpRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Voice.V1
                                           string ipAddress,
                                           string friendlyName = null,
                                           int? cidrPrefixLength = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateIpRecordOptions(ipAddress){  FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength };
             return Create(options, client);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Voice.V1
                                                                                   string ipAddress,
                                                                                   string friendlyName = null,
                                                                                   int? cidrPrefixLength = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateIpRecordOptions(ipAddress){  FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpRecordOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -209,8 +209,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(FetchIpRecordOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpRecordResource> FetchAsync(FetchIpRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -223,7 +222,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> A single instance of IpRecord </returns>
         public static IpRecordResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchIpRecordOptions(pathSid){  };
             return Fetch(options, client);
@@ -272,8 +271,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read IpRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(ReadIpRecordOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(ReadIpRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -288,9 +286,9 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpRecord </returns>
         public static ResourceSet<IpRecordResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadIpRecordOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -303,9 +301,9 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<IpRecordResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadIpRecordOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -373,6 +371,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -395,7 +394,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of IpRecord </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<IpRecordResource> UpdateAsync(UpdateIpRecordOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -411,7 +410,7 @@ namespace Twilio.Rest.Voice.V1
         public static IpRecordResource Update(
                                           string pathSid,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
             return Update(options, client);
@@ -426,7 +425,7 @@ namespace Twilio.Rest.Voice.V1
         public static async System.Threading.Tasks.Task<IpRecordResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client);

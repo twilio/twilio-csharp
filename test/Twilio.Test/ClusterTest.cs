@@ -6,7 +6,9 @@ using Twilio.Rest.Api.V2010.Account;
 using Twilio.Rest.Chat.V2;
 using Twilio.Rest.Chat.V2.Service;
 using Twilio.Rest.Events.V1;
+using Twilio.Rest.PreviewIam;
 using System.Linq;
+using Twilio.Credential;
 namespace Twilio.Tests 
 {
     [TestFixture]
@@ -17,6 +19,13 @@ namespace Twilio.Tests
         private string  apiKey;
         string  toNumber;
         string  fromNumber;
+        string orgsSid;
+        string clientId;
+        string clientSecret;
+        string oAuthClientId;
+        string oAuthClientSecret;
+        string oAuthMessageId;
+        
         [SetUp]
         [Category("ClusterTest")]
         public void SetUp()
@@ -26,7 +35,15 @@ namespace Twilio.Tests
             apiKey = Environment.GetEnvironmentVariable("TWILIO_API_KEY");
             toNumber = Environment.GetEnvironmentVariable("TWILIO_TO_NUMBER");
             fromNumber = Environment.GetEnvironmentVariable("TWILIO_FROM_NUMBER");
+            orgsSid = Environment.GetEnvironmentVariable("TWILIO_ORG_SID");
+            clientId = Environment.GetEnvironmentVariable("TWILIO_ORGS_CLIENT_ID");
+            clientSecret = Environment.GetEnvironmentVariable("TWILIO_ORGS_CLIENT_SECRET");
+
+            oAuthClientId = Environment.GetEnvironmentVariable("TWILIO_CLIENT_ID");
+            oAuthClientSecret = Environment.GetEnvironmentVariable("TWILIO_CLIENT_SECRET");
+            oAuthMessageId = Environment.GetEnvironmentVariable("TWILIO_MESSAGE_SID");
             TwilioClient.Init(username:apiKey,password:secret,accountSid:accountSid);
+            TwilioOrgsTokenAuthClient.Init(clientId, clientSecret);
         }
         
 
@@ -120,6 +137,36 @@ namespace Twilio.Tests
 
             Assert.True(SubscriptionResource.Delete(subscription.Sid));
             Assert.True(SinkResource.Delete(sink.Sid));
+
+        }
+
+        [Test]
+        [Category("ClusterTest")]
+        public void TestFetchingOrgsAccounts()
+        {
+             Twilio.Base.ResourceSet<Twilio.Rest.PreviewIam.Organizations.AccountResource> accountList = null;
+             accountList = Twilio.Rest.PreviewIam.Organizations.AccountResource.Read(orgsSid);
+             Assert.IsNotNull(accountList.ElementAt(0).FriendlyName);
+
+             var userList = UserResource.Read(orgsSid);
+             Assert.IsNotNull(userList);
+
+        }
+
+        [Test]
+        [Category("ClusterTest")]
+        public void TestPublicOAuth()
+        {
+
+            CredentialProvider cp = new ClientCredentialProvider(oAuthClientId,oAuthClientSecret);
+            TwilioClient.SetAccountSid(accountSid);
+            TwilioClient.Init(cp, accountSid);
+
+            // Fetching an existing message; if this test fails, the SID might be deleted,
+            // in that case, change TWILIO_MESSAGE_SID in twilio-csharp repo env variables
+            FetchMessageOptions fm = new FetchMessageOptions(oAuthMessageId);
+            MessageResource m = MessageResource.Fetch(fm);
+            Assert.IsNotNull(m.Body);
 
         }
     }

@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The SIP password for authentication. </summary> 
         public string SipAuthPassword { get; set; }
 
-        ///<summary> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </summary> 
+        ///<summary> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </summary> 
         public string Region { get; set; }
 
         ///<summary> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </summary> 
@@ -431,7 +431,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return p;
         }
 
-        
+    
 
     }
 
@@ -469,7 +469,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return p;
         }
 
-        
+    
 
     }
 
@@ -527,7 +527,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return p;
         }
 
-        
+    
 
     }
 

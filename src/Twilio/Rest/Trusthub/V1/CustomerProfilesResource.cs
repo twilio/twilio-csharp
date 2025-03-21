@@ -60,6 +60,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -81,8 +82,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Create CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesResource> CreateAsync(CreateCustomerProfilesOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesResource> CreateAsync(CreateCustomerProfilesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           string email,
                                           string policySid,
                                           Uri statusCallback = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateCustomerProfilesOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return Create(options, client);
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string email,
                                                                                   string policySid,
                                                                                   Uri statusCallback = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateCustomerProfilesOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return await CreateAsync(options, client);
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCustomerProfilesOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -229,8 +229,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Fetch CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(FetchCustomerProfilesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomerProfilesResource> FetchAsync(FetchCustomerProfilesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -243,7 +242,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> A single instance of CustomerProfiles </returns>
         public static CustomerProfilesResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchCustomerProfilesOptions(pathSid){  };
             return Fetch(options, client);
@@ -292,8 +291,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="options"> Read CustomerProfiles parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesResource>> ReadAsync(ReadCustomerProfilesOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomerProfilesResource>> ReadAsync(ReadCustomerProfilesOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -314,9 +312,9 @@ namespace Twilio.Rest.Trusthub.V1
                                                      CustomerProfilesResource.StatusEnum status = null,
                                                      string friendlyName = null,
                                                      string policySid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -335,9 +333,9 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                              CustomerProfilesResource.StatusEnum status = null,
                                                                                              string friendlyName = null,
                                                                                              string policySid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCustomerProfilesOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -405,6 +403,7 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -427,7 +426,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <returns> Task that resolves to A single instance of CustomerProfiles </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<CustomerProfilesResource> UpdateAsync(UpdateCustomerProfilesOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -449,7 +448,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           Uri statusCallback = null,
                                           string friendlyName = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return Update(options, client);
@@ -470,7 +469,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);
@@ -558,6 +557,10 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The URLs of the Assigned Items of the Customer-Profile resource. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+
+        ///<summary> The error codes associated with the rejection of the Customer-Profile. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
 
 

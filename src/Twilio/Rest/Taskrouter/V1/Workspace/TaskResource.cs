@@ -63,6 +63,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -84,8 +85,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Create Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -100,7 +100,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`. </param>
         /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional. </param>
         /// <param name="attributes"> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </param>
-        /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </param>
+        /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900. </param>
+        /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
+        /// <param name="ignoreCapacity"> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue in which the Task belongs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static TaskResource Create(
@@ -111,9 +114,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string workflowSid = null,
                                           string attributes = null,
                                           DateTime? virtualStartTime = null,
-                                          ITwilioRestClient client = null)
+                                          string routingTarget = null,
+                                          string ignoreCapacity = null,
+                                          string taskQueueSid = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateTaskOptions(pathWorkspaceSid){  Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes, VirtualStartTime = virtualStartTime };
+            var options = new CreateTaskOptions(pathWorkspaceSid){  Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes, VirtualStartTime = virtualStartTime, RoutingTarget = routingTarget, IgnoreCapacity = ignoreCapacity, TaskQueueSid = taskQueueSid };
             return Create(options, client);
         }
 
@@ -125,7 +131,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`. </param>
         /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional. </param>
         /// <param name="attributes"> A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`. </param>
-        /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future. </param>
+        /// <param name="virtualStartTime"> The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900. </param>
+        /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
+        /// <param name="ignoreCapacity"> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue in which the Task belongs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(
@@ -136,9 +145,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                   string workflowSid = null,
                                                                                   string attributes = null,
                                                                                   DateTime? virtualStartTime = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                  string routingTarget = null,
+                                                                                  string ignoreCapacity = null,
+                                                                                  string taskQueueSid = null,
+                                                                                    ITwilioRestClient client = null)
         {
-        var options = new CreateTaskOptions(pathWorkspaceSid){  Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes, VirtualStartTime = virtualStartTime };
+        var options = new CreateTaskOptions(pathWorkspaceSid){  Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes, VirtualStartTime = virtualStartTime, RoutingTarget = routingTarget, IgnoreCapacity = ignoreCapacity, TaskQueueSid = taskQueueSid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -183,7 +195,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -252,8 +264,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Fetch Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -268,7 +279,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public static TaskResource Fetch(
                                          string pathWorkspaceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTaskOptions(pathWorkspaceSid, pathSid){  };
             return Fetch(options, client);
@@ -320,8 +331,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="options"> Read Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -339,6 +349,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this SID. </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this friendly name. </param>
         /// <param name="evaluateTaskAttributes"> The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter. </param>
+        /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
         /// <param name="ordering"> How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime. </param>
         /// <param name="hasAddons"> Whether to read Tasks with Add-ons. If `true`, returns only Tasks with Add-ons. If `false`, returns only Tasks without Add-ons. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -354,13 +365,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                      string taskQueueSid = null,
                                                      string taskQueueName = null,
                                                      string evaluateTaskAttributes = null,
+                                                     string routingTarget = null,
                                                      string ordering = null,
                                                      bool? hasAddons = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
-            var options = new ReadTaskOptions(pathWorkspaceSid){ Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskOptions(pathWorkspaceSid){ Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, RoutingTarget = routingTarget, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -374,6 +386,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this SID. </param>
         /// <param name="taskQueueName"> The `friendly_name` of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this friendly name. </param>
         /// <param name="evaluateTaskAttributes"> The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter. </param>
+        /// <param name="routingTarget"> A SID of a Worker, Queue, or Workflow to route a Task to </param>
         /// <param name="ordering"> How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime. </param>
         /// <param name="hasAddons"> Whether to read Tasks with Add-ons. If `true`, returns only Tasks with Add-ons. If `false`, returns only Tasks without Add-ons. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -389,13 +402,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                              string taskQueueSid = null,
                                                                                              string taskQueueName = null,
                                                                                              string evaluateTaskAttributes = null,
+                                                                                             string routingTarget = null,
                                                                                              string ordering = null,
                                                                                              bool? hasAddons = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
-            var options = new ReadTaskOptions(pathWorkspaceSid){ Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskOptions(pathWorkspaceSid){ Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, RoutingTarget = routingTarget, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -463,6 +477,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -485,7 +500,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <returns> Task that resolves to A single instance of Task </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(UpdateTaskOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -501,7 +516,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="reason"> The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason. </param>
         /// <param name="priority"> The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647). </param>
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </param>
-        /// <param name="virtualStartTime"> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future. </param>
+        /// <param name="virtualStartTime"> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900. </param>
         /// <param name="ifMatch"> If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
@@ -515,7 +530,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string taskChannel = null,
                                           DateTime? virtualStartTime = null,
                                           string ifMatch = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){ Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, VirtualStartTime = virtualStartTime, IfMatch = ifMatch };
             return Update(options, client);
@@ -530,7 +545,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="reason"> The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason. </param>
         /// <param name="priority"> The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647). </param>
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`. </param>
-        /// <param name="virtualStartTime"> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future. </param>
+        /// <param name="virtualStartTime"> The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900. </param>
         /// <param name="ifMatch"> If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
@@ -544,7 +559,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                               string taskChannel = null,
                                                                               DateTime? virtualStartTime = null,
                                                                               string ifMatch = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){ Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, VirtualStartTime = virtualStartTime, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
@@ -672,6 +687,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///<summary> The date and time in GMT indicating the ordering for routing of the Task specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("virtual_start_time")]
         public DateTime? VirtualStartTime { get; private set; }
+
+        ///<summary> A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.  </summary> 
+        [JsonProperty("ignore_capacity")]
+        public bool? IgnoreCapacity { get; private set; }
+
+        ///<summary> A SID of a Worker, Queue, or Workflow to route a Task to </summary> 
+        [JsonProperty("routing_target")]
+        public string RoutingTarget { get; private set; }
 
 
 

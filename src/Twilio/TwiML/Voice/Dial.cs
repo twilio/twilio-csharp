@@ -128,6 +128,18 @@ namespace Twilio.TwiML.Voice
             public static readonly RecordingTrackEnum Outbound = new RecordingTrackEnum("outbound");
         }
 
+        public sealed class EventsEnum : StringEnum
+        {
+            private EventsEnum(string value) : base(value) {}
+            public EventsEnum() {}
+            public static implicit operator EventsEnum(string value)
+            {
+                return new EventsEnum(value);
+            }
+
+            public static readonly EventsEnum CallProgressEvent = new EventsEnum("call-progress-event");
+        }
+
         /// <summary>
         /// Phone number to dial
         /// </summary>
@@ -200,6 +212,10 @@ namespace Twilio.TwiML.Voice
         /// The HTTP method to use for the refer Webhook
         /// </summary>
         public Twilio.Http.HttpMethod ReferMethod { get; set; }
+        /// <summary>
+        /// Subscription to events
+        /// </summary>
+        public Dial.EventsEnum Events { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -225,6 +241,7 @@ namespace Twilio.TwiML.Voice
         ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
         /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
         /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
+        /// <param name="events"> Subscription to events </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -242,7 +259,8 @@ namespace Twilio.TwiML.Voice
                     Dial.RecordingTrackEnum recordingTrack = null,
                     bool? sequential = null,
                     Uri referUrl = null,
-                    Twilio.Http.HttpMethod referMethod = null) : base("Dial")
+                    Twilio.Http.HttpMethod referMethod = null,
+                    Dial.EventsEnum events = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -262,6 +280,7 @@ namespace Twilio.TwiML.Voice
             this.Sequential = sequential;
             this.ReferUrl = referUrl;
             this.ReferMethod = referMethod;
+            this.Events = events;
         }
 
         /// <summary>
@@ -345,6 +364,10 @@ namespace Twilio.TwiML.Voice
             if (this.ReferMethod != null)
             {
                 attributes.Add(new XAttribute("referMethod", this.ReferMethod.ToString()));
+            }
+            if (this.Events != null)
+            {
+                attributes.Add(new XAttribute("events", this.Events.ToString()));
             }
             return attributes;
         }

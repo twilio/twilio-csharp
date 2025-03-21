@@ -46,6 +46,7 @@ namespace Twilio.Rest.Events.V1.Sink
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <param name="options"> Create SinkValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkValidate </returns>
-        public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(CreateSinkValidateOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(CreateSinkValidateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Events.V1.Sink
         public static SinkValidateResource Create(
                                           string pathSid,
                                           string testId,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateSinkValidateOptions(pathSid, testId){  };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Events.V1.Sink
         public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(
                                                                                   string pathSid,
                                                                                   string testId,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateSinkValidateOptions(pathSid, testId){  };
             return await CreateAsync(options, client);

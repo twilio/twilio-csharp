@@ -58,6 +58,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -79,8 +80,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="scanMessageContent">  </param>
         /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
-        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
+        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
         /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Messaging.V1
                                           bool? synchronousValidation = null,
                                           string usecase = null,
                                           bool? useInboundWebhookOnNumber = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(friendlyName){  InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, Usecase = usecase, UseInboundWebhookOnNumber = useInboundWebhookOnNumber };
             return Create(options, client);
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="scanMessageContent">  </param>
         /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
-        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
+        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
         /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   bool? synchronousValidation = null,
                                                                                   string usecase = null,
                                                                                   bool? useInboundWebhookOnNumber = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateServiceOptions(friendlyName){  InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, Usecase = usecase, UseInboundWebhookOnNumber = useInboundWebhookOnNumber };
             return await CreateAsync(options, client);
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -275,8 +275,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -289,7 +288,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid){  };
             return Fetch(options, client);
@@ -338,8 +337,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -354,9 +352,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -369,9 +367,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -439,6 +437,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -461,7 +460,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of Service </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -483,7 +482,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="scanMessageContent">  </param>
         /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
-        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
+        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
         /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
@@ -507,7 +506,7 @@ namespace Twilio.Rest.Messaging.V1
                                           bool? synchronousValidation = null,
                                           string usecase = null,
                                           bool? useInboundWebhookOnNumber = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, Usecase = usecase, UseInboundWebhookOnNumber = useInboundWebhookOnNumber };
             return Update(options, client);
@@ -528,7 +527,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="scanMessageContent">  </param>
         /// <param name="fallbackToLongCode"> [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures. </param>
         /// <param name="areaCodeGeomatch"> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </param>
-        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </param>
+        /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </param>
         /// <param name="synchronousValidation"> Reserved. </param>
         /// <param name="usecase"> A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`. </param>
         /// <param name="useInboundWebhookOnNumber"> A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service. </param>
@@ -552,7 +551,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                               bool? synchronousValidation = null,
                                                                               string usecase = null,
                                                                               bool? useInboundWebhookOnNumber = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, Usecase = usecase, UseInboundWebhookOnNumber = useInboundWebhookOnNumber };
             return await UpdateAsync(options, client);
@@ -661,7 +660,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("synchronous_validation")]
         public bool? SynchronousValidation { get; private set; }
 
-        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. </summary> 
+        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </summary> 
         [JsonProperty("validity_period")]
         public int? ValidityPeriod { get; private set; }
 

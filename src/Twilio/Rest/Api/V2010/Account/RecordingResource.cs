@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -177,8 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -195,7 +194,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                          string pathSid, 
                                          string pathAccountSid = null, 
                                          bool? includeSoftDeleted = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathSid){ PathAccountSid = pathAccountSid,IncludeSoftDeleted = includeSoftDeleted };
             return Fetch(options, client);
@@ -248,8 +247,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -278,9 +276,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string callSid = null,
                                                      string conferenceSid = null,
                                                      bool? includeSoftDeleted = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -307,9 +305,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string callSid = null,
                                                                                              string conferenceSid = null,
                                                                                              bool? includeSoftDeleted = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(){ PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, IncludeSoftDeleted = includeSoftDeleted, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -447,7 +445,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public RecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. You can split a call with two legs into two separate recording channels if you record using [TwiML Dial](https://www.twilio.com/docs/voice/twiml/dial#record) or the [Outbound Rest API](https://www.twilio.com/docs/voice/make-calls#manage-your-outbound-call). </summary> 
+        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. </summary> 
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
 

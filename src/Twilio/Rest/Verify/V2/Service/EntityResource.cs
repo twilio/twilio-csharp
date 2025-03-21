@@ -46,6 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
-        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(CreateEntityOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(CreateEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static EntityResource Create(
                                           string pathServiceSid,
                                           string identity,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateEntityOptions(pathServiceSid, identity){  };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(
                                                                                   string pathServiceSid,
                                                                                   string identity,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateEntityOptions(pathServiceSid, identity){  };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEntityOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -213,8 +213,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
-        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(FetchEntityOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(FetchEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -229,7 +228,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static EntityResource Fetch(
                                          string pathServiceSid, 
                                          string pathIdentity, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchEntityOptions(pathServiceSid, pathIdentity){  };
             return Fetch(options, client);
@@ -281,8 +280,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Read Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(ReadEntityOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(ReadEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -299,9 +297,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> A single instance of Entity </returns>
         public static ResourceSet<EntityResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadEntityOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadEntityOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

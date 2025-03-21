@@ -46,6 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="options"> Create NewKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewKey </returns>
-        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(CreateNewKeyOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(CreateNewKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static NewKeyResource Create(
                                           string pathAccountSid = null,
                                           string friendlyName = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNewKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(
                                                                                   string pathAccountSid = null,
                                                                                   string friendlyName = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNewKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
             return await CreateAsync(options, client);

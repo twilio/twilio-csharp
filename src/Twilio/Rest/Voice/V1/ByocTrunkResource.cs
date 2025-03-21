@@ -44,6 +44,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Create ByocTrunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(CreateByocTrunkOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ByocTrunkResource> CreateAsync(CreateByocTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Voice.V1
                                           bool? cnamLookupEnabled = null,
                                           string connectionPolicySid = null,
                                           string fromDomainSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateByocTrunkOptions(){  FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
             return Create(options, client);
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Voice.V1
                                                                                   bool? cnamLookupEnabled = null,
                                                                                   string connectionPolicySid = null,
                                                                                   string fromDomainSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateByocTrunkOptions(){  FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
             return await CreateAsync(options, client);
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteByocTrunkOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -237,8 +237,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Fetch ByocTrunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(FetchByocTrunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ByocTrunkResource> FetchAsync(FetchByocTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -251,7 +250,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> A single instance of ByocTrunk </returns>
         public static ByocTrunkResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchByocTrunkOptions(pathSid){  };
             return Fetch(options, client);
@@ -300,8 +299,7 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="options"> Read ByocTrunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(ReadByocTrunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(ReadByocTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ByocTrunk </returns>
         public static ResourceSet<ByocTrunkResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadByocTrunkOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -331,9 +329,9 @@ namespace Twilio.Rest.Voice.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ByocTrunkResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadByocTrunkOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -401,6 +399,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -423,7 +422,7 @@ namespace Twilio.Rest.Voice.V1
         /// <returns> Task that resolves to A single instance of ByocTrunk </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ByocTrunkResource> UpdateAsync(UpdateByocTrunkOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -457,7 +456,7 @@ namespace Twilio.Rest.Voice.V1
                                           bool? cnamLookupEnabled = null,
                                           string connectionPolicySid = null,
                                           string fromDomainSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateByocTrunkOptions(pathSid){ FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
             return Update(options, client);
@@ -490,7 +489,7 @@ namespace Twilio.Rest.Voice.V1
                                                                               bool? cnamLookupEnabled = null,
                                                                               string connectionPolicySid = null,
                                                                               string fromDomainSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateByocTrunkOptions(pathSid){ FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
             return await UpdateAsync(options, client);

@@ -44,6 +44,7 @@ namespace Twilio.Rest.Accounts.V1
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -66,7 +67,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(UpdateAuthTokenPromotionOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -78,7 +79,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthTokenPromotion </returns>
         public static AuthTokenPromotionResource Update(
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAuthTokenPromotionOptions(){  };
             return Update(options, client);
@@ -89,7 +90,7 @@ namespace Twilio.Rest.Accounts.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAuthTokenPromotionOptions(){  };
             return await UpdateAsync(options, client);

@@ -59,6 +59,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -80,8 +81,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Create TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> CreateAsync(CreateTrustProductsEvaluationsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> CreateAsync(CreateTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static TrustProductsEvaluationsResource Create(
                                           string pathTrustProductSid,
                                           string policySid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrustProductsEvaluationsOptions(pathTrustProductSid, policySid){  };
             return Create(options, client);
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> CreateAsync(
                                                                                   string pathTrustProductSid,
                                                                                   string policySid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsEvaluationsOptions(pathTrustProductSid, policySid){  };
             return await CreateAsync(options, client);
@@ -154,8 +154,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Fetch TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> FetchAsync(FetchTrustProductsEvaluationsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsEvaluationsResource> FetchAsync(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -170,7 +169,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         public static TrustProductsEvaluationsResource Fetch(
                                          string pathTrustProductSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsEvaluationsOptions(pathTrustProductSid, pathSid){  };
             return Fetch(options, client);
@@ -222,8 +221,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <param name="options"> Read TrustProductsEvaluations parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(ReadTrustProductsEvaluationsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(ReadTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -240,9 +238,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <returns> A single instance of TrustProductsEvaluations </returns>
         public static ResourceSet<TrustProductsEvaluationsResource> Read(
                                                      string pathTrustProductSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsEvaluationsOptions(pathTrustProductSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -257,9 +255,9 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         /// <returns> Task that resolves to A single instance of TrustProductsEvaluations </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsEvaluationsResource>> ReadAsync(
                                                                                              string pathTrustProductSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsEvaluationsOptions(pathTrustProductSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

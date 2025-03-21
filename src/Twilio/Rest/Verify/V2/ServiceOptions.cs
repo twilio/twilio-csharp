@@ -52,7 +52,7 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code` </summary> 
         public bool? DoNotShareWarningEnabled { get; set; }
 
-        ///<summary> Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers. </summary> 
+        ///<summary> Whether to allow sending verifications with a custom code instead of a randomly generated one. </summary> 
         public bool? CustomCodeEnabled { get; set; }
 
         ///<summary> Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead. </summary> 
@@ -78,6 +78,12 @@ namespace Twilio.Rest.Verify.V2
 
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
+
+        ///<summary> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </summary> 
+        public string WhatsappMsgServiceSid { get; set; }
+
+        ///<summary> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </summary> 
+        public string WhatsappFrom { get; set; }
 
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
@@ -164,6 +170,14 @@ namespace Twilio.Rest.Verify.V2
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
             }
+            if (WhatsappMsgServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.MsgServiceSid", WhatsappMsgServiceSid));
+            }
+            if (WhatsappFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
+            }
             if (VerifyEventSubscriptionEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerifyEventSubscriptionEnabled", VerifyEventSubscriptionEnabled.Value.ToString().ToLower()));
@@ -199,7 +213,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -229,7 +243,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -254,7 +268,7 @@ namespace Twilio.Rest.Verify.V2
             return p;
         }
 
-        
+    
 
     }
 
@@ -289,7 +303,7 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.** </summary> 
         public bool? DoNotShareWarningEnabled { get; set; }
 
-        ///<summary> Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers. </summary> 
+        ///<summary> Whether to allow sending verifications with a custom code instead of a randomly generated one. </summary> 
         public bool? CustomCodeEnabled { get; set; }
 
         ///<summary> Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. </summary> 
@@ -315,6 +329,12 @@ namespace Twilio.Rest.Verify.V2
 
         ///<summary> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </summary> 
         public string DefaultTemplateSid { get; set; }
+
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </summary> 
+        public string WhatsappMsgServiceSid { get; set; }
+
+        ///<summary> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </summary> 
+        public string WhatsappFrom { get; set; }
 
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
@@ -401,6 +421,14 @@ namespace Twilio.Rest.Verify.V2
             if (DefaultTemplateSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid));
+            }
+            if (WhatsappMsgServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.MsgServiceSid", WhatsappMsgServiceSid));
+            }
+            if (WhatsappFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {

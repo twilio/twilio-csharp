@@ -98,8 +98,7 @@ namespace Twilio.Rest.Insights.V1.Call
         /// <param name="options"> Read Metric parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Metric </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(ReadMetricOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MetricResource>> ReadAsync(ReadMetricOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -120,9 +119,9 @@ namespace Twilio.Rest.Insights.V1.Call
                                                      string pathCallSid,
                                                      MetricResource.TwilioEdgeEnum edge = null,
                                                      MetricResource.StreamDirectionEnum direction = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMetricOptions(pathCallSid){ Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -141,9 +140,9 @@ namespace Twilio.Rest.Insights.V1.Call
                                                                                              string pathCallSid,
                                                                                              MetricResource.TwilioEdgeEnum edge = null,
                                                                                              MetricResource.StreamDirectionEnum direction = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMetricOptions(pathCallSid){ Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

@@ -66,7 +66,7 @@ namespace Twilio.Rest.Numbers.V1
             );
         }
 
-        /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
+        /// <summary> Check if a single phone number can be ported to Twilio </summary>
         /// <param name="options"> Fetch PortingPortability parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortability </returns>
@@ -78,41 +78,43 @@ namespace Twilio.Rest.Numbers.V1
         }
 
         #if !NET35
-        /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
+        /// <summary> Check if a single phone number can be ported to Twilio </summary>
         /// <param name="options"> Fetch PortingPortability parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(FetchPortingPortabilityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
-        /// <param name="pathPhoneNumber"> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </param>
-        /// <param name="targetAccountSid"> The SID of the account where the phone number(s) will be ported. </param>
+        /// <summary> Check if a single phone number can be ported to Twilio </summary>
+        /// <param name="pathPhoneNumber"> Phone number to check portability in e164 format. </param>
+        /// <param name="targetAccountSid"> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </param>
+        /// <param name="addressSid"> Address Sid of customer to which the number will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortability </returns>
         public static PortingPortabilityResource Fetch(
                                          Types.PhoneNumber pathPhoneNumber, 
                                          string targetAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                         string addressSid = null, 
+                                        ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
             return Fetch(options, client);
         }
 
         #if !NET35
-        /// <summary> Allows to check if a single phone number can be ported to Twilio or not. </summary>
-        /// <param name="pathPhoneNumber"> The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212). </param>
-        /// <param name="targetAccountSid"> The SID of the account where the phone number(s) will be ported. </param>
+        /// <summary> Check if a single phone number can be ported to Twilio </summary>
+        /// <param name="pathPhoneNumber"> Phone number to check portability in e164 format. </param>
+        /// <param name="targetAccountSid"> Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account. </param>
+        /// <param name="addressSid"> Address Sid of customer to which the number will be ported. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortability </returns>
-        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PortingPortabilityResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, string addressSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid };
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
             return await FetchAsync(options, client);
         }
         #endif
@@ -156,15 +158,15 @@ namespace Twilio.Rest.Numbers.V1
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
 
-        ///<summary> The target account sid to which the number will be ported </summary> 
+        ///<summary> Account Sid that the phone number belongs to in Twilio. This is only returned for phone numbers that already exist in Twilio’s inventory and belong to your account or sub account. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> Boolean flag specifying if phone number is portable or not. </summary> 
+        ///<summary> Boolean flag indicates if the phone number can be ported into Twilio through the Porting API or not. </summary> 
         [JsonProperty("portable")]
         public bool? Portable { get; private set; }
 
-        ///<summary> Boolean flag specifying if PIN and account number is required for the phone number. </summary> 
+        ///<summary> Indicates if the port in process will require a personal identification number (PIN) and an account number for this phone number. If this is true you will be required to submit both a PIN and account number from the losing carrier for this number when opening a port in request. These fields will be required in order to complete the port in process to Twilio. </summary> 
         [JsonProperty("pin_and_account_number_required")]
         public bool? PinAndAccountNumberRequired { get; private set; }
 
@@ -172,7 +174,7 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("not_portable_reason")]
         public string NotPortableReason { get; private set; }
 
-        ///<summary> The Portability Reason Code for the phone number if it cannot be ported into Twilio, `null` otherwise. One of `22131`, `22132`, `22130`, `22133`, `22102` or `22135`. </summary> 
+        ///<summary> The Portability Reason Code for the phone number if it cannot be ported into Twilio, `null` otherwise. </summary> 
         [JsonProperty("not_portable_reason_code")]
         public int? NotPortableReasonCode { get; private set; }
 
@@ -183,14 +185,6 @@ namespace Twilio.Rest.Numbers.V1
         ///<summary> Country the phone number belongs to. </summary> 
         [JsonProperty("country")]
         public string Country { get; private set; }
-
-        ///<summary> Current messaging carrier of the phone number </summary> 
-        [JsonProperty("messaging_carrier")]
-        public string MessagingCarrier { get; private set; }
-
-        ///<summary> Current voice carrier of the phone number </summary> 
-        [JsonProperty("voice_carrier")]
-        public string VoiceCarrier { get; private set; }
 
         ///<summary> This is the url of the request that you're trying to reach out to locate the resource. </summary> 
         [JsonProperty("url")]

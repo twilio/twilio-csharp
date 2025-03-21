@@ -46,6 +46,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Create Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(CreateAssetOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(CreateAssetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static AssetResource Create(
                                           string pathServiceSid,
                                           string friendlyName,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAssetOptions(pathServiceSid, friendlyName){  };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(
                                                                                   string pathServiceSid,
                                                                                   string friendlyName,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAssetOptions(pathServiceSid, friendlyName){  };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssetOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -213,8 +213,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Fetch Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(FetchAssetOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(FetchAssetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -229,7 +228,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         public static AssetResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAssetOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);
@@ -281,8 +280,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="options"> Read Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssetResource>> ReadAsync(ReadAssetOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssetResource>> ReadAsync(ReadAssetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -299,9 +297,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> A single instance of Asset </returns>
         public static ResourceSet<AssetResource> Read(
                                                      string pathServiceSid,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAssetOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<AssetResource>> ReadAsync(
                                                                                              string pathServiceSid,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAssetOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -388,6 +386,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -410,7 +409,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <returns> Task that resolves to A single instance of Asset </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AssetResource> UpdateAsync(UpdateAssetOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -428,7 +427,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                                           string pathServiceSid,
                                           string pathSid,
                                           string friendlyName,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAssetOptions(pathServiceSid, pathSid, friendlyName){  };
             return Update(options, client);
@@ -445,7 +444,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                                                                               string pathServiceSid,
                                                                               string pathSid,
                                                                               string friendlyName,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAssetOptions(pathServiceSid, pathSid, friendlyName){  };
             return await UpdateAsync(options, client);

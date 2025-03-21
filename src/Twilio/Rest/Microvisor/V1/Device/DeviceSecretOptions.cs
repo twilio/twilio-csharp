@@ -99,7 +99,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             return p;
         }
 
-        
+    
 
     }
 
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             return p;
         }
 
-        
+    
 
     }
 
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Microvisor.V1.Device
             return p;
         }
 
-        
+    
 
     }
 

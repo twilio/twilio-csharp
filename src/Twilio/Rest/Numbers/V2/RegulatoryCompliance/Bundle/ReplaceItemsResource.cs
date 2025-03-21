@@ -63,6 +63,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -84,8 +85,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <param name="options"> Create ReplaceItems parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ReplaceItems </returns>
-        public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(CreateReplaceItemsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(CreateReplaceItemsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static ReplaceItemsResource Create(
                                           string pathBundleSid,
                                           string fromBundleSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateReplaceItemsOptions(pathBundleSid, fromBundleSid){  };
             return Create(options, client);
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         public static async System.Threading.Tasks.Task<ReplaceItemsResource> CreateAsync(
                                                                                   string pathBundleSid,
                                                                                   string fromBundleSid,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateReplaceItemsOptions(pathBundleSid, fromBundleSid){  };
             return await CreateAsync(options, client);

@@ -46,6 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -67,8 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Create IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(CreateIpAccessControlListOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(CreateIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static IpAccessControlListResource Create(
                                           string friendlyName,
                                           string pathAccountSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateIpAccessControlListOptions(friendlyName){  PathAccountSid = pathAccountSid };
             return Create(options, client);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(
                                                                                   string friendlyName,
                                                                                   string pathAccountSid = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateIpAccessControlListOptions(friendlyName){  PathAccountSid = pathAccountSid };
             return await CreateAsync(options, client);
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpAccessControlListOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -213,8 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Fetch IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(FetchIpAccessControlListOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(FetchIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -229,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static IpAccessControlListResource Fetch(
                                          string pathSid, 
                                          string pathAccountSid = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchIpAccessControlListOptions(pathSid){ PathAccountSid = pathAccountSid };
             return Fetch(options, client);
@@ -281,8 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ReadIpAccessControlListOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ReadIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -299,9 +297,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of IpAccessControlList </returns>
         public static ResourceSet<IpAccessControlListResource> Read(
                                                      string pathAccountSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadIpAccessControlListOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,9 +314,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(
                                                                                              string pathAccountSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadIpAccessControlListOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -388,6 +386,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -410,7 +409,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> UpdateAsync(UpdateIpAccessControlListOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -428,7 +427,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                           string pathSid,
                                           string friendlyName,
                                           string pathAccountSid = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateIpAccessControlListOptions(pathSid, friendlyName){ PathAccountSid = pathAccountSid };
             return Update(options, client);
@@ -445,7 +444,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                               string pathSid,
                                                                               string friendlyName,
                                                                               string pathAccountSid = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateIpAccessControlListOptions(pathSid, friendlyName){ PathAccountSid = pathAccountSid };
             return await UpdateAsync(options, client);

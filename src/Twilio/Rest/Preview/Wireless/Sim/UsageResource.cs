@@ -67,8 +67,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// <param name="options"> Fetch Usage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Usage </returns>
-        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,7 +84,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
                                          string pathSimSid, 
                                          string end = null, 
                                          string start = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchUsageOptions(pathSimSid){ End = end,Start = start };
             return Fetch(options, client);

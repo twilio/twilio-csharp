@@ -53,7 +53,7 @@ namespace Twilio.Rest.Insights.V1.Room
             return p;
         }
 
-        
+    
 
     }
 
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Insights.V1.Room
             return p;
         }
 
-        
+    
 
     }
 

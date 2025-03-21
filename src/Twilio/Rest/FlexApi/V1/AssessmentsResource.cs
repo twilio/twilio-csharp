@@ -44,6 +44,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -65,8 +66,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Create Assessments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
-        public static async System.Threading.Tasks.Task<AssessmentsResource> CreateAsync(CreateAssessmentsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AssessmentsResource> CreateAsync(CreateAssessmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -100,7 +100,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string answerId,
                                           string questionnaireSid,
                                           string authorization = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
             return Create(options, client);
@@ -133,7 +133,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                   string answerId,
                                                                                   string questionnaireSid,
                                                                                   string authorization = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
             return await CreateAsync(options, client);
@@ -171,8 +171,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="options"> Read Assessments parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assessments </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(ReadAssessmentsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(ReadAssessmentsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -191,9 +190,9 @@ namespace Twilio.Rest.FlexApi.V1
         public static ResourceSet<AssessmentsResource> Read(
                                                      string authorization = null,
                                                      string segmentId = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -210,9 +209,9 @@ namespace Twilio.Rest.FlexApi.V1
         public static async System.Threading.Tasks.Task<ResourceSet<AssessmentsResource>> ReadAsync(
                                                                                              string authorization = null,
                                                                                              string segmentId = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -280,6 +279,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -302,7 +302,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <returns> Task that resolves to A single instance of Assessments </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<AssessmentsResource> UpdateAsync(UpdateAssessmentsOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -324,7 +324,7 @@ namespace Twilio.Rest.FlexApi.V1
                                           string answerText,
                                           string answerId,
                                           string authorization = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
             return Update(options, client);
@@ -345,7 +345,7 @@ namespace Twilio.Rest.FlexApi.V1
                                                                               string answerText,
                                                                               string answerId,
                                                                               string authorization = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
             return await UpdateAsync(options, client);

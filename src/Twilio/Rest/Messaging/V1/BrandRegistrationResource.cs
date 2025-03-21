@@ -45,7 +45,9 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
             public static readonly StatusEnum InReview = new StatusEnum("IN_REVIEW");
-            public static readonly StatusEnum Deleted = new StatusEnum("DELETED");
+            public static readonly StatusEnum DeletionPending = new StatusEnum("DELETION_PENDING");
+            public static readonly StatusEnum DeletionFailed = new StatusEnum("DELETION_FAILED");
+            public static readonly StatusEnum Suspended = new StatusEnum("SUSPENDED");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -91,6 +93,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -112,8 +115,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Create BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(CreateBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -135,7 +137,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string brandType = null,
                                           bool? mock = null,
                                           bool? skipAutomaticSecVet = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
             return Create(options, client);
@@ -156,7 +158,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string brandType = null,
                                                                                   bool? mock = null,
                                                                                   bool? skipAutomaticSecVet = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
             return await CreateAsync(options, client);
@@ -196,8 +198,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Fetch BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandRegistrationResource> FetchAsync(FetchBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -210,7 +211,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchBrandRegistrationOptions(pathSid){  };
             return Fetch(options, client);
@@ -259,8 +260,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="options"> Read BrandRegistration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(ReadBrandRegistrationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -275,9 +275,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static ResourceSet<BrandRegistrationResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -290,9 +290,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BrandRegistrationResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -360,6 +360,7 @@ namespace Twilio.Rest.Messaging.V1
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -382,7 +383,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(UpdateBrandRegistrationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -396,7 +397,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Update(
                                           string pathSid,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return Update(options, client);
@@ -409,7 +410,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> UpdateAsync(
                                                                               string pathSid,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return await UpdateAsync(options, client);
@@ -486,9 +487,13 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("tcr_id")]
         public string TcrId { get; private set; }
 
-        ///<summary> A reason why brand registration has failed. Only applicable when status is FAILED. </summary> 
+        ///<summary> DEPRECATED. A reason why brand registration has failed. Only applicable when status is FAILED. </summary> 
         [JsonProperty("failure_reason")]
         public string FailureReason { get; private set; }
+
+        ///<summary> A list of errors that occurred during the brand registration process. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
         ///<summary> The absolute URL of the Brand Registration resource. </summary> 
         [JsonProperty("url")]
@@ -498,7 +503,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
 
-        ///<summary> Feedback on how to improve brand score </summary> 
+        ///<summary> DEPRECATED. Feedback on how to improve brand score </summary> 
         [JsonProperty("brand_feedback")]
         public List<BrandRegistrationResource.BrandFeedbackEnum> BrandFeedback { get; private set; }
 

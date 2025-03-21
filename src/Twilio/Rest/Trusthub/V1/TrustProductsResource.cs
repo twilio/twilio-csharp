@@ -60,12 +60,13 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
         }
 
-        /// <summary> Create a new Customer-Profile. </summary>
+        /// <summary> Create a new Trust Product. </summary>
         /// <param name="options"> Create TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -77,12 +78,11 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
         #if !NET35
-        /// <summary> Create a new Customer-Profile. </summary>
+        /// <summary> Create a new Trust Product. </summary>
         /// <param name="options"> Create TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsResource> CreateAsync(CreateTrustProductsOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsResource> CreateAsync(CreateTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
-        /// <summary> Create a new Customer-Profile. </summary>
+        /// <summary> Create a new Trust Product. </summary>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
-        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Trust Product resource changes status. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Trust Product resource. </param>
         /// <param name="statusCallback"> The URL we call to inform your application of status changes. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -102,17 +102,17 @@ namespace Twilio.Rest.Trusthub.V1
                                           string email,
                                           string policySid,
                                           Uri statusCallback = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrustProductsOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return Create(options, client);
         }
 
         #if !NET35
-        /// <summary> Create a new Customer-Profile. </summary>
+        /// <summary> Create a new Trust Product. </summary>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
-        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="email"> The email address that will receive updates when the Trust Product resource changes status. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Trust Product resource. </param>
         /// <param name="statusCallback"> The URL we call to inform your application of status changes. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
@@ -121,14 +121,14 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   string email,
                                                                                   string policySid,
                                                                                   Uri statusCallback = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrustProductsOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
             return await CreateAsync(options, client);
         }
         #endif
         
-        /// <summary> Delete a specific Customer-Profile. </summary>
+        /// <summary> Delete a specific Trust Product. </summary>
         /// <param name="options"> Delete TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Trusthub.V1
             );
         }
 
-        /// <summary> Delete a specific Customer-Profile. </summary>
+        /// <summary> Delete a specific Trust Product. </summary>
         /// <param name="options"> Delete TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -161,12 +161,12 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
         #if !NET35
-        /// <summary> Delete a specific Customer-Profile. </summary>
+        /// <summary> Delete a specific Trust Product. </summary>
         /// <param name="options"> Delete TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrustProductsOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -174,8 +174,8 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
-        /// <summary> Delete a specific Customer-Profile. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Delete a specific Trust Product. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -185,8 +185,8 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
         #if !NET35
-        /// <summary> Delete a specific Customer-Profile. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Delete a specific Trust Product. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Trusthub.V1
             );
         }
 
-        /// <summary> Fetch a specific Customer-Profile instance. </summary>
+        /// <summary> Fetch a specific Trust Product instance. </summary>
         /// <param name="options"> Fetch TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -225,33 +225,32 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Customer-Profile instance. </summary>
+        /// <summary> Fetch a specific Trust Product instance. </summary>
         /// <param name="options"> Fetch TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<TrustProductsResource> FetchAsync(FetchTrustProductsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrustProductsResource> FetchAsync(FetchTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch a specific Customer-Profile instance. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Fetch a specific Trust Product instance. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
         public static TrustProductsResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrustProductsOptions(pathSid){  };
             return Fetch(options, client);
         }
 
         #if !NET35
-        /// <summary> Fetch a specific Customer-Profile instance. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Fetch a specific Trust Product instance. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         public static async System.Threading.Tasks.Task<TrustProductsResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
@@ -275,7 +274,7 @@ namespace Twilio.Rest.Trusthub.V1
                 headerParams: null
             );
         }
-        /// <summary> Retrieve a list of all Customer-Profiles for an account. </summary>
+        /// <summary> Retrieve a list of all Trust Products for an account. </summary>
         /// <param name="options"> Read TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -288,12 +287,11 @@ namespace Twilio.Rest.Trusthub.V1
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all Customer-Profiles for an account. </summary>
+        /// <summary> Retrieve a list of all Trust Products for an account. </summary>
         /// <param name="options"> Read TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsResource>> ReadAsync(ReadTrustProductsOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrustProductsResource>> ReadAsync(ReadTrustProductsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -302,10 +300,10 @@ namespace Twilio.Rest.Trusthub.V1
             return new ResourceSet<TrustProductsResource>(page, options, client);
         }
         #endif
-        /// <summary> Retrieve a list of all Customer-Profiles for an account. </summary>
-        /// <param name="status"> The verification status of the Customer-Profile resource. </param>
+        /// <summary> Retrieve a list of all Trust Products for an account. </summary>
+        /// <param name="status"> The verification status of the Trust Product resource. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Trust Product resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -314,19 +312,19 @@ namespace Twilio.Rest.Trusthub.V1
                                                      TrustProductsResource.StatusEnum status = null,
                                                      string friendlyName = null,
                                                      string policySid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
-        /// <summary> Retrieve a list of all Customer-Profiles for an account. </summary>
-        /// <param name="status"> The verification status of the Customer-Profile resource. </param>
+        /// <summary> Retrieve a list of all Trust Products for an account. </summary>
+        /// <param name="status"> The verification status of the Trust Product resource. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="policySid"> The unique string of a policy that is associated to the Customer-Profile resource. </param>
+        /// <param name="policySid"> The unique string of a policy that is associated to the Trust Product resource. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -335,9 +333,9 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                              TrustProductsResource.StatusEnum status = null,
                                                                                              string friendlyName = null,
                                                                                              string policySid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrustProductsOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -405,12 +403,13 @@ namespace Twilio.Rest.Trusthub.V1
                 HttpMethod.Post,
                 Rest.Domain.Trusthub,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
         }
 
-        /// <summary> Updates a Customer-Profile in an account. </summary>
+        /// <summary> Updates a Trust Product in an account. </summary>
         /// <param name="options"> Update TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
@@ -421,13 +420,13 @@ namespace Twilio.Rest.Trusthub.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> Updates a Customer-Profile in an account. </summary>
+        /// <summary> Updates a Trust Product in an account. </summary>
         /// <param name="options"> Update TrustProducts parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TrustProductsResource> UpdateAsync(UpdateTrustProductsOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -435,12 +434,12 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
-        /// <summary> Updates a Customer-Profile in an account. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Updates a Trust Product in an account. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="status">  </param>
         /// <param name="statusCallback"> The URL we call to inform your application of status changes. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
+        /// <param name="email"> The email address that will receive updates when the Trust Product resource changes status. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TrustProducts </returns>
         public static TrustProductsResource Update(
@@ -449,19 +448,19 @@ namespace Twilio.Rest.Trusthub.V1
                                           Uri statusCallback = null,
                                           string friendlyName = null,
                                           string email = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTrustProductsOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return Update(options, client);
         }
 
         #if !NET35
-        /// <summary> Updates a Customer-Profile in an account. </summary>
-        /// <param name="pathSid"> The unique string that we created to identify the Customer-Profile resource. </param>
+        /// <summary> Updates a Trust Product in an account. </summary>
+        /// <param name="pathSid"> The unique string that we created to identify the Trust Product resource. </param>
         /// <param name="status">  </param>
         /// <param name="statusCallback"> The URL we call to inform your application of status changes. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. </param>
-        /// <param name="email"> The email address that will receive updates when the Customer-Profile resource changes status. </param>
+        /// <param name="email"> The email address that will receive updates when the Trust Product resource changes status. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TrustProducts </returns>
         public static async System.Threading.Tasks.Task<TrustProductsResource> UpdateAsync(
@@ -470,7 +469,7 @@ namespace Twilio.Rest.Trusthub.V1
                                                                               Uri statusCallback = null,
                                                                               string friendlyName = null,
                                                                               string email = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTrustProductsOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);
@@ -511,15 +510,15 @@ namespace Twilio.Rest.Trusthub.V1
     }
 
     
-        ///<summary> The unique string that we created to identify the Customer-Profile resource. </summary> 
+        ///<summary> The unique string that we created to identify the Trust Product resource. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Customer-Profile resource. </summary> 
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Trust Product resource. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The unique string of a policy that is associated to the Customer-Profile resource. </summary> 
+        ///<summary> The unique string of the policy that is associated with the Trust Product resource. </summary> 
         [JsonProperty("policy_sid")]
         public string PolicySid { get; private set; }
 
@@ -531,11 +530,11 @@ namespace Twilio.Rest.Trusthub.V1
         [JsonProperty("status")]
         public TrustProductsResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until. </summary> 
+        ///<summary> The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format until which the resource will be valid. </summary> 
         [JsonProperty("valid_until")]
         public DateTime? ValidUntil { get; private set; }
 
-        ///<summary> The email address that will receive updates when the Customer-Profile resource changes status. </summary> 
+        ///<summary> The email address that will receive updates when the Trust Product resource changes status. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
 
@@ -551,13 +550,17 @@ namespace Twilio.Rest.Trusthub.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
-        ///<summary> The absolute URL of the Customer-Profile resource. </summary> 
+        ///<summary> The absolute URL of the Trust Product resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> The URLs of the Assigned Items of the Customer-Profile resource. </summary> 
+        ///<summary> The URLs of the Assigned Items of the Trust Product resource. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+
+        ///<summary> The error codes associated with the rejection of the Trust Product. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
 
 
 

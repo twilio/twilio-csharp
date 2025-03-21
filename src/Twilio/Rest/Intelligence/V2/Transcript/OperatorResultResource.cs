@@ -46,6 +46,8 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             public static readonly OperatorTypeEnum Extract = new OperatorTypeEnum("extract");
             public static readonly OperatorTypeEnum ExtractNormalize = new OperatorTypeEnum("extract_normalize");
             public static readonly OperatorTypeEnum PiiExtract = new OperatorTypeEnum("pii_extract");
+            public static readonly OperatorTypeEnum TextGeneration = new OperatorTypeEnum("text_generation");
+            public static readonly OperatorTypeEnum Json = new OperatorTypeEnum("json");
 
         }
 
@@ -85,8 +87,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Fetch OperatorResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorResult </returns>
-        public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(FetchOperatorResultOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperatorResultResource> FetchAsync(FetchOperatorResultOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +104,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
                                          string pathTranscriptSid, 
                                          string pathOperatorSid, 
                                          bool? redacted = null, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchOperatorResultOptions(pathTranscriptSid, pathOperatorSid){ Redacted = redacted };
             return Fetch(options, client);
@@ -156,8 +157,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="options"> Read OperatorResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorResult </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(ReadOperatorResultOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(ReadOperatorResultOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -176,9 +176,9 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static ResourceSet<OperatorResultResource> Read(
                                                      string pathTranscriptSid,
                                                      bool? redacted = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadOperatorResultOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -195,9 +195,9 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorResultResource>> ReadAsync(
                                                                                              string pathTranscriptSid,
                                                                                              bool? redacted = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadOperatorResultOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -338,6 +338,10 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         ///<summary> Output of a text generation operator for example Conversation Sumamary. </summary> 
         [JsonProperty("text_generation_results")]
         public object TextGenerationResults { get; private set; }
+
+        ///<summary> The json_results </summary> 
+        [JsonProperty("json_results")]
+        public object JsonResults { get; private set; }
 
         ///<summary> A 34 character string that uniquely identifies this Transcript. </summary> 
         [JsonProperty("transcript_sid")]

@@ -67,8 +67,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <returns> A single instance of Notification </returns>
         public static NotificationResource Fetch(
                                          string pathChatServiceSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchNotificationOptions(pathChatServiceSid){  };
             return Fetch(options, client);
@@ -111,6 +110,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// <returns> Task that resolves to A single instance of Notification </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<NotificationResource> UpdateAsync(UpdateNotificationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                           string removedFromConversationSound = null,
                                           bool? newMessageWithMediaEnabled = null,
                                           string newMessageWithMediaTemplate = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateNotificationOptions(pathChatServiceSid){ LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate };
             return Update(options, client);
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
                                                                               string removedFromConversationSound = null,
                                                                               bool? newMessageWithMediaEnabled = null,
                                                                               string newMessageWithMediaTemplate = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateNotificationOptions(pathChatServiceSid){ LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate };
             return await UpdateAsync(options, client);

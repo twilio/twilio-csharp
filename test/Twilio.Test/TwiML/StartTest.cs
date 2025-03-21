@@ -91,11 +91,29 @@ namespace Twilio.Tests.TwiML
                 Siprec.StatusCallbackMethodEnum.Get
             );
 
+            elem.Transcription(
+                "name",
+                Transcription.TrackEnum.InboundTrack,
+                "status_callback_url",
+                Transcription.StatusCallbackMethodEnum.Get,
+                "inbound_track_label",
+                "outbound_track_label",
+                true,
+                "language_code",
+                "transcription_engine",
+                true,
+                "speech_model",
+                "hints",
+                true,
+                "intelligence_service"
+            );
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Start>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
                 "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
+                "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
             );

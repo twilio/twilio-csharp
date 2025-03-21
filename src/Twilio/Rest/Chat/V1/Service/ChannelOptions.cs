@@ -109,7 +109,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return p;
         }
 
-        
+    
 
     }
 
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return p;
         }
 
-        
+    
 
     }
 
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return p;
         }
 
-        
+    
 
     }
 

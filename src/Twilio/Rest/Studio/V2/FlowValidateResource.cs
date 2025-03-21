@@ -56,6 +56,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -78,7 +79,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> Task that resolves to A single instance of FlowValidate </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(UpdateFlowValidateOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -98,7 +99,7 @@ namespace Twilio.Rest.Studio.V2
                                           FlowValidateResource.StatusEnum status,
                                           object definition,
                                           string commitMessage = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateFlowValidateOptions(friendlyName, status, definition){ CommitMessage = commitMessage };
             return Update(options, client);
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Studio.V2
                                                                               FlowValidateResource.StatusEnum status,
                                                                               object definition,
                                                                               string commitMessage = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateFlowValidateOptions(friendlyName, status, definition){ CommitMessage = commitMessage };
             return await UpdateAsync(options, client);

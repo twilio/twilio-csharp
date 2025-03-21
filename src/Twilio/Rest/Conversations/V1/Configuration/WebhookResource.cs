@@ -91,8 +91,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -103,7 +102,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions(){  };
             return Fetch(options, client);
@@ -130,6 +129,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
 
         /// <summary> update </summary>
         /// <param name="method"> The HTTP method to be used when sending a webhook request. </param>
-        /// <param name="filters"> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved` </param>
+        /// <param name="filters"> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onMessageAdd`, `onMessageUpdate`, `onMessageRemove`, `onConversationUpdated`, `onConversationRemoved`, `onConversationAdd`, `onConversationAdded`, `onConversationRemove`, `onConversationUpdate`, `onConversationStateUpdated`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onParticipantAdd`, `onParticipantRemove`, `onParticipantUpdate`, `onDeliveryUpdated`, `onUserAdded`, `onUserUpdate`, `onUserUpdated` </param>
         /// <param name="preWebhookUrl"> The absolute url the pre-event webhook request should be sent to. </param>
         /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
         /// <param name="target">  </param>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
                                           string preWebhookUrl = null,
                                           string postWebhookUrl = null,
                                           WebhookResource.TargetEnum target = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
             return Update(options, client);
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         #if !NET35
         /// <summary> update </summary>
         /// <param name="method"> The HTTP method to be used when sending a webhook request. </param>
-        /// <param name="filters"> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved` </param>
+        /// <param name="filters"> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onMessageAdd`, `onMessageUpdate`, `onMessageRemove`, `onConversationUpdated`, `onConversationRemoved`, `onConversationAdd`, `onConversationAdded`, `onConversationRemove`, `onConversationUpdate`, `onConversationStateUpdated`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onParticipantAdd`, `onParticipantRemove`, `onParticipantUpdate`, `onDeliveryUpdated`, `onUserAdded`, `onUserUpdate`, `onUserUpdated` </param>
         /// <param name="preWebhookUrl"> The absolute url the pre-event webhook request should be sent to. </param>
         /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
         /// <param name="target">  </param>
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
                                                                               string preWebhookUrl = null,
                                                                               string postWebhookUrl = null,
                                                                               WebhookResource.TargetEnum target = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
             return await UpdateAsync(options, client);
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         [JsonProperty("method")]
         public WebhookResource.MethodEnum Method { get; private set; }
 
-        ///<summary> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved` </summary> 
+        ///<summary> The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onMessageAdd`, `onMessageUpdate`, `onMessageRemove`, `onConversationUpdated`, `onConversationRemoved`, `onConversationAdd`, `onConversationAdded`, `onConversationRemove`, `onConversationUpdate`, `onConversationStateUpdated`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onParticipantAdd`, `onParticipantRemove`, `onParticipantUpdate`, `onDeliveryUpdated`, `onUserAdded`, `onUserUpdate`, `onUserUpdated` </summary> 
         [JsonProperty("filters")]
         public List<string> Filters { get; private set; }
 

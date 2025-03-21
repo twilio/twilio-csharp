@@ -23,6 +23,31 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V2
 {
+
+    /// <summary> Host multiple phone numbers on Twilio's platform. </summary>
+    public class CreateBulkHostedNumberOrderOptions : IOptions<BulkHostedNumberOrderResource>
+    {
+        
+        
+        public object Body { get; set; }
+
+
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (Body != null)
+            {
+                body = BulkHostedNumberOrderResource.ToJson(Body);
+            }
+            return body;
+        }
+        
+
+    }
     /// <summary> Fetch a specific BulkHostedNumberOrder. </summary>
     public class FetchBulkHostedNumberOrderOptions : IOptions<BulkHostedNumberOrderResource>
     {
@@ -55,7 +80,7 @@ namespace Twilio.Rest.Numbers.V2
             return p;
         }
 
-        
+    
 
     }
 

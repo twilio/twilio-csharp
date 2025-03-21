@@ -48,6 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -69,8 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="options"> Create UserDefinedMessageSubscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
-        public static async System.Threading.Tasks.Task<UserDefinedMessageSubscriptionResource> CreateAsync(CreateUserDefinedMessageSubscriptionOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserDefinedMessageSubscriptionResource> CreateAsync(CreateUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           string pathAccountSid = null,
                                           string idempotencyKey = null,
                                           Twilio.Http.HttpMethod method = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
             return Create(options, client);
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string pathAccountSid = null,
                                                                                   string idempotencyKey = null,
                                                                                   Twilio.Http.HttpMethod method = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
             return await CreateAsync(options, client);
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserDefinedMessageSubscription </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserDefinedMessageSubscriptionOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));

@@ -45,10 +45,7 @@ namespace Twilio.Rest.Insights.V1
         ///<summary> A destination country code. Based on phone number in To. </summary> 
         public string ToCountryCode { get; set; }
 
-        ///<summary> A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. </summary> 
-        public bool? Branded { get; set; }
-
-        ///<summary> A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR. </summary> 
+        ///<summary> A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'. </summary> 
         public bool? VerifiedCaller { get; set; }
 
         ///<summary> A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags). </summary> 
@@ -99,6 +96,33 @@ namespace Twilio.Rest.Insights.V1
         ///<summary> A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]. </summary> 
         public string CallScoreAnnotation { get; set; }
 
+        ///<summary> A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false' </summary> 
+        public bool? BrandedEnabled { get; set; }
+
+        ///<summary> A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false' </summary> 
+        public bool? VoiceIntegrityEnabled { get; set; }
+
+        ///<summary> A unique SID identifier of the Branded Call. </summary> 
+        public string BrandedBundleSid { get; set; }
+
+        ///<summary> A unique SID identifier of the Voice Integrity Profile. </summary> 
+        public string VoiceIntegrityBundleSid { get; set; }
+
+        ///<summary> A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'. </summary> 
+        public string VoiceIntegrityUseCase { get; set; }
+
+        ///<summary> A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.  </summary> 
+        public string BusinessProfileIdentity { get; set; }
+
+        ///<summary> A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'  </summary> 
+        public string BusinessProfileIndustry { get; set; }
+
+        ///<summary> A unique SID identifier of the Business Profile. </summary> 
+        public string BusinessProfileBundleSid { get; set; }
+
+        ///<summary> A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'. </summary> 
+        public string BusinessProfileType { get; set; }
+
 
 
 
@@ -131,10 +155,6 @@ namespace Twilio.Rest.Insights.V1
             if (ToCountryCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("ToCountryCode", ToCountryCode));
-            }
-            if (Branded != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Branded", Branded.Value.ToString().ToLower()));
             }
             if (VerifiedCaller != null)
             {
@@ -204,6 +224,42 @@ namespace Twilio.Rest.Insights.V1
             {
                 p.Add(new KeyValuePair<string, string>("CallScoreAnnotation", CallScoreAnnotation));
             }
+            if (BrandedEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedEnabled", BrandedEnabled.Value.ToString().ToLower()));
+            }
+            if (VoiceIntegrityEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceIntegrityEnabled", VoiceIntegrityEnabled.Value.ToString().ToLower()));
+            }
+            if (BrandedBundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedBundleSid", BrandedBundleSid));
+            }
+            if (VoiceIntegrityBundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceIntegrityBundleSid", VoiceIntegrityBundleSid));
+            }
+            if (VoiceIntegrityUseCase != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceIntegrityUseCase", VoiceIntegrityUseCase));
+            }
+            if (BusinessProfileIdentity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessProfileIdentity", BusinessProfileIdentity));
+            }
+            if (BusinessProfileIndustry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessProfileIndustry", BusinessProfileIndustry));
+            }
+            if (BusinessProfileBundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessProfileBundleSid", BusinessProfileBundleSid));
+            }
+            if (BusinessProfileType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessProfileType", BusinessProfileType));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -211,7 +267,7 @@ namespace Twilio.Rest.Insights.V1
             return p;
         }
 
-        
+    
 
     }
 

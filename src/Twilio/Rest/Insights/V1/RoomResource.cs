@@ -51,6 +51,18 @@ namespace Twilio.Rest.Insights.V1
             public static readonly TwilioRealmEnum In1 = new TwilioRealmEnum("in1");
             public static readonly TwilioRealmEnum De1 = new TwilioRealmEnum("de1");
             public static readonly TwilioRealmEnum Gll = new TwilioRealmEnum("gll");
+            public static readonly TwilioRealmEnum StageUs1 = new TwilioRealmEnum("stage_us1");
+            public static readonly TwilioRealmEnum StageUs2 = new TwilioRealmEnum("stage_us2");
+            public static readonly TwilioRealmEnum DevUs1 = new TwilioRealmEnum("dev_us1");
+            public static readonly TwilioRealmEnum DevUs2 = new TwilioRealmEnum("dev_us2");
+            public static readonly TwilioRealmEnum StageDe1 = new TwilioRealmEnum("stage_de1");
+            public static readonly TwilioRealmEnum StageIn1 = new TwilioRealmEnum("stage_in1");
+            public static readonly TwilioRealmEnum StageIe1 = new TwilioRealmEnum("stage_ie1");
+            public static readonly TwilioRealmEnum StageBr1 = new TwilioRealmEnum("stage_br1");
+            public static readonly TwilioRealmEnum StageAu1 = new TwilioRealmEnum("stage_au1");
+            public static readonly TwilioRealmEnum StageSg1 = new TwilioRealmEnum("stage_sg1");
+            public static readonly TwilioRealmEnum StageJp1 = new TwilioRealmEnum("stage_jp1");
+            public static readonly TwilioRealmEnum Outside = new TwilioRealmEnum("outside");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -64,6 +76,8 @@ namespace Twilio.Rest.Insights.V1
             }
             public static readonly ProcessingStateEnum Complete = new ProcessingStateEnum("complete");
             public static readonly ProcessingStateEnum InProgress = new ProcessingStateEnum("in_progress");
+            public static readonly ProcessingStateEnum Timeout = new ProcessingStateEnum("timeout");
+            public static readonly ProcessingStateEnum NotStarted = new ProcessingStateEnum("not_started");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -154,6 +168,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly CodecEnum Vp8 = new CodecEnum("VP8");
             public static readonly CodecEnum H264 = new CodecEnum("H264");
             public static readonly CodecEnum Vp9 = new CodecEnum("VP9");
+            public static readonly CodecEnum Opus = new CodecEnum("opus");
         }
 
         
@@ -190,8 +205,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Fetch Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(FetchRoomOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -204,7 +218,7 @@ namespace Twilio.Rest.Insights.V1
         /// <returns> A single instance of Room </returns>
         public static RoomResource Fetch(
                                          string pathRoomSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchRoomOptions(pathRoomSid){  };
             return Fetch(options, client);
@@ -253,8 +267,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="options"> Read Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(ReadRoomOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -279,9 +292,9 @@ namespace Twilio.Rest.Insights.V1
                                                      string roomName = null,
                                                      DateTime? createdAfter = null,
                                                      DateTime? createdBefore = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadRoomOptions(){ RoomType = roomType, Codec = codec, RoomName = roomName, CreatedAfter = createdAfter, CreatedBefore = createdBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -304,9 +317,9 @@ namespace Twilio.Rest.Insights.V1
                                                                                              string roomName = null,
                                                                                              DateTime? createdAfter = null,
                                                                                              DateTime? createdBefore = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadRoomOptions(){ RoomType = roomType, Codec = codec, RoomName = roomName, CreatedAfter = createdAfter, CreatedBefore = createdBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);

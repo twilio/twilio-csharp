@@ -50,6 +50,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -71,8 +72,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         /// <param name="options"> Create Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
                                           string pathIdentity,
                                           string pathChallengeSid,
                                           int? ttl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){  Ttl = ttl };
             return Create(options, client);
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
                                                                                   string pathIdentity,
                                                                                   string pathChallengeSid,
                                                                                   int? ttl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){  Ttl = ttl };
             return await CreateAsync(options, client);

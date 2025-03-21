@@ -58,6 +58,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -79,8 +80,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Create AccessToken parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
-        public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(CreateAccessTokenOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(CreateAccessTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                           AccessTokenResource.FactorTypesEnum factorType,
                                           string factorFriendlyName = null,
                                           int? ttl = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){  FactorFriendlyName = factorFriendlyName, Ttl = ttl };
             return Create(options, client);
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                   AccessTokenResource.FactorTypesEnum factorType,
                                                                                   string factorFriendlyName = null,
                                                                                   int? ttl = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){  FactorFriendlyName = factorFriendlyName, Ttl = ttl };
             return await CreateAsync(options, client);
@@ -165,8 +165,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="options"> Fetch AccessToken parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
-        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(FetchAccessTokenOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccessTokenResource> FetchAsync(FetchAccessTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -181,7 +180,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static AccessTokenResource Fetch(
                                          string pathServiceSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchAccessTokenOptions(pathServiceSid, pathSid){  };
             return Fetch(options, client);

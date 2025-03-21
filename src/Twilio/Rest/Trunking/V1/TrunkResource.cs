@@ -71,6 +71,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -92,8 +93,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="options"> Create Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
-        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(CreateTrunkOptions options,
-        ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(CreateTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Trunking.V1
                                           bool? secure = null,
                                           bool? cnamLookupEnabled = null,
                                           TrunkResource.TransferCallerIdEnum transferCallerId = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateTrunkOptions(){  FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
             return Create(options, client);
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Trunking.V1
                                                                                   bool? secure = null,
                                                                                   bool? cnamLookupEnabled = null,
                                                                                   TrunkResource.TransferCallerIdEnum transferCallerId = null,
-                                                                                  ITwilioRestClient client = null)
+                                                                                    ITwilioRestClient client = null)
         {
         var options = new CreateTrunkOptions(){  FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
             return await CreateAsync(options, client);
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrunkOptions options,
-                                                                          ITwilioRestClient client = null)
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -256,8 +256,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="options"> Fetch Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
-        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -270,7 +269,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <returns> A single instance of Trunk </returns>
         public static TrunkResource Fetch(
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchTrunkOptions(pathSid){  };
             return Fetch(options, client);
@@ -319,8 +318,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="options"> Read Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ReadTrunkOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ReadTrunkOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -335,9 +333,9 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns>
         public static ResourceSet<TrunkResource> Read(
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTrunkOptions(){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -350,9 +348,9 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTrunkOptions(){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -420,6 +418,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -442,7 +441,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <returns> Task that resolves to A single instance of Trunk </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(UpdateTrunkOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -472,7 +471,7 @@ namespace Twilio.Rest.Trunking.V1
                                           bool? secure = null,
                                           bool? cnamLookupEnabled = null,
                                           TrunkResource.TransferCallerIdEnum transferCallerId = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSid){ FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
             return Update(options, client);
@@ -501,7 +500,7 @@ namespace Twilio.Rest.Trunking.V1
                                                                               bool? secure = null,
                                                                               bool? cnamLookupEnabled = null,
                                                                               TrunkResource.TransferCallerIdEnum transferCallerId = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSid){ FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
             return await UpdateAsync(options, client);

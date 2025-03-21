@@ -71,8 +71,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         /// <param name="options"> Fetch FunctionVersionContent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersionContent </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FunctionVersionContentResource> FetchAsync(FetchFunctionVersionContentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -89,7 +88,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
                                          string pathServiceSid, 
                                          string pathFunctionSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchFunctionVersionContentOptions(pathServiceSid, pathFunctionSid, pathSid){  };
             return Fetch(options, client);

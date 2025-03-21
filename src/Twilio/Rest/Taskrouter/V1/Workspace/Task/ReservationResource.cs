@@ -134,8 +134,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="options"> Fetch Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -152,7 +151,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                          string pathWorkspaceSid, 
                                          string pathTaskSid, 
                                          string pathSid, 
-                                         ITwilioRestClient client = null)
+                                        ITwilioRestClient client = null)
         {
             var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){  };
             return Fetch(options, client);
@@ -207,8 +206,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="options"> Read Reservation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options,
-                                                                                             ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -231,9 +229,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                      string pathTaskSid,
                                                      ReservationResource.StatusEnum reservationStatus = null,
                                                      string workerSid = null,
-                                                     int? pageSize = null,
+                                                     long? pageSize = null,
                                                      long? limit = null,
-                                                     ITwilioRestClient client = null)
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -254,9 +252,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                                              string pathTaskSid,
                                                                                              ReservationResource.StatusEnum reservationStatus = null,
                                                                                              string workerSid = null,
-                                                                                             int? pageSize = null,
+                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
-                                                                                             ITwilioRestClient client = null)
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -328,6 +326,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
                 postParams: options.GetParams(),
                 headerParams: options.GetHeaderParams()
             );
@@ -350,7 +349,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         #if !NET35
         public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options,
-                                                                                                          ITwilioRestClient client = null)
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -406,7 +405,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
         /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </param>
         /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
-        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
+        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
         /// <param name="sipAuthUsername"> The SIP username used for authentication. </param>
         /// <param name="sipAuthPassword"> The SIP password for authentication. </param>
         /// <param name="dequeueStatusCallbackEvent"> The Call progress events sent via webhooks as a result of a Dequeue instruction. </param>
@@ -478,7 +477,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                           bool? beepOnCustomerEntrance = null,
                                           string jitterBufferSize = null,
                                           string ifMatch = null,
-                                          ITwilioRestClient client = null)
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return Update(options, client);
@@ -533,7 +532,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
         /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </param>
         /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
-        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
+        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
         /// <param name="sipAuthUsername"> The SIP username used for authentication. </param>
         /// <param name="sipAuthPassword"> The SIP password for authentication. </param>
         /// <param name="dequeueStatusCallbackEvent"> The Call progress events sent via webhooks as a result of a Dequeue instruction. </param>
@@ -605,7 +604,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                               bool? beepOnCustomerEntrance = null,
                                                                               string jitterBufferSize = null,
                                                                               string ifMatch = null,
-                                                                              ITwilioRestClient client = null)
+                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
