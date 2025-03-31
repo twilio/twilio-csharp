@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+
 using Twilio.Converters;
 
-namespace Twilio.Tests.Converters
+namespace Twilio.UnitTests.Converters
 {
-    [TestFixture]
+    
     public class SerializersTest : TwilioTest {
 
-        [Test]
+        [Fact]
         public void TestJsonObjectSerializesDictionary()
         {
             var inputDict = new Dictionary<string, string> {{"twilio", "rocks"}};
             var result = Serializers.JsonObject(inputDict);
-            Assert.AreEqual("{\"twilio\":\"rocks\"}", result);
+            Assert.Equal("{\"twilio\":\"rocks\"}", result);
         }
 
-        [Test]
+        [Fact]
         public void TestJsonObjectSerializesList()
         {
             var inputDict = new List<object>{
@@ -24,39 +24,39 @@ namespace Twilio.Tests.Converters
                 new Dictionary<string, string> {{"join", "us"}}
             };
             var result = Serializers.JsonObject(inputDict);
-            Assert.AreEqual("[\"twilio\",{\"join\":\"us\"}]", result);
+            Assert.Equal("[\"twilio\",{\"join\":\"us\"}]", result);
         }
 
-        [Test]
+        [Fact]
         public void TestJsonObjectSerializesArray()
         {
             string[] inputDict = new string[2] {"twilio", "rocks"};
             var result = Serializers.JsonObject(inputDict);
-            Assert.AreEqual("[\"twilio\",\"rocks\"]", result);
+            Assert.Equal("[\"twilio\",\"rocks\"]", result);
         }
 
-        [Test]
+        [Fact]
         public void TestJsonObjectPassesThroughString()
         {
             var input = "{\"twilio\":\"is dope\"}";
             var result = Serializers.JsonObject(input);
-            Assert.AreEqual(input, result);
+            Assert.Equal(input, result);
         }
 
-        [Test]
+        [Fact]
         public void TestDateTimeIso8601WithDateTime()
         {
             var expect = "2017-06-19T12:13:14Z";
             var input = new DateTime(2017, 06, 19, 12, 13, 14);
             var result = Serializers.DateTimeIso8601(input);
-            Assert.AreEqual(expect, result);
+            Assert.Equal(expect, result);
         }
 
-        [Test]
+        [Fact]
         public void TestDateTimeIso8601WithNull()
         {
             var result = Serializers.DateTimeIso8601(null);
-            Assert.AreEqual(null, result);
+            Assert.Null(result);
         }
     }
 }

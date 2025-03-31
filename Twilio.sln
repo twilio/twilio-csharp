@@ -9,9 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FE04FB2E-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twilio", "src\Twilio\Twilio.csproj", "{62BB8FE9-99DD-475D-80EB-D2E53C380754}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twilio.Test", "test\Twilio.Test\Twilio.Test.csproj", "{DC35107A-F987-47A3-B0BC-7110BA15943C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.UnitTests", "test\Twilio.UnitTests\Twilio.UnitTests.csproj", "{0B41DF14-DE2D-452D-8322-7999F3C76740}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B36A84DF-456D-A817-6EDD-3EC3E7F6E11F}"
+	ProjectSection(SolutionItems) = preProject
+		examples\BearerTokenAuthentication.md = examples\BearerTokenAuthentication.md
+		advanced-examples\custom-http-client.md = advanced-examples\custom-http-client.md
+		examples\PublicOAuthAuthentication.md = examples\PublicOAuthAuthentication.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,18 +40,6 @@ Global
 		{62BB8FE9-99DD-475D-80EB-D2E53C380754}.Release|x64.Build.0 = Release|Any CPU
 		{62BB8FE9-99DD-475D-80EB-D2E53C380754}.Release|x86.ActiveCfg = Release|Any CPU
 		{62BB8FE9-99DD-475D-80EB-D2E53C380754}.Release|x86.Build.0 = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|x64.Build.0 = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Debug|x86.Build.0 = Debug|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|x64.ActiveCfg = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|x64.Build.0 = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|x86.ActiveCfg = Release|Any CPU
-		{DC35107A-F987-47A3-B0BC-7110BA15943C}.Release|x86.Build.0 = Release|Any CPU
 		{0B41DF14-DE2D-452D-8322-7999F3C76740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B41DF14-DE2D-452D-8322-7999F3C76740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B41DF14-DE2D-452D-8322-7999F3C76740}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -65,7 +58,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{62BB8FE9-99DD-475D-80EB-D2E53C380754} = {36585F38-8C30-49A9-BDA1-9A0DC61C288B}
-		{DC35107A-F987-47A3-B0BC-7110BA15943C} = {FE04FB2E-73FB-4E45-AAEE-EE04754A5E9C}
 		{0B41DF14-DE2D-452D-8322-7999F3C76740} = {FE04FB2E-73FB-4E45-AAEE-EE04754A5E9C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

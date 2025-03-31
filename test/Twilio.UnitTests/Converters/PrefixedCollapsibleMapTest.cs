@@ -1,27 +1,27 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
+
 using Twilio.Converters;
 
-namespace Twilio.Tests.Converters
+namespace Twilio.UnitTests.Converters
 {
-    [TestFixture]
+    
     public class PrefixedCollapsibleMapTest : TwilioTest {
 
-        [Test]
+        [Fact]
         public void TestNullSerialize()
         {
             var result = PrefixedCollapsibleMap.Serialize(null, "really");
-            CollectionAssert.AreEquivalent(new Dictionary<string, string>(), result);
+            Assert.Equal(new Dictionary<string, string>(), result);
         }
 
-        [Test]
+        [Fact]
         public void TestEmptySerialize()
         {
             var result = PrefixedCollapsibleMap.Serialize(new Dictionary<string, object>(), "really");
-            CollectionAssert.AreEquivalent(new Dictionary<string, string>(), result);
+            Assert.Equal(new Dictionary<string, string>(), result);
         }
 
-        [Test]
+        [Fact]
         public void TestNormalSerialize() {
 
             var inputDict = new Dictionary<string, object>
@@ -42,7 +42,7 @@ namespace Twilio.Tests.Converters
                 {"really.super.fun", "times"}
             };
 
-            CollectionAssert.AreEquivalent(expected, result);
+            Assert.Equal(expected, result);
         }
     }
 }

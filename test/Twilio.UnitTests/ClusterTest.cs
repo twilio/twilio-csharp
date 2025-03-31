@@ -100,22 +100,22 @@ namespace Twilio.UnitTests
         [Trait("Category", "ClusterTest")]
         public void TestListParams()
         {
-            var sinkConfiguration = new Dictionary<string, Object>()
+            var sinkConfiguration = new Dictionary<string, object>()
             {
                 {"destination", "http://example.org/webhook"},
                 {"method", "post"},
                 {"batch_events",false}
             };
 
-            var types1 = new Dictionary<string, Object>(){
+            var types1 = new Dictionary<string, object>(){
                 {"type","com.twilio.messaging.message.delivered"},
             };
 
-            var types2 = new Dictionary<string, Object>(){
+            var types2 = new Dictionary<string, object>(){
                 {"type", "com.twilio.messaging.message.sent"},
             };
 
-            var types = new List<Object>(){
+            var types = new List<object>(){
                 types1,types2
             };
 

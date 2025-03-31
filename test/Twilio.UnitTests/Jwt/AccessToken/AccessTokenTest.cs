@@ -318,7 +318,7 @@ namespace Twilio.UnitTests.Jwt.AccessToken
             Assert.Single(decodedGrants);
 
             var decodedVg = ToDict(decodedGrants["player"]);
-            Assert.Equal(null, decodedVg["requestCredentials"]);
+            Assert.Null(decodedVg["requestCredentials"]);
             Assert.Equal("https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx", decodedVg["playbackUrl"]);
             Assert.Equal("VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", decodedVg["playerStreamerSid"]);
         }

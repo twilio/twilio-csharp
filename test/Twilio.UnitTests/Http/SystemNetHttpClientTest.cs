@@ -1,35 +1,29 @@
-﻿#if !NET35
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
-using NUnit.Framework;
+
 using Twilio.Constant;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
 
-namespace Twilio.Tests.Http
+namespace Twilio.UnitTests.Http
 {
     public class MockResponseHandler : DelegatingHandler
     {
         public class MockResponse
         {
-            public Uri requestUri;
-            public HttpResponseMessage message;
-            public Exception error;
+            public Uri? requestUri;
+            public HttpResponseMessage? message;
+            public Exception? error;
         }
 
-        private Dictionary<String, MockResponse> responseMap = new Dictionary<String, MockResponse>();
+        private Dictionary<string, MockResponse> responseMap = new Dictionary<string, MockResponse>();
 
-        public HttpRequestMessage InternalRequest { get; private set; }
+        public HttpRequestMessage? InternalRequest { get; private set; }
 
         private Random random = new Random();
 
-        public void Respond(String url, HttpStatusCode code, String content = null)
+        public void Respond(string url, HttpStatusCode code, string? content = null)
         {
             MockResponse response = new MockResponse();
             response.requestUri = new Uri(url);
@@ -40,7 +34,7 @@ namespace Twilio.Tests.Http
             responseMap[url] = response;
         }
 
-        public void Error(String url, Exception error)
+        public void Error(string url, Exception error)
         {
             MockResponse response = new MockResponse();
             response.requestUri = new Uri(url);
@@ -53,10 +47,11 @@ namespace Twilio.Tests.Http
                                                                CancellationToken cancellationToken)
         {
             // Uri will contain query params, only lookup on the uri route
-            var route = request.RequestUri.ToString().Split('?')[0];
+            var route = request.RequestUri?.ToString().Split('?')[0] ?? "";
             MockResponse response = responseMap[route];
 
-            Assert.AreEqual(response.requestUri.ToString(), route);
+            Assert.Equal(response.requestUri?.ToString(), route);
+            
             if (response.error != null)
             {
                 throw response.error;
@@ -69,21 +64,21 @@ namespace Twilio.Tests.Http
         }
     }
 
-    [TestFixture]
+    
     public class SystemNetHttpClientTest : TwilioTest
     {
         private MockResponseHandler _mockHttp;
         public SystemNetHttpClient TwilioHttpClient { get; set; }
 
-        [SetUp]
-        public void Init()
+        
+        public SystemNetHttpClientTest()
         {
             this._mockHttp = new MockResponseHandler();
             var internalHttpClient = new System.Net.Http.HttpClient(this._mockHttp);
             this.TwilioHttpClient = new SystemNetHttpClient(internalHttpClient);
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestSuccess()
         {
             this._mockHttp.Respond(
@@ -95,15 +90,15 @@ namespace Twilio.Tests.Http
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
             Response resp = this.TwilioHttpClient.MakeRequest(testRequest);
 
-            Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
-            Assert.AreEqual("{'test': 'val'}", resp.Content);
+            Assert.Equal(HttpStatusCode.OK, resp.StatusCode);
+            Assert.Equal("{'test': 'val'}", resp.Content);
 
-            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
+            Assert.Same(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.Same(resp, this.TwilioHttpClient.LastResponse);
         }
 
-        [Test]
-        public void TestMakeRequestAsyncSuccess()
+        [Fact]
+        public async void TestMakeRequestAsyncSuccess()
         {
             this._mockHttp.Respond(
                 "https://api.twilio.com/v1/Resource.json",
@@ -112,18 +107,18 @@ namespace Twilio.Tests.Http
             );
 
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
-            Task<Response> result = this.TwilioHttpClient.MakeRequestAsync(testRequest);
-            result.Wait();
-            Response resp = result.Result;
+            var result = await this.TwilioHttpClient.MakeRequestAsync(testRequest);
+            
+            Response resp = result;
 
-            Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
-            Assert.AreEqual("{'test': 'val'}", resp.Content);
+            Assert.Equal(HttpStatusCode.OK, resp.StatusCode);
+            Assert.Equal("{'test': 'val'}", resp.Content);
 
-            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
+            Assert.Same(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.Same(resp, this.TwilioHttpClient.LastResponse);
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestAsyncSuccessThreadSafe()
         {
             // Create enough threads to rule out any suspicion.
@@ -141,13 +136,17 @@ namespace Twilio.Tests.Http
                 );
             }
 
-            void testRunner(object index)
+            async void testRunner(object? index)
             {
+                if(index == null)
+                {
+                    throw new ArgumentNullException(nameof(index));
+                }
                 int i = (int)index;
                 Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/" + i + "/Resource.json");
-                Task<Response> result = this.TwilioHttpClient.MakeRequestAsync(testRequest);
-                result.Wait();
-                responses[i] = result.Result;
+                var result = await this.TwilioHttpClient.MakeRequestAsync(testRequest);
+                // result.Wait();
+                responses[i] = result;
             }
 
             // Intialize and run all the threads. Then hold for completion.
@@ -166,12 +165,12 @@ namespace Twilio.Tests.Http
             for (int i = 0; i < testIterations; ++i)
             {
                 Response resp = responses[i];
-                Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
-                Assert.AreEqual("{'test': 'val" + i + "'}", resp.Content);
+                Assert.Equal(HttpStatusCode.OK, resp.StatusCode);
+                Assert.Equal("{'test': 'val" + i + "'}", resp.Content);
             }
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestReturnsNon200()
         {
             this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.InternalServerError);
@@ -179,12 +178,12 @@ namespace Twilio.Tests.Http
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
             Response resp = this.TwilioHttpClient.MakeRequest(testRequest);
 
-            Assert.AreEqual(HttpStatusCode.InternalServerError, resp.StatusCode);
-            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
+            Assert.Equal(HttpStatusCode.InternalServerError, resp.StatusCode);
+            Assert.Same(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.Same(resp, this.TwilioHttpClient.LastResponse);
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestThrowsOnConnectionErrors()
         {
             this._mockHttp.Error(
@@ -196,11 +195,11 @@ namespace Twilio.Tests.Http
 
             Assert.Throws<HttpRequestException>(() => TwilioHttpClient.MakeRequest(testRequest));
 
-            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            Assert.IsNull(this.TwilioHttpClient.LastResponse);
+            Assert.Same(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.Null(this.TwilioHttpClient.LastResponse);
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestWithParams()
         {
             this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
@@ -213,14 +212,14 @@ namespace Twilio.Tests.Http
 
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
 
-            Assert.AreEqual("https://api.twilio.com/v1/Resource.json?query_param=query_value",
-                            internalRequest.RequestUri.ToString());
+            Assert.Equal("https://api.twilio.com/v1/Resource.json?query_param=query_value",
+                            internalRequest.RequestUri?.ToString());
 
-            Assert.IsNotNull(internalRequest.Content);
-            Assert.IsInstanceOf<FormUrlEncodedContent>(internalRequest.Content);
+            Assert.NotNull(internalRequest.Content);
+            Assert.IsAssignableFrom<FormUrlEncodedContent>(internalRequest.Content);
         }
         
-        [Test]
+        [Fact]
         public void TestMakeRequestWithJsonBody()
         {
             this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
@@ -233,13 +232,13 @@ namespace Twilio.Tests.Http
 
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
 
-            Assert.IsNotNull(internalRequest.Content);
-            Assert.IsInstanceOf<StringContent>(internalRequest.Content);
-            Assert.AreEqual("application/json", internalRequest.Content.Headers.ContentType.MediaType);
-            Assert.AreEqual("utf-8", internalRequest.Content.Headers.ContentType.CharSet);
+            Assert.NotNull(internalRequest.Content);
+            Assert.IsAssignableFrom<StringContent>(internalRequest.Content);
+            Assert.Equal("application/json", internalRequest.Content?.Headers?.ContentType?.MediaType);
+            Assert.Equal("utf-8", internalRequest.Content?.Headers?.ContentType?.CharSet);
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestAddsHeadersAndUserAgent()
         {
             this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
@@ -250,20 +249,20 @@ namespace Twilio.Tests.Http
             this.TwilioHttpClient.MakeRequest(testRequest);
 
             HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
-            Assert.IsNotNull(internalRequest);
+            Assert.NotNull(internalRequest);
 
-            Assert.AreEqual("Basic", internalRequest.Headers.Authorization.Scheme);
-            Assert.AreEqual("username:password", Convert.FromBase64String(internalRequest.Headers.Authorization.Parameter));
+            Assert.Equal("Basic", internalRequest.Headers?.Authorization?.Scheme);
+            Assert.Equal(Encoding.UTF8.GetBytes("username:password"), Convert.FromBase64String(internalRequest?.Headers?.Authorization?.Parameter ?? ""));
 
-            Assert.AreEqual("application/json", internalRequest.Headers.Accept.ToString());
-            Assert.AreEqual("utf-8", internalRequest.Headers.AcceptEncoding.ToString());
+            Assert.Equal("application/json", internalRequest?.Headers?.Accept.ToString());
+            Assert.Equal("utf-8", internalRequest?.Headers?.AcceptEncoding.ToString());
 
-            Assert.IsNotNull(internalRequest.Headers.UserAgent);
+            Assert.NotNull(internalRequest?.Headers?.UserAgent);
             Regex rgx = new Regex(@"^twilio-csharp/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\s[.\s\w]+/[^\s]+$");
-            Assert.IsTrue(rgx.IsMatch(internalRequest.Headers.UserAgent.ToString()));
+            Assert.Matches(rgx, internalRequest?.Headers?.UserAgent?.ToString());
         }
 
-        [Test]
+        [Fact]
         public void TestMakeRequestAddUserAgentExtensions()
         {
             string[] userAgentExtensions = new string[] { "twilio-run/2.0.0-test", "flex-plugin/3.4.0" };
@@ -280,8 +279,7 @@ namespace Twilio.Tests.Http
             string userAgent = internalRequest.Headers.UserAgent.ToString();
             string[] actualUserAgent = userAgent.Split(' ');
             var actualUserAgentExtensions = actualUserAgent.ToList().GetRange(actualUserAgent.Length - userAgentExtensions.Length, userAgentExtensions.Length);
-            CollectionAssert.AreEqual(userAgentExtensions, actualUserAgentExtensions);
+            Assert.Equal(userAgentExtensions, actualUserAgentExtensions);
         }
     }
 }
-#endif

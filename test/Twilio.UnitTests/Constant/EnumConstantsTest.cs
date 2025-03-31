@@ -1,18 +1,17 @@
-using NUnit.Framework;
 using Twilio.Constant;
 
-namespace Twilio.Tests.Constant
+namespace Twilio.UnitTests.Constant
 {
-    [TestFixture]
+    
     public class EnumConstantsTest
     {
-        [Test]
+        [Fact]
         public void EnumConstantComparison()
         {
             var jsonContentType = EnumConstants.ContentTypeEnum.JSON;
             var formUrlEncodedType = EnumConstants.ContentTypeEnum.FORM_URLENCODED;
-            Assert.AreEqual("application/json", jsonContentType.ToString());
-            Assert.AreEqual("application/x-www-form-urlencoded", formUrlEncodedType.ToString());
+            Assert.Equal("application/json", jsonContentType.ToString());
+            Assert.Equal("application/x-www-form-urlencoded", formUrlEncodedType.ToString());
         }
     }
 }

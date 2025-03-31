@@ -6,35 +6,36 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 #endif
 
-using NSubstitute;
-using NSubstitute.ExceptionExtensions;
-using NUnit.Framework;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 using System.IO;
+using HttpClient = Twilio.Http.HttpClient;
+using NSubstitute;
+using NSubstitute.ExceptionExtensions;
+using HttpMethod = Twilio.Http.HttpMethod;
 
-namespace Twilio.Tests.Clients
+namespace Twilio.UnitTests.Clients
 {
-    [TestFixture]
+
     public class TwilioRestClientTest
     {
         HttpClient client;
 
-        [SetUp]
-        public void Init()
+
+        public TwilioRestClientTest()
         {
             client = Substitute.For<HttpClient>();
         }
 
-        [Test]
+        [Fact]
         public void TestValidSslCert()
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
             TwilioRestClient.ValidateSslCertificate(client);
         }
 
-        [Test]
+        [Fact]
         public void TestCantConnect()
         {
             // Exception type doesn't matter, just needs to match in IsInstanceOf below.
@@ -47,10 +48,10 @@ namespace Twilio.Tests.Clients
             }
             catch (CertificateValidationException e)
             {
-                Assert.IsInstanceOf(typeof(InvalidOperationException), e.GetBaseException());
-                Assert.AreEqual("Connection to tls-test.twilio.com:443 failed", e.Message);
-                Assert.IsNull(e.Response);
-                Assert.IsNotNull(e.Request);
+                Assert.IsAssignableFrom<InvalidOperationException>(e.GetBaseException());
+                Assert.Equal("Connection to tls-test.twilio.com:443 failed", e.Message);
+                Assert.Null(e.Response);
+                Assert.NotNull(e.Request);
             }
             catch (Exception)
             {
@@ -58,7 +59,7 @@ namespace Twilio.Tests.Clients
             }
         }
 
-        [Test]
+        [Fact]
         public void TestNotOkResponse()
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.SwitchingProtocols, "NOTOK"));
@@ -70,9 +71,9 @@ namespace Twilio.Tests.Clients
             }
             catch (CertificateValidationException e)
             {
-                Assert.AreEqual("Unexpected response from certificate endpoint", e.Message);
-                Assert.IsNotNull(e.Response);
-                Assert.IsNotNull(e.Request);
+                Assert.Equal("Unexpected response from certificate endpoint", e.Message);
+                Assert.NotNull(e.Response);
+                Assert.NotNull(e.Request);
             }
             catch (Exception)
             {
@@ -80,7 +81,7 @@ namespace Twilio.Tests.Clients
             }
         }
 
-        [Test]
+        [Fact]
         public void TestBadResponseWithDetails()
         {
             string jsonResponse = @"{
@@ -101,17 +102,17 @@ namespace Twilio.Tests.Clients
             }
             catch (ApiException e)
             {
-                Assert.AreEqual("Bad request", e.Message);
-                Assert.AreEqual(20001, e.Code);
-                Assert.AreEqual("https://www.twilio.com/docs/errors/20001", e.MoreInfo);
-                Assert.AreEqual(400, e.Status);
+                Assert.Equal("Bad request", e.Message);
+                Assert.Equal(20001, e.Code);
+                Assert.Equal("https://www.twilio.com/docs/errors/20001", e.MoreInfo);
+                Assert.Equal(400, e.Status);
                 var expectedDetails = new Dictionary<string, object>();
                 expectedDetails.Add("foo", "bar");
-                Assert.AreEqual(expectedDetails, e.Details);
+                Assert.Equal(expectedDetails, e.Details);
             }
         }
 
-        [Test]
+        [Fact]
         public void TestRedirectResponse()
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.RedirectKeepVerb, "REDIRECT"));
@@ -120,7 +121,7 @@ namespace Twilio.Tests.Clients
             twilioClient.Request(request);
         }
 
-        [Test]
+        [Fact]
         public void TestActivatingDebugLogging()
         {
             var output = new StringWriter();
@@ -130,10 +131,10 @@ namespace Twilio.Tests.Clients
             TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
             twilioClient.LogLevel = "debug";
             twilioClient.Request(request);
-            Assert.That(output.ToString(), Contains.Substring("request.URI: https://www.contoso.com/"));
+            Assert.Contains("request.URI: https://www.contoso.com/", output.ToString());
         }
 
-        [Test]
+        [Fact]
         public void RequestPropagatesEdgeAndRegion()
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
@@ -143,11 +144,11 @@ namespace Twilio.Tests.Clients
 
             twilioClient.Request(request);
 
-            Assert.AreEqual(request.Edge, "frankfurt");
-            Assert.AreEqual(request.Region, "us1");
+            Assert.Equal("frankfurt", request.Edge);
+            Assert.Equal("us1", request.Region);
         }
 
-        [Test]
+        [Fact]
         public void RequestWithUserAgentExtensions()
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
@@ -158,11 +159,11 @@ namespace Twilio.Tests.Clients
 
             twilioClient.Request(request);
 
-            Assert.AreEqual(request.UserAgentExtensions, userAgentExtensions);
+            Assert.Equal(request.UserAgentExtensions, userAgentExtensions);
         }
 
 #if !NET35
-        [Test]
+        [Fact]
         public async Task RequestAsyncPropagatesEdgeAndRegion()
         {
             client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
@@ -172,11 +173,11 @@ namespace Twilio.Tests.Clients
 
             await twilioClient.RequestAsync(request);
 
-            Assert.AreEqual(request.Edge, "frankfurt");
-            Assert.AreEqual(request.Region, "us1");
+            Assert.Equal("frankfurt", request.Edge);
+            Assert.Equal("us1", request.Region);
         }
 
-        [Test]
+        [Fact]
         public async Task RequestAsyncWithUserAgentExtensions()
         {
             client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
@@ -187,7 +188,7 @@ namespace Twilio.Tests.Clients
 
             await twilioClient.RequestAsync(request);
 
-            Assert.AreEqual(request.UserAgentExtensions, userAgentExtensions);
+            Assert.Equal(request.UserAgentExtensions, userAgentExtensions);
         }
 #endif
     }

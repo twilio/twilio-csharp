@@ -1,23 +1,23 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using NUnit.Framework;
+
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.Tests.Converters
+namespace Twilio.UnitTests.Converters
 {
-    [TestFixture]
+
     public class StringEnumConverterTest : TwilioTest
     {
         class StatusClass
         {
             [JsonProperty("status")]
             [JsonConverter(typeof(StringEnumConverter))]
-            public StatusEnum Status { get; private set; }
+            public StatusEnum? Status { get; private set; }
 
             [JsonProperty("status_list")]
             [JsonConverter(typeof(StringEnumConverter))]
-            public List<StatusEnum> StatusList { get; private set; }
+            public List<StatusEnum>? StatusList { get; private set; }
         }
 
         class StatusEnum : StringEnum
@@ -33,21 +33,21 @@ namespace Twilio.Tests.Converters
             public static readonly StatusEnum Some = new StatusEnum("some");
         }
 
-        [Test]
+        [Fact]
         public void TestBasicDeserialize()
         {
             var input = "{\"status\":\"awe\",\"status_list\":[\"some\"]}";
             var result = JsonConvert.DeserializeObject<StatusClass>(input);
-            Assert.AreEqual(StatusEnum.Awe, result.Status);
-            Assert.AreEqual(new[] { StatusEnum.Some }, result.StatusList);
+            Assert.Equal(StatusEnum.Awe, result!.Status);
+            Assert.Equal(new[] { StatusEnum.Some }, result.StatusList);
         }
 
-        [Test]
+        [Fact]
         public void TestNullDeserialize()
         {
             var input = "{\"status\":null,\"status_list\":null}";
             var result = JsonConvert.DeserializeObject<StatusClass>(input);
-            Assert.Null(result.Status);
+            Assert.Null(result!.Status);
             Assert.Null(result.StatusList);
         }
     }
