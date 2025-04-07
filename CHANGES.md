@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2025-04-07] Version 7.10.0
+---------------------------
+**Library - Feature**
+- [PR #660](https://github.com/twilio/twilio-csharp/pull/660): Optimize request validator + make thread safe (backwards compatible). Thanks to [@Swimburger](https://github.com/Swimburger)!
+
+**Library - Chore**
+- [PR #783](https://github.com/twilio/twilio-csharp/pull/783): added patch method support. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Studio**
+- Add documentation for parent_step_sid field in Step resource
+
+
 [2025-03-20] Version 7.9.1
 --------------------------
 **Accounts**

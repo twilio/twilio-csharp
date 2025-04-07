@@ -297,6 +297,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         [JsonProperty("context")]
         public object Context { get; private set; }
 
+        ///<summary> The SID of the parent Step. </summary> 
+        [JsonProperty("parent_step_sid")]
+        public string ParentStepSid { get; private set; }
+
         ///<summary> The Widget that preceded the Widget for the Step. </summary> 
         [JsonProperty("transitioned_from")]
         public string TransitionedFrom { get; private set; }

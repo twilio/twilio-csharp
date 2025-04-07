@@ -289,6 +289,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         [JsonProperty("execution_sid")]
         public string ExecutionSid { get; private set; }
 
+        ///<summary> The SID of the parent Step. </summary> 
+        [JsonProperty("parent_step_sid")]
+        public string ParentStepSid { get; private set; }
+
         ///<summary> The event that caused the Flow to transition to the Step. </summary> 
         [JsonProperty("name")]
         public string Name { get; private set; }
