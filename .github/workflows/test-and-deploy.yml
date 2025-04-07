@@ -158,6 +158,7 @@ jobs:
 
       - name: Setup Keylocker KSP on windows
         run: |
+          echo "Twilio.${version}.nupkg"
           curl -X GET  https://one.digicert.com/signingmanager/api-ui/v1/releases/Keylockertools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o Keylockertools-windows-x64.msi 
           msiexec /i Keylockertools-windows-x64.msi /quiet /qn
           smksp_registrar.exe list 
@@ -174,9 +175,8 @@ jobs:
         run: |
           dotnet build -c Release
           dotnet pack -c Release
-          echo "Twilio.${{ steps.variables.outputs.version }}.nupkg"
-          nuget sign Twilio.${{ steps.variables.outputs.version }}.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
-          nuget push Twilio.${{ steps.variables.outputs.version }}.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+          nuget sign Twilio.${version}.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
+          nuget push Twilio.${version}.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json -SkipDuplicate
 
   notify-on-failure:
     name: Slack notify on failure
