@@ -1,6 +1,11 @@
 twilio-csharp Changelog
 =======================
 
+[2025-04-09] Version 6.0.0-rc.4
+---------------------------
+**Library - Chore**
+- Test Release must not be used.
+ 
 [2025-04-07] Version 7.10.0
 ---------------------------
 **Library - Feature**
