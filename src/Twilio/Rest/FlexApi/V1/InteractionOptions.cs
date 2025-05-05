@@ -37,6 +37,9 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The Interaction context sid is used for adding a context lookup sid </summary> 
         public string InteractionContextSid { get; set; }
 
+        ///<summary> The unique identifier for Interaction level webhook </summary> 
+        public string WebhookTtid { get; set; }
+
 
         /// <summary> Construct a new CreateInteractionOptions </summary>
         /// <param name="channel"> The Interaction's channel. </param>
@@ -62,6 +65,10 @@ namespace Twilio.Rest.FlexApi.V1
             if (InteractionContextSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("InteractionContextSid", InteractionContextSid));
+            }
+            if (WebhookTtid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WebhookTtid", WebhookTtid));
             }
             return p;
         }
@@ -95,6 +102,43 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
     
+
+    }
+
+
+    /// <summary> Updates an interaction. </summary>
+    public class UpdateInteractionOptions : IOptions<InteractionResource>
+    {
+    
+        ///<summary> The SID of the Interaction resource to fetch. </summary> 
+        public string PathSid { get; }
+
+        ///<summary> The unique identifier for Interaction level webhook </summary> 
+        public string WebhookTtid { get; set; }
+
+
+
+        /// <summary> Construct a new UpdateInteractionOptions </summary>
+        /// <param name="pathSid"> The SID of the Interaction resource to fetch. </param>
+        public UpdateInteractionOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (WebhookTtid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WebhookTtid", WebhookTtid));
+            }
+            return p;
+        }
+
+        
 
     }
 
