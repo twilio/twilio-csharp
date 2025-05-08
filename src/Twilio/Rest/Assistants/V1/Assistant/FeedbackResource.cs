@@ -83,7 +83,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             string path = "/v1/Assistants/{id}/Feedbacks";
 
             string PathId = options.PathId;
-            path = path.Replace("{"+"Id"+"}", PathId);
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Post,
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             string path = "/v1/Assistants/{id}/Feedbacks";
 
             string PathId = options.PathId;
-            path = path.Replace("{"+"Id"+"}", PathId);
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,

@@ -40,7 +40,7 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
             string path = "/v1/Knowledge/{id}/Chunks";
 
             string PathId = options.PathId;
-            path = path.Replace("{"+"Id"+"}", PathId);
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,
