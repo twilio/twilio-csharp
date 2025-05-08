@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`. </summary> 
         public bool? EndConferenceOnExit { get; set; }
 
-        ///<summary> The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic). </summary> 
+        ///<summary> The URL that Twilio calls using the `wait_method` before the conference has started. The URL may return an MP3 file, a WAV file, or a TwiML document. The default value is the URL of our standard hold music. If you do not want anything to play while waiting for the conference to start, specify an empty string by setting `wait_url` to `''`. For more details on the allowable verbs within the `waitUrl`, see the `waitUrl` attribute in the [<Conference> TwiML instruction](https://www.twilio.com/docs/voice/twiml/conference#attributes-waiturl). </summary> 
         public Uri WaitUrl { get; set; }
 
         ///<summary> The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file. </summary> 
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The SIP password for authentication. </summary> 
         public string SipAuthPassword { get; set; }
 
-        ///<summary> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </summary> 
+        ///<summary> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </summary> 
         public string Region { get; set; }
 
         ///<summary> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </summary> 
@@ -562,7 +562,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`. </summary> 
         public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
 
-        ///<summary> The URL we call using the `wait_method` for the music to play while participants are waiting for the conference to start. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `<Play>`, `<Say>`, `<Pause>`, or `<Redirect>` verbs. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic). </summary> 
+        ///<summary> The URL that Twilio calls using the `wait_method` before the conference has started. The URL may return an MP3 file, a WAV file, or a TwiML document. The default value is the URL of our standard hold music. If you do not want anything to play while waiting for the conference to start, specify an empty string by setting `wait_url` to `''`. For more details on the allowable verbs within the `waitUrl`, see the `waitUrl` attribute in the [<Conference> TwiML instruction](https://www.twilio.com/docs/voice/twiml/conference#attributes-waiturl). </summary> 
         public Uri WaitUrl { get; set; }
 
         ///<summary> The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file. </summary> 

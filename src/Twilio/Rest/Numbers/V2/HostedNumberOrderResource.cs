@@ -41,11 +41,13 @@ namespace Twilio.Rest.Numbers.V2
             {
                 return new StatusEnum(value);
             }
+            public static readonly StatusEnum TwilioProcessing = new StatusEnum("twilio-processing");
             public static readonly StatusEnum Received = new StatusEnum("received");
             public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
             public static readonly StatusEnum Verified = new StatusEnum("verified");
             public static readonly StatusEnum PendingLoa = new StatusEnum("pending-loa");
             public static readonly StatusEnum CarrierProcessing = new StatusEnum("carrier-processing");
+            public static readonly StatusEnum Testing = new StatusEnum("testing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
             public static readonly StatusEnum ActionRequired = new StatusEnum("action-required");

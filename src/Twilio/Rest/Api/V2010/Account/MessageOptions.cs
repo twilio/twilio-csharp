@@ -67,6 +67,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp). </summary> 
         public List<string> PersistentAction { get; set; }
 
+        
+        public MessageResource.TrafficTypeEnum TrafficType { get; set; }
+
         ///<summary> For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided. </summary> 
         public bool? ShortenUrls { get; set; }
 
@@ -163,6 +166,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (PersistentAction != null)
             {
                 p.AddRange(PersistentAction.Select(PersistentAction => new KeyValuePair<string, string>("PersistentAction", PersistentAction)));
+            }
+            if (TrafficType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TrafficType", TrafficType.ToString()));
             }
             if (ShortenUrls != null)
             {

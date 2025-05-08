@@ -279,7 +279,7 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
-        ///<summary> The SID of the actor that caused the event, if available. Can be `null`. </summary> 
+        ///<summary> The SID of the actor that caused the event, if available. This can be either a User ID (matching the pattern `^US[0-9a-fA-F]{32}$`) or an Account SID (matching the pattern `^AC[0-9a-fA-F]{32}$`). If the actor's SID isn't available, this field will be `null`. </summary> 
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
 

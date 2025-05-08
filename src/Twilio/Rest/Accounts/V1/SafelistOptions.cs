@@ -24,16 +24,16 @@ using Twilio.Converters;
 namespace Twilio.Rest.Accounts.V1
 {
 
-    /// <summary> Add a new phone number to SafeList. </summary>
+    /// <summary> Add a new phone number or phone number 1k prefix to SafeList. </summary>
     public class CreateSafelistOptions : IOptions<SafelistResource>
     {
         
-        ///<summary> The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
+        ///<summary> The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         public string PhoneNumber { get; }
 
 
         /// <summary> Construct a new CreateSafelistOptions </summary>
-        /// <param name="phoneNumber"> The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
+        /// <param name="phoneNumber"> The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </param>
         public CreateSafelistOptions(string phoneNumber)
         {
             PhoneNumber = phoneNumber;
@@ -55,11 +55,11 @@ namespace Twilio.Rest.Accounts.V1
         
 
     }
-    /// <summary> Remove a phone number from SafeList. </summary>
+    /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
     public class DeleteSafelistOptions : IOptions<SafelistResource>
     {
         
-        ///<summary> The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
+        ///<summary> The phone number or phone number 1k prefix to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         public string PhoneNumber { get; set; }
 
 
@@ -83,11 +83,11 @@ namespace Twilio.Rest.Accounts.V1
     }
 
 
-    /// <summary> Check if a phone number exists in SafeList. </summary>
+    /// <summary> Check if a phone number or phone number 1k prefix exists in SafeList. </summary>
     public class FetchSafelistOptions : IOptions<SafelistResource>
     {
     
-        ///<summary> The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
+        ///<summary> The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). </summary> 
         public string PhoneNumber { get; set; }
 
 

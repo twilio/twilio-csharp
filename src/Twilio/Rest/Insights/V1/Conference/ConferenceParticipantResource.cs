@@ -67,6 +67,7 @@ namespace Twilio.Rest.Insights.V1.Conference
             public static readonly RegionEnum Jp1 = new RegionEnum("jp1");
             public static readonly RegionEnum Sg1 = new RegionEnum("sg1");
             public static readonly RegionEnum De1 = new RegionEnum("de1");
+            public static readonly RegionEnum In1 = new RegionEnum("in1");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

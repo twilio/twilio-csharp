@@ -53,6 +53,16 @@ namespace Twilio.Rest.Insights.V1.Room
             public static readonly TwilioRealmEnum Gll = new TwilioRealmEnum("gll");
             public static readonly TwilioRealmEnum StageUs1 = new TwilioRealmEnum("stage_us1");
             public static readonly TwilioRealmEnum DevUs1 = new TwilioRealmEnum("dev_us1");
+            public static readonly TwilioRealmEnum StageAu1 = new TwilioRealmEnum("stage_au1");
+            public static readonly TwilioRealmEnum StageSg1 = new TwilioRealmEnum("stage_sg1");
+            public static readonly TwilioRealmEnum StageBr1 = new TwilioRealmEnum("stage_br1");
+            public static readonly TwilioRealmEnum StageIn1 = new TwilioRealmEnum("stage_in1");
+            public static readonly TwilioRealmEnum StageJp1 = new TwilioRealmEnum("stage_jp1");
+            public static readonly TwilioRealmEnum StageDe1 = new TwilioRealmEnum("stage_de1");
+            public static readonly TwilioRealmEnum StageIe1 = new TwilioRealmEnum("stage_ie1");
+            public static readonly TwilioRealmEnum StageUs2 = new TwilioRealmEnum("stage_us2");
+            public static readonly TwilioRealmEnum DevUs2 = new TwilioRealmEnum("dev_us2");
+            public static readonly TwilioRealmEnum Outside = new TwilioRealmEnum("outside");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -65,7 +75,9 @@ namespace Twilio.Rest.Insights.V1.Room
                 return new RoomStatusEnum(value);
             }
             public static readonly RoomStatusEnum InProgress = new RoomStatusEnum("in_progress");
+            public static readonly RoomStatusEnum Connected = new RoomStatusEnum("connected");
             public static readonly RoomStatusEnum Completed = new RoomStatusEnum("completed");
+            public static readonly RoomStatusEnum Disconnected = new RoomStatusEnum("disconnected");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

@@ -61,6 +61,9 @@ namespace Twilio.Rest.Wireless.V1
         ///<summary> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </summary> 
         public int? InternationalRoamingDataLimit { get; set; }
 
+        
+        public RatePlanResource.DataLimitStrategyEnum DataLimitStrategy { get; set; }
+
 
 
         
@@ -112,6 +115,10 @@ namespace Twilio.Rest.Wireless.V1
             if (InternationalRoamingDataLimit != null)
             {
                 p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.ToString()));
+            }
+            if (DataLimitStrategy != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DataLimitStrategy", DataLimitStrategy.ToString()));
             }
             return p;
         }

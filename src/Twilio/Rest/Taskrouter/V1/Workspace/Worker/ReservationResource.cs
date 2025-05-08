@@ -388,7 +388,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
         /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </param>
         /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
-        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
+        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
         /// <param name="sipAuthUsername"> The SIP username used for authentication. </param>
         /// <param name="sipAuthPassword"> The SIP password for authentication. </param>
         /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue instruction. </param>
@@ -511,7 +511,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
         /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available. </param>
         /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`. </param>
-        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
+        /// <param name="region"> The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`. </param>
         /// <param name="sipAuthUsername"> The SIP username used for authentication. </param>
         /// <param name="sipAuthPassword"> The SIP password for authentication. </param>
         /// <param name="dequeueStatusCallbackEvent"> The call progress events sent via webhooks as a result of a Dequeue instruction. </param>

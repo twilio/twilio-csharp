@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="NuGet">
     <TargetFrameworks>net6.0;netstandard2.1;net462;net35</TargetFrameworks>
     <IsPackable>true</IsPackable>
@@ -7,7 +7,7 @@
     <Copyright>Copyright © Twilio</Copyright>
     <AssemblyTitle>Twilio</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>7.8.5</VersionPrefix>
+    <VersionPrefix>7.11.0</VersionPrefix>
     <VersionSuffix>
     </VersionSuffix>
     <Authors>Twilio</Authors>

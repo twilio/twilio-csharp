@@ -78,15 +78,17 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channel"> The Interaction's channel. </param>
         /// <param name="routing"> The Interaction's routing logic. </param>
         /// <param name="interactionContextSid"> The Interaction context sid is used for adding a context lookup sid </param>
+        /// <param name="webhookTtid"> The unique identifier for Interaction level webhook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Create(
                                           object channel,
                                           object routing = null,
                                           string interactionContextSid = null,
+                                          string webhookTtid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
+            var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid, WebhookTtid = webhookTtid };
             return Create(options, client);
         }
 
@@ -95,15 +97,17 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channel"> The Interaction's channel. </param>
         /// <param name="routing"> The Interaction's routing logic. </param>
         /// <param name="interactionContextSid"> The Interaction context sid is used for adding a context lookup sid </param>
+        /// <param name="webhookTtid"> The unique identifier for Interaction level webhook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns>
         public static async System.Threading.Tasks.Task<InteractionResource> CreateAsync(
                                                                                   object channel,
                                                                                   object routing = null,
                                                                                   string interactionContextSid = null,
+                                                                                  string webhookTtid = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid };
+        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid, WebhookTtid = webhookTtid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -171,6 +175,79 @@ namespace Twilio.Rest.FlexApi.V1
             return await FetchAsync(options, client);
         }
         #endif
+        
+        private static Request BuildUpdateRequest(UpdateInteractionOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Interactions/{Sid}";
+
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.FlexApi,
+                path,
+                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Updates an interaction. </summary>
+        /// <param name="options"> Update Interaction parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Interaction </returns>
+        public static InteractionResource Update(UpdateInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Updates an interaction. </summary>
+        /// <param name="options"> Update Interaction parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<InteractionResource> UpdateAsync(UpdateInteractionOptions options,
+                                                                                                    ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Updates an interaction. </summary>
+        /// <param name="pathSid"> The SID of the Interaction resource to fetch. </param>
+        /// <param name="webhookTtid"> The unique identifier for Interaction level webhook </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Interaction </returns>
+        public static InteractionResource Update(
+                                          string pathSid,
+                                          string webhookTtid = null,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionOptions(pathSid){ WebhookTtid = webhookTtid };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Updates an interaction. </summary>
+        /// <param name="pathSid"> The SID of the Interaction resource to fetch. </param>
+        /// <param name="webhookTtid"> The unique identifier for Interaction level webhook </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<InteractionResource> UpdateAsync(
+                                                                              string pathSid,
+                                                                              string webhookTtid = null,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionOptions(pathSid){ WebhookTtid = webhookTtid };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a InteractionResource object
@@ -229,6 +306,10 @@ namespace Twilio.Rest.FlexApi.V1
         ///<summary> The interaction_context_sid </summary> 
         [JsonProperty("interaction_context_sid")]
         public string InteractionContextSid { get; private set; }
+
+        ///<summary> The webhook_ttid </summary> 
+        [JsonProperty("webhook_ttid")]
+        public string WebhookTtid { get; private set; }
 
 
 

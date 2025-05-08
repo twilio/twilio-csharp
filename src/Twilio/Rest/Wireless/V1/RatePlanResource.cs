@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Wireless.V1
@@ -32,6 +32,18 @@ namespace Twilio.Rest.Wireless.V1
     
 
     
+        public sealed class DataLimitStrategyEnum : StringEnum
+        {
+            private DataLimitStrategyEnum(string value) : base(value) {}
+            public DataLimitStrategyEnum() {}
+            public static implicit operator DataLimitStrategyEnum(string value)
+            {
+                return new DataLimitStrategyEnum(value);
+            }
+            public static readonly DataLimitStrategyEnum Block = new DataLimitStrategyEnum("block");
+            public static readonly DataLimitStrategyEnum Throttle = new DataLimitStrategyEnum("throttle");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateRatePlanOptions options, ITwilioRestClient client)
@@ -86,6 +98,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="internationalRoaming"> The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`. </param>
         /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info. </param>
         /// <param name="internationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </param>
+        /// <param name="dataLimitStrategy">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Create(
@@ -100,9 +113,10 @@ namespace Twilio.Rest.Wireless.V1
                                           List<string> internationalRoaming = null,
                                           int? nationalRoamingDataLimit = null,
                                           int? internationalRoamingDataLimit = null,
+                                          RatePlanResource.DataLimitStrategyEnum dataLimitStrategy = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit };
+            var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit, DataLimitStrategy = dataLimitStrategy };
             return Create(options, client);
         }
 
@@ -119,6 +133,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="internationalRoaming"> The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`. </param>
         /// <param name="nationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info. </param>
         /// <param name="internationalRoamingDataLimit"> The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB. </param>
+        /// <param name="dataLimitStrategy">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(
@@ -133,9 +148,10 @@ namespace Twilio.Rest.Wireless.V1
                                                                                   List<string> internationalRoaming = null,
                                                                                   int? nationalRoamingDataLimit = null,
                                                                                   int? internationalRoamingDataLimit = null,
+                                                                                  RatePlanResource.DataLimitStrategyEnum dataLimitStrategy = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit };
+        var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit, DataLimitStrategy = dataLimitStrategy };
             return await CreateAsync(options, client);
         }
         #endif

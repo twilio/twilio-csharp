@@ -62,6 +62,7 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly OptInTypeEnum ViaText = new OptInTypeEnum("VIA_TEXT");
             public static readonly OptInTypeEnum MobileQrCode = new OptInTypeEnum("MOBILE_QR_CODE");
             public static readonly OptInTypeEnum Import = new OptInTypeEnum("IMPORT");
+            public static readonly OptInTypeEnum ImportPleaseReplace = new OptInTypeEnum("IMPORT_PLEASE_REPLACE");
 
         }
 

@@ -289,6 +289,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         [JsonProperty("execution_sid")]
         public string ExecutionSid { get; private set; }
 
+        ///<summary> This field shows the Step SID of the Widget in the parent Flow that started the Subflow. If this Step is not part of a Subflow execution, the value is null. </summary> 
+        [JsonProperty("parent_step_sid")]
+        public string ParentStepSid { get; private set; }
+
         ///<summary> The event that caused the Flow to transition to the Step. </summary> 
         [JsonProperty("name")]
         public string Name { get; private set; }

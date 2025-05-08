@@ -151,10 +151,7 @@ namespace Twilio.Rest.FlexApi.V2
         /// <summary> Update flex user for the given flex user sid </summary>
         /// <param name="pathInstanceSid"> The unique ID created by Twilio to identify a Flex instance. </param>
         /// <param name="pathFlexUserSid"> The unique id for the flex user. </param>
-        /// <param name="firstName"> First name of the User. </param>
-        /// <param name="lastName"> Last name of the User. </param>
         /// <param name="email"> Email of the User. </param>
-        /// <param name="friendlyName"> Friendly name of the User. </param>
         /// <param name="userSid"> The unique SID identifier of the Twilio Unified User. </param>
         /// <param name="locale"> The locale preference of the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -162,15 +159,12 @@ namespace Twilio.Rest.FlexApi.V2
         public static FlexUserResource Update(
                                           string pathInstanceSid,
                                           string pathFlexUserSid,
-                                          string firstName = null,
-                                          string lastName = null,
                                           string email = null,
-                                          string friendlyName = null,
                                           string userSid = null,
                                           string locale = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ FirstName = firstName, LastName = lastName, Email = email, FriendlyName = friendlyName, UserSid = userSid, Locale = locale };
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ Email = email, UserSid = userSid, Locale = locale };
             return Update(options, client);
         }
 
@@ -178,10 +172,7 @@ namespace Twilio.Rest.FlexApi.V2
         /// <summary> Update flex user for the given flex user sid </summary>
         /// <param name="pathInstanceSid"> The unique ID created by Twilio to identify a Flex instance. </param>
         /// <param name="pathFlexUserSid"> The unique id for the flex user. </param>
-        /// <param name="firstName"> First name of the User. </param>
-        /// <param name="lastName"> Last name of the User. </param>
         /// <param name="email"> Email of the User. </param>
-        /// <param name="friendlyName"> Friendly name of the User. </param>
         /// <param name="userSid"> The unique SID identifier of the Twilio Unified User. </param>
         /// <param name="locale"> The locale preference of the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,15 +180,12 @@ namespace Twilio.Rest.FlexApi.V2
         public static async System.Threading.Tasks.Task<FlexUserResource> UpdateAsync(
                                                                               string pathInstanceSid,
                                                                               string pathFlexUserSid,
-                                                                              string firstName = null,
-                                                                              string lastName = null,
                                                                               string email = null,
-                                                                              string friendlyName = null,
                                                                               string userSid = null,
                                                                               string locale = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ FirstName = firstName, LastName = lastName, Email = email, FriendlyName = friendlyName, UserSid = userSid, Locale = locale };
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ Email = email, UserSid = userSid, Locale = locale };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -264,14 +252,6 @@ namespace Twilio.Rest.FlexApi.V2
         [JsonProperty("flex_team_sid")]
         public string FlexTeamSid { get; private set; }
 
-        ///<summary> First name of the User. </summary> 
-        [JsonProperty("first_name")]
-        public string FirstName { get; private set; }
-
-        ///<summary> Last name of the User. </summary> 
-        [JsonProperty("last_name")]
-        public string LastName { get; private set; }
-
         ///<summary> Username of the User. </summary> 
         [JsonProperty("username")]
         public string Username { get; private set; }
@@ -279,10 +259,6 @@ namespace Twilio.Rest.FlexApi.V2
         ///<summary> Email of the User. </summary> 
         [JsonProperty("email")]
         public string Email { get; private set; }
-
-        ///<summary> Friendly name of the User. </summary> 
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
 
         ///<summary> The locale preference of the user. </summary> 
         [JsonProperty("locale")]

@@ -329,6 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read. </param>
         /// <param name="customerName"> The `customer_name` of the Address resources to read. </param>
         /// <param name="friendlyName"> The string that identifies the Address resources to read. </param>
+        /// <param name="emergencyEnabled"> Whether the address can be associated to a number for emergency calling. </param>
         /// <param name="isoCountry"> The ISO country code of the Address resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -338,12 +339,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                                      string pathAccountSid = null,
                                                      string customerName = null,
                                                      string friendlyName = null,
+                                                     bool? emergencyEnabled = null,
                                                      string isoCountry = null,
                                                      long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -352,6 +354,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read. </param>
         /// <param name="customerName"> The `customer_name` of the Address resources to read. </param>
         /// <param name="friendlyName"> The string that identifies the Address resources to read. </param>
+        /// <param name="emergencyEnabled"> Whether the address can be associated to a number for emergency calling. </param>
         /// <param name="isoCountry"> The ISO country code of the Address resources to read. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -361,12 +364,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                              string pathAccountSid = null,
                                                                                              string customerName = null,
                                                                                              string friendlyName = null,
+                                                                                             bool? emergencyEnabled = null,
                                                                                              string isoCountry = null,
                                                                                              long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

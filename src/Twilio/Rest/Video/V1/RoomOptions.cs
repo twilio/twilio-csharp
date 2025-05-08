@@ -49,6 +49,9 @@ namespace Twilio.Rest.Video.V1
         ///<summary> Whether to start recording when Participants connect. </summary> 
         public bool? RecordParticipantsOnConnect { get; set; }
 
+        ///<summary> Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used. </summary> 
+        public bool? TranscribeParticipantsOnConnect { get; set; }
+
         ///<summary> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </summary> 
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
 
@@ -57,6 +60,9 @@ namespace Twilio.Rest.Video.V1
 
         ///<summary> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </summary> 
         public object RecordingRules { get; set; }
+
+        ///<summary> A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used. </summary> 
+        public object TranscriptionsConfiguration { get; set; }
 
         ///<summary> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </summary> 
         public bool? AudioOnly { get; set; }
@@ -109,6 +115,10 @@ namespace Twilio.Rest.Video.V1
             {
                 p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString().ToLower()));
             }
+            if (TranscribeParticipantsOnConnect != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TranscribeParticipantsOnConnect", TranscribeParticipantsOnConnect.Value.ToString().ToLower()));
+            }
             if (VideoCodecs != null)
             {
                 p.AddRange(VideoCodecs.Select(VideoCodecs => new KeyValuePair<string, string>("VideoCodecs", VideoCodecs.ToString())));
@@ -120,6 +130,10 @@ namespace Twilio.Rest.Video.V1
             if (RecordingRules != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
+            }
+            if (TranscriptionsConfiguration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TranscriptionsConfiguration", Serializers.JsonObject(TranscriptionsConfiguration)));
             }
             if (AudioOnly != null)
             {

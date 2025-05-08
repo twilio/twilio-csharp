@@ -124,9 +124,11 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`. </param>
         /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50. </param>
         /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. </param>
+        /// <param name="transcribeParticipantsOnConnect"> Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used. </param>
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </param>
         /// <param name="mediaRegion"> The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
+        /// <param name="transcriptionsConfiguration"> A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used. </param>
         /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
         /// <param name="emptyRoomTimeout"> Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions). </param>
@@ -142,9 +144,11 @@ namespace Twilio.Rest.Video.V1
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
                                           int? maxParticipants = null,
                                           bool? recordParticipantsOnConnect = null,
+                                          bool? transcribeParticipantsOnConnect = null,
                                           List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                           string mediaRegion = null,
                                           object recordingRules = null,
+                                          object transcriptionsConfiguration = null,
                                           bool? audioOnly = null,
                                           int? maxParticipantDuration = null,
                                           int? emptyRoomTimeout = null,
@@ -152,7 +156,7 @@ namespace Twilio.Rest.Video.V1
                                           bool? largeRoom = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
+            var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, TranscribeParticipantsOnConnect = transcribeParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, TranscriptionsConfiguration = transcriptionsConfiguration, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
             return Create(options, client);
         }
 
@@ -165,9 +169,11 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`. </param>
         /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50. </param>
         /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect. </param>
+        /// <param name="transcribeParticipantsOnConnect"> Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used. </param>
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`. </param>
         /// <param name="mediaRegion"> The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). </param>
         /// <param name="recordingRules"> A collection of Recording Rules that describe how to include or exclude matching tracks for recording </param>
+        /// <param name="transcriptionsConfiguration"> A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used. </param>
         /// <param name="audioOnly"> When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. </param>
         /// <param name="maxParticipantDuration"> The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours). </param>
         /// <param name="emptyRoomTimeout"> Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions). </param>
@@ -183,9 +189,11 @@ namespace Twilio.Rest.Video.V1
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                                   int? maxParticipants = null,
                                                                                   bool? recordParticipantsOnConnect = null,
+                                                                                  bool? transcribeParticipantsOnConnect = null,
                                                                                   List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                                                                   string mediaRegion = null,
                                                                                   object recordingRules = null,
+                                                                                  object transcriptionsConfiguration = null,
                                                                                   bool? audioOnly = null,
                                                                                   int? maxParticipantDuration = null,
                                                                                   int? emptyRoomTimeout = null,
@@ -193,7 +201,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   bool? largeRoom = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
+        var options = new CreateRoomOptions(){  EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, TranscribeParticipantsOnConnect = transcribeParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, TranscriptionsConfiguration = transcriptionsConfiguration, AudioOnly = audioOnly, MaxParticipantDuration = maxParticipantDuration, EmptyRoomTimeout = emptyRoomTimeout, UnusedRoomTimeout = unusedRoomTimeout, LargeRoom = largeRoom };
             return await CreateAsync(options, client);
         }
         #endif
