@@ -237,8 +237,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
         ///<summary> The string that you assigned to describe the resource. </summary> 
         [JsonProperty("friendly_name")]
-        [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber FriendlyName { get; private set; }
+        public string FriendlyName { get; private set; }
 
         ///<summary> The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </summary> 
         [JsonProperty("phone_number")]
@@ -267,11 +266,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
         ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
+        public string DateCreated { get; private set; }
 
         ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
+        public string DateUpdated { get; private set; }
 
         ///<summary> The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_fallback_method")]
@@ -293,9 +292,9 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         [JsonProperty("address_requirements")]
         public DependentPhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
 
-        ///<summary> The set of Boolean properties that indicates whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`. </summary> 
+        ///<summary> The capabilities </summary> 
         [JsonProperty("capabilities")]
-        public object Capabilities { get; private set; }
+        public PhoneNumberCapabilities Capabilities { get; private set; }
 
         ///<summary> The URL we call using the `status_callback_method` to send status information to your application. </summary> 
         [JsonProperty("status_callback")]

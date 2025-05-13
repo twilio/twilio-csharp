@@ -247,10 +247,22 @@ namespace Twilio.TwiML.Voice
         /// <param name="welcomeGreeting"> The sentence to be played automatically when the session is connected </param>
         /// <param name="partialPrompts"> Whether partial prompts should be reported to WebSocket server before the caller
         ///                      finishes speaking </param>
-        /// <param name="interruptible"> Whether caller's speaking can interrupt the play of text-to-speech </param>
-        /// <param name="interruptByDtmf"> Whether DTMF tone can interrupt the play of text-to-speech </param>
-        /// <param name="welcomeGreetingInterruptible"> Whether caller's speaking can interrupt the welcome greeting </param>
-        /// <param name="debug"> Whether debugging on the session is enabled </param>
+        /// <param name="welcomeGreetingInterruptible"> "Whether and how the input from a caller, such as speaking or DTMF can
+        ///                                    interrupt the welcome greeting </param>
+        /// <param name="interruptible"> Whether and how the input from a caller, such as speaking or DTMF can interrupt the
+        ///                     play of text-to-speech </param>
+        /// <param name="preemptible"> Whether subsequent text-to-speech or play media can interrupt the on-going play of
+        ///                   text-to-speech or media </param>
+        /// <param name="hints"> Phrases to help better accuracy in speech recognition of these pharases </param>
+        /// <param name="intelligenceService"> The Conversational Intelligence Service id or unique name to be used for the
+        ///                           session </param>
+        /// <param name="reportInputDuringAgentSpeech"> Whether prompts should be reported to WebSocket server when
+        ///                                    text-to-speech playing and interrupt is disabled </param>
+        /// <param name="elevenlabsTextNormalization"> When using ElevenLabs as TTS provider, this parameter allows you to
+        ///                                   enable or disable its text normalization feature </param>
+        /// <param name="interruptSensitivity"> Set the sensitivity of the interrupt feature for speech. The value can be low,
+        ///                            medium, or high </param>
+        /// <param name="debug"> Multiple debug options to be used for troubleshooting </param>
         public Connect ConversationRelay(string url = null,
                                          string language = null,
                                          string ttsLanguage = null,
@@ -263,10 +275,15 @@ namespace Twilio.TwiML.Voice
                                          bool? dtmfDetection = null,
                                          string welcomeGreeting = null,
                                          bool? partialPrompts = null,
-                                         bool? interruptible = null,
-                                         bool? interruptByDtmf = null,
-                                         bool? welcomeGreetingInterruptible = null,
-                                         bool? debug = null)
+                                         string welcomeGreetingInterruptible = null,
+                                         string interruptible = null,
+                                         bool? preemptible = null,
+                                         string hints = null,
+                                         string intelligenceService = null,
+                                         bool? reportInputDuringAgentSpeech = null,
+                                         string elevenlabsTextNormalization = null,
+                                         string interruptSensitivity = null,
+                                         string debug = null)
         {
             var newChild = new ConversationRelay(
                 url,
@@ -281,9 +298,14 @@ namespace Twilio.TwiML.Voice
                 dtmfDetection,
                 welcomeGreeting,
                 partialPrompts,
-                interruptible,
-                interruptByDtmf,
                 welcomeGreetingInterruptible,
+                interruptible,
+                preemptible,
+                hints,
+                intelligenceService,
+                reportInputDuringAgentSpeech,
+                elevenlabsTextNormalization,
+                interruptSensitivity,
                 debug
             );
             this.Append(newChild);
@@ -317,10 +339,22 @@ namespace Twilio.TwiML.Voice
         /// <param name="welcomeGreeting"> The sentence to be played automatically when the session is connected </param>
         /// <param name="partialPrompts"> Whether partial prompts should be reported to WebSocket server before the caller
         ///                      finishes speaking </param>
-        /// <param name="interruptible"> Whether caller's speaking can interrupt the play of text-to-speech </param>
-        /// <param name="interruptByDtmf"> Whether DTMF tone can interrupt the play of text-to-speech </param>
-        /// <param name="welcomeGreetingInterruptible"> Whether caller's speaking can interrupt the welcome greeting </param>
-        /// <param name="debug"> Whether debugging on the session is enabled </param>
+        /// <param name="welcomeGreetingInterruptible"> "Whether and how the input from a caller, such as speaking or DTMF can
+        ///                                    interrupt the welcome greeting </param>
+        /// <param name="interruptible"> Whether and how the input from a caller, such as speaking or DTMF can interrupt the
+        ///                     play of text-to-speech </param>
+        /// <param name="preemptible"> Whether subsequent text-to-speech or play media can interrupt the on-going play of
+        ///                   text-to-speech or media </param>
+        /// <param name="hints"> Phrases to help better accuracy in speech recognition of these pharases </param>
+        /// <param name="intelligenceService"> The Conversational Intelligence Service id or unique name to be used for the
+        ///                           session </param>
+        /// <param name="reportInputDuringAgentSpeech"> Whether prompts should be reported to WebSocket server when
+        ///                                    text-to-speech playing and interrupt is disabled </param>
+        /// <param name="elevenlabsTextNormalization"> When using ElevenLabs as TTS provider, this parameter allows you to
+        ///                                   enable or disable its text normalization feature </param>
+        /// <param name="interruptSensitivity"> Set the sensitivity of the interrupt feature for speech. The value can be low,
+        ///                            medium, or high </param>
+        /// <param name="debug"> Multiple debug options to be used for troubleshooting </param>
         public Connect Assistant(string id = null,
                                  string language = null,
                                  string ttsLanguage = null,
@@ -333,10 +367,15 @@ namespace Twilio.TwiML.Voice
                                  bool? dtmfDetection = null,
                                  string welcomeGreeting = null,
                                  bool? partialPrompts = null,
-                                 bool? interruptible = null,
-                                 bool? interruptByDtmf = null,
-                                 bool? welcomeGreetingInterruptible = null,
-                                 bool? debug = null)
+                                 string welcomeGreetingInterruptible = null,
+                                 string interruptible = null,
+                                 bool? preemptible = null,
+                                 string hints = null,
+                                 string intelligenceService = null,
+                                 bool? reportInputDuringAgentSpeech = null,
+                                 string elevenlabsTextNormalization = null,
+                                 string interruptSensitivity = null,
+                                 string debug = null)
         {
             var newChild = new Assistant(
                 id,
@@ -351,9 +390,14 @@ namespace Twilio.TwiML.Voice
                 dtmfDetection,
                 welcomeGreeting,
                 partialPrompts,
-                interruptible,
-                interruptByDtmf,
                 welcomeGreetingInterruptible,
+                interruptible,
+                preemptible,
+                hints,
+                intelligenceService,
+                reportInputDuringAgentSpeech,
+                elevenlabsTextNormalization,
+                interruptSensitivity,
                 debug
             );
             this.Append(newChild);

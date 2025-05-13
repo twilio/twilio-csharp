@@ -40,9 +40,9 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             string path = "/v1/Assistants/{assistantId}/Tools/{id}";
 
             string PathAssistantId = options.PathAssistantId;
-            path = path.Replace("{"+"AssistantId"+"}", PathAssistantId);
+            path = path.Replace("{"+"assistantId"+"}", PathAssistantId);
             string PathId = options.PathId;
-            path = path.Replace("{"+"Id"+"}", PathId);
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Post,
@@ -118,9 +118,9 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             string path = "/v1/Assistants/{assistantId}/Tools/{id}";
 
             string PathAssistantId = options.PathAssistantId;
-            path = path.Replace("{"+"AssistantId"+"}", PathAssistantId);
+            path = path.Replace("{"+"assistantId"+"}", PathAssistantId);
             string PathId = options.PathId;
-            path = path.Replace("{"+"Id"+"}", PathId);
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Delete,
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             string path = "/v1/Assistants/{assistantId}/Tools";
 
             string PathAssistantId = options.PathAssistantId;
-            path = path.Replace("{"+"AssistantId"+"}", PathAssistantId);
+            path = path.Replace("{"+"assistantId"+"}", PathAssistantId);
 
             return new Request(
                 HttpMethod.Get,

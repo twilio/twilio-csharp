@@ -237,18 +237,16 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <summary> read </summary>
         /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to read . </param>
         /// <param name="vettingProvider"> The third-party provider of the vettings to read </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandVetting </returns>
         public static ResourceSet<BrandVettingResource> Read(
                                                      string pathBrandSid,
                                                      BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                     long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, PageSize = pageSize, Limit = limit};
+            var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, Limit = limit};
             return Read(options, client);
         }
 
@@ -256,18 +254,16 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         /// <summary> read </summary>
         /// <param name="pathBrandSid"> The SID of the Brand Registration resource of the vettings to read . </param>
         /// <param name="vettingProvider"> The third-party provider of the vettings to read </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandVetting </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BrandVettingResource>> ReadAsync(
                                                                                              string pathBrandSid,
                                                                                              BrandVettingResource.VettingProviderEnum vettingProvider = null,
-                                                                                             long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, PageSize = pageSize, Limit = limit};
+            var options = new ReadBrandVettingOptions(pathBrandSid){ VettingProvider = vettingProvider, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

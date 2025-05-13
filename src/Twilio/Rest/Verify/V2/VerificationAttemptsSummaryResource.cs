@@ -173,7 +173,7 @@ namespace Twilio.Rest.Verify.V2
 
         ///<summary> Percentage of the confirmed messages over the total, defined by (total_converted/total_attempts)*100.  </summary> 
         [JsonProperty("conversion_rate_percentage")]
-        public decimal? ConversionRatePercentage { get; private set; }
+        public string ConversionRatePercentage { get; private set; }
 
         ///<summary> The url </summary> 
         [JsonProperty("url")]

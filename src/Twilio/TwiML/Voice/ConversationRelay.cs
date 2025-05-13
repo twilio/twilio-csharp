@@ -65,21 +65,41 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public bool? PartialPrompts { get; set; }
         /// <summary>
-        /// Whether caller's speaking can interrupt the play of text-to-speech
+        /// "Whether and how the input from a caller, such as speaking or DTMF can interrupt the welcome greeting
         /// </summary>
-        public bool? Interruptible { get; set; }
+        public string WelcomeGreetingInterruptible { get; set; }
         /// <summary>
-        /// Whether DTMF tone can interrupt the play of text-to-speech
+        /// Whether and how the input from a caller, such as speaking or DTMF can interrupt the play of text-to-speech
         /// </summary>
-        public bool? InterruptByDtmf { get; set; }
+        public string Interruptible { get; set; }
         /// <summary>
-        /// Whether caller's speaking can interrupt the welcome greeting
+        /// Whether subsequent text-to-speech or play media can interrupt the on-going play of text-to-speech or media
         /// </summary>
-        public bool? WelcomeGreetingInterruptible { get; set; }
+        public bool? Preemptible { get; set; }
         /// <summary>
-        /// Whether debugging on the session is enabled
+        /// Phrases to help better accuracy in speech recognition of these pharases
         /// </summary>
-        public bool? Debug { get; set; }
+        public string Hints { get; set; }
+        /// <summary>
+        /// The Conversational Intelligence Service id or unique name to be used for the session
+        /// </summary>
+        public string IntelligenceService { get; set; }
+        /// <summary>
+        /// Whether prompts should be reported to WebSocket server when text-to-speech playing and interrupt is disabled
+        /// </summary>
+        public bool? ReportInputDuringAgentSpeech { get; set; }
+        /// <summary>
+        /// When using ElevenLabs as TTS provider, this parameter allows you to enable or disable its text normalization feature
+        /// </summary>
+        public string ElevenlabsTextNormalization { get; set; }
+        /// <summary>
+        /// Set the sensitivity of the interrupt feature for speech. The value can be low, medium, or high
+        /// </summary>
+        public string InterruptSensitivity { get; set; }
+        /// <summary>
+        /// Multiple debug options to be used for troubleshooting
+        /// </summary>
+        public string Debug { get; set; }
 
         /// <summary>
         /// Create a new ConversationRelay
@@ -97,10 +117,22 @@ namespace Twilio.TwiML.Voice
         /// <param name="welcomeGreeting"> The sentence to be played automatically when the session is connected </param>
         /// <param name="partialPrompts"> Whether partial prompts should be reported to WebSocket server before the caller
         ///                      finishes speaking </param>
-        /// <param name="interruptible"> Whether caller's speaking can interrupt the play of text-to-speech </param>
-        /// <param name="interruptByDtmf"> Whether DTMF tone can interrupt the play of text-to-speech </param>
-        /// <param name="welcomeGreetingInterruptible"> Whether caller's speaking can interrupt the welcome greeting </param>
-        /// <param name="debug"> Whether debugging on the session is enabled </param>
+        /// <param name="welcomeGreetingInterruptible"> "Whether and how the input from a caller, such as speaking or DTMF can
+        ///                                    interrupt the welcome greeting </param>
+        /// <param name="interruptible"> Whether and how the input from a caller, such as speaking or DTMF can interrupt the
+        ///                     play of text-to-speech </param>
+        /// <param name="preemptible"> Whether subsequent text-to-speech or play media can interrupt the on-going play of
+        ///                   text-to-speech or media </param>
+        /// <param name="hints"> Phrases to help better accuracy in speech recognition of these pharases </param>
+        /// <param name="intelligenceService"> The Conversational Intelligence Service id or unique name to be used for the
+        ///                           session </param>
+        /// <param name="reportInputDuringAgentSpeech"> Whether prompts should be reported to WebSocket server when
+        ///                                    text-to-speech playing and interrupt is disabled </param>
+        /// <param name="elevenlabsTextNormalization"> When using ElevenLabs as TTS provider, this parameter allows you to
+        ///                                   enable or disable its text normalization feature </param>
+        /// <param name="interruptSensitivity"> Set the sensitivity of the interrupt feature for speech. The value can be low,
+        ///                            medium, or high </param>
+        /// <param name="debug"> Multiple debug options to be used for troubleshooting </param>
         public ConversationRelay(string url = null,
                                  string language = null,
                                  string ttsLanguage = null,
@@ -113,10 +145,15 @@ namespace Twilio.TwiML.Voice
                                  bool? dtmfDetection = null,
                                  string welcomeGreeting = null,
                                  bool? partialPrompts = null,
-                                 bool? interruptible = null,
-                                 bool? interruptByDtmf = null,
-                                 bool? welcomeGreetingInterruptible = null,
-                                 bool? debug = null) : base("ConversationRelay")
+                                 string welcomeGreetingInterruptible = null,
+                                 string interruptible = null,
+                                 bool? preemptible = null,
+                                 string hints = null,
+                                 string intelligenceService = null,
+                                 bool? reportInputDuringAgentSpeech = null,
+                                 string elevenlabsTextNormalization = null,
+                                 string interruptSensitivity = null,
+                                 string debug = null) : base("ConversationRelay")
         {
             this.Url = url;
             this.LanguageAttribute = language;
@@ -130,9 +167,14 @@ namespace Twilio.TwiML.Voice
             this.DtmfDetection = dtmfDetection;
             this.WelcomeGreeting = welcomeGreeting;
             this.PartialPrompts = partialPrompts;
-            this.Interruptible = interruptible;
-            this.InterruptByDtmf = interruptByDtmf;
             this.WelcomeGreetingInterruptible = welcomeGreetingInterruptible;
+            this.Interruptible = interruptible;
+            this.Preemptible = preemptible;
+            this.Hints = hints;
+            this.IntelligenceService = intelligenceService;
+            this.ReportInputDuringAgentSpeech = reportInputDuringAgentSpeech;
+            this.ElevenlabsTextNormalization = elevenlabsTextNormalization;
+            this.InterruptSensitivity = interruptSensitivity;
             this.Debug = debug;
         }
 
@@ -190,21 +232,41 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("partialPrompts", this.PartialPrompts.Value.ToString().ToLower()));
             }
-            if (this.Interruptible != null)
-            {
-                attributes.Add(new XAttribute("interruptible", this.Interruptible.Value.ToString().ToLower()));
-            }
-            if (this.InterruptByDtmf != null)
-            {
-                attributes.Add(new XAttribute("interruptByDtmf", this.InterruptByDtmf.Value.ToString().ToLower()));
-            }
             if (this.WelcomeGreetingInterruptible != null)
             {
-                attributes.Add(new XAttribute("welcomeGreetingInterruptible", this.WelcomeGreetingInterruptible.Value.ToString().ToLower()));
+                attributes.Add(new XAttribute("welcomeGreetingInterruptible", this.WelcomeGreetingInterruptible));
+            }
+            if (this.Interruptible != null)
+            {
+                attributes.Add(new XAttribute("interruptible", this.Interruptible));
+            }
+            if (this.Preemptible != null)
+            {
+                attributes.Add(new XAttribute("preemptible", this.Preemptible.Value.ToString().ToLower()));
+            }
+            if (this.Hints != null)
+            {
+                attributes.Add(new XAttribute("hints", this.Hints));
+            }
+            if (this.IntelligenceService != null)
+            {
+                attributes.Add(new XAttribute("intelligenceService", this.IntelligenceService));
+            }
+            if (this.ReportInputDuringAgentSpeech != null)
+            {
+                attributes.Add(new XAttribute("reportInputDuringAgentSpeech", this.ReportInputDuringAgentSpeech.Value.ToString().ToLower()));
+            }
+            if (this.ElevenlabsTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("elevenlabsTextNormalization", this.ElevenlabsTextNormalization));
+            }
+            if (this.InterruptSensitivity != null)
+            {
+                attributes.Add(new XAttribute("interruptSensitivity", this.InterruptSensitivity));
             }
             if (this.Debug != null)
             {
-                attributes.Add(new XAttribute("debug", this.Debug.Value.ToString().ToLower()));
+                attributes.Add(new XAttribute("debug", this.Debug));
             }
             return attributes;
         }

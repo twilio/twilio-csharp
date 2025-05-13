@@ -40,7 +40,7 @@ namespace Twilio.Rest.Assistants.V1.Session
             string path = "/v1/Sessions/{sessionId}/Messages";
 
             string PathSessionId = options.PathSessionId;
-            path = path.Replace("{"+"SessionId"+"}", PathSessionId);
+            path = path.Replace("{"+"sessionId"+"}", PathSessionId);
 
             return new Request(
                 HttpMethod.Get,

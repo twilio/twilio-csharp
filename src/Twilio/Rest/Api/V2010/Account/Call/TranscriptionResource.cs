@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="speechModel"> Recognition model used by the transcription engine, among those supported by the provider </param>
         /// <param name="hints"> A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them. </param>
         /// <param name="enableAutomaticPunctuation"> The provider will add punctuation to recognition result </param>
-        /// <param name="intelligenceService"> The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </param>
+        /// <param name="intelligenceService"> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns>
         public static TranscriptionResource Create(
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="speechModel"> Recognition model used by the transcription engine, among those supported by the provider </param>
         /// <param name="hints"> A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them. </param>
         /// <param name="enableAutomaticPunctuation"> The provider will add punctuation to recognition result </param>
-        /// <param name="intelligenceService"> The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </param>
+        /// <param name="intelligenceService"> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
         public static async System.Threading.Tasks.Task<TranscriptionResource> CreateAsync(

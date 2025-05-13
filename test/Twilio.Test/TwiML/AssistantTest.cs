@@ -42,14 +42,19 @@ namespace Twilio.Tests.TwiML
                 true,
                 "welcome_greeting",
                 true,
+                "welcome_greeting_interruptible",
+                "interruptible",
                 true,
+                "hints",
+                "intelligence_service",
                 true,
-                true,
-                true
+                "elevenlabs_text_normalization",
+                "interrupt_sensitivity",
+                "debug"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Assistant id=\"id\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" interruptible=\"true\" interruptByDtmf=\"true\" welcomeGreetingInterruptible=\"true\" debug=\"true\"></Assistant>",
+                "<Assistant id=\"id\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\"></Assistant>",
                 elem.ToString()
             );
         }

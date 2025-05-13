@@ -89,6 +89,10 @@ namespace Twilio.Rest.Content.V1
             private decimal? Longitude {get; set;}
             [JsonProperty("label")]
             private string Label {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("address")]
+            private string Address {get; set;}
             public TwilioLocation() { }
             public class Builder
             {
@@ -109,6 +113,16 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithLabel(string label)
                 {
                     _twilioLocation.Label= label;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _twilioLocation.Id= id;
+                    return this;
+                }
+                public Builder WithAddress(string address)
+                {
+                    _twilioLocation.Address= address;
                     return this;
                 }
                 public TwilioLocation Build()
@@ -202,6 +216,8 @@ namespace Twilio.Rest.Content.V1
             private string Phone {get; set;}
             [JsonProperty("code")]
             private string Code {get; set;}
+            [JsonProperty("id")]
+            private string Id {get; set;}
             public CallToActionAction() { }
             public class Builder
             {
@@ -232,6 +248,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithCode(string code)
                 {
                     _callToActionAction.Code= code;
+                    return this;
+                }
+                public Builder WithId(string id)
+                {
+                    _callToActionAction.Id= id;
                     return this;
                 }
                 public CallToActionAction Build()

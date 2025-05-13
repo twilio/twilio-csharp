@@ -131,10 +131,6 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             {
                 p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
             }
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
             return p;
         }
 
