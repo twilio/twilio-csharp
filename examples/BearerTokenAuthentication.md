@@ -3,6 +3,7 @@ using System;
 using Twilio;
 using Twilio.Base;
 using Twilio.Exceptions;
+using Twilio.Credential;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Rest.PreviewIam.Organizations;
 
