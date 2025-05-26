@@ -9,7 +9,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        TwilioClient.Init("TWILIO_ACCOUNT_SID", "TWILIIO_AUTH_TOKEN");
+        TwilioClient.Init("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN");
 
         var messages = MessageResource.Read(limit: 20);
         foreach (var record in messages) {
