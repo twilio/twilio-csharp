@@ -133,64 +133,6 @@ namespace Twilio.Rest.Messaging.V2
                 }
             }
         }
-        public class MessagingV2ChannelsSenderProfileEmails
-        {
-            [JsonProperty("email")]
-            private string Email {get; set;}
-            [JsonProperty("label")]
-            private string Label {get; set;}
-            public MessagingV2ChannelsSenderProfileEmails() { }
-            public class Builder
-            {
-                private MessagingV2ChannelsSenderProfileEmails _messagingV2ChannelsSenderProfileEmails = new MessagingV2ChannelsSenderProfileEmails();
-                public Builder()
-                {
-                }
-                public Builder WithEmail(string email)
-                {
-                    _messagingV2ChannelsSenderProfileEmails.Email= email;
-                    return this;
-                }
-                public Builder WithLabel(string label)
-                {
-                    _messagingV2ChannelsSenderProfileEmails.Label= label;
-                    return this;
-                }
-                public MessagingV2ChannelsSenderProfileEmails Build()
-                {
-                    return _messagingV2ChannelsSenderProfileEmails;
-                }
-            }
-        }
-        public class MessagingV2ChannelsSenderProfileWebsites
-        {
-            [JsonProperty("label")]
-            private string Label {get; set;}
-            [JsonProperty("website")]
-            private string Website {get; set;}
-            public MessagingV2ChannelsSenderProfileWebsites() { }
-            public class Builder
-            {
-                private MessagingV2ChannelsSenderProfileWebsites _messagingV2ChannelsSenderProfileWebsites = new MessagingV2ChannelsSenderProfileWebsites();
-                public Builder()
-                {
-                }
-                public Builder WithLabel(string label)
-                {
-                    _messagingV2ChannelsSenderProfileWebsites.Label= label;
-                    return this;
-                }
-                public Builder WithWebsite(string website)
-                {
-                    _messagingV2ChannelsSenderProfileWebsites.Website= website;
-                    return this;
-                }
-                public MessagingV2ChannelsSenderProfileWebsites Build()
-                {
-                    return _messagingV2ChannelsSenderProfileWebsites;
-                }
-            }
-        }
         public class MessagingV2ChannelsSenderProfile
         {
             [JsonProperty("name")]
@@ -202,13 +144,13 @@ namespace Twilio.Rest.Messaging.V2
             [JsonProperty("description")]
             private string Description {get; set;}
             [JsonProperty("emails")]
-            private List<MessagingV2ChannelsSenderProfileEmails> Emails {get; set;}
+            private object Emails {get; set;}
             [JsonProperty("logo_url")]
             private string LogoUrl {get; set;}
             [JsonProperty("vertical")]
             private string Vertical {get; set;}
             [JsonProperty("websites")]
-            private List<MessagingV2ChannelsSenderProfileWebsites> Websites {get; set;}
+            private object Websites {get; set;}
             public MessagingV2ChannelsSenderProfile() { }
             public class Builder
             {
@@ -236,7 +178,7 @@ namespace Twilio.Rest.Messaging.V2
                     _messagingV2ChannelsSenderProfile.Description= description;
                     return this;
                 }
-                public Builder WithEmails(List<MessagingV2ChannelsSenderProfileEmails> emails)
+                public Builder WithEmails(object emails)
                 {
                     _messagingV2ChannelsSenderProfile.Emails= emails;
                     return this;
@@ -251,7 +193,7 @@ namespace Twilio.Rest.Messaging.V2
                     _messagingV2ChannelsSenderProfile.Vertical= vertical;
                     return this;
                 }
-                public Builder WithWebsites(List<MessagingV2ChannelsSenderProfileWebsites> websites)
+                public Builder WithWebsites(object websites)
                 {
                     _messagingV2ChannelsSenderProfile.Websites= websites;
                     return this;

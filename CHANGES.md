@@ -1,6 +1,24 @@
 twilio-csharp Changelog
 =======================
 
+[2025-05-29] Version 7.11.2
+---------------------------
+**Library - Docs**
+- [PR #791](https://github.com/twilio/twilio-csharp/pull/791): Add example. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Library - Chore**
+- [PR #788](https://github.com/twilio/twilio-csharp/pull/788): updating token endpoint to iam domain. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Api**
+- Added several usage category enums to `usage_record` API
+
+**Numbers**
+- Update the porting documentation
+
+**Verify**
+- Update `ienum` type for Channels in Verify Attempts API
+
+
 [2025-05-13] Version 7.11.1
 ---------------------------
 **Accounts**
