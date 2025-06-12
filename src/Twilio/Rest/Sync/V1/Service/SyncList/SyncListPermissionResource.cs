@@ -231,7 +231,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary> Retrieve a list of all Permissions applying to a Sync List. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read. </param>
         /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resources to read. Can be the Sync List resource's `sid` or its `unique_name`. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 100. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns>
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary> Retrieve a list of all Permissions applying to a Sync List. </summary>
         /// <param name="pathServiceSid"> The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync List Permission resources to read. </param>
         /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resources to read. Can be the Sync List resource's `sid` or its `unique_name`. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 100. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns>

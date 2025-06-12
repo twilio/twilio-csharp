@@ -338,7 +338,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedAfter"> Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone. </param>
         /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time zone. </param>
         /// <param name="roomSid"> Read only Composition resources with this Room SID. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns>
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="dateCreatedAfter"> Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone. </param>
         /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time zone. </param>
         /// <param name="roomSid"> Read only Composition resources with this Room SID. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>

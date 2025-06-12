@@ -445,7 +445,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public RecordingResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. </summary> 
+        ///<summary> The number of channels in the final recording file. Can be: `1` or `2`. Default: `1`. </summary> 
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
 

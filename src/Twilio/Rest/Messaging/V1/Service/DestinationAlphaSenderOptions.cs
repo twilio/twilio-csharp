@@ -144,6 +144,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the resources from. </summary> 
         public string PathServiceSid { get; }
 
+        ///<summary> Optional filter to return only alphanumeric sender IDs associated with the specified two-character ISO country code. </summary> 
+        public string IsoCountryCode { get; set; }
+
 
 
         /// <summary> Construct a new ListDestinationAlphaSenderOptions </summary>
@@ -159,6 +162,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (IsoCountryCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsoCountryCode", IsoCountryCode));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

@@ -266,11 +266,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
         ///<summary> The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]
-        public string DateCreated { get; private set; }
+        public DateTime? DateCreated { get; private set; }
 
         ///<summary> The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_updated")]
-        public string DateUpdated { get; private set; }
+        public DateTime? DateUpdated { get; private set; }
 
         ///<summary> The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`. </summary> 
         [JsonProperty("sms_fallback_method")]
@@ -292,9 +292,9 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         [JsonProperty("address_requirements")]
         public DependentPhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
 
-        ///<summary> The capabilities </summary> 
+        ///<summary> The set of Boolean properties that indicates whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`. </summary> 
         [JsonProperty("capabilities")]
-        public PhoneNumberCapabilities Capabilities { get; private set; }
+        public object Capabilities { get; private set; }
 
         ///<summary> The URL we call using the `status_callback_method` to send status information to your application. </summary> 
         [JsonProperty("status_callback")]

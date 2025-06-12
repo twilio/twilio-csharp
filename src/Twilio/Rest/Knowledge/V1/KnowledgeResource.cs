@@ -439,30 +439,34 @@ namespace Twilio.Rest.Knowledge.V1
         #endif
         /// <summary> List all knowledge </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="tags"> Json array of tag and value pairs for tag filtering. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Knowledge </returns>
         public static ResourceSet<KnowledgeResource> Read(
                                                      int? pageSize = null,
+                                                     string tags = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadKnowledgeOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadKnowledgeOptions(){ PageSize = pageSize, Tags = tags, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> List all knowledge </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="tags"> Json array of tag and value pairs for tag filtering. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Knowledge </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<KnowledgeResource>> ReadAsync(
                                                                                              int? pageSize = null,
+                                                                                             string tags = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadKnowledgeOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadKnowledgeOptions(){ PageSize = pageSize, Tags = tags, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

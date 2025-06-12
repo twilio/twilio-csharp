@@ -58,6 +58,7 @@ namespace Twilio.TwiML.Voice
             }
 
             public static readonly RegionEnum Us1 = new RegionEnum("us1");
+            public static readonly RegionEnum Us2 = new RegionEnum("us2");
             public static readonly RegionEnum Ie1 = new RegionEnum("ie1");
             public static readonly RegionEnum Sg1 = new RegionEnum("sg1");
             public static readonly RegionEnum Br1 = new RegionEnum("br1");

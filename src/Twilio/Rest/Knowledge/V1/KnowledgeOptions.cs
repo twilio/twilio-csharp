@@ -118,6 +118,9 @@ namespace Twilio.Rest.Knowledge.V1
     public class ReadKnowledgeOptions : ReadOptions<KnowledgeResource>
     {
     
+        ///<summary> Json array of tag and value pairs for tag filtering. </summary> 
+        public string Tags { get; set; }
+
 
 
 
@@ -130,6 +133,10 @@ namespace Twilio.Rest.Knowledge.V1
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            if (Tags != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Tags", Tags));
             }
             return p;
         }

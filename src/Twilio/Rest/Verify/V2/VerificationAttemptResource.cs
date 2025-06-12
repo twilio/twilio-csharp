@@ -45,6 +45,8 @@ namespace Twilio.Rest.Verify.V2
             public static readonly ChannelsEnum Call = new ChannelsEnum("call");
             public static readonly ChannelsEnum Email = new ChannelsEnum("email");
             public static readonly ChannelsEnum Whatsapp = new ChannelsEnum("whatsapp");
+            public static readonly ChannelsEnum Rbm = new ChannelsEnum("rbm");
+            public static readonly ChannelsEnum Sna = new ChannelsEnum("sna");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
