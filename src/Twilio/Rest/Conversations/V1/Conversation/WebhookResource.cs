@@ -40,8 +40,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             {
                 return new MethodEnum(value);
             }
-            public static readonly MethodEnum Get = new MethodEnum("GET");
-            public static readonly MethodEnum Post = new MethodEnum("POST");
+            public static readonly MethodEnum Get = new MethodEnum("get");
+            public static readonly MethodEnum Post = new MethodEnum("post");
 
         }
         public sealed class TargetEnum : StringEnum

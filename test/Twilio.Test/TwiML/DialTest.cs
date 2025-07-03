@@ -184,6 +184,15 @@ namespace Twilio.Tests.TwiML
                 true
             );
 
+            elem.WhatsApp(
+                new Twilio.Types.PhoneNumber("+15017122661"),
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                new[] {WhatsApp.EventEnum.Initiated},
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get
+            );
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Dial>" + Environment.NewLine +
@@ -194,6 +203,7 @@ namespace Twilio.Tests.TwiML
                 "  <Sim>DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Sim>" + Environment.NewLine +
                 "  <Sip username=\"username\" password=\"password\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" machineDetection=\"machine_detection\" amdStatusCallbackMethod=\"GET\" amdStatusCallback=\"amd_status_callback\" machineDetectionTimeout=\"1\" machineDetectionSpeechThreshold=\"1\" machineDetectionSpeechEndThreshold=\"1\" machineDetectionSilenceTimeout=\"1\">https://example.com</Sip>" + Environment.NewLine +
                 "  <Application url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" customerId=\"customer_id\" copyParentTo=\"true\">application_sid</Application>" + Environment.NewLine +
+                "  <WhatsApp url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+15017122661</WhatsApp>" + Environment.NewLine +
                 "</Dial>",
                 elem.ToString()
             );

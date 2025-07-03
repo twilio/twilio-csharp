@@ -69,7 +69,7 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> Filter used to query Verification Attempts sent to the specified destination country. </summary> 
         public string Country { get; set; }
 
-        ///<summary> Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL` </summary> 
+        ///<summary> Filter used to query Verification Attempts by communication channel. </summary> 
         public VerificationAttemptResource.ChannelsEnum Channel { get; set; }
 
         ///<summary> Filter used to query Verification Attempts by verify service. Only attempts of the provided SID will be returned. </summary> 

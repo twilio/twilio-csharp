@@ -46,7 +46,6 @@ namespace Twilio.Rest.Verify.V2
             public static readonly ChannelsEnum Email = new ChannelsEnum("email");
             public static readonly ChannelsEnum Whatsapp = new ChannelsEnum("whatsapp");
             public static readonly ChannelsEnum Rbm = new ChannelsEnum("rbm");
-            public static readonly ChannelsEnum Sna = new ChannelsEnum("sna");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -173,7 +172,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="dateCreatedBefore"> Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="channelDataTo"> Destination of a verification. It is phone number in E.164 format. </param>
         /// <param name="country"> Filter used to query Verification Attempts sent to the specified destination country. </param>
-        /// <param name="channel"> Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL` </param>
+        /// <param name="channel"> Filter used to query Verification Attempts by communication channel. </param>
         /// <param name="verifyServiceSid"> Filter used to query Verification Attempts by verify service. Only attempts of the provided SID will be returned. </param>
         /// <param name="verificationSid"> Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned. </param>
         /// <param name="status"> Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed. </param>
@@ -204,7 +203,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="dateCreatedBefore"> Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="channelDataTo"> Destination of a verification. It is phone number in E.164 format. </param>
         /// <param name="country"> Filter used to query Verification Attempts sent to the specified destination country. </param>
-        /// <param name="channel"> Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL` </param>
+        /// <param name="channel"> Filter used to query Verification Attempts by communication channel. </param>
         /// <param name="verifyServiceSid"> Filter used to query Verification Attempts by verify service. Only attempts of the provided SID will be returned. </param>
         /// <param name="verificationSid"> Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned. </param>
         /// <param name="status"> Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed. </param>

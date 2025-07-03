@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Types;
+
 
 
 namespace Twilio.Rest.Serverless.V1.Service.Environment
@@ -32,20 +32,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     
 
     
-        [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class LevelEnum : StringEnum
-        {
-            private LevelEnum(string value) : base(value) {}
-            public LevelEnum() {}
-            public static implicit operator LevelEnum(string value)
-            {
-                return new LevelEnum(value);
-            }
-            public static readonly LevelEnum Info = new LevelEnum("info");
-            public static readonly LevelEnum Warn = new LevelEnum("warn");
-            public static readonly LevelEnum Error = new LevelEnum("error");
-
-        }
 
         
         private static Request BuildFetchRequest(FetchLogOptions options, ITwilioRestClient client)
@@ -331,9 +317,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         [JsonProperty("request_sid")]
         public string RequestSid { get; private set; }
 
-        
+        ///<summary> The log level. </summary> 
         [JsonProperty("level")]
-        public LogResource.LevelEnum Level { get; private set; }
+        public string Level { get; private set; }
 
         ///<summary> The log message. </summary> 
         [JsonProperty("message")]

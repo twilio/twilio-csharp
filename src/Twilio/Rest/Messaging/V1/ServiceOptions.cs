@@ -64,7 +64,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
-        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </summary> 
+        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `36,000`. Default value is `36,000`. </summary> 
         public int? ValidityPeriod { get; set; }
 
         ///<summary> Reserved. </summary> 
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance. </summary> 
         public bool? AreaCodeGeomatch { get; set; }
 
-        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`. </summary> 
+        ///<summary> How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `36,000`. Default value is `36,000`. </summary> 
         public int? ValidityPeriod { get; set; }
 
         ///<summary> Reserved. </summary> 

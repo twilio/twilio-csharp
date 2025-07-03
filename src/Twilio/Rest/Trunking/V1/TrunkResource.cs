@@ -585,6 +585,10 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
 
+        ///<summary> Whether Symmetric RTP is enabled for the trunk. When Symmetric RTP is disabled, Twilio will send RTP to the destination negotiated in the SDP. Disabling Symmetric RTP is considered to be more secure and therefore recommended. See [Symmetric RTP](https://www.twilio.com/docs/sip-trunking#symmetric-rtp) for more information. </summary> 
+        [JsonProperty("symmetric_rtp_enabled")]
+        public bool? SymmetricRtpEnabled { get; private set; }
+
         ///<summary> Reserved. </summary> 
         [JsonProperty("auth_type_set")]
         public List<string> AuthTypeSet { get; private set; }

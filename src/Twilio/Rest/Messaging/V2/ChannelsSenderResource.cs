@@ -283,6 +283,135 @@ namespace Twilio.Rest.Messaging.V2
                 }
             }
         }
+        public class MessagingV2ChannelsSenderProfileResponseEmails
+        {
+            [JsonProperty("email")]
+            private string Email {get; set;}
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            public MessagingV2ChannelsSenderProfileResponseEmails() { }
+            public class Builder
+            {
+                private MessagingV2ChannelsSenderProfileResponseEmails _messagingV2ChannelsSenderProfileResponseEmails = new MessagingV2ChannelsSenderProfileResponseEmails();
+                public Builder()
+                {
+                }
+                public Builder WithEmail(string email)
+                {
+                    _messagingV2ChannelsSenderProfileResponseEmails.Email= email;
+                    return this;
+                }
+                public Builder WithLabel(string label)
+                {
+                    _messagingV2ChannelsSenderProfileResponseEmails.Label= label;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileResponseEmails Build()
+                {
+                    return _messagingV2ChannelsSenderProfileResponseEmails;
+                }
+            }
+        }
+        public class MessagingV2ChannelsSenderProfileResponseWebsites
+        {
+            [JsonProperty("website")]
+            private string Website {get; set;}
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            public MessagingV2ChannelsSenderProfileResponseWebsites() { }
+            public class Builder
+            {
+                private MessagingV2ChannelsSenderProfileResponseWebsites _messagingV2ChannelsSenderProfileResponseWebsites = new MessagingV2ChannelsSenderProfileResponseWebsites();
+                public Builder()
+                {
+                }
+                public Builder WithWebsite(string website)
+                {
+                    _messagingV2ChannelsSenderProfileResponseWebsites.Website= website;
+                    return this;
+                }
+                public Builder WithLabel(string label)
+                {
+                    _messagingV2ChannelsSenderProfileResponseWebsites.Label= label;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileResponseWebsites Build()
+                {
+                    return _messagingV2ChannelsSenderProfileResponseWebsites;
+                }
+            }
+        }
+        public class MessagingV2ChannelsSenderProfileResponse
+        {
+            [JsonProperty("name")]
+            private string Name {get; set;}
+            [JsonProperty("about")]
+            private string About {get; set;}
+            [JsonProperty("address")]
+            private string Address {get; set;}
+            [JsonProperty("description")]
+            private string Description {get; set;}
+            [JsonProperty("emails")]
+            private List<MessagingV2ChannelsSenderProfileResponseEmails> Emails {get; set;}
+            [JsonProperty("logo_url")]
+            private string LogoUrl {get; set;}
+            [JsonProperty("vertical")]
+            private string Vertical {get; set;}
+            [JsonProperty("websites")]
+            private List<MessagingV2ChannelsSenderProfileResponseWebsites> Websites {get; set;}
+            public MessagingV2ChannelsSenderProfileResponse() { }
+            public class Builder
+            {
+                private MessagingV2ChannelsSenderProfileResponse _messagingV2ChannelsSenderProfileResponse = new MessagingV2ChannelsSenderProfileResponse();
+                public Builder()
+                {
+                }
+                public Builder WithName(string name)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Name= name;
+                    return this;
+                }
+                public Builder WithAbout(string about)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.About= about;
+                    return this;
+                }
+                public Builder WithAddress(string address)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Address= address;
+                    return this;
+                }
+                public Builder WithDescription(string description)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Description= description;
+                    return this;
+                }
+                public Builder WithEmails(List<MessagingV2ChannelsSenderProfileResponseEmails> emails)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Emails= emails;
+                    return this;
+                }
+                public Builder WithLogoUrl(string logoUrl)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.LogoUrl= logoUrl;
+                    return this;
+                }
+                public Builder WithVertical(string vertical)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Vertical= vertical;
+                    return this;
+                }
+                public Builder WithWebsites(List<MessagingV2ChannelsSenderProfileResponseWebsites> websites)
+                {
+                    _messagingV2ChannelsSenderProfileResponse.Websites= websites;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileResponse Build()
+                {
+                    return _messagingV2ChannelsSenderProfileResponse;
+                }
+            }
+        }
         public class MessagingV2ChannelsSenderProperties
         {
             [JsonProperty("quality_rating")]
@@ -857,7 +986,7 @@ namespace Twilio.Rest.Messaging.V2
 
         ///<summary> The profile </summary> 
         [JsonProperty("profile")]
-        public MessagingV2ChannelsSenderProfile Profile { get; private set; }
+        public MessagingV2ChannelsSenderProfileResponse Profile { get; private set; }
 
         ///<summary> The properties </summary> 
         [JsonProperty("properties")]

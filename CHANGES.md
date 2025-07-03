@@ -1,6 +1,30 @@
 twilio-csharp Changelog
 =======================
 
+[2025-07-03] Version 7.11.4
+---------------------------
+**Bulkexports**
+- Changed the type of 'details' field to be a list of objects instead of a single object
+
+**Conversations**
+- Updates to `method` casing for ConfgurationAddress, ConversationScopedWebhook, and ServiceConversationScopedWebhook for RestProxy compatibility
+
+**Proxy**
+- remove shortcodes resource as its no longer used
+
+**Serverless**
+- Change log field level from type `ienum` to `string` in Logs api
+
+**Taskrouter**
+- Remove `URL-encoded` from attributes param definition in tasks
+
+**Trunking**
+- Added `symmetric_rtp_enabled` property on Trunks.
+
+**Twiml**
+- Add support for `<WhatsApp>` noun under `<Dial>` verb
+
+
 [2025-06-12] Version 7.11.3
 ---------------------------
 **Api**

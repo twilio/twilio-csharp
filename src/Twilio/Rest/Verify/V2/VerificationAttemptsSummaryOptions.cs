@@ -39,7 +39,7 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> Filter used to consider only Verification Attempts sent to the specified destination country on the summary aggregation. </summary> 
         public string Country { get; set; }
 
-        ///<summary> Filter Verification Attempts considered on the summary aggregation by communication channel. Valid values are `SMS`, `CALL` and `WHATSAPP` </summary> 
+        ///<summary> Filter Verification Attempts considered on the summary aggregation by communication channel. </summary> 
         public VerificationAttemptsSummaryResource.ChannelsEnum Channel { get; set; }
 
         ///<summary> Filter the Verification Attempts considered on the summary aggregation by Destination prefix. It is the prefix of a phone number in E.164 format. </summary> 

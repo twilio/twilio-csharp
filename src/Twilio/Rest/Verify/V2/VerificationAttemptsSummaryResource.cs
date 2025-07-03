@@ -44,6 +44,7 @@ namespace Twilio.Rest.Verify.V2
             public static readonly ChannelsEnum Call = new ChannelsEnum("call");
             public static readonly ChannelsEnum Email = new ChannelsEnum("email");
             public static readonly ChannelsEnum Whatsapp = new ChannelsEnum("whatsapp");
+            public static readonly ChannelsEnum Rbm = new ChannelsEnum("rbm");
 
         }
 
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="dateCreatedAfter"> Datetime filter used to consider only Verification Attempts created after this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="dateCreatedBefore"> Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="country"> Filter used to consider only Verification Attempts sent to the specified destination country on the summary aggregation. </param>
-        /// <param name="channel"> Filter Verification Attempts considered on the summary aggregation by communication channel. Valid values are `SMS`, `CALL` and `WHATSAPP` </param>
+        /// <param name="channel"> Filter Verification Attempts considered on the summary aggregation by communication channel. </param>
         /// <param name="destinationPrefix"> Filter the Verification Attempts considered on the summary aggregation by Destination prefix. It is the prefix of a phone number in E.164 format. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationAttemptsSummary </returns>
@@ -114,7 +115,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="dateCreatedAfter"> Datetime filter used to consider only Verification Attempts created after this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="dateCreatedBefore"> Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z. </param>
         /// <param name="country"> Filter used to consider only Verification Attempts sent to the specified destination country on the summary aggregation. </param>
-        /// <param name="channel"> Filter Verification Attempts considered on the summary aggregation by communication channel. Valid values are `SMS`, `CALL` and `WHATSAPP` </param>
+        /// <param name="channel"> Filter Verification Attempts considered on the summary aggregation by communication channel. </param>
         /// <param name="destinationPrefix"> Filter the Verification Attempts considered on the summary aggregation by Destination prefix. It is the prefix of a phone number in E.164 format. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationAttemptsSummary </returns>

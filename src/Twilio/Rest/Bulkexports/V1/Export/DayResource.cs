@@ -147,7 +147,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         #endif
         /// <summary> Retrieve a list of all Days for a resource. </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 400. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Day </returns>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         #if !NET35
         /// <summary> Retrieve a list of all Days for a resource. </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 400. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>

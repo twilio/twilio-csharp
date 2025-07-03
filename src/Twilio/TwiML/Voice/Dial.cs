@@ -728,6 +728,45 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <WhatsApp/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="phoneNumber"> WhatsApp Phone Number to dial, the body of the TwiML Element. </param>
+        /// <param name="url"> TwiML URL </param>
+        /// <param name="method"> TwiML URL Method </param>
+        /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
+        public Dial WhatsApp(Types.PhoneNumber phoneNumber = null,
+                             Uri url = null,
+                             Twilio.Http.HttpMethod method = null,
+                             IEnumerable<WhatsApp.EventEnum> statusCallbackEvent = null,
+                             Uri statusCallback = null,
+                             Twilio.Http.HttpMethod statusCallbackMethod = null)
+        {
+            var newChild = new WhatsApp(
+                phoneNumber,
+                url,
+                method,
+                statusCallbackEvent,
+                statusCallback,
+                statusCallbackMethod
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <WhatsApp/> element as a child of this element
+        /// </summary>
+        /// <param name="whatsApp"> A WhatsApp instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Dial WhatsApp(WhatsApp whatsApp)
+        {
+            this.Append(whatsApp);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>
