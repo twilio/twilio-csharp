@@ -459,15 +459,15 @@ namespace Twilio.Rest.Lookups.V2
     }
 
     
-        ///<summary> The phone_number </summary> 
+        ///<summary> The phone number for which the override was created </summary> 
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
 
-        
+        ///<summary> The original line type </summary> 
         [JsonProperty("original_line_type")]
         public LookupOverrideResource.OriginalLineTypeEnum OriginalLineType { get; private set; }
 
-        
+        ///<summary> The new line type after the override </summary> 
         [JsonProperty("overridden_line_type")]
         public LookupOverrideResource.OverriddenLineTypeEnum OverriddenLineType { get; private set; }
 
@@ -479,7 +479,7 @@ namespace Twilio.Rest.Lookups.V2
         [JsonProperty("override_timestamp")]
         public DateTime? OverrideTimestamp { get; private set; }
 
-        ///<summary> The user who overrode the line type </summary> 
+        ///<summary> The Account SID for the user who made the override </summary> 
         [JsonProperty("overridden_by_account_sid")]
         public string OverriddenByAccountSid { get; private set; }
 

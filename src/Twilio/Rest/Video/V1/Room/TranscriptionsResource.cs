@@ -41,7 +41,6 @@ namespace Twilio.Rest.Video.V1.Room
             {
                 return new StatusEnum(value);
             }
-            public static readonly StatusEnum Created = new StatusEnum("created");
             public static readonly StatusEnum Started = new StatusEnum("started");
             public static readonly StatusEnum Stopped = new StatusEnum("stopped");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
@@ -214,7 +213,7 @@ namespace Twilio.Rest.Video.V1.Room
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            var page = Page<TranscriptionsResource>.FromJson("extensions", response.Content);
+            var page = Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionsResource>(page, options, client);
         }
 
@@ -228,7 +227,7 @@ namespace Twilio.Rest.Video.V1.Room
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
-            var page = Page<TranscriptionsResource>.FromJson("extensions", response.Content);
+            var page = Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionsResource>(page, options, client);
         }
         #endif
@@ -281,7 +280,7 @@ namespace Twilio.Rest.Video.V1.Room
             );
 
             var response = client.Request(request);
-            return Page<TranscriptionsResource>.FromJson("extensions", response.Content);
+            return Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
         }
 
         /// <summary> Fetch the next page of records </summary>
@@ -296,7 +295,7 @@ namespace Twilio.Rest.Video.V1.Room
             );
 
             var response = client.Request(request);
-            return Page<TranscriptionsResource>.FromJson("extensions", response.Content);
+            return Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
         }
 
         /// <summary> Fetch the previous page of records </summary>
@@ -311,7 +310,7 @@ namespace Twilio.Rest.Video.V1.Room
             );
 
             var response = client.Request(request);
-            return Page<TranscriptionsResource>.FromJson("extensions", response.Content);
+            return Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
         }
 
         
@@ -444,10 +443,6 @@ namespace Twilio.Rest.Video.V1.Room
         [JsonProperty("status")]
         public TranscriptionsResource.StatusEnum Status { get; private set; }
 
-        ///<summary> The application-defined string that uniquely identifies the resource's User within a Room. If a client joins with an existing Identity, the existing client is disconnected. See [access tokens](https://www.twilio.com/docs/video/tutorials/user-identity-access-tokens) and [limits](https://www.twilio.com/docs/video/programmable-video-limits) for more info.  </summary> 
-        [JsonProperty("identity")]
-        public string Identity { get; private set; }
-
         ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
@@ -471,6 +466,10 @@ namespace Twilio.Rest.Video.V1.Room
         ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> An JSON object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info. </summary> 
+        [JsonProperty("configuration")]
+        public object Configuration { get; private set; }
 
 
 
