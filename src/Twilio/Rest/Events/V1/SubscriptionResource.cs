@@ -409,16 +409,14 @@ namespace Twilio.Rest.Events.V1
         /// <summary> Update a Subscription. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="description"> A human readable description for the Subscription. </param>
-        /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Update(
                                           string pathSid,
                                           string description = null,
-                                          string sinkSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description };
             return Update(options, client);
         }
 
@@ -426,16 +424,14 @@ namespace Twilio.Rest.Events.V1
         /// <summary> Update a Subscription. </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Subscription. </param>
         /// <param name="description"> A human readable description for the Subscription. </param>
-        /// <param name="sinkSid"> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string description = null,
-                                                                              string sinkSid = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscriptionOptions(pathSid){ Description = description, SinkSid = sinkSid };
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description };
             return await UpdateAsync(options, client);
         }
         #endif

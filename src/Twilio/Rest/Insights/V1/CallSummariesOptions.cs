@@ -105,6 +105,18 @@ namespace Twilio.Rest.Insights.V1
         ///<summary> A unique SID identifier of the Branded Call. </summary> 
         public string BrandedBundleSid { get; set; }
 
+        ///<summary> Indicates whether the branded logo was displayed during the in_brand branded call. Possible values are true (logo was present) or false (logo was not present). </summary> 
+        public bool? BrandedLogo { get; set; }
+
+        ///<summary> Indicates whether the Branded Call is in_band vs out_of_band. </summary> 
+        public string BrandedType { get; set; }
+
+        ///<summary> Specifies the user-defined purpose for the call, as provided during the setup of in_band branded calling. </summary> 
+        public string BrandedUseCase { get; set; }
+
+        ///<summary> Specifies the user-defined reason for the call, which will be displayed to the end user on their mobile device during an in_band branded call. </summary> 
+        public string BrandedCallReason { get; set; }
+
         ///<summary> A unique SID identifier of the Voice Integrity Profile. </summary> 
         public string VoiceIntegrityBundleSid { get; set; }
 
@@ -235,6 +247,22 @@ namespace Twilio.Rest.Insights.V1
             if (BrandedBundleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("BrandedBundleSid", BrandedBundleSid));
+            }
+            if (BrandedLogo != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedLogo", BrandedLogo.Value.ToString().ToLower()));
+            }
+            if (BrandedType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedType", BrandedType));
+            }
+            if (BrandedUseCase != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedUseCase", BrandedUseCase));
+            }
+            if (BrandedCallReason != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandedCallReason", BrandedCallReason));
             }
             if (VoiceIntegrityBundleSid != null)
             {

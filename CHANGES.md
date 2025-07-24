@@ -1,6 +1,17 @@
 twilio-csharp Changelog
 =======================
 
+[2025-07-24] Version 7.12.0
+---------------------------
+**Events**
+- Remove `SinkSid` parameter when updating subscriptions. **(breaking change)**
+
+**Twiml**
+- Remove Duplicates.
+- Add Polly Generative voices.
+- Add Latest Google (Chirp3-HD) voices.
+
+
 [2025-07-10] Version 7.11.5
 ---------------------------
 **Flex**

@@ -174,9 +174,6 @@ namespace Twilio.Rest.Events.V1
         ///<summary> A human readable description for the Subscription. </summary> 
         public string Description { get; set; }
 
-        ///<summary> The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created. </summary> 
-        public string SinkSid { get; set; }
-
 
 
         /// <summary> Construct a new UpdateSubscriptionOptions </summary>
@@ -195,10 +192,6 @@ namespace Twilio.Rest.Events.V1
             if (Description != null)
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
-            }
-            if (SinkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid));
             }
             return p;
         }
