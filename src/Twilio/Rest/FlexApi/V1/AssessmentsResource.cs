@@ -396,7 +396,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> Offset of the conversation </summary> 
         [JsonProperty("offset")]
-        public decimal? Offset { get; private set; }
+        public string Offset { get; private set; }
 
         ///<summary> The flag indicating if this assessment is part of report  </summary> 
         [JsonProperty("report")]
@@ -404,7 +404,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> The weightage given to this comment </summary> 
         [JsonProperty("weight")]
-        public decimal? Weight { get; private set; }
+        public string Weight { get; private set; }
 
         ///<summary> The id of the Agent </summary> 
         [JsonProperty("agent_id")]
@@ -436,7 +436,7 @@ namespace Twilio.Rest.FlexApi.V1
 
         ///<summary> The timestamp </summary> 
         [JsonProperty("timestamp")]
-        public decimal? Timestamp { get; private set; }
+        public string Timestamp { get; private set; }
 
         ///<summary> The url </summary> 
         [JsonProperty("url")]

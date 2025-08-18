@@ -94,6 +94,12 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
         /// <param name="whatsappMsgServiceSid"> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </param>
         /// <param name="whatsappFrom"> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </param>
+        /// <param name="passkeysRelyingPartyId"> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyName"> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyOrigins"> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </param>
+        /// <param name="passkeysAuthenticatorAttachment"> The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`. </param>
+        /// <param name="passkeysDiscoverableCredentials"> Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </param>
+        /// <param name="passkeysUserVerification"> The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -117,10 +123,16 @@ namespace Twilio.Rest.Verify.V2
                                           string defaultTemplateSid = null,
                                           string whatsappMsgServiceSid = null,
                                           string whatsappFrom = null,
+                                          string passkeysRelyingPartyId = null,
+                                          string passkeysRelyingPartyName = null,
+                                          string passkeysRelyingPartyOrigins = null,
+                                          string passkeysAuthenticatorAttachment = null,
+                                          string passkeysDiscoverableCredentials = null,
+                                          string passkeysUserVerification = null,
                                           bool? verifyEventSubscriptionEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, PasskeysRelyingPartyId = passkeysRelyingPartyId, PasskeysRelyingPartyName = passkeysRelyingPartyName, PasskeysRelyingPartyOrigins = passkeysRelyingPartyOrigins, PasskeysAuthenticatorAttachment = passkeysAuthenticatorAttachment, PasskeysDiscoverableCredentials = passkeysDiscoverableCredentials, PasskeysUserVerification = passkeysUserVerification, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Create(options, client);
         }
 
@@ -145,6 +157,12 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
         /// <param name="whatsappMsgServiceSid"> The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users. </param>
         /// <param name="whatsappFrom"> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </param>
+        /// <param name="passkeysRelyingPartyId"> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyName"> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyOrigins"> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </param>
+        /// <param name="passkeysAuthenticatorAttachment"> The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`. </param>
+        /// <param name="passkeysDiscoverableCredentials"> Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </param>
+        /// <param name="passkeysUserVerification"> The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -168,10 +186,16 @@ namespace Twilio.Rest.Verify.V2
                                                                                   string defaultTemplateSid = null,
                                                                                   string whatsappMsgServiceSid = null,
                                                                                   string whatsappFrom = null,
+                                                                                  string passkeysRelyingPartyId = null,
+                                                                                  string passkeysRelyingPartyName = null,
+                                                                                  string passkeysRelyingPartyOrigins = null,
+                                                                                  string passkeysAuthenticatorAttachment = null,
+                                                                                  string passkeysDiscoverableCredentials = null,
+                                                                                  string passkeysUserVerification = null,
                                                                                   bool? verifyEventSubscriptionEnabled = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+        var options = new CreateServiceOptions(friendlyName){  CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, PasskeysRelyingPartyId = passkeysRelyingPartyId, PasskeysRelyingPartyName = passkeysRelyingPartyName, PasskeysRelyingPartyOrigins = passkeysRelyingPartyOrigins, PasskeysAuthenticatorAttachment = passkeysAuthenticatorAttachment, PasskeysDiscoverableCredentials = passkeysDiscoverableCredentials, PasskeysUserVerification = passkeysUserVerification, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await CreateAsync(options, client);
         }
         #endif
@@ -491,6 +515,9 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
         /// <param name="whatsappMsgServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </param>
         /// <param name="whatsappFrom"> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </param>
+        /// <param name="passkeysRelyingPartyId"> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyName"> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyOrigins"> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -515,10 +542,13 @@ namespace Twilio.Rest.Verify.V2
                                           string defaultTemplateSid = null,
                                           string whatsappMsgServiceSid = null,
                                           string whatsappFrom = null,
+                                          string passkeysRelyingPartyId = null,
+                                          string passkeysRelyingPartyName = null,
+                                          string passkeysRelyingPartyOrigins = null,
                                           bool? verifyEventSubscriptionEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, PasskeysRelyingPartyId = passkeysRelyingPartyId, PasskeysRelyingPartyName = passkeysRelyingPartyName, PasskeysRelyingPartyOrigins = passkeysRelyingPartyOrigins, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return Update(options, client);
         }
 
@@ -544,6 +574,9 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="defaultTemplateSid"> The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only. </param>
         /// <param name="whatsappMsgServiceSid"> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service. </param>
         /// <param name="whatsappFrom"> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </param>
+        /// <param name="passkeysRelyingPartyId"> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyName"> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </param>
+        /// <param name="passkeysRelyingPartyOrigins"> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </param>
         /// <param name="verifyEventSubscriptionEnabled"> Whether to allow verifications from the service to reach the stream-events sinks if configured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -568,10 +601,13 @@ namespace Twilio.Rest.Verify.V2
                                                                               string defaultTemplateSid = null,
                                                                               string whatsappMsgServiceSid = null,
                                                                               string whatsappFrom = null,
+                                                                              string passkeysRelyingPartyId = null,
+                                                                              string passkeysRelyingPartyName = null,
+                                                                              string passkeysRelyingPartyOrigins = null,
                                                                               bool? verifyEventSubscriptionEnabled = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid, WhatsappMsgServiceSid = whatsappMsgServiceSid, WhatsappFrom = whatsappFrom, PasskeysRelyingPartyId = passkeysRelyingPartyId, PasskeysRelyingPartyName = passkeysRelyingPartyName, PasskeysRelyingPartyOrigins = passkeysRelyingPartyOrigins, VerifyEventSubscriptionEnabled = verifyEventSubscriptionEnabled };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -669,6 +705,10 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The whatsapp </summary> 
         [JsonProperty("whatsapp")]
         public object Whatsapp { get; private set; }
+
+        ///<summary> The passkeys </summary> 
+        [JsonProperty("passkeys")]
+        public object Passkeys { get; private set; }
 
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         [JsonProperty("verify_event_subscription_enabled")]

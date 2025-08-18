@@ -131,6 +131,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ChannelsWhatsappConversationUtility = new UsageCategoryEnum("channels-whatsapp-conversation-utility");
             public static readonly UsageCategoryEnum ChannelsWhatsappInbound = new UsageCategoryEnum("channels-whatsapp-inbound");
             public static readonly UsageCategoryEnum ChannelsWhatsappOutbound = new UsageCategoryEnum("channels-whatsapp-outbound");
+            public static readonly UsageCategoryEnum ChannelsWhatsappService = new UsageCategoryEnum("channels-whatsapp-service");
+            public static readonly UsageCategoryEnum ChannelsWhatsappTemplateAuthentication = new UsageCategoryEnum("channels-whatsapp-template-authentication");
+            public static readonly UsageCategoryEnum ChannelsWhatsappTemplateMarketing = new UsageCategoryEnum("channels-whatsapp-template-marketing");
+            public static readonly UsageCategoryEnum ChannelsWhatsappTemplateService = new UsageCategoryEnum("channels-whatsapp-template-service");
+            public static readonly UsageCategoryEnum ChannelsWhatsappTemplateUtility = new UsageCategoryEnum("channels-whatsapp-template-utility");
             public static readonly UsageCategoryEnum ChatVirtualAgent = new UsageCategoryEnum("chat-virtual-agent");
             public static readonly UsageCategoryEnum ConversationRelay = new UsageCategoryEnum("conversation-relay");
             public static readonly UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
@@ -420,6 +425,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum VerifyTotp = new UsageCategoryEnum("verify-totp");
             public static readonly UsageCategoryEnum VerifyVoiceSms = new UsageCategoryEnum("verify-voice-sms");
             public static readonly UsageCategoryEnum VerifyWhatsappConversationsBusinessInitiated = new UsageCategoryEnum("verify-whatsapp-conversations-business-initiated");
+            public static readonly UsageCategoryEnum VerifyWhatsappTemplateBusinessInitiated = new UsageCategoryEnum("verify-whatsapp-template-business-initiated");
             public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
             public static readonly UsageCategoryEnum VideoRoomsTurnMegabytes = new UsageCategoryEnum("video-rooms-turn-megabytes");
             public static readonly UsageCategoryEnum VirtualAgent = new UsageCategoryEnum("virtual-agent");

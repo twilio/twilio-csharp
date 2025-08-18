@@ -143,14 +143,24 @@ namespace Twilio.Rest.Messaging.V2
             private string Address {get; set;}
             [JsonProperty("description")]
             private string Description {get; set;}
-            [JsonProperty("emails")]
-            private object Emails {get; set;}
             [JsonProperty("logo_url")]
             private string LogoUrl {get; set;}
+            [JsonProperty("banner_url")]
+            private string BannerUrl {get; set;}
+            [JsonProperty("privacy_url")]
+            private string PrivacyUrl {get; set;}
+            [JsonProperty("terms_of_service_url")]
+            private string TermsOfServiceUrl {get; set;}
+            [JsonProperty("accent_color")]
+            private string AccentColor {get; set;}
             [JsonProperty("vertical")]
             private string Vertical {get; set;}
             [JsonProperty("websites")]
             private object Websites {get; set;}
+            [JsonProperty("emails")]
+            private object Emails {get; set;}
+            [JsonProperty("phone_numbers")]
+            private object PhoneNumbers {get; set;}
             public MessagingV2ChannelsSenderProfile() { }
             public class Builder
             {
@@ -178,14 +188,29 @@ namespace Twilio.Rest.Messaging.V2
                     _messagingV2ChannelsSenderProfile.Description= description;
                     return this;
                 }
-                public Builder WithEmails(object emails)
-                {
-                    _messagingV2ChannelsSenderProfile.Emails= emails;
-                    return this;
-                }
                 public Builder WithLogoUrl(string logoUrl)
                 {
                     _messagingV2ChannelsSenderProfile.LogoUrl= logoUrl;
+                    return this;
+                }
+                public Builder WithBannerUrl(string bannerUrl)
+                {
+                    _messagingV2ChannelsSenderProfile.BannerUrl= bannerUrl;
+                    return this;
+                }
+                public Builder WithPrivacyUrl(string privacyUrl)
+                {
+                    _messagingV2ChannelsSenderProfile.PrivacyUrl= privacyUrl;
+                    return this;
+                }
+                public Builder WithTermsOfServiceUrl(string termsOfServiceUrl)
+                {
+                    _messagingV2ChannelsSenderProfile.TermsOfServiceUrl= termsOfServiceUrl;
+                    return this;
+                }
+                public Builder WithAccentColor(string accentColor)
+                {
+                    _messagingV2ChannelsSenderProfile.AccentColor= accentColor;
                     return this;
                 }
                 public Builder WithVertical(string vertical)
@@ -196,6 +221,16 @@ namespace Twilio.Rest.Messaging.V2
                 public Builder WithWebsites(object websites)
                 {
                     _messagingV2ChannelsSenderProfile.Websites= websites;
+                    return this;
+                }
+                public Builder WithEmails(object emails)
+                {
+                    _messagingV2ChannelsSenderProfile.Emails= emails;
+                    return this;
+                }
+                public Builder WithPhoneNumbers(object phoneNumbers)
+                {
+                    _messagingV2ChannelsSenderProfile.PhoneNumbers= phoneNumbers;
                     return this;
                 }
                 public MessagingV2ChannelsSenderProfile Build()
@@ -283,65 +318,94 @@ namespace Twilio.Rest.Messaging.V2
                 }
             }
         }
-        public class MessagingV2ChannelsSenderProfileResponseEmails
-        {
-            [JsonProperty("email")]
-            private string Email {get; set;}
-            [JsonProperty("label")]
-            private string Label {get; set;}
-            public MessagingV2ChannelsSenderProfileResponseEmails() { }
-            public class Builder
-            {
-                private MessagingV2ChannelsSenderProfileResponseEmails _messagingV2ChannelsSenderProfileResponseEmails = new MessagingV2ChannelsSenderProfileResponseEmails();
-                public Builder()
-                {
-                }
-                public Builder WithEmail(string email)
-                {
-                    _messagingV2ChannelsSenderProfileResponseEmails.Email= email;
-                    return this;
-                }
-                public Builder WithLabel(string label)
-                {
-                    _messagingV2ChannelsSenderProfileResponseEmails.Label= label;
-                    return this;
-                }
-                public MessagingV2ChannelsSenderProfileResponseEmails Build()
-                {
-                    return _messagingV2ChannelsSenderProfileResponseEmails;
-                }
-            }
-        }
-        public class MessagingV2ChannelsSenderProfileResponseWebsites
+        public class MessagingV2ChannelsSenderProfileGenericResponseWebsites
         {
             [JsonProperty("website")]
             private string Website {get; set;}
             [JsonProperty("label")]
             private string Label {get; set;}
-            public MessagingV2ChannelsSenderProfileResponseWebsites() { }
+            public MessagingV2ChannelsSenderProfileGenericResponseWebsites() { }
             public class Builder
             {
-                private MessagingV2ChannelsSenderProfileResponseWebsites _messagingV2ChannelsSenderProfileResponseWebsites = new MessagingV2ChannelsSenderProfileResponseWebsites();
+                private MessagingV2ChannelsSenderProfileGenericResponseWebsites _messagingV2ChannelsSenderProfileGenericResponseWebsites = new MessagingV2ChannelsSenderProfileGenericResponseWebsites();
                 public Builder()
                 {
                 }
                 public Builder WithWebsite(string website)
                 {
-                    _messagingV2ChannelsSenderProfileResponseWebsites.Website= website;
+                    _messagingV2ChannelsSenderProfileGenericResponseWebsites.Website= website;
                     return this;
                 }
                 public Builder WithLabel(string label)
                 {
-                    _messagingV2ChannelsSenderProfileResponseWebsites.Label= label;
+                    _messagingV2ChannelsSenderProfileGenericResponseWebsites.Label= label;
                     return this;
                 }
-                public MessagingV2ChannelsSenderProfileResponseWebsites Build()
+                public MessagingV2ChannelsSenderProfileGenericResponseWebsites Build()
                 {
-                    return _messagingV2ChannelsSenderProfileResponseWebsites;
+                    return _messagingV2ChannelsSenderProfileGenericResponseWebsites;
                 }
             }
         }
-        public class MessagingV2ChannelsSenderProfileResponse
+        public class MessagingV2ChannelsSenderProfileGenericResponseEmails
+        {
+            [JsonProperty("email")]
+            private string Email {get; set;}
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            public MessagingV2ChannelsSenderProfileGenericResponseEmails() { }
+            public class Builder
+            {
+                private MessagingV2ChannelsSenderProfileGenericResponseEmails _messagingV2ChannelsSenderProfileGenericResponseEmails = new MessagingV2ChannelsSenderProfileGenericResponseEmails();
+                public Builder()
+                {
+                }
+                public Builder WithEmail(string email)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponseEmails.Email= email;
+                    return this;
+                }
+                public Builder WithLabel(string label)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponseEmails.Label= label;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileGenericResponseEmails Build()
+                {
+                    return _messagingV2ChannelsSenderProfileGenericResponseEmails;
+                }
+            }
+        }
+        public class MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers
+        {
+            [JsonProperty("phone_number")]
+            private string PhoneNumber {get; set;}
+            [JsonProperty("label")]
+            private string Label {get; set;}
+            public MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers() { }
+            public class Builder
+            {
+                private MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers _messagingV2ChannelsSenderProfileGenericResponsePhoneNumbers = new MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers();
+                public Builder()
+                {
+                }
+                public Builder WithPhoneNumber(string phoneNumber)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponsePhoneNumbers.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithLabel(string label)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponsePhoneNumbers.Label= label;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers Build()
+                {
+                    return _messagingV2ChannelsSenderProfileGenericResponsePhoneNumbers;
+                }
+            }
+        }
+        public class MessagingV2ChannelsSenderProfileGenericResponse
         {
             [JsonProperty("name")]
             private string Name {get; set;}
@@ -351,64 +415,99 @@ namespace Twilio.Rest.Messaging.V2
             private string Address {get; set;}
             [JsonProperty("description")]
             private string Description {get; set;}
-            [JsonProperty("emails")]
-            private List<MessagingV2ChannelsSenderProfileResponseEmails> Emails {get; set;}
             [JsonProperty("logo_url")]
             private string LogoUrl {get; set;}
+            [JsonProperty("banner_url")]
+            private string BannerUrl {get; set;}
+            [JsonProperty("privacy_url")]
+            private string PrivacyUrl {get; set;}
+            [JsonProperty("terms_of_service_url")]
+            private string TermsOfServiceUrl {get; set;}
+            [JsonProperty("accent_color")]
+            private string AccentColor {get; set;}
             [JsonProperty("vertical")]
             private string Vertical {get; set;}
             [JsonProperty("websites")]
-            private List<MessagingV2ChannelsSenderProfileResponseWebsites> Websites {get; set;}
-            public MessagingV2ChannelsSenderProfileResponse() { }
+            private List<MessagingV2ChannelsSenderProfileGenericResponseWebsites> Websites {get; set;}
+            [JsonProperty("emails")]
+            private List<MessagingV2ChannelsSenderProfileGenericResponseEmails> Emails {get; set;}
+            [JsonProperty("phone_numbers")]
+            private List<MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers> PhoneNumbers {get; set;}
+            public MessagingV2ChannelsSenderProfileGenericResponse() { }
             public class Builder
             {
-                private MessagingV2ChannelsSenderProfileResponse _messagingV2ChannelsSenderProfileResponse = new MessagingV2ChannelsSenderProfileResponse();
+                private MessagingV2ChannelsSenderProfileGenericResponse _messagingV2ChannelsSenderProfileGenericResponse = new MessagingV2ChannelsSenderProfileGenericResponse();
                 public Builder()
                 {
                 }
                 public Builder WithName(string name)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.Name= name;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Name= name;
                     return this;
                 }
                 public Builder WithAbout(string about)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.About= about;
+                    _messagingV2ChannelsSenderProfileGenericResponse.About= about;
                     return this;
                 }
                 public Builder WithAddress(string address)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.Address= address;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Address= address;
                     return this;
                 }
                 public Builder WithDescription(string description)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.Description= description;
-                    return this;
-                }
-                public Builder WithEmails(List<MessagingV2ChannelsSenderProfileResponseEmails> emails)
-                {
-                    _messagingV2ChannelsSenderProfileResponse.Emails= emails;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Description= description;
                     return this;
                 }
                 public Builder WithLogoUrl(string logoUrl)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.LogoUrl= logoUrl;
+                    _messagingV2ChannelsSenderProfileGenericResponse.LogoUrl= logoUrl;
+                    return this;
+                }
+                public Builder WithBannerUrl(string bannerUrl)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.BannerUrl= bannerUrl;
+                    return this;
+                }
+                public Builder WithPrivacyUrl(string privacyUrl)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.PrivacyUrl= privacyUrl;
+                    return this;
+                }
+                public Builder WithTermsOfServiceUrl(string termsOfServiceUrl)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.TermsOfServiceUrl= termsOfServiceUrl;
+                    return this;
+                }
+                public Builder WithAccentColor(string accentColor)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.AccentColor= accentColor;
                     return this;
                 }
                 public Builder WithVertical(string vertical)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.Vertical= vertical;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Vertical= vertical;
                     return this;
                 }
-                public Builder WithWebsites(List<MessagingV2ChannelsSenderProfileResponseWebsites> websites)
+                public Builder WithWebsites(List<MessagingV2ChannelsSenderProfileGenericResponseWebsites> websites)
                 {
-                    _messagingV2ChannelsSenderProfileResponse.Websites= websites;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Websites= websites;
                     return this;
                 }
-                public MessagingV2ChannelsSenderProfileResponse Build()
+                public Builder WithEmails(List<MessagingV2ChannelsSenderProfileGenericResponseEmails> emails)
                 {
-                    return _messagingV2ChannelsSenderProfileResponse;
+                    _messagingV2ChannelsSenderProfileGenericResponse.Emails= emails;
+                    return this;
+                }
+                public Builder WithPhoneNumbers(List<MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers> phoneNumbers)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.PhoneNumbers= phoneNumbers;
+                    return this;
+                }
+                public MessagingV2ChannelsSenderProfileGenericResponse Build()
+                {
+                    return _messagingV2ChannelsSenderProfileGenericResponse;
                 }
             }
         }
@@ -477,6 +576,109 @@ namespace Twilio.Rest.Messaging.V2
                 }
             }
         }
+        public class MessagingV2RcsCarrier
+        {
+            [JsonProperty("name")]
+            private string Name {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("status")]
+            private ChannelsSenderResource.MessagingV2RcsCarrierStatus Status {get; set;}
+            public MessagingV2RcsCarrier() { }
+            public class Builder
+            {
+                private MessagingV2RcsCarrier _messagingV2RcsCarrier = new MessagingV2RcsCarrier();
+                public Builder()
+                {
+                }
+                public Builder WithName(string name)
+                {
+                    _messagingV2RcsCarrier.Name= name;
+                    return this;
+                }
+                public Builder WithStatus(ChannelsSenderResource.MessagingV2RcsCarrierStatus status)
+                {
+                    _messagingV2RcsCarrier.Status= status;
+                    return this;
+                }
+                public MessagingV2RcsCarrier Build()
+                {
+                    return _messagingV2RcsCarrier;
+                }
+            }
+        }
+        public class MessagingV2RcsComplianceCountryResponse
+        {
+            [JsonProperty("country")]
+            private string Country {get; set;}
+            [JsonProperty("registration_sid")]
+            private string RegistrationSid {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("status")]
+            private ChannelsSenderResource.MessagingV2RcsCountryStatus Status {get; set;}
+            [JsonProperty("carriers")]
+            private List<MessagingV2RcsCarrier> Carriers {get; set;}
+            public MessagingV2RcsComplianceCountryResponse() { }
+            public class Builder
+            {
+                private MessagingV2RcsComplianceCountryResponse _messagingV2RcsComplianceCountryResponse = new MessagingV2RcsComplianceCountryResponse();
+                public Builder()
+                {
+                }
+                public Builder WithCountry(string country)
+                {
+                    _messagingV2RcsComplianceCountryResponse.Country= country;
+                    return this;
+                }
+                public Builder WithRegistrationSid(string registrationSid)
+                {
+                    _messagingV2RcsComplianceCountryResponse.RegistrationSid= registrationSid;
+                    return this;
+                }
+                public Builder WithStatus(ChannelsSenderResource.MessagingV2RcsCountryStatus status)
+                {
+                    _messagingV2RcsComplianceCountryResponse.Status= status;
+                    return this;
+                }
+                public Builder WithCarriers(List<MessagingV2RcsCarrier> carriers)
+                {
+                    _messagingV2RcsComplianceCountryResponse.Carriers= carriers;
+                    return this;
+                }
+                public MessagingV2RcsComplianceCountryResponse Build()
+                {
+                    return _messagingV2RcsComplianceCountryResponse;
+                }
+            }
+        }
+        public class MessagingV2RcsComplianceResponse
+        {
+            [JsonProperty("registration_sid")]
+            private string RegistrationSid {get; set;}
+            [JsonProperty("countries")]
+            private List<MessagingV2RcsComplianceCountryResponse> Countries {get; set;}
+            public MessagingV2RcsComplianceResponse() { }
+            public class Builder
+            {
+                private MessagingV2RcsComplianceResponse _messagingV2RcsComplianceResponse = new MessagingV2RcsComplianceResponse();
+                public Builder()
+                {
+                }
+                public Builder WithRegistrationSid(string registrationSid)
+                {
+                    _messagingV2RcsComplianceResponse.RegistrationSid= registrationSid;
+                    return this;
+                }
+                public Builder WithCountries(List<MessagingV2RcsComplianceCountryResponse> countries)
+                {
+                    _messagingV2RcsComplianceResponse.Countries= countries;
+                    return this;
+                }
+                public MessagingV2RcsComplianceResponse Build()
+                {
+                    return _messagingV2RcsComplianceResponse;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]
@@ -507,7 +709,8 @@ namespace Twilio.Rest.Messaging.V2
             public static readonly StatusEnum PendingVerification = new StatusEnum("PENDING_VERIFICATION");
             public static readonly StatusEnum Verifying = new StatusEnum("VERIFYING");
             public static readonly StatusEnum OnlineUpdating = new StatusEnum("ONLINE:UPDATING");
-            public static readonly StatusEnum Stubbed = new StatusEnum("STUBBED");
+            public static readonly StatusEnum TwilioReview = new StatusEnum("TWILIO_REVIEW");
+            public static readonly StatusEnum Draft = new StatusEnum("DRAFT");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -524,6 +727,23 @@ namespace Twilio.Rest.Messaging.V2
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class MessagingV2RcsCarrierStatus : StringEnum
+        {
+            private MessagingV2RcsCarrierStatus(string value) : base(value) {}
+            public MessagingV2RcsCarrierStatus() {}
+            public static implicit operator MessagingV2RcsCarrierStatus(string value)
+            {
+                return new MessagingV2RcsCarrierStatus(value);
+            }
+            public static readonly MessagingV2RcsCarrierStatus Unknown = new MessagingV2RcsCarrierStatus("UNKNOWN");
+            public static readonly MessagingV2RcsCarrierStatus Unlaunched = new MessagingV2RcsCarrierStatus("UNLAUNCHED");
+            public static readonly MessagingV2RcsCarrierStatus CarrierReview = new MessagingV2RcsCarrierStatus("CARRIER_REVIEW");
+            public static readonly MessagingV2RcsCarrierStatus Approved = new MessagingV2RcsCarrierStatus("APPROVED");
+            public static readonly MessagingV2RcsCarrierStatus Rejected = new MessagingV2RcsCarrierStatus("REJECTED");
+            public static readonly MessagingV2RcsCarrierStatus Suspended = new MessagingV2RcsCarrierStatus("SUSPENDED");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class CallbackMethodEnum : StringEnum
         {
             private CallbackMethodEnum(string value) : base(value) {}
@@ -534,6 +754,21 @@ namespace Twilio.Rest.Messaging.V2
             }
             public static readonly CallbackMethodEnum Post = new CallbackMethodEnum("POST");
             public static readonly CallbackMethodEnum Put = new CallbackMethodEnum("PUT");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class MessagingV2RcsCountryStatus : StringEnum
+        {
+            private MessagingV2RcsCountryStatus(string value) : base(value) {}
+            public MessagingV2RcsCountryStatus() {}
+            public static implicit operator MessagingV2RcsCountryStatus(string value)
+            {
+                return new MessagingV2RcsCountryStatus(value);
+            }
+            public static readonly MessagingV2RcsCountryStatus Online = new MessagingV2RcsCountryStatus("ONLINE");
+            public static readonly MessagingV2RcsCountryStatus Offline = new MessagingV2RcsCountryStatus("OFFLINE");
+            public static readonly MessagingV2RcsCountryStatus TwilioReview = new MessagingV2RcsCountryStatus("TWILIO_REVIEW");
+            public static readonly MessagingV2RcsCountryStatus PendingVerification = new MessagingV2RcsCountryStatus("PENDING_VERIFICATION");
 
         }
 
@@ -986,7 +1221,7 @@ namespace Twilio.Rest.Messaging.V2
 
         ///<summary> The profile </summary> 
         [JsonProperty("profile")]
-        public MessagingV2ChannelsSenderProfileResponse Profile { get; private set; }
+        public MessagingV2ChannelsSenderProfileGenericResponse Profile { get; private set; }
 
         ///<summary> The properties </summary> 
         [JsonProperty("properties")]
@@ -995,6 +1230,10 @@ namespace Twilio.Rest.Messaging.V2
         ///<summary> Reasons why the sender is offline., e.g., [{\"code\": \"21211400\", \"message\": \"Whatsapp business account is banned by provider {provider_name} | Credit line is assigned to another BSP\", \"more_info\": \"https://www.twilio.com/docs/errors/21211400\"}] </summary> 
         [JsonProperty("offline_reasons")]
         public List<MessagingV2ChannelsSenderOfflineReasonsItems> OfflineReasons { get; private set; }
+
+        ///<summary> The compliance </summary> 
+        [JsonProperty("compliance")]
+        public MessagingV2RcsComplianceResponse Compliance { get; private set; }
 
         ///<summary> The URL of this resource, relative to `https://messaging.twilio.com`. </summary> 
         [JsonProperty("url")]

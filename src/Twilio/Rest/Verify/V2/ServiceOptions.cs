@@ -85,6 +85,24 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID. </summary> 
         public string WhatsappFrom { get; set; }
 
+        ///<summary> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </summary> 
+        public string PasskeysRelyingPartyId { get; set; }
+
+        ///<summary> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </summary> 
+        public string PasskeysRelyingPartyName { get; set; }
+
+        ///<summary> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </summary> 
+        public string PasskeysRelyingPartyOrigins { get; set; }
+
+        ///<summary> The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`. </summary> 
+        public string PasskeysAuthenticatorAttachment { get; set; }
+
+        ///<summary> Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </summary> 
+        public string PasskeysDiscoverableCredentials { get; set; }
+
+        ///<summary> The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </summary> 
+        public string PasskeysUserVerification { get; set; }
+
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
 
@@ -177,6 +195,30 @@ namespace Twilio.Rest.Verify.V2
             if (WhatsappFrom != null)
             {
                 p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
+            }
+            if (PasskeysRelyingPartyId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Id", PasskeysRelyingPartyId));
+            }
+            if (PasskeysRelyingPartyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Name", PasskeysRelyingPartyName));
+            }
+            if (PasskeysRelyingPartyOrigins != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Origins", PasskeysRelyingPartyOrigins));
+            }
+            if (PasskeysAuthenticatorAttachment != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.AuthenticatorAttachment", PasskeysAuthenticatorAttachment));
+            }
+            if (PasskeysDiscoverableCredentials != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.DiscoverableCredentials", PasskeysDiscoverableCredentials));
+            }
+            if (PasskeysUserVerification != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.UserVerification", PasskeysUserVerification));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {
@@ -336,6 +378,15 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service. </summary> 
         public string WhatsappFrom { get; set; }
 
+        ///<summary> The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys. </summary> 
+        public string PasskeysRelyingPartyId { get; set; }
+
+        ///<summary> The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys. </summary> 
+        public string PasskeysRelyingPartyName { get; set; }
+
+        ///<summary> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </summary> 
+        public string PasskeysRelyingPartyOrigins { get; set; }
+
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
 
@@ -429,6 +480,18 @@ namespace Twilio.Rest.Verify.V2
             if (WhatsappFrom != null)
             {
                 p.Add(new KeyValuePair<string, string>("Whatsapp.From", WhatsappFrom));
+            }
+            if (PasskeysRelyingPartyId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Id", PasskeysRelyingPartyId));
+            }
+            if (PasskeysRelyingPartyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Name", PasskeysRelyingPartyName));
+            }
+            if (PasskeysRelyingPartyOrigins != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Origins", PasskeysRelyingPartyOrigins));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {

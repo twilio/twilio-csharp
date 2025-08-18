@@ -116,6 +116,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum ChannelsWhatsappConversationUtility = new CategoryEnum("channels-whatsapp-conversation-utility");
             public static readonly CategoryEnum ChannelsWhatsappInbound = new CategoryEnum("channels-whatsapp-inbound");
             public static readonly CategoryEnum ChannelsWhatsappOutbound = new CategoryEnum("channels-whatsapp-outbound");
+            public static readonly CategoryEnum ChannelsWhatsappService = new CategoryEnum("channels-whatsapp-service");
+            public static readonly CategoryEnum ChannelsWhatsappTemplateAuthentication = new CategoryEnum("channels-whatsapp-template-authentication");
+            public static readonly CategoryEnum ChannelsWhatsappTemplateMarketing = new CategoryEnum("channels-whatsapp-template-marketing");
+            public static readonly CategoryEnum ChannelsWhatsappTemplateService = new CategoryEnum("channels-whatsapp-template-service");
+            public static readonly CategoryEnum ChannelsWhatsappTemplateUtility = new CategoryEnum("channels-whatsapp-template-utility");
             public static readonly CategoryEnum ChatVirtualAgent = new CategoryEnum("chat-virtual-agent");
             public static readonly CategoryEnum ConversationRelay = new CategoryEnum("conversation-relay");
             public static readonly CategoryEnum Conversations = new CategoryEnum("conversations");
@@ -405,6 +410,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum VerifyTotp = new CategoryEnum("verify-totp");
             public static readonly CategoryEnum VerifyVoiceSms = new CategoryEnum("verify-voice-sms");
             public static readonly CategoryEnum VerifyWhatsappConversationsBusinessInitiated = new CategoryEnum("verify-whatsapp-conversations-business-initiated");
+            public static readonly CategoryEnum VerifyWhatsappTemplateBusinessInitiated = new CategoryEnum("verify-whatsapp-template-business-initiated");
             public static readonly CategoryEnum VideoRecordings = new CategoryEnum("video-recordings");
             public static readonly CategoryEnum VideoRoomsTurnMegabytes = new CategoryEnum("video-rooms-turn-megabytes");
             public static readonly CategoryEnum VirtualAgent = new CategoryEnum("virtual-agent");

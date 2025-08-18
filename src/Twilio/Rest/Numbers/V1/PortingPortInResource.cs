@@ -303,6 +303,18 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("phone_numbers")]
         public List<object> PhoneNumbers { get; private set; }
 
+        ///<summary> The bundle sid is an optional identifier to reference a group of regulatory documents for a port request. </summary> 
+        [JsonProperty("bundle_sid")]
+        public string BundleSid { get; private set; }
+
+        ///<summary> A field only required for Japan port in requests. It is a unique identifier for the donor carrier service the line is being ported from. </summary> 
+        [JsonProperty("portability_advance_carrier")]
+        public string PortabilityAdvanceCarrier { get; private set; }
+
+        ///<summary> Japan specific field, indicates the number of phone numbers to automatically approve for cancellation. </summary> 
+        [JsonProperty("auto_cancel_approval_numbers")]
+        public string AutoCancelApprovalNumbers { get; private set; }
+
         ///<summary> List of document SIDs for all phone numbers included in the port in request. At least one document SID referring to a document of the type Utility Bill is required. </summary> 
         [JsonProperty("documents")]
         public List<string> Documents { get; private set; }
