@@ -387,6 +387,15 @@ namespace Twilio.Rest.Verify.V2
         ///<summary> The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`. </summary> 
         public string PasskeysRelyingPartyOrigins { get; set; }
 
+        ///<summary> The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`. </summary> 
+        public string PasskeysAuthenticatorAttachment { get; set; }
+
+        ///<summary> Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </summary> 
+        public string PasskeysDiscoverableCredentials { get; set; }
+
+        ///<summary> The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`. </summary> 
+        public string PasskeysUserVerification { get; set; }
+
         ///<summary> Whether to allow verifications from the service to reach the stream-events sinks if configured </summary> 
         public bool? VerifyEventSubscriptionEnabled { get; set; }
 
@@ -492,6 +501,18 @@ namespace Twilio.Rest.Verify.V2
             if (PasskeysRelyingPartyOrigins != null)
             {
                 p.Add(new KeyValuePair<string, string>("Passkeys.RelyingParty.Origins", PasskeysRelyingPartyOrigins));
+            }
+            if (PasskeysAuthenticatorAttachment != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.AuthenticatorAttachment", PasskeysAuthenticatorAttachment));
+            }
+            if (PasskeysDiscoverableCredentials != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.DiscoverableCredentials", PasskeysDiscoverableCredentials));
+            }
+            if (PasskeysUserVerification != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passkeys.UserVerification", PasskeysUserVerification));
             }
             if (VerifyEventSubscriptionEnabled != null)
             {

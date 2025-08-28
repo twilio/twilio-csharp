@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V2
 {
 
-    /// <summary> Create a new sender of WhatsApp. </summary>
+    /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
     public class CreateChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
         
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Messaging.V2
         
 
     }
-    /// <summary> Delete a specific sender by its unique identifier. </summary>
+    /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
     public class DeleteChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
         
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Messaging.V2
     }
 
 
-    /// <summary> Get a list of Senders for an account. </summary>
+    /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
     public class ReadChannelsSenderOptions : ReadOptions<ChannelsSenderResource>
     {
     
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Messaging.V2
 
     }
 
-    /// <summary> Update a specific sender information like OTP Code, Webhook, Profile information. </summary>
+    /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
     public class UpdateChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
     

@@ -80,7 +80,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
         /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
         /// <param name="wordTimestamps"> Returns word level timestamps information, if word_timestamps is enabled. The default is `false`. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 5000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sentence </returns>
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         /// <param name="pathTranscriptSid"> The unique SID identifier of the Transcript. </param>
         /// <param name="redacted"> Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences. </param>
         /// <param name="wordTimestamps"> Returns word level timestamps information, if word_timestamps is enabled. The default is `false`. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 5000. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sentence </returns>

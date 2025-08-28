@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2025-08-28] Version 7.12.2
+---------------------------
+**Studio**
+- Add `type` to Step resource APIs
+
+**Verify**
+- Allow to update all passkeys parameters in the service update
+
+
 [2025-08-18] Version 7.12.1
 ---------------------------
 **Accounts**

@@ -790,7 +790,7 @@ namespace Twilio.Rest.Messaging.V2
             );
         }
 
-        /// <summary> Create a new sender of WhatsApp. </summary>
+        /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
         /// <param name="options"> Create ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -802,7 +802,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Create a new sender of WhatsApp. </summary>
+        /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
         /// <param name="options"> Create ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -814,7 +814,7 @@ namespace Twilio.Rest.Messaging.V2
         }
         #endif
 
-        /// <summary> Create a new sender of WhatsApp. </summary>
+        /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
         /// <param name="messagingV2ChannelsSenderRequestsCreate">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -827,7 +827,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Create a new sender of WhatsApp. </summary>
+        /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
         /// <param name="messagingV2ChannelsSenderRequestsCreate">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -840,7 +840,7 @@ namespace Twilio.Rest.Messaging.V2
         }
         #endif
         
-        /// <summary> Delete a specific sender by its unique identifier. </summary>
+        /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
         /// <param name="options"> Delete ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -861,7 +861,7 @@ namespace Twilio.Rest.Messaging.V2
             );
         }
 
-        /// <summary> Delete a specific sender by its unique identifier. </summary>
+        /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
         /// <param name="options"> Delete ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -873,7 +873,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Delete a specific sender by its unique identifier. </summary>
+        /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
         /// <param name="options"> Delete ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -886,7 +886,7 @@ namespace Twilio.Rest.Messaging.V2
         }
         #endif
 
-        /// <summary> Delete a specific sender by its unique identifier. </summary>
+        /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -897,7 +897,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Delete a specific sender by its unique identifier. </summary>
+        /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -986,7 +986,7 @@ namespace Twilio.Rest.Messaging.V2
                 headerParams: null
             );
         }
-        /// <summary> Get a list of Senders for an account. </summary>
+        /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
         /// <param name="options"> Read ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -999,7 +999,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Get a list of Senders for an account. </summary>
+        /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
         /// <param name="options"> Read ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -1012,7 +1012,7 @@ namespace Twilio.Rest.Messaging.V2
             return new ResourceSet<ChannelsSenderResource>(page, options, client);
         }
         #endif
-        /// <summary> Get a list of Senders for an account. </summary>
+        /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
         /// <param name="channel">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -1029,7 +1029,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Get a list of Senders for an account. </summary>
+        /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
         /// <param name="channel">  </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
         /// <param name="limit"> Record limit </param>
@@ -1114,7 +1114,7 @@ namespace Twilio.Rest.Messaging.V2
             );
         }
 
-        /// <summary> Update a specific sender information like OTP Code, Webhook, Profile information. </summary>
+        /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
         /// <param name="options"> Update ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -1125,7 +1125,7 @@ namespace Twilio.Rest.Messaging.V2
             return FromJson(response.Content);
         }
 
-        /// <summary> Update a specific sender information like OTP Code, Webhook, Profile information. </summary>
+        /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
         /// <param name="options"> Update ChannelsSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -1139,7 +1139,7 @@ namespace Twilio.Rest.Messaging.V2
         }
         #endif
 
-        /// <summary> Update a specific sender information like OTP Code, Webhook, Profile information. </summary>
+        /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -1152,7 +1152,7 @@ namespace Twilio.Rest.Messaging.V2
         }
 
         #if !NET35
-        /// <summary> Update a specific sender information like OTP Code, Webhook, Profile information. </summary>
+        /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
