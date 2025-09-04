@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V2
 {
 
-    /// <summary> - Create a new OTT Sender - Supported OTT 1) Whatsapp 2) RCS  </summary>
+    /// <summary> Create a Sender. </summary>
     public class CreateChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
         
@@ -54,17 +54,17 @@ namespace Twilio.Rest.Messaging.V2
         
 
     }
-    /// <summary> - Delete a specific OTT sender by its unique identifier. - Supported OTT 1) Whatsapp. RCS is not supported  </summary>
+    /// <summary> (WhatsApp only) Delete a Sender. </summary>
     public class DeleteChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
         
-        ///<summary> A 34 character string that uniquely identifies this Sender. </summary> 
+        ///<summary> The SID of the sender. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new DeleteChannelsSenderOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
+        /// <param name="pathSid"> The SID of the sender. </param>
         public DeleteChannelsSenderOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -84,17 +84,17 @@ namespace Twilio.Rest.Messaging.V2
     }
 
 
-    /// <summary> Retrieve details of a specific sender by its unique identifier. </summary>
+    /// <summary> Retrieve a Sender. </summary>
     public class FetchChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
     
-        ///<summary> A 34 character string that uniquely identifies this Sender. </summary> 
+        ///<summary> The SID of the sender. </summary> 
         public string PathSid { get; }
 
 
 
         /// <summary> Construct a new FetchChannelsSenderOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
+        /// <param name="pathSid"> The SID of the sender. </param>
         public FetchChannelsSenderOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Messaging.V2
     }
 
 
-    /// <summary> - Get a list of OTT Senders for an account. - OTT Supported 1) Whatsapp 2) RCS  </summary>
+    /// <summary> Retrieve a list of Senders for an account. </summary>
     public class ReadChannelsSenderOptions : ReadOptions<ChannelsSenderResource>
     {
     
@@ -151,11 +151,11 @@ namespace Twilio.Rest.Messaging.V2
 
     }
 
-    /// <summary> - Update a specific sender information like OTP Code, Webhook, Profile information. - Supported OTT 1) Whatsapp. RCS not supported  </summary>
+    /// <summary> (WhatsApp only) Update a Sender. You can update a sender's information, including `profile`, `webhook`, and `configuration`. To verify a phone number, set `configuration.verification_code` to the One-time Password (OTP) that you received. </summary>
     public class UpdateChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
     
-        ///<summary> A 34 character string that uniquely identifies this Sender. </summary> 
+        ///<summary> The SID of the sender. </summary> 
         public string PathSid { get; }
 
         
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Messaging.V2
 
 
         /// <summary> Construct a new UpdateChannelsSenderOptions </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Sender. </param>
+        /// <param name="pathSid"> The SID of the sender. </param>
         public UpdateChannelsSenderOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public string PathAccountSid { get; set; }
 
         ///<summary> The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved. </summary> 
-        public YesterdayResource.CategoryEnum Category { get; set; }
+        public string Category { get; set; }
 
         ///<summary> Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date. </summary> 
         public DateTime? StartDate { get; set; }
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 
             if (Category != null)
             {
-                p.Add(new KeyValuePair<string, string>("Category", Category.ToString()));
+                p.Add(new KeyValuePair<string, string>("Category", Category));
             }
             if (StartDate != null)
             {

@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2025-09-04] Version 7.13.0
+---------------------------
+**Api**
+- Remove usage category enum from usage record and usage triggers API **(breaking change)**
+
+
 [2025-08-28] Version 7.12.2
 ---------------------------
 **Studio**

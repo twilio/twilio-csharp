@@ -371,6 +371,9 @@ namespace Twilio.Rest.Content.V1
             private string Id {get; set;}
             [JsonProperty("code")]
             private string Code {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("webview_size")]
+            private ContentResource.WebviewSizeType WebviewSize {get; set;}
             public CardAction() { }
             public class Builder
             {
@@ -406,6 +409,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithCode(string code)
                 {
                     _cardAction.Code= code;
+                    return this;
+                }
+                public Builder WithWebviewSize(ContentResource.WebviewSizeType webviewSize)
+                {
+                    _cardAction.WebviewSize= webviewSize;
                     return this;
                 }
                 public CardAction Build()
@@ -1185,6 +1193,21 @@ namespace Twilio.Rest.Content.V1
                 return new QuickReplyActionType(value);
             }
             public static readonly QuickReplyActionType QuickReply = new QuickReplyActionType("QUICK_REPLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class WebviewSizeType : StringEnum
+        {
+            private WebviewSizeType(string value) : base(value) {}
+            public WebviewSizeType() {}
+            public static implicit operator WebviewSizeType(string value)
+            {
+                return new WebviewSizeType(value);
+            }
+            public static readonly WebviewSizeType Tall = new WebviewSizeType("TALL");
+            public static readonly WebviewSizeType Full = new WebviewSizeType("FULL");
+            public static readonly WebviewSizeType Half = new WebviewSizeType("HALF");
+            public static readonly WebviewSizeType None = new WebviewSizeType("NONE");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
