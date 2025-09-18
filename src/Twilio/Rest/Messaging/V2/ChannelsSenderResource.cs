@@ -711,6 +711,7 @@ namespace Twilio.Rest.Messaging.V2
             public static readonly StatusEnum OnlineUpdating = new StatusEnum("ONLINE:UPDATING");
             public static readonly StatusEnum TwilioReview = new StatusEnum("TWILIO_REVIEW");
             public static readonly StatusEnum Draft = new StatusEnum("DRAFT");
+            public static readonly StatusEnum Stubbed = new StatusEnum("STUBBED");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

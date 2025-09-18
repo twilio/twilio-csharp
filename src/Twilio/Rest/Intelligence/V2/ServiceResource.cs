@@ -98,6 +98,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
         /// <param name="webhookHttpMethod">  </param>
+        /// <param name="encryptionCredentialSid"> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(
@@ -110,9 +111,10 @@ namespace Twilio.Rest.Intelligence.V2
                                           bool? mediaRedaction = null,
                                           string webhookUrl = null,
                                           ServiceResource.HttpMethodEnum webhookHttpMethod = null,
+                                          string encryptionCredentialSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod };
+            var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, EncryptionCredentialSid = encryptionCredentialSid };
             return Create(options, client);
         }
 
@@ -127,6 +129,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
         /// <param name="webhookHttpMethod">  </param>
+        /// <param name="encryptionCredentialSid"> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(
@@ -139,9 +142,10 @@ namespace Twilio.Rest.Intelligence.V2
                                                                                   bool? mediaRedaction = null,
                                                                                   string webhookUrl = null,
                                                                                   ServiceResource.HttpMethodEnum webhookHttpMethod = null,
+                                                                                  string encryptionCredentialSid = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod };
+        var options = new CreateServiceOptions(uniqueName){  AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, LanguageCode = languageCode, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, EncryptionCredentialSid = encryptionCredentialSid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -450,6 +454,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
         /// <param name="webhookHttpMethod">  </param>
+        /// <param name="encryptionCredentialSid"> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </param>
         /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
@@ -463,10 +468,11 @@ namespace Twilio.Rest.Intelligence.V2
                                           bool? mediaRedaction = null,
                                           string webhookUrl = null,
                                           ServiceResource.HttpMethodEnum webhookHttpMethod = null,
+                                          string encryptionCredentialSid = null,
                                           string ifMatch = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
+            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, EncryptionCredentialSid = encryptionCredentialSid, IfMatch = ifMatch };
             return Update(options, client);
         }
 
@@ -481,6 +487,7 @@ namespace Twilio.Rest.Intelligence.V2
         /// <param name="mediaRedaction"> Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise. </param>
         /// <param name="webhookUrl"> The URL Twilio will request when executing the Webhook. </param>
         /// <param name="webhookHttpMethod">  </param>
+        /// <param name="encryptionCredentialSid"> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </param>
         /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
@@ -494,10 +501,11 @@ namespace Twilio.Rest.Intelligence.V2
                                                                               bool? mediaRedaction = null,
                                                                               string webhookUrl = null,
                                                                               ServiceResource.HttpMethodEnum webhookHttpMethod = null,
+                                                                              string encryptionCredentialSid = null,
                                                                               string ifMatch = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, IfMatch = ifMatch };
+            var options = new UpdateServiceOptions(pathSid){ AutoTranscribe = autoTranscribe, DataLogging = dataLogging, FriendlyName = friendlyName, UniqueName = uniqueName, AutoRedaction = autoRedaction, MediaRedaction = mediaRedaction, WebhookUrl = webhookUrl, WebhookHttpMethod = webhookHttpMethod, EncryptionCredentialSid = encryptionCredentialSid, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -599,6 +607,10 @@ namespace Twilio.Rest.Intelligence.V2
         ///<summary> The version number of this Service. </summary> 
         [JsonProperty("version")]
         public int? Version { get; private set; }
+
+        ///<summary> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </summary> 
+        [JsonProperty("encryption_credential_sid")]
+        public string EncryptionCredentialSid { get; private set; }
 
 
 

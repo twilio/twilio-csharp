@@ -1,6 +1,26 @@
 twilio-csharp Changelog
 =======================
 
+[2025-09-18] Version 7.13.1
+---------------------------
+**Library - Chore**
+- [PR #800](https://github.com/twilio/twilio-csharp/pull/800): Add docs. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Api**
+- Add `date_created` property to media resource and date_created filtering parameters for read action
+- Updated the Recordings Resource `channels` property to clarify channels = # of channels in the recording resource and how to specify the # of channels in recording download
+
+**Intelligence**
+- Add encryption_credential_sid field in transcripts and services in v2
+
+**Trusthub**
+- Remove beta feature flag for all TH APIs
+- Remove beta feature flag for ComplianceInquiries API to support OneConsole traffic
+
+**Twiml**
+- Add new noun `<AiSession>`
+
+
 [2025-09-04] Version 7.13.0
 ---------------------------
 **Api**
