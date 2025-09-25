@@ -29,9 +29,15 @@ namespace Twilio.Rest.Numbers.V1
     {
         
         
-        public object Body { get; set; }
+        public PortingPortInResource.NumbersV1PortingPortInCreate NumbersV1PortingPortInCreate { get; }
 
 
+        /// <summary> Construct a new CreatePortingPortInOptions </summary>
+        /// <param name="numbersV1PortingPortInCreate">  </param>
+        public CreatePortingPortInOptions(PortingPortInResource.NumbersV1PortingPortInCreate numbersV1PortingPortInCreate)
+        {
+            NumbersV1PortingPortInCreate = numbersV1PortingPortInCreate;
+        }
 
         
         /// <summary> Generate the request body </summary>
@@ -39,9 +45,9 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
-            if (Body != null)
+            if (NumbersV1PortingPortInCreate != null)
             {
-                body = PortingPortInResource.ToJson(Body);
+                body = PortingPortInResource.ToJson(NumbersV1PortingPortInCreate);
             }
             return body;
         }

@@ -59,5 +59,43 @@ namespace Twilio.Rest.Verify.V2.Service
         
 
     }
+    /// <summary> Verify a Passkeys Factor </summary>
+    public class UpdateNewFactorOptions : IOptions<NewFactorResource>
+    {
+    
+        ///<summary> The unique SID identifier of the Service. </summary> 
+        public string PathServiceSid { get; }
+
+        
+        public NewFactorResource.VerifyPasskeysFactorRequest VerifyPasskeysFactorRequest { get; }
+
+
+
+        /// <summary> Construct a new UpdatePasskeysFactorOptions </summary>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
+        /// <param name="verifyPasskeysFactorRequest">  </param>
+        public UpdateNewFactorOptions(string pathServiceSid, NewFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest)
+        {
+            PathServiceSid = pathServiceSid;
+            VerifyPasskeysFactorRequest = verifyPasskeysFactorRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (VerifyPasskeysFactorRequest != null)
+            {
+                body = NewFactorResource.ToJson(VerifyPasskeysFactorRequest);
+            }
+            return body;
+        }
+        
+
+    }
+
+
 }
 

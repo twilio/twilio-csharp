@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2025-09-25] Version 7.13.2
+---------------------------
+**Library - Chore**
+- [PR #794](https://github.com/twilio/twilio-csharp/pull/794): added App IEndpoint type. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Api**
+- Added optional parameter `CallerDisplayName` for conference participant outbound
+- Updated description for property `to` in the participant create request
+
+
 [2025-09-18] Version 7.13.1
 ---------------------------
 **Library - Chore**

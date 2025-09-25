@@ -25,37 +25,103 @@ using Twilio.Http;
 using Twilio.Types;
 
 
-namespace Twilio.Rest.Verify.V2
+namespace Twilio.Rest.Verify.V2.Service
 {
-    public class NewChallengeResource : Resource
+    public class ApproveChallengeResource : Resource
     {
     
-        public class CreatePasskeysChallengeRequest
+        public class ApprovePasskeysChallengeRequestResponse
         {
-            [JsonProperty("identity")]
-            private string Identity {get; set;}
-            [JsonProperty("factor_sid")]
-            private string FactorSid {get; set;}
-            public CreatePasskeysChallengeRequest() { }
+            [JsonProperty("authenticatorData")]
+            private string AuthenticatorData {get; set;}
+            [JsonProperty("clientDataJSON")]
+            private string ClientDataJSON {get; set;}
+            [JsonProperty("signature")]
+            private string Signature {get; set;}
+            [JsonProperty("userHandle")]
+            private string UserHandle {get; set;}
+            public ApprovePasskeysChallengeRequestResponse() { }
             public class Builder
             {
-                private CreatePasskeysChallengeRequest _createPasskeysChallengeRequest = new CreatePasskeysChallengeRequest();
+                private ApprovePasskeysChallengeRequestResponse _approvePasskeysChallengeRequestResponse = new ApprovePasskeysChallengeRequestResponse();
                 public Builder()
                 {
                 }
-                public Builder WithIdentity(string identity)
+                public Builder WithAuthenticatorData(string authenticatorData)
                 {
-                    _createPasskeysChallengeRequest.Identity= identity;
+                    _approvePasskeysChallengeRequestResponse.AuthenticatorData= authenticatorData;
                     return this;
                 }
-                public Builder WithFactorSid(string factorSid)
+                public Builder WithClientDataJSON(string clientDataJSON)
                 {
-                    _createPasskeysChallengeRequest.FactorSid= factorSid;
+                    _approvePasskeysChallengeRequestResponse.ClientDataJSON= clientDataJSON;
                     return this;
                 }
-                public CreatePasskeysChallengeRequest Build()
+                public Builder WithSignature(string signature)
                 {
-                    return _createPasskeysChallengeRequest;
+                    _approvePasskeysChallengeRequestResponse.Signature= signature;
+                    return this;
+                }
+                public Builder WithUserHandle(string userHandle)
+                {
+                    _approvePasskeysChallengeRequestResponse.UserHandle= userHandle;
+                    return this;
+                }
+                public ApprovePasskeysChallengeRequestResponse Build()
+                {
+                    return _approvePasskeysChallengeRequestResponse;
+                }
+            }
+        }
+        public class ApprovePasskeysChallengeRequest
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("rawId")]
+            private string RawId {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("authenticatorAttachment")]
+            private ApproveChallengeResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private ApproveChallengeResource.TypeEnum Type {get; set;}
+            [JsonProperty("response")]
+            private ApprovePasskeysChallengeRequestResponse Response {get; set;}
+            public ApprovePasskeysChallengeRequest() { }
+            public class Builder
+            {
+                private ApprovePasskeysChallengeRequest _approvePasskeysChallengeRequest = new ApprovePasskeysChallengeRequest();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _approvePasskeysChallengeRequest.Id= id;
+                    return this;
+                }
+                public Builder WithRawId(string rawId)
+                {
+                    _approvePasskeysChallengeRequest.RawId= rawId;
+                    return this;
+                }
+                public Builder WithAuthenticatorAttachment(ApproveChallengeResource.AuthenticatorAttachmentEnum authenticatorAttachment)
+                {
+                    _approvePasskeysChallengeRequest.AuthenticatorAttachment= authenticatorAttachment;
+                    return this;
+                }
+                public Builder WithType(ApproveChallengeResource.TypeEnum type)
+                {
+                    _approvePasskeysChallengeRequest.Type= type;
+                    return this;
+                }
+                public Builder WithResponse(ApprovePasskeysChallengeRequestResponse response)
+                {
+                    _approvePasskeysChallengeRequest.Response= response;
+                    return this;
+                }
+                public ApprovePasskeysChallengeRequest Build()
+                {
+                    return _approvePasskeysChallengeRequest;
                 }
             }
         }
@@ -91,6 +157,31 @@ namespace Twilio.Rest.Verify.V2
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class AuthenticatorAttachmentEnum : StringEnum
+        {
+            private AuthenticatorAttachmentEnum(string value) : base(value) {}
+            public AuthenticatorAttachmentEnum() {}
+            public static implicit operator AuthenticatorAttachmentEnum(string value)
+            {
+                return new AuthenticatorAttachmentEnum(value);
+            }
+            public static readonly AuthenticatorAttachmentEnum Platform = new AuthenticatorAttachmentEnum("platform");
+            public static readonly AuthenticatorAttachmentEnum CrossPlatform = new AuthenticatorAttachmentEnum("cross-platform");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TypeEnum : StringEnum
+        {
+            private TypeEnum(string value) : base(value) {}
+            public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
+            public static readonly TypeEnum PublicKey = new TypeEnum("public-key");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class FactorTypeEnum : StringEnum
         {
             private FactorTypeEnum(string value) : base(value) {}
@@ -106,10 +197,10 @@ namespace Twilio.Rest.Verify.V2
         }
 
         
-        private static Request BuildCreateRequest(CreateNewChallengeOptions options, ITwilioRestClient client)
+        private static Request BuildUpdateRequest(UpdateApproveChallengeOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Services/{ServiceSid}/Passkeys/Challenges";
+            string path = "/v2/Services/{ServiceSid}/Passkeys/ApproveChallenge";
 
             string PathServiceSid = options.PathServiceSid;
             path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
@@ -125,70 +216,71 @@ namespace Twilio.Rest.Verify.V2
             );
         }
 
-        /// <summary> Create a Passkeys Challenge </summary>
-        /// <param name="options"> Create NewChallenge parameters </param>
+        /// <summary> Approve a Passkeys challenge </summary>
+        /// <param name="options"> Update ApproveChallenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of NewChallenge </returns>
-        public static NewChallengeResource Create(CreateNewChallengeOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of ApproveChallenge </returns>
+        public static ApproveChallengeResource Update(UpdateApproveChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
+            var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
 
-        #if !NET35
-        /// <summary> Create a Passkeys Challenge </summary>
-        /// <param name="options"> Create NewChallenge parameters </param>
+        /// <summary> Approve a Passkeys challenge </summary>
+        /// <param name="options"> Update ApproveChallenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of NewChallenge </returns>
-        public static async System.Threading.Tasks.Task<NewChallengeResource> CreateAsync(CreateNewChallengeOptions options, ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of ApproveChallenge </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ApproveChallengeResource> UpdateAsync(UpdateApproveChallengeOptions options,
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
         #endif
 
-        /// <summary> Create a Passkeys Challenge </summary>
+        /// <summary> Approve a Passkeys challenge </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createPasskeysChallengeRequest">  </param>
+        /// <param name="approvePasskeysChallengeRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of NewChallenge </returns>
-        public static NewChallengeResource Create(
+        /// <returns> A single instance of ApproveChallenge </returns>
+        public static ApproveChallengeResource Update(
                                           string pathServiceSid,
-                                          NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
+                                          ApproveChallengeResource.ApprovePasskeysChallengeRequest approvePasskeysChallengeRequest,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
-            return Create(options, client);
+            var options = new UpdateApproveChallengeOptions(pathServiceSid, approvePasskeysChallengeRequest){  };
+            return Update(options, client);
         }
 
         #if !NET35
-        /// <summary> Create a Passkeys Challenge </summary>
+        /// <summary> Approve a Passkeys challenge </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createPasskeysChallengeRequest">  </param>
+        /// <param name="approvePasskeysChallengeRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of NewChallenge </returns>
-        public static async System.Threading.Tasks.Task<NewChallengeResource> CreateAsync(
-                                                                                  string pathServiceSid,
-                                                                                  NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
-                                                                                    ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of ApproveChallenge </returns>
+        public static async System.Threading.Tasks.Task<ApproveChallengeResource> UpdateAsync(
+                                                                              string pathServiceSid,
+                                                                              ApproveChallengeResource.ApprovePasskeysChallengeRequest approvePasskeysChallengeRequest,
+                                                                                ITwilioRestClient client = null)
         {
-        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
-            return await CreateAsync(options, client);
+            var options = new UpdateApproveChallengeOptions(pathServiceSid, approvePasskeysChallengeRequest){  };
+            return await UpdateAsync(options, client);
         }
         #endif
     
         /// <summary>
-        /// Converts a JSON string into a NewChallengeResource object
+        /// Converts a JSON string into a ApproveChallengeResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NewChallengeResource object represented by the provided JSON </returns>
-        public static NewChallengeResource FromJson(string json)
+        /// <returns> ApproveChallengeResource object represented by the provided JSON </returns>
+        public static ApproveChallengeResource FromJson(string json)
         {
             try
             {
-                return JsonConvert.DeserializeObject<NewChallengeResource>(json);
+                return JsonConvert.DeserializeObject<ApproveChallengeResource>(json);
             }
             catch (JsonException e)
             {
@@ -259,11 +351,11 @@ namespace Twilio.Rest.Verify.V2
 
         ///<summary> The Status of this Challenge. One of `pending`, `expired`, `approved` or `denied`. </summary> 
         [JsonProperty("status")]
-        public NewChallengeResource.StatusEnum Status { get; private set; }
+        public ApproveChallengeResource.StatusEnum Status { get; private set; }
 
         ///<summary> Reason for the Challenge to be in certain `status`. One of `none`, `not_needed` or `not_requested`. </summary> 
         [JsonProperty("responded_reason")]
-        public NewChallengeResource.RespondedReasonEnum RespondedReason { get; private set; }
+        public ApproveChallengeResource.RespondedReasonEnum RespondedReason { get; private set; }
 
         ///<summary> Details provided to give context about the Challenge. </summary> 
         [JsonProperty("details")]
@@ -279,7 +371,7 @@ namespace Twilio.Rest.Verify.V2
 
         ///<summary> The Factor Type of this Challenge. Currently `push` and `totp` are supported. </summary> 
         [JsonProperty("factor_type")]
-        public NewChallengeResource.FactorTypeEnum FactorType { get; private set; }
+        public ApproveChallengeResource.FactorTypeEnum FactorType { get; private set; }
 
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
@@ -291,7 +383,7 @@ namespace Twilio.Rest.Verify.V2
 
 
 
-        private NewChallengeResource() {
+        private ApproveChallengeResource() {
 
         }
     }
