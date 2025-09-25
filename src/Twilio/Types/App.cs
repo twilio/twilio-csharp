@@ -1,4 +1,4 @@
-﻿using Twilio.Exceptions;
+﻿using System;
 
 namespace Twilio.Types
 {
@@ -19,7 +19,7 @@ namespace Twilio.Types
         {
             if (string.IsNullOrEmpty(app))
             {
-                throw new InvalidInputException(nameof(app));
+                throw new ArgumentException("Parameter 'app' cannot be null or empty.", nameof(app));
             }
 
             if (!app.ToLower().StartsWith(PREFIX))
