@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Content.V1.Content
 {
 
-    /// <summary> create </summary>
+    /// <summary> Create a ContentApprovalRequest for a content item </summary>
     public class CreateApprovalCreateOptions : IOptions<ApprovalCreateResource>
     {
         

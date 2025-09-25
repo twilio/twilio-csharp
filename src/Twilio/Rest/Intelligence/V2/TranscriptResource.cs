@@ -501,6 +501,10 @@ namespace Twilio.Rest.Intelligence.V2
         [JsonProperty("redaction")]
         public bool? Redaction { get; private set; }
 
+        ///<summary> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </summary> 
+        [JsonProperty("encryption_credential_sid")]
+        public string EncryptionCredentialSid { get; private set; }
+
         ///<summary> The links </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

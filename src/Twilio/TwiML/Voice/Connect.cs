@@ -416,6 +416,30 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <AiSession/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="aiConnector"> The unique name or installed add-on sid that identifies the installed addon resource for
+        ///                   the AI Connector </param>
+        /// <param name="aiSessionConfiguration"> The unique name or id of the AiSession Configuration resource. </param>
+        public Connect AiSession(string aiConnector = null, string aiSessionConfiguration = null)
+        {
+            var newChild = new AiSession(aiConnector, aiSessionConfiguration);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <AiSession/> element as a child of this element
+        /// </summary>
+        /// <param name="aiSession"> A AiSession instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect AiSession(AiSession aiSession)
+        {
+            this.Append(aiSession);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

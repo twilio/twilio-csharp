@@ -371,6 +371,9 @@ namespace Twilio.Rest.Content.V1
             private string Id {get; set;}
             [JsonProperty("code")]
             private string Code {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("webview_size")]
+            private ContentResource.WebviewSizeType WebviewSize {get; set;}
             public CardAction() { }
             public class Builder
             {
@@ -406,6 +409,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithCode(string code)
                 {
                     _cardAction.Code= code;
+                    return this;
+                }
+                public Builder WithWebviewSize(ContentResource.WebviewSizeType webviewSize)
+                {
+                    _cardAction.WebviewSize= webviewSize;
                     return this;
                 }
                 public CardAction Build()
@@ -982,6 +990,77 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class WhatsappFlows
+        {
+            [JsonProperty("body")]
+            private string Body {get; set;}
+            [JsonProperty("button_text")]
+            private string ButtonText {get; set;}
+            [JsonProperty("subtitle")]
+            private string Subtitle {get; set;}
+            [JsonProperty("media_url")]
+            private string MediaUrl {get; set;}
+            [JsonProperty("flow_id")]
+            private string FlowId {get; set;}
+            [JsonProperty("flow_token")]
+            private string FlowToken {get; set;}
+            [JsonProperty("flow_first_page_id")]
+            private string FlowFirstPageId {get; set;}
+            [JsonProperty("is_flow_first_page_endpoint")]
+            private bool? IsFlowFirstPageEndpoint {get; set;}
+            public WhatsappFlows() { }
+            public class Builder
+            {
+                private WhatsappFlows _whatsappFlows = new WhatsappFlows();
+                public Builder()
+                {
+                }
+                public Builder WithBody(string body)
+                {
+                    _whatsappFlows.Body= body;
+                    return this;
+                }
+                public Builder WithButtonText(string buttonText)
+                {
+                    _whatsappFlows.ButtonText= buttonText;
+                    return this;
+                }
+                public Builder WithSubtitle(string subtitle)
+                {
+                    _whatsappFlows.Subtitle= subtitle;
+                    return this;
+                }
+                public Builder WithMediaUrl(string mediaUrl)
+                {
+                    _whatsappFlows.MediaUrl= mediaUrl;
+                    return this;
+                }
+                public Builder WithFlowId(string flowId)
+                {
+                    _whatsappFlows.FlowId= flowId;
+                    return this;
+                }
+                public Builder WithFlowToken(string flowToken)
+                {
+                    _whatsappFlows.FlowToken= flowToken;
+                    return this;
+                }
+                public Builder WithFlowFirstPageId(string flowFirstPageId)
+                {
+                    _whatsappFlows.FlowFirstPageId= flowFirstPageId;
+                    return this;
+                }
+                public Builder WithIsFlowFirstPageEndpoint(bool? isFlowFirstPageEndpoint)
+                {
+                    _whatsappFlows.IsFlowFirstPageEndpoint= isFlowFirstPageEndpoint;
+                    return this;
+                }
+                public WhatsappFlows Build()
+                {
+                    return _whatsappFlows;
+                }
+            }
+        }
         public class Types
         {
             [JsonProperty("twilio/text")]
@@ -1010,6 +1089,8 @@ namespace Twilio.Rest.Content.V1
             private WhatsappCard WhatsappCard {get; set;}
             [JsonProperty("whatsapp/authentication")]
             private WhatsappAuthentication WhatsappAuthentication {get; set;}
+            [JsonProperty("whatsapp/flows")]
+            private WhatsappFlows WhatsappFlows {get; set;}
             public Types() { }
             public class Builder
             {
@@ -1080,6 +1161,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithWhatsappAuthentication(WhatsappAuthentication whatsappAuthentication)
                 {
                     _types.WhatsappAuthentication= whatsappAuthentication;
+                    return this;
+                }
+                public Builder WithWhatsappFlows(WhatsappFlows whatsappFlows)
+                {
+                    _types.WhatsappFlows= whatsappFlows;
                     return this;
                 }
                 public Types Build()
@@ -1185,6 +1271,21 @@ namespace Twilio.Rest.Content.V1
                 return new QuickReplyActionType(value);
             }
             public static readonly QuickReplyActionType QuickReply = new QuickReplyActionType("QUICK_REPLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class WebviewSizeType : StringEnum
+        {
+            private WebviewSizeType(string value) : base(value) {}
+            public WebviewSizeType() {}
+            public static implicit operator WebviewSizeType(string value)
+            {
+                return new WebviewSizeType(value);
+            }
+            public static readonly WebviewSizeType Tall = new WebviewSizeType("TALL");
+            public static readonly WebviewSizeType Full = new WebviewSizeType("FULL");
+            public static readonly WebviewSizeType Half = new WebviewSizeType("HALF");
+            public static readonly WebviewSizeType None = new WebviewSizeType("NONE");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

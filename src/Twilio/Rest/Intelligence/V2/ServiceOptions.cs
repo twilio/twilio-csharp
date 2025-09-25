@@ -55,6 +55,9 @@ namespace Twilio.Rest.Intelligence.V2
         
         public ServiceResource.HttpMethodEnum WebhookHttpMethod { get; set; }
 
+        ///<summary> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </summary> 
+        public string EncryptionCredentialSid { get; set; }
+
 
         /// <summary> Construct a new CreateServiceOptions </summary>
         /// <param name="uniqueName"> Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID. </param>
@@ -104,6 +107,10 @@ namespace Twilio.Rest.Intelligence.V2
             if (WebhookHttpMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("WebhookHttpMethod", WebhookHttpMethod.ToString()));
+            }
+            if (EncryptionCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EncryptionCredentialSid", EncryptionCredentialSid));
             }
             return p;
         }
@@ -229,6 +236,9 @@ namespace Twilio.Rest.Intelligence.V2
         
         public ServiceResource.HttpMethodEnum WebhookHttpMethod { get; set; }
 
+        ///<summary> The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results. </summary> 
+        public string EncryptionCredentialSid { get; set; }
+
 
 
         /// <summary> Construct a new UpdateServiceOptions </summary>
@@ -275,6 +285,10 @@ namespace Twilio.Rest.Intelligence.V2
             if (WebhookHttpMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("WebhookHttpMethod", WebhookHttpMethod.ToString()));
+            }
+            if (EncryptionCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EncryptionCredentialSid", EncryptionCredentialSid));
             }
             return p;
         }

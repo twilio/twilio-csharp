@@ -207,6 +207,10 @@ namespace Twilio.Rest.Iam.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
 
+        ///<summary> The flags </summary> 
+        [JsonProperty("flags")]
+        public List<string> Flags { get; private set; }
+
 
 
         private GetApiKeysResource() {
