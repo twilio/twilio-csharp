@@ -1,4 +1,6 @@
-﻿namespace Twilio.Types
+﻿using Twilio.Exceptions;
+
+namespace Twilio.Types
 {
     /// <summary>
     /// App Endpoint
@@ -15,6 +17,10 @@
         /// <param name="app">App name</param>
         public App(string app)
         {
+            if (string.IsNullOrWhiteSpace(app))
+            {
+                throw new InvalidInputException(nameof(app));
+            }
             if (!app.ToLower().StartsWith(PREFIX))
             {
                 app = PREFIX + app;
