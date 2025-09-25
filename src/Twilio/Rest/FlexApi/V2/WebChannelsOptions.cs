@@ -43,6 +43,9 @@ namespace Twilio.Rest.FlexApi.V2
         ///<summary> The pre-engagement data. </summary> 
         public string PreEngagementData { get; set; }
 
+        ///<summary> The Identity of the guest user. See the [Conversation User Resource](https://www.twilio.com/docs/conversations/api/user-resource) for an example. </summary> 
+        public string Identity { get; set; }
+
 
         /// <summary> Construct a new CreateWebChannelOptions </summary>
         /// <param name="addressSid"> The SID of the Conversations Address. See [Address Configuration Resource](https://www.twilio.com/docs/conversations/api/address-configuration-resource) for configuration details. When a conversation is created on the Flex backend, the callback URL will be set to the corresponding Studio Flow SID or webhook URL in your address configuration. </param>
@@ -72,6 +75,10 @@ namespace Twilio.Rest.FlexApi.V2
             if (PreEngagementData != null)
             {
                 p.Add(new KeyValuePair<string, string>("PreEngagementData", PreEngagementData));
+            }
+            if (Identity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Identity", Identity));
             }
             return p;
         }

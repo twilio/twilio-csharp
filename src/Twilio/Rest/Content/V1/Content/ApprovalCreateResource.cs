@@ -82,7 +82,7 @@ namespace Twilio.Rest.Content.V1.Content
             );
         }
 
-        /// <summary> create </summary>
+        /// <summary> Create a ContentApprovalRequest for a content item </summary>
         /// <param name="options"> Create ApprovalCreate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ApprovalCreate </returns>
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Content.V1.Content
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Create a ContentApprovalRequest for a content item </summary>
         /// <param name="options"> Create ApprovalCreate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ApprovalCreate </returns>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Content.V1.Content
         }
         #endif
 
-        /// <summary> create </summary>
+        /// <summary> Create a ContentApprovalRequest for a content item </summary>
         /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Content.V1.Content
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Create a ContentApprovalRequest for a content item </summary>
         /// <param name="pathContentSid">  </param>
         /// <param name="contentApprovalRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>

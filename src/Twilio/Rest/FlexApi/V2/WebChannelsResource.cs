@@ -79,6 +79,7 @@ namespace Twilio.Rest.FlexApi.V2
         /// <param name="chatFriendlyName"> The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example. </param>
         /// <param name="customerFriendlyName"> The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example. </param>
         /// <param name="preEngagementData"> The pre-engagement data. </param>
+        /// <param name="identity"> The Identity of the guest user. See the [Conversation User Resource](https://www.twilio.com/docs/conversations/api/user-resource) for an example. </param>
         /// <param name="uiVersion"> The Ui-Version HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WebChannels </returns>
@@ -87,10 +88,11 @@ namespace Twilio.Rest.FlexApi.V2
                                           string chatFriendlyName = null,
                                           string customerFriendlyName = null,
                                           string preEngagementData = null,
+                                          string identity = null,
                                           string uiVersion = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, UiVersion = uiVersion };
+            var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, Identity = identity, UiVersion = uiVersion };
             return Create(options, client);
         }
 
@@ -100,6 +102,7 @@ namespace Twilio.Rest.FlexApi.V2
         /// <param name="chatFriendlyName"> The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example. </param>
         /// <param name="customerFriendlyName"> The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example. </param>
         /// <param name="preEngagementData"> The pre-engagement data. </param>
+        /// <param name="identity"> The Identity of the guest user. See the [Conversation User Resource](https://www.twilio.com/docs/conversations/api/user-resource) for an example. </param>
         /// <param name="uiVersion"> The Ui-Version HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannels </returns>
@@ -108,10 +111,11 @@ namespace Twilio.Rest.FlexApi.V2
                                                                                   string chatFriendlyName = null,
                                                                                   string customerFriendlyName = null,
                                                                                   string preEngagementData = null,
+                                                                                  string identity = null,
                                                                                   string uiVersion = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, UiVersion = uiVersion };
+        var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, Identity = identity, UiVersion = uiVersion };
             return await CreateAsync(options, client);
         }
         #endif

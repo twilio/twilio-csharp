@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         ///<summary> The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada. </summary> 
         public int? AreaCode { get; set; }
 
-        ///<summary> The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters. </summary> 
+        ///<summary> Matching pattern to identify phone numbers. This pattern can be between 2 and 16 characters long and allows all digits (0-9) and all non-diacritic latin alphabet letters (a-z, A-Z). It accepts four meta-characters: `*`, `%`, `+`, `$`. The `*` and `%` meta-characters can appear multiple times in the pattern. To match wildcards at the beginning or end of the pattern, use `*` to match any single character or `%` to match a sequence of characters. If you use the wildcard patterns, it must include at least two non-meta-characters. To match the beginning of a pattern, start the pattern with `+`. To match the end of the pattern, append the pattern with `$`. These meta-characters can't be adjacent to each other. </summary> 
         public string Contains { get; set; }
 
         ///<summary> Whether the phone numbers can receive text messages. Can be: `true` or `false`. </summary> 

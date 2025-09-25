@@ -34,8 +34,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         ///<summary> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`. </summary> 
         public string TriggerValue { get; }
 
-        
-        public TriggerResource.UsageCategoryEnum UsageCategory { get; }
+        ///<summary> The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value. </summary> 
+        public string UsageCategory { get; }
 
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource. </summary> 
         public string PathAccountSid { get; set; }
@@ -56,8 +56,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary> Construct a new CreateUsageTriggerOptions </summary>
         /// <param name="callbackUrl"> The URL we should call using `callback_method` when the trigger fires. </param>
         /// <param name="triggerValue"> The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`. </param>
-        /// <param name="usageCategory">  </param>
-        public CreateTriggerOptions(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
+        /// <param name="usageCategory"> The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value. </param>
+        public CreateTriggerOptions(Uri callbackUrl, string triggerValue, string usageCategory)
         {
             CallbackUrl = callbackUrl;
             TriggerValue = triggerValue;
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
             if (UsageCategory != null)
             {
-                p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory.ToString()));
+                p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory));
             }
             if (CallbackMethod != null)
             {
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
 
         ///<summary> The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories). </summary> 
-        public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
+        public string UsageCategory { get; set; }
 
 
 
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
             if (UsageCategory != null)
             {
-                p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory.ToString()));
+                p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory));
             }
             if (PageSize != null)
             {

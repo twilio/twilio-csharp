@@ -43,6 +43,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
+            public static readonly FactorTypesEnum Passkeys = new FactorTypesEnum("passkeys");
 
         }
         public sealed class TotpAlgorithmsEnum : StringEnum

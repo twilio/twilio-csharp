@@ -56,6 +56,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
+            public static readonly FactorTypesEnum Passkeys = new FactorTypesEnum("passkeys");
 
         }
         public sealed class TotpAlgorithmsEnum : StringEnum
@@ -273,6 +274,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         ///<summary> Contains the `factor_type` specific secret and metadata. For push, this is `binding.public_key` and `binding.alg`. For totp, this is `binding.secret` and `binding.uri`. The `binding.uri` property is generated following the [google authenticator key URI format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format), and `Factor.friendly_name` is used for the “accountname” value and `Service.friendly_name` or `Service.totp.issuer` is used for the `issuer` value.   The Binding property is ONLY returned upon Factor creation. </summary> 
         [JsonProperty("binding")]
         public object Binding { get; private set; }
+
+        ///<summary> The options </summary> 
+        [JsonProperty("options")]
+        public object Options { get; private set; }
 
         ///<summary> The date that this Factor was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]

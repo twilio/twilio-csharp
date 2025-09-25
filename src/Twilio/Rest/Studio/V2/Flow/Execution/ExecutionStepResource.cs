@@ -309,6 +309,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         [JsonProperty("transitioned_to")]
         public string TransitionedTo { get; private set; }
 
+        ///<summary> The type of the widget that was executed. </summary> 
+        [JsonProperty("type")]
+        public string Type { get; private set; }
+
         ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }

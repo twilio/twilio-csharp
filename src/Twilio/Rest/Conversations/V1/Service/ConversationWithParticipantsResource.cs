@@ -41,6 +41,7 @@ namespace Twilio.Rest.Conversations.V1.Service
             {
                 return new StateEnum(value);
             }
+            public static readonly StateEnum Initializing = new StateEnum("initializing");
             public static readonly StateEnum Inactive = new StateEnum("inactive");
             public static readonly StateEnum Active = new StateEnum("active");
             public static readonly StateEnum Closed = new StateEnum("closed");

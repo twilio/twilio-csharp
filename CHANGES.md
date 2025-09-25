@@ -1,6 +1,66 @@
 twilio-csharp Changelog
 =======================
 
+[2025-09-18] Version 7.13.1
+---------------------------
+**Library - Chore**
+- [PR #800](https://github.com/twilio/twilio-csharp/pull/800): Add docs. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Api**
+- Add `date_created` property to media resource and date_created filtering parameters for read action
+- Updated the Recordings Resource `channels` property to clarify channels = # of channels in the recording resource and how to specify the # of channels in recording download
+
+**Intelligence**
+- Add encryption_credential_sid field in transcripts and services in v2
+
+**Trusthub**
+- Remove beta feature flag for all TH APIs
+- Remove beta feature flag for ComplianceInquiries API to support OneConsole traffic
+
+**Twiml**
+- Add new noun `<AiSession>`
+
+
+[2025-09-04] Version 7.13.0
+---------------------------
+**Api**
+- Remove usage category enum from usage record and usage triggers API **(breaking change)**
+
+
+[2025-08-28] Version 7.12.2
+---------------------------
+**Studio**
+- Add `type` to Step resource APIs
+
+**Verify**
+- Allow to update all passkeys parameters in the service update
+
+
+[2025-08-18] Version 7.12.1
+---------------------------
+**Accounts**
+- Update beta feature flag for consent and contact bulk upsert APIs
+
+**Api**
+- Add multiple missing usage categories to usage records and usage triggers api
+- Add `channels-whatsapp-template-marketing` and `channels-whatsapp-template-utility` to usage categories
+
+**Conversations**
+- Fix `state` spelling for `initializing` enum value
+- Update `state` to include `intializing` for ServiceConversationWithParticipants and ConversationWithParticipants
+
+**Flex**
+- Adding new optional parameter `identity` to `web_channels` API in version `v2`
+
+**Trusthub**
+- Add required Permissions to the ComplianceInquiries API
+
+**Verify**
+- Add passkeys support to Verify API creating and updating services.
+- Update `ienum` type for Factor creation
+- Add passkeys as challenge and factor type
+
+
 [2025-07-24] Version 7.12.0
 ---------------------------
 **Events**
