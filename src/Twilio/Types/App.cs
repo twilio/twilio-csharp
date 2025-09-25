@@ -17,10 +17,11 @@ namespace Twilio.Types
         /// <param name="app">App name</param>
         public App(string app)
         {
-            if (string.IsNullOrWhiteSpace(app))
+            if (string.IsNullOrEmpty(app))
             {
                 throw new InvalidInputException(nameof(app));
             }
+
             if (!app.ToLower().StartsWith(PREFIX))
             {
                 app = PREFIX + app;
