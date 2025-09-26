@@ -29,10 +29,10 @@ namespace Twilio.Rest.Oauth.V2
     {
         
         ///<summary> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </summary> 
-        public string GrantType { get; set; }
+        public string GrantType { get; }
 
         ///<summary> A 34 character string that uniquely identifies this OAuth App. </summary> 
-        public string ClientId { get; set; }
+        public string ClientId { get; }
 
         ///<summary> The credential for confidential OAuth App. </summary> 
         public string ClientSecret { get; set; }
@@ -53,6 +53,14 @@ namespace Twilio.Rest.Oauth.V2
         public string Scope { get; set; }
 
 
+        /// <summary> Construct a new CreateOauth2TokenOptions </summary>
+        /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
+        /// <param name="clientId"> A 34 character string that uniquely identifies this OAuth App. </param>
+        public CreateTokenOptions(string grantType, string clientId)
+        {
+            GrantType = grantType;
+            ClientId = clientId;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
