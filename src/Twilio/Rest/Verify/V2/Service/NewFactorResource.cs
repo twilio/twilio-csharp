@@ -148,6 +148,95 @@ namespace Twilio.Rest.Verify.V2.Service
                 }
             }
         }
+        public class VerifyPasskeysFactorRequestResponse
+        {
+            [JsonProperty("attestationObject")]
+            private string AttestationObject {get; set;}
+            [JsonProperty("clientDataJSON")]
+            private string ClientDataJSON {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("transports")]
+            private List<NewFactorResource.TransportsEnum> Transports {get; set;}
+            public VerifyPasskeysFactorRequestResponse() { }
+            public class Builder
+            {
+                private VerifyPasskeysFactorRequestResponse _verifyPasskeysFactorRequestResponse = new VerifyPasskeysFactorRequestResponse();
+                public Builder()
+                {
+                }
+                public Builder WithAttestationObject(string attestationObject)
+                {
+                    _verifyPasskeysFactorRequestResponse.AttestationObject= attestationObject;
+                    return this;
+                }
+                public Builder WithClientDataJSON(string clientDataJSON)
+                {
+                    _verifyPasskeysFactorRequestResponse.ClientDataJSON= clientDataJSON;
+                    return this;
+                }
+                public Builder WithTransports(List<NewFactorResource.TransportsEnum> transports)
+                {
+                    _verifyPasskeysFactorRequestResponse.Transports= transports;
+                    return this;
+                }
+                public VerifyPasskeysFactorRequestResponse Build()
+                {
+                    return _verifyPasskeysFactorRequestResponse;
+                }
+            }
+        }
+        public class VerifyPasskeysFactorRequest
+        {
+            [JsonProperty("id")]
+            private string Id {get; set;}
+            [JsonProperty("rawId")]
+            private string RawId {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("authenticatorAttachment")]
+            private NewFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type")]
+            private NewFactorResource.TypeEnum Type {get; set;}
+            [JsonProperty("response")]
+            private VerifyPasskeysFactorRequestResponse Response {get; set;}
+            public VerifyPasskeysFactorRequest() { }
+            public class Builder
+            {
+                private VerifyPasskeysFactorRequest _verifyPasskeysFactorRequest = new VerifyPasskeysFactorRequest();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _verifyPasskeysFactorRequest.Id= id;
+                    return this;
+                }
+                public Builder WithRawId(string rawId)
+                {
+                    _verifyPasskeysFactorRequest.RawId= rawId;
+                    return this;
+                }
+                public Builder WithAuthenticatorAttachment(NewFactorResource.AuthenticatorAttachmentEnum authenticatorAttachment)
+                {
+                    _verifyPasskeysFactorRequest.AuthenticatorAttachment= authenticatorAttachment;
+                    return this;
+                }
+                public Builder WithType(NewFactorResource.TypeEnum type)
+                {
+                    _verifyPasskeysFactorRequest.Type= type;
+                    return this;
+                }
+                public Builder WithResponse(VerifyPasskeysFactorRequestResponse response)
+                {
+                    _verifyPasskeysFactorRequest.Response= response;
+                    return this;
+                }
+                public VerifyPasskeysFactorRequest Build()
+                {
+                    return _verifyPasskeysFactorRequest;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]
@@ -188,8 +277,36 @@ namespace Twilio.Rest.Verify.V2.Service
             }
             public static readonly AuthenticatorAttachmentEnum Platform = new AuthenticatorAttachmentEnum("platform");
             public static readonly AuthenticatorAttachmentEnum CrossPlatform = new AuthenticatorAttachmentEnum("cross-platform");
-            public static readonly AuthenticatorAttachmentEnum Any = new AuthenticatorAttachmentEnum("any");
 
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TypeEnum : StringEnum
+        {
+            private TypeEnum(string value) : base(value) {}
+            public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
+            public static readonly TypeEnum PublicKey = new TypeEnum("public-key");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TransportsEnum : StringEnum
+        {
+            private TransportsEnum(string value) : base(value) {}
+            public TransportsEnum() {}
+            public static implicit operator TransportsEnum(string value)
+            {
+                return new TransportsEnum(value);
+            }
+
+            public static readonly TransportsEnum Usb = new TransportsEnum("usb");
+            public static readonly TransportsEnum Nfc = new TransportsEnum("nfc");
+            public static readonly TransportsEnum Ble = new TransportsEnum("ble");
+            public static readonly TransportsEnum SmartCard = new TransportsEnum("smart-card");
+            public static readonly TransportsEnum Internal = new TransportsEnum("internal");
+            public static readonly TransportsEnum Hybrid = new TransportsEnum("hybrid");
         }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class FactorTypeEnum : StringEnum
@@ -293,6 +410,80 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+        
+        private static Request BuildUpdateRequest(UpdateNewFactorOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v2/Services/{ServiceSid}/Passkeys/VerifyFactor";
+
+            string PathServiceSid = options.PathServiceSid;
+            path = path.Replace("{"+"ServiceSid"+"}", PathServiceSid);
+
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Verify,
+                path,
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Verify a Passkeys Factor </summary>
+        /// <param name="options"> Update NewFactor parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of NewFactor </returns>
+        public static NewFactorResource Update(UpdateNewFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Verify a Passkeys Factor </summary>
+        /// <param name="options"> Update NewFactor parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of NewFactor </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<NewFactorResource> UpdateAsync(UpdateNewFactorOptions options,
+                                                                                                    ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Verify a Passkeys Factor </summary>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
+        /// <param name="verifyPasskeysFactorRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of NewFactor </returns>
+        public static NewFactorResource Update(
+                                          string pathServiceSid,
+                                          NewFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new UpdateNewFactorOptions(pathServiceSid, verifyPasskeysFactorRequest){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Verify a Passkeys Factor </summary>
+        /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
+        /// <param name="verifyPasskeysFactorRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of NewFactor </returns>
+        public static async System.Threading.Tasks.Task<NewFactorResource> UpdateAsync(
+                                                                              string pathServiceSid,
+                                                                              NewFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new UpdateNewFactorOptions(pathServiceSid, verifyPasskeysFactorRequest){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewFactorResource object
@@ -387,6 +578,14 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> The URL of this resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> A human readable description of this resource, up to 64 characters. </summary> 
+        [JsonProperty("friendly_name")]
+        public string _FriendlyName { get; private set; }
+
+        ///<summary> The Type of this Factor. Currently `push` and `totp` are supported. </summary> 
+        [JsonProperty("factor_type")]
+        public NewFactorResource.FactorTypeEnum _FactorType { get; private set; }
 
 
 

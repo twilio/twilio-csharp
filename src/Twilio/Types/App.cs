@@ -1,4 +1,4 @@
-﻿namespace Twilio.Types
+namespace Twilio.Types
 {
     /// <summary>
     /// App Endpoint

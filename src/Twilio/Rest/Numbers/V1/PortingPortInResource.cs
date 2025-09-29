@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Numbers.V1
@@ -30,8 +30,398 @@ namespace Twilio.Rest.Numbers.V1
     public class PortingPortInResource : Resource
     {
     
+        public class NumbersV1PortingPortInCreatePhoneNumbers
+        {
+            [JsonProperty("phone_number")]
+            private string PhoneNumber {get; set;}
+            [JsonProperty("pin")]
+            private string Pin {get; set;}
+            public NumbersV1PortingPortInCreatePhoneNumbers() { }
+            public class Builder
+            {
+                private NumbersV1PortingPortInCreatePhoneNumbers _numbersV1PortingPortInCreatePhoneNumbers = new NumbersV1PortingPortInCreatePhoneNumbers();
+                public Builder()
+                {
+                }
+                public Builder WithPhoneNumber(string phoneNumber)
+                {
+                    _numbersV1PortingPortInCreatePhoneNumbers.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithPin(string pin)
+                {
+                    _numbersV1PortingPortInCreatePhoneNumbers.Pin= pin;
+                    return this;
+                }
+                public NumbersV1PortingPortInCreatePhoneNumbers Build()
+                {
+                    return _numbersV1PortingPortInCreatePhoneNumbers;
+                }
+            }
+        }
+        public class NumbersV1PortingAddress
+        {
+            [JsonProperty("street")]
+            private string Street {get; set;}
+            [JsonProperty("street_2")]
+            private string Street2 {get; set;}
+            [JsonProperty("city")]
+            private string City {get; set;}
+            [JsonProperty("state")]
+            private string State {get; set;}
+            [JsonProperty("zip")]
+            private string Zip {get; set;}
+            [JsonProperty("country")]
+            private string Country {get; set;}
+            public NumbersV1PortingAddress() { }
+            public class Builder
+            {
+                private NumbersV1PortingAddress _numbersV1PortingAddress = new NumbersV1PortingAddress();
+                public Builder()
+                {
+                }
+                public Builder WithStreet(string street)
+                {
+                    _numbersV1PortingAddress.Street= street;
+                    return this;
+                }
+                public Builder WithStreet2(string street2)
+                {
+                    _numbersV1PortingAddress.Street2= street2;
+                    return this;
+                }
+                public Builder WithCity(string city)
+                {
+                    _numbersV1PortingAddress.City= city;
+                    return this;
+                }
+                public Builder WithState(string state)
+                {
+                    _numbersV1PortingAddress.State= state;
+                    return this;
+                }
+                public Builder WithZip(string zip)
+                {
+                    _numbersV1PortingAddress.Zip= zip;
+                    return this;
+                }
+                public Builder WithCountry(string country)
+                {
+                    _numbersV1PortingAddress.Country= country;
+                    return this;
+                }
+                public NumbersV1PortingAddress Build()
+                {
+                    return _numbersV1PortingAddress;
+                }
+            }
+        }
+        public class NumbersV1PortingLosingCarrierInformation
+        {
+            [JsonProperty("customer_name")]
+            private string CustomerName {get; set;}
+            [JsonProperty("account_number")]
+            private string AccountNumber {get; set;}
+            [JsonProperty("account_telephone_number")]
+            private string AccountTelephoneNumber {get; set;}
+            [JsonProperty("address_sid")]
+            private string AddressSid {get; set;}
+            [JsonProperty("address")]
+            private NumbersV1PortingAddress Address {get; set;}
+            [JsonProperty("authorized_representative")]
+            private string AuthorizedRepresentative {get; set;}
+            [JsonProperty("authorized_representative_email")]
+            private string AuthorizedRepresentativeEmail {get; set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("customer_type")]
+            private PortingPortInResource.CustomerTypeEnum CustomerType {get; set;}
+            [JsonProperty("authorized_representative_katakana")]
+            private string AuthorizedRepresentativeKatakana {get; set;}
+            [JsonProperty("sub_municipality")]
+            private string SubMunicipality {get; set;}
+            [JsonProperty("building")]
+            private string Building {get; set;}
+            [JsonProperty("katakana_name")]
+            private string KatakanaName {get; set;}
+            public NumbersV1PortingLosingCarrierInformation() { }
+            public class Builder
+            {
+                private NumbersV1PortingLosingCarrierInformation _numbersV1PortingLosingCarrierInformation = new NumbersV1PortingLosingCarrierInformation();
+                public Builder()
+                {
+                }
+                public Builder WithCustomerName(string customerName)
+                {
+                    _numbersV1PortingLosingCarrierInformation.CustomerName= customerName;
+                    return this;
+                }
+                public Builder WithAccountNumber(string accountNumber)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AccountNumber= accountNumber;
+                    return this;
+                }
+                public Builder WithAccountTelephoneNumber(string accountTelephoneNumber)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AccountTelephoneNumber= accountTelephoneNumber;
+                    return this;
+                }
+                public Builder WithAddressSid(string addressSid)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AddressSid= addressSid;
+                    return this;
+                }
+                public Builder WithAddress(NumbersV1PortingAddress address)
+                {
+                    _numbersV1PortingLosingCarrierInformation.Address= address;
+                    return this;
+                }
+                public Builder WithAuthorizedRepresentative(string authorizedRepresentative)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentative= authorizedRepresentative;
+                    return this;
+                }
+                public Builder WithAuthorizedRepresentativeEmail(string authorizedRepresentativeEmail)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentativeEmail= authorizedRepresentativeEmail;
+                    return this;
+                }
+                public Builder WithCustomerType(PortingPortInResource.CustomerTypeEnum customerType)
+                {
+                    _numbersV1PortingLosingCarrierInformation.CustomerType= customerType;
+                    return this;
+                }
+                public Builder WithAuthorizedRepresentativeKatakana(string authorizedRepresentativeKatakana)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentativeKatakana= authorizedRepresentativeKatakana;
+                    return this;
+                }
+                public Builder WithSubMunicipality(string subMunicipality)
+                {
+                    _numbersV1PortingLosingCarrierInformation.SubMunicipality= subMunicipality;
+                    return this;
+                }
+                public Builder WithBuilding(string building)
+                {
+                    _numbersV1PortingLosingCarrierInformation.Building= building;
+                    return this;
+                }
+                public Builder WithKatakanaName(string katakanaName)
+                {
+                    _numbersV1PortingLosingCarrierInformation.KatakanaName= katakanaName;
+                    return this;
+                }
+                public NumbersV1PortingLosingCarrierInformation Build()
+                {
+                    return _numbersV1PortingLosingCarrierInformation;
+                }
+            }
+        }
+        public class NumbersV1PortingPortInCreate
+        {
+            [JsonProperty("account_sid")]
+            private string AccountSid {get; set;}
+            [JsonProperty("documents")]
+            private List<string> Documents {get; set;}
+            [JsonProperty("phone_numbers")]
+            private List<NumbersV1PortingPortInCreatePhoneNumbers> PhoneNumbers {get; set;}
+            [JsonProperty("losing_carrier_information")]
+            private NumbersV1PortingLosingCarrierInformation LosingCarrierInformation {get; set;}
+            [JsonProperty("notification_emails")]
+            private List<string> NotificationEmails {get; set;}
+            [JsonProperty("target_port_in_date")]
+            private DateTime? TargetPortInDate {get; set;}
+            [JsonProperty("target_port_in_time_range_start")]
+            private string TargetPortInTimeRangeStart {get; set;}
+            [JsonProperty("target_port_in_time_range_end")]
+            private string TargetPortInTimeRangeEnd {get; set;}
+            [JsonProperty("bundle_sid")]
+            private string BundleSid {get; set;}
+            [JsonProperty("portability_advance_carrier")]
+            private string PortabilityAdvanceCarrier {get; set;}
+            [JsonProperty("auto_cancel_approval_numbers")]
+            private string AutoCancelApprovalNumbers {get; set;}
+            public NumbersV1PortingPortInCreate() { }
+            public class Builder
+            {
+                private NumbersV1PortingPortInCreate _numbersV1PortingPortInCreate = new NumbersV1PortingPortInCreate();
+                public Builder()
+                {
+                }
+                public Builder WithAccountSid(string accountSid)
+                {
+                    _numbersV1PortingPortInCreate.AccountSid= accountSid;
+                    return this;
+                }
+                public Builder WithDocuments(List<string> documents)
+                {
+                    _numbersV1PortingPortInCreate.Documents= documents;
+                    return this;
+                }
+                public Builder WithPhoneNumbers(List<NumbersV1PortingPortInCreatePhoneNumbers> phoneNumbers)
+                {
+                    _numbersV1PortingPortInCreate.PhoneNumbers= phoneNumbers;
+                    return this;
+                }
+                public Builder WithLosingCarrierInformation(NumbersV1PortingLosingCarrierInformation losingCarrierInformation)
+                {
+                    _numbersV1PortingPortInCreate.LosingCarrierInformation= losingCarrierInformation;
+                    return this;
+                }
+                public Builder WithNotificationEmails(List<string> notificationEmails)
+                {
+                    _numbersV1PortingPortInCreate.NotificationEmails= notificationEmails;
+                    return this;
+                }
+                public Builder WithTargetPortInDate(DateTime? targetPortInDate)
+                {
+                    _numbersV1PortingPortInCreate.TargetPortInDate= targetPortInDate;
+                    return this;
+                }
+                public Builder WithTargetPortInTimeRangeStart(string targetPortInTimeRangeStart)
+                {
+                    _numbersV1PortingPortInCreate.TargetPortInTimeRangeStart= targetPortInTimeRangeStart;
+                    return this;
+                }
+                public Builder WithTargetPortInTimeRangeEnd(string targetPortInTimeRangeEnd)
+                {
+                    _numbersV1PortingPortInCreate.TargetPortInTimeRangeEnd= targetPortInTimeRangeEnd;
+                    return this;
+                }
+                public Builder WithBundleSid(string bundleSid)
+                {
+                    _numbersV1PortingPortInCreate.BundleSid= bundleSid;
+                    return this;
+                }
+                public Builder WithPortabilityAdvanceCarrier(string portabilityAdvanceCarrier)
+                {
+                    _numbersV1PortingPortInCreate.PortabilityAdvanceCarrier= portabilityAdvanceCarrier;
+                    return this;
+                }
+                public Builder WithAutoCancelApprovalNumbers(string autoCancelApprovalNumbers)
+                {
+                    _numbersV1PortingPortInCreate.AutoCancelApprovalNumbers= autoCancelApprovalNumbers;
+                    return this;
+                }
+                public NumbersV1PortingPortInCreate Build()
+                {
+                    return _numbersV1PortingPortInCreate;
+                }
+            }
+        }
+        public class NumbersV1PortingPortInPhoneNumberResult
+        {
+            [JsonProperty("not_portability_reason")]
+            private string NotPortabilityReason {get; set;}
+            [JsonProperty("not_portability_reason_code")]
+            private int? NotPortabilityReasonCode {get; set;}
+            [JsonProperty("number_type")]
+            private string NumberType {get; set;}
+            [JsonProperty("phone_number")]
+            private string PhoneNumber {get; set;}
+            [JsonProperty("port_date")]
+            private DateTime? PortDate {get; set;}
+            [JsonProperty("port_in_phone_number_sid")]
+            private string PortInPhoneNumberSid {get; set;}
+            [JsonProperty("port_in_phone_number_status")]
+            private string PortInPhoneNumberStatus {get; set;}
+            [JsonProperty("portable")]
+            private bool? Portable {get; set;}
+            [JsonProperty("rejection_reason")]
+            private string RejectionReason {get; set;}
+            [JsonProperty("rejection_reason_code")]
+            private string RejectionReasonCode {get; set;}
+            [JsonProperty("status_last_time_updated_timestamp")]
+            private string StatusLastTimeUpdatedTimestamp {get; set;}
+            [JsonProperty("external_porting_vendor_phone_number_id")]
+            private string ExternalPortingVendorPhoneNumberId {get; set;}
+            public NumbersV1PortingPortInPhoneNumberResult() { }
+            public class Builder
+            {
+                private NumbersV1PortingPortInPhoneNumberResult _numbersV1PortingPortInPhoneNumberResult = new NumbersV1PortingPortInPhoneNumberResult();
+                public Builder()
+                {
+                }
+                public Builder WithNotPortabilityReason(string notPortabilityReason)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.NotPortabilityReason= notPortabilityReason;
+                    return this;
+                }
+                public Builder WithNotPortabilityReasonCode(int? notPortabilityReasonCode)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.NotPortabilityReasonCode= notPortabilityReasonCode;
+                    return this;
+                }
+                public Builder WithNumberType(string numberType)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.NumberType= numberType;
+                    return this;
+                }
+                public Builder WithPhoneNumber(string phoneNumber)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithPortDate(DateTime? portDate)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.PortDate= portDate;
+                    return this;
+                }
+                public Builder WithPortInPhoneNumberSid(string portInPhoneNumberSid)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.PortInPhoneNumberSid= portInPhoneNumberSid;
+                    return this;
+                }
+                public Builder WithPortInPhoneNumberStatus(string portInPhoneNumberStatus)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.PortInPhoneNumberStatus= portInPhoneNumberStatus;
+                    return this;
+                }
+                public Builder WithPortable(bool? portable)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.Portable= portable;
+                    return this;
+                }
+                public Builder WithRejectionReason(string rejectionReason)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.RejectionReason= rejectionReason;
+                    return this;
+                }
+                public Builder WithRejectionReasonCode(string rejectionReasonCode)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.RejectionReasonCode= rejectionReasonCode;
+                    return this;
+                }
+                public Builder WithStatusLastTimeUpdatedTimestamp(string statusLastTimeUpdatedTimestamp)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.StatusLastTimeUpdatedTimestamp= statusLastTimeUpdatedTimestamp;
+                    return this;
+                }
+                public Builder WithExternalPortingVendorPhoneNumberId(string externalPortingVendorPhoneNumberId)
+                {
+                    _numbersV1PortingPortInPhoneNumberResult.ExternalPortingVendorPhoneNumberId= externalPortingVendorPhoneNumberId;
+                    return this;
+                }
+                public NumbersV1PortingPortInPhoneNumberResult Build()
+                {
+                    return _numbersV1PortingPortInPhoneNumberResult;
+                }
+            }
+        }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CustomerTypeEnum : StringEnum
+        {
+            private CustomerTypeEnum(string value) : base(value) {}
+            public CustomerTypeEnum() {}
+            public static implicit operator CustomerTypeEnum(string value)
+            {
+                return new CustomerTypeEnum(value);
+            }
+            public static readonly CustomerTypeEnum Business = new CustomerTypeEnum("Business");
+            public static readonly CustomerTypeEnum Individual = new CustomerTypeEnum("Individual");
+
+        }
 
         
         private static Request BuildCreateRequest(CreatePortingPortInOptions options, ITwilioRestClient client)
@@ -76,23 +466,27 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         /// <summary> Allows to create a new port in request </summary>
+        /// <param name="numbersV1PortingPortInCreate">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PortingPortIn </returns>
         public static PortingPortInResource Create(
+                                          PortingPortInResource.NumbersV1PortingPortInCreate numbersV1PortingPortInCreate,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreatePortingPortInOptions(){  };
+            var options = new CreatePortingPortInOptions(numbersV1PortingPortInCreate){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Allows to create a new port in request </summary>
+        /// <param name="numbersV1PortingPortInCreate">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PortingPortIn </returns>
         public static async System.Threading.Tasks.Task<PortingPortInResource> CreateAsync(
+                                                                                  PortingPortInResource.NumbersV1PortingPortInCreate numbersV1PortingPortInCreate,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreatePortingPortInOptions(){  };
+        var options = new CreatePortingPortInOptions(numbersV1PortingPortInCreate){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -295,13 +689,13 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("port_in_request_status")]
         public string PortInRequestStatus { get; private set; }
 
-        ///<summary> Details regarding the customer’s information with the losing carrier. These values will be used to generate the letter of authorization and should match the losing carrier’s data as closely as possible to ensure the port is accepted. </summary> 
+        ///<summary> The losing_carrier_information </summary> 
         [JsonProperty("losing_carrier_information")]
-        public object LosingCarrierInformation { get; private set; }
+        public NumbersV1PortingLosingCarrierInformation LosingCarrierInformation { get; private set; }
 
         ///<summary> The phone_numbers </summary> 
         [JsonProperty("phone_numbers")]
-        public List<object> PhoneNumbers { get; private set; }
+        public List<NumbersV1PortingPortInPhoneNumberResult> PhoneNumbers { get; private set; }
 
         ///<summary> The bundle sid is an optional identifier to reference a group of regulatory documents for a port request. </summary> 
         [JsonProperty("bundle_sid")]

@@ -21,7 +21,7 @@ using Twilio.Converters;
 
 
 
-namespace Twilio.Rest.Verify.V2
+namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary> Create a Passkeys Challenge </summary>
