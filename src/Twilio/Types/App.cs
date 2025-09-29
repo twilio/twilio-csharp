@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace Twilio.Types
 {
     /// <summary>
@@ -17,11 +15,6 @@ namespace Twilio.Types
         /// <param name="app">App name</param>
         public App(string app)
         {
-            if (string.IsNullOrEmpty(app))
-            {
-                throw new ArgumentException("Parameter 'app' cannot be null or empty.", nameof(app));
-            }
-
             if (!app.ToLower().StartsWith(PREFIX))
             {
                 app = PREFIX + app;
