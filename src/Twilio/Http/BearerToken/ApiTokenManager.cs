@@ -43,7 +43,9 @@ namespace Twilio.Http.BearerToken{
         }
 
         public string fetchAccessToken(){
-           CreateTokenOptions createTokenOptions = new CreateTokenOptions(GrantType, ClientId);
+           CreateTokenOptions createTokenOptions = new CreateTokenOptions();
+           if(GrantType != null){ createTokenOptions.GrantType = GrantType;}
+           if(ClientId != null){ createTokenOptions.ClientId = ClientId;}
            if(ClientSecret != null){ createTokenOptions.ClientSecret = ClientSecret;}
            if(Code != null){ createTokenOptions.Code = Code; }
            if(RedirectUri != null){ createTokenOptions.RedirectUri = RedirectUri; }
