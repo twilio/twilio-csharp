@@ -65,6 +65,22 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly OptInTypeEnum ImportPleaseReplace = new OptInTypeEnum("IMPORT_PLEASE_REPLACE");
 
         }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class BusinessTypeEnum : StringEnum
+        {
+            private BusinessTypeEnum(string value) : base(value) {}
+            public BusinessTypeEnum() {}
+            public static implicit operator BusinessTypeEnum(string value)
+            {
+                return new BusinessTypeEnum(value);
+            }
+            public static readonly BusinessTypeEnum PrivateProfit = new BusinessTypeEnum("PRIVATE_PROFIT");
+            public static readonly BusinessTypeEnum PublicProfit = new BusinessTypeEnum("PUBLIC_PROFIT");
+            public static readonly BusinessTypeEnum SoleProprietor = new BusinessTypeEnum("SOLE_PROPRIETOR");
+            public static readonly BusinessTypeEnum NonProfit = new BusinessTypeEnum("NON_PROFIT");
+            public static readonly BusinessTypeEnum Government = new BusinessTypeEnum("GOVERNMENT");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateTollfreeVerificationOptions options, ITwilioRestClient client)
@@ -788,6 +804,11 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("tollfree_phone_number_sid")]
         public string TollfreePhoneNumberSid { get; private set; }
 
+        ///<summary> The E.164 formatted toll-free phone number associated with the verification. </summary> 
+        [JsonProperty("tollfree_phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
+        public Types.PhoneNumber TollfreePhoneNumber { get; private set; }
+
         
         [JsonProperty("status")]
         public TollfreeVerificationResource.StatusEnum Status { get; private set; }
@@ -811,6 +832,54 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> If a rejected verification is allowed to be edited/resubmitted. Some rejection reasons allow editing and some do not. </summary> 
         [JsonProperty("edit_allowed")]
         public bool? EditAllowed { get; private set; }
+
+        ///<summary> A legally recognized business registration number </summary> 
+        [JsonProperty("business_registration_number")]
+        public string BusinessRegistrationNumber { get; private set; }
+
+        ///<summary> The organizational authority for business registrations </summary> 
+        [JsonProperty("business_registration_authority")]
+        public string BusinessRegistrationAuthority { get; private set; }
+
+        ///<summary> Country business is registered in </summary> 
+        [JsonProperty("business_registration_country")]
+        public string BusinessRegistrationCountry { get; private set; }
+
+        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
+        [JsonProperty("business_type")]
+        public TollfreeVerificationResource.BusinessTypeEnum BusinessType { get; private set; }
+
+        ///<summary> The E.164 formatted number associated with the business. </summary> 
+        [JsonProperty("business_registration_phone_number")]
+        public string BusinessRegistrationPhoneNumber { get; private set; }
+
+        ///<summary> Trade name, sub entity, or downstream business name of business being submitted for verification </summary> 
+        [JsonProperty("doing_business_as")]
+        public string DoingBusinessAs { get; private set; }
+
+        ///<summary> The confirmation message sent to users when they opt in to receive messages. </summary> 
+        [JsonProperty("opt_in_confirmation_message")]
+        public string OptInConfirmationMessage { get; private set; }
+
+        ///<summary> A sample help message provided to users. </summary> 
+        [JsonProperty("help_message_sample")]
+        public string HelpMessageSample { get; private set; }
+
+        ///<summary> The URL to the privacy policy for the business or organization. </summary> 
+        [JsonProperty("privacy_policy_url")]
+        public Uri PrivacyPolicyUrl { get; private set; }
+
+        ///<summary> The URL to the terms and conditions for the business or organization. </summary> 
+        [JsonProperty("terms_and_conditions_url")]
+        public Uri TermsAndConditionsUrl { get; private set; }
+
+        ///<summary> Indicates if the content is age gated. </summary> 
+        [JsonProperty("age_gated_content")]
+        public bool? AgeGatedContent { get; private set; }
+
+        ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
+        [JsonProperty("opt_in_keywords")]
+        public List<string> OptInKeywords { get; private set; }
 
         ///<summary> A list of rejection reasons and codes describing why a Tollfree Verification has been rejected. </summary> 
         [JsonProperty("rejection_reasons")]

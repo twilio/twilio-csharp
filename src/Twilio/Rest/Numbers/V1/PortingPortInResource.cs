@@ -689,6 +689,10 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("port_in_request_status")]
         public string PortInRequestStatus { get; private set; }
 
+        ///<summary> If the order is cancelled this field will provide further context on the cause of the cancellation. </summary> 
+        [JsonProperty("order_cancellation_reason")]
+        public string OrderCancellationReason { get; private set; }
+
         ///<summary> The losing_carrier_information </summary> 
         [JsonProperty("losing_carrier_information")]
         public NumbersV1PortingLosingCarrierInformation LosingCarrierInformation { get; private set; }

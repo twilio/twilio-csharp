@@ -44,6 +44,7 @@ namespace Twilio.Rest.Conversations.V1.Service
             public static readonly BindingTypeEnum Apn = new BindingTypeEnum("apn");
             public static readonly BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
             public static readonly BindingTypeEnum Fcm = new BindingTypeEnum("fcm");
+            public static readonly BindingTypeEnum Twilsock = new BindingTypeEnum("twilsock");
 
         }
 
@@ -233,7 +234,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
         /// <summary> Retrieve a list of all push notification bindings in the conversation service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with. </param>
-        /// <param name="bindingType"> The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+        /// <param name="bindingType"> The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, `fcm`, or `twilsock`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
         /// <param name="identity"> The identity of a [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) this binding belongs to. See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more details. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 100. </param>
         /// <param name="limit"> Record limit </param>
@@ -254,7 +255,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #if !NET35
         /// <summary> Retrieve a list of all push notification bindings in the conversation service </summary>
         /// <param name="pathChatServiceSid"> The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with. </param>
-        /// <param name="bindingType"> The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
+        /// <param name="bindingType"> The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, `fcm`, or `twilsock`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info. </param>
         /// <param name="identity"> The identity of a [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) this binding belongs to. See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more details. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 100. </param>
         /// <param name="limit"> Record limit </param>

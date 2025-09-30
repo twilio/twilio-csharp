@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2025-09-30] Version 7.13.3
+---------------------------
+**Library - Chore**
+- [PR #801](https://github.com/twilio/twilio-csharp/pull/801): change oauth token endpoint. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #802](https://github.com/twilio/twilio-csharp/pull/802): removed exception, it will be handled by downstream. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Insights**
+- Replace `field` with `key` in Request Filters and Response Metadata Filters and  for Reports API
+
+
 [2025-09-25] Version 7.13.2
 ---------------------------
 **Library - Chore**

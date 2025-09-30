@@ -29,7 +29,7 @@ namespace Twilio.Rest.Lookups.V2
     {
         
         
-        public QueryResource.LookupRequest1 LookupRequest1 { get; set; }
+        public QueryResource.LookupRequest LookupRequest { get; set; }
 
 
 
@@ -39,9 +39,9 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
-            if (LookupRequest1 != null)
+            if (LookupRequest != null)
             {
-                body = QueryResource.ToJson(LookupRequest1);
+                body = QueryResource.ToJson(LookupRequest);
             }
             return body;
         }

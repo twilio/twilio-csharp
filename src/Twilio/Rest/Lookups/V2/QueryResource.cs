@@ -115,51 +115,51 @@ namespace Twilio.Rest.Lookups.V2
                 }
             }
         }
-        public class ReassignedNumberRequest
+        public class ReassignedNumberParameters
         {
             [JsonProperty("last_verified_date")]
             private string LastVerifiedDate {get; set;}
-            public ReassignedNumberRequest() { }
+            public ReassignedNumberParameters() { }
             public class Builder
             {
-                private ReassignedNumberRequest _reassignedNumberRequest = new ReassignedNumberRequest();
+                private ReassignedNumberParameters _reassignedNumberParameters = new ReassignedNumberParameters();
                 public Builder()
                 {
                 }
                 public Builder WithLastVerifiedDate(string lastVerifiedDate)
                 {
-                    _reassignedNumberRequest.LastVerifiedDate= lastVerifiedDate;
+                    _reassignedNumberParameters.LastVerifiedDate= lastVerifiedDate;
                     return this;
                 }
-                public ReassignedNumberRequest Build()
+                public ReassignedNumberParameters Build()
                 {
-                    return _reassignedNumberRequest;
+                    return _reassignedNumberParameters;
                 }
             }
         }
-        public class SmsPumpingRiskParameters
+        public class RiskParameters
         {
             [JsonProperty("partner_sub_id")]
             private string PartnerSubId {get; set;}
-            public SmsPumpingRiskParameters() { }
+            public RiskParameters() { }
             public class Builder
             {
-                private SmsPumpingRiskParameters _smsPumpingRiskParameters = new SmsPumpingRiskParameters();
+                private RiskParameters _riskParameters = new RiskParameters();
                 public Builder()
                 {
                 }
                 public Builder WithPartnerSubId(string partnerSubId)
                 {
-                    _smsPumpingRiskParameters.PartnerSubId= partnerSubId;
+                    _riskParameters.PartnerSubId= partnerSubId;
                     return this;
                 }
-                public SmsPumpingRiskParameters Build()
+                public RiskParameters Build()
                 {
-                    return _smsPumpingRiskParameters;
+                    return _riskParameters;
                 }
             }
         }
-        public class LookupRequestWithCorId
+        public class LookupBatchRequest
         {
             [JsonProperty("correlation_id")]
             private string CorrelationId {get; set;}
@@ -173,76 +173,76 @@ namespace Twilio.Rest.Lookups.V2
             [JsonProperty("identity_match")]
             private IdentityMatchParameters IdentityMatch {get; set;}
             [JsonProperty("reassigned_number")]
-            private ReassignedNumberRequest ReassignedNumber {get; set;}
+            private ReassignedNumberParameters ReassignedNumber {get; set;}
             [JsonProperty("sms_pumping_risk")]
-            private SmsPumpingRiskParameters SmsPumpingRisk {get; set;}
-            public LookupRequestWithCorId() { }
+            private RiskParameters SmsPumpingRisk {get; set;}
+            public LookupBatchRequest() { }
             public class Builder
             {
-                private LookupRequestWithCorId _lookupRequestWithCorId = new LookupRequestWithCorId();
+                private LookupBatchRequest _lookupBatchRequest = new LookupBatchRequest();
                 public Builder()
                 {
                 }
                 public Builder WithCorrelationId(string correlationId)
                 {
-                    _lookupRequestWithCorId.CorrelationId= correlationId;
+                    _lookupBatchRequest.CorrelationId= correlationId;
                     return this;
                 }
                 public Builder WithPhoneNumber(string phoneNumber)
                 {
-                    _lookupRequestWithCorId.PhoneNumber= phoneNumber;
+                    _lookupBatchRequest.PhoneNumber= phoneNumber;
                     return this;
                 }
                 public Builder WithFields(List<QueryResource.FieldsEnum> fields)
                 {
-                    _lookupRequestWithCorId.Fields= fields;
+                    _lookupBatchRequest.Fields= fields;
                     return this;
                 }
                 public Builder WithCountryCode(string countryCode)
                 {
-                    _lookupRequestWithCorId.CountryCode= countryCode;
+                    _lookupBatchRequest.CountryCode= countryCode;
                     return this;
                 }
                 public Builder WithIdentityMatch(IdentityMatchParameters identityMatch)
                 {
-                    _lookupRequestWithCorId.IdentityMatch= identityMatch;
+                    _lookupBatchRequest.IdentityMatch= identityMatch;
                     return this;
                 }
-                public Builder WithReassignedNumber(ReassignedNumberRequest reassignedNumber)
+                public Builder WithReassignedNumber(ReassignedNumberParameters reassignedNumber)
                 {
-                    _lookupRequestWithCorId.ReassignedNumber= reassignedNumber;
+                    _lookupBatchRequest.ReassignedNumber= reassignedNumber;
                     return this;
                 }
-                public Builder WithSmsPumpingRisk(SmsPumpingRiskParameters smsPumpingRisk)
+                public Builder WithSmsPumpingRisk(RiskParameters smsPumpingRisk)
                 {
-                    _lookupRequestWithCorId.SmsPumpingRisk= smsPumpingRisk;
+                    _lookupBatchRequest.SmsPumpingRisk= smsPumpingRisk;
                     return this;
                 }
-                public LookupRequestWithCorId Build()
+                public LookupBatchRequest Build()
                 {
-                    return _lookupRequestWithCorId;
+                    return _lookupBatchRequest;
                 }
             }
         }
-        public class LookupRequest1
+        public class LookupRequest
         {
             [JsonProperty("phone_numbers")]
-            private List<LookupRequestWithCorId> PhoneNumbers {get; set;}
-            public LookupRequest1() { }
+            private List<LookupBatchRequest> PhoneNumbers {get; set;}
+            public LookupRequest() { }
             public class Builder
             {
-                private LookupRequest1 _lookupRequest1 = new LookupRequest1();
+                private LookupRequest _lookupRequest = new LookupRequest();
                 public Builder()
                 {
                 }
-                public Builder WithPhoneNumbers(List<LookupRequestWithCorId> phoneNumbers)
+                public Builder WithPhoneNumbers(List<LookupBatchRequest> phoneNumbers)
                 {
-                    _lookupRequest1.PhoneNumbers= phoneNumbers;
+                    _lookupRequest.PhoneNumbers= phoneNumbers;
                     return this;
                 }
-                public LookupRequest1 Build()
+                public LookupRequest Build()
                 {
-                    return _lookupRequest1;
+                    return _lookupRequest;
                 }
             }
         }
@@ -399,14 +399,14 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LineTypeIntelligence
         {
-            [JsonProperty("type")]
-            private string Type {get; set;}
-            [JsonProperty("carrier_name")]
-            private string CarrierName {get; set;}
             [JsonProperty("mobile_country_code")]
             private string MobileCountryCode {get; set;}
             [JsonProperty("mobile_network_code")]
             private string MobileNetworkCode {get; set;}
+            [JsonProperty("carrier_name")]
+            private string CarrierName {get; set;}
+            [JsonProperty("type")]
+            private string Type {get; set;}
             [JsonProperty("error_code")]
             private int? ErrorCode {get; set;}
             public LineTypeIntelligence() { }
@@ -416,16 +416,6 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder()
                 {
                 }
-                public Builder WithType(string type)
-                {
-                    _lineTypeIntelligence.Type= type;
-                    return this;
-                }
-                public Builder WithCarrierName(string carrierName)
-                {
-                    _lineTypeIntelligence.CarrierName= carrierName;
-                    return this;
-                }
                 public Builder WithMobileCountryCode(string mobileCountryCode)
                 {
                     _lineTypeIntelligence.MobileCountryCode= mobileCountryCode;
@@ -434,6 +424,16 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder WithMobileNetworkCode(string mobileNetworkCode)
                 {
                     _lineTypeIntelligence.MobileNetworkCode= mobileNetworkCode;
+                    return this;
+                }
+                public Builder WithCarrierName(string carrierName)
+                {
+                    _lineTypeIntelligence.CarrierName= carrierName;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _lineTypeIntelligence.Type= type;
                     return this;
                 }
                 public Builder WithErrorCode(int? errorCode)
@@ -482,16 +482,16 @@ namespace Twilio.Rest.Lookups.V2
             private string FirstNameMatch {get; set;}
             [JsonProperty("last_name_match")]
             private string LastNameMatch {get; set;}
-            [JsonProperty("address_line_match")]
-            private string AddressLineMatch {get; set;}
+            [JsonProperty("address_lines_match")]
+            private string AddressLinesMatch {get; set;}
             [JsonProperty("city_match")]
             private string CityMatch {get; set;}
             [JsonProperty("state_match")]
             private string StateMatch {get; set;}
             [JsonProperty("postal_code_match")]
             private string PostalCodeMatch {get; set;}
-            [JsonProperty("country_code_match")]
-            private string CountryCodeMatch {get; set;}
+            [JsonProperty("address_country_match")]
+            private string AddressCountryMatch {get; set;}
             [JsonProperty("national_id_match")]
             private string NationalIdMatch {get; set;}
             [JsonProperty("date_of_birth_match")]
@@ -519,9 +519,9 @@ namespace Twilio.Rest.Lookups.V2
                     _identityMatch.LastNameMatch= lastNameMatch;
                     return this;
                 }
-                public Builder WithAddressLineMatch(string addressLineMatch)
+                public Builder WithAddressLinesMatch(string addressLinesMatch)
                 {
-                    _identityMatch.AddressLineMatch= addressLineMatch;
+                    _identityMatch.AddressLinesMatch= addressLinesMatch;
                     return this;
                 }
                 public Builder WithCityMatch(string cityMatch)
@@ -539,9 +539,9 @@ namespace Twilio.Rest.Lookups.V2
                     _identityMatch.PostalCodeMatch= postalCodeMatch;
                     return this;
                 }
-                public Builder WithCountryCodeMatch(string countryCodeMatch)
+                public Builder WithAddressCountryMatch(string addressCountryMatch)
                 {
-                    _identityMatch.CountryCodeMatch= countryCodeMatch;
+                    _identityMatch.AddressCountryMatch= addressCountryMatch;
                     return this;
                 }
                 public Builder WithNationalIdMatch(string nationalIdMatch)
@@ -575,7 +575,7 @@ namespace Twilio.Rest.Lookups.V2
                 }
             }
         }
-        public class ReassignedNumberResponse
+        public class ReassignedNumber
         {
             [JsonProperty("last_verified_date")]
             private string LastVerifiedDate {get; set;}
@@ -583,31 +583,31 @@ namespace Twilio.Rest.Lookups.V2
             private string IsNumberReassigned {get; set;}
             [JsonProperty("error_code")]
             private string ErrorCode {get; set;}
-            public ReassignedNumberResponse() { }
+            public ReassignedNumber() { }
             public class Builder
             {
-                private ReassignedNumberResponse _reassignedNumberResponse = new ReassignedNumberResponse();
+                private ReassignedNumber _reassignedNumber = new ReassignedNumber();
                 public Builder()
                 {
                 }
                 public Builder WithLastVerifiedDate(string lastVerifiedDate)
                 {
-                    _reassignedNumberResponse.LastVerifiedDate= lastVerifiedDate;
+                    _reassignedNumber.LastVerifiedDate= lastVerifiedDate;
                     return this;
                 }
                 public Builder WithIsNumberReassigned(string isNumberReassigned)
                 {
-                    _reassignedNumberResponse.IsNumberReassigned= isNumberReassigned;
+                    _reassignedNumber.IsNumberReassigned= isNumberReassigned;
                     return this;
                 }
                 public Builder WithErrorCode(string errorCode)
                 {
-                    _reassignedNumberResponse.ErrorCode= errorCode;
+                    _reassignedNumber.ErrorCode= errorCode;
                     return this;
                 }
-                public ReassignedNumberResponse Build()
+                public ReassignedNumber Build()
                 {
-                    return _reassignedNumberResponse;
+                    return _reassignedNumber;
                 }
             }
         }
@@ -668,7 +668,7 @@ namespace Twilio.Rest.Lookups.V2
                 }
             }
         }
-        public class LookupResponseWithCorId
+        public class LookupBatchResponse
         {
             [JsonProperty("correlation_id")]
             private string CorrelationId {get; set;}
@@ -699,99 +699,113 @@ namespace Twilio.Rest.Lookups.V2
             [JsonProperty("identity_match")]
             private IdentityMatch IdentityMatch {get; set;}
             [JsonProperty("reassigned_number")]
-            private ReassignedNumberResponse ReassignedNumber {get; set;}
+            private ReassignedNumber ReassignedNumber {get; set;}
             [JsonProperty("sms_pumping_risk")]
             private SmsPumpingRisk SmsPumpingRisk {get; set;}
-            public LookupResponseWithCorId() { }
+            [JsonProperty("phone_number_quality_score")]
+            private object PhoneNumberQualityScore {get; set;}
+            [JsonProperty("pre_fill")]
+            private object PreFill {get; set;}
+            public LookupBatchResponse() { }
             public class Builder
             {
-                private LookupResponseWithCorId _lookupResponseWithCorId = new LookupResponseWithCorId();
+                private LookupBatchResponse _lookupBatchResponse = new LookupBatchResponse();
                 public Builder()
                 {
                 }
                 public Builder WithCorrelationId(string correlationId)
                 {
-                    _lookupResponseWithCorId.CorrelationId= correlationId;
+                    _lookupBatchResponse.CorrelationId= correlationId;
                     return this;
                 }
                 public Builder WithTwilioErrorCode(int? twilioErrorCode)
                 {
-                    _lookupResponseWithCorId.TwilioErrorCode= twilioErrorCode;
+                    _lookupBatchResponse.TwilioErrorCode= twilioErrorCode;
                     return this;
                 }
                 public Builder WithCallingCountryCode(string callingCountryCode)
                 {
-                    _lookupResponseWithCorId.CallingCountryCode= callingCountryCode;
+                    _lookupBatchResponse.CallingCountryCode= callingCountryCode;
                     return this;
                 }
                 public Builder WithCountryCode(string countryCode)
                 {
-                    _lookupResponseWithCorId.CountryCode= countryCode;
+                    _lookupBatchResponse.CountryCode= countryCode;
                     return this;
                 }
                 public Builder WithPhoneNumber(string phoneNumber)
                 {
-                    _lookupResponseWithCorId.PhoneNumber= phoneNumber;
+                    _lookupBatchResponse.PhoneNumber= phoneNumber;
                     return this;
                 }
                 public Builder WithNationalFormat(string nationalFormat)
                 {
-                    _lookupResponseWithCorId.NationalFormat= nationalFormat;
+                    _lookupBatchResponse.NationalFormat= nationalFormat;
                     return this;
                 }
                 public Builder WithValid(bool? valid)
                 {
-                    _lookupResponseWithCorId.Valid= valid;
+                    _lookupBatchResponse.Valid= valid;
                     return this;
                 }
                 public Builder WithValidationErrors(List<string> validationErrors)
                 {
-                    _lookupResponseWithCorId.ValidationErrors= validationErrors;
+                    _lookupBatchResponse.ValidationErrors= validationErrors;
                     return this;
                 }
                 public Builder WithCallerName(CallerName callerName)
                 {
-                    _lookupResponseWithCorId.CallerName= callerName;
+                    _lookupBatchResponse.CallerName= callerName;
                     return this;
                 }
                 public Builder WithSimSwap(SimSwap simSwap)
                 {
-                    _lookupResponseWithCorId.SimSwap= simSwap;
+                    _lookupBatchResponse.SimSwap= simSwap;
                     return this;
                 }
                 public Builder WithCallForwarding(CallForwarding callForwarding)
                 {
-                    _lookupResponseWithCorId.CallForwarding= callForwarding;
+                    _lookupBatchResponse.CallForwarding= callForwarding;
                     return this;
                 }
                 public Builder WithLineTypeIntelligence(LineTypeIntelligence lineTypeIntelligence)
                 {
-                    _lookupResponseWithCorId.LineTypeIntelligence= lineTypeIntelligence;
+                    _lookupBatchResponse.LineTypeIntelligence= lineTypeIntelligence;
                     return this;
                 }
                 public Builder WithLineStatus(LineStatus lineStatus)
                 {
-                    _lookupResponseWithCorId.LineStatus= lineStatus;
+                    _lookupBatchResponse.LineStatus= lineStatus;
                     return this;
                 }
                 public Builder WithIdentityMatch(IdentityMatch identityMatch)
                 {
-                    _lookupResponseWithCorId.IdentityMatch= identityMatch;
+                    _lookupBatchResponse.IdentityMatch= identityMatch;
                     return this;
                 }
-                public Builder WithReassignedNumber(ReassignedNumberResponse reassignedNumber)
+                public Builder WithReassignedNumber(ReassignedNumber reassignedNumber)
                 {
-                    _lookupResponseWithCorId.ReassignedNumber= reassignedNumber;
+                    _lookupBatchResponse.ReassignedNumber= reassignedNumber;
                     return this;
                 }
                 public Builder WithSmsPumpingRisk(SmsPumpingRisk smsPumpingRisk)
                 {
-                    _lookupResponseWithCorId.SmsPumpingRisk= smsPumpingRisk;
+                    _lookupBatchResponse.SmsPumpingRisk= smsPumpingRisk;
                     return this;
                 }
-                public LookupResponseWithCorId Build()
+                public Builder WithPhoneNumberQualityScore(object phoneNumberQualityScore)
                 {
-                    return _lookupResponseWithCorId;
+                    _lookupBatchResponse.PhoneNumberQualityScore= phoneNumberQualityScore;
+                    return this;
+                }
+                public Builder WithPreFill(object preFill)
+                {
+                    _lookupBatchResponse.PreFill= preFill;
+                    return this;
+                }
+                public LookupBatchResponse Build()
+                {
+                    return _lookupBatchResponse;
                 }
             }
         }
@@ -917,7 +931,7 @@ namespace Twilio.Rest.Lookups.V2
     
         ///<summary> The phone_numbers </summary> 
         [JsonProperty("phone_numbers")]
-        public List<LookupResponseWithCorId> PhoneNumbers { get; private set; }
+        public List<LookupBatchResponse> PhoneNumbers { get; private set; }
 
 
 

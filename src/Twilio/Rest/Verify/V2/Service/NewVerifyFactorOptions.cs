@@ -23,25 +23,25 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Verify.V2.Service
 {
-
-    /// <summary> Create a new Passkeys Factor for the Entity </summary>
-    public class CreateNewFactorOptions : IOptions<NewFactorResource>
+    /// <summary> Verify a Passkeys Factor </summary>
+    public class UpdateNewVerifyFactorOptions : IOptions<NewVerifyFactorResource>
     {
-        
+    
         ///<summary> The unique SID identifier of the Service. </summary> 
         public string PathServiceSid { get; }
 
         
-        public NewFactorResource.CreateNewPasskeysFactorRequest CreateNewPasskeysFactorRequest { get; }
+        public NewVerifyFactorResource.VerifyPasskeysFactorRequest VerifyPasskeysFactorRequest { get; }
 
 
-        /// <summary> Construct a new CreateNewFactorPasskeyOptions </summary>
+
+        /// <summary> Construct a new UpdatePasskeysFactorOptions </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createNewPasskeysFactorRequest">  </param>
-        public CreateNewFactorOptions(string pathServiceSid, NewFactorResource.CreateNewPasskeysFactorRequest createNewPasskeysFactorRequest)
+        /// <param name="verifyPasskeysFactorRequest">  </param>
+        public UpdateNewVerifyFactorOptions(string pathServiceSid, NewVerifyFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest)
         {
             PathServiceSid = pathServiceSid;
-            CreateNewPasskeysFactorRequest = createNewPasskeysFactorRequest;
+            VerifyPasskeysFactorRequest = verifyPasskeysFactorRequest;
         }
 
         
@@ -50,14 +50,16 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             string body = "";
 
-            if (CreateNewPasskeysFactorRequest != null)
+            if (VerifyPasskeysFactorRequest != null)
             {
-                body = NewFactorResource.ToJson(CreateNewPasskeysFactorRequest);
+                body = NewVerifyFactorResource.ToJson(VerifyPasskeysFactorRequest);
             }
             return body;
         }
         
 
     }
+
+
 }
 

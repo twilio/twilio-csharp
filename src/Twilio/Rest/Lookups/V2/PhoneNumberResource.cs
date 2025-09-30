@@ -30,24 +30,446 @@ namespace Twilio.Rest.Lookups.V2
     public class PhoneNumberResource : Resource
     {
     
+        public class CallerName
+        {
+            [JsonProperty("caller_name")]
+            private string _CallerName {get; set;}
+            [JsonProperty("caller_type")]
+            private string CallerType {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public CallerName() { }
+            public class Builder
+            {
+                private CallerName _callerName = new CallerName();
+                public Builder()
+                {
+                }
+                public Builder With_CallerName(string callerName)
+                {
+                    _callerName._CallerName= callerName;
+                    return this;
+                }
+                public Builder WithCallerType(string callerType)
+                {
+                    _callerName.CallerType= callerType;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _callerName.ErrorCode= errorCode;
+                    return this;
+                }
+                public CallerName Build()
+                {
+                    return _callerName;
+                }
+            }
+        }
+        public class LastSimSwap
+        {
+            [JsonProperty("last_sim_swap_date")]
+            private DateTime? LastSimSwapDate {get; set;}
+            [JsonProperty("swapped_period")]
+            private string SwappedPeriod {get; set;}
+            [JsonProperty("swapped_in_period")]
+            private bool? SwappedInPeriod {get; set;}
+            public LastSimSwap() { }
+            public class Builder
+            {
+                private LastSimSwap _lastSimSwap = new LastSimSwap();
+                public Builder()
+                {
+                }
+                public Builder WithLastSimSwapDate(DateTime? lastSimSwapDate)
+                {
+                    _lastSimSwap.LastSimSwapDate= lastSimSwapDate;
+                    return this;
+                }
+                public Builder WithSwappedPeriod(string swappedPeriod)
+                {
+                    _lastSimSwap.SwappedPeriod= swappedPeriod;
+                    return this;
+                }
+                public Builder WithSwappedInPeriod(bool? swappedInPeriod)
+                {
+                    _lastSimSwap.SwappedInPeriod= swappedInPeriod;
+                    return this;
+                }
+                public LastSimSwap Build()
+                {
+                    return _lastSimSwap;
+                }
+            }
+        }
+        public class SimSwap
+        {
+            [JsonProperty("last_sim_swap")]
+            private LastSimSwap LastSimSwap {get; set;}
+            [JsonProperty("carrier_name")]
+            private string CarrierName {get; set;}
+            [JsonProperty("mobile_country_code")]
+            private string MobileCountryCode {get; set;}
+            [JsonProperty("mobile_network_code")]
+            private string MobileNetworkCode {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public SimSwap() { }
+            public class Builder
+            {
+                private SimSwap _simSwap = new SimSwap();
+                public Builder()
+                {
+                }
+                public Builder WithLastSimSwap(LastSimSwap lastSimSwap)
+                {
+                    _simSwap.LastSimSwap= lastSimSwap;
+                    return this;
+                }
+                public Builder WithCarrierName(string carrierName)
+                {
+                    _simSwap.CarrierName= carrierName;
+                    return this;
+                }
+                public Builder WithMobileCountryCode(string mobileCountryCode)
+                {
+                    _simSwap.MobileCountryCode= mobileCountryCode;
+                    return this;
+                }
+                public Builder WithMobileNetworkCode(string mobileNetworkCode)
+                {
+                    _simSwap.MobileNetworkCode= mobileNetworkCode;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _simSwap.ErrorCode= errorCode;
+                    return this;
+                }
+                public SimSwap Build()
+                {
+                    return _simSwap;
+                }
+            }
+        }
+        public class CallForwarding
+        {
+            [JsonProperty("call_forwarding_enabled")]
+            private bool? CallForwardingEnabled {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public CallForwarding() { }
+            public class Builder
+            {
+                private CallForwarding _callForwarding = new CallForwarding();
+                public Builder()
+                {
+                }
+                public Builder WithCallForwardingEnabled(bool? callForwardingEnabled)
+                {
+                    _callForwarding.CallForwardingEnabled= callForwardingEnabled;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _callForwarding.ErrorCode= errorCode;
+                    return this;
+                }
+                public CallForwarding Build()
+                {
+                    return _callForwarding;
+                }
+            }
+        }
+        public class LineTypeIntelligence
+        {
+            [JsonProperty("mobile_country_code")]
+            private string MobileCountryCode {get; set;}
+            [JsonProperty("mobile_network_code")]
+            private string MobileNetworkCode {get; set;}
+            [JsonProperty("carrier_name")]
+            private string CarrierName {get; set;}
+            [JsonProperty("type")]
+            private string Type {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public LineTypeIntelligence() { }
+            public class Builder
+            {
+                private LineTypeIntelligence _lineTypeIntelligence = new LineTypeIntelligence();
+                public Builder()
+                {
+                }
+                public Builder WithMobileCountryCode(string mobileCountryCode)
+                {
+                    _lineTypeIntelligence.MobileCountryCode= mobileCountryCode;
+                    return this;
+                }
+                public Builder WithMobileNetworkCode(string mobileNetworkCode)
+                {
+                    _lineTypeIntelligence.MobileNetworkCode= mobileNetworkCode;
+                    return this;
+                }
+                public Builder WithCarrierName(string carrierName)
+                {
+                    _lineTypeIntelligence.CarrierName= carrierName;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _lineTypeIntelligence.Type= type;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _lineTypeIntelligence.ErrorCode= errorCode;
+                    return this;
+                }
+                public LineTypeIntelligence Build()
+                {
+                    return _lineTypeIntelligence;
+                }
+            }
+        }
+        public class LineStatus
+        {
+            [JsonProperty("status")]
+            private string Status {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public LineStatus() { }
+            public class Builder
+            {
+                private LineStatus _lineStatus = new LineStatus();
+                public Builder()
+                {
+                }
+                public Builder WithStatus(string status)
+                {
+                    _lineStatus.Status= status;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _lineStatus.ErrorCode= errorCode;
+                    return this;
+                }
+                public LineStatus Build()
+                {
+                    return _lineStatus;
+                }
+            }
+        }
+        public class IdentityMatch
+        {
+            [JsonProperty("first_name_match")]
+            private string FirstNameMatch {get; set;}
+            [JsonProperty("last_name_match")]
+            private string LastNameMatch {get; set;}
+            [JsonProperty("address_lines_match")]
+            private string AddressLinesMatch {get; set;}
+            [JsonProperty("city_match")]
+            private string CityMatch {get; set;}
+            [JsonProperty("state_match")]
+            private string StateMatch {get; set;}
+            [JsonProperty("postal_code_match")]
+            private string PostalCodeMatch {get; set;}
+            [JsonProperty("address_country_match")]
+            private string AddressCountryMatch {get; set;}
+            [JsonProperty("national_id_match")]
+            private string NationalIdMatch {get; set;}
+            [JsonProperty("date_of_birth_match")]
+            private string DateOfBirthMatch {get; set;}
+            [JsonProperty("summary_score")]
+            private int? SummaryScore {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            [JsonProperty("error_message")]
+            private string ErrorMessage {get; set;}
+            public IdentityMatch() { }
+            public class Builder
+            {
+                private IdentityMatch _identityMatch = new IdentityMatch();
+                public Builder()
+                {
+                }
+                public Builder WithFirstNameMatch(string firstNameMatch)
+                {
+                    _identityMatch.FirstNameMatch= firstNameMatch;
+                    return this;
+                }
+                public Builder WithLastNameMatch(string lastNameMatch)
+                {
+                    _identityMatch.LastNameMatch= lastNameMatch;
+                    return this;
+                }
+                public Builder WithAddressLinesMatch(string addressLinesMatch)
+                {
+                    _identityMatch.AddressLinesMatch= addressLinesMatch;
+                    return this;
+                }
+                public Builder WithCityMatch(string cityMatch)
+                {
+                    _identityMatch.CityMatch= cityMatch;
+                    return this;
+                }
+                public Builder WithStateMatch(string stateMatch)
+                {
+                    _identityMatch.StateMatch= stateMatch;
+                    return this;
+                }
+                public Builder WithPostalCodeMatch(string postalCodeMatch)
+                {
+                    _identityMatch.PostalCodeMatch= postalCodeMatch;
+                    return this;
+                }
+                public Builder WithAddressCountryMatch(string addressCountryMatch)
+                {
+                    _identityMatch.AddressCountryMatch= addressCountryMatch;
+                    return this;
+                }
+                public Builder WithNationalIdMatch(string nationalIdMatch)
+                {
+                    _identityMatch.NationalIdMatch= nationalIdMatch;
+                    return this;
+                }
+                public Builder WithDateOfBirthMatch(string dateOfBirthMatch)
+                {
+                    _identityMatch.DateOfBirthMatch= dateOfBirthMatch;
+                    return this;
+                }
+                public Builder WithSummaryScore(int? summaryScore)
+                {
+                    _identityMatch.SummaryScore= summaryScore;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _identityMatch.ErrorCode= errorCode;
+                    return this;
+                }
+                public Builder WithErrorMessage(string errorMessage)
+                {
+                    _identityMatch.ErrorMessage= errorMessage;
+                    return this;
+                }
+                public IdentityMatch Build()
+                {
+                    return _identityMatch;
+                }
+            }
+        }
+        public class ReassignedNumber
+        {
+            [JsonProperty("last_verified_date")]
+            private string LastVerifiedDate {get; set;}
+            [JsonProperty("is_number_reassigned")]
+            private string IsNumberReassigned {get; set;}
+            [JsonProperty("error_code")]
+            private string ErrorCode {get; set;}
+            public ReassignedNumber() { }
+            public class Builder
+            {
+                private ReassignedNumber _reassignedNumber = new ReassignedNumber();
+                public Builder()
+                {
+                }
+                public Builder WithLastVerifiedDate(string lastVerifiedDate)
+                {
+                    _reassignedNumber.LastVerifiedDate= lastVerifiedDate;
+                    return this;
+                }
+                public Builder WithIsNumberReassigned(string isNumberReassigned)
+                {
+                    _reassignedNumber.IsNumberReassigned= isNumberReassigned;
+                    return this;
+                }
+                public Builder WithErrorCode(string errorCode)
+                {
+                    _reassignedNumber.ErrorCode= errorCode;
+                    return this;
+                }
+                public ReassignedNumber Build()
+                {
+                    return _reassignedNumber;
+                }
+            }
+        }
+        public class SmsPumpingRisk
+        {
+            [JsonProperty("carrier_risk_category")]
+            private string CarrierRiskCategory {get; set;}
+            [JsonProperty("number_blocked")]
+            private bool? NumberBlocked {get; set;}
+            [JsonProperty("number_blocked_date")]
+            private DateTime? NumberBlockedDate {get; set;}
+            [JsonProperty("number_blocked_last_3_months")]
+            private bool? NumberBlockedLast3Months {get; set;}
+            [JsonProperty("sms_pumping_risk_score")]
+            private int? SmsPumpingRiskScore {get; set;}
+            [JsonProperty("error_code")]
+            private int? ErrorCode {get; set;}
+            public SmsPumpingRisk() { }
+            public class Builder
+            {
+                private SmsPumpingRisk _smsPumpingRisk = new SmsPumpingRisk();
+                public Builder()
+                {
+                }
+                public Builder WithCarrierRiskCategory(string carrierRiskCategory)
+                {
+                    _smsPumpingRisk.CarrierRiskCategory= carrierRiskCategory;
+                    return this;
+                }
+                public Builder WithNumberBlocked(bool? numberBlocked)
+                {
+                    _smsPumpingRisk.NumberBlocked= numberBlocked;
+                    return this;
+                }
+                public Builder WithNumberBlockedDate(DateTime? numberBlockedDate)
+                {
+                    _smsPumpingRisk.NumberBlockedDate= numberBlockedDate;
+                    return this;
+                }
+                public Builder WithNumberBlockedLast3Months(bool? numberBlockedLast3Months)
+                {
+                    _smsPumpingRisk.NumberBlockedLast3Months= numberBlockedLast3Months;
+                    return this;
+                }
+                public Builder WithSmsPumpingRiskScore(int? smsPumpingRiskScore)
+                {
+                    _smsPumpingRisk.SmsPumpingRiskScore= smsPumpingRiskScore;
+                    return this;
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _smsPumpingRisk.ErrorCode= errorCode;
+                    return this;
+                }
+                public SmsPumpingRisk Build()
+                {
+                    return _smsPumpingRisk;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class ValidationErrorEnum : StringEnum
+        public sealed class ValidationError : StringEnum
         {
-            private ValidationErrorEnum(string value) : base(value) {}
-            public ValidationErrorEnum() {}
-            public static implicit operator ValidationErrorEnum(string value)
+            private ValidationError(string value) : base(value) {}
+            public ValidationError() {}
+            public static implicit operator ValidationError(string value)
             {
-                return new ValidationErrorEnum(value);
+                return new ValidationError(value);
             }
 
-            public static readonly ValidationErrorEnum TooShort = new ValidationErrorEnum("TOO_SHORT");
-            public static readonly ValidationErrorEnum TooLong = new ValidationErrorEnum("TOO_LONG");
-            public static readonly ValidationErrorEnum InvalidButPossible = new ValidationErrorEnum("INVALID_BUT_POSSIBLE");
-            public static readonly ValidationErrorEnum InvalidCountryCode = new ValidationErrorEnum("INVALID_COUNTRY_CODE");
-            public static readonly ValidationErrorEnum InvalidLength = new ValidationErrorEnum("INVALID_LENGTH");
-            public static readonly ValidationErrorEnum NotANumber = new ValidationErrorEnum("NOT_A_NUMBER");
+            public static readonly ValidationError TooShort = new ValidationError("TOO_SHORT");
+            public static readonly ValidationError TooLong = new ValidationError("TOO_LONG");
+            public static readonly ValidationError InvalidButPossible = new ValidationError("INVALID_BUT_POSSIBLE");
+            public static readonly ValidationError InvalidCountryCode = new ValidationError("INVALID_COUNTRY_CODE");
+            public static readonly ValidationError InvalidLength = new ValidationError("INVALID_LENGTH");
+            public static readonly ValidationError NotANumber = new ValidationError("NOT_A_NUMBER");
         }
 
         
@@ -68,7 +490,7 @@ namespace Twilio.Rest.Lookups.V2
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -80,7 +502,7 @@ namespace Twilio.Rest.Lookups.V2
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -91,7 +513,7 @@ namespace Twilio.Rest.Lookups.V2
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
+        /// <summary> The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
         /// <param name="fields"> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
@@ -134,7 +556,7 @@ namespace Twilio.Rest.Lookups.V2
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in E.164 or national format. Default country code is +1 (North America). </param>
         /// <param name="fields"> A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill. </param>
         /// <param name="countryCode"> The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format. </param>
@@ -217,39 +639,39 @@ namespace Twilio.Rest.Lookups.V2
 
         ///<summary> Contains reasons why a phone number is invalid. Possible values: TOO_SHORT, TOO_LONG, INVALID_BUT_POSSIBLE, INVALID_COUNTRY_CODE, INVALID_LENGTH, NOT_A_NUMBER. </summary> 
         [JsonProperty("validation_errors")]
-        public List<PhoneNumberResource.ValidationErrorEnum> ValidationErrors { get; private set; }
+        public List<PhoneNumberResource.ValidationError> ValidationErrors { get; private set; }
 
-        ///<summary> An object that contains caller name information based on [CNAM](https://support.twilio.com/hc/en-us/articles/360051670533-Getting-Started-with-CNAM-Caller-ID). </summary> 
+        ///<summary> The caller_name </summary> 
         [JsonProperty("caller_name")]
-        public object CallerName { get; private set; }
+        public CallerName _CallerName { get; private set; }
 
-        ///<summary> An object that contains information on the last date the subscriber identity module (SIM) was changed for a mobile phone number. </summary> 
+        ///<summary> The sim_swap </summary> 
         [JsonProperty("sim_swap")]
-        public object SimSwap { get; private set; }
+        public SimSwap _SimSwap { get; private set; }
 
-        ///<summary> An object that contains information on the unconditional call forwarding status of mobile phone number. </summary> 
+        ///<summary> The call_forwarding </summary> 
         [JsonProperty("call_forwarding")]
-        public object CallForwarding { get; private set; }
+        public CallForwarding _CallForwarding { get; private set; }
 
-        ///<summary> An object that contains line status information for a mobile phone number. </summary> 
-        [JsonProperty("line_status")]
-        public object LineStatus { get; private set; }
-
-        ///<summary> An object that contains line type information including the carrier name, mobile country code, and mobile network code. </summary> 
+        ///<summary> The line_type_intelligence </summary> 
         [JsonProperty("line_type_intelligence")]
-        public object LineTypeIntelligence { get; private set; }
+        public LineTypeIntelligence _LineTypeIntelligence { get; private set; }
 
-        ///<summary> An object that contains identity match information. The result of comparing user-provided information including name, address, date of birth, national ID, against authoritative phone-based data sources </summary> 
+        ///<summary> The line_status </summary> 
+        [JsonProperty("line_status")]
+        public LineStatus _LineStatus { get; private set; }
+
+        ///<summary> The identity_match </summary> 
         [JsonProperty("identity_match")]
-        public object IdentityMatch { get; private set; }
+        public IdentityMatch _IdentityMatch { get; private set; }
 
-        ///<summary> An object that contains reassigned number information. Reassigned Numbers will return a phone number's reassignment status given a phone number and date </summary> 
+        ///<summary> The reassigned_number </summary> 
         [JsonProperty("reassigned_number")]
-        public object ReassignedNumber { get; private set; }
+        public ReassignedNumber _ReassignedNumber { get; private set; }
 
-        ///<summary> An object that contains information on if a phone number has been currently or previously blocked by Verify Fraud Guard for receiving malicious SMS pumping traffic as well as other signals associated with risky carriers and low conversion rates. </summary> 
+        ///<summary> The sms_pumping_risk </summary> 
         [JsonProperty("sms_pumping_risk")]
-        public object SmsPumpingRisk { get; private set; }
+        public SmsPumpingRisk _SmsPumpingRisk { get; private set; }
 
         ///<summary> An object that contains information of a mobile phone number quality score. Quality score will return a risk score about the phone number. </summary> 
         [JsonProperty("phone_number_quality_score")]

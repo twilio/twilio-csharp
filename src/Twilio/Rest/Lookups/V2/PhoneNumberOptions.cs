@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Lookups.V2
 {
-    /// <summary> fetch </summary>
+    /// <summary> The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
     
