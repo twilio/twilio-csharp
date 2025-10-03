@@ -149,6 +149,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove a participant from the conversation </summary>
         /// <param name="options"> Delete Participant parameters </param>
@@ -532,6 +533,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ParticipantResource object

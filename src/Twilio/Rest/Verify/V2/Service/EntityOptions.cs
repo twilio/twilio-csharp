@@ -60,6 +60,7 @@ namespace Twilio.Rest.Verify.V2.Service
         
 
     }
+
     /// <summary> Delete a specific Entity. </summary>
     public class DeleteEntityOptions : IOptions<EntityResource>
     {

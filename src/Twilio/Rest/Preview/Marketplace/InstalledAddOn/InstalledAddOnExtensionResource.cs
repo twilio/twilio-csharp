@@ -306,6 +306,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a InstalledAddOnExtensionResource object

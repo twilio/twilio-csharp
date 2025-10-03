@@ -45,15 +45,12 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceCreateKnowledgeRequest != null)
-            {
-                body = KnowledgeResource.ToJson(AssistantsV1ServiceCreateKnowledgeRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Delete knowledge </summary>
     public class DeleteKnowledgeOptions : IOptions<KnowledgeResource>
     {
@@ -170,10 +167,6 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceUpdateKnowledgeRequest != null)
-            {
-                body = KnowledgeResource.ToJson(AssistantsV1ServiceUpdateKnowledgeRequest);
-            }
             return body;
         }
         

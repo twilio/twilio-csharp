@@ -165,6 +165,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove a message from the conversation </summary>
         /// <param name="options"> Delete Message parameters </param>
@@ -540,6 +541,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a MessageResource object

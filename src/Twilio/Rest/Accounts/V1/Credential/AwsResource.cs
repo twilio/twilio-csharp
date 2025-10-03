@@ -107,6 +107,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a Credential from your account </summary>
         /// <param name="options"> Delete Aws parameters </param>
@@ -431,6 +432,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AwsResource object

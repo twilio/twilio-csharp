@@ -227,6 +227,7 @@ namespace Twilio.Rest.Messaging.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {

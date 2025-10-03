@@ -53,15 +53,12 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
-            if (OverridesRequest != null)
-            {
-                body = LookupOverrideResource.ToJson(OverridesRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Delete an Override for a specific package and phone number. </summary>
     public class DeleteLookupOverrideOptions : IOptions<LookupOverrideResource>
     {
@@ -162,10 +159,6 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
-            if (OverridesRequest != null)
-            {
-                body = LookupOverrideResource.ToJson(OverridesRequest);
-            }
             return body;
         }
         

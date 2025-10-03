@@ -76,6 +76,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteTaskChannelOptions : IOptions<TaskChannelResource>
     {

@@ -53,15 +53,12 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             string body = "";
 
-            if (Body != null)
-            {
-                body = InteractionTransferResource.ToJson(Body);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Fetch a specific Transfer by SID. </summary>
     public class FetchInteractionTransferOptions : IOptions<InteractionTransferResource>
     {
@@ -137,10 +134,6 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             string body = "";
 
-            if (Body != null)
-            {
-                body = InteractionTransferResource.ToJson(Body);
-            }
             return body;
         }
         

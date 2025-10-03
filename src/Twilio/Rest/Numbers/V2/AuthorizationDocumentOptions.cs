@@ -97,6 +97,7 @@ namespace Twilio.Rest.Numbers.V2
         
 
     }
+
     /// <summary> Cancel the AuthorizationDocument request. </summary>
     public class DeleteAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {

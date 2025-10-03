@@ -50,15 +50,12 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         {
             string body = "";
 
-            if (AssistantsV1ServiceCreateFeedbackRequest != null)
-            {
-                body = FeedbackResource.ToJson(AssistantsV1ServiceCreateFeedbackRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> List feedbacks </summary>
     public class ReadFeedbackOptions : ReadOptions<FeedbackResource>
     {

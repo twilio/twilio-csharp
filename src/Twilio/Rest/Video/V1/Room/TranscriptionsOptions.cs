@@ -58,6 +58,7 @@ namespace Twilio.Rest.Video.V1.Room
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchTranscriptionsOptions : IOptions<TranscriptionsResource>
     {

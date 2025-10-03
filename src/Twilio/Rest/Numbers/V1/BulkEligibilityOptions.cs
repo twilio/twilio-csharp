@@ -39,15 +39,12 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
-            if (Body != null)
-            {
-                body = BulkEligibilityResource.ToJson(Body);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Fetch an eligibility bulk check that you requested to host in Twilio. </summary>
     public class FetchBulkEligibilityOptions : IOptions<BulkEligibilityResource>
     {

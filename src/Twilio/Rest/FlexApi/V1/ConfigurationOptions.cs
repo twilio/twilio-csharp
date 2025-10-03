@@ -67,10 +67,6 @@ namespace Twilio.Rest.FlexApi.V1
         {
             string body = "";
 
-            if (Body != null)
-            {
-                body = ConfigurationResource.ToJson(Body);
-            }
             return body;
         }
         

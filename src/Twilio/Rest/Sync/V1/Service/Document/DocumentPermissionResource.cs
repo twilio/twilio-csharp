@@ -407,6 +407,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a DocumentPermissionResource object

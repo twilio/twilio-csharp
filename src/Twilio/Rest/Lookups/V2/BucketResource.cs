@@ -279,6 +279,7 @@ namespace Twilio.Rest.Lookups.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a BucketResource object

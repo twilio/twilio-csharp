@@ -96,6 +96,7 @@ namespace Twilio.Rest.Numbers.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchBulkEligibilityOptions options, ITwilioRestClient client)
         {

@@ -147,6 +147,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncListItem parameters </param>
@@ -543,6 +544,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SyncListItemResource object

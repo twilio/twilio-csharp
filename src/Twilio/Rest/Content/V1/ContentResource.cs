@@ -54,10 +54,10 @@ namespace Twilio.Rest.Content.V1
         }
         public class TwilioMedia
         {
-            [JsonProperty("body")]
-            private string Body {get; set;}
             [JsonProperty("media")]
             private List<string> Media {get; set;}
+            [JsonProperty("body")]
+            private string Body {get; set;}
             public TwilioMedia() { }
             public class Builder
             {
@@ -65,14 +65,14 @@ namespace Twilio.Rest.Content.V1
                 public Builder()
                 {
                 }
-                public Builder WithBody(string body)
-                {
-                    _twilioMedia.Body= body;
-                    return this;
-                }
                 public Builder WithMedia(List<string> media)
                 {
                     _twilioMedia.Media= media;
+                    return this;
+                }
+                public Builder WithBody(string body)
+                {
+                    _twilioMedia.Body= body;
                     return this;
                 }
                 public TwilioMedia Build()
@@ -524,10 +524,10 @@ namespace Twilio.Rest.Content.V1
         }
         public class TwilioCatalog
         {
-            [JsonProperty("title")]
-            private string Title {get; set;}
             [JsonProperty("body")]
             private string Body {get; set;}
+            [JsonProperty("title")]
+            private string Title {get; set;}
             [JsonProperty("subtitle")]
             private string Subtitle {get; set;}
             [JsonProperty("id")]
@@ -543,14 +543,14 @@ namespace Twilio.Rest.Content.V1
                 public Builder()
                 {
                 }
-                public Builder WithTitle(string title)
-                {
-                    _twilioCatalog.Title= title;
-                    return this;
-                }
                 public Builder WithBody(string body)
                 {
                     _twilioCatalog.Body= body;
+                    return this;
+                }
+                public Builder WithTitle(string title)
+                {
+                    _twilioCatalog.Title= title;
                     return this;
                 }
                 public Builder WithSubtitle(string subtitle)
@@ -735,14 +735,14 @@ namespace Twilio.Rest.Content.V1
         {
             [JsonProperty("id")]
             private string Id {get; set;}
+            [JsonProperty("layout")]
+            private List<FlowsPageComponent> Layout {get; set;}
             [JsonProperty("next_page_id")]
             private string NextPageId {get; set;}
             [JsonProperty("title")]
             private string Title {get; set;}
             [JsonProperty("subtitle")]
             private string Subtitle {get; set;}
-            [JsonProperty("layout")]
-            private List<FlowsPageComponent> Layout {get; set;}
             public FlowsPage() { }
             public class Builder
             {
@@ -753,6 +753,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithId(string id)
                 {
                     _flowsPage.Id= id;
+                    return this;
+                }
+                public Builder WithLayout(List<FlowsPageComponent> layout)
+                {
+                    _flowsPage.Layout= layout;
                     return this;
                 }
                 public Builder WithNextPageId(string nextPageId)
@@ -768,11 +773,6 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithSubtitle(string subtitle)
                 {
                     _flowsPage.Subtitle= subtitle;
-                    return this;
-                }
-                public Builder WithLayout(List<FlowsPageComponent> layout)
-                {
-                    _flowsPage.Layout= layout;
                     return this;
                 }
                 public FlowsPage Build()
@@ -956,18 +956,23 @@ namespace Twilio.Rest.Content.V1
         }
         public class WhatsappAuthentication
         {
+            [JsonProperty("actions")]
+            private List<AuthenticationAction> Actions {get; set;}
             [JsonProperty("add_security_recommendation")]
             private bool? AddSecurityRecommendation {get; set;}
             [JsonProperty("code_expiration_minutes")]
             private decimal? CodeExpirationMinutes {get; set;}
-            [JsonProperty("actions")]
-            private List<AuthenticationAction> Actions {get; set;}
             public WhatsappAuthentication() { }
             public class Builder
             {
                 private WhatsappAuthentication _whatsappAuthentication = new WhatsappAuthentication();
                 public Builder()
                 {
+                }
+                public Builder WithActions(List<AuthenticationAction> actions)
+                {
+                    _whatsappAuthentication.Actions= actions;
+                    return this;
                 }
                 public Builder WithAddSecurityRecommendation(bool? addSecurityRecommendation)
                 {
@@ -977,11 +982,6 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithCodeExpirationMinutes(decimal? codeExpirationMinutes)
                 {
                     _whatsappAuthentication.CodeExpirationMinutes= codeExpirationMinutes;
-                    return this;
-                }
-                public Builder WithActions(List<AuthenticationAction> actions)
-                {
-                    _whatsappAuthentication.Actions= actions;
                     return this;
                 }
                 public WhatsappAuthentication Build()
@@ -996,12 +996,12 @@ namespace Twilio.Rest.Content.V1
             private string Body {get; set;}
             [JsonProperty("button_text")]
             private string ButtonText {get; set;}
+            [JsonProperty("flow_id")]
+            private string FlowId {get; set;}
             [JsonProperty("subtitle")]
             private string Subtitle {get; set;}
             [JsonProperty("media_url")]
             private string MediaUrl {get; set;}
-            [JsonProperty("flow_id")]
-            private string FlowId {get; set;}
             [JsonProperty("flow_token")]
             private string FlowToken {get; set;}
             [JsonProperty("flow_first_page_id")]
@@ -1025,6 +1025,11 @@ namespace Twilio.Rest.Content.V1
                     _whatsappFlows.ButtonText= buttonText;
                     return this;
                 }
+                public Builder WithFlowId(string flowId)
+                {
+                    _whatsappFlows.FlowId= flowId;
+                    return this;
+                }
                 public Builder WithSubtitle(string subtitle)
                 {
                     _whatsappFlows.Subtitle= subtitle;
@@ -1033,11 +1038,6 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithMediaUrl(string mediaUrl)
                 {
                     _whatsappFlows.MediaUrl= mediaUrl;
-                    return this;
-                }
-                public Builder WithFlowId(string flowId)
-                {
-                    _whatsappFlows.FlowId= flowId;
                     return this;
                 }
                 public Builder WithFlowToken(string flowToken)
@@ -1176,30 +1176,20 @@ namespace Twilio.Rest.Content.V1
         }
         public class ContentCreateRequest
         {
-            [JsonProperty("friendly_name")]
-            private string FriendlyName {get; set;}
-            [JsonProperty("variables")]
-            private Dictionary<string, string> Variables {get; set;}
             [JsonProperty("language")]
             private string Language {get; set;}
             [JsonProperty("types")]
             private Types Types {get; set;}
+            [JsonProperty("friendly_name")]
+            private string FriendlyName {get; set;}
+            [JsonProperty("variables")]
+            private Dictionary<string, string> Variables {get; set;}
             public ContentCreateRequest() { }
             public class Builder
             {
                 private ContentCreateRequest _contentCreateRequest = new ContentCreateRequest();
                 public Builder()
                 {
-                }
-                public Builder WithFriendlyName(string friendlyName)
-                {
-                    _contentCreateRequest.FriendlyName= friendlyName;
-                    return this;
-                }
-                public Builder WithVariables(Dictionary<string, string> variables)
-                {
-                    _contentCreateRequest.Variables= variables;
-                    return this;
                 }
                 public Builder WithLanguage(string language)
                 {
@@ -1209,6 +1199,16 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithTypes(Types types)
                 {
                     _contentCreateRequest.Types= types;
+                    return this;
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _contentCreateRequest.FriendlyName= friendlyName;
+                    return this;
+                }
+                public Builder WithVariables(Dictionary<string, string> variables)
+                {
+                    _contentCreateRequest.Variables= variables;
                     return this;
                 }
                 public ContentCreateRequest Build()
@@ -1372,6 +1372,7 @@ namespace Twilio.Rest.Content.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Deletes a Content resource </summary>
         /// <param name="options"> Delete Content parameters </param>

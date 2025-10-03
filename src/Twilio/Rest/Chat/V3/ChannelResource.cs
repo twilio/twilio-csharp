@@ -145,6 +145,7 @@ namespace Twilio.Rest.Chat.V3
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ChannelResource object

@@ -136,6 +136,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchInteractionTransferOptions options, ITwilioRestClient client)
         {
@@ -292,6 +293,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a InteractionTransferResource object

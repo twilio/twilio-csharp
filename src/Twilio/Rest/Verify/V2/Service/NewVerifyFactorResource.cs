@@ -69,6 +69,8 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class VerifyPasskeysFactorRequest
         {
+            [JsonProperty("response")]
+            private VerifyPasskeysFactorRequestResponse Response {get; set;}
             [JsonProperty("id")]
             private string Id {get; set;}
             [JsonProperty("rawId")]
@@ -79,14 +81,17 @@ namespace Twilio.Rest.Verify.V2.Service
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("type")]
             private NewVerifyFactorResource.TypeEnum Type {get; set;}
-            [JsonProperty("response")]
-            private VerifyPasskeysFactorRequestResponse Response {get; set;}
             public VerifyPasskeysFactorRequest() { }
             public class Builder
             {
                 private VerifyPasskeysFactorRequest _verifyPasskeysFactorRequest = new VerifyPasskeysFactorRequest();
                 public Builder()
                 {
+                }
+                public Builder WithResponse(VerifyPasskeysFactorRequestResponse response)
+                {
+                    _verifyPasskeysFactorRequest.Response= response;
+                    return this;
                 }
                 public Builder WithId(string id)
                 {
@@ -106,11 +111,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 public Builder WithType(NewVerifyFactorResource.TypeEnum type)
                 {
                     _verifyPasskeysFactorRequest.Type= type;
-                    return this;
-                }
-                public Builder WithResponse(VerifyPasskeysFactorRequestResponse response)
-                {
-                    _verifyPasskeysFactorRequest.Response= response;
                     return this;
                 }
                 public VerifyPasskeysFactorRequest Build()
@@ -265,6 +265,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NewVerifyFactorResource object

@@ -109,6 +109,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete CustomerProfilesChannelEndpointAssignment parameters </param>

@@ -225,6 +225,7 @@ namespace Twilio.Rest.Insights.V1.Call
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AnnotationResource object

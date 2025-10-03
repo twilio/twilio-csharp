@@ -107,6 +107,7 @@ namespace Twilio.Rest.Notify.V1.Service
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteBindingOptions : IOptions<BindingResource>
     {

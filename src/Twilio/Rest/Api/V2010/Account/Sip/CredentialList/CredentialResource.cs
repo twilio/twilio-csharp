@@ -39,10 +39,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -115,6 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a credential resource. </summary>
         /// <param name="options"> Delete Credential parameters </param>
@@ -125,12 +126,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -197,12 +198,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -271,10 +272,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -402,12 +403,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCredentialListSid = options.PathCredentialListSid;
             path = path.Replace("{"+"CredentialListSid"+"}", PathCredentialListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -481,6 +482,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a CredentialResource object

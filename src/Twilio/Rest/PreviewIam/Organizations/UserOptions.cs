@@ -50,15 +50,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
-            if (ScimUser != null)
-            {
-                body = UserResource.ToJson(ScimUser);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {
@@ -200,10 +197,6 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
-            if (ScimUser != null)
-            {
-                body = UserResource.ToJson(ScimUser);
-            }
             return body;
         }
         

@@ -45,15 +45,12 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
-            if (NumbersV1PortingPortInCreate != null)
-            {
-                body = PortingPortInResource.ToJson(NumbersV1PortingPortInCreate);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Allows to cancel a port in request by SID </summary>
     public class DeletePortingPortInOptions : IOptions<PortingPortInResource>
     {

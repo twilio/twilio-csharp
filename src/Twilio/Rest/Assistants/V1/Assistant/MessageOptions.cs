@@ -50,14 +50,11 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         {
             string body = "";
 
-            if (AssistantsV1ServiceAssistantSendMessageRequest != null)
-            {
-                body = MessageResource.ToJson(AssistantsV1ServiceAssistantSendMessageRequest);
-            }
             return body;
         }
         
 
     }
+
 }
 

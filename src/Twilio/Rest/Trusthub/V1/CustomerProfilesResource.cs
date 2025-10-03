@@ -127,6 +127,7 @@ namespace Twilio.Rest.Trusthub.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Customer-Profile. </summary>
         /// <param name="options"> Delete CustomerProfiles parameters </param>
@@ -475,6 +476,7 @@ namespace Twilio.Rest.Trusthub.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a CustomerProfilesResource object

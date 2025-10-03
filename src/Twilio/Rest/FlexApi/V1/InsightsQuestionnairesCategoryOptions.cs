@@ -68,6 +68,7 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
     }
+
     /// <summary> delete </summary>
     public class DeleteInsightsQuestionnairesCategoryOptions : IOptions<InsightsQuestionnairesCategoryResource>
     {

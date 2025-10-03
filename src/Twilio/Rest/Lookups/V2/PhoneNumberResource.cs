@@ -33,7 +33,7 @@ namespace Twilio.Rest.Lookups.V2
         public class CallerName
         {
             [JsonProperty("caller_name")]
-            private string _CallerName {get; set;}
+            private string VarCallerName {get; set;}
             [JsonProperty("caller_type")]
             private string CallerType {get; set;}
             [JsonProperty("error_code")]
@@ -45,9 +45,9 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder()
                 {
                 }
-                public Builder With_CallerName(string callerName)
+                public Builder WithVarCallerName(string varCallerName)
                 {
-                    _callerName._CallerName= callerName;
+                    _callerName.VarCallerName= varCallerName;
                     return this;
                 }
                 public Builder WithCallerType(string callerType)

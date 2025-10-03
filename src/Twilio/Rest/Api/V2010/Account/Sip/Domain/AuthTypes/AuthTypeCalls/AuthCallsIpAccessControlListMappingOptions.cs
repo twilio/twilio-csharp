@@ -63,6 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         
 
     }
+
     /// <summary> Delete an IP Access Control List mapping from the requested domain </summary>
     public class DeleteAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource>
     {

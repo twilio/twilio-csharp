@@ -142,6 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         
 
     }
+
     /// <summary> Delete an instance of a Domain </summary>
     public class DeleteDomainOptions : IOptions<DomainResource>
     {

@@ -60,6 +60,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         
 
     }
+
     /// <summary> Remove an Assignment Item Instance. </summary>
     public class DeleteCustomerProfilesEntityAssignmentsOptions : IOptions<CustomerProfilesEntityAssignmentsResource>
     {

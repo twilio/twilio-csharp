@@ -31,22 +31,22 @@ namespace Twilio.Rest.Events.V1
         ///<summary> A human readable description for the Sink **This value should not contain PII.** </summary> 
         public string Description { get; }
 
-        ///<summary> The information required for Twilio to connect to the provided Sink encoded as JSON. </summary> 
-        public object SinkConfiguration { get; }
-
         
         public SinkResource.SinkTypeEnum SinkType { get; }
+
+        ///<summary> The information required for Twilio to connect to the provided Sink encoded as JSON. </summary> 
+        public object SinkConfiguration { get; }
 
 
         /// <summary> Construct a new CreateSinkOptions </summary>
         /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
-        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
         /// <param name="sinkType">  </param>
-        public CreateSinkOptions(string description, object sinkConfiguration, SinkResource.SinkTypeEnum sinkType)
+        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
+        public CreateSinkOptions(string description, SinkResource.SinkTypeEnum sinkType, object sinkConfiguration)
         {
             Description = description;
-            SinkConfiguration = sinkConfiguration;
             SinkType = sinkType;
+            SinkConfiguration = sinkConfiguration;
         }
 
         
@@ -59,13 +59,13 @@ namespace Twilio.Rest.Events.V1
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
             }
-            if (SinkConfiguration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("SinkConfiguration", Serializers.JsonObject(SinkConfiguration)));
-            }
             if (SinkType != null)
             {
                 p.Add(new KeyValuePair<string, string>("SinkType", SinkType.ToString()));
+            }
+            if (SinkConfiguration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SinkConfiguration", Serializers.JsonObject(SinkConfiguration)));
             }
             return p;
         }
@@ -73,6 +73,7 @@ namespace Twilio.Rest.Events.V1
         
 
     }
+
     /// <summary> Delete a specific Sink. </summary>
     public class DeleteSinkOptions : IOptions<SinkResource>
     {

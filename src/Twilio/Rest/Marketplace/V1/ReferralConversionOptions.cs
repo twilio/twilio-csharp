@@ -45,14 +45,11 @@ namespace Twilio.Rest.Marketplace.V1
         {
             string body = "";
 
-            if (CreateReferralConversionRequest != null)
-            {
-                body = ReferralConversionResource.ToJson(CreateReferralConversionRequest);
-            }
             return body;
         }
         
 
     }
+
 }
 

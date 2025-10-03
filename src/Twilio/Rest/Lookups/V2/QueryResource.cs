@@ -161,10 +161,10 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LookupBatchRequest
         {
-            [JsonProperty("correlation_id")]
-            private string CorrelationId {get; set;}
             [JsonProperty("phone_number")]
             private string PhoneNumber {get; set;}
+            [JsonProperty("correlation_id")]
+            private string CorrelationId {get; set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("fields")]
             private List<QueryResource.FieldsEnum> Fields {get; set;}
@@ -183,14 +183,14 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder()
                 {
                 }
-                public Builder WithCorrelationId(string correlationId)
-                {
-                    _lookupBatchRequest.CorrelationId= correlationId;
-                    return this;
-                }
                 public Builder WithPhoneNumber(string phoneNumber)
                 {
                     _lookupBatchRequest.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithCorrelationId(string correlationId)
+                {
+                    _lookupBatchRequest.CorrelationId= correlationId;
                     return this;
                 }
                 public Builder WithFields(List<QueryResource.FieldsEnum> fields)
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Lookups.V2
         public class CallerName
         {
             [JsonProperty("caller_name")]
-            private string _CallerName {get; set;}
+            private string VarCallerName {get; set;}
             [JsonProperty("caller_type")]
             private string CallerType {get; set;}
             [JsonProperty("error_code")]
@@ -261,9 +261,9 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder()
                 {
                 }
-                public Builder With_CallerName(string callerName)
+                public Builder WithVarCallerName(string varCallerName)
                 {
-                    _callerName._CallerName= callerName;
+                    _callerName.VarCallerName= varCallerName;
                     return this;
                 }
                 public Builder WithCallerType(string callerType)
@@ -894,6 +894,7 @@ namespace Twilio.Rest.Lookups.V2
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a QueryResource object

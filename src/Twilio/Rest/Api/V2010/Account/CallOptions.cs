@@ -300,6 +300,7 @@ namespace Twilio.Rest.Api.V2010.Account
         
 
     }
+
     /// <summary> Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account Portal logs. </summary>
     public class DeleteCallOptions : IOptions<CallResource>
     {

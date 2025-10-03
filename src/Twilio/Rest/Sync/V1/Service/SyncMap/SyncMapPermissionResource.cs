@@ -407,6 +407,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SyncMapPermissionResource object

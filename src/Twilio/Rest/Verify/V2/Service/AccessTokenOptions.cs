@@ -83,6 +83,7 @@ namespace Twilio.Rest.Verify.V2.Service
         
 
     }
+
     /// <summary> Fetch an Access Token for the Entity </summary>
     public class FetchAccessTokenOptions : IOptions<AccessTokenResource>
     {

@@ -45,15 +45,12 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceCreateToolRequest != null)
-            {
-                body = ToolResource.ToJson(AssistantsV1ServiceCreateToolRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> delete a tool </summary>
     public class DeleteToolOptions : IOptions<ToolResource>
     {
@@ -170,10 +167,6 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceUpdateToolRequest != null)
-            {
-                body = ToolResource.ToJson(AssistantsV1ServiceUpdateToolRequest);
-            }
             return body;
         }
         

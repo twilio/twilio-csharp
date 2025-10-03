@@ -39,14 +39,11 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
-            if (LookupRequest != null)
-            {
-                body = QueryResource.ToJson(LookupRequest);
-            }
             return body;
         }
         
 
     }
+
 }
 
