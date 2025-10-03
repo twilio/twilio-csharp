@@ -105,6 +105,7 @@ namespace Twilio.Rest.Serverless.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete an Asset resource. </summary>
         /// <param name="options"> Delete Asset parameters </param>
@@ -450,6 +451,7 @@ namespace Twilio.Rest.Serverless.V1.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AssetResource object

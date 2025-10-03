@@ -109,6 +109,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific MessagingConfiguration. </summary>
         /// <param name="options"> Delete MessagingConfiguration parameters </param>
@@ -454,6 +455,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a MessagingConfigurationResource object

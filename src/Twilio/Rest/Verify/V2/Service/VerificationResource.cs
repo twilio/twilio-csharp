@@ -213,6 +213,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchVerificationOptions options, ITwilioRestClient client)
         {
@@ -361,6 +362,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a VerificationResource object

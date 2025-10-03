@@ -111,6 +111,7 @@ namespace Twilio.Rest.FlexApi.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchPluginConfigurationOptions options, ITwilioRestClient client)
         {

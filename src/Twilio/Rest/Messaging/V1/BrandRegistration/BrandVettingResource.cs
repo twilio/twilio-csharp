@@ -122,6 +122,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchBrandVettingOptions options, ITwilioRestClient client)
         {

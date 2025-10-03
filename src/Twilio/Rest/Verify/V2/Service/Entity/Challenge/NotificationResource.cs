@@ -117,6 +117,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object

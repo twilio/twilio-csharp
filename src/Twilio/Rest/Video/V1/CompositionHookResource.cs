@@ -148,6 +148,7 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
@@ -524,6 +525,7 @@ namespace Twilio.Rest.Video.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a CompositionHookResource object

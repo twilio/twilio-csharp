@@ -181,6 +181,7 @@ namespace Twilio.Rest.Verify.V2.Service
         
 
     }
+
     /// <summary> Fetch a specific Verification </summary>
     public class FetchVerificationOptions : IOptions<VerificationResource>
     {

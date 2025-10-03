@@ -195,6 +195,7 @@ namespace Twilio.Rest.FrontlineApi.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UserResource object

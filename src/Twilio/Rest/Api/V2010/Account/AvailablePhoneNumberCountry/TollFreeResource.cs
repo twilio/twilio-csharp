@@ -39,10 +39,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             
             string path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCountryCode = options.PathCountryCode.ToString();
             path = path.Replace("{"+"CountryCode"+"}", PathCountryCode);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

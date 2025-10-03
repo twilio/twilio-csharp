@@ -140,6 +140,7 @@ namespace Twilio.Rest.Notify.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {

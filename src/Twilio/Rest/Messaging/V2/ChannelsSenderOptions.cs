@@ -45,15 +45,12 @@ namespace Twilio.Rest.Messaging.V2
         {
             string body = "";
 
-            if (MessagingV2ChannelsSenderRequestsCreate != null)
-            {
-                body = ChannelsSenderResource.ToJson(MessagingV2ChannelsSenderRequestsCreate);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> (WhatsApp only) Delete a Sender. </summary>
     public class DeleteChannelsSenderOptions : IOptions<ChannelsSenderResource>
     {
@@ -176,10 +173,6 @@ namespace Twilio.Rest.Messaging.V2
         {
             string body = "";
 
-            if (MessagingV2ChannelsSenderRequestsUpdate != null)
-            {
-                body = ChannelsSenderResource.ToJson(MessagingV2ChannelsSenderRequestsUpdate);
-            }
             return body;
         }
         

@@ -50,14 +50,11 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         {
             string body = "";
 
-            if (MarketplaceV1InstalledAddOnInstalledAddOnUsage != null)
-            {
-                body = InstalledAddOnUsageResource.ToJson(MarketplaceV1InstalledAddOnInstalledAddOnUsage);
-            }
             return body;
         }
         
 
     }
+
 }
 

@@ -107,6 +107,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Detach Knowledge to Assistant </summary>
         /// <param name="options"> Delete AssistantsKnowledge parameters </param>
@@ -339,13 +340,29 @@ namespace Twilio.Rest.Assistants.V1.Assistant
     }
 
     
-        ///<summary> The type of knowledge source. </summary> 
-        [JsonProperty("description")]
-        public string Description { get; private set; }
-
         ///<summary> The description of knowledge. </summary> 
         [JsonProperty("id")]
         public string Id { get; }
+
+        ///<summary> The name of the knowledge source. </summary> 
+        [JsonProperty("name")]
+        public string Name { get; }
+
+        ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
+        [JsonProperty("type")]
+        public string Type { get; }
+
+        ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; }
+
+        ///<summary> The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; }
+
+        ///<summary> The type of knowledge source. </summary> 
+        [JsonProperty("description")]
+        public string Description { get; private set; }
 
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource. </summary> 
         [JsonProperty("account_sid")]
@@ -355,17 +372,9 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         [JsonProperty("knowledge_source_details")]
         public object KnowledgeSourceDetails { get; private set; }
 
-        ///<summary> The name of the knowledge source. </summary> 
-        [JsonProperty("name")]
-        public string Name { get; }
-
         ///<summary> The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED') </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
-
-        ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
-        [JsonProperty("type")]
-        public string Type { get; }
 
         ///<summary> The url of the knowledge resource. </summary> 
         [JsonProperty("url")]
@@ -374,14 +383,6 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         ///<summary> The embedding model to be used for the knowledge source. </summary> 
         [JsonProperty("embedding_model")]
         public string EmbeddingModel { get; private set; }
-
-        ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; }
-
-        ///<summary> The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; }
 
 
 

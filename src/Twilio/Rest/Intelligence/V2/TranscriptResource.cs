@@ -127,6 +127,7 @@ namespace Twilio.Rest.Intelligence.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Transcript. </summary>
         /// <param name="options"> Delete Transcript parameters </param>

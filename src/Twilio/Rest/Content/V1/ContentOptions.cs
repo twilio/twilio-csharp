@@ -45,15 +45,12 @@ namespace Twilio.Rest.Content.V1
         {
             string body = "";
 
-            if (ContentCreateRequest != null)
-            {
-                body = ContentResource.ToJson(ContentCreateRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Deletes a Content resource </summary>
     public class DeleteContentOptions : IOptions<ContentResource>
     {

@@ -96,6 +96,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource>
     {

@@ -186,6 +186,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object

@@ -123,6 +123,7 @@ namespace Twilio.Rest.Preview.Wireless
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)
         {

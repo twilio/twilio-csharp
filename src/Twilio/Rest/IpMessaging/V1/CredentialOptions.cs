@@ -97,6 +97,7 @@ namespace Twilio.Rest.IpMessaging.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {

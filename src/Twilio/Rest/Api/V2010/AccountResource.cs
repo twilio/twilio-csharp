@@ -126,6 +126,7 @@ namespace Twilio.Rest.Api.V2010
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchAccountOptions options, ITwilioRestClient client)
         {
@@ -394,6 +395,7 @@ namespace Twilio.Rest.Api.V2010
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AccountResource object

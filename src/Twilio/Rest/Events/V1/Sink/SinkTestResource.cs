@@ -101,6 +101,7 @@ namespace Twilio.Rest.Events.V1.Sink
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SinkTestResource object

@@ -76,6 +76,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchMessageInteractionOptions : IOptions<MessageInteractionResource>
     {

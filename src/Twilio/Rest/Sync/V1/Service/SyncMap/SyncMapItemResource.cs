@@ -151,6 +151,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncMapItem parameters </param>
@@ -547,6 +548,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SyncMapItemResource object

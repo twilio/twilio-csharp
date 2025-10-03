@@ -448,6 +448,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UserChannelResource object

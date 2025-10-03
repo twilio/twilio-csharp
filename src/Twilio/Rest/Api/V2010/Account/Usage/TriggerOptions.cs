@@ -104,6 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteTriggerOptions : IOptions<TriggerResource>
     {

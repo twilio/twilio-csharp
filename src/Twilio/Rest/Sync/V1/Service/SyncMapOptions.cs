@@ -72,6 +72,7 @@ namespace Twilio.Rest.Sync.V1.Service
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteSyncMapOptions : IOptions<SyncMapResource>
     {

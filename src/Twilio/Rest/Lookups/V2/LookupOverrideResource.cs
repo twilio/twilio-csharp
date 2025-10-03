@@ -207,6 +207,7 @@ namespace Twilio.Rest.Lookups.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete an Override for a specific package and phone number. </summary>
         /// <param name="options"> Delete LookupOverride parameters </param>
@@ -424,6 +425,7 @@ namespace Twilio.Rest.Lookups.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a LookupOverrideResource object

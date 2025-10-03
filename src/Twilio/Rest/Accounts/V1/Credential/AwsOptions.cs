@@ -69,6 +69,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         
 
     }
+
     /// <summary> Delete a Credential from your account </summary>
     public class DeleteAwsOptions : IOptions<AwsResource>
     {

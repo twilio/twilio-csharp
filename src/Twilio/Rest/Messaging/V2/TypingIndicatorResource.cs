@@ -114,6 +114,7 @@ namespace Twilio.Rest.Messaging.V2
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a TypingIndicatorResource object

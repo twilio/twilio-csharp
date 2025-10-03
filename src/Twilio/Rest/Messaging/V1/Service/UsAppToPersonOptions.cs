@@ -180,6 +180,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteUsAppToPersonOptions : IOptions<UsAppToPersonResource>
     {

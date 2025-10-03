@@ -369,6 +369,7 @@ namespace Twilio.Rest.Preview.Wireless
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SimResource object

@@ -50,15 +50,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
-            if (PublicApiCreateRoleAssignmentRequest != null)
-            {
-                body = RoleAssignmentResource.ToJson(PublicApiCreateRoleAssignmentRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Delete a role assignment for the given organization </summary>
     public class DeleteRoleAssignmentOptions : IOptions<RoleAssignmentResource>
     {

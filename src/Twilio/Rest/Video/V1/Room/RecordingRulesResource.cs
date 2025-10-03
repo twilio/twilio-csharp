@@ -170,6 +170,7 @@ namespace Twilio.Rest.Video.V1.Room
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a RecordingRulesResource object

@@ -154,6 +154,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove an existing webhook scoped to the conversation </summary>
         /// <param name="options"> Delete Webhook parameters </param>
@@ -515,6 +516,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a WebhookResource object

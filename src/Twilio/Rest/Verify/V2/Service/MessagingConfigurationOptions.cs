@@ -69,6 +69,7 @@ namespace Twilio.Rest.Verify.V2.Service
         
 
     }
+
     /// <summary> Delete a specific MessagingConfiguration. </summary>
     public class DeleteMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
     {

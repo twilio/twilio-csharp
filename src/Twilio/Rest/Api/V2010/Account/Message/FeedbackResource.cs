@@ -52,10 +52,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Feedback.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathMessageSid = options.PathMessageSid;
             path = path.Replace("{"+"MessageSid"+"}", PathMessageSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -124,6 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object

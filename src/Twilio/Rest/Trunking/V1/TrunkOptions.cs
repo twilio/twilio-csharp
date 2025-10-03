@@ -98,6 +98,7 @@ namespace Twilio.Rest.Trunking.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteTrunkOptions : IOptions<TrunkResource>
     {

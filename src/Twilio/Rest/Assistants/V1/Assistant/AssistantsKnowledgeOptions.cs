@@ -56,6 +56,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         
 
     }
+
     /// <summary> Detach Knowledge to Assistant </summary>
     public class DeleteAssistantsKnowledgeOptions : IOptions<AssistantsKnowledgeResource>
     {

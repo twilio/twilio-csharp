@@ -115,6 +115,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Bucket. </summary>
         /// <param name="options"> Delete Bucket parameters </param>
@@ -485,6 +486,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a BucketResource object

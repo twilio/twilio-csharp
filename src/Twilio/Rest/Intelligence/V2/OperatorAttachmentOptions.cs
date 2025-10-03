@@ -56,6 +56,7 @@ namespace Twilio.Rest.Intelligence.V2
         
 
     }
+
     /// <summary> Detach an Operator from a Service. </summary>
     public class DeleteOperatorAttachmentOptions : IOptions<OperatorAttachmentResource>
     {

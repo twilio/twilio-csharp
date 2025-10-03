@@ -178,6 +178,7 @@ namespace Twilio.Rest.Wireless.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a Command instance from your account. </summary>
         /// <param name="options"> Delete Command parameters </param>

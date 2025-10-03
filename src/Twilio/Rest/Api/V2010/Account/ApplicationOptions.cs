@@ -157,6 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account
         
 
     }
+
     /// <summary> Delete the application by the specified application sid </summary>
     public class DeleteApplicationOptions : IOptions<ApplicationResource>
     {

@@ -118,6 +118,7 @@ namespace Twilio.Rest.Intelligence.V2
         
 
     }
+
     /// <summary> Delete a specific Service. </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {

@@ -105,6 +105,7 @@ namespace Twilio.Rest.Serverless.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a Function resource. </summary>
         /// <param name="options"> Delete Function parameters </param>
@@ -450,6 +451,7 @@ namespace Twilio.Rest.Serverless.V1.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a FunctionResource object

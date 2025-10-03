@@ -230,6 +230,7 @@ namespace Twilio.Rest.Verify.V2
         
 
     }
+
     /// <summary> Delete a specific Verification Service Instance. </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {

@@ -113,6 +113,7 @@ namespace Twilio.Rest.Video.V1
         
 
     }
+
     /// <summary> Delete a Recording Composition resource identified by a Composition SID. </summary>
     public class DeleteCompositionOptions : IOptions<CompositionResource>
     {

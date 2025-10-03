@@ -71,6 +71,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         
 
     }
+
     /// <summary> Delete a specific End User. </summary>
     public class DeleteEndUserOptions : IOptions<EndUserResource>
     {

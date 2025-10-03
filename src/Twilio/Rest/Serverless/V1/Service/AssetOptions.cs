@@ -60,6 +60,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         
 
     }
+
     /// <summary> Delete an Asset resource. </summary>
     public class DeleteAssetOptions : IOptions<AssetResource>
     {

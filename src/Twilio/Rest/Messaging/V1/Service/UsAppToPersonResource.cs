@@ -165,6 +165,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete UsAppToPerson parameters </param>
@@ -534,6 +535,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UsAppToPersonResource object

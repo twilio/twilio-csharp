@@ -135,6 +135,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -423,6 +424,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AuthorizationDocumentResource object

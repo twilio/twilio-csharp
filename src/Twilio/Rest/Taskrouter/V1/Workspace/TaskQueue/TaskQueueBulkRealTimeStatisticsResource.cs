@@ -102,6 +102,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a TaskQueueBulkRealTimeStatisticsResource object

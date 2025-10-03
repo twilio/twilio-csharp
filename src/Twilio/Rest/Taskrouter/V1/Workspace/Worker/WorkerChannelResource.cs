@@ -327,6 +327,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a WorkerChannelResource object

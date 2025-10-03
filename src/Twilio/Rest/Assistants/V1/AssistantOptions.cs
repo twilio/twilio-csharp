@@ -45,15 +45,12 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceCreateAssistantRequest != null)
-            {
-                body = AssistantResource.ToJson(AssistantsV1ServiceCreateAssistantRequest);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> delete an assistant </summary>
     public class DeleteAssistantOptions : IOptions<AssistantResource>
     {
@@ -163,10 +160,6 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
-            if (AssistantsV1ServiceUpdateAssistantRequest != null)
-            {
-                body = AssistantResource.ToJson(AssistantsV1ServiceUpdateAssistantRequest);
-            }
             return body;
         }
         

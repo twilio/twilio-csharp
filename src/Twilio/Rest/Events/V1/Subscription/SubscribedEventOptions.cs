@@ -67,6 +67,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         
 
     }
+
     /// <summary> Remove an event type from a Subscription. </summary>
     public class DeleteSubscribedEventOptions : IOptions<SubscribedEventResource>
     {

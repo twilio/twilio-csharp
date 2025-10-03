@@ -67,6 +67,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchBrandVettingOptions : IOptions<BrandVettingResource>
     {

@@ -107,6 +107,7 @@ namespace Twilio.Rest.Trusthub.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildUpdateRequest(UpdateComplianceInquiriesOptions options, ITwilioRestClient client)
         {
@@ -184,6 +185,7 @@ namespace Twilio.Rest.Trusthub.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ComplianceInquiriesResource object

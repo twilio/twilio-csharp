@@ -78,6 +78,7 @@ namespace Twilio.Rest.Intelligence.V2
         
 
     }
+
     /// <summary> Delete a specific Transcript. </summary>
     public class DeleteTranscriptOptions : IOptions<TranscriptResource>
     {

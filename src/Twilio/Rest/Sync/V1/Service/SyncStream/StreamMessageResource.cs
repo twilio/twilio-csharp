@@ -111,6 +111,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a StreamMessageResource object

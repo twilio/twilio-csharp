@@ -181,6 +181,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SubscribeRulesResource object

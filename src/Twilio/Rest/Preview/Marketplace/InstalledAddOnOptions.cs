@@ -78,6 +78,7 @@ namespace Twilio.Rest.Preview.Marketplace
         
 
     }
+
     /// <summary> Remove an Add-on installation from your account </summary>
     public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {

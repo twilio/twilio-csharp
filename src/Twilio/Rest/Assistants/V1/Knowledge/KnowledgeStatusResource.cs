@@ -132,13 +132,13 @@ namespace Twilio.Rest.Assistants.V1.Knowledge
     }
 
     
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-
         ///<summary> The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED') </summary> 
         [JsonProperty("status")]
         public string Status { get; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
 
         ///<summary> The last status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED') </summary> 
         [JsonProperty("last_status")]

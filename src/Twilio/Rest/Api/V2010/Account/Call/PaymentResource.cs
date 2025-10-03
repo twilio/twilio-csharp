@@ -105,10 +105,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -237,18 +237,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildUpdateRequest(UpdatePaymentOptions options, ITwilioRestClient client)
         {
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -334,6 +335,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a PaymentResource object

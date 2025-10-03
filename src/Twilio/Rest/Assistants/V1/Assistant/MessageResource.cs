@@ -34,10 +34,10 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         {
             [JsonProperty("identity")]
             private string Identity {get; set;}
-            [JsonProperty("session_id")]
-            private string SessionId {get; set;}
             [JsonProperty("body")]
             private string Body {get; set;}
+            [JsonProperty("session_id")]
+            private string SessionId {get; set;}
             [JsonProperty("webhook")]
             private string Webhook {get; set;}
             [JsonProperty("mode")]
@@ -54,14 +54,14 @@ namespace Twilio.Rest.Assistants.V1.Assistant
                     _assistantsV1ServiceAssistantSendMessageRequest.Identity= identity;
                     return this;
                 }
-                public Builder WithSessionId(string sessionId)
-                {
-                    _assistantsV1ServiceAssistantSendMessageRequest.SessionId= sessionId;
-                    return this;
-                }
                 public Builder WithBody(string body)
                 {
                     _assistantsV1ServiceAssistantSendMessageRequest.Body= body;
+                    return this;
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _assistantsV1ServiceAssistantSendMessageRequest.SessionId= sessionId;
                     return this;
                 }
                 public Builder WithWebhook(string webhook)
@@ -156,6 +156,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a MessageResource object
@@ -195,14 +196,6 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         [JsonProperty("status")]
         public string Status { get; }
 
-        ///<summary> If successful, this property will denote whether the response was flagged or not. </summary> 
-        [JsonProperty("flagged")]
-        public bool? Flagged { get; private set; }
-
-        ///<summary> This property will denote whether the request was aborted or not. </summary> 
-        [JsonProperty("aborted")]
-        public bool? Aborted { get; private set; }
-
         ///<summary> The unique name for the session. </summary> 
         [JsonProperty("session_id")]
         public string SessionId { get; }
@@ -210,6 +203,14 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that sent the Message. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; }
+
+        ///<summary> If successful, this property will denote whether the response was flagged or not. </summary> 
+        [JsonProperty("flagged")]
+        public bool? Flagged { get; private set; }
+
+        ///<summary> This property will denote whether the request was aborted or not. </summary> 
+        [JsonProperty("aborted")]
+        public bool? Aborted { get; private set; }
 
         ///<summary> If successful, the body of the generated response </summary> 
         [JsonProperty("body")]

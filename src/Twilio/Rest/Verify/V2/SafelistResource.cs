@@ -99,6 +99,7 @@ namespace Twilio.Rest.Verify.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove a phone number from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>

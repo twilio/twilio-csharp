@@ -145,6 +145,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Binding parameters </param>

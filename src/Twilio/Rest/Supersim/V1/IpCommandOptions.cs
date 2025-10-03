@@ -94,6 +94,7 @@ namespace Twilio.Rest.Supersim.V1
         
 
     }
+
     /// <summary> Fetch IP Command instance from your account. </summary>
     public class FetchIpCommandOptions : IOptions<IpCommandResource>
     {

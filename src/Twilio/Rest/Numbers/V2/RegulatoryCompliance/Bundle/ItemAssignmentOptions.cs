@@ -60,6 +60,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         
 
     }
+
     /// <summary> Remove an Assignment Item Instance. </summary>
     public class DeleteItemAssignmentOptions : IOptions<ItemAssignmentResource>
     {

@@ -72,6 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         
 
     }
+
     /// <summary> Delete a credential resource. </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {

@@ -152,6 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
 
     }
+
     /// <summary> Stop a Transcription using either the SID of the Transcription resource or the `name` used when creating the resource </summary>
     public class UpdateTranscriptionOptions : IOptions<TranscriptionResource>
     {

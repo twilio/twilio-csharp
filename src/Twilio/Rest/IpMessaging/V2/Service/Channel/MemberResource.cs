@@ -151,6 +151,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Member parameters </param>
@@ -547,6 +548,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a MemberResource object

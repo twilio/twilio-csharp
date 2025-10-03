@@ -124,6 +124,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Supporting Document. </summary>
         /// <param name="options"> Delete SupportingDocument parameters </param>
@@ -452,6 +453,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SupportingDocumentResource object

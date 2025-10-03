@@ -119,6 +119,7 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchCompositionSettingsOptions options, ITwilioRestClient client)
         {

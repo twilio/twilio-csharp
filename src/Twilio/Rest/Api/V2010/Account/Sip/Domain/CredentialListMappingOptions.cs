@@ -63,6 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         
 
     }
+
     /// <summary> Delete a CredentialListMapping resource from an account. </summary>
     public class DeleteCredentialListMappingOptions : IOptions<CredentialListMappingResource>
     {

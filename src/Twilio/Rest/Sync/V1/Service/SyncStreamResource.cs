@@ -109,6 +109,7 @@ namespace Twilio.Rest.Sync.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Stream. </summary>
         /// <param name="options"> Delete SyncStream parameters </param>
@@ -454,6 +455,7 @@ namespace Twilio.Rest.Sync.V1.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SyncStreamResource object

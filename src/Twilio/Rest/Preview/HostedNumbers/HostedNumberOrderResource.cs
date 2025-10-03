@@ -196,6 +196,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
@@ -576,6 +577,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a HostedNumberOrderResource object

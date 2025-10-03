@@ -78,6 +78,7 @@ namespace Twilio.Rest.Chat.V1.Service
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteRoleOptions : IOptions<RoleResource>
     {

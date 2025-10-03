@@ -135,6 +135,7 @@ namespace Twilio.Rest.Numbers.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Cancel the AuthorizationDocument request. </summary>
         /// <param name="options"> Delete AuthorizationDocument parameters </param>

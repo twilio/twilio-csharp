@@ -121,6 +121,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete ConnectionPolicyTarget parameters </param>
@@ -482,6 +483,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ConnectionPolicyTargetResource object

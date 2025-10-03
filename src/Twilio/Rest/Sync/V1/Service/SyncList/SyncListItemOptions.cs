@@ -86,6 +86,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
     {

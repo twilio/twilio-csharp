@@ -78,6 +78,7 @@ namespace Twilio.Rest.Supersim.V1
         
 
     }
+
     /// <summary> Fetch SMS Command instance from your account. </summary>
     public class FetchSmsCommandOptions : IOptions<SmsCommandResource>
     {

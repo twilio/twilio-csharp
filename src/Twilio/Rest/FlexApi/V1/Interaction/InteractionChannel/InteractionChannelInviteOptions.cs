@@ -65,6 +65,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         
 
     }
+
     /// <summary> List all Invites for a Channel. </summary>
     public class ReadInteractionChannelInviteOptions : ReadOptions<InteractionChannelInviteResource>
     {

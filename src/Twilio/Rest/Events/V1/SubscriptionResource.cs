@@ -107,6 +107,7 @@ namespace Twilio.Rest.Events.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Subscription. </summary>
         /// <param name="options"> Delete Subscription parameters </param>
@@ -435,6 +436,7 @@ namespace Twilio.Rest.Events.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SubscriptionResource object

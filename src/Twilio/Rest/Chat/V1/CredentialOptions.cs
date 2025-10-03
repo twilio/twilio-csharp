@@ -97,6 +97,7 @@ namespace Twilio.Rest.Chat.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {

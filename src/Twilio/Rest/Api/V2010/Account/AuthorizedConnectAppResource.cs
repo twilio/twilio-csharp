@@ -52,10 +52,10 @@ namespace Twilio.Rest.Api.V2010.Account
             
             string path = "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathConnectAppSid = options.PathConnectAppSid;
             path = path.Replace("{"+"ConnectAppSid"+"}", PathConnectAppSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

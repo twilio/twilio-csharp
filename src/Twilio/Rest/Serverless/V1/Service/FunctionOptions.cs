@@ -60,6 +60,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         
 
     }
+
     /// <summary> Delete a Function resource. </summary>
     public class DeleteFunctionOptions : IOptions<FunctionResource>
     {

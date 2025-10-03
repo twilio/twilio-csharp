@@ -39,15 +39,12 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
-            if (Body != null)
-            {
-                body = SigningRequestConfigurationResource.ToJson(Body);
-            }
             return body;
         }
         
 
     }
+
     /// <summary> Synchronous operation to retrieve configurations for the customer. </summary>
     public class ReadSigningRequestConfigurationOptions : ReadOptions<SigningRequestConfigurationResource>
     {

@@ -140,12 +140,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimUser
         {
+            [JsonProperty("userName")]
+            private string UserName {get; set;}
             [JsonProperty("id")]
             private string Id {get; set;}
             [JsonProperty("externalId")]
             private string ExternalId {get; set;}
-            [JsonProperty("userName")]
-            private string UserName {get; set;}
             [JsonProperty("displayName")]
             private string DisplayName {get; set;}
             [JsonProperty("name")]
@@ -169,6 +169,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
                 public Builder()
                 {
                 }
+                public Builder WithUserName(string userName)
+                {
+                    _scimUser.UserName= userName;
+                    return this;
+                }
                 public Builder WithId(string id)
                 {
                     _scimUser.Id= id;
@@ -177,11 +182,6 @@ namespace Twilio.Rest.PreviewIam.Organizations
                 public Builder WithExternalId(string externalId)
                 {
                     _scimUser.ExternalId= externalId;
-                    return this;
-                }
-                public Builder WithUserName(string userName)
-                {
-                    _scimUser.UserName= userName;
                     return this;
                 }
                 public Builder WithDisplayName(string displayName)
@@ -306,6 +306,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete User parameters </param>
@@ -656,6 +657,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UserResource object
@@ -691,6 +693,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
     }
 
     
+        ///<summary> Unique username, MUST be same as primary email address </summary> 
+        [JsonProperty("userName")]
+        public string UserName { get; }
+
         ///<summary> Unique Twilio user sid </summary> 
         [JsonProperty("id")]
         public string Id { get; private set; }
@@ -698,10 +704,6 @@ namespace Twilio.Rest.PreviewIam.Organizations
         ///<summary> External unique resource id defined by provisioning client </summary> 
         [JsonProperty("externalId")]
         public string ExternalId { get; private set; }
-
-        ///<summary> Unique username, MUST be same as primary email address </summary> 
-        [JsonProperty("userName")]
-        public string UserName { get; }
 
         ///<summary> User friendly display name </summary> 
         [JsonProperty("displayName")]

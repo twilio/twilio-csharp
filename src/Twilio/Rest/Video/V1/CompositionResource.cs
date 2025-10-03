@@ -160,6 +160,7 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a Recording Composition resource identified by a Composition SID. </summary>
         /// <param name="options"> Delete Composition parameters </param>

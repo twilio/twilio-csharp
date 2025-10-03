@@ -105,6 +105,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Entity. </summary>
         /// <param name="options"> Delete Entity parameters </param>

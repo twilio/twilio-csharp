@@ -167,6 +167,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchMessageInteractionOptions options, ITwilioRestClient client)
         {

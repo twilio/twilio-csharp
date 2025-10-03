@@ -95,6 +95,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
     {

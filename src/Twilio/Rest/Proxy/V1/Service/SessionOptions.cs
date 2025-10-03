@@ -94,6 +94,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         
 
     }
+
     /// <summary> Delete a specific Session. </summary>
     public class DeleteSessionOptions : IOptions<SessionResource>
     {

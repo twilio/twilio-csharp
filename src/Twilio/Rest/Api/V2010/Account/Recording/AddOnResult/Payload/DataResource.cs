@@ -39,14 +39,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult.Payload
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{PayloadSid}/Data.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathReferenceSid = options.PathReferenceSid;
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
             string PathAddOnResultSid = options.PathAddOnResultSid;
             path = path.Replace("{"+"AddOnResultSid"+"}", PathAddOnResultSid);
             string PathPayloadSid = options.PathPayloadSid;
             path = path.Replace("{"+"PayloadSid"+"}", PathPayloadSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

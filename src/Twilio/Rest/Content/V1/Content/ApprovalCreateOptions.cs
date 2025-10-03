@@ -50,14 +50,11 @@ namespace Twilio.Rest.Content.V1.Content
         {
             string body = "";
 
-            if (ContentApprovalRequest != null)
-            {
-                body = ApprovalCreateResource.ToJson(ContentApprovalRequest);
-            }
             return body;
         }
         
 
     }
+
 }
 

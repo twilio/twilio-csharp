@@ -171,6 +171,7 @@ namespace Twilio.Rest.Conversations.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ConfigurationResource object

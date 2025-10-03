@@ -110,6 +110,7 @@ namespace Twilio.Rest.Numbers.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client)
         {

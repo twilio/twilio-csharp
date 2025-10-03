@@ -39,12 +39,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathQueueSid = options.PathQueueSid;
             path = path.Replace("{"+"QueueSid"+"}", PathQueueSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -113,10 +113,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathQueueSid = options.PathQueueSid;
             path = path.Replace("{"+"QueueSid"+"}", PathQueueSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -244,12 +244,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathQueueSid = options.PathQueueSid;
             path = path.Replace("{"+"QueueSid"+"}", PathQueueSid);
             string PathCallSid = options.PathCallSid;
             path = path.Replace("{"+"CallSid"+"}", PathCallSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -327,6 +327,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a MemberResource object

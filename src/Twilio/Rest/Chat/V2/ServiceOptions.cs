@@ -55,6 +55,7 @@ namespace Twilio.Rest.Chat.V2
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {

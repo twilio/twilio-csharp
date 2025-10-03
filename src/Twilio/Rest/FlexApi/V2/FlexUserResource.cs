@@ -189,6 +189,7 @@ namespace Twilio.Rest.FlexApi.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a FlexUserResource object

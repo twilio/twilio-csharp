@@ -180,6 +180,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Bundle. </summary>
         /// <param name="options"> Delete Bundle parameters </param>
@@ -560,6 +561,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a BundleResource object

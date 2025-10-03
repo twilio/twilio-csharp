@@ -49,6 +49,7 @@ namespace Twilio.Rest.Voice.V1
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteConnectionPolicyOptions : IOptions<ConnectionPolicyResource>
     {

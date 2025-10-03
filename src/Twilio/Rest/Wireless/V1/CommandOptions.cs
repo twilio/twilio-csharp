@@ -97,6 +97,7 @@ namespace Twilio.Rest.Wireless.V1
         
 
     }
+
     /// <summary> Delete a Command instance from your account. </summary>
     public class DeleteCommandOptions : IOptions<CommandResource>
     {

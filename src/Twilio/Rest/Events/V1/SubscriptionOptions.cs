@@ -73,6 +73,7 @@ namespace Twilio.Rest.Events.V1
         
 
     }
+
     /// <summary> Delete a specific Subscription. </summary>
     public class DeleteSubscriptionOptions : IOptions<SubscriptionResource>
     {

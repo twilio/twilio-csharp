@@ -323,6 +323,7 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
+
     /// <summary> Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing. </summary>
     public class UpdateComplianceRegistrationInquiriesOptions : IOptions<ComplianceRegistrationInquiriesResource>
     {

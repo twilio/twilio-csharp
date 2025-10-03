@@ -113,6 +113,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     }
 
     }
+
     /// <summary> delete </summary>
     public class DeleteChannelOptions : IOptions<ChannelResource>
     {
