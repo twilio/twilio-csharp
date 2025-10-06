@@ -8,8 +8,8 @@ using Twilio.Rest.Api.V2010.Account;
 class Program
 {
     private static final String GRANT_TYPE = "client_credentials";
-    private static final String OAUTH_CLIENT_SID = System.getenv("OAUTH_CLIENT_ID");
-    private static final String OAUTH_CLIENT_SECRET = System.getenv("OAUTH_CLIENT_SECRET");
+    private static final String CLIENT_ID = System.getenv("OAUTH_CLIENT_ID");
+    private static final String CLIENT_SECRET = System.getenv("OAUTH_CLIENT_SECRET");
     private static final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
     private static final String MESSAGE_SID = System.getenv("MESSAGE_SID");
     
