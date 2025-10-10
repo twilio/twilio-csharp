@@ -610,6 +610,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ReservationResource object

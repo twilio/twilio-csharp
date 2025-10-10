@@ -199,6 +199,7 @@ namespace Twilio.Rest.Verify.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Verification Service Instance. </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -623,6 +624,7 @@ namespace Twilio.Rest.Verify.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ServiceResource object

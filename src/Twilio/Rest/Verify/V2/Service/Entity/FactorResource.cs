@@ -471,6 +471,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a FactorResource object

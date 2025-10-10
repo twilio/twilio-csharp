@@ -67,10 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathAddressSid = options.PathAddressSid;
             path = path.Replace("{"+"AddressSid"+"}", PathAddressSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

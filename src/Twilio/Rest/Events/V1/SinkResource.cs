@@ -106,37 +106,38 @@ namespace Twilio.Rest.Events.V1
 
         /// <summary> Create a new Sink </summary>
         /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
-        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
         /// <param name="sinkType">  </param>
+        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
         public static SinkResource Create(
                                           string description,
-                                          object sinkConfiguration,
                                           SinkResource.SinkTypeEnum sinkType,
+                                          object sinkConfiguration,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateSinkOptions(description, sinkConfiguration, sinkType){  };
+            var options = new CreateSinkOptions(description, sinkType, sinkConfiguration){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a new Sink </summary>
         /// <param name="description"> A human readable description for the Sink **This value should not contain PII.** </param>
-        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
         /// <param name="sinkType">  </param>
+        /// <param name="sinkConfiguration"> The information required for Twilio to connect to the provided Sink encoded as JSON. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(
                                                                                   string description,
-                                                                                  object sinkConfiguration,
                                                                                   SinkResource.SinkTypeEnum sinkType,
+                                                                                  object sinkConfiguration,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateSinkOptions(description, sinkConfiguration, sinkType){  };
+        var options = new CreateSinkOptions(description, sinkType, sinkConfiguration){  };
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Sink. </summary>
         /// <param name="options"> Delete Sink parameters </param>
@@ -469,6 +470,7 @@ namespace Twilio.Rest.Events.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SinkResource object

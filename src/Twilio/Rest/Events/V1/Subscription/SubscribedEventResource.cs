@@ -109,6 +109,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove an event type from a Subscription. </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
@@ -454,6 +455,7 @@ namespace Twilio.Rest.Events.V1.Subscription
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SubscribedEventResource object

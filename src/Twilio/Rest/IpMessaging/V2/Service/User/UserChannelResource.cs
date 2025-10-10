@@ -434,6 +434,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UserChannelResource object

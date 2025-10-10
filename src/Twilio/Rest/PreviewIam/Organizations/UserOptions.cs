@@ -56,9 +56,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {
@@ -206,6 +208,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             }
             return body;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

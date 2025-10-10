@@ -358,6 +358,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a InteractionChannelResource object

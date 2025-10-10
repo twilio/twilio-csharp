@@ -160,6 +160,7 @@ namespace Twilio.Rest.Supersim.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchIpCommandOptions options, ITwilioRestClient client)
         {

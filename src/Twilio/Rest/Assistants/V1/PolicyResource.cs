@@ -195,6 +195,14 @@ namespace Twilio.Rest.Assistants.V1
     }
 
     
+        ///<summary> The type of the policy. </summary> 
+        [JsonProperty("type")]
+        public string Type { get; }
+
+        ///<summary> The details of the policy based on the type. </summary> 
+        [JsonProperty("policy_details")]
+        public object PolicyDetails { get; }
+
         ///<summary> The Policy ID. </summary> 
         [JsonProperty("id")]
         public string Id { get; private set; }
@@ -214,14 +222,6 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The SID of the User that created the Policy resource. </summary> 
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
-
-        ///<summary> The type of the policy. </summary> 
-        [JsonProperty("type")]
-        public string Type { get; }
-
-        ///<summary> The details of the policy based on the type. </summary> 
-        [JsonProperty("policy_details")]
-        public object PolicyDetails { get; }
 
         ///<summary> The date and time in GMT when the Policy was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]

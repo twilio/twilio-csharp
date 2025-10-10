@@ -405,6 +405,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         
 
     }
+
     /// <summary> Kick a participant from a given conference </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {

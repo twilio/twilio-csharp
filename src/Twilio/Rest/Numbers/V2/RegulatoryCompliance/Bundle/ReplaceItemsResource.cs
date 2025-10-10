@@ -122,6 +122,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ReplaceItemsResource object

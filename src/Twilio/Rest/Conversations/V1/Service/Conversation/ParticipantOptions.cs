@@ -125,6 +125,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     }
+
     /// <summary> Remove a participant from the conversation </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {

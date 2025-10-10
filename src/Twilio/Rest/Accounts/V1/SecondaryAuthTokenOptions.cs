@@ -42,6 +42,7 @@ namespace Twilio.Rest.Accounts.V1
         
 
     }
+
     /// <summary> Delete the secondary Auth Token from your account </summary>
     public class DeleteSecondaryAuthTokenOptions : IOptions<SecondaryAuthTokenResource>
     {

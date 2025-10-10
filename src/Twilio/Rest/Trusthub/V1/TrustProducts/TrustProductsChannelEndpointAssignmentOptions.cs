@@ -69,6 +69,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         
 
     }
+
     /// <summary> Remove an Assignment Item Instance. </summary>
     public class DeleteTrustProductsChannelEndpointAssignmentOptions : IOptions<TrustProductsChannelEndpointAssignmentResource>
     {

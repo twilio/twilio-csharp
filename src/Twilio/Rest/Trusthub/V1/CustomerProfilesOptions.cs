@@ -80,6 +80,7 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
+
     /// <summary> Delete a specific Customer-Profile. </summary>
     public class DeleteCustomerProfilesOptions : IOptions<CustomerProfilesResource>
     {

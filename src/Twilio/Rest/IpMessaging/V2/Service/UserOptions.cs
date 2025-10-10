@@ -94,6 +94,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     }
 
     }
+
     /// <summary> delete </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {

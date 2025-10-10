@@ -39,10 +39,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -119,6 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete an IpAddress resource. </summary>
         /// <param name="options"> Delete IpAddress parameters </param>
@@ -129,12 +130,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -201,12 +202,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -275,10 +276,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -406,12 +407,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             
             string path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathIpAccessControlListSid = options.PathIpAccessControlListSid;
             path = path.Replace("{"+"IpAccessControlListSid"+"}", PathIpAccessControlListSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -493,6 +494,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a IpAddressResource object

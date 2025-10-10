@@ -81,6 +81,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         
 
     }
+
     /// <summary> List all Participants for a Channel. </summary>
     public class ReadInteractionChannelParticipantOptions : ReadOptions<InteractionChannelParticipantResource>
     {

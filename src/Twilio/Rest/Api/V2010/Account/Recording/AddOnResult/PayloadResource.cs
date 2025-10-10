@@ -43,14 +43,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathReferenceSid = options.PathReferenceSid;
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
             string PathAddOnResultSid = options.PathAddOnResultSid;
             path = path.Replace("{"+"AddOnResultSid"+"}", PathAddOnResultSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -119,14 +119,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathReferenceSid = options.PathReferenceSid;
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
             string PathAddOnResultSid = options.PathAddOnResultSid;
             path = path.Replace("{"+"AddOnResultSid"+"}", PathAddOnResultSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -198,12 +198,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             
             string path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathReferenceSid = options.PathReferenceSid;
             path = path.Replace("{"+"ReferenceSid"+"}", PathReferenceSid);
             string PathAddOnResultSid = options.PathAddOnResultSid;
             path = path.Replace("{"+"AddOnResultSid"+"}", PathAddOnResultSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

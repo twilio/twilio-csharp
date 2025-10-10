@@ -51,9 +51,11 @@ namespace Twilio.Rest.Knowledge.V1
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> Delete knowledge </summary>
     public class DeleteKnowledgeOptions : IOptions<KnowledgeResource>
     {
@@ -176,6 +178,7 @@ namespace Twilio.Rest.Knowledge.V1
             }
             return body;
         }
+
         
 
     }

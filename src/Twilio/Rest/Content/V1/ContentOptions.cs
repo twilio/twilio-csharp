@@ -51,9 +51,11 @@ namespace Twilio.Rest.Content.V1
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> Deletes a Content resource </summary>
     public class DeleteContentOptions : IOptions<ContentResource>
     {

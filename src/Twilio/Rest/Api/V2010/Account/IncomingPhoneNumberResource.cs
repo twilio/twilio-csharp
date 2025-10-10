@@ -255,6 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a phone-numbers belonging to the account used to make the request. </summary>
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
@@ -265,10 +266,10 @@ namespace Twilio.Rest.Api.V2010.Account
             
             string path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Delete,
@@ -333,10 +334,10 @@ namespace Twilio.Rest.Api.V2010.Account
             
             string path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -543,10 +544,10 @@ namespace Twilio.Rest.Api.V2010.Account
             
             string path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Post,
@@ -704,6 +705,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a IncomingPhoneNumberResource object

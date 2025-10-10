@@ -186,6 +186,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchChallengeOptions options, ITwilioRestClient client)
         {
@@ -492,6 +493,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ChallengeResource object

@@ -55,6 +55,7 @@ namespace Twilio.Rest.Verify.V2
         
 
     }
+
     /// <summary> Remove a phone number from SafeList. </summary>
     public class DeleteSafelistOptions : IOptions<SafelistResource>
     {
