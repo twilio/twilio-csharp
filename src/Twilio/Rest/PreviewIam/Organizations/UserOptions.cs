@@ -50,8 +50,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
+            if (ScimUser != null)
+            {
+                body = UserResource.ToJson(ScimUser);
+            }
             return body;
         }
+
         
 
     }
@@ -197,8 +202,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
+            if (ScimUser != null)
+            {
+                body = UserResource.ToJson(ScimUser);
+            }
             return body;
         }
+
         
     /// <summary> Generate the necessary header parameters </summary>
     public List<KeyValuePair<string, string>> GetHeaderParams()

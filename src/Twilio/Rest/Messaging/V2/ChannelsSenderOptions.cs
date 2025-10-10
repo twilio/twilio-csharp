@@ -45,8 +45,13 @@ namespace Twilio.Rest.Messaging.V2
         {
             string body = "";
 
+            if (MessagingV2ChannelsSenderRequestsCreate != null)
+            {
+                body = ChannelsSenderResource.ToJson(MessagingV2ChannelsSenderRequestsCreate);
+            }
             return body;
         }
+
         
 
     }
@@ -173,8 +178,13 @@ namespace Twilio.Rest.Messaging.V2
         {
             string body = "";
 
+            if (MessagingV2ChannelsSenderRequestsUpdate != null)
+            {
+                body = ChannelsSenderResource.ToJson(MessagingV2ChannelsSenderRequestsUpdate);
+            }
             return body;
         }
+
         
 
     }

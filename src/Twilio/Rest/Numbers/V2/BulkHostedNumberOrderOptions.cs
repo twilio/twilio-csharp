@@ -39,8 +39,13 @@ namespace Twilio.Rest.Numbers.V2
         {
             string body = "";
 
+            if (Body != null)
+            {
+                body = BulkHostedNumberOrderResource.ToJson(Body);
+            }
             return body;
         }
+
         
 
     }

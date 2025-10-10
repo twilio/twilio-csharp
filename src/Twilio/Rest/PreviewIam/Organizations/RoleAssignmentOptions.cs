@@ -50,8 +50,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             string body = "";
 
+            if (PublicApiCreateRoleAssignmentRequest != null)
+            {
+                body = RoleAssignmentResource.ToJson(PublicApiCreateRoleAssignmentRequest);
+            }
             return body;
         }
+
         
 
     }

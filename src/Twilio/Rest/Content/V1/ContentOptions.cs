@@ -45,8 +45,13 @@ namespace Twilio.Rest.Content.V1
         {
             string body = "";
 
+            if (ContentCreateRequest != null)
+            {
+                body = ContentResource.ToJson(ContentCreateRequest);
+            }
             return body;
         }
+
         
 
     }

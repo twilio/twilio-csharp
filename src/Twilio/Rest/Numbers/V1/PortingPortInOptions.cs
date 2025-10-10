@@ -45,8 +45,13 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
+            if (NumbersV1PortingPortInCreate != null)
+            {
+                body = PortingPortInResource.ToJson(NumbersV1PortingPortInCreate);
+            }
             return body;
         }
+
         
 
     }

@@ -39,8 +39,13 @@ namespace Twilio.Rest.Numbers.V1
         {
             string body = "";
 
+            if (Body != null)
+            {
+                body = BulkEligibilityResource.ToJson(Body);
+            }
             return body;
         }
+
         
 
     }

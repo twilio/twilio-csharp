@@ -123,8 +123,13 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
+            if (RateLimitRequest != null)
+            {
+                body = BucketResource.ToJson(RateLimitRequest);
+            }
             return body;
         }
+
         
 
     }

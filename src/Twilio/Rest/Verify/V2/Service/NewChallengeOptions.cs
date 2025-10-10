@@ -50,8 +50,13 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             string body = "";
 
+            if (CreatePasskeysChallengeRequest != null)
+            {
+                body = NewChallengeResource.ToJson(CreatePasskeysChallengeRequest);
+            }
             return body;
         }
+
         
 
     }

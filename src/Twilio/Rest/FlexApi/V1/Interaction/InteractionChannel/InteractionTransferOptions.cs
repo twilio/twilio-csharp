@@ -53,8 +53,13 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             string body = "";
 
+            if (Body != null)
+            {
+                body = InteractionTransferResource.ToJson(Body);
+            }
             return body;
         }
+
         
 
     }
@@ -134,8 +139,13 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             string body = "";
 
+            if (Body != null)
+            {
+                body = InteractionTransferResource.ToJson(Body);
+            }
             return body;
         }
+
         
 
     }

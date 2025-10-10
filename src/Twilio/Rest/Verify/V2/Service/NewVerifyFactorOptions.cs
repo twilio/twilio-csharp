@@ -50,8 +50,13 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             string body = "";
 
+            if (VerifyPasskeysFactorRequest != null)
+            {
+                body = NewVerifyFactorResource.ToJson(VerifyPasskeysFactorRequest);
+            }
             return body;
         }
+
         
 
     }

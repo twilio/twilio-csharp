@@ -48,8 +48,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             string body = "";
 
+            if (Body != null)
+            {
+                body = TaskQueueBulkRealTimeStatisticsResource.ToJson(Body);
+            }
             return body;
         }
+
         
 
     }

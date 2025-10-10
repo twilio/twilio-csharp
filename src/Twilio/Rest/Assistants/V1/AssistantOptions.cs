@@ -45,8 +45,13 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
+            if (AssistantsV1ServiceCreateAssistantRequest != null)
+            {
+                body = AssistantResource.ToJson(AssistantsV1ServiceCreateAssistantRequest);
+            }
             return body;
         }
+
         
 
     }
@@ -160,8 +165,13 @@ namespace Twilio.Rest.Assistants.V1
         {
             string body = "";
 
+            if (AssistantsV1ServiceUpdateAssistantRequest != null)
+            {
+                body = AssistantResource.ToJson(AssistantsV1ServiceUpdateAssistantRequest);
+            }
             return body;
         }
+
         
 
     }

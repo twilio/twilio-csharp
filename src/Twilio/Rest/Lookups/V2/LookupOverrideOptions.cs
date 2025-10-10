@@ -53,8 +53,13 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
+            if (OverridesRequest != null)
+            {
+                body = LookupOverrideResource.ToJson(OverridesRequest);
+            }
             return body;
         }
+
         
 
     }
@@ -159,8 +164,13 @@ namespace Twilio.Rest.Lookups.V2
         {
             string body = "";
 
+            if (OverridesRequest != null)
+            {
+                body = LookupOverrideResource.ToJson(OverridesRequest);
+            }
             return body;
         }
+
         
 
     }
