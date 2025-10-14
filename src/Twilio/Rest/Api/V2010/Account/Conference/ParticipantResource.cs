@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="amdStatusCallbackMethod"> The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </param>
         /// <param name="trim"> Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`. </param>
         /// <param name="callToken"> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </param>
-        /// <param name="callerDisplayName"> The name that appears to the called party for this call. Must be between 2 and 255 characters. </param>
+        /// <param name="callerDisplayName"> The name that populates the display name in the From header. Must be between 2 and 255 characters. Only applicable for calls to sip address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="amdStatusCallbackMethod"> The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </param>
         /// <param name="trim"> Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`. </param>
         /// <param name="callToken"> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </param>
-        /// <param name="callerDisplayName"> The name that appears to the called party for this call. Must be between 2 and 255 characters. </param>
+        /// <param name="callerDisplayName"> The name that populates the display name in the From header. Must be between 2 and 255 characters. Only applicable for calls to sip address. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(

@@ -99,7 +99,7 @@ namespace Twilio.Rest.Messaging.V1
             );
         }
 
-        /// <summary> create </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="options"> Create TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="options"> Create TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
-        /// <summary> create </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
@@ -147,6 +147,18 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
+        /// <param name="businessRegistrationNumber"> A legally recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationCountry"> Country business is registered in </param>
+        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
+        /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
+        /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
+        /// <param name="helpMessageSample"> A sample help message provided to users. </param>
+        /// <param name="privacyPolicyUrl"> The URL to the privacy policy for the business or organization. </param>
+        /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
+        /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
+        /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Create(
@@ -173,14 +185,26 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
                                           string externalReferenceId = null,
+                                          string businessRegistrationNumber = null,
+                                          string businessRegistrationAuthority = null,
+                                          string businessRegistrationCountry = null,
+                                          string businessType = null,
+                                          string businessRegistrationPhoneNumber = null,
+                                          string doingBusinessAs = null,
+                                          string optInConfirmationMessage = null,
+                                          string helpMessageSample = null,
+                                          string privacyPolicyUrl = null,
+                                          string termsAndConditionsUrl = null,
+                                          bool? ageGatedContent = null,
+                                          List<string> optInKeywords = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
+            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
             return Create(options, client);
         }
 
         #if !NET35
-        /// <summary> create </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
@@ -204,6 +228,18 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
+        /// <param name="businessRegistrationNumber"> A legally recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationCountry"> Country business is registered in </param>
+        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
+        /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
+        /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
+        /// <param name="helpMessageSample"> A sample help message provided to users. </param>
+        /// <param name="privacyPolicyUrl"> The URL to the privacy policy for the business or organization. </param>
+        /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
+        /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
+        /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(
@@ -230,14 +266,26 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string businessContactEmail = null,
                                                                                   Types.PhoneNumber businessContactPhone = null,
                                                                                   string externalReferenceId = null,
+                                                                                  string businessRegistrationNumber = null,
+                                                                                  string businessRegistrationAuthority = null,
+                                                                                  string businessRegistrationCountry = null,
+                                                                                  string businessType = null,
+                                                                                  string businessRegistrationPhoneNumber = null,
+                                                                                  string doingBusinessAs = null,
+                                                                                  string optInConfirmationMessage = null,
+                                                                                  string helpMessageSample = null,
+                                                                                  string privacyPolicyUrl = null,
+                                                                                  string termsAndConditionsUrl = null,
+                                                                                  bool? ageGatedContent = null,
+                                                                                  List<string> optInKeywords = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
             return await CreateAsync(options, client);
         }
         #endif
         
-        /// <summary> delete </summary>
+        /// <summary> Delete a tollfree verification </summary>
         /// <param name="options"> Delete TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -258,7 +306,7 @@ namespace Twilio.Rest.Messaging.V1
             );
         }
 
-        /// <summary> delete </summary>
+        /// <summary> Delete a tollfree verification </summary>
         /// <param name="options"> Delete TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -270,7 +318,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> delete </summary>
+        /// <summary> Delete a tollfree verification </summary>
         /// <param name="options"> Delete TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -283,7 +331,7 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
-        /// <summary> delete </summary>
+        /// <summary> Delete a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -294,7 +342,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> delete </summary>
+        /// <summary> Delete a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -322,7 +370,7 @@ namespace Twilio.Rest.Messaging.V1
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> Retrieve a tollfree verification </summary>
         /// <param name="options"> Fetch TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -334,7 +382,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Retrieve a tollfree verification </summary>
         /// <param name="options"> Fetch TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -345,7 +393,7 @@ namespace Twilio.Rest.Messaging.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
+        /// <summary> Retrieve a tollfree verification </summary>
         /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -358,7 +406,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Retrieve a tollfree verification </summary>
         /// <param name="pathSid"> A unique string identifying a Tollfree Verification. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -383,7 +431,7 @@ namespace Twilio.Rest.Messaging.V1
                 headerParams: null
             );
         }
-        /// <summary> read </summary>
+        /// <summary> List tollfree verifications </summary>
         /// <param name="options"> Read TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -396,7 +444,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> read </summary>
+        /// <summary> List tollfree verifications </summary>
         /// <param name="options"> Read TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -409,7 +457,7 @@ namespace Twilio.Rest.Messaging.V1
             return new ResourceSet<TollfreeVerificationResource>(page, options, client);
         }
         #endif
-        /// <summary> read </summary>
+        /// <summary> List tollfree verifications </summary>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
         /// <param name="status"> The compliance status of the Tollfree Verification record. </param>
         /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
@@ -432,7 +480,7 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         #if !NET35
-        /// <summary> read </summary>
+        /// <summary> List tollfree verifications </summary>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
         /// <param name="status"> The compliance status of the Tollfree Verification record. </param>
         /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
@@ -522,7 +570,7 @@ namespace Twilio.Rest.Messaging.V1
             );
         }
 
-        /// <summary> update </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="options"> Update TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -533,7 +581,7 @@ namespace Twilio.Rest.Messaging.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> update </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="options"> Update TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -547,7 +595,7 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
-        /// <summary> update </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
@@ -570,6 +618,18 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
+        /// <param name="businessRegistrationNumber"> A legaly recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationCountry"> Country business is registered in </param>
+        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
+        /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
+        /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
+        /// <param name="helpMessageSample"> A sample help message provided to users. </param>
+        /// <param name="privacyPolicyUrl"> The URL to the privacy policy for the business or organization. </param>
+        /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
+        /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
+        /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Update(
@@ -595,14 +655,26 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessContactEmail = null,
                                           Types.PhoneNumber businessContactPhone = null,
                                           string editReason = null,
+                                          string businessRegistrationNumber = null,
+                                          string businessRegistrationAuthority = null,
+                                          string businessRegistrationCountry = null,
+                                          string businessType = null,
+                                          string businessRegistrationPhoneNumber = null,
+                                          string doingBusinessAs = null,
+                                          string optInConfirmationMessage = null,
+                                          string helpMessageSample = null,
+                                          string privacyPolicyUrl = null,
+                                          string termsAndConditionsUrl = null,
+                                          bool? ageGatedContent = null,
+                                          List<string> optInKeywords = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
             return Update(options, client);
         }
 
         #if !NET35
-        /// <summary> update </summary>
+        /// <summary> Create a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
@@ -625,6 +697,18 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
+        /// <param name="businessRegistrationNumber"> A legaly recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationCountry"> Country business is registered in </param>
+        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
+        /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
+        /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
+        /// <param name="helpMessageSample"> A sample help message provided to users. </param>
+        /// <param name="privacyPolicyUrl"> The URL to the privacy policy for the business or organization. </param>
+        /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
+        /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
+        /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> UpdateAsync(
@@ -650,9 +734,21 @@ namespace Twilio.Rest.Messaging.V1
                                                                               string businessContactEmail = null,
                                                                               Types.PhoneNumber businessContactPhone = null,
                                                                               string editReason = null,
+                                                                              string businessRegistrationNumber = null,
+                                                                              string businessRegistrationAuthority = null,
+                                                                              string businessRegistrationCountry = null,
+                                                                              string businessType = null,
+                                                                              string businessRegistrationPhoneNumber = null,
+                                                                              string doingBusinessAs = null,
+                                                                              string optInConfirmationMessage = null,
+                                                                              string helpMessageSample = null,
+                                                                              string privacyPolicyUrl = null,
+                                                                              string termsAndConditionsUrl = null,
+                                                                              bool? ageGatedContent = null,
+                                                                              List<string> optInKeywords = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -869,7 +965,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("privacy_policy_url")]
         public Uri PrivacyPolicyUrl { get; private set; }
 
-        ///<summary> The URL to the terms and conditions for the business or organization. </summary> 
+        ///<summary> The URL of the terms and conditions for the business or organization. </summary> 
         [JsonProperty("terms_and_conditions_url")]
         public Uri TermsAndConditionsUrl { get; private set; }
 
@@ -877,7 +973,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("age_gated_content")]
         public bool? AgeGatedContent { get; private set; }
 
-        ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
+        ///<summary> List of keywords that users can send to opt in or out of messages. </summary> 
         [JsonProperty("opt_in_keywords")]
         public List<string> OptInKeywords { get; private set; }
 

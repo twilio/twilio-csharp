@@ -721,6 +721,10 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
 
+        ///<summary> Unique ID of the request's support ticket </summary> 
+        [JsonProperty("support_ticket_id")]
+        public int? SupportTicketId { get; private set; }
+
 
 
         private PortingPortInResource() {

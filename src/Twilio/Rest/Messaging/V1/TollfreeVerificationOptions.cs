@@ -24,7 +24,7 @@ using System.Linq;
 namespace Twilio.Rest.Messaging.V1
 {
 
-    /// <summary> create </summary>
+    /// <summary> Create a tollfree verification </summary>
     public class CreateTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
         
@@ -97,6 +97,42 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
         public string ExternalReferenceId { get; set; }
 
+        ///<summary> A legally recognized business registration number </summary> 
+        public string BusinessRegistrationNumber { get; set; }
+
+        ///<summary> The organizational authority for business registrations </summary> 
+        public string BusinessRegistrationAuthority { get; set; }
+
+        ///<summary> Country business is registered in </summary> 
+        public string BusinessRegistrationCountry { get; set; }
+
+        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
+        public string BusinessType { get; set; }
+
+        ///<summary> The E.164 formatted number associated with the business. </summary> 
+        public string BusinessRegistrationPhoneNumber { get; set; }
+
+        ///<summary> Trade name, sub entity, or downstream business name of business being submitted for verification </summary> 
+        public string DoingBusinessAs { get; set; }
+
+        ///<summary> The confirmation message sent to users when they opt in to receive messages. </summary> 
+        public string OptInConfirmationMessage { get; set; }
+
+        ///<summary> A sample help message provided to users. </summary> 
+        public string HelpMessageSample { get; set; }
+
+        ///<summary> The URL to the privacy policy for the business or organization. </summary> 
+        public string PrivacyPolicyUrl { get; set; }
+
+        ///<summary> The URL to the terms and conditions for the business or organization. </summary> 
+        public string TermsAndConditionsUrl { get; set; }
+
+        ///<summary> Indicates if the content is age gated. </summary> 
+        public bool? AgeGatedContent { get; set; }
+
+        ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
+        public List<string> OptInKeywords { get; set; }
+
 
         /// <summary> Construct a new CreateTollfreeVerificationOptions </summary>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
@@ -121,6 +157,7 @@ namespace Twilio.Rest.Messaging.V1
             OptInType = optInType;
             MessageVolume = messageVolume;
             TollfreePhoneNumberSid = tollfreePhoneNumberSid;
+            OptInKeywords = new List<string>();
         }
 
         
@@ -221,13 +258,61 @@ namespace Twilio.Rest.Messaging.V1
             {
                 p.Add(new KeyValuePair<string, string>("ExternalReferenceId", ExternalReferenceId));
             }
+            if (BusinessRegistrationNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationNumber", BusinessRegistrationNumber));
+            }
+            if (BusinessRegistrationAuthority != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+            }
+            if (BusinessRegistrationCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationCountry", BusinessRegistrationCountry));
+            }
+            if (BusinessType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType));
+            }
+            if (BusinessRegistrationPhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationPhoneNumber", BusinessRegistrationPhoneNumber));
+            }
+            if (DoingBusinessAs != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DoingBusinessAs", DoingBusinessAs));
+            }
+            if (OptInConfirmationMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInConfirmationMessage", OptInConfirmationMessage));
+            }
+            if (HelpMessageSample != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HelpMessageSample", HelpMessageSample));
+            }
+            if (PrivacyPolicyUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrivacyPolicyUrl", PrivacyPolicyUrl));
+            }
+            if (TermsAndConditionsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TermsAndConditionsUrl", TermsAndConditionsUrl));
+            }
+            if (AgeGatedContent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AgeGatedContent", AgeGatedContent.Value.ToString().ToLower()));
+            }
+            if (OptInKeywords != null)
+            {
+                p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
+            }
             return p;
         }
 
         
 
     }
-    /// <summary> delete </summary>
+    /// <summary> Delete a tollfree verification </summary>
     public class DeleteTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
         
@@ -257,7 +342,7 @@ namespace Twilio.Rest.Messaging.V1
     }
 
 
-    /// <summary> fetch </summary>
+    /// <summary> Retrieve a tollfree verification </summary>
     public class FetchTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
     
@@ -287,7 +372,7 @@ namespace Twilio.Rest.Messaging.V1
     }
 
 
-    /// <summary> read </summary>
+    /// <summary> List tollfree verifications </summary>
     public class ReadTollfreeVerificationOptions : ReadOptions<TollfreeVerificationResource>
     {
     
@@ -339,7 +424,7 @@ namespace Twilio.Rest.Messaging.V1
 
     }
 
-    /// <summary> update </summary>
+    /// <summary> Create a tollfree verification </summary>
     public class UpdateTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
     
@@ -409,6 +494,42 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </summary> 
         public string EditReason { get; set; }
 
+        ///<summary> A legaly recognized business registration number </summary> 
+        public string BusinessRegistrationNumber { get; set; }
+
+        ///<summary> The organizational authority for business registrations </summary> 
+        public string BusinessRegistrationAuthority { get; set; }
+
+        ///<summary> Country business is registered in </summary> 
+        public string BusinessRegistrationCountry { get; set; }
+
+        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
+        public string BusinessType { get; set; }
+
+        ///<summary> The E.164 formatted number associated with the business. </summary> 
+        public string BusinessRegistrationPhoneNumber { get; set; }
+
+        ///<summary> Trade name, sub entity, or downstream business name of business being submitted for verification </summary> 
+        public string DoingBusinessAs { get; set; }
+
+        ///<summary> The confirmation message sent to users when they opt in to receive messages. </summary> 
+        public string OptInConfirmationMessage { get; set; }
+
+        ///<summary> A sample help message provided to users. </summary> 
+        public string HelpMessageSample { get; set; }
+
+        ///<summary> The URL to the privacy policy for the business or organization. </summary> 
+        public string PrivacyPolicyUrl { get; set; }
+
+        ///<summary> The URL to the terms and conditions for the business or organization. </summary> 
+        public string TermsAndConditionsUrl { get; set; }
+
+        ///<summary> Indicates if the content is age gated. </summary> 
+        public bool? AgeGatedContent { get; set; }
+
+        ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
+        public List<string> OptInKeywords { get; set; }
+
 
 
         /// <summary> Construct a new UpdateTollfreeVerificationOptions </summary>
@@ -418,6 +539,7 @@ namespace Twilio.Rest.Messaging.V1
             PathSid = pathSid;
             UseCaseCategories = new List<string>();
             OptInImageUrls = new List<string>();
+            OptInKeywords = new List<string>();
         }
 
         
@@ -509,6 +631,54 @@ namespace Twilio.Rest.Messaging.V1
             if (EditReason != null)
             {
                 p.Add(new KeyValuePair<string, string>("EditReason", EditReason));
+            }
+            if (BusinessRegistrationNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationNumber", BusinessRegistrationNumber));
+            }
+            if (BusinessRegistrationAuthority != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+            }
+            if (BusinessRegistrationCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationCountry", BusinessRegistrationCountry));
+            }
+            if (BusinessType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType));
+            }
+            if (BusinessRegistrationPhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationPhoneNumber", BusinessRegistrationPhoneNumber));
+            }
+            if (DoingBusinessAs != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DoingBusinessAs", DoingBusinessAs));
+            }
+            if (OptInConfirmationMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInConfirmationMessage", OptInConfirmationMessage));
+            }
+            if (HelpMessageSample != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HelpMessageSample", HelpMessageSample));
+            }
+            if (PrivacyPolicyUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrivacyPolicyUrl", PrivacyPolicyUrl));
+            }
+            if (TermsAndConditionsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TermsAndConditionsUrl", TermsAndConditionsUrl));
+            }
+            if (AgeGatedContent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AgeGatedContent", AgeGatedContent.Value.ToString().ToLower()));
+            }
+            if (OptInKeywords != null)
+            {
+                p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
             }
             return p;
         }

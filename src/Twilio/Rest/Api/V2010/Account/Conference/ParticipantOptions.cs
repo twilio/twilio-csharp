@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </summary> 
         public string CallToken { get; set; }
 
-        ///<summary> The name that appears to the called party for this call. Must be between 2 and 255 characters. </summary> 
+        ///<summary> The name that populates the display name in the From header. Must be between 2 and 255 characters. Only applicable for calls to sip address. </summary> 
         public string CallerDisplayName { get; set; }
 
 

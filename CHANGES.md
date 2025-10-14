@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2025-10-14] Version 7.13.4
+---------------------------
+**Library - Docs**
+- [PR #806](https://github.com/twilio/twilio-csharp/pull/806): update oauth example. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Updated description for property `CallerDisplayName` for participant create request
+- Updated description for property `CallerDisplayName` for participant create request
+
+**Accounts**
+- FILE_IS_AUTO_GENERATED: false
+
+
 [2025-09-30] Version 7.13.3
 ---------------------------
 **Library - Chore**
