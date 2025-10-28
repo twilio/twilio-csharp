@@ -68,7 +68,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             }
             public static readonly ChannelStatusEnum Joined = new ChannelStatusEnum("joined");
             public static readonly ChannelStatusEnum Invited = new ChannelStatusEnum("invited");
-            public static readonly ChannelStatusEnum NotParticipating = new ChannelStatusEnum("not_participating");
+            public static readonly ChannelStatusEnum Notparticipating = new ChannelStatusEnum("notParticipating");
 
         }
 
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary> List all Channels for a given User. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Channel resources from. </param>
         /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns>
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary> List all Channels for a given User. </summary>
         /// <param name="pathServiceSid"> The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the User Channel resources from. </param>
         /// <param name="pathUserSid"> The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) to read the User Channel resources from. This value can be either the `sid` or the `identity` of the User resource. </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>

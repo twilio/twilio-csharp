@@ -78,6 +78,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             public static readonly ChannelStatusEnum Closed = new ChannelStatusEnum("closed");
             public static readonly ChannelStatusEnum Inactive = new ChannelStatusEnum("inactive");
             public static readonly ChannelStatusEnum Pause = new ChannelStatusEnum("pause");
+            public static readonly ChannelStatusEnum Transfer = new ChannelStatusEnum("transfer");
 
         }
 

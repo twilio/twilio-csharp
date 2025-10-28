@@ -211,11 +211,11 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
 
         ///<summary> Offset from the beginning of the transcript when this sentence starts. </summary> 
         [JsonProperty("start_time")]
-        public decimal? StartTime { get; private set; }
+        public string StartTime { get; private set; }
 
         ///<summary> Offset from the beginning of the transcript when this sentence ends. </summary> 
         [JsonProperty("end_time")]
-        public decimal? EndTime { get; private set; }
+        public string EndTime { get; private set; }
 
         ///<summary> Transcript text. </summary> 
         [JsonProperty("transcript")]
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
 
         ///<summary> The confidence </summary> 
         [JsonProperty("confidence")]
-        public decimal? Confidence { get; private set; }
+        public string Confidence { get; private set; }
 
         ///<summary> Detailed information for each of the words of the given Sentence. </summary> 
         [JsonProperty("words")]

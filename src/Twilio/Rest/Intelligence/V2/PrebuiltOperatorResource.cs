@@ -45,6 +45,7 @@ namespace Twilio.Rest.Intelligence.V2
             public static readonly AvailabilityEnum Beta = new AvailabilityEnum("beta");
             public static readonly AvailabilityEnum Public = new AvailabilityEnum("public");
             public static readonly AvailabilityEnum Retired = new AvailabilityEnum("retired");
+            public static readonly AvailabilityEnum GeneralAvailability = new AvailabilityEnum("general-availability");
 
         }
 

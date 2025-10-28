@@ -75,6 +75,7 @@ namespace Twilio.Rest.Intelligence.V2
             public static readonly OutputTypeEnum TextExtraction = new OutputTypeEnum("text-extraction");
             public static readonly OutputTypeEnum TextExtractionNormalized = new OutputTypeEnum("text-extraction-normalized");
             public static readonly OutputTypeEnum TextGeneration = new OutputTypeEnum("text-generation");
+            public static readonly OutputTypeEnum Json = new OutputTypeEnum("json");
 
         }
 

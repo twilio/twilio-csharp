@@ -46,6 +46,7 @@ namespace Twilio.Rest.Intelligence.V2
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Error = new StatusEnum("error");
 
         }
 

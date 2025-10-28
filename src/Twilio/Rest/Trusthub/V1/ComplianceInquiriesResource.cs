@@ -75,35 +75,35 @@ namespace Twilio.Rest.Trusthub.V1
         #endif
 
         /// <summary> Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
-        /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
         /// <param name="notificationEmail"> The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used. </param>
         /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceInquiries </returns>
         public static ComplianceInquiriesResource Create(
-                                          string primaryProfileSid,
                                           string notificationEmail = null,
                                           string themeSetId = null,
+                                          string primaryProfileSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId };
+            var options = new CreateComplianceInquiriesOptions(){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId, PrimaryProfileSid = primaryProfileSid };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
-        /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
         /// <param name="notificationEmail"> The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used. </param>
         /// <param name="themeSetId"> Theme id for styling the inquiry form. </param>
+        /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceInquiriesResource> CreateAsync(
-                                                                                  string primaryProfileSid,
                                                                                   string notificationEmail = null,
                                                                                   string themeSetId = null,
+                                                                                  string primaryProfileSid = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceInquiriesOptions(primaryProfileSid){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId };
+        var options = new CreateComplianceInquiriesOptions(){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId, PrimaryProfileSid = primaryProfileSid };
             return await CreateAsync(options, client);
         }
         #endif

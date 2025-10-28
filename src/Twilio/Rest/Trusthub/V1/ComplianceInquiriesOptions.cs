@@ -28,22 +28,16 @@ namespace Twilio.Rest.Trusthub.V1
     public class CreateComplianceInquiriesOptions : IOptions<ComplianceInquiriesResource>
     {
         
-        ///<summary> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </summary> 
-        public string PrimaryProfileSid { get; }
-
         ///<summary> The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used. </summary> 
         public string NotificationEmail { get; set; }
 
         ///<summary> Theme id for styling the inquiry form. </summary> 
         public string ThemeSetId { get; set; }
 
+        ///<summary> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </summary> 
+        public string PrimaryProfileSid { get; set; }
 
-        /// <summary> Construct a new CreateComplianceInquiryOptions </summary>
-        /// <param name="primaryProfileSid"> The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile. </param>
-        public CreateComplianceInquiriesOptions(string primaryProfileSid)
-        {
-            PrimaryProfileSid = primaryProfileSid;
-        }
+
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -51,10 +45,6 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (PrimaryProfileSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PrimaryProfileSid", PrimaryProfileSid));
-            }
             if (NotificationEmail != null)
             {
                 p.Add(new KeyValuePair<string, string>("NotificationEmail", NotificationEmail));
@@ -62,6 +52,10 @@ namespace Twilio.Rest.Trusthub.V1
             if (ThemeSetId != null)
             {
                 p.Add(new KeyValuePair<string, string>("ThemeSetId", ThemeSetId));
+            }
+            if (PrimaryProfileSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrimaryProfileSid", PrimaryProfileSid));
             }
             return p;
         }

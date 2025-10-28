@@ -41,12 +41,12 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             {
                 return new OperatorTypeEnum(value);
             }
-            public static readonly OperatorTypeEnum ConversationClassify = new OperatorTypeEnum("conversation_classify");
-            public static readonly OperatorTypeEnum UtteranceClassify = new OperatorTypeEnum("utterance_classify");
+            public static readonly OperatorTypeEnum ConversationClassify = new OperatorTypeEnum("conversation-classify");
+            public static readonly OperatorTypeEnum UtteranceClassify = new OperatorTypeEnum("utterance-classify");
             public static readonly OperatorTypeEnum Extract = new OperatorTypeEnum("extract");
-            public static readonly OperatorTypeEnum ExtractNormalize = new OperatorTypeEnum("extract_normalize");
-            public static readonly OperatorTypeEnum PiiExtract = new OperatorTypeEnum("pii_extract");
-            public static readonly OperatorTypeEnum TextGeneration = new OperatorTypeEnum("text_generation");
+            public static readonly OperatorTypeEnum ExtractNormalize = new OperatorTypeEnum("extract-normalize");
+            public static readonly OperatorTypeEnum PiiExtract = new OperatorTypeEnum("pii-extract");
+            public static readonly OperatorTypeEnum TextGeneration = new OperatorTypeEnum("text-generation");
             public static readonly OperatorTypeEnum Json = new OperatorTypeEnum("json");
 
         }
