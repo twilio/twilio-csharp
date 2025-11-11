@@ -463,6 +463,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
         /// <param name="includeSubAccounts"> Whether to include Tollfree Verifications from sub accounts in list response. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="trustProductSid"> The trust product sids / tollfree bundle sids of tollfree verifications </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -472,10 +473,11 @@ namespace Twilio.Rest.Messaging.V1
                                                      string externalReferenceId = null,
                                                      bool? includeSubAccounts = null,
                                                      long? pageSize = null,
+                                                     List<string> trustProductSid = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, TrustProductSid = trustProductSid, Limit = limit};
             return Read(options, client);
         }
 
@@ -486,6 +488,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="externalReferenceId"> Customer supplied reference id for the Tollfree Verification record. </param>
         /// <param name="includeSubAccounts"> Whether to include Tollfree Verifications from sub accounts in list response. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="trustProductSid"> The trust product sids / tollfree bundle sids of tollfree verifications </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -495,10 +498,11 @@ namespace Twilio.Rest.Messaging.V1
                                                                                              string externalReferenceId = null,
                                                                                              bool? includeSubAccounts = null,
                                                                                              long? pageSize = null,
+                                                                                             List<string> trustProductSid = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, TrustProductSid = trustProductSid, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

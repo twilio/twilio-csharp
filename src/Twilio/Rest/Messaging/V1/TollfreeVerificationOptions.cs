@@ -388,6 +388,9 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Whether to include Tollfree Verifications from sub accounts in list response. </summary> 
         public bool? IncludeSubAccounts { get; set; }
 
+        ///<summary> The trust product sids / tollfree bundle sids of tollfree verifications </summary> 
+        public List<string> TrustProductSid { get; set; }
+
 
 
 
@@ -416,6 +419,10 @@ namespace Twilio.Rest.Messaging.V1
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            if (TrustProductSid != null)
+            {
+                p.AddRange(TrustProductSid.Select(TrustProductSid => new KeyValuePair<string, string>("TrustProductSid", TrustProductSid)));
             }
             return p;
         }

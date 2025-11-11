@@ -440,6 +440,31 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <ConversationRelaySession/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="connector"> The unique name or installed add-on sid that identifies the installed addon resource for
+        ///                 the ConversationRelaySession Connector </param>
+        /// <param name="sessionConfiguration"> The unique name or id of the ConversationRelaySession  Configuration resource.
+        ///                            </param>
+        public Connect ConversationRelaySession(string connector = null, string sessionConfiguration = null)
+        {
+            var newChild = new ConversationRelaySession(connector, sessionConfiguration);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <ConversationRelaySession/> element as a child of this element
+        /// </summary>
+        /// <param name="conversationRelaySession"> A ConversationRelaySession instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect ConversationRelaySession(ConversationRelaySession conversationRelaySession)
+        {
+            this.Append(conversationRelaySession);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

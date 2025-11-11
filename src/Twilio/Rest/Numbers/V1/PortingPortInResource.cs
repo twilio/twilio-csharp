@@ -725,6 +725,10 @@ namespace Twilio.Rest.Numbers.V1
         [JsonProperty("support_ticket_id")]
         public int? SupportTicketId { get; private set; }
 
+        ///<summary> The signature_request_url </summary> 
+        [JsonProperty("signature_request_url")]
+        public Uri SignatureRequestUrl { get; private set; }
+
 
 
         private PortingPortInResource() {

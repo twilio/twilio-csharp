@@ -181,6 +181,45 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Recording/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="recordingStatusCallback"> Recording Status Callback URL </param>
+        /// <param name="recordingStatusCallbackMethod"> Recording Status Callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording Status Callback Events </param>
+        /// <param name="trim"> Trim the recording </param>
+        /// <param name="track"> To indicate which audio track should be recorded </param>
+        /// <param name="channels"> The recording channels for the final recording </param>
+        public Start Recording(string recordingStatusCallback = null,
+                               Recording.RecordingStatusCallbackMethodEnum recordingStatusCallbackMethod = null,
+                               IEnumerable<Recording.EventEnum> recordingStatusCallbackEvent = null,
+                               Recording.TrimEnum trim = null,
+                               Recording.TrackEnum track = null,
+                               Recording.ChannelsEnum channels = null)
+        {
+            var newChild = new Recording(
+                recordingStatusCallback,
+                recordingStatusCallbackMethod,
+                recordingStatusCallbackEvent,
+                trim,
+                track,
+                channels
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Recording/> element as a child of this element
+        /// </summary>
+        /// <param name="recording"> A Recording instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Start Recording(Recording recording)
+        {
+            this.Append(recording);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

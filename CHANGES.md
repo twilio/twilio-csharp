@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2025-11-11] Version 7.13.6
+---------------------------
+**Twiml**
+- Add new noun `<ConversationRelaySession>`
+- Add support for `<Recording>` noun under `<Start>` verb
+
+
 [2025-10-28] Version 7.13.5
 ---------------------------
 **Ai**
