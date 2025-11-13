@@ -30,49 +30,6 @@ namespace Twilio.Rest.Numbers.V2.AuthorizationDocument
     public class DependentHostedNumberOrderResource : Resource
     {
     
-        public class NumbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities
-        {
-            [JsonProperty("mms")]
-            private bool Mms {get; set;}
-            [JsonProperty("sms")]
-            private bool Sms {get; set;}
-            [JsonProperty("voice")]
-            private bool Voice {get; set;}
-            [JsonProperty("fax")]
-            private bool Fax {get; set;}
-            public NumbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities() { }
-            public class Builder
-            {
-                private NumbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities = new NumbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities();
-                public Builder()
-                {
-                }
-                public Builder WithMms(bool mms)
-                {
-                    _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities.Mms= mms;
-                    return this;
-                }
-                public Builder WithSms(bool sms)
-                {
-                    _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities.Sms= sms;
-                    return this;
-                }
-                public Builder WithVoice(bool voice)
-                {
-                    _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities.Voice= voice;
-                    return this;
-                }
-                public Builder WithFax(bool fax)
-                {
-                    _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities.Fax= fax;
-                    return this;
-                }
-                public NumbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities Build()
-                {
-                    return _numbersV2AuthorizationDocumentDependentHostedNumberOrderCapabilities;
-                }
-            }
-        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]

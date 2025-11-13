@@ -30,49 +30,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
     public class HostedNumberOrderResource : Resource
     {
     
-        public class PreviewHostedNumbersHostedNumberOrderCapabilities
-        {
-            [JsonProperty("mms")]
-            private bool Mms {get; set;}
-            [JsonProperty("sms")]
-            private bool Sms {get; set;}
-            [JsonProperty("voice")]
-            private bool Voice {get; set;}
-            [JsonProperty("fax")]
-            private bool Fax {get; set;}
-            public PreviewHostedNumbersHostedNumberOrderCapabilities() { }
-            public class Builder
-            {
-                private PreviewHostedNumbersHostedNumberOrderCapabilities _previewHostedNumbersHostedNumberOrderCapabilities = new PreviewHostedNumbersHostedNumberOrderCapabilities();
-                public Builder()
-                {
-                }
-                public Builder WithMms(bool mms)
-                {
-                    _previewHostedNumbersHostedNumberOrderCapabilities.Mms= mms;
-                    return this;
-                }
-                public Builder WithSms(bool sms)
-                {
-                    _previewHostedNumbersHostedNumberOrderCapabilities.Sms= sms;
-                    return this;
-                }
-                public Builder WithVoice(bool voice)
-                {
-                    _previewHostedNumbersHostedNumberOrderCapabilities.Voice= voice;
-                    return this;
-                }
-                public Builder WithFax(bool fax)
-                {
-                    _previewHostedNumbersHostedNumberOrderCapabilities.Fax= fax;
-                    return this;
-                }
-                public PreviewHostedNumbersHostedNumberOrderCapabilities Build()
-                {
-                    return _previewHostedNumbersHostedNumberOrderCapabilities;
-                }
-            }
-        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]

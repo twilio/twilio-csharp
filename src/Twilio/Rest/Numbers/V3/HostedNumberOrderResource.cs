@@ -30,42 +30,6 @@ namespace Twilio.Rest.Numbers.V3
     public class HostedNumberOrderResource : Resource
     {
     
-        public class NumbersV3HostedNumbersHostedNumberOrderCapabilities
-        {
-            [JsonProperty("mms")]
-            private bool Mms {get; set;}
-            [JsonProperty("sms")]
-            private bool Sms {get; set;}
-            [JsonProperty("voice")]
-            private bool Voice {get; set;}
-            public NumbersV3HostedNumbersHostedNumberOrderCapabilities() { }
-            public class Builder
-            {
-                private NumbersV3HostedNumbersHostedNumberOrderCapabilities _numbersV3HostedNumbersHostedNumberOrderCapabilities = new NumbersV3HostedNumbersHostedNumberOrderCapabilities();
-                public Builder()
-                {
-                }
-                public Builder WithMms(bool mms)
-                {
-                    _numbersV3HostedNumbersHostedNumberOrderCapabilities.Mms= mms;
-                    return this;
-                }
-                public Builder WithSms(bool sms)
-                {
-                    _numbersV3HostedNumbersHostedNumberOrderCapabilities.Sms= sms;
-                    return this;
-                }
-                public Builder WithVoice(bool voice)
-                {
-                    _numbersV3HostedNumbersHostedNumberOrderCapabilities.Voice= voice;
-                    return this;
-                }
-                public NumbersV3HostedNumbersHostedNumberOrderCapabilities Build()
-                {
-                    return _numbersV3HostedNumbersHostedNumberOrderCapabilities;
-                }
-            }
-        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]

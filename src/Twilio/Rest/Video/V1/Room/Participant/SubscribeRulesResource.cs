@@ -30,63 +30,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class SubscribeRulesResource : Resource
     {
     
-        public class VideoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules
-        {
-            [JsonProperty("type")]
-            private string Type {get; set;}
-            [JsonProperty("all")]
-            private bool All {get; set;}
-            [JsonProperty("publisher")]
-            private string Publisher {get; set;}
-            [JsonProperty("track")]
-            private string Track {get; set;}
-            [JsonProperty("kind")]
-            private string Kind {get; set;}
-            [JsonProperty("priority")]
-            private string Priority {get; set;}
-            public VideoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules() { }
-            public class Builder
-            {
-                private VideoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules = new VideoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules();
-                public Builder()
-                {
-                }
-                public Builder WithType(string type)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.Type= type;
-                    return this;
-                }
-                public Builder WithAll(bool all)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.All= all;
-                    return this;
-                }
-                public Builder WithPublisher(string publisher)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.Publisher= publisher;
-                    return this;
-                }
-                public Builder WithTrack(string track)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.Track= track;
-                    return this;
-                }
-                public Builder WithKind(string kind)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.Kind= kind;
-                    return this;
-                }
-                public Builder WithPriority(string priority)
-                {
-                    _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules.Priority= priority;
-                    return this;
-                }
-                public VideoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules Build()
-                {
-                    return _videoV1RoomRoomParticipantRoomParticipantSubscribeRuleRules;
-                }
-            }
-        }
 
     
 

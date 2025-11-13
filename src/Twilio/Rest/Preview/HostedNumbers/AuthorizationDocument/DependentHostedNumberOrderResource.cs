@@ -30,49 +30,6 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
     public class DependentHostedNumberOrderResource : Resource
     {
     
-        public class PreviewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities
-        {
-            [JsonProperty("mms")]
-            private bool Mms {get; set;}
-            [JsonProperty("sms")]
-            private bool Sms {get; set;}
-            [JsonProperty("voice")]
-            private bool Voice {get; set;}
-            [JsonProperty("fax")]
-            private bool Fax {get; set;}
-            public PreviewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities() { }
-            public class Builder
-            {
-                private PreviewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities = new PreviewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities();
-                public Builder()
-                {
-                }
-                public Builder WithMms(bool mms)
-                {
-                    _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities.Mms= mms;
-                    return this;
-                }
-                public Builder WithSms(bool sms)
-                {
-                    _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities.Sms= sms;
-                    return this;
-                }
-                public Builder WithVoice(bool voice)
-                {
-                    _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities.Voice= voice;
-                    return this;
-                }
-                public Builder WithFax(bool fax)
-                {
-                    _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities.Fax= fax;
-                    return this;
-                }
-                public PreviewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities Build()
-                {
-                    return _previewHostedNumbersAuthorizationDocumentDependentHostedNumberOrderCapabilities;
-                }
-            }
-        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]

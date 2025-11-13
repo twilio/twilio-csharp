@@ -30,49 +30,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     public class MachineToMachineResource : Resource
     {
     
-        public class ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities
-        {
-            [JsonProperty("mms")]
-            private bool Mms {get; set;}
-            [JsonProperty("sms")]
-            private bool Sms {get; set;}
-            [JsonProperty("voice")]
-            private bool Voice {get; set;}
-            [JsonProperty("fax")]
-            private bool Fax {get; set;}
-            public ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities() { }
-            public class Builder
-            {
-                private ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities = new ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities();
-                public Builder()
-                {
-                }
-                public Builder WithMms(bool mms)
-                {
-                    _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities.Mms= mms;
-                    return this;
-                }
-                public Builder WithSms(bool sms)
-                {
-                    _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities.Sms= sms;
-                    return this;
-                }
-                public Builder WithVoice(bool voice)
-                {
-                    _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities.Voice= voice;
-                    return this;
-                }
-                public Builder WithFax(bool fax)
-                {
-                    _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities.Fax= fax;
-                    return this;
-                }
-                public ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities Build()
-                {
-                    return _apiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities;
-                }
-            }
-        }
 
     
 
