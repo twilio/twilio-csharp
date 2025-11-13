@@ -30,6 +30,49 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class PhoneNumberResource : Resource
     {
     
+        public class ProxyV1ServicePhoneNumberCapabilities
+        {
+            [JsonProperty("fax")]
+            private bool Fax {get; set;}
+            [JsonProperty("mms")]
+            private bool Mms {get; set;}
+            [JsonProperty("sms")]
+            private bool Sms {get; set;}
+            [JsonProperty("voice")]
+            private bool Voice {get; set;}
+            public ProxyV1ServicePhoneNumberCapabilities() { }
+            public class Builder
+            {
+                private ProxyV1ServicePhoneNumberCapabilities _proxyV1ServicePhoneNumberCapabilities = new ProxyV1ServicePhoneNumberCapabilities();
+                public Builder()
+                {
+                }
+                public Builder WithFax(bool fax)
+                {
+                    _proxyV1ServicePhoneNumberCapabilities.Fax= fax;
+                    return this;
+                }
+                public Builder WithMms(bool mms)
+                {
+                    _proxyV1ServicePhoneNumberCapabilities.Mms= mms;
+                    return this;
+                }
+                public Builder WithSms(bool sms)
+                {
+                    _proxyV1ServicePhoneNumberCapabilities.Sms= sms;
+                    return this;
+                }
+                public Builder WithVoice(bool voice)
+                {
+                    _proxyV1ServicePhoneNumberCapabilities.Voice= voice;
+                    return this;
+                }
+                public ProxyV1ServicePhoneNumberCapabilities Build()
+                {
+                    return _proxyV1ServicePhoneNumberCapabilities;
+                }
+            }
+        }
 
     
 

@@ -30,6 +30,49 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class LocalResource : Resource
     {
     
+        public class ApiV2010AccountIncomingPhoneNumberCapabilities
+        {
+            [JsonProperty("mms")]
+            private bool Mms {get; set;}
+            [JsonProperty("sms")]
+            private bool Sms {get; set;}
+            [JsonProperty("voice")]
+            private bool Voice {get; set;}
+            [JsonProperty("fax")]
+            private bool Fax {get; set;}
+            public ApiV2010AccountIncomingPhoneNumberCapabilities() { }
+            public class Builder
+            {
+                private ApiV2010AccountIncomingPhoneNumberCapabilities _apiV2010AccountIncomingPhoneNumberCapabilities = new ApiV2010AccountIncomingPhoneNumberCapabilities();
+                public Builder()
+                {
+                }
+                public Builder WithMms(bool mms)
+                {
+                    _apiV2010AccountIncomingPhoneNumberCapabilities.Mms= mms;
+                    return this;
+                }
+                public Builder WithSms(bool sms)
+                {
+                    _apiV2010AccountIncomingPhoneNumberCapabilities.Sms= sms;
+                    return this;
+                }
+                public Builder WithVoice(bool voice)
+                {
+                    _apiV2010AccountIncomingPhoneNumberCapabilities.Voice= voice;
+                    return this;
+                }
+                public Builder WithFax(bool fax)
+                {
+                    _apiV2010AccountIncomingPhoneNumberCapabilities.Fax= fax;
+                    return this;
+                }
+                public ApiV2010AccountIncomingPhoneNumberCapabilities Build()
+                {
+                    return _apiV2010AccountIncomingPhoneNumberCapabilities;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]

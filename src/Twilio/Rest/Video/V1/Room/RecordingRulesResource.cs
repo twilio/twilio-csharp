@@ -30,6 +30,56 @@ namespace Twilio.Rest.Video.V1.Room
     public class RecordingRulesResource : Resource
     {
     
+        public class VideoV1RoomRoomRecordingRuleRules
+        {
+            [JsonProperty("type")]
+            private string Type {get; set;}
+            [JsonProperty("all")]
+            private bool All {get; set;}
+            [JsonProperty("publisher")]
+            private string Publisher {get; set;}
+            [JsonProperty("track")]
+            private string Track {get; set;}
+            [JsonProperty("kind")]
+            private string Kind {get; set;}
+            public VideoV1RoomRoomRecordingRuleRules() { }
+            public class Builder
+            {
+                private VideoV1RoomRoomRecordingRuleRules _videoV1RoomRoomRecordingRuleRules = new VideoV1RoomRoomRecordingRuleRules();
+                public Builder()
+                {
+                }
+                public Builder WithType(string type)
+                {
+                    _videoV1RoomRoomRecordingRuleRules.Type= type;
+                    return this;
+                }
+                public Builder WithAll(bool all)
+                {
+                    _videoV1RoomRoomRecordingRuleRules.All= all;
+                    return this;
+                }
+                public Builder WithPublisher(string publisher)
+                {
+                    _videoV1RoomRoomRecordingRuleRules.Publisher= publisher;
+                    return this;
+                }
+                public Builder WithTrack(string track)
+                {
+                    _videoV1RoomRoomRecordingRuleRules.Track= track;
+                    return this;
+                }
+                public Builder WithKind(string kind)
+                {
+                    _videoV1RoomRoomRecordingRuleRules.Kind= kind;
+                    return this;
+                }
+                public VideoV1RoomRoomRecordingRuleRules Build()
+                {
+                    return _videoV1RoomRoomRecordingRuleRules;
+                }
+            }
+        }
 
     
 

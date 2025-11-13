@@ -30,6 +30,49 @@ namespace Twilio.Rest.Api.V2010.Account
     public class TokenResource : Resource
     {
     
+        public class ApiV2010AccountTokenIceServers
+        {
+            [JsonProperty("credential")]
+            private string Credential {get; set;}
+            [JsonProperty("username")]
+            private string Username {get; set;}
+            [JsonProperty("url")]
+            private string Url {get; set;}
+            [JsonProperty("urls")]
+            private string Urls {get; set;}
+            public ApiV2010AccountTokenIceServers() { }
+            public class Builder
+            {
+                private ApiV2010AccountTokenIceServers _apiV2010AccountTokenIceServers = new ApiV2010AccountTokenIceServers();
+                public Builder()
+                {
+                }
+                public Builder WithCredential(string credential)
+                {
+                    _apiV2010AccountTokenIceServers.Credential= credential;
+                    return this;
+                }
+                public Builder WithUsername(string username)
+                {
+                    _apiV2010AccountTokenIceServers.Username= username;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _apiV2010AccountTokenIceServers.Url= url;
+                    return this;
+                }
+                public Builder WithUrls(string urls)
+                {
+                    _apiV2010AccountTokenIceServers.Urls= urls;
+                    return this;
+                }
+                public ApiV2010AccountTokenIceServers Build()
+                {
+                    return _apiV2010AccountTokenIceServers;
+                }
+            }
+        }
 
     
 

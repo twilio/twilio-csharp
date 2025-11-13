@@ -30,6 +30,121 @@ namespace Twilio.Rest.Pricing.V1.Messaging
     public class CountryResource : Resource
     {
     
+        public class PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices
+        {
+            [JsonProperty("base_price")]
+            private decimal BasePrice {get; set;}
+            [JsonProperty("current_price")]
+            private decimal CurrentPrice {get; set;}
+            [JsonProperty("number_type")]
+            private string NumberType {get; set;}
+            public PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices() { }
+            public class Builder
+            {
+                private PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices _pricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices = new PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices();
+                public Builder()
+                {
+                }
+                public Builder WithBasePrice(decimal basePrice)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices.BasePrice= basePrice;
+                    return this;
+                }
+                public Builder WithCurrentPrice(decimal currentPrice)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices.CurrentPrice= currentPrice;
+                    return this;
+                }
+                public Builder WithNumberType(string numberType)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices.NumberType= numberType;
+                    return this;
+                }
+                public PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices Build()
+                {
+                    return _pricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices;
+                }
+            }
+        }
+        public class PricingV1MessagingMessagingCountryInstanceOutboundSmsPrices
+        {
+            [JsonProperty("carrier")]
+            private string Carrier {get; set;}
+            [JsonProperty("mcc")]
+            private string Mcc {get; set;}
+            [JsonProperty("mnc")]
+            private string Mnc {get; set;}
+            [JsonProperty("prices")]
+            private List<PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices> Prices {get; set;}
+            public PricingV1MessagingMessagingCountryInstanceOutboundSmsPrices() { }
+            public class Builder
+            {
+                private PricingV1MessagingMessagingCountryInstanceOutboundSmsPrices _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices = new PricingV1MessagingMessagingCountryInstanceOutboundSmsPrices();
+                public Builder()
+                {
+                }
+                public Builder WithCarrier(string carrier)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices.Carrier= carrier;
+                    return this;
+                }
+                public Builder WithMcc(string mcc)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices.Mcc= mcc;
+                    return this;
+                }
+                public Builder WithMnc(string mnc)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices.Mnc= mnc;
+                    return this;
+                }
+                public Builder WithPrices(List<PricingV1MessagingMessagingCountryInstanceOutboundSmsPricesPrices> prices)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices.Prices= prices;
+                    return this;
+                }
+                public PricingV1MessagingMessagingCountryInstanceOutboundSmsPrices Build()
+                {
+                    return _pricingV1MessagingMessagingCountryInstanceOutboundSmsPrices;
+                }
+            }
+        }
+        public class PricingV1MessagingMessagingCountryInstanceInboundSmsPrices
+        {
+            [JsonProperty("base_price")]
+            private decimal BasePrice {get; set;}
+            [JsonProperty("current_price")]
+            private decimal CurrentPrice {get; set;}
+            [JsonProperty("number_type")]
+            private string NumberType {get; set;}
+            public PricingV1MessagingMessagingCountryInstanceInboundSmsPrices() { }
+            public class Builder
+            {
+                private PricingV1MessagingMessagingCountryInstanceInboundSmsPrices _pricingV1MessagingMessagingCountryInstanceInboundSmsPrices = new PricingV1MessagingMessagingCountryInstanceInboundSmsPrices();
+                public Builder()
+                {
+                }
+                public Builder WithBasePrice(decimal basePrice)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceInboundSmsPrices.BasePrice= basePrice;
+                    return this;
+                }
+                public Builder WithCurrentPrice(decimal currentPrice)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceInboundSmsPrices.CurrentPrice= currentPrice;
+                    return this;
+                }
+                public Builder WithNumberType(string numberType)
+                {
+                    _pricingV1MessagingMessagingCountryInstanceInboundSmsPrices.NumberType= numberType;
+                    return this;
+                }
+                public PricingV1MessagingMessagingCountryInstanceInboundSmsPrices Build()
+                {
+                    return _pricingV1MessagingMessagingCountryInstanceInboundSmsPrices;
+                }
+            }
+        }
 
     
 

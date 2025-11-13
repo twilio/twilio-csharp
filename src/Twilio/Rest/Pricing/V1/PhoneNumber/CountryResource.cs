@@ -30,6 +30,42 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
     public class CountryResource : Resource
     {
     
+        public class PricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices
+        {
+            [JsonProperty("base_price")]
+            private decimal BasePrice {get; set;}
+            [JsonProperty("current_price")]
+            private decimal CurrentPrice {get; set;}
+            [JsonProperty("number_type")]
+            private string NumberType {get; set;}
+            public PricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices() { }
+            public class Builder
+            {
+                private PricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices _pricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices = new PricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices();
+                public Builder()
+                {
+                }
+                public Builder WithBasePrice(decimal basePrice)
+                {
+                    _pricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices.BasePrice= basePrice;
+                    return this;
+                }
+                public Builder WithCurrentPrice(decimal currentPrice)
+                {
+                    _pricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices.CurrentPrice= currentPrice;
+                    return this;
+                }
+                public Builder WithNumberType(string numberType)
+                {
+                    _pricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices.NumberType= numberType;
+                    return this;
+                }
+                public PricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices Build()
+                {
+                    return _pricingV1PhoneNumberPhoneNumberCountryInstancePhoneNumberPrices;
+                }
+            }
+        }
 
     
 
