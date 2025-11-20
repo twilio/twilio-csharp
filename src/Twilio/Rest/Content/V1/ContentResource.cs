@@ -1217,6 +1217,49 @@ namespace Twilio.Rest.Content.V1
                 }
             }
         }
+        public class ContentUpdateRequest
+        {
+            [JsonProperty("friendly_name")]
+            private string FriendlyName {get; set;}
+            [JsonProperty("variables")]
+            private Dictionary<string, string> Variables {get; set;}
+            [JsonProperty("language")]
+            private string Language {get; set;}
+            [JsonProperty("types")]
+            private Types Types {get; set;}
+            public ContentUpdateRequest() { }
+            public class Builder
+            {
+                private ContentUpdateRequest _contentUpdateRequest = new ContentUpdateRequest();
+                public Builder()
+                {
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _contentUpdateRequest.FriendlyName= friendlyName;
+                    return this;
+                }
+                public Builder WithVariables(Dictionary<string, string> variables)
+                {
+                    _contentUpdateRequest.Variables= variables;
+                    return this;
+                }
+                public Builder WithLanguage(string language)
+                {
+                    _contentUpdateRequest.Language= language;
+                    return this;
+                }
+                public Builder WithTypes(Types types)
+                {
+                    _contentUpdateRequest.Types= types;
+                    return this;
+                }
+                public ContentUpdateRequest Build()
+                {
+                    return _contentUpdateRequest;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]
@@ -1623,6 +1666,80 @@ namespace Twilio.Rest.Content.V1
             return Page<ContentResource>.FromJson("contents", response.Content);
         }
 
+        
+        private static Request BuildUpdateRequest(UpdateContentOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Content/{Sid}";
+
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Put,
+                Rest.Domain.Content,
+                path,
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update a Content resource </summary>
+        /// <param name="options"> Update Content parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Content </returns>
+        public static ContentResource Update(UpdateContentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update a Content resource </summary>
+        /// <param name="options"> Update Content parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Content </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ContentResource> UpdateAsync(UpdateContentOptions options,
+                                                                                                    ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update a Content resource </summary>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource to update. </param>
+        /// <param name="contentUpdateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Content </returns>
+        public static ContentResource Update(
+                                          string pathSid,
+                                          ContentResource.ContentUpdateRequest contentUpdateRequest,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new UpdateContentOptions(pathSid, contentUpdateRequest){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update a Content resource </summary>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource to update. </param>
+        /// <param name="contentUpdateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Content </returns>
+        public static async System.Threading.Tasks.Task<ContentResource> UpdateAsync(
+                                                                              string pathSid,
+                                                                              ContentResource.ContentUpdateRequest contentUpdateRequest,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new UpdateContentOptions(pathSid, contentUpdateRequest){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ContentResource object

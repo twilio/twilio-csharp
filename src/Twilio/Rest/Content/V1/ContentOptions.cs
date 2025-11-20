@@ -138,5 +138,43 @@ namespace Twilio.Rest.Content.V1
 
     }
 
+    /// <summary> Update a Content resource </summary>
+    public class UpdateContentOptions : IOptions<ContentResource>
+    {
+    
+        ///<summary> The Twilio-provided string that uniquely identifies the Content resource to update. </summary> 
+        public string PathSid { get; }
+
+        
+        public ContentResource.ContentUpdateRequest ContentUpdateRequest { get; }
+
+
+
+        /// <summary> Construct a new UpdateContentOptions </summary>
+        /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the Content resource to update. </param>
+        /// <param name="contentUpdateRequest">  </param>
+        public UpdateContentOptions(string pathSid, ContentResource.ContentUpdateRequest contentUpdateRequest)
+        {
+            PathSid = pathSid;
+            ContentUpdateRequest = contentUpdateRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (ContentUpdateRequest != null)
+            {
+                body = ContentResource.ToJson(ContentUpdateRequest);
+            }
+            return body;
+        }
+        
+
+    }
+
+
 }
 
