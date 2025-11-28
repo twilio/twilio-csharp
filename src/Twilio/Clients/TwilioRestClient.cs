@@ -4,6 +4,7 @@ using System.Net;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
 using Twilio.AuthStrategies;
+using System.Collections.Generic;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -54,6 +55,19 @@ namespace Twilio.Clients
         private readonly string _password;
         private readonly AuthStrategy _authstrategy;
 
+        private static readonly Dictionary<string, string> RegionToEdgeMap = new Dictionary<string, string>
+                {
+                    { "au1", "sydney" },
+                    { "br1", "sao-paulo" },
+                    { "de1", "frankfurt" },
+                    { "ie1", "dublin" },
+                    { "jp1", "tokyo" },
+                    { "jp2", "osaka" },
+                    { "sg1", "singapore" },
+                    { "us1", "ashburn" },
+                    { "us2", "umatilla" }
+                };
+
         /// <summary>
         /// Constructor for a TwilioRestClient
         /// </summary>
@@ -78,6 +92,9 @@ namespace Twilio.Clients
 
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
+
+            if ((string.IsNullOrEmpty(edge) && !string.IsNullOrEmpty(region)) || (string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(edge)))
+                Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
 
             Region = region;
             Edge = edge;
@@ -111,6 +128,9 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
+            if ((string.IsNullOrEmpty(edge) && !string.IsNullOrEmpty(region)) || (string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(edge)))
+                 Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
+
             Region = region;
             Edge = edge;
         }
@@ -123,6 +143,12 @@ namespace Twilio.Clients
         /// <returns>response of the request</returns>
         public Response Request(Request request)
         {
+
+            if (string.IsNullOrEmpty(Edge) && !string.IsNullOrEmpty(Region) && RegionToEdgeMap.TryGetValue(Region, out var edge))
+            {
+                Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
+                Edge = edge;
+            }
 
             if(_username != null && _password != null){
                 request.SetAuth(_username, _password);
@@ -248,7 +274,7 @@ namespace Twilio.Clients
         }
 
         /// <summary>
-        /// Test if your environment is impacted by a TLS or certificate change 
+        /// Test if your environment is impacted by a TLS or certificate change
         /// by sending an HTTP request to the test endpoint tls-test.twilio.com:443
         /// It's a bit easier to call this method from TwilioClient.ValidateSslCertificate().
         /// </summary>

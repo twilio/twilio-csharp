@@ -3,6 +3,8 @@ using Twilio.Exceptions;
 using Twilio.Credential;
 using Twilio.AuthStrategies;
 using Twilio.Annotations;
+using System.Collections.Generic;
+using System;
 
 namespace Twilio
 {
@@ -21,6 +23,19 @@ namespace Twilio
         private static ITwilioRestClient _noAuthRestClient;
         private static string _logLevel;
         private static CredentialProvider _credentialProvider;
+
+        private static readonly Dictionary<string, string> RegionToEdgeMap = new Dictionary<string, string>
+        {
+            { "au1", "sydney" },
+            { "br1", "sao-paulo" },
+            { "de1", "frankfurt" },
+            { "ie1", "dublin" },
+            { "jp1", "tokyo" },
+            { "jp2", "osaka" },
+            { "sg1", "singapore" },
+            { "us1", "ashburn" },
+            { "us2", "umatilla" }
+        };
 
         private TwilioClient() { }
 
@@ -218,6 +233,15 @@ namespace Twilio
         /// <returns>The rest client</returns>
         public static ITwilioRestClient GetRestClient()
         {
+            if ((string.IsNullOrEmpty(_edge) && !string.IsNullOrEmpty(_region)) || (string.IsNullOrEmpty(_region) && !string.IsNullOrEmpty(_edge)))
+                Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
+
+            if (string.IsNullOrEmpty(_edge) && !string.IsNullOrEmpty(_region) && RegionToEdgeMap.TryGetValue(_region, out var edge))
+            {
+                Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
+                _edge = edge;
+            }
+
             if (_restClient != null)
             {
                 return _restClient;
@@ -245,7 +269,6 @@ namespace Twilio
                    LogLevel = _logLevel
                };
             }
-
             return _restClient;
         }
 
@@ -292,7 +315,7 @@ namespace Twilio
         }
 
         /// <summary>
-        /// Test if your environment is impacted by a TLS or certificate change 
+        /// Test if your environment is impacted by a TLS or certificate change
         /// by sending an HTTP request to the test endpoint tls-test.twilio.com:443
         /// </summary>
         public static void ValidateSslCertificate()
