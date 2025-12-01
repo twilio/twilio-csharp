@@ -199,8 +199,8 @@ namespace Twilio.Tests.Clients
 
             await twilioClient.RequestAsync(request);
 
-            Assert.AreEqual(request.Edge, "ashburn");
-            Assert.AreEqual(request.Region, "us1");
+            Assert.AreEqual("ashburn", request.Edge);
+            Assert.AreEqual("us1", request.Region);
         }
 
         [Test]
@@ -212,8 +212,8 @@ namespace Twilio.Tests.Clients
 
             await twilioClient.RequestAsync(request);
 
-            Assert.AreEqual(request.Edge, "");
-            Assert.AreEqual(request.Region, "abc");
+            Assert.AreEqual("", request.Edge);
+            Assert.AreEqual("abc", request.Region);
         }
 
 #endif
