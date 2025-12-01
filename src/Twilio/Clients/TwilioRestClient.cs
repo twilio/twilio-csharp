@@ -55,7 +55,6 @@ namespace Twilio.Clients
         private readonly string _password;
         private readonly AuthStrategy _authstrategy;
 
-        private static readonly Dictionary<string, string> RegionToEdgeMap = new Dictionary<string, string>
                 {
                     { "au1", "sydney" },
                     { "br1", "sao-paulo" },
@@ -93,7 +92,7 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if ((string.IsNullOrEmpty(edge) && !string.IsNullOrEmpty(region)) || (string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(edge)))
+            if (GlobalConstants.IsOnlyOneSet(edge,region))
                 Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
 
             Region = region;
@@ -128,7 +127,7 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if ((string.IsNullOrEmpty(edge) && !string.IsNullOrEmpty(region)) || (string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(edge)))
+            if (GlobalConstants.IsOnlyOneSet(edge,region))
                  Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
 
             Region = region;
@@ -144,7 +143,7 @@ namespace Twilio.Clients
         public Response Request(Request request)
         {
 
-            if (string.IsNullOrEmpty(Edge) && !string.IsNullOrEmpty(Region) && RegionToEdgeMap.TryGetValue(Region, out var edge))
+            if (string.IsNullOrEmpty(Edge) && !string.IsNullOrEmpty(Region) && GlobalConstants.RegionToEdgeMap.TryGetValue(Region, out var edge))
             {
                 Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
                 Edge = edge;
