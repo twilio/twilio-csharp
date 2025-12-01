@@ -195,14 +195,13 @@ namespace Twilio.Tests.Clients
         {
             client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
             Request request = new Request(HttpMethod.Get, "https://verify.twilio.com/");
-            string[] userAgentExtensions = new string[] { "twilio-run/2.0.0-test", "flex-plugin/3.4.0" };
             TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", httpClient: client);
-            twilioClient.SetRegion("us1");
-            twilioClient.UserAgentExtensions = userAgentExtensions;
+            twilioClient.Region = "us1";
 
             await twilioClient.RequestAsync(request);
 
-            Assert.AreEqual(twilioClient.GetEdge(), "ashburn");
+            Assert.AreEqual(request.Edge, "ashburn");
+            Assert.AreEqual(request.Region, "us1");
         }
 
 #endif
