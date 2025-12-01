@@ -195,13 +195,25 @@ namespace Twilio.Tests.Clients
         {
             client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
             Request request = new Request(HttpMethod.Get, "https://verify.twilio.com/");
-            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", httpClient: client);
-            twilioClient.Region = "us1";
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", region: "us1", httpClient: client);
 
             await twilioClient.RequestAsync(request);
 
             Assert.AreEqual(request.Edge, "ashburn");
             Assert.AreEqual(request.Region, "us1");
+        }
+
+        [Test]
+        public async Task EdgeWhenRegionIsSetAbc()
+        {
+            client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
+            Request request = new Request(HttpMethod.Get, "https://verify.twilio.com/");
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", region: "abc", httpClient: client);
+
+            await twilioClient.RequestAsync(request);
+
+            Assert.AreEqual(request.Edge, "");
+            Assert.AreEqual(request.Region, "abc");
         }
 
 #endif
