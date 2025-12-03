@@ -33,9 +33,9 @@ namespace Twilio.Rest.Content.V1.Content
         public class ContentApprovalRequest
         {
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("category")]
-            private string Category {get; set;}
+            public string Category {get; private set;}
             public ContentApprovalRequest() { }
             public class Builder
             {
@@ -135,6 +135,7 @@ namespace Twilio.Rest.Content.V1.Content
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ApprovalCreateResource object

@@ -60,6 +60,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         
 
     }
+
     /// <summary> Remove an associated IP Access Control List from a Trunk </summary>
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {

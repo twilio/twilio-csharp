@@ -45,9 +45,11 @@ namespace Twilio.Rest.Numbers.V1
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> Fetch an eligibility bulk check that you requested to host in Twilio. </summary>
     public class FetchBulkEligibilityOptions : IOptions<BulkEligibilityResource>
     {

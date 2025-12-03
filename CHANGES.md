@@ -1,6 +1,25 @@
 twilio-csharp Changelog
 =======================
 
+[2025-12-03] Version 7.13.8
+---------------------------
+**Library - Chore**
+- [PR #811](https://github.com/twilio/twilio-csharp/pull/811): ignored region and edge in noauth apis. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #810](https://github.com/twilio/twilio-csharp/pull/810): Regional endpoint processing. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Api**
+- Add `twiml_session` resource for calls
+- Add `twiml_session` resource for calls
+
+**Monitor**
+- Update default output properties
+
+**Trusthub**
+- Added customer_profile_sid in toll-free initialize api payload.
+
+
 [2025-11-20] Version 7.13.7
 ---------------------------
 **Memory**

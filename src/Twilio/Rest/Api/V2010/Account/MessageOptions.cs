@@ -221,6 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account
         
 
     }
+
     /// <summary> Deletes a Message resource from your account </summary>
     public class DeleteMessageOptions : IOptions<MessageResource>
     {

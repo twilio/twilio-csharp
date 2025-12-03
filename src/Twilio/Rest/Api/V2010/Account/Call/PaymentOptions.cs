@@ -170,6 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         
 
     }
+
     /// <summary> update an instance of payments with different phases of payment flows. </summary>
     public class UpdatePaymentOptions : IOptions<PaymentResource>
     {

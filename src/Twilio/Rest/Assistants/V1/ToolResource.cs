@@ -33,15 +33,15 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceCreatePolicyRequest
         {
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("policy_details")]
-            private object PolicyDetails {get; set;}
+            public object PolicyDetails {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             public AssistantsV1ServiceCreatePolicyRequest() { }
             public class Builder
             {
@@ -82,26 +82,41 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateToolRequest
         {
-            [JsonProperty("assistant_id")]
-            private string AssistantId {get; set;}
-            [JsonProperty("description")]
-            private string Description {get; set;}
             [JsonProperty("enabled")]
-            private bool? Enabled {get; set;}
-            [JsonProperty("meta")]
-            private object Meta {get; set;}
+            public bool? Enabled {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
-            [JsonProperty("policy")]
-            private AssistantsV1ServiceCreatePolicyRequest Policy {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
+            [JsonProperty("assistant_id")]
+            public string AssistantId {get; private set;}
+            [JsonProperty("description")]
+            public string Description {get; private set;}
+            [JsonProperty("meta")]
+            public object Meta {get; private set;}
+            [JsonProperty("policy")]
+            public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
             public AssistantsV1ServiceCreateToolRequest() { }
             public class Builder
             {
                 private AssistantsV1ServiceCreateToolRequest _assistantsV1ServiceCreateToolRequest = new AssistantsV1ServiceCreateToolRequest();
                 public Builder()
                 {
+                }
+                public Builder WithEnabled(bool? enabled)
+                {
+                    _assistantsV1ServiceCreateToolRequest.Enabled= enabled;
+                    return this;
+                }
+                public Builder WithName(string name)
+                {
+                    _assistantsV1ServiceCreateToolRequest.Name= name;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _assistantsV1ServiceCreateToolRequest.Type= type;
+                    return this;
                 }
                 public Builder WithAssistantId(string assistantId)
                 {
@@ -113,29 +128,14 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceCreateToolRequest.Description= description;
                     return this;
                 }
-                public Builder WithEnabled(bool? enabled)
-                {
-                    _assistantsV1ServiceCreateToolRequest.Enabled= enabled;
-                    return this;
-                }
                 public Builder WithMeta(object meta)
                 {
                     _assistantsV1ServiceCreateToolRequest.Meta= meta;
                     return this;
                 }
-                public Builder WithName(string name)
-                {
-                    _assistantsV1ServiceCreateToolRequest.Name= name;
-                    return this;
-                }
                 public Builder WithPolicy(AssistantsV1ServiceCreatePolicyRequest policy)
                 {
                     _assistantsV1ServiceCreateToolRequest.Policy= policy;
-                    return this;
-                }
-                public Builder WithType(string type)
-                {
-                    _assistantsV1ServiceCreateToolRequest.Type= type;
                     return this;
                 }
                 public AssistantsV1ServiceCreateToolRequest Build()
@@ -147,19 +147,19 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceUpdateToolRequest
         {
             [JsonProperty("assistant_id")]
-            private string AssistantId {get; set;}
+            public string AssistantId {get; private set;}
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("enabled")]
-            private bool? Enabled {get; set;}
+            public bool? Enabled {get; private set;}
             [JsonProperty("meta")]
-            private object Meta {get; set;}
+            public object Meta {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("policy")]
-            private AssistantsV1ServiceCreatePolicyRequest Policy {get; set;}
+            public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             public AssistantsV1ServiceUpdateToolRequest() { }
             public class Builder
             {
@@ -210,30 +210,40 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServicePolicy
         {
-            [JsonProperty("id")]
-            private string Id {get; set;}
-            [JsonProperty("name")]
-            private string Name {get; set;}
-            [JsonProperty("description")]
-            private string Description {get; set;}
-            [JsonProperty("account_sid")]
-            private string AccountSid {get; set;}
-            [JsonProperty("user_sid")]
-            private string UserSid {get; set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("policy_details")]
-            private object PolicyDetails {get; set;}
+            public object PolicyDetails {get; private set;}
+            [JsonProperty("id")]
+            public string Id {get; private set;}
+            [JsonProperty("name")]
+            public string Name {get; private set;}
+            [JsonProperty("description")]
+            public string Description {get; private set;}
+            [JsonProperty("account_sid")]
+            public string AccountSid {get; private set;}
+            [JsonProperty("user_sid")]
+            public string UserSid {get; private set;}
             [JsonProperty("date_created")]
-            private DateTime? DateCreated {get; set;}
+            public DateTime? DateCreated {get; private set;}
             [JsonProperty("date_updated")]
-            private DateTime? DateUpdated {get; set;}
+            public DateTime? DateUpdated {get; private set;}
             public AssistantsV1ServicePolicy() { }
             public class Builder
             {
                 private AssistantsV1ServicePolicy _assistantsV1ServicePolicy = new AssistantsV1ServicePolicy();
                 public Builder()
                 {
+                }
+                public Builder WithType(string type)
+                {
+                    _assistantsV1ServicePolicy.Type= type;
+                    return this;
+                }
+                public Builder WithPolicyDetails(object policyDetails)
+                {
+                    _assistantsV1ServicePolicy.PolicyDetails= policyDetails;
+                    return this;
                 }
                 public Builder WithId(string id)
                 {
@@ -258,16 +268,6 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder WithUserSid(string userSid)
                 {
                     _assistantsV1ServicePolicy.UserSid= userSid;
-                    return this;
-                }
-                public Builder WithType(string type)
-                {
-                    _assistantsV1ServicePolicy.Type= type;
-                    return this;
-                }
-                public Builder WithPolicyDetails(object policyDetails)
-                {
-                    _assistantsV1ServicePolicy.PolicyDetails= policyDetails;
                     return this;
                 }
                 public Builder WithDateCreated(DateTime? dateCreated)
@@ -356,6 +356,7 @@ namespace Twilio.Rest.Assistants.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete a tool </summary>
         /// <param name="options"> Delete Tool parameters </param>
@@ -681,6 +682,7 @@ namespace Twilio.Rest.Assistants.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ToolResource object
@@ -716,10 +718,6 @@ namespace Twilio.Rest.Assistants.V1
     }
 
     
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-
         ///<summary> The description of the tool. </summary> 
         [JsonProperty("description")]
         public string Description { get; }
@@ -748,10 +746,6 @@ namespace Twilio.Rest.Assistants.V1
         [JsonProperty("type")]
         public string Type { get; }
 
-        ///<summary> The url of the tool resource. </summary> 
-        [JsonProperty("url")]
-        public string Url { get; private set; }
-
         ///<summary> The date and time in GMT when the Tool was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; }
@@ -759,6 +753,14 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The date and time in GMT when the Tool was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The url of the tool resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
 
         ///<summary> The Policies associated with the tool. </summary> 
         [JsonProperty("policies")]

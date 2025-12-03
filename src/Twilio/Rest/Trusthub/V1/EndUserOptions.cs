@@ -71,6 +71,7 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
+
     /// <summary> Delete a specific End User. </summary>
     public class DeleteEndUserOptions : IOptions<EndUserResource>
     {

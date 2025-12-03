@@ -33,12 +33,12 @@ namespace Twilio.Rest.Verify.V2.Service
         public class VerifyPasskeysFactorRequestResponse
         {
             [JsonProperty("attestationObject")]
-            private string AttestationObject {get; set;}
+            public string AttestationObject {get; private set;}
             [JsonProperty("clientDataJSON")]
-            private string ClientDataJSON {get; set;}
+            public string ClientDataJSON {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("transports")]
-            private List<NewVerifyFactorResource.TransportsEnum> Transports {get; set;}
+            public List<NewVerifyFactorResource.TransportsEnum> Transports {get; private set;}
             public VerifyPasskeysFactorRequestResponse() { }
             public class Builder
             {
@@ -69,24 +69,29 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class VerifyPasskeysFactorRequest
         {
+            [JsonProperty("response")]
+            public VerifyPasskeysFactorRequestResponse Response {get; private set;}
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("rawId")]
-            private string RawId {get; set;}
+            public string RawId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("authenticatorAttachment")]
-            private NewVerifyFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; set;}
+            public NewVerifyFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("type")]
-            private NewVerifyFactorResource.TypeEnum Type {get; set;}
-            [JsonProperty("response")]
-            private VerifyPasskeysFactorRequestResponse Response {get; set;}
+            public NewVerifyFactorResource.TypeEnum Type {get; private set;}
             public VerifyPasskeysFactorRequest() { }
             public class Builder
             {
                 private VerifyPasskeysFactorRequest _verifyPasskeysFactorRequest = new VerifyPasskeysFactorRequest();
                 public Builder()
                 {
+                }
+                public Builder WithResponse(VerifyPasskeysFactorRequestResponse response)
+                {
+                    _verifyPasskeysFactorRequest.Response= response;
+                    return this;
                 }
                 public Builder WithId(string id)
                 {
@@ -106,11 +111,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 public Builder WithType(NewVerifyFactorResource.TypeEnum type)
                 {
                     _verifyPasskeysFactorRequest.Type= type;
-                    return this;
-                }
-                public Builder WithResponse(VerifyPasskeysFactorRequestResponse response)
-                {
-                    _verifyPasskeysFactorRequest.Response= response;
                     return this;
                 }
                 public VerifyPasskeysFactorRequest Build()
@@ -265,6 +265,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NewVerifyFactorResource object

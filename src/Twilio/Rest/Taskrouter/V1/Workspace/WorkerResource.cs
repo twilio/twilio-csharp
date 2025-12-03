@@ -113,6 +113,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Worker parameters </param>
@@ -508,6 +509,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a WorkerResource object

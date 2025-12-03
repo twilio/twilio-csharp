@@ -76,6 +76,7 @@ namespace Twilio.Rest.FlexApi.V1
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchInteractionOptions : IOptions<InteractionResource>
     {

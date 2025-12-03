@@ -161,6 +161,7 @@ namespace Twilio.Rest.Video.V1
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchRoomOptions : IOptions<RoomResource>
     {

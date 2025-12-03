@@ -92,6 +92,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <summary> Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. </param>
+        /// <param name="customerProfileSid"> The Customer Profile Sid associated with the Account. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
@@ -118,6 +119,7 @@ namespace Twilio.Rest.Trusthub.V1
         public static ComplianceTollfreeInquiriesResource Create(
                                           Types.PhoneNumber tollfreePhoneNumber,
                                           string notificationEmail,
+                                          string customerProfileSid = null,
                                           string businessName = null,
                                           string businessWebsite = null,
                                           List<string> useCaseCategories = null,
@@ -141,7 +143,7 @@ namespace Twilio.Rest.Trusthub.V1
                                           bool? skipMessagingUseCase = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
+            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return Create(options, client);
         }
 
@@ -149,6 +151,7 @@ namespace Twilio.Rest.Trusthub.V1
         /// <summary> Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session. </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. </param>
+        /// <param name="customerProfileSid"> The Customer Profile Sid associated with the Account. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
@@ -175,6 +178,7 @@ namespace Twilio.Rest.Trusthub.V1
         public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(
                                                                                   Types.PhoneNumber tollfreePhoneNumber,
                                                                                   string notificationEmail,
+                                                                                  string customerProfileSid = null,
                                                                                   string businessName = null,
                                                                                   string businessWebsite = null,
                                                                                   List<string> useCaseCategories = null,
@@ -198,10 +202,11 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   bool? skipMessagingUseCase = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase };
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ComplianceTollfreeInquiriesResource object

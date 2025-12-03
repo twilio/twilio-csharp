@@ -120,6 +120,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific End User. </summary>
         /// <param name="options"> Delete EndUser parameters </param>
@@ -448,6 +449,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a EndUserResource object

@@ -149,6 +149,7 @@ namespace Twilio.Rest.Intelligence.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Service. </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -509,6 +510,7 @@ namespace Twilio.Rest.Intelligence.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ServiceResource object

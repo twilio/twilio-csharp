@@ -33,14 +33,14 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderConfiguration
         {
             [JsonProperty("waba_id")]
-            private string WabaId {get; set;}
+            public string WabaId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("verification_method")]
-            private ChannelsSenderResource.VerificationMethodEnum VerificationMethod {get; set;}
+            public ChannelsSenderResource.VerificationMethodEnum VerificationMethod {get; private set;}
             [JsonProperty("verification_code")]
-            private string VerificationCode {get; set;}
+            public string VerificationCode {get; private set;}
             [JsonProperty("voice_application_sid")]
-            private string VoiceApplicationSid {get; set;}
+            public string VoiceApplicationSid {get; private set;}
             public MessagingV2ChannelsSenderConfiguration() { }
             public class Builder
             {
@@ -77,19 +77,19 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderWebhook
         {
             [JsonProperty("callback_url")]
-            private string CallbackUrl {get; set;}
+            public string CallbackUrl {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("callback_method")]
-            private ChannelsSenderResource.CallbackMethodEnum CallbackMethod {get; set;}
+            public ChannelsSenderResource.CallbackMethodEnum CallbackMethod {get; private set;}
             [JsonProperty("fallback_url")]
-            private string FallbackUrl {get; set;}
+            public string FallbackUrl {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("fallback_method")]
-            private ChannelsSenderResource.FallbackMethodEnum FallbackMethod {get; set;}
+            public ChannelsSenderResource.FallbackMethodEnum FallbackMethod {get; private set;}
             [JsonProperty("status_callback_url")]
-            private string StatusCallbackUrl {get; set;}
+            public string StatusCallbackUrl {get; private set;}
             [JsonProperty("status_callback_method")]
-            private string StatusCallbackMethod {get; set;}
+            public string StatusCallbackMethod {get; private set;}
             public MessagingV2ChannelsSenderWebhook() { }
             public class Builder
             {
@@ -136,31 +136,31 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProfile
         {
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("about")]
-            private string About {get; set;}
+            public string About {get; private set;}
             [JsonProperty("address")]
-            private string Address {get; set;}
+            public string Address {get; private set;}
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("logo_url")]
-            private string LogoUrl {get; set;}
+            public string LogoUrl {get; private set;}
             [JsonProperty("banner_url")]
-            private string BannerUrl {get; set;}
+            public string BannerUrl {get; private set;}
             [JsonProperty("privacy_url")]
-            private string PrivacyUrl {get; set;}
+            public string PrivacyUrl {get; private set;}
             [JsonProperty("terms_of_service_url")]
-            private string TermsOfServiceUrl {get; set;}
+            public string TermsOfServiceUrl {get; private set;}
             [JsonProperty("accent_color")]
-            private string AccentColor {get; set;}
+            public string AccentColor {get; private set;}
             [JsonProperty("vertical")]
-            private string Vertical {get; set;}
+            public string Vertical {get; private set;}
             [JsonProperty("websites")]
-            private object Websites {get; set;}
+            public object Websites {get; private set;}
             [JsonProperty("emails")]
-            private object Emails {get; set;}
+            public object Emails {get; private set;}
             [JsonProperty("phone_numbers")]
-            private object PhoneNumbers {get; set;}
+            public object PhoneNumbers {get; private set;}
             public MessagingV2ChannelsSenderProfile() { }
             public class Builder
             {
@@ -242,13 +242,13 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderRequestsCreate
         {
             [JsonProperty("sender_id")]
-            private string SenderId {get; set;}
+            public string SenderId {get; private set;}
             [JsonProperty("configuration")]
-            private MessagingV2ChannelsSenderConfiguration Configuration {get; set;}
+            public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
             [JsonProperty("webhook")]
-            private MessagingV2ChannelsSenderWebhook Webhook {get; set;}
+            public MessagingV2ChannelsSenderWebhook Webhook {get; private set;}
             [JsonProperty("profile")]
-            private MessagingV2ChannelsSenderProfile Profile {get; set;}
+            public MessagingV2ChannelsSenderProfile Profile {get; private set;}
             public MessagingV2ChannelsSenderRequestsCreate() { }
             public class Builder
             {
@@ -285,11 +285,11 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderRequestsUpdate
         {
             [JsonProperty("configuration")]
-            private MessagingV2ChannelsSenderConfiguration Configuration {get; set;}
+            public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
             [JsonProperty("webhook")]
-            private MessagingV2ChannelsSenderWebhook Webhook {get; set;}
+            public MessagingV2ChannelsSenderWebhook Webhook {get; private set;}
             [JsonProperty("profile")]
-            private MessagingV2ChannelsSenderProfile Profile {get; set;}
+            public MessagingV2ChannelsSenderProfile Profile {get; private set;}
             public MessagingV2ChannelsSenderRequestsUpdate() { }
             public class Builder
             {
@@ -321,9 +321,9 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProfileGenericResponseWebsites
         {
             [JsonProperty("website")]
-            private string Website {get; set;}
+            public string Website {get; private set;}
             [JsonProperty("label")]
-            private string Label {get; set;}
+            public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponseWebsites() { }
             public class Builder
             {
@@ -350,9 +350,9 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProfileGenericResponseEmails
         {
             [JsonProperty("email")]
-            private string Email {get; set;}
+            public string Email {get; private set;}
             [JsonProperty("label")]
-            private string Label {get; set;}
+            public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponseEmails() { }
             public class Builder
             {
@@ -379,9 +379,9 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers
         {
             [JsonProperty("phone_number")]
-            private string PhoneNumber {get; set;}
+            public string PhoneNumber {get; private set;}
             [JsonProperty("label")]
-            private string Label {get; set;}
+            public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers() { }
             public class Builder
             {
@@ -408,31 +408,31 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProfileGenericResponse
         {
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("about")]
-            private string About {get; set;}
+            public string About {get; private set;}
             [JsonProperty("address")]
-            private string Address {get; set;}
+            public string Address {get; private set;}
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("logo_url")]
-            private string LogoUrl {get; set;}
+            public string LogoUrl {get; private set;}
             [JsonProperty("banner_url")]
-            private string BannerUrl {get; set;}
+            public string BannerUrl {get; private set;}
             [JsonProperty("privacy_url")]
-            private string PrivacyUrl {get; set;}
+            public string PrivacyUrl {get; private set;}
             [JsonProperty("terms_of_service_url")]
-            private string TermsOfServiceUrl {get; set;}
+            public string TermsOfServiceUrl {get; private set;}
             [JsonProperty("accent_color")]
-            private string AccentColor {get; set;}
+            public string AccentColor {get; private set;}
             [JsonProperty("vertical")]
-            private string Vertical {get; set;}
+            public string Vertical {get; private set;}
             [JsonProperty("websites")]
-            private List<MessagingV2ChannelsSenderProfileGenericResponseWebsites> Websites {get; set;}
+            public List<MessagingV2ChannelsSenderProfileGenericResponseWebsites> Websites {get; private set;}
             [JsonProperty("emails")]
-            private List<MessagingV2ChannelsSenderProfileGenericResponseEmails> Emails {get; set;}
+            public List<MessagingV2ChannelsSenderProfileGenericResponseEmails> Emails {get; private set;}
             [JsonProperty("phone_numbers")]
-            private List<MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers> PhoneNumbers {get; set;}
+            public List<MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers> PhoneNumbers {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponse() { }
             public class Builder
             {
@@ -514,9 +514,9 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderProperties
         {
             [JsonProperty("quality_rating")]
-            private string QualityRating {get; set;}
+            public string QualityRating {get; private set;}
             [JsonProperty("messaging_limit")]
-            private string MessagingLimit {get; set;}
+            public string MessagingLimit {get; private set;}
             public MessagingV2ChannelsSenderProperties() { }
             public class Builder
             {
@@ -543,11 +543,11 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2ChannelsSenderOfflineReasonsItems
         {
             [JsonProperty("code")]
-            private string Code {get; set;}
+            public string Code {get; private set;}
             [JsonProperty("message")]
-            private string Message {get; set;}
+            public string Message {get; private set;}
             [JsonProperty("more_info")]
-            private Uri MoreInfo {get; set;}
+            public Uri MoreInfo {get; private set;}
             public MessagingV2ChannelsSenderOfflineReasonsItems() { }
             public class Builder
             {
@@ -579,10 +579,10 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2RcsCarrier
         {
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("status")]
-            private ChannelsSenderResource.MessagingV2RcsCarrierStatus Status {get; set;}
+            public ChannelsSenderResource.MessagingV2RcsCarrierStatus Status {get; private set;}
             public MessagingV2RcsCarrier() { }
             public class Builder
             {
@@ -609,14 +609,14 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2RcsComplianceCountryResponse
         {
             [JsonProperty("country")]
-            private string Country {get; set;}
+            public string Country {get; private set;}
             [JsonProperty("registration_sid")]
-            private string RegistrationSid {get; set;}
+            public string RegistrationSid {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("status")]
-            private ChannelsSenderResource.MessagingV2RcsCountryStatus Status {get; set;}
+            public ChannelsSenderResource.MessagingV2RcsCountryStatus Status {get; private set;}
             [JsonProperty("carriers")]
-            private List<MessagingV2RcsCarrier> Carriers {get; set;}
+            public List<MessagingV2RcsCarrier> Carriers {get; private set;}
             public MessagingV2RcsComplianceCountryResponse() { }
             public class Builder
             {
@@ -653,9 +653,9 @@ namespace Twilio.Rest.Messaging.V2
         public class MessagingV2RcsComplianceResponse
         {
             [JsonProperty("registration_sid")]
-            private string RegistrationSid {get; set;}
+            public string RegistrationSid {get; private set;}
             [JsonProperty("countries")]
-            private List<MessagingV2RcsComplianceCountryResponse> Countries {get; set;}
+            public List<MessagingV2RcsComplianceCountryResponse> Countries {get; private set;}
             public MessagingV2RcsComplianceResponse() { }
             public class Builder
             {
@@ -840,6 +840,7 @@ namespace Twilio.Rest.Messaging.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> (WhatsApp only) Delete a Sender. </summary>
         /// <param name="options"> Delete ChannelsSender parameters </param>
@@ -1015,7 +1016,7 @@ namespace Twilio.Rest.Messaging.V2
         #endif
         /// <summary> Retrieve a list of Senders for an account. </summary>
         /// <param name="channel">  </param>
-        /// <param name="pageSize"> The number of items to return per page. </param>
+        /// <param name="pageSize"> The number of items to return per page. For WhatsApp, the default is `20`. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ChannelsSender </returns>
@@ -1032,7 +1033,7 @@ namespace Twilio.Rest.Messaging.V2
         #if !NET35
         /// <summary> Retrieve a list of Senders for an account. </summary>
         /// <param name="channel">  </param>
-        /// <param name="pageSize"> The number of items to return per page. </param>
+        /// <param name="pageSize"> The number of items to return per page. For WhatsApp, the default is `20`. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ChannelsSender </returns>
@@ -1165,6 +1166,7 @@ namespace Twilio.Rest.Messaging.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ChannelsSenderResource object

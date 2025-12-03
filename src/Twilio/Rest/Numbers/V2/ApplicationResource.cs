@@ -33,7 +33,7 @@ namespace Twilio.Rest.Numbers.V2
         public class CreateShortCodeApplicationRequestBusinessInformation
         {
             [JsonProperty("customer_facing_profile")]
-            private string CustomerFacingProfile {get; set;}
+            public string CustomerFacingProfile {get; private set;}
             public CreateShortCodeApplicationRequestBusinessInformation() { }
             public class Builder
             {
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Numbers.V2
         public class CreateShortCodeApplicationRequestSetup
         {
             [JsonProperty("charges_apply")]
-            private bool? ChargesApply {get; set;}
+            public bool? ChargesApply {get; private set;}
             public CreateShortCodeApplicationRequestSetup() { }
             public class Builder
             {
@@ -77,13 +77,13 @@ namespace Twilio.Rest.Numbers.V2
         public class CreateShortCodeApplicationRequest
         {
             [JsonProperty("friendly_name")]
-            private string FriendlyName {get; set;}
+            public string FriendlyName {get; private set;}
             [JsonProperty("iso_country")]
-            private string IsoCountry {get; set;}
+            public string IsoCountry {get; private set;}
             [JsonProperty("business_information")]
-            private CreateShortCodeApplicationRequestBusinessInformation BusinessInformation {get; set;}
+            public CreateShortCodeApplicationRequestBusinessInformation BusinessInformation {get; private set;}
             [JsonProperty("setup")]
-            private CreateShortCodeApplicationRequestSetup Setup {get; set;}
+            public CreateShortCodeApplicationRequestSetup Setup {get; private set;}
             public CreateShortCodeApplicationRequest() { }
             public class Builder
             {
@@ -208,6 +208,7 @@ namespace Twilio.Rest.Numbers.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchApplicationOptions options, ITwilioRestClient client)
         {
@@ -449,14 +450,6 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> The state of the application. </summary> 
         [JsonProperty("state")]
         public ApplicationResource.StateEnum State { get; private set; }
-
-        ///<summary> The unique identifier of the Short Code Application. </summary> 
-        [JsonProperty("sid")]
-        public string _Sid { get; private set; }
-
-        ///<summary> The ISO country code. </summary> 
-        [JsonProperty("iso_country")]
-        public string _IsoCountry { get; private set; }
 
 
 

@@ -120,6 +120,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>

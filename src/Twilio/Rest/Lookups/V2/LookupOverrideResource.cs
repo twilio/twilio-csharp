@@ -34,9 +34,9 @@ namespace Twilio.Rest.Lookups.V2
         {
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("line_type")]
-            private LookupOverrideResource.LineTypeEnum LineType {get; set;}
+            public LookupOverrideResource.LineTypeEnum LineType {get; private set;}
             [JsonProperty("reason")]
-            private string Reason {get; set;}
+            public string Reason {get; private set;}
             public OverridesRequest() { }
             public class Builder
             {
@@ -207,6 +207,7 @@ namespace Twilio.Rest.Lookups.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete an Override for a specific package and phone number. </summary>
         /// <param name="options"> Delete LookupOverride parameters </param>
@@ -424,6 +425,7 @@ namespace Twilio.Rest.Lookups.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a LookupOverrideResource object

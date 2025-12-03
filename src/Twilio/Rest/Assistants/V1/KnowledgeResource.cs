@@ -33,15 +33,15 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceCreatePolicyRequest
         {
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("policy_details")]
-            private object PolicyDetails {get; set;}
+            public object PolicyDetails {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             public AssistantsV1ServiceCreatePolicyRequest() { }
             public class Builder
             {
@@ -82,26 +82,36 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateKnowledgeRequest
         {
-            [JsonProperty("assistant_id")]
-            private string AssistantId {get; set;}
-            [JsonProperty("description")]
-            private string Description {get; set;}
-            [JsonProperty("knowledge_source_details")]
-            private object KnowledgeSourceDetails {get; set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
-            [JsonProperty("policy")]
-            private AssistantsV1ServiceCreatePolicyRequest Policy {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
+            [JsonProperty("assistant_id")]
+            public string AssistantId {get; private set;}
+            [JsonProperty("description")]
+            public string Description {get; private set;}
+            [JsonProperty("knowledge_source_details")]
+            public object KnowledgeSourceDetails {get; private set;}
+            [JsonProperty("policy")]
+            public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
             [JsonProperty("embedding_model")]
-            private string EmbeddingModel {get; set;}
+            public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceCreateKnowledgeRequest() { }
             public class Builder
             {
                 private AssistantsV1ServiceCreateKnowledgeRequest _assistantsV1ServiceCreateKnowledgeRequest = new AssistantsV1ServiceCreateKnowledgeRequest();
                 public Builder()
                 {
+                }
+                public Builder WithName(string name)
+                {
+                    _assistantsV1ServiceCreateKnowledgeRequest.Name= name;
+                    return this;
+                }
+                public Builder WithType(string type)
+                {
+                    _assistantsV1ServiceCreateKnowledgeRequest.Type= type;
+                    return this;
                 }
                 public Builder WithAssistantId(string assistantId)
                 {
@@ -118,19 +128,9 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceCreateKnowledgeRequest.KnowledgeSourceDetails= knowledgeSourceDetails;
                     return this;
                 }
-                public Builder WithName(string name)
-                {
-                    _assistantsV1ServiceCreateKnowledgeRequest.Name= name;
-                    return this;
-                }
                 public Builder WithPolicy(AssistantsV1ServiceCreatePolicyRequest policy)
                 {
                     _assistantsV1ServiceCreateKnowledgeRequest.Policy= policy;
-                    return this;
-                }
-                public Builder WithType(string type)
-                {
-                    _assistantsV1ServiceCreateKnowledgeRequest.Type= type;
                     return this;
                 }
                 public Builder WithEmbeddingModel(string embeddingModel)
@@ -147,17 +147,17 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceUpdateKnowledgeRequest
         {
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("knowledge_source_details")]
-            private object KnowledgeSourceDetails {get; set;}
+            public object KnowledgeSourceDetails {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("policy")]
-            private AssistantsV1ServiceCreatePolicyRequest Policy {get; set;}
+            public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("embedding_model")]
-            private string EmbeddingModel {get; set;}
+            public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceUpdateKnowledgeRequest() { }
             public class Builder
             {
@@ -271,6 +271,7 @@ namespace Twilio.Rest.Assistants.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete knowledge </summary>
         /// <param name="options"> Delete Knowledge parameters </param>
@@ -596,6 +597,7 @@ namespace Twilio.Rest.Assistants.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a KnowledgeResource object
@@ -631,13 +633,29 @@ namespace Twilio.Rest.Assistants.V1
     }
 
     
-        ///<summary> The type of knowledge source. </summary> 
-        [JsonProperty("description")]
-        public string Description { get; private set; }
-
         ///<summary> The description of knowledge. </summary> 
         [JsonProperty("id")]
         public string Id { get; }
+
+        ///<summary> The name of the knowledge source. </summary> 
+        [JsonProperty("name")]
+        public string Name { get; }
+
+        ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
+        [JsonProperty("type")]
+        public string Type { get; }
+
+        ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; }
+
+        ///<summary> The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; }
+
+        ///<summary> The type of knowledge source. </summary> 
+        [JsonProperty("description")]
+        public string Description { get; private set; }
 
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource. </summary> 
         [JsonProperty("account_sid")]
@@ -647,17 +665,9 @@ namespace Twilio.Rest.Assistants.V1
         [JsonProperty("knowledge_source_details")]
         public object KnowledgeSourceDetails { get; private set; }
 
-        ///<summary> The name of the knowledge source. </summary> 
-        [JsonProperty("name")]
-        public string Name { get; }
-
         ///<summary> The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED') </summary> 
         [JsonProperty("status")]
         public string Status { get; private set; }
-
-        ///<summary> The type of knowledge source ('Web', 'Database', 'Text', 'File') </summary> 
-        [JsonProperty("type")]
-        public string Type { get; }
 
         ///<summary> The url of the knowledge resource. </summary> 
         [JsonProperty("url")]
@@ -666,14 +676,6 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The embedding model to be used for the knowledge source. </summary> 
         [JsonProperty("embedding_model")]
         public string EmbeddingModel { get; private set; }
-
-        ///<summary> The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; }
-
-        ///<summary> The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; }
 
 
 

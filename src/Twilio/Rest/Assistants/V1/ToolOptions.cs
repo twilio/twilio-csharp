@@ -51,9 +51,11 @@ namespace Twilio.Rest.Assistants.V1
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> delete a tool </summary>
     public class DeleteToolOptions : IOptions<ToolResource>
     {
@@ -176,6 +178,7 @@ namespace Twilio.Rest.Assistants.V1
             }
             return body;
         }
+
         
 
     }

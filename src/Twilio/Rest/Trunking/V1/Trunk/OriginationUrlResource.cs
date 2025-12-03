@@ -121,6 +121,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete OriginationUrl parameters </param>
@@ -482,6 +483,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a OriginationUrlResource object

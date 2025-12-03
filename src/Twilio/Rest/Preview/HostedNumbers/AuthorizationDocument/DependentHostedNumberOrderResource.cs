@@ -41,6 +41,7 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
             {
                 return new StatusEnum(value);
             }
+            public static readonly StatusEnum TwilioProcessing = new StatusEnum("twilio-processing");
             public static readonly StatusEnum Received = new StatusEnum("received");
             public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
             public static readonly StatusEnum Verified = new StatusEnum("verified");

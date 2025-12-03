@@ -90,6 +90,7 @@ namespace Twilio.Rest.Video.V1
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchCompositionSettingsOptions : IOptions<CompositionSettingsResource>
     {

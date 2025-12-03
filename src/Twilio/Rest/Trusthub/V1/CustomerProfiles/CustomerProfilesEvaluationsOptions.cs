@@ -60,6 +60,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         
 
     }
+
     /// <summary> Fetch specific Evaluation Instance. </summary>
     public class FetchCustomerProfilesEvaluationsOptions : IOptions<CustomerProfilesEvaluationsResource>
     {

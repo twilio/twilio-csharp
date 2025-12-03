@@ -33,11 +33,11 @@ namespace Twilio.Rest.Verify.V2.Service
         public class CreateNewPasskeysFactorRequestConfigRelyingParty
         {
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("origins")]
-            private List<string> Origins {get; set;}
+            public List<string> Origins {get; private set;}
             public CreateNewPasskeysFactorRequestConfigRelyingParty() { }
             public class Builder
             {
@@ -69,16 +69,16 @@ namespace Twilio.Rest.Verify.V2.Service
         public class CreateNewPasskeysFactorRequestConfig
         {
             [JsonProperty("relying_party")]
-            private CreateNewPasskeysFactorRequestConfigRelyingParty RelyingParty {get; set;}
+            public CreateNewPasskeysFactorRequestConfigRelyingParty RelyingParty {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("authenticator_attachment")]
-            private NewFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; set;}
+            public NewFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("discoverable_credentials")]
-            private NewFactorResource.DiscoverableCredentialsEnum DiscoverableCredentials {get; set;}
+            public NewFactorResource.DiscoverableCredentialsEnum DiscoverableCredentials {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("user_verification")]
-            private NewFactorResource.UserVerificationEnum UserVerification {get; set;}
+            public NewFactorResource.UserVerificationEnum UserVerification {get; private set;}
             public CreateNewPasskeysFactorRequestConfig() { }
             public class Builder
             {
@@ -115,11 +115,11 @@ namespace Twilio.Rest.Verify.V2.Service
         public class CreateNewPasskeysFactorRequest
         {
             [JsonProperty("friendly_name")]
-            private string FriendlyName {get; set;}
+            public string FriendlyName {get; private set;}
             [JsonProperty("identity")]
-            private string Identity {get; set;}
+            public string Identity {get; private set;}
             [JsonProperty("config")]
-            private CreateNewPasskeysFactorRequestConfig Config {get; set;}
+            public CreateNewPasskeysFactorRequestConfig Config {get; private set;}
             public CreateNewPasskeysFactorRequest() { }
             public class Builder
             {
@@ -293,6 +293,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NewFactorResource object

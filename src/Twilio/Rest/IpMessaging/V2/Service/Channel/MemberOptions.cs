@@ -120,6 +120,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     }
 
     }
+
     /// <summary> delete </summary>
     public class DeleteMemberOptions : IOptions<MemberResource>
     {

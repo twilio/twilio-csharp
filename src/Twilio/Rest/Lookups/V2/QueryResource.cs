@@ -33,25 +33,25 @@ namespace Twilio.Rest.Lookups.V2
         public class IdentityMatchParameters
         {
             [JsonProperty("first_name")]
-            private string FirstName {get; set;}
+            public string FirstName {get; private set;}
             [JsonProperty("last_name")]
-            private string LastName {get; set;}
+            public string LastName {get; private set;}
             [JsonProperty("address_line1")]
-            private string AddressLine1 {get; set;}
+            public string AddressLine1 {get; private set;}
             [JsonProperty("address_line2")]
-            private string AddressLine2 {get; set;}
+            public string AddressLine2 {get; private set;}
             [JsonProperty("city")]
-            private string City {get; set;}
+            public string City {get; private set;}
             [JsonProperty("state")]
-            private string State {get; set;}
+            public string State {get; private set;}
             [JsonProperty("postal_code")]
-            private string PostalCode {get; set;}
+            public string PostalCode {get; private set;}
             [JsonProperty("address_country_code")]
-            private string AddressCountryCode {get; set;}
+            public string AddressCountryCode {get; private set;}
             [JsonProperty("national_id")]
-            private string NationalId {get; set;}
+            public string NationalId {get; private set;}
             [JsonProperty("date_of_birth")]
-            private string DateOfBirth {get; set;}
+            public string DateOfBirth {get; private set;}
             public IdentityMatchParameters() { }
             public class Builder
             {
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Lookups.V2
         public class ReassignedNumberParameters
         {
             [JsonProperty("last_verified_date")]
-            private string LastVerifiedDate {get; set;}
+            public string LastVerifiedDate {get; private set;}
             public ReassignedNumberParameters() { }
             public class Builder
             {
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Lookups.V2
         public class RiskParameters
         {
             [JsonProperty("partner_sub_id")]
-            private string PartnerSubId {get; set;}
+            public string PartnerSubId {get; private set;}
             public RiskParameters() { }
             public class Builder
             {
@@ -161,21 +161,21 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LookupBatchRequest
         {
-            [JsonProperty("correlation_id")]
-            private string CorrelationId {get; set;}
             [JsonProperty("phone_number")]
-            private string PhoneNumber {get; set;}
+            public string PhoneNumber {get; private set;}
+            [JsonProperty("correlation_id")]
+            public string CorrelationId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("fields")]
-            private List<QueryResource.FieldsEnum> Fields {get; set;}
+            public List<QueryResource.FieldsEnum> Fields {get; private set;}
             [JsonProperty("country_code")]
-            private string CountryCode {get; set;}
+            public string CountryCode {get; private set;}
             [JsonProperty("identity_match")]
-            private IdentityMatchParameters IdentityMatch {get; set;}
+            public IdentityMatchParameters IdentityMatch {get; private set;}
             [JsonProperty("reassigned_number")]
-            private ReassignedNumberParameters ReassignedNumber {get; set;}
+            public ReassignedNumberParameters ReassignedNumber {get; private set;}
             [JsonProperty("sms_pumping_risk")]
-            private RiskParameters SmsPumpingRisk {get; set;}
+            public RiskParameters SmsPumpingRisk {get; private set;}
             public LookupBatchRequest() { }
             public class Builder
             {
@@ -183,14 +183,14 @@ namespace Twilio.Rest.Lookups.V2
                 public Builder()
                 {
                 }
-                public Builder WithCorrelationId(string correlationId)
-                {
-                    _lookupBatchRequest.CorrelationId= correlationId;
-                    return this;
-                }
                 public Builder WithPhoneNumber(string phoneNumber)
                 {
                     _lookupBatchRequest.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithCorrelationId(string correlationId)
+                {
+                    _lookupBatchRequest.CorrelationId= correlationId;
                     return this;
                 }
                 public Builder WithFields(List<QueryResource.FieldsEnum> fields)
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Lookups.V2
         public class LookupRequest
         {
             [JsonProperty("phone_numbers")]
-            private List<LookupBatchRequest> PhoneNumbers {get; set;}
+            public List<LookupBatchRequest> PhoneNumbers {get; private set;}
             public LookupRequest() { }
             public class Builder
             {
@@ -249,11 +249,11 @@ namespace Twilio.Rest.Lookups.V2
         public class CallerNameInfo
         {
             [JsonProperty("caller_name")]
-            private string CallerName {get; set;}
+            public string CallerName {get; private set;}
             [JsonProperty("caller_type")]
-            private string CallerType {get; set;}
+            public string CallerType {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public CallerNameInfo() { }
             public class Builder
             {
@@ -285,11 +285,11 @@ namespace Twilio.Rest.Lookups.V2
         public class LastSimSwapInfo
         {
             [JsonProperty("last_sim_swap_date")]
-            private DateTime? LastSimSwapDate {get; set;}
+            public DateTime? LastSimSwapDate {get; private set;}
             [JsonProperty("swapped_period")]
-            private string SwappedPeriod {get; set;}
+            public string SwappedPeriod {get; private set;}
             [JsonProperty("swapped_in_period")]
-            private bool? SwappedInPeriod {get; set;}
+            public bool? SwappedInPeriod {get; private set;}
             public LastSimSwapInfo() { }
             public class Builder
             {
@@ -321,15 +321,15 @@ namespace Twilio.Rest.Lookups.V2
         public class SimSwapInfo
         {
             [JsonProperty("last_sim_swap")]
-            private LastSimSwapInfo LastSimSwap {get; set;}
+            public LastSimSwapInfo LastSimSwap {get; private set;}
             [JsonProperty("carrier_name")]
-            private string CarrierName {get; set;}
+            public string CarrierName {get; private set;}
             [JsonProperty("mobile_country_code")]
-            private string MobileCountryCode {get; set;}
+            public string MobileCountryCode {get; private set;}
             [JsonProperty("mobile_network_code")]
-            private string MobileNetworkCode {get; set;}
+            public string MobileNetworkCode {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public SimSwapInfo() { }
             public class Builder
             {
@@ -371,9 +371,9 @@ namespace Twilio.Rest.Lookups.V2
         public class CallForwardingInfo
         {
             [JsonProperty("call_forwarding_enabled")]
-            private bool? CallForwardingEnabled {get; set;}
+            public bool? CallForwardingEnabled {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public CallForwardingInfo() { }
             public class Builder
             {
@@ -400,15 +400,15 @@ namespace Twilio.Rest.Lookups.V2
         public class LineTypeIntelligenceInfo
         {
             [JsonProperty("mobile_country_code")]
-            private string MobileCountryCode {get; set;}
+            public string MobileCountryCode {get; private set;}
             [JsonProperty("mobile_network_code")]
-            private string MobileNetworkCode {get; set;}
+            public string MobileNetworkCode {get; private set;}
             [JsonProperty("carrier_name")]
-            private string CarrierName {get; set;}
+            public string CarrierName {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public LineTypeIntelligenceInfo() { }
             public class Builder
             {
@@ -450,9 +450,9 @@ namespace Twilio.Rest.Lookups.V2
         public class LineStatusInfo
         {
             [JsonProperty("status")]
-            private string Status {get; set;}
+            public string Status {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public LineStatusInfo() { }
             public class Builder
             {
@@ -479,29 +479,29 @@ namespace Twilio.Rest.Lookups.V2
         public class IdentityMatchInfo
         {
             [JsonProperty("first_name_match")]
-            private string FirstNameMatch {get; set;}
+            public string FirstNameMatch {get; private set;}
             [JsonProperty("last_name_match")]
-            private string LastNameMatch {get; set;}
+            public string LastNameMatch {get; private set;}
             [JsonProperty("address_lines_match")]
-            private string AddressLinesMatch {get; set;}
+            public string AddressLinesMatch {get; private set;}
             [JsonProperty("city_match")]
-            private string CityMatch {get; set;}
+            public string CityMatch {get; private set;}
             [JsonProperty("state_match")]
-            private string StateMatch {get; set;}
+            public string StateMatch {get; private set;}
             [JsonProperty("postal_code_match")]
-            private string PostalCodeMatch {get; set;}
+            public string PostalCodeMatch {get; private set;}
             [JsonProperty("address_country_match")]
-            private string AddressCountryMatch {get; set;}
+            public string AddressCountryMatch {get; private set;}
             [JsonProperty("national_id_match")]
-            private string NationalIdMatch {get; set;}
+            public string NationalIdMatch {get; private set;}
             [JsonProperty("date_of_birth_match")]
-            private string DateOfBirthMatch {get; set;}
+            public string DateOfBirthMatch {get; private set;}
             [JsonProperty("summary_score")]
-            private int? SummaryScore {get; set;}
+            public int? SummaryScore {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             [JsonProperty("error_message")]
-            private string ErrorMessage {get; set;}
+            public string ErrorMessage {get; private set;}
             public IdentityMatchInfo() { }
             public class Builder
             {
@@ -578,11 +578,11 @@ namespace Twilio.Rest.Lookups.V2
         public class ReassignedNumberInfo
         {
             [JsonProperty("last_verified_date")]
-            private string LastVerifiedDate {get; set;}
+            public string LastVerifiedDate {get; private set;}
             [JsonProperty("is_number_reassigned")]
-            private string IsNumberReassigned {get; set;}
+            public string IsNumberReassigned {get; private set;}
             [JsonProperty("error_code")]
-            private string ErrorCode {get; set;}
+            public string ErrorCode {get; private set;}
             public ReassignedNumberInfo() { }
             public class Builder
             {
@@ -614,17 +614,17 @@ namespace Twilio.Rest.Lookups.V2
         public class SmsPumpingRiskInfo
         {
             [JsonProperty("carrier_risk_category")]
-            private string CarrierRiskCategory {get; set;}
+            public string CarrierRiskCategory {get; private set;}
             [JsonProperty("number_blocked")]
-            private bool? NumberBlocked {get; set;}
+            public bool? NumberBlocked {get; private set;}
             [JsonProperty("number_blocked_date")]
-            private DateTime? NumberBlockedDate {get; set;}
+            public DateTime? NumberBlockedDate {get; private set;}
             [JsonProperty("number_blocked_last_3_months")]
-            private bool? NumberBlockedLast3Months {get; set;}
+            public bool? NumberBlockedLast3Months {get; private set;}
             [JsonProperty("sms_pumping_risk_score")]
-            private int? SmsPumpingRiskScore {get; set;}
+            public int? SmsPumpingRiskScore {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public SmsPumpingRiskInfo() { }
             public class Builder
             {
@@ -671,41 +671,41 @@ namespace Twilio.Rest.Lookups.V2
         public class LookupBatchResponse
         {
             [JsonProperty("correlation_id")]
-            private string CorrelationId {get; set;}
+            public string CorrelationId {get; private set;}
             [JsonProperty("twilio_error_code")]
-            private int? TwilioErrorCode {get; set;}
+            public int? TwilioErrorCode {get; private set;}
             [JsonProperty("calling_country_code")]
-            private string CallingCountryCode {get; set;}
+            public string CallingCountryCode {get; private set;}
             [JsonProperty("country_code")]
-            private string CountryCode {get; set;}
+            public string CountryCode {get; private set;}
             [JsonProperty("phone_number")]
-            private string PhoneNumber {get; set;}
+            public string PhoneNumber {get; private set;}
             [JsonProperty("national_format")]
-            private string NationalFormat {get; set;}
+            public string NationalFormat {get; private set;}
             [JsonProperty("valid")]
-            private bool? Valid {get; set;}
+            public bool? Valid {get; private set;}
             [JsonProperty("validation_errors")]
-            private List<string> ValidationErrors {get; set;}
+            public List<string> ValidationErrors {get; private set;}
             [JsonProperty("caller_name")]
-            private CallerNameInfo CallerName {get; set;}
+            public CallerNameInfo CallerName {get; private set;}
             [JsonProperty("sim_swap")]
-            private SimSwapInfo SimSwap {get; set;}
+            public SimSwapInfo SimSwap {get; private set;}
             [JsonProperty("call_forwarding")]
-            private CallForwardingInfo CallForwarding {get; set;}
+            public CallForwardingInfo CallForwarding {get; private set;}
             [JsonProperty("line_type_intelligence")]
-            private LineTypeIntelligenceInfo LineTypeIntelligence {get; set;}
+            public LineTypeIntelligenceInfo LineTypeIntelligence {get; private set;}
             [JsonProperty("line_status")]
-            private LineStatusInfo LineStatus {get; set;}
+            public LineStatusInfo LineStatus {get; private set;}
             [JsonProperty("identity_match")]
-            private IdentityMatchInfo IdentityMatch {get; set;}
+            public IdentityMatchInfo IdentityMatch {get; private set;}
             [JsonProperty("reassigned_number")]
-            private ReassignedNumberInfo ReassignedNumber {get; set;}
+            public ReassignedNumberInfo ReassignedNumber {get; private set;}
             [JsonProperty("sms_pumping_risk")]
-            private SmsPumpingRiskInfo SmsPumpingRisk {get; set;}
+            public SmsPumpingRiskInfo SmsPumpingRisk {get; private set;}
             [JsonProperty("phone_number_quality_score")]
-            private object PhoneNumberQualityScore {get; set;}
+            public object PhoneNumberQualityScore {get; private set;}
             [JsonProperty("pre_fill")]
-            private object PreFill {get; set;}
+            public object PreFill {get; private set;}
             public LookupBatchResponse() { }
             public class Builder
             {
@@ -894,6 +894,7 @@ namespace Twilio.Rest.Lookups.V2
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a QueryResource object

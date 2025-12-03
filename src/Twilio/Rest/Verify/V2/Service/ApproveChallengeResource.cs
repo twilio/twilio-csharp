@@ -33,13 +33,13 @@ namespace Twilio.Rest.Verify.V2.Service
         public class ApprovePasskeysChallengeRequestResponse
         {
             [JsonProperty("authenticatorData")]
-            private string AuthenticatorData {get; set;}
+            public string AuthenticatorData {get; private set;}
             [JsonProperty("clientDataJSON")]
-            private string ClientDataJSON {get; set;}
+            public string ClientDataJSON {get; private set;}
             [JsonProperty("signature")]
-            private string Signature {get; set;}
+            public string Signature {get; private set;}
             [JsonProperty("userHandle")]
-            private string UserHandle {get; set;}
+            public string UserHandle {get; private set;}
             public ApprovePasskeysChallengeRequestResponse() { }
             public class Builder
             {
@@ -76,17 +76,17 @@ namespace Twilio.Rest.Verify.V2.Service
         public class ApprovePasskeysChallengeRequest
         {
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("rawId")]
-            private string RawId {get; set;}
+            public string RawId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("authenticatorAttachment")]
-            private ApproveChallengeResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; set;}
+            public ApproveChallengeResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
+            [JsonProperty("response")]
+            public ApprovePasskeysChallengeRequestResponse Response {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("type")]
-            private ApproveChallengeResource.TypeEnum Type {get; set;}
-            [JsonProperty("response")]
-            private ApprovePasskeysChallengeRequestResponse Response {get; set;}
+            public ApproveChallengeResource.TypeEnum Type {get; private set;}
             public ApprovePasskeysChallengeRequest() { }
             public class Builder
             {
@@ -109,14 +109,14 @@ namespace Twilio.Rest.Verify.V2.Service
                     _approvePasskeysChallengeRequest.AuthenticatorAttachment= authenticatorAttachment;
                     return this;
                 }
-                public Builder WithType(ApproveChallengeResource.TypeEnum type)
-                {
-                    _approvePasskeysChallengeRequest.Type= type;
-                    return this;
-                }
                 public Builder WithResponse(ApprovePasskeysChallengeRequestResponse response)
                 {
                     _approvePasskeysChallengeRequest.Response= response;
+                    return this;
+                }
+                public Builder WithType(ApproveChallengeResource.TypeEnum type)
+                {
+                    _approvePasskeysChallengeRequest.Type= type;
                     return this;
                 }
                 public ApprovePasskeysChallengeRequest Build()
@@ -270,6 +270,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ApproveChallengeResource object

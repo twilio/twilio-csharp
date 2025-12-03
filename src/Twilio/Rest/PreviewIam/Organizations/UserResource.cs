@@ -33,9 +33,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public class ScimName
         {
             [JsonProperty("givenName")]
-            private string GivenName {get; set;}
+            public string GivenName {get; private set;}
             [JsonProperty("familyName")]
-            private string FamilyName {get; set;}
+            public string FamilyName {get; private set;}
             public ScimName() { }
             public class Builder
             {
@@ -62,11 +62,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public class ScimEmailAddress
         {
             [JsonProperty("primary")]
-            private bool? Primary {get; set;}
+            public bool? Primary {get; private set;}
             [JsonProperty("value")]
-            private string Value {get; set;}
+            public string Value {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             public ScimEmailAddress() { }
             public class Builder
             {
@@ -98,13 +98,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public class ScimMeta
         {
             [JsonProperty("resourceType")]
-            private string ResourceType {get; set;}
+            public string ResourceType {get; private set;}
             [JsonProperty("created")]
-            private DateTime? Created {get; set;}
+            public DateTime? Created {get; private set;}
             [JsonProperty("lastModified")]
-            private DateTime? LastModified {get; set;}
+            public DateTime? LastModified {get; private set;}
             [JsonProperty("version")]
-            private string Version {get; set;}
+            public string Version {get; private set;}
             public ScimMeta() { }
             public class Builder
             {
@@ -140,34 +140,39 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimUser
         {
-            [JsonProperty("id")]
-            private string Id {get; set;}
-            [JsonProperty("externalId")]
-            private string ExternalId {get; set;}
             [JsonProperty("userName")]
-            private string UserName {get; set;}
+            public string UserName {get; private set;}
+            [JsonProperty("id")]
+            public string Id {get; private set;}
+            [JsonProperty("externalId")]
+            public string ExternalId {get; private set;}
             [JsonProperty("displayName")]
-            private string DisplayName {get; set;}
+            public string DisplayName {get; private set;}
             [JsonProperty("name")]
-            private ScimName Name {get; set;}
+            public ScimName Name {get; private set;}
             [JsonProperty("emails")]
-            private List<ScimEmailAddress> Emails {get; set;}
+            public List<ScimEmailAddress> Emails {get; private set;}
             [JsonProperty("active")]
-            private bool? Active {get; set;}
+            public bool? Active {get; private set;}
             [JsonProperty("locale")]
-            private string Locale {get; set;}
+            public string Locale {get; private set;}
             [JsonProperty("timezone")]
-            private string Timezone {get; set;}
+            public string Timezone {get; private set;}
             [JsonProperty("schemas")]
-            private List<string> Schemas {get; set;}
+            public List<string> Schemas {get; private set;}
             [JsonProperty("meta")]
-            private ScimMeta Meta {get; set;}
+            public ScimMeta Meta {get; private set;}
             public ScimUser() { }
             public class Builder
             {
                 private ScimUser _scimUser = new ScimUser();
                 public Builder()
                 {
+                }
+                public Builder WithUserName(string userName)
+                {
+                    _scimUser.UserName= userName;
+                    return this;
                 }
                 public Builder WithId(string id)
                 {
@@ -177,11 +182,6 @@ namespace Twilio.Rest.PreviewIam.Organizations
                 public Builder WithExternalId(string externalId)
                 {
                     _scimUser.ExternalId= externalId;
-                    return this;
-                }
-                public Builder WithUserName(string userName)
-                {
-                    _scimUser.UserName= userName;
                     return this;
                 }
                 public Builder WithDisplayName(string displayName)
@@ -306,6 +306,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete User parameters </param>
@@ -656,6 +657,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a UserResource object
@@ -691,6 +693,10 @@ namespace Twilio.Rest.PreviewIam.Organizations
     }
 
     
+        ///<summary> Unique username, MUST be same as primary email address </summary> 
+        [JsonProperty("userName")]
+        public string UserName { get; }
+
         ///<summary> Unique Twilio user sid </summary> 
         [JsonProperty("id")]
         public string Id { get; private set; }
@@ -698,10 +704,6 @@ namespace Twilio.Rest.PreviewIam.Organizations
         ///<summary> External unique resource id defined by provisioning client </summary> 
         [JsonProperty("externalId")]
         public string ExternalId { get; private set; }
-
-        ///<summary> Unique username, MUST be same as primary email address </summary> 
-        [JsonProperty("userName")]
-        public string UserName { get; }
 
         ///<summary> User friendly display name </summary> 
         [JsonProperty("displayName")]

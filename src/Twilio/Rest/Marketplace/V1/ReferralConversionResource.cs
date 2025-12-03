@@ -33,7 +33,7 @@ namespace Twilio.Rest.Marketplace.V1
         public class CreateReferralConversionRequest
         {
             [JsonProperty("referral_account_sid")]
-            private string ReferralAccountSid {get; set;}
+            public string ReferralAccountSid {get; private set;}
             public CreateReferralConversionRequest() { }
             public class Builder
             {
@@ -122,6 +122,7 @@ namespace Twilio.Rest.Marketplace.V1
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ReferralConversionResource object

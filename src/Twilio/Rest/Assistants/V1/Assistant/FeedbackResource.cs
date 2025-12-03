@@ -32,14 +32,14 @@ namespace Twilio.Rest.Assistants.V1.Assistant
     
         public class AssistantsV1ServiceCreateFeedbackRequest
         {
-            [JsonProperty("message_id")]
-            private string MessageId {get; set;}
-            [JsonProperty("score")]
-            private float Score {get; set;}
             [JsonProperty("session_id")]
-            private string SessionId {get; set;}
+            public string SessionId {get; private set;}
+            [JsonProperty("message_id")]
+            public string MessageId {get; private set;}
+            [JsonProperty("score")]
+            public float? Score {get; private set;}
             [JsonProperty("text")]
-            private string Text {get; set;}
+            public string Text {get; private set;}
             public AssistantsV1ServiceCreateFeedbackRequest() { }
             public class Builder
             {
@@ -47,19 +47,19 @@ namespace Twilio.Rest.Assistants.V1.Assistant
                 public Builder()
                 {
                 }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _assistantsV1ServiceCreateFeedbackRequest.SessionId= sessionId;
+                    return this;
+                }
                 public Builder WithMessageId(string messageId)
                 {
                     _assistantsV1ServiceCreateFeedbackRequest.MessageId= messageId;
                     return this;
                 }
-                public Builder WithScore(float score)
+                public Builder WithScore(float? score)
                 {
                     _assistantsV1ServiceCreateFeedbackRequest.Score= score;
-                    return this;
-                }
-                public Builder WithSessionId(string sessionId)
-                {
-                    _assistantsV1ServiceCreateFeedbackRequest.SessionId= sessionId;
                     return this;
                 }
                 public Builder WithText(string text)
@@ -149,6 +149,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildReadRequest(ReadFeedbackOptions options, ITwilioRestClient client)
         {
@@ -317,21 +318,13 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         [JsonProperty("id")]
         public string Id { get; }
 
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Feedback. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-
-        ///<summary> The SID of the User created the Feedback. </summary> 
-        [JsonProperty("user_sid")]
-        public string UserSid { get; private set; }
-
         ///<summary> The Message ID. </summary> 
         [JsonProperty("message_id")]
         public string MessageId { get; }
 
         ///<summary> The Score to provide as Feedback (0-1) </summary> 
         [JsonProperty("score")]
-        public float Score { get; }
+        public float? Score { get; }
 
         ///<summary> The Session ID. </summary> 
         [JsonProperty("session_id")]
@@ -348,6 +341,14 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         ///<summary> The date and time in GMT when the Feedback was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Feedback. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The SID of the User created the Feedback. </summary> 
+        [JsonProperty("user_sid")]
+        public string UserSid { get; private set; }
 
 
 

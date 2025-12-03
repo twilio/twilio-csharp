@@ -107,6 +107,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Detach Tool to Assistant </summary>
         /// <param name="options"> Delete AssistantsTool parameters </param>
@@ -339,10 +340,6 @@ namespace Twilio.Rest.Assistants.V1.Assistant
     }
 
     
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-
         ///<summary> The description of the tool. </summary> 
         [JsonProperty("description")]
         public string Description { get; }
@@ -371,10 +368,6 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         [JsonProperty("type")]
         public string Type { get; }
 
-        ///<summary> The url of the tool resource. </summary> 
-        [JsonProperty("url")]
-        public string Url { get; private set; }
-
         ///<summary> The date and time in GMT when the Tool was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; }
@@ -382,6 +375,14 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         ///<summary> The date and time in GMT when the Tool was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The url of the tool resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
 
 
 

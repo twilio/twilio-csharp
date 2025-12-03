@@ -51,9 +51,11 @@ namespace Twilio.Rest.Assistants.V1
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> delete an assistant </summary>
     public class DeleteAssistantOptions : IOptions<AssistantResource>
     {
@@ -169,6 +171,7 @@ namespace Twilio.Rest.Assistants.V1
             }
             return body;
         }
+
         
 
     }

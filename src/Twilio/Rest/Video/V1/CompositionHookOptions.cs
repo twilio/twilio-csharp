@@ -120,6 +120,7 @@ namespace Twilio.Rest.Video.V1
         
 
     }
+
     /// <summary> Delete a Recording CompositionHook resource identified by a `CompositionHook SID`. </summary>
     public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
     {

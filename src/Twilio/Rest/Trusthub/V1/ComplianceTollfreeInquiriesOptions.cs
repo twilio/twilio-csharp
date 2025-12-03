@@ -34,6 +34,9 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> The email address to receive the notification about the verification result. </summary> 
         public string NotificationEmail { get; }
 
+        ///<summary> The Customer Profile Sid associated with the Account. </summary> 
+        public string CustomerProfileSid { get; set; }
+
         ///<summary> The name of the business or organization using the Tollfree number. </summary> 
         public string BusinessName { get; set; }
 
@@ -122,6 +125,10 @@ namespace Twilio.Rest.Trusthub.V1
             if (NotificationEmail != null)
             {
                 p.Add(new KeyValuePair<string, string>("NotificationEmail", NotificationEmail));
+            }
+            if (CustomerProfileSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CustomerProfileSid", CustomerProfileSid));
             }
             if (BusinessName != null)
             {
@@ -213,5 +220,6 @@ namespace Twilio.Rest.Trusthub.V1
         
 
     }
+
 }
 

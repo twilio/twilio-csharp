@@ -33,9 +33,9 @@ namespace Twilio.Rest.Lookups.V2
         public class RateLimitRequest
         {
             [JsonProperty("limit")]
-            private int? Limit {get; set;}
+            public int? Limit {get; private set;}
             [JsonProperty("ttl")]
-            private int? Ttl {get; set;}
+            public int? Ttl {get; private set;}
             public RateLimitRequest() { }
             public class Builder
             {
@@ -279,6 +279,7 @@ namespace Twilio.Rest.Lookups.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a BucketResource object

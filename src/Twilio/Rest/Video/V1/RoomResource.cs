@@ -205,6 +205,7 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         private static Request BuildFetchRequest(FetchRoomOptions options, ITwilioRestClient client)
         {
@@ -477,6 +478,7 @@ namespace Twilio.Rest.Video.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a RoomResource object

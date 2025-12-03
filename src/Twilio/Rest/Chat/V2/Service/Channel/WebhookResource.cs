@@ -160,6 +160,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Webhook parameters </param>
@@ -546,6 +547,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a WebhookResource object

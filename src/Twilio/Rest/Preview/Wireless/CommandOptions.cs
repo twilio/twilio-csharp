@@ -97,6 +97,7 @@ namespace Twilio.Rest.Preview.Wireless
         
 
     }
+
     /// <summary> fetch </summary>
     public class FetchCommandOptions : IOptions<CommandResource>
     {

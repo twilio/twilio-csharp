@@ -30,49 +30,20 @@ namespace Twilio.Rest.Numbers.V1
     public class PortingPortInResource : Resource
     {
     
-        public class NumbersV1PortingPortInCreatePhoneNumbers
-        {
-            [JsonProperty("phone_number")]
-            private string PhoneNumber {get; set;}
-            [JsonProperty("pin")]
-            private string Pin {get; set;}
-            public NumbersV1PortingPortInCreatePhoneNumbers() { }
-            public class Builder
-            {
-                private NumbersV1PortingPortInCreatePhoneNumbers _numbersV1PortingPortInCreatePhoneNumbers = new NumbersV1PortingPortInCreatePhoneNumbers();
-                public Builder()
-                {
-                }
-                public Builder WithPhoneNumber(string phoneNumber)
-                {
-                    _numbersV1PortingPortInCreatePhoneNumbers.PhoneNumber= phoneNumber;
-                    return this;
-                }
-                public Builder WithPin(string pin)
-                {
-                    _numbersV1PortingPortInCreatePhoneNumbers.Pin= pin;
-                    return this;
-                }
-                public NumbersV1PortingPortInCreatePhoneNumbers Build()
-                {
-                    return _numbersV1PortingPortInCreatePhoneNumbers;
-                }
-            }
-        }
         public class NumbersV1PortingAddress
         {
             [JsonProperty("street")]
-            private string Street {get; set;}
-            [JsonProperty("street_2")]
-            private string Street2 {get; set;}
+            public string Street {get; private set;}
             [JsonProperty("city")]
-            private string City {get; set;}
+            public string City {get; private set;}
             [JsonProperty("state")]
-            private string State {get; set;}
+            public string State {get; private set;}
             [JsonProperty("zip")]
-            private string Zip {get; set;}
+            public string Zip {get; private set;}
             [JsonProperty("country")]
-            private string Country {get; set;}
+            public string Country {get; private set;}
+            [JsonProperty("street_2")]
+            public string Street2 {get; private set;}
             public NumbersV1PortingAddress() { }
             public class Builder
             {
@@ -83,11 +54,6 @@ namespace Twilio.Rest.Numbers.V1
                 public Builder WithStreet(string street)
                 {
                     _numbersV1PortingAddress.Street= street;
-                    return this;
-                }
-                public Builder WithStreet2(string street2)
-                {
-                    _numbersV1PortingAddress.Street2= street2;
                     return this;
                 }
                 public Builder WithCity(string city)
@@ -110,6 +76,11 @@ namespace Twilio.Rest.Numbers.V1
                     _numbersV1PortingAddress.Country= country;
                     return this;
                 }
+                public Builder WithStreet2(string street2)
+                {
+                    _numbersV1PortingAddress.Street2= street2;
+                    return this;
+                }
                 public NumbersV1PortingAddress Build()
                 {
                     return _numbersV1PortingAddress;
@@ -119,30 +90,30 @@ namespace Twilio.Rest.Numbers.V1
         public class NumbersV1PortingLosingCarrierInformation
         {
             [JsonProperty("customer_name")]
-            private string CustomerName {get; set;}
-            [JsonProperty("account_number")]
-            private string AccountNumber {get; set;}
-            [JsonProperty("account_telephone_number")]
-            private string AccountTelephoneNumber {get; set;}
-            [JsonProperty("address_sid")]
-            private string AddressSid {get; set;}
-            [JsonProperty("address")]
-            private NumbersV1PortingAddress Address {get; set;}
+            public string CustomerName {get; private set;}
             [JsonProperty("authorized_representative")]
-            private string AuthorizedRepresentative {get; set;}
+            public string AuthorizedRepresentative {get; private set;}
             [JsonProperty("authorized_representative_email")]
-            private string AuthorizedRepresentativeEmail {get; set;}
+            public string AuthorizedRepresentativeEmail {get; private set;}
+            [JsonProperty("account_number")]
+            public string AccountNumber {get; private set;}
+            [JsonProperty("account_telephone_number")]
+            public string AccountTelephoneNumber {get; private set;}
+            [JsonProperty("address_sid")]
+            public string AddressSid {get; private set;}
+            [JsonProperty("address")]
+            public NumbersV1PortingAddress Address {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("customer_type")]
-            private PortingPortInResource.CustomerTypeEnum CustomerType {get; set;}
+            public PortingPortInResource.CustomerTypeEnum CustomerType {get; private set;}
             [JsonProperty("authorized_representative_katakana")]
-            private string AuthorizedRepresentativeKatakana {get; set;}
+            public string AuthorizedRepresentativeKatakana {get; private set;}
             [JsonProperty("sub_municipality")]
-            private string SubMunicipality {get; set;}
+            public string SubMunicipality {get; private set;}
             [JsonProperty("building")]
-            private string Building {get; set;}
+            public string Building {get; private set;}
             [JsonProperty("katakana_name")]
-            private string KatakanaName {get; set;}
+            public string KatakanaName {get; private set;}
             public NumbersV1PortingLosingCarrierInformation() { }
             public class Builder
             {
@@ -153,6 +124,16 @@ namespace Twilio.Rest.Numbers.V1
                 public Builder WithCustomerName(string customerName)
                 {
                     _numbersV1PortingLosingCarrierInformation.CustomerName= customerName;
+                    return this;
+                }
+                public Builder WithAuthorizedRepresentative(string authorizedRepresentative)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentative= authorizedRepresentative;
+                    return this;
+                }
+                public Builder WithAuthorizedRepresentativeEmail(string authorizedRepresentativeEmail)
+                {
+                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentativeEmail= authorizedRepresentativeEmail;
                     return this;
                 }
                 public Builder WithAccountNumber(string accountNumber)
@@ -173,16 +154,6 @@ namespace Twilio.Rest.Numbers.V1
                 public Builder WithAddress(NumbersV1PortingAddress address)
                 {
                     _numbersV1PortingLosingCarrierInformation.Address= address;
-                    return this;
-                }
-                public Builder WithAuthorizedRepresentative(string authorizedRepresentative)
-                {
-                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentative= authorizedRepresentative;
-                    return this;
-                }
-                public Builder WithAuthorizedRepresentativeEmail(string authorizedRepresentativeEmail)
-                {
-                    _numbersV1PortingLosingCarrierInformation.AuthorizedRepresentativeEmail= authorizedRepresentativeEmail;
                     return this;
                 }
                 public Builder WithCustomerType(PortingPortInResource.CustomerTypeEnum customerType)
@@ -216,30 +187,59 @@ namespace Twilio.Rest.Numbers.V1
                 }
             }
         }
+        public class NumbersV1PortingPortInCreatePhoneNumbers
+        {
+            [JsonProperty("phone_number")]
+            public string PhoneNumber {get; private set;}
+            [JsonProperty("pin")]
+            public string Pin {get; private set;}
+            public NumbersV1PortingPortInCreatePhoneNumbers() { }
+            public class Builder
+            {
+                private NumbersV1PortingPortInCreatePhoneNumbers _numbersV1PortingPortInCreatePhoneNumbers = new NumbersV1PortingPortInCreatePhoneNumbers();
+                public Builder()
+                {
+                }
+                public Builder WithPhoneNumber(string phoneNumber)
+                {
+                    _numbersV1PortingPortInCreatePhoneNumbers.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithPin(string pin)
+                {
+                    _numbersV1PortingPortInCreatePhoneNumbers.Pin= pin;
+                    return this;
+                }
+                public NumbersV1PortingPortInCreatePhoneNumbers Build()
+                {
+                    return _numbersV1PortingPortInCreatePhoneNumbers;
+                }
+            }
+        }
         public class NumbersV1PortingPortInCreate
         {
             [JsonProperty("account_sid")]
-            private string AccountSid {get; set;}
+            public string AccountSid {get; private set;}
             [JsonProperty("documents")]
-            private List<string> Documents {get; set;}
-            [JsonProperty("phone_numbers")]
-            private List<NumbersV1PortingPortInCreatePhoneNumbers> PhoneNumbers {get; set;}
+            public List<string> Documents {get; private set;}
             [JsonProperty("losing_carrier_information")]
-            private NumbersV1PortingLosingCarrierInformation LosingCarrierInformation {get; set;}
+            public NumbersV1PortingLosingCarrierInformation LosingCarrierInformation {get; private set;}
+            [JsonProperty("phone_numbers")]
+            public List<NumbersV1PortingPortInCreatePhoneNumbers> PhoneNumbers {get; private set;}
             [JsonProperty("notification_emails")]
-            private List<string> NotificationEmails {get; set;}
+            public List<string> NotificationEmails {get; private set;}
             [JsonProperty("target_port_in_date")]
-            private DateTime? TargetPortInDate {get; set;}
+            public DateTime? TargetPortInDate {get; private set;}
             [JsonProperty("target_port_in_time_range_start")]
-            private string TargetPortInTimeRangeStart {get; set;}
+            public string TargetPortInTimeRangeStart {get; private set;}
             [JsonProperty("target_port_in_time_range_end")]
-            private string TargetPortInTimeRangeEnd {get; set;}
+            public string TargetPortInTimeRangeEnd {get; private set;}
             [JsonProperty("bundle_sid")]
-            private string BundleSid {get; set;}
+            public string BundleSid {get; private set;}
             [JsonProperty("portability_advance_carrier")]
-            private string PortabilityAdvanceCarrier {get; set;}
+            public string PortabilityAdvanceCarrier {get; private set;}
             [JsonProperty("auto_cancel_approval_numbers")]
-            private string AutoCancelApprovalNumbers {get; set;}
+            public string AutoCancelApprovalNumbers {get; private set;}
             public NumbersV1PortingPortInCreate() { }
             public class Builder
             {
@@ -257,14 +257,14 @@ namespace Twilio.Rest.Numbers.V1
                     _numbersV1PortingPortInCreate.Documents= documents;
                     return this;
                 }
-                public Builder WithPhoneNumbers(List<NumbersV1PortingPortInCreatePhoneNumbers> phoneNumbers)
-                {
-                    _numbersV1PortingPortInCreate.PhoneNumbers= phoneNumbers;
-                    return this;
-                }
                 public Builder WithLosingCarrierInformation(NumbersV1PortingLosingCarrierInformation losingCarrierInformation)
                 {
                     _numbersV1PortingPortInCreate.LosingCarrierInformation= losingCarrierInformation;
+                    return this;
+                }
+                public Builder WithPhoneNumbers(List<NumbersV1PortingPortInCreatePhoneNumbers> phoneNumbers)
+                {
+                    _numbersV1PortingPortInCreate.PhoneNumbers= phoneNumbers;
                     return this;
                 }
                 public Builder WithNotificationEmails(List<string> notificationEmails)
@@ -311,29 +311,29 @@ namespace Twilio.Rest.Numbers.V1
         public class NumbersV1PortingPortInPhoneNumberResult
         {
             [JsonProperty("not_portability_reason")]
-            private string NotPortabilityReason {get; set;}
+            public string NotPortabilityReason {get; private set;}
             [JsonProperty("not_portability_reason_code")]
-            private int? NotPortabilityReasonCode {get; set;}
+            public int? NotPortabilityReasonCode {get; private set;}
             [JsonProperty("number_type")]
-            private string NumberType {get; set;}
+            public string NumberType {get; private set;}
             [JsonProperty("phone_number")]
-            private string PhoneNumber {get; set;}
+            public string PhoneNumber {get; private set;}
             [JsonProperty("port_date")]
-            private DateTime? PortDate {get; set;}
+            public DateTime? PortDate {get; private set;}
             [JsonProperty("port_in_phone_number_sid")]
-            private string PortInPhoneNumberSid {get; set;}
+            public string PortInPhoneNumberSid {get; private set;}
             [JsonProperty("port_in_phone_number_status")]
-            private string PortInPhoneNumberStatus {get; set;}
+            public string PortInPhoneNumberStatus {get; private set;}
             [JsonProperty("portable")]
-            private bool? Portable {get; set;}
+            public bool? Portable {get; private set;}
             [JsonProperty("rejection_reason")]
-            private string RejectionReason {get; set;}
+            public string RejectionReason {get; private set;}
             [JsonProperty("rejection_reason_code")]
-            private string RejectionReasonCode {get; set;}
+            public string RejectionReasonCode {get; private set;}
             [JsonProperty("status_last_time_updated_timestamp")]
-            private string StatusLastTimeUpdatedTimestamp {get; set;}
+            public string StatusLastTimeUpdatedTimestamp {get; private set;}
             [JsonProperty("external_porting_vendor_phone_number_id")]
-            private string ExternalPortingVendorPhoneNumberId {get; set;}
+            public string ExternalPortingVendorPhoneNumberId {get; private set;}
             public NumbersV1PortingPortInPhoneNumberResult() { }
             public class Builder
             {
@@ -490,6 +490,7 @@ namespace Twilio.Rest.Numbers.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Allows to cancel a port in request by SID </summary>
         /// <param name="options"> Delete PortingPortIn parameters </param>

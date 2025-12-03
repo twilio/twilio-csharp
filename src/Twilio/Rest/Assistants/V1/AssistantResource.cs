@@ -33,9 +33,9 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceCustomerAi
         {
             [JsonProperty("perception_engine_enabled")]
-            private bool? PerceptionEngineEnabled {get; set;}
+            public bool? PerceptionEngineEnabled {get; private set;}
             [JsonProperty("personalization_engine_enabled")]
-            private bool? PersonalizationEngineEnabled {get; set;}
+            public bool? PersonalizationEngineEnabled {get; private set;}
             public AssistantsV1ServiceCustomerAi() { }
             public class Builder
             {
@@ -62,11 +62,11 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceSegmentCredential
         {
             [JsonProperty("profile_api_key")]
-            private string ProfileApiKey {get; set;}
+            public string ProfileApiKey {get; private set;}
             [JsonProperty("space_id")]
-            private string SpaceId {get; set;}
+            public string SpaceId {get; private set;}
             [JsonProperty("write_key")]
-            private string WriteKey {get; set;}
+            public string WriteKey {get; private set;}
             public AssistantsV1ServiceSegmentCredential() { }
             public class Builder
             {
@@ -97,16 +97,16 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateAssistantRequest
         {
-            [JsonProperty("customer_ai")]
-            private AssistantsV1ServiceCustomerAi CustomerAi {get; set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
+            [JsonProperty("customer_ai")]
+            public AssistantsV1ServiceCustomerAi CustomerAi {get; private set;}
             [JsonProperty("owner")]
-            private string Owner {get; set;}
+            public string Owner {get; private set;}
             [JsonProperty("personality_prompt")]
-            private string PersonalityPrompt {get; set;}
+            public string PersonalityPrompt {get; private set;}
             [JsonProperty("segment_credential")]
-            private AssistantsV1ServiceSegmentCredential SegmentCredential {get; set;}
+            public AssistantsV1ServiceSegmentCredential SegmentCredential {get; private set;}
             public AssistantsV1ServiceCreateAssistantRequest() { }
             public class Builder
             {
@@ -114,14 +114,14 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder()
                 {
                 }
-                public Builder WithCustomerAi(AssistantsV1ServiceCustomerAi customerAi)
-                {
-                    _assistantsV1ServiceCreateAssistantRequest.CustomerAi= customerAi;
-                    return this;
-                }
                 public Builder WithName(string name)
                 {
                     _assistantsV1ServiceCreateAssistantRequest.Name= name;
+                    return this;
+                }
+                public Builder WithCustomerAi(AssistantsV1ServiceCustomerAi customerAi)
+                {
+                    _assistantsV1ServiceCreateAssistantRequest.CustomerAi= customerAi;
                     return this;
                 }
                 public Builder WithOwner(string owner)
@@ -148,15 +148,15 @@ namespace Twilio.Rest.Assistants.V1
         public class AssistantsV1ServiceUpdateAssistantRequest
         {
             [JsonProperty("customer_ai")]
-            private AssistantsV1ServiceCustomerAi CustomerAi {get; set;}
+            public AssistantsV1ServiceCustomerAi CustomerAi {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("owner")]
-            private string Owner {get; set;}
+            public string Owner {get; private set;}
             [JsonProperty("personality_prompt")]
-            private string PersonalityPrompt {get; set;}
+            public string PersonalityPrompt {get; private set;}
             [JsonProperty("segment_credential")]
-            private AssistantsV1ServiceSegmentCredential SegmentCredential {get; set;}
+            public AssistantsV1ServiceSegmentCredential SegmentCredential {get; private set;}
             public AssistantsV1ServiceUpdateAssistantRequest() { }
             public class Builder
             {
@@ -197,28 +197,28 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceKnowledge
         {
-            [JsonProperty("description")]
-            private string Description {get; set;}
             [JsonProperty("id")]
-            private string Id {get; set;}
-            [JsonProperty("account_sid")]
-            private string AccountSid {get; set;}
-            [JsonProperty("knowledge_source_details")]
-            private object KnowledgeSourceDetails {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
-            [JsonProperty("status")]
-            private string Status {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
-            [JsonProperty("url")]
-            private string Url {get; set;}
-            [JsonProperty("embedding_model")]
-            private string EmbeddingModel {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("date_created")]
-            private DateTime? DateCreated {get; set;}
+            public DateTime? DateCreated {get; private set;}
             [JsonProperty("date_updated")]
-            private DateTime? DateUpdated {get; set;}
+            public DateTime? DateUpdated {get; private set;}
+            [JsonProperty("description")]
+            public string Description {get; private set;}
+            [JsonProperty("account_sid")]
+            public string AccountSid {get; private set;}
+            [JsonProperty("knowledge_source_details")]
+            public object KnowledgeSourceDetails {get; private set;}
+            [JsonProperty("status")]
+            public string Status {get; private set;}
+            [JsonProperty("url")]
+            public string Url {get; private set;}
+            [JsonProperty("embedding_model")]
+            public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceKnowledge() { }
             public class Builder
             {
@@ -226,24 +226,9 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder()
                 {
                 }
-                public Builder WithDescription(string description)
-                {
-                    _assistantsV1ServiceKnowledge.Description= description;
-                    return this;
-                }
                 public Builder WithId(string id)
                 {
                     _assistantsV1ServiceKnowledge.Id= id;
-                    return this;
-                }
-                public Builder WithAccountSid(string accountSid)
-                {
-                    _assistantsV1ServiceKnowledge.AccountSid= accountSid;
-                    return this;
-                }
-                public Builder WithKnowledgeSourceDetails(object knowledgeSourceDetails)
-                {
-                    _assistantsV1ServiceKnowledge.KnowledgeSourceDetails= knowledgeSourceDetails;
                     return this;
                 }
                 public Builder WithName(string name)
@@ -251,24 +236,9 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceKnowledge.Name= name;
                     return this;
                 }
-                public Builder WithStatus(string status)
-                {
-                    _assistantsV1ServiceKnowledge.Status= status;
-                    return this;
-                }
                 public Builder WithType(string type)
                 {
                     _assistantsV1ServiceKnowledge.Type= type;
-                    return this;
-                }
-                public Builder WithUrl(string url)
-                {
-                    _assistantsV1ServiceKnowledge.Url= url;
-                    return this;
-                }
-                public Builder WithEmbeddingModel(string embeddingModel)
-                {
-                    _assistantsV1ServiceKnowledge.EmbeddingModel= embeddingModel;
                     return this;
                 }
                 public Builder WithDateCreated(DateTime? dateCreated)
@@ -281,6 +251,36 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceKnowledge.DateUpdated= dateUpdated;
                     return this;
                 }
+                public Builder WithDescription(string description)
+                {
+                    _assistantsV1ServiceKnowledge.Description= description;
+                    return this;
+                }
+                public Builder WithAccountSid(string accountSid)
+                {
+                    _assistantsV1ServiceKnowledge.AccountSid= accountSid;
+                    return this;
+                }
+                public Builder WithKnowledgeSourceDetails(object knowledgeSourceDetails)
+                {
+                    _assistantsV1ServiceKnowledge.KnowledgeSourceDetails= knowledgeSourceDetails;
+                    return this;
+                }
+                public Builder WithStatus(string status)
+                {
+                    _assistantsV1ServiceKnowledge.Status= status;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _assistantsV1ServiceKnowledge.Url= url;
+                    return this;
+                }
+                public Builder WithEmbeddingModel(string embeddingModel)
+                {
+                    _assistantsV1ServiceKnowledge.EmbeddingModel= embeddingModel;
+                    return this;
+                }
                 public AssistantsV1ServiceKnowledge Build()
                 {
                     return _assistantsV1ServiceKnowledge;
@@ -289,39 +289,34 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceTool
         {
-            [JsonProperty("account_sid")]
-            private string AccountSid {get; set;}
             [JsonProperty("description")]
-            private string Description {get; set;}
+            public string Description {get; private set;}
             [JsonProperty("enabled")]
-            private bool? Enabled {get; set;}
+            public bool? Enabled {get; private set;}
             [JsonProperty("id")]
-            private string Id {get; set;}
+            public string Id {get; private set;}
             [JsonProperty("meta")]
-            private object Meta {get; set;}
+            public object Meta {get; private set;}
             [JsonProperty("name")]
-            private string Name {get; set;}
+            public string Name {get; private set;}
             [JsonProperty("requires_auth")]
-            private bool? RequiresAuth {get; set;}
+            public bool? RequiresAuth {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
-            [JsonProperty("url")]
-            private string Url {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("date_created")]
-            private DateTime? DateCreated {get; set;}
+            public DateTime? DateCreated {get; private set;}
             [JsonProperty("date_updated")]
-            private DateTime? DateUpdated {get; set;}
+            public DateTime? DateUpdated {get; private set;}
+            [JsonProperty("account_sid")]
+            public string AccountSid {get; private set;}
+            [JsonProperty("url")]
+            public string Url {get; private set;}
             public AssistantsV1ServiceTool() { }
             public class Builder
             {
                 private AssistantsV1ServiceTool _assistantsV1ServiceTool = new AssistantsV1ServiceTool();
                 public Builder()
                 {
-                }
-                public Builder WithAccountSid(string accountSid)
-                {
-                    _assistantsV1ServiceTool.AccountSid= accountSid;
-                    return this;
                 }
                 public Builder WithDescription(string description)
                 {
@@ -358,11 +353,6 @@ namespace Twilio.Rest.Assistants.V1
                     _assistantsV1ServiceTool.Type= type;
                     return this;
                 }
-                public Builder WithUrl(string url)
-                {
-                    _assistantsV1ServiceTool.Url= url;
-                    return this;
-                }
                 public Builder WithDateCreated(DateTime? dateCreated)
                 {
                     _assistantsV1ServiceTool.DateCreated= dateCreated;
@@ -371,6 +361,16 @@ namespace Twilio.Rest.Assistants.V1
                 public Builder WithDateUpdated(DateTime? dateUpdated)
                 {
                     _assistantsV1ServiceTool.DateUpdated= dateUpdated;
+                    return this;
+                }
+                public Builder WithAccountSid(string accountSid)
+                {
+                    _assistantsV1ServiceTool.AccountSid= accountSid;
+                    return this;
+                }
+                public Builder WithUrl(string url)
+                {
+                    _assistantsV1ServiceTool.Url= url;
                     return this;
                 }
                 public AssistantsV1ServiceTool Build()
@@ -449,6 +449,7 @@ namespace Twilio.Rest.Assistants.V1
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> delete an assistant </summary>
         /// <param name="options"> Delete Assistant parameters </param>
@@ -770,6 +771,7 @@ namespace Twilio.Rest.Assistants.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AssistantResource object
@@ -829,10 +831,6 @@ namespace Twilio.Rest.Assistants.V1
         [JsonProperty("owner")]
         public string Owner { get; }
 
-        ///<summary> The url of the assistant resource. </summary> 
-        [JsonProperty("url")]
-        public string Url { get; private set; }
-
         ///<summary> The personality prompt to be used for assistant. </summary> 
         [JsonProperty("personality_prompt")]
         public string PersonalityPrompt { get; }
@@ -844,6 +842,10 @@ namespace Twilio.Rest.Assistants.V1
         ///<summary> The date and time in GMT when the Assistant was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; }
+
+        ///<summary> The url of the assistant resource. </summary> 
+        [JsonProperty("url")]
+        public string Url { get; private set; }
 
         ///<summary> The list of knowledge sources associated with the assistant. </summary> 
         [JsonProperty("knowledge")]

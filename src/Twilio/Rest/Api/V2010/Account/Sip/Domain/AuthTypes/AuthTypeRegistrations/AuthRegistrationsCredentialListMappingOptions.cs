@@ -63,6 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
         
 
     }
+
     /// <summary> Delete a credential list mapping from the requested domain </summary>
     public class DeleteAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource>
     {

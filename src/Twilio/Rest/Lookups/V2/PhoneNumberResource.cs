@@ -33,11 +33,11 @@ namespace Twilio.Rest.Lookups.V2
         public class CallerNameInfo
         {
             [JsonProperty("caller_name")]
-            private string CallerName {get; set;}
+            public string CallerName {get; private set;}
             [JsonProperty("caller_type")]
-            private string CallerType {get; set;}
+            public string CallerType {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public CallerNameInfo() { }
             public class Builder
             {
@@ -69,11 +69,11 @@ namespace Twilio.Rest.Lookups.V2
         public class LastSimSwapInfo
         {
             [JsonProperty("last_sim_swap_date")]
-            private DateTime? LastSimSwapDate {get; set;}
+            public DateTime? LastSimSwapDate {get; private set;}
             [JsonProperty("swapped_period")]
-            private string SwappedPeriod {get; set;}
+            public string SwappedPeriod {get; private set;}
             [JsonProperty("swapped_in_period")]
-            private bool? SwappedInPeriod {get; set;}
+            public bool? SwappedInPeriod {get; private set;}
             public LastSimSwapInfo() { }
             public class Builder
             {
@@ -105,15 +105,15 @@ namespace Twilio.Rest.Lookups.V2
         public class SimSwapInfo
         {
             [JsonProperty("last_sim_swap")]
-            private LastSimSwapInfo LastSimSwap {get; set;}
+            public LastSimSwapInfo LastSimSwap {get; private set;}
             [JsonProperty("carrier_name")]
-            private string CarrierName {get; set;}
+            public string CarrierName {get; private set;}
             [JsonProperty("mobile_country_code")]
-            private string MobileCountryCode {get; set;}
+            public string MobileCountryCode {get; private set;}
             [JsonProperty("mobile_network_code")]
-            private string MobileNetworkCode {get; set;}
+            public string MobileNetworkCode {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public SimSwapInfo() { }
             public class Builder
             {
@@ -155,9 +155,9 @@ namespace Twilio.Rest.Lookups.V2
         public class CallForwardingInfo
         {
             [JsonProperty("call_forwarding_enabled")]
-            private bool? CallForwardingEnabled {get; set;}
+            public bool? CallForwardingEnabled {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public CallForwardingInfo() { }
             public class Builder
             {
@@ -184,15 +184,15 @@ namespace Twilio.Rest.Lookups.V2
         public class LineTypeIntelligenceInfo
         {
             [JsonProperty("mobile_country_code")]
-            private string MobileCountryCode {get; set;}
+            public string MobileCountryCode {get; private set;}
             [JsonProperty("mobile_network_code")]
-            private string MobileNetworkCode {get; set;}
+            public string MobileNetworkCode {get; private set;}
             [JsonProperty("carrier_name")]
-            private string CarrierName {get; set;}
+            public string CarrierName {get; private set;}
             [JsonProperty("type")]
-            private string Type {get; set;}
+            public string Type {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public LineTypeIntelligenceInfo() { }
             public class Builder
             {
@@ -234,9 +234,9 @@ namespace Twilio.Rest.Lookups.V2
         public class LineStatusInfo
         {
             [JsonProperty("status")]
-            private string Status {get; set;}
+            public string Status {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public LineStatusInfo() { }
             public class Builder
             {
@@ -263,29 +263,29 @@ namespace Twilio.Rest.Lookups.V2
         public class IdentityMatchInfo
         {
             [JsonProperty("first_name_match")]
-            private string FirstNameMatch {get; set;}
+            public string FirstNameMatch {get; private set;}
             [JsonProperty("last_name_match")]
-            private string LastNameMatch {get; set;}
+            public string LastNameMatch {get; private set;}
             [JsonProperty("address_lines_match")]
-            private string AddressLinesMatch {get; set;}
+            public string AddressLinesMatch {get; private set;}
             [JsonProperty("city_match")]
-            private string CityMatch {get; set;}
+            public string CityMatch {get; private set;}
             [JsonProperty("state_match")]
-            private string StateMatch {get; set;}
+            public string StateMatch {get; private set;}
             [JsonProperty("postal_code_match")]
-            private string PostalCodeMatch {get; set;}
+            public string PostalCodeMatch {get; private set;}
             [JsonProperty("address_country_match")]
-            private string AddressCountryMatch {get; set;}
+            public string AddressCountryMatch {get; private set;}
             [JsonProperty("national_id_match")]
-            private string NationalIdMatch {get; set;}
+            public string NationalIdMatch {get; private set;}
             [JsonProperty("date_of_birth_match")]
-            private string DateOfBirthMatch {get; set;}
+            public string DateOfBirthMatch {get; private set;}
             [JsonProperty("summary_score")]
-            private int? SummaryScore {get; set;}
+            public int? SummaryScore {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             [JsonProperty("error_message")]
-            private string ErrorMessage {get; set;}
+            public string ErrorMessage {get; private set;}
             public IdentityMatchInfo() { }
             public class Builder
             {
@@ -362,11 +362,11 @@ namespace Twilio.Rest.Lookups.V2
         public class ReassignedNumberInfo
         {
             [JsonProperty("last_verified_date")]
-            private string LastVerifiedDate {get; set;}
+            public string LastVerifiedDate {get; private set;}
             [JsonProperty("is_number_reassigned")]
-            private string IsNumberReassigned {get; set;}
+            public string IsNumberReassigned {get; private set;}
             [JsonProperty("error_code")]
-            private string ErrorCode {get; set;}
+            public string ErrorCode {get; private set;}
             public ReassignedNumberInfo() { }
             public class Builder
             {
@@ -398,17 +398,17 @@ namespace Twilio.Rest.Lookups.V2
         public class SmsPumpingRiskInfo
         {
             [JsonProperty("carrier_risk_category")]
-            private string CarrierRiskCategory {get; set;}
+            public string CarrierRiskCategory {get; private set;}
             [JsonProperty("number_blocked")]
-            private bool? NumberBlocked {get; set;}
+            public bool? NumberBlocked {get; private set;}
             [JsonProperty("number_blocked_date")]
-            private DateTime? NumberBlockedDate {get; set;}
+            public DateTime? NumberBlockedDate {get; private set;}
             [JsonProperty("number_blocked_last_3_months")]
-            private bool? NumberBlockedLast3Months {get; set;}
+            public bool? NumberBlockedLast3Months {get; private set;}
             [JsonProperty("sms_pumping_risk_score")]
-            private int? SmsPumpingRiskScore {get; set;}
+            public int? SmsPumpingRiskScore {get; private set;}
             [JsonProperty("error_code")]
-            private int? ErrorCode {get; set;}
+            public int? ErrorCode {get; private set;}
             public SmsPumpingRiskInfo() { }
             public class Builder
             {

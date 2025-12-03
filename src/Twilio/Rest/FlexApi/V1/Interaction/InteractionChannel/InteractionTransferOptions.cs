@@ -59,9 +59,11 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             }
             return body;
         }
+
         
 
     }
+
     /// <summary> Fetch a specific Transfer by SID. </summary>
     public class FetchInteractionTransferOptions : IOptions<InteractionTransferResource>
     {
@@ -143,6 +145,7 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
             }
             return body;
         }
+
         
 
     }

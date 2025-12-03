@@ -65,6 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account
         
 
     }
+
     /// <summary> Remove an empty queue </summary>
     public class DeleteQueueOptions : IOptions<QueueResource>
     {

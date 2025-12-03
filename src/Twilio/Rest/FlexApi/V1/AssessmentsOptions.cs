@@ -149,6 +149,7 @@ namespace Twilio.Rest.FlexApi.V1
     }
 
     }
+
     /// <summary> Get assessments done for a conversation by logged in user </summary>
     public class ReadAssessmentsOptions : ReadOptions<AssessmentsResource>
     {

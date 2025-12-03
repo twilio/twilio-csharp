@@ -33,11 +33,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         public class PublicApiCreateRoleAssignmentRequest
         {
             [JsonProperty("role_sid")]
-            private string RoleSid {get; set;}
+            public string RoleSid {get; private set;}
             [JsonProperty("scope")]
-            private string Scope {get; set;}
+            public string Scope {get; private set;}
             [JsonProperty("identity")]
-            private string Identity {get; set;}
+            public string Identity {get; private set;}
             public PublicApiCreateRoleAssignmentRequest() { }
             public class Builder
             {
@@ -142,6 +142,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a role assignment for the given organization </summary>
         /// <param name="options"> Delete RoleAssignment parameters </param>

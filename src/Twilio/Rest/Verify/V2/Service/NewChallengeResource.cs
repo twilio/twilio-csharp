@@ -33,9 +33,9 @@ namespace Twilio.Rest.Verify.V2.Service
         public class CreatePasskeysChallengeRequest
         {
             [JsonProperty("identity")]
-            private string Identity {get; set;}
+            public string Identity {get; private set;}
             [JsonProperty("factor_sid")]
-            private string FactorSid {get; set;}
+            public string FactorSid {get; private set;}
             public CreatePasskeysChallengeRequest() { }
             public class Builder
             {
@@ -178,6 +178,7 @@ namespace Twilio.Rest.Verify.V2.Service
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NewChallengeResource object

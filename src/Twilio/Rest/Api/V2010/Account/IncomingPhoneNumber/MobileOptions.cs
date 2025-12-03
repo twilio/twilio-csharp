@@ -212,6 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         
 
     }
+
     /// <summary> read </summary>
     public class ReadMobileOptions : ReadOptions<MobileResource>
     {

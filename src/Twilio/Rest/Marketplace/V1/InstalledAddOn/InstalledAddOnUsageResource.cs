@@ -33,11 +33,11 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         public class MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems
         {
             [JsonProperty("quantity")]
-            private decimal? Quantity {get; set;}
+            public decimal? Quantity {get; private set;}
             [JsonProperty("sid")]
-            private string Sid {get; set;}
+            public string Sid {get; private set;}
             [JsonProperty("submitted")]
-            private bool? Submitted {get; set;}
+            public bool? Submitted {get; private set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems() { }
             public class Builder
             {
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
         public class MarketplaceV1InstalledAddOnInstalledAddOnUsage
         {
-            [JsonProperty("total_submitted")]
-            private decimal? TotalSubmitted {get; set;}
             [JsonProperty("billable_items")]
-            private List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems {get; set;}
+            public List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems {get; private set;}
+            [JsonProperty("total_submitted")]
+            public decimal? TotalSubmitted {get; private set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsage() { }
             public class Builder
             {
@@ -79,14 +79,14 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
                 public Builder()
                 {
                 }
-                public Builder WithTotalSubmitted(decimal? totalSubmitted)
-                {
-                    _marketplaceV1InstalledAddOnInstalledAddOnUsage.TotalSubmitted= totalSubmitted;
-                    return this;
-                }
                 public Builder WithBillableItems(List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> billableItems)
                 {
                     _marketplaceV1InstalledAddOnInstalledAddOnUsage.BillableItems= billableItems;
+                    return this;
+                }
+                public Builder WithTotalSubmitted(decimal? totalSubmitted)
+                {
+                    _marketplaceV1InstalledAddOnInstalledAddOnUsage.TotalSubmitted= totalSubmitted;
                     return this;
                 }
                 public MarketplaceV1InstalledAddOnInstalledAddOnUsage Build()
@@ -171,6 +171,7 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a InstalledAddOnUsageResource object
@@ -206,13 +207,13 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
     }
 
     
-        ///<summary> Total amount in local currency that was billed in this request. Aggregates all billable_items that were successfully submitted. </summary> 
-        [JsonProperty("total_submitted")]
-        public decimal? TotalSubmitted { get; private set; }
-
         ///<summary> The billable_items </summary> 
         [JsonProperty("billable_items")]
         public List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems { get; }
+
+        ///<summary> Total amount in local currency that was billed in this request. Aggregates all billable_items that were successfully submitted. </summary> 
+        [JsonProperty("total_submitted")]
+        public decimal? TotalSubmitted { get; private set; }
 
 
 

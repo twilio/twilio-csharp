@@ -41,6 +41,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             {
                 return new StatusEnum(value);
             }
+            public static readonly StatusEnum TwilioProcessing = new StatusEnum("twilio-processing");
             public static readonly StatusEnum Received = new StatusEnum("received");
             public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
             public static readonly StatusEnum Verified = new StatusEnum("verified");
@@ -196,6 +197,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
@@ -576,6 +578,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a HostedNumberOrderResource object

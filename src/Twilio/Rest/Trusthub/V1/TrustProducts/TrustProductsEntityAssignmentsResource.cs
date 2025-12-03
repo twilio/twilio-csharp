@@ -105,6 +105,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete TrustProductsEntityAssignments parameters </param>

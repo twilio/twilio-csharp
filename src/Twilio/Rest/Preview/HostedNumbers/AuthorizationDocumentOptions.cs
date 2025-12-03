@@ -99,6 +99,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         
 
     }
+
     /// <summary> Fetch a specific AuthorizationDocument. </summary>
     public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {

@@ -72,6 +72,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         
 
     }
+
     /// <summary> delete </summary>
     public class DeleteInviteOptions : IOptions<InviteResource>
     {

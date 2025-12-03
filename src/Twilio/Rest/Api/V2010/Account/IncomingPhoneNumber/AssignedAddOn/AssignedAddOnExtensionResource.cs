@@ -39,14 +39,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             
             string path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions/{Sid}.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathResourceSid = options.PathResourceSid;
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
             string PathAssignedAddOnSid = options.PathAssignedAddOnSid;
             path = path.Replace("{"+"AssignedAddOnSid"+"}", PathAssignedAddOnSid);
             string PathSid = options.PathSid;
             path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,
@@ -118,12 +118,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             
             string path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions.json";
 
-            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
-            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
             string PathResourceSid = options.PathResourceSid;
             path = path.Replace("{"+"ResourceSid"+"}", PathResourceSid);
             string PathAssignedAddOnSid = options.PathAssignedAddOnSid;
             path = path.Replace("{"+"AssignedAddOnSid"+"}", PathAssignedAddOnSid);
+            string PathAccountSid = options.PathAccountSid ?? client.AccountSid;
+            path = path.Replace("{"+"AccountSid"+"}", PathAccountSid);
 
             return new Request(
                 HttpMethod.Get,

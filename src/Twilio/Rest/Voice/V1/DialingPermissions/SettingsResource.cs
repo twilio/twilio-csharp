@@ -159,6 +159,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a SettingsResource object

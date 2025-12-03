@@ -101,6 +101,7 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             return await CreateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a BrandRegistrationOtpResource object

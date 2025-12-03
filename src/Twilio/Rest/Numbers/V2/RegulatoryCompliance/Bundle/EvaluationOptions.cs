@@ -51,6 +51,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         
 
     }
+
     /// <summary> Fetch specific Evaluation Instance. </summary>
     public class FetchEvaluationOptions : IOptions<EvaluationResource>
     {

@@ -56,6 +56,7 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         
 
     }
+
     /// <summary> Detach Tool to Assistant </summary>
     public class DeleteAssistantsToolOptions : IOptions<AssistantsToolResource>
     {

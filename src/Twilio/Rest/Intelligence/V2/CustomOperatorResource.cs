@@ -124,6 +124,7 @@ namespace Twilio.Rest.Intelligence.V2
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Delete a specific Custom Operator. </summary>
         /// <param name="options"> Delete CustomOperator parameters </param>
@@ -464,6 +465,7 @@ namespace Twilio.Rest.Intelligence.V2
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a CustomOperatorResource object

@@ -96,6 +96,7 @@ namespace Twilio.Rest.Accounts.V1
             return await UpdateAsync(options, client);
         }
         #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AuthTokenPromotionResource object

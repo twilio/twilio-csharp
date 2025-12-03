@@ -105,6 +105,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
             return await CreateAsync(options, client);
         }
         #endif
+
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete ItemAssignment parameters </param>
