@@ -84,12 +84,6 @@ namespace Twilio.Clients.NoAuth
             if (LogLevel == "debug")
                 LogRequest(request);
 
-            if (Region != null)
-                request.Region = Region;
-
-            if (Edge != null)
-                request.Edge = Edge;
-
             if (UserAgentExtensions != null)
                 request.UserAgentExtensions = UserAgentExtensions;
 
