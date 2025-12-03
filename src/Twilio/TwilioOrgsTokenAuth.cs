@@ -188,7 +188,7 @@ namespace Twilio
                 return _noAuthRestClient;
             }
 
-            _noAuthRestClient = new TwilioNoAuthRestClient(region: _region, edge: _edge)
+            _noAuthRestClient = new TwilioNoAuthRestClient()
             {
                 LogLevel = _logLevel
             };

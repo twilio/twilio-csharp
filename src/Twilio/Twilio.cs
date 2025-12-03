@@ -207,7 +207,7 @@ namespace Twilio
             }
 
             AuthStrategy noauthstrategy = new NoAuthStrategy();
-           _noAuthRestClient = new TwilioRestClient(_username, _password, authstrategy: noauthstrategy, accountSid: _accountSid, region: _region, edge: _edge)
+           _noAuthRestClient = new TwilioRestClient(_username, _password, authstrategy: noauthstrategy, accountSid: _accountSid)
            {
                LogLevel = _logLevel
            };
