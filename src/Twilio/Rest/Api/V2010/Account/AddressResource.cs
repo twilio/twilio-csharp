@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="postalCode"> The postal code of the new address. </param>
         /// <param name="isoCountry"> The ISO country code of the new address. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Address resource. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
         /// <param name="streetSecondary"> The additional number and street address of the address. </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="postalCode"> The postal code of the new address. </param>
         /// <param name="isoCountry"> The ISO country code of the new address. </param>
         /// <param name="pathAccountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Address resource. </param>
-        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses. </param>
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address. Can be: `true` or `false`. </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide. </param>
         /// <param name="streetSecondary"> The additional number and street address of the address. </param>

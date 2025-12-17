@@ -100,6 +100,42 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> Skip the messaging use case screen of the inquiry form. </summary> 
         public bool? SkipMessagingUseCase { get; set; }
 
+        ///<summary> The Business Registration Number of the business or organization. </summary> 
+        public string BusinessRegistrationNumber { get; set; }
+
+        ///<summary> The Business Registration Authority of the business or organization. </summary> 
+        public string BusinessRegistrationAuthority { get; set; }
+
+        ///<summary> The Business Registration Country of the business or organization. </summary> 
+        public string BusinessRegistrationCountry { get; set; }
+
+        
+        public ComplianceTollfreeInquiriesResource.BusinessTypeEnum BusinessType { get; set; }
+
+        ///<summary> Trade name, sub entity, or downstream business name of business being submitted for verification. </summary> 
+        public string DoingBusinessAs { get; set; }
+
+        ///<summary> The confirmation message sent to users when they opt in to receive messages. </summary> 
+        public string OptInConfirmationMessage { get; set; }
+
+        ///<summary> A sample help message provided to users. </summary> 
+        public string HelpMessageSample { get; set; }
+
+        ///<summary> The URL to the privacy policy for the business or organization. </summary> 
+        public string PrivacyPolicyUrl { get; set; }
+
+        ///<summary> The URL to the terms and conditions for the business or organization. </summary> 
+        public string TermsAndConditionsUrl { get; set; }
+
+        ///<summary> Indicates if the content is age gated. </summary> 
+        public bool? AgeGatedContent { get; set; }
+
+        ///<summary> A legally recognized business registration number. </summary> 
+        public string ExternalReferenceId { get; set; }
+
+        ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
+        public List<string> OptInKeywords { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceTollfreeInquiryOptions </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
@@ -110,6 +146,7 @@ namespace Twilio.Rest.Trusthub.V1
             NotificationEmail = notificationEmail;
             UseCaseCategories = new List<string>();
             OptInImageUrls = new List<string>();
+            OptInKeywords = new List<string>();
         }
 
         
@@ -213,6 +250,54 @@ namespace Twilio.Rest.Trusthub.V1
             if (SkipMessagingUseCase != null)
             {
                 p.Add(new KeyValuePair<string, string>("SkipMessagingUseCase", SkipMessagingUseCase.Value.ToString().ToLower()));
+            }
+            if (BusinessRegistrationNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationNumber", BusinessRegistrationNumber));
+            }
+            if (BusinessRegistrationAuthority != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+            }
+            if (BusinessRegistrationCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationCountry", BusinessRegistrationCountry));
+            }
+            if (BusinessType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType.ToString()));
+            }
+            if (DoingBusinessAs != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DoingBusinessAs", DoingBusinessAs));
+            }
+            if (OptInConfirmationMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OptInConfirmationMessage", OptInConfirmationMessage));
+            }
+            if (HelpMessageSample != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HelpMessageSample", HelpMessageSample));
+            }
+            if (PrivacyPolicyUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrivacyPolicyUrl", PrivacyPolicyUrl));
+            }
+            if (TermsAndConditionsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TermsAndConditionsUrl", TermsAndConditionsUrl));
+            }
+            if (AgeGatedContent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AgeGatedContent", AgeGatedContent.Value.ToString().ToLower()));
+            }
+            if (ExternalReferenceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ExternalReferenceId", ExternalReferenceId));
+            }
+            if (OptInKeywords != null)
+            {
+                p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
             }
             return p;
         }

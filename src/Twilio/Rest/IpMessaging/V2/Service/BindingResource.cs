@@ -235,7 +235,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid">  </param>
         /// <param name="bindingType">  </param>
         /// <param name="identity">  </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns>
@@ -256,7 +256,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid">  </param>
         /// <param name="bindingType">  </param>
         /// <param name="identity">  </param>
-        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>

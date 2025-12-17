@@ -438,9 +438,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
 
-        ///<summary> The set of Boolean properties that indicate whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`. </summary> 
+        ///<summary> The capabilities </summary> 
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> Capabilities { get; private set; }
+        public PhoneNumberCapabilities Capabilities { get; private set; }
 
         ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
         [JsonProperty("date_created")]

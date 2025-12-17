@@ -89,8 +89,8 @@ namespace Twilio.Rest.Numbers.V1
                                                      int? size = null,
                                                      string portInRequestSid = null,
                                                      string portInRequestStatus = null,
-                                                     DateTime? createdBefore = null,
-                                                     DateTime? createdAfter = null,
+                                                     string createdBefore = null,
+                                                     string createdAfter = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
@@ -114,8 +114,8 @@ namespace Twilio.Rest.Numbers.V1
                                                                                              int? size = null,
                                                                                              string portInRequestSid = null,
                                                                                              string portInRequestStatus = null,
-                                                                                             DateTime? createdBefore = null,
-                                                                                             DateTime? createdAfter = null,
+                                                                                             string createdBefore = null,
+                                                                                             string createdAfter = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {

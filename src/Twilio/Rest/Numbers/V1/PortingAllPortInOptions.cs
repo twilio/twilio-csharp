@@ -40,10 +40,10 @@ namespace Twilio.Rest.Numbers.V1
         public string PortInRequestStatus { get; set; }
 
         ///<summary> Find all created before a certain date </summary> 
-        public DateTime? CreatedBefore { get; set; }
+        public string CreatedBefore { get; set; }
 
         ///<summary> Find all created after a certain date </summary> 
-        public DateTime? CreatedAfter { get; set; }
+        public string CreatedAfter { get; set; }
 
 
 
@@ -72,11 +72,11 @@ namespace Twilio.Rest.Numbers.V1
             }
             if (CreatedBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("CreatedBefore", Serializers.DateTimeIso8601(CreatedBefore)));
+                p.Add(new KeyValuePair<string, string>("CreatedBefore", CreatedBefore));
             }
             if (CreatedAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("CreatedAfter", Serializers.DateTimeIso8601(CreatedAfter)));
+                p.Add(new KeyValuePair<string, string>("CreatedAfter", CreatedAfter));
             }
             return p;
         }
