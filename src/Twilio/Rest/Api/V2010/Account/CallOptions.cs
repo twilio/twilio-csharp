@@ -127,6 +127,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The maximum duration of the call in seconds. Constraints depend on account and configuration. </summary> 
         public int? TimeLimit { get; set; }
 
+        ///<summary> The URL that we should use to deliver `push call notification`. </summary> 
+        public Uri ClientNotificationUrl { get; set; }
+
         ///<summary> The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls). </summary> 
         public Uri Url { get; set; }
 
@@ -281,6 +284,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (TimeLimit != null)
             {
                 p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
+            }
+            if (ClientNotificationUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ClientNotificationUrl", Serializers.Url(ClientNotificationUrl)));
             }
             if (Url != null)
             {

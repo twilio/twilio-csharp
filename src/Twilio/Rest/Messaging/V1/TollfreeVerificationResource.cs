@@ -81,6 +81,18 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly BusinessTypeEnum Government = new BusinessTypeEnum("GOVERNMENT");
 
         }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class VettingProviderEnum : StringEnum
+        {
+            private VettingProviderEnum(string value) : base(value) {}
+            public VettingProviderEnum() {}
+            public static implicit operator VettingProviderEnum(string value)
+            {
+                return new VettingProviderEnum(value);
+            }
+            public static readonly VettingProviderEnum CampaignVerify = new VettingProviderEnum("CAMPAIGN_VERIFY");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateTollfreeVerificationOptions options, ITwilioRestClient client)
@@ -159,6 +171,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingProvider">  </param>
+        /// <param name="vettingId"> The unique ID of the vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Create(
@@ -197,9 +211,11 @@ namespace Twilio.Rest.Messaging.V1
                                           string termsAndConditionsUrl = null,
                                           bool? ageGatedContent = null,
                                           List<string> optInKeywords = null,
+                                          TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+                                          string vettingId = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
+            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return Create(options, client);
         }
 
@@ -240,6 +256,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingProvider">  </param>
+        /// <param name="vettingId"> The unique ID of the vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> CreateAsync(
@@ -278,9 +296,11 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string termsAndConditionsUrl = null,
                                                                                   bool? ageGatedContent = null,
                                                                                   List<string> optInKeywords = null,
+                                                                                  TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+                                                                                  string vettingId = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return await CreateAsync(options, client);
         }
         #endif
@@ -575,7 +595,7 @@ namespace Twilio.Rest.Messaging.V1
             );
         }
 
-        /// <summary> Create a tollfree verification </summary>
+        /// <summary> Edit a tollfree verification </summary>
         /// <param name="options"> Update TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
@@ -586,7 +606,7 @@ namespace Twilio.Rest.Messaging.V1
             return FromJson(response.Content);
         }
 
-        /// <summary> Create a tollfree verification </summary>
+        /// <summary> Edit a tollfree verification </summary>
         /// <param name="options"> Update TollfreeVerification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
@@ -600,7 +620,7 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
-        /// <summary> Create a tollfree verification </summary>
+        /// <summary> Edit a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
@@ -635,6 +655,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingProvider">  </param>
+        /// <param name="vettingId"> The unique ID of the vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TollfreeVerification </returns>
         public static TollfreeVerificationResource Update(
@@ -672,14 +694,16 @@ namespace Twilio.Rest.Messaging.V1
                                           string termsAndConditionsUrl = null,
                                           bool? ageGatedContent = null,
                                           List<string> optInKeywords = null,
+                                          TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+                                          string vettingId = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return Update(options, client);
         }
 
         #if !NET35
-        /// <summary> Create a tollfree verification </summary>
+        /// <summary> Edit a tollfree verification </summary>
         /// <param name="pathSid"> The unique string to identify Tollfree Verification. </param>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
@@ -714,6 +738,8 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="termsAndConditionsUrl"> The URL to the terms and conditions for the business or organization. </param>
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingProvider">  </param>
+        /// <param name="vettingId"> The unique ID of the vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TollfreeVerification </returns>
         public static async System.Threading.Tasks.Task<TollfreeVerificationResource> UpdateAsync(
@@ -751,9 +777,11 @@ namespace Twilio.Rest.Messaging.V1
                                                                               string termsAndConditionsUrl = null,
                                                                               bool? ageGatedContent = null,
                                                                               List<string> optInKeywords = null,
+                                                                              TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+                                                                              string vettingId = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords };
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -994,6 +1022,18 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
         [JsonProperty("external_reference_id")]
         public string ExternalReferenceId { get; private set; }
+
+        ///<summary> The vetting_id </summary> 
+        [JsonProperty("vetting_id")]
+        public string VettingId { get; private set; }
+
+        
+        [JsonProperty("vetting_provider")]
+        public TollfreeVerificationResource.VettingProviderEnum VettingProvider { get; private set; }
+
+        ///<summary> The vetting_id_expiration </summary> 
+        [JsonProperty("vetting_id_expiration")]
+        public DateTime? VettingIdExpiration { get; private set; }
 
 
 

@@ -133,6 +133,12 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
         public List<string> OptInKeywords { get; set; }
 
+        
+        public TollfreeVerificationResource.VettingProviderEnum VettingProvider { get; set; }
+
+        ///<summary> The unique ID of the vetting </summary> 
+        public string VettingId { get; set; }
+
 
         /// <summary> Construct a new CreateTollfreeVerificationOptions </summary>
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
@@ -306,6 +312,14 @@ namespace Twilio.Rest.Messaging.V1
             {
                 p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
             }
+            if (VettingProvider != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
+            }
+            if (VettingId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingId", VettingId));
+            }
             return p;
         }
 
@@ -432,7 +446,7 @@ namespace Twilio.Rest.Messaging.V1
 
     }
 
-    /// <summary> Create a tollfree verification </summary>
+    /// <summary> Edit a tollfree verification </summary>
     public class UpdateTollfreeVerificationOptions : IOptions<TollfreeVerificationResource>
     {
     
@@ -537,6 +551,12 @@ namespace Twilio.Rest.Messaging.V1
 
         ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
         public List<string> OptInKeywords { get; set; }
+
+        
+        public TollfreeVerificationResource.VettingProviderEnum VettingProvider { get; set; }
+
+        ///<summary> The unique ID of the vetting </summary> 
+        public string VettingId { get; set; }
 
 
 
@@ -687,6 +707,14 @@ namespace Twilio.Rest.Messaging.V1
             if (OptInKeywords != null)
             {
                 p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
+            }
+            if (VettingProvider != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider.ToString()));
+            }
+            if (VettingId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingId", VettingId));
             }
             return p;
         }
