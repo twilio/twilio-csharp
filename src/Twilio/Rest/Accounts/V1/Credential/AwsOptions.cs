@@ -25,7 +25,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 {
 
     /// <summary> Create a new AWS Credential </summary>
-    public class CreateAwsOptions : IOptions<AwsResource>
+    public class CreateAwsOptions : IOptions<AwsCreateResource>
     {
         
         ///<summary> A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` </summary> 
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
 
     /// <summary> Fetch the AWS credentials specified by the provided Credential Sid </summary>
-    public class FetchAwsOptions : IOptions<AwsResource>
+    public class FetchAwsOptions : IOptions<AwsFetchResource>
     {
     
         ///<summary> The Twilio-provided string that uniquely identifies the AWS resource to fetch. </summary> 
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
 
     /// <summary> Retrieves a collection of AWS Credentials belonging to the account used to make the request </summary>
-    public class ReadAwsOptions : ReadOptions<AwsResource>
+    public class ReadAwsOptions : ReadOptions<AwsReadResource>
     {
     
 
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     }
 
     /// <summary> Modify the properties of a given Account </summary>
-    public class UpdateAwsOptions : IOptions<AwsResource>
+    public class UpdateAwsOptions : IOptions<AwsUpdateResource>
     {
     
         ///<summary> The Twilio-provided string that uniquely identifies the AWS resource to update. </summary> 
