@@ -24,16 +24,191 @@ using Twilio.Exceptions;
 using Twilio.Http;
 
 
-
 namespace Twilio.Rest.Accounts.V1.Credential
 {
+            
+public class AwsCreateResource : Resource
+{
+        ///<summary> The unique string that we created to identify the AWS resource. </summary> 
+        [JsonProperty("sid")]
+            public string Sid { get; private set; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource. </summary> 
+        [JsonProperty("account_sid")]
+            public string AccountSid { get; private set; }
+
+        ///<summary> The string that you assigned to describe the resource. </summary> 
+        [JsonProperty("friendly_name")]
+            public string FriendlyName { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_created")]
+            public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_updated")]
+            public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The URI for this resource, relative to `https://accounts.twilio.com` </summary> 
+        [JsonProperty("url")]
+            public Uri Url { get; private set; }
+
+    public static AwsCreateResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<AwsCreateResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+        public class AwsFetchResource : Resource
+{
+        ///<summary> The unique string that we created to identify the AWS resource. </summary> 
+        [JsonProperty("sid")]
+            public string Sid { get; private set; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource. </summary> 
+        [JsonProperty("account_sid")]
+            public string AccountSid { get; private set; }
+
+        ///<summary> The string that you assigned to describe the resource. </summary> 
+        [JsonProperty("friendly_name")]
+            public string FriendlyName { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_created")]
+            public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_updated")]
+            public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The URI for this resource, relative to `https://accounts.twilio.com` </summary> 
+        [JsonProperty("url")]
+            public Uri Url { get; private set; }
+
+
+    public static AwsFetchResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<AwsFetchResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+        public class AwsReadResource : Resource
+{
+        ///<summary> The unique string that we created to identify the AWS resource. </summary> 
+        [JsonProperty("sid")]
+            public string Sid { get; private set; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource. </summary> 
+        [JsonProperty("account_sid")]
+            public string AccountSid { get; private set; }
+
+        ///<summary> The string that you assigned to describe the resource. </summary> 
+        [JsonProperty("friendly_name")]
+            public string FriendlyName { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_created")]
+            public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_updated")]
+            public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The URI for this resource, relative to `https://accounts.twilio.com` </summary> 
+        [JsonProperty("url")]
+            public Uri Url { get; private set; }
+
+    public static AwsReadResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<AwsReadResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+        public class AwsUpdateResource : Resource
+{
+        ///<summary> The unique string that we created to identify the AWS resource. </summary> 
+        [JsonProperty("sid")]
+            public string Sid { get; private set; }
+
+        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource. </summary> 
+        [JsonProperty("account_sid")]
+            public string AccountSid { get; private set; }
+
+        ///<summary> The string that you assigned to describe the resource. </summary> 
+        [JsonProperty("friendly_name")]
+            public string FriendlyName { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_created")]
+            public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("date_updated")]
+            public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The URI for this resource, relative to `https://accounts.twilio.com` </summary> 
+        [JsonProperty("url")]
+            public Uri Url { get; private set; }
+
+
+    public static AwsUpdateResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<AwsUpdateResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+
     public class AwsResource : Resource
     {
     
 
     
 
-        
+            
         private static Request BuildCreateRequest(CreateAwsOptions options, ITwilioRestClient client)
         {
             
@@ -54,11 +229,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Create Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Create(CreateAwsOptions options, ITwilioRestClient client = null)
+        public static AwsCreateResource Create(CreateAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
+            return AwsCreateResource.FromJson(response.Content);
         }
 
         #if !NET35
@@ -66,11 +241,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Create Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> CreateAsync(CreateAwsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AwsCreateResource> CreateAsync(CreateAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
+            return AwsCreateResource.FromJson(response.Content);
         }
         #endif
 
@@ -80,7 +255,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="accountSid"> The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Create(
+        public static AwsCreateResource Create(
                                           string credentials,
                                           string friendlyName = null,
                                           string accountSid = null,
@@ -97,7 +272,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="accountSid"> The SID of the Subaccount that this Credential should be associated with. Must be a valid Subaccount of the account issuing the request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> CreateAsync(
+        public static async System.Threading.Tasks.Task<AwsCreateResource> CreateAsync(
                                                                                   string credentials,
                                                                                   string friendlyName = null,
                                                                                   string accountSid = null,
@@ -108,7 +283,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
         #endif
 
-        
+            
         /// <summary> Delete a Credential from your account </summary>
         /// <param name="options"> Delete Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -176,7 +351,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await DeleteAsync(options, client);
         }
         #endif
-        
+            
         private static Request BuildFetchRequest(FetchAwsOptions options, ITwilioRestClient client)
         {
             
@@ -198,11 +373,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Fetch Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Fetch(FetchAwsOptions options, ITwilioRestClient client = null)
+        public static AwsFetchResource Fetch(FetchAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
+            return AwsFetchResource.FromJson(response.Content);
         }
 
         #if !NET35
@@ -210,18 +385,18 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Fetch Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(FetchAwsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AwsFetchResource> FetchAsync(FetchAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return FromJson(response.Content);
+            return AwsFetchResource.FromJson(response.Content);
         }
         #endif
         /// <summary> Fetch the AWS credentials specified by the provided Credential Sid </summary>
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Fetch(
+        public static AwsFetchResource Fetch(
                                          string pathSid, 
                                         ITwilioRestClient client = null)
         {
@@ -234,13 +409,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="pathSid"> The Twilio-provided string that uniquely identifies the AWS resource to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AwsFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchAwsOptions(pathSid){  };
             return await FetchAsync(options, client);
         }
         #endif
-        
+            
         private static Request BuildReadRequest(ReadAwsOptions options, ITwilioRestClient client)
         {
             
@@ -259,12 +434,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Read Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static ResourceSet<AwsResource> Read(ReadAwsOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<AwsReadResource> Read(ReadAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            var page = Page<AwsResource>.FromJson("credentials", response.Content);
-            return new ResourceSet<AwsResource>(page, options, client);
+            var page = Page<AwsReadResource>.FromJson("credentials", response.Content);
+            return new ResourceSet<AwsReadResource>(page, options, client);
         }
 
         #if !NET35
@@ -272,13 +447,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Read Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AwsResource>> ReadAsync(ReadAwsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AwsReadResource>> ReadAsync(ReadAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
-            var page = Page<AwsResource>.FromJson("credentials", response.Content);
-            return new ResourceSet<AwsResource>(page, options, client);
+            var page = Page<AwsReadResource>.FromJson("credentials", response.Content);
+            return new ResourceSet<AwsReadResource>(page, options, client);
         }
         #endif
         /// <summary> Retrieves a collection of AWS Credentials belonging to the account used to make the request </summary>
@@ -286,7 +461,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static ResourceSet<AwsResource> Read(
+        public static ResourceSet<AwsReadResource> Read(
                                                      long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
@@ -301,7 +476,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<AwsResource>> ReadAsync(
+        public static async System.Threading.Tasks.Task<ResourceSet<AwsReadResource>> ReadAsync(
                                                                                              long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
@@ -359,7 +534,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return Page<AwsResource>.FromJson("credentials", response.Content);
         }
 
-        
+            
         private static Request BuildUpdateRequest(UpdateAwsOptions options, ITwilioRestClient client)
         {
             
@@ -382,11 +557,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="options"> Update Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Update(UpdateAwsOptions options, ITwilioRestClient client = null)
+        public static AwsUpdateResource Update(UpdateAwsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
+            return AwsUpdateResource.FromJson(response.Content);
         }
 
         /// <summary> Modify the properties of a given Account </summary>
@@ -394,12 +569,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
         #if !NET35
-        public static async System.Threading.Tasks.Task<AwsResource> UpdateAsync(UpdateAwsOptions options,
+        public static async System.Threading.Tasks.Task<AwsUpdateResource> UpdateAsync(UpdateAwsOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
+            return AwsUpdateResource.FromJson(response.Content);
         }
         #endif
 
@@ -408,7 +583,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns>
-        public static AwsResource Update(
+        public static AwsUpdateResource Update(
                                           string pathSid,
                                           string friendlyName = null,
                                             ITwilioRestClient client = null)
@@ -423,7 +598,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns>
-        public static async System.Threading.Tasks.Task<AwsResource> UpdateAsync(
+        public static async System.Threading.Tasks.Task<AwsUpdateResource> UpdateAsync(
                                                                               string pathSid,
                                                                               string friendlyName = null,
                                                                                 ITwilioRestClient client = null)
@@ -433,70 +608,5 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
         #endif
 
-    
-        /// <summary>
-        /// Converts a JSON string into a AwsResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> AwsResource object represented by the provided JSON </returns>
-        public static AwsResource FromJson(string json)
-        {
-            try
-            {
-                return JsonConvert.DeserializeObject<AwsResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
-        /// <summary>
-    /// Converts an object into a json string
-    /// </summary>
-    /// <param name="model"> C# model </param>
-    /// <returns> JSON string </returns>
-    public static string ToJson(object model)
-    {
-        try
-        {
-            return JsonConvert.SerializeObject(model);
-        }
-        catch (JsonException e)
-        {
-            throw new ApiException(e.Message, e);
-        }
-    }
-
-    
-        ///<summary> The unique string that we created to identify the AWS resource. </summary> 
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-
-        ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource. </summary> 
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-
-        ///<summary> The string that you assigned to describe the resource. </summary> 
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-
-        ///<summary> The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        ///<summary> The URI for this resource, relative to `https://accounts.twilio.com` </summary> 
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-
-
-        private AwsResource() {
-
-        }
     }
 }
-
