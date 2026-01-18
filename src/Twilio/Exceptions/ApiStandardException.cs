@@ -29,6 +29,11 @@ namespace Twilio.Exceptions
         public string Title { get; }
 
         /// <summary>
+        /// A human-readable explanation specific to this occurrence of the problem (RFC 9457)
+        /// </summary>
+        public string Detail { get; }
+
+        /// <summary>
         /// A URI reference that identifies the specific occurrence of the problem (RFC 9457)
         /// </summary>
         public string Instance { get; }
@@ -56,27 +61,28 @@ namespace Twilio.Exceptions
         /// </summary>
         /// <param name="code">Twilio error code</param>
         /// <param name="status">HTTP status code</param>
-        /// <param name="message">Error message (detail)</param>
         /// <param name="type">URI reference identifying the problem type (RFC 9457)</param>
         /// <param name="title">Short summary of the problem type (RFC 9457)</param>
+        /// <param name="detail">Human-readable explanation specific to this occurrence (RFC 9457)</param>
         /// <param name="instance">URI identifying this specific occurrence (RFC 9457)</param>
         /// <param name="errors">Validation errors (RFC 9457)</param>
         /// <param name="exception">Original exception</param>
         public ApiStandardException(
             int code,
             int status,
-            string message,
             string type,
             string title,
+            string detail,
             string instance,
             List<ErrorDetail> errors,
             Exception exception = null
-        ) : base(message, exception)
+        ) : base(detail ?? title, exception)
         {
             Code = code;
             Status = status;
             Type = type;
             Title = title;
+            Detail = detail;
             Instance = instance;
             Errors = errors;
         }

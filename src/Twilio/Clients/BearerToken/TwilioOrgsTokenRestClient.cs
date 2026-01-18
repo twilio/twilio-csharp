@@ -319,9 +319,9 @@ namespace Twilio.Clients.BearerToken
                 throw new ApiStandardException(
                     restApiStandardException.Code,
                     (int)response.StatusCode,
-                    restApiStandardException.Detail ?? restApiStandardException.Title ?? "Unable to make request, " + response.StatusCode,
                     restApiStandardException.Type,
                     restApiStandardException.Title,
+                    restApiStandardException.Detail,
                     restApiStandardException.Instance,
                     restApiStandardException.Errors
                 );
