@@ -173,18 +173,43 @@ namespace Twilio.Clients.NoAuth
             }
             catch (JsonReaderException) { /* Allow null check below to handle */ }
 
-            if (restException == null)
+
+            if (restException != null)
             {
-                throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
+                throw new ApiException(
+                    restException.Code,
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to make request, " + response.StatusCode,
+                    restException.MoreInfo,
+                    restException.Details
+                );
             }
 
-            throw new ApiException(
-                restException.Code,
-                (int)response.StatusCode,
-                restException.Message ?? "Unable to make request, " + response.StatusCode,
-                restException.MoreInfo,
-                restException.Details
-            );
+            
+            // Try to deserialize as RFC 9457 format first (RestApiStandardException)
+            RestApiStandardException restApiStandardException = null;
+            try
+            {
+                restApiStandardException = RestApiStandardException.FromJson(response.Content);
+            }
+            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
+
+            // Check if it's a valid RFC 9457 response (has 'type' field)
+            if (restApiStandardException != null)
+            {
+                throw new ApiStandardException(
+                    restApiStandardException.Code,
+                    (int)response.StatusCode,
+                    restApiStandardException.Detail ?? restApiStandardException.Title ?? "Unable to make request, " + response.StatusCode,
+                    restApiStandardException.Type,
+                    restApiStandardException.Title,
+                    restApiStandardException.Instance,
+                    restApiStandardException.Errors
+                );
+            }
+            
+            // If both RestException and RestApiStandardException are null and throw default exception
+            throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
         }
 
         /// <summary>
