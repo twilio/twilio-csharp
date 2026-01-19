@@ -306,6 +306,90 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static ResourceWithHeaders<MessageResource> CreateWithHeaders(CreateMessageOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> CreateWithHeadersAsync(CreateMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static ResourceWithHeaders<MessageResource> CreateWithHeaders(
+            Types.PhoneNumber to,
+            string pathAccountSid = null,
+            Types.PhoneNumber from = null,
+            string messagingServiceSid = null,
+            string body = null,
+            List<Uri> mediaUrl = null,
+            string contentSid = null,
+            Uri statusCallback = null,
+            string applicationSid = null,
+            decimal? maxPrice = null,
+            bool? provideFeedback = null,
+            int? attempt = null,
+            int? validityPeriod = null,
+            bool? forceDelivery = null,
+            MessageResource.ContentRetentionEnum contentRetention = null,
+            MessageResource.AddressRetentionEnum addressRetention = null,
+            bool? smartEncoded = null,
+            List<string> persistentAction = null,
+            MessageResource.TrafficTypeEnum trafficType = null,
+            bool? shortenUrls = null,
+            MessageResource.ScheduleTypeEnum scheduleType = null,
+            DateTime? sendAt = null,
+            bool? sendAsMms = null,
+            string contentVariables = null,
+            MessageResource.RiskCheckEnum riskCheck = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> CreateWithHeadersAsync(
+            Types.PhoneNumber to,
+            string pathAccountSid = null,
+            Types.PhoneNumber from = null,
+            string messagingServiceSid = null,
+            string body = null,
+            List<Uri> mediaUrl = null,
+            string contentSid = null,
+            Uri statusCallback = null,
+            string applicationSid = null,
+            decimal? maxPrice = null,
+            bool? provideFeedback = null,
+            int? attempt = null,
+            int? validityPeriod = null,
+            bool? forceDelivery = null,
+            MessageResource.ContentRetentionEnum contentRetention = null,
+            MessageResource.AddressRetentionEnum addressRetention = null,
+            bool? smartEncoded = null,
+            List<string> persistentAction = null,
+            MessageResource.TrafficTypeEnum trafficType = null,
+            bool? shortenUrls = null,
+            MessageResource.ScheduleTypeEnum scheduleType = null,
+            DateTime? sendAt = null,
+            bool? sendAsMms = null,
+            string contentVariables = null,
+            MessageResource.RiskCheckEnum riskCheck = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Deletes a Message resource from your account </summary>
         /// <param name="options"> Delete Message parameters </param>
@@ -378,6 +462,38 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
+
+        public static ResourceWithHeaders<bool> DeleteWithHeaders(DeleteMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return new ResourceWithHeaders<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<bool>> DeleteWithHeadersAsync(DeleteMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return new ResourceWithHeaders<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static ResourceWithHeaders<bool> DeleteWithHeaders(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMessageOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<bool>> DeleteWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMessageOptions(pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchMessageOptions options, ITwilioRestClient client)
         {
@@ -445,6 +561,40 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new FetchMessageOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static ResourceWithHeaders<MessageResource> FetchWithHeaders(FetchMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> FetchWithHeadersAsync(FetchMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static ResourceWithHeaders<MessageResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchMessageOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> FetchWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchMessageOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -544,6 +694,27 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+        public static ResourceSetWithHeaders<MessageResource> ReadWithHeaders(ReadMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<MessageResource>.FromJson("messages", response.Content);
+            var records = new ResourceSet<MessageResource>(page, options, client);
+            return new ResourceSetWithHeaders<MessageResource>(records, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetWithHeaders<MessageResource>> ReadWithHeadersAsync(ReadMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<MessageResource>.FromJson("messages", response.Content);
+            var records = new ResourceSet<MessageResource>(page, options, client);
+            return new ResourceSetWithHeaders<MessageResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -673,6 +844,49 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new UpdateMessageOptions(pathSid){ PathAccountSid = pathAccountSid, Body = body, Status = status };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static ResourceWithHeaders<MessageResource> UpdateWithHeaders(UpdateMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> UpdateWithHeadersAsync(UpdateMessageOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new ResourceWithHeaders<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static ResourceWithHeaders<MessageResource> UpdateWithHeaders(
+            string pathSid,
+            string pathAccountSid = null,
+            string body = null,
+            MessageResource.UpdateStatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMessageOptions(pathSid){ PathAccountSid = pathAccountSid, Body = body, Status = status };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceWithHeaders<MessageResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string pathAccountSid = null,
+            string body = null,
+            MessageResource.UpdateStatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMessageOptions(pathSid){ PathAccountSid = pathAccountSid, Body = body, Status = status };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 
