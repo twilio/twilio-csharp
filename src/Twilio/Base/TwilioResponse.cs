@@ -12,7 +12,7 @@ namespace Twilio.Base
     /// Wrapper class that contains both the resource and HTTP response headers
     /// </summary>
     /// <typeparam name="T">The type of the resource</typeparam>
-    public class ResourceWithHeaders<T>
+    public class TwilioResponse<T>
     {
         /// <summary>
         /// The resource data
@@ -30,12 +30,12 @@ namespace Twilio.Base
         public HttpStatusCode StatusCode { get; }
 
         /// <summary>
-        /// Create a new ResourceWithHeaders
+        /// Create a new TwilioResponse
         /// </summary>
         /// <param name="data">The resource data</param>
         /// <param name="headers">HTTP response headers</param>
         /// <param name="statusCode">HTTP status code</param>
-        public ResourceWithHeaders(T data, Headers headers, HttpStatusCode statusCode)
+        public TwilioResponse(T data, Headers headers, HttpStatusCode statusCode)
         {
             Data = data;
             Headers = headers;

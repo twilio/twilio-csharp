@@ -15,7 +15,7 @@ namespace Twilio.Base
     /// Implements IEnumerable to allow direct iteration over records.
     /// </summary>
     /// <typeparam name="T">The type of the resource</typeparam>
-    public class ResourceSetWithHeaders<T> : IEnumerable<T> where T : Resource
+    public class ResourceSetResponse<T> : IEnumerable<T> where T : Resource
     {
         /// <summary>
         /// The resource set containing the records
@@ -33,12 +33,12 @@ namespace Twilio.Base
         public HttpStatusCode StatusCode { get; }
 
         /// <summary>
-        /// Create a new ResourceSetWithHeaders
+        /// Create a new ResourceSetResponse
         /// </summary>
         /// <param name="records">The resource set containing records</param>
         /// <param name="headers">HTTP response headers</param>
         /// <param name="statusCode">HTTP status code</param>
-        public ResourceSetWithHeaders(ResourceSet<T> records, Headers headers, HttpStatusCode statusCode)
+        public ResourceSetResponse(ResourceSet<T> records, Headers headers, HttpStatusCode statusCode)
         {
             Records = records;
             Headers = headers;
