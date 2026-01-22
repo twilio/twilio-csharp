@@ -125,6 +125,46 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+
+        public static TwilioResponse<SupportingDocumentResource> CreateWithHeaders(CreateSupportingDocumentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> CreateWithHeadersAsync(CreateSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SupportingDocumentResource> CreateWithHeaders(
+            string friendlyName,
+            string type,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string type,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSupportingDocumentOptions(friendlyName, type){  Attributes = attributes };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Supporting Document. </summary>
         /// <param name="options"> Delete SupportingDocument parameters </param>
@@ -155,7 +195,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -168,7 +208,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -191,6 +231,38 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new DeleteSupportingDocumentOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSupportingDocumentOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSupportingDocumentOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -255,6 +327,39 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new FetchSupportingDocumentOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SupportingDocumentResource> FetchWithHeaders(FetchSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> FetchWithHeadersAsync(FetchSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SupportingDocumentResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSupportingDocumentOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSupportingDocumentOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -328,6 +433,36 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        public static ResourceSetResponse<SupportingDocumentResource> ReadWithHeaders(ReadSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SupportingDocumentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<SupportingDocumentResource>(page, options, client);
+            return new ResourceSetResponse<SupportingDocumentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SupportingDocumentResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSupportingDocumentOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SupportingDocumentResource>> ReadWithHeadersAsync(ReadSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SupportingDocumentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<SupportingDocumentResource>(page, options, client);
+            return new ResourceSetResponse<SupportingDocumentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -451,6 +586,47 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SupportingDocumentResource> UpdateWithHeaders(UpdateSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> UpdateWithHeadersAsync(UpdateSupportingDocumentOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SupportingDocumentResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSupportingDocumentOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

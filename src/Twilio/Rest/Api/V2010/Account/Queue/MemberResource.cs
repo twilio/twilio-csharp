@@ -107,6 +107,41 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<MemberResource> FetchWithHeaders(FetchMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> FetchWithHeadersAsync(FetchMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<MemberResource> FetchWithHeaders(
+                    string pathQueueSid, 
+                    string pathCallSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(pathQueueSid, pathCallSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> FetchWithHeadersAsync(string pathQueueSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(pathQueueSid, pathCallSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadMemberOptions options, ITwilioRestClient client)
         {
@@ -190,6 +225,38 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
         #endif
 
+        public static ResourceSetResponse<MemberResource> ReadWithHeaders(ReadMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<MemberResource>.FromJson("queue_members", response.Content);
+            var records = new ResourceSet<MemberResource>(page, options, client);
+            return new ResourceSetResponse<MemberResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<MemberResource> ReadWithHeaders(
+            string pathQueueSid,
+            string pathAccountSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadMemberOptions(pathQueueSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<MemberResource>> ReadWithHeadersAsync(ReadMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<MemberResource>.FromJson("queue_members", response.Content);
+            var records = new ResourceSet<MemberResource>(page, options, client);
+            return new ResourceSetResponse<MemberResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -325,6 +392,51 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){ PathAccountSid = pathAccountSid, Method = method };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<MemberResource> UpdateWithHeaders(UpdateMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> UpdateWithHeadersAsync(UpdateMemberOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MemberResource> UpdateWithHeaders(
+            string pathQueueSid,
+            string pathCallSid,
+            Uri url,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod method = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){ PathAccountSid = pathAccountSid, Method = method };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> UpdateWithHeadersAsync(
+            string pathQueueSid,
+            string pathCallSid,
+            Uri url,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod method = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){ PathAccountSid = pathAccountSid, Method = method };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -110,6 +110,46 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         }
         #endif
 
+
+        public static TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource> CreateWithHeaders(CreateCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>> CreateWithHeadersAsync(CreateCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource> CreateWithHeaders(
+            string pathCustomerProfileSid,
+            string channelEndpointType,
+            string channelEndpointSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, channelEndpointType, channelEndpointSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>> CreateWithHeadersAsync(
+            string pathCustomerProfileSid,
+            string channelEndpointType,
+            string channelEndpointSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, channelEndpointType, channelEndpointSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete CustomerProfilesChannelEndpointAssignment parameters </param>
@@ -142,7 +182,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -155,7 +195,7 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -180,6 +220,38 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             var options = new DeleteCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathCustomerProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathCustomerProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -249,6 +321,40 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             var options = new FetchCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource> FetchWithHeaders(FetchCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>> FetchWithHeadersAsync(FetchCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource> FetchWithHeaders(
+                    string pathCustomerProfileSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesChannelEndpointAssignmentResource>> FetchWithHeadersAsync(string pathCustomerProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -336,6 +442,39 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         }
         #endif
 
+        public static ResourceSetResponse<CustomerProfilesChannelEndpointAssignmentResource> ReadWithHeaders(ReadCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomerProfilesChannelEndpointAssignmentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesChannelEndpointAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesChannelEndpointAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CustomerProfilesChannelEndpointAssignmentResource> ReadWithHeaders(
+            string pathCustomerProfileSid,
+            string channelEndpointSid = null,
+            string channelEndpointSids = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomerProfilesChannelEndpointAssignmentOptions(pathCustomerProfileSid){ ChannelEndpointSid = channelEndpointSid, ChannelEndpointSids = channelEndpointSids, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CustomerProfilesChannelEndpointAssignmentResource>> ReadWithHeadersAsync(ReadCustomerProfilesChannelEndpointAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomerProfilesChannelEndpointAssignmentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesChannelEndpointAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesChannelEndpointAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

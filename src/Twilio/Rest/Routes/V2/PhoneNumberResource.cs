@@ -97,6 +97,39 @@ namespace Twilio.Rest.Routes.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(
+                    string pathPhoneNumber, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(string pathPhoneNumber, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdatePhoneNumberOptions options, ITwilioRestClient client)
         {
@@ -172,6 +205,47 @@ namespace Twilio.Rest.Routes.V2
         {
             var options = new UpdatePhoneNumberOptions(pathPhoneNumber){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<PhoneNumberResource> UpdateWithHeaders(UpdatePhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> UpdateWithHeadersAsync(UpdatePhoneNumberOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PhoneNumberResource> UpdateWithHeaders(
+            string pathPhoneNumber,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePhoneNumberOptions(pathPhoneNumber){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> UpdateWithHeadersAsync(
+            string pathPhoneNumber,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePhoneNumberOptions(pathPhoneNumber){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

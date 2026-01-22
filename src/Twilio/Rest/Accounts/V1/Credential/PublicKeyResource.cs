@@ -108,6 +108,46 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
         #endif
 
+
+        public static TwilioResponse<PublicKeyResource> CreateWithHeaders(CreatePublicKeyOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> CreateWithHeadersAsync(CreatePublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PublicKeyResource> CreateWithHeaders(
+            string publicKey,
+            string friendlyName = null,
+            string accountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePublicKeyOptions(publicKey){  FriendlyName = friendlyName, AccountSid = accountSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> CreateWithHeadersAsync(
+            string publicKey,
+            string friendlyName = null,
+            string accountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePublicKeyOptions(publicKey){  FriendlyName = friendlyName, AccountSid = accountSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a Credential from your account </summary>
         /// <param name="options"> Delete PublicKey parameters </param>
@@ -138,7 +178,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +191,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -174,6 +214,38 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             var options = new DeletePublicKeyOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeletePublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeletePublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePublicKeyOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePublicKeyOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -238,6 +310,39 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             var options = new FetchPublicKeyOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<PublicKeyResource> FetchWithHeaders(FetchPublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> FetchWithHeadersAsync(FetchPublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PublicKeyResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPublicKeyOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPublicKeyOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -311,6 +416,36 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
         #endif
 
+        public static ResourceSetResponse<PublicKeyResource> ReadWithHeaders(ReadPublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PublicKeyResource>.FromJson("credentials", response.Content);
+            var records = new ResourceSet<PublicKeyResource>(page, options, client);
+            return new ResourceSetResponse<PublicKeyResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PublicKeyResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPublicKeyOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PublicKeyResource>> ReadWithHeadersAsync(ReadPublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PublicKeyResource>.FromJson("credentials", response.Content);
+            var records = new ResourceSet<PublicKeyResource>(page, options, client);
+            return new ResourceSetResponse<PublicKeyResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -430,6 +565,45 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             var options = new UpdatePublicKeyOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<PublicKeyResource> UpdateWithHeaders(UpdatePublicKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> UpdateWithHeadersAsync(UpdatePublicKeyOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PublicKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PublicKeyResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePublicKeyOptions(pathSid){ FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PublicKeyResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePublicKeyOptions(pathSid){ FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -217,6 +217,72 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         }
         #endif
 
+
+        public static TwilioResponse<NewFactorResource> CreateWithHeaders(CreateNewFactorOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewFactorResource>> CreateWithHeadersAsync(CreateNewFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewFactorResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string friendlyName,
+            NewFactorResource.FactorTypesEnum factorType,
+            string bindingAlg = null,
+            string bindingPublicKey = null,
+            string configAppId = null,
+            NewFactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
+            string configNotificationToken = null,
+            string configSdkVersion = null,
+            string bindingSecret = null,
+            int? configTimeStep = null,
+            int? configSkew = null,
+            int? configCodeLength = null,
+            NewFactorResource.TotpAlgorithmsEnum configAlg = null,
+            object metadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){  BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewFactorResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathIdentity,
+            string friendlyName,
+            NewFactorResource.FactorTypesEnum factorType,
+            string bindingAlg = null,
+            string bindingPublicKey = null,
+            string configAppId = null,
+            NewFactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
+            string configNotificationToken = null,
+            string configSdkVersion = null,
+            string bindingSecret = null,
+            int? configTimeStep = null,
+            int? configSkew = null,
+            int? configCodeLength = null,
+            NewFactorResource.TotpAlgorithmsEnum configAlg = null,
+            object metadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){  BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, Metadata = metadata };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewFactorResource object

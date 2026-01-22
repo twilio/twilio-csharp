@@ -164,6 +164,42 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         }
         #endif
 
+        public static ResourceSetResponse<DependentHostedNumberOrderResource> ReadWithHeaders(ReadDependentHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<DependentHostedNumberOrderResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<DependentHostedNumberOrderResource>(page, options, client);
+            return new ResourceSetResponse<DependentHostedNumberOrderResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<DependentHostedNumberOrderResource> ReadWithHeaders(
+            string pathSigningDocumentSid,
+            DependentHostedNumberOrderResource.StatusEnum status = null,
+            Types.PhoneNumber phoneNumber = null,
+            string incomingPhoneNumberSid = null,
+            string friendlyName = null,
+            string uniqueName = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){ Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<DependentHostedNumberOrderResource>> ReadWithHeadersAsync(ReadDependentHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<DependentHostedNumberOrderResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<DependentHostedNumberOrderResource>(page, options, client);
+            return new ResourceSetResponse<DependentHostedNumberOrderResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

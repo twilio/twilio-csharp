@@ -124,6 +124,52 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
         #endif
 
+
+        public static TwilioResponse<ParticipantResource> CreateWithHeaders(CreateParticipantOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> CreateWithHeadersAsync(CreateParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ParticipantResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathSessionSid,
+            string identifier,
+            string friendlyName = null,
+            string proxyIdentifier = null,
+            string proxyIdentifierSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSessionSid,
+            string identifier,
+            string friendlyName = null,
+            string proxyIdentifier = null,
+            string proxyIdentifierSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){  FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot be re-added. Participants are only permanently deleted when the [Session](https://www.twilio.com/docs/proxy/api/session) is deleted. </summary>
         /// <param name="options"> Delete Participant parameters </param>
@@ -158,7 +204,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -171,7 +217,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -198,6 +244,38 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             var options = new DeleteParticipantOptions(pathServiceSid, pathSessionSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(pathServiceSid, pathSessionSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(pathServiceSid, pathSessionSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -272,6 +350,41 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             var options = new FetchParticipantOptions(pathServiceSid, pathSessionSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ParticipantResource> FetchWithHeaders(FetchParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> FetchWithHeadersAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ParticipantResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSessionSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(pathServiceSid, pathSessionSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(pathServiceSid, pathSessionSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -357,6 +470,38 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
         #endif
 
+        public static ResourceSetResponse<ParticipantResource> ReadWithHeaders(ReadParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ParticipantResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathSessionSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ParticipantResource>> ReadWithHeadersAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

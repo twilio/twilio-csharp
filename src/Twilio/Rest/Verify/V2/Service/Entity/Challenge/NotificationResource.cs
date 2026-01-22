@@ -118,6 +118,48 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         }
         #endif
 
+
+        public static TwilioResponse<NotificationResource> CreateWithHeaders(CreateNotificationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> CreateWithHeadersAsync(CreateNotificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NotificationResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathChallengeSid,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){  Ttl = ttl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathChallengeSid,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNotificationOptions(pathServiceSid, pathIdentity, pathChallengeSid){  Ttl = ttl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object

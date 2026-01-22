@@ -112,6 +112,46 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
         #endif
 
+
+        public static TwilioResponse<InteractionChannelInviteResource> CreateWithHeaders(CreateInteractionChannelInviteOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelInviteResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelInviteResource>> CreateWithHeadersAsync(CreateInteractionChannelInviteOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelInviteResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionChannelInviteResource> CreateWithHeaders(
+            string pathInteractionSid,
+            string pathChannelSid,
+            object routing,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionChannelInviteOptions(pathInteractionSid, pathChannelSid, routing){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelInviteResource>> CreateWithHeadersAsync(
+            string pathInteractionSid,
+            string pathChannelSid,
+            object routing,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionChannelInviteOptions(pathInteractionSid, pathChannelSid, routing){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadInteractionChannelInviteOptions options, ITwilioRestClient client)
         {
@@ -195,6 +235,38 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
         #endif
 
+        public static ResourceSetResponse<InteractionChannelInviteResource> ReadWithHeaders(ReadInteractionChannelInviteOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InteractionChannelInviteResource>.FromJson("invites", response.Content);
+            var records = new ResourceSet<InteractionChannelInviteResource>(page, options, client);
+            return new ResourceSetResponse<InteractionChannelInviteResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InteractionChannelInviteResource> ReadWithHeaders(
+            string pathInteractionSid,
+            string pathChannelSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInteractionChannelInviteOptions(pathInteractionSid, pathChannelSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InteractionChannelInviteResource>> ReadWithHeadersAsync(ReadInteractionChannelInviteOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InteractionChannelInviteResource>.FromJson("invites", response.Content);
+            var records = new ResourceSet<InteractionChannelInviteResource>(page, options, client);
+            return new ResourceSetResponse<InteractionChannelInviteResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

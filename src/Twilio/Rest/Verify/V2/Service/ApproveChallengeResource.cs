@@ -271,6 +271,45 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+        public static TwilioResponse<ApproveChallengeResource> UpdateWithHeaders(UpdateApproveChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApproveChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApproveChallengeResource>> UpdateWithHeadersAsync(UpdateApproveChallengeOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApproveChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ApproveChallengeResource> UpdateWithHeaders(
+            string pathServiceSid,
+            ApproveChallengeResource.ApprovePasskeysChallengeRequest approvePasskeysChallengeRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateApproveChallengeOptions(pathServiceSid, approvePasskeysChallengeRequest){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApproveChallengeResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            ApproveChallengeResource.ApprovePasskeysChallengeRequest approvePasskeysChallengeRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateApproveChallengeOptions(pathServiceSid, approvePasskeysChallengeRequest){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ApproveChallengeResource object

@@ -100,6 +100,40 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<WorkspaceRealTimeStatisticsResource> FetchWithHeaders(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceRealTimeStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceRealTimeStatisticsResource>> FetchWithHeadersAsync(FetchWorkspaceRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceRealTimeStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WorkspaceRealTimeStatisticsResource> FetchWithHeaders(
+                    string pathWorkspaceSid, 
+                    string taskChannel = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){ TaskChannel = taskChannel };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceRealTimeStatisticsResource>> FetchWithHeadersAsync(string pathWorkspaceSid, string taskChannel = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkspaceRealTimeStatisticsOptions(pathWorkspaceSid){ TaskChannel = taskChannel };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WorkspaceRealTimeStatisticsResource object

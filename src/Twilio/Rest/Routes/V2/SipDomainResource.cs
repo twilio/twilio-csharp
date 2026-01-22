@@ -97,6 +97,39 @@ namespace Twilio.Rest.Routes.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SipDomainResource> FetchWithHeaders(FetchSipDomainOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SipDomainResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SipDomainResource>> FetchWithHeadersAsync(FetchSipDomainOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SipDomainResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SipDomainResource> FetchWithHeaders(
+                    string pathSipDomain, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSipDomainOptions(pathSipDomain){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SipDomainResource>> FetchWithHeadersAsync(string pathSipDomain, ITwilioRestClient client = null)
+        {
+            var options = new FetchSipDomainOptions(pathSipDomain){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateSipDomainOptions options, ITwilioRestClient client)
         {
@@ -172,6 +205,47 @@ namespace Twilio.Rest.Routes.V2
         {
             var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SipDomainResource> UpdateWithHeaders(UpdateSipDomainOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SipDomainResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SipDomainResource>> UpdateWithHeadersAsync(UpdateSipDomainOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SipDomainResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SipDomainResource> UpdateWithHeaders(
+            string pathSipDomain,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SipDomainResource>> UpdateWithHeadersAsync(
+            string pathSipDomain,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSipDomainOptions(pathSipDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

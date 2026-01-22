@@ -124,6 +124,54 @@ namespace Twilio.Rest.Preview.Wireless
         }
         #endif
 
+
+        public static TwilioResponse<CommandResource> CreateWithHeaders(CreateCommandOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> CreateWithHeadersAsync(CreateCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CommandResource> CreateWithHeaders(
+            string command,
+            string device = null,
+            string sim = null,
+            string callbackMethod = null,
+            Uri callbackUrl = null,
+            string commandMode = null,
+            string includeSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCommandOptions(command){  Device = device, Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> CreateWithHeadersAsync(
+            string command,
+            string device = null,
+            string sim = null,
+            string callbackMethod = null,
+            Uri callbackUrl = null,
+            string commandMode = null,
+            string includeSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCommandOptions(command){  Device = device, Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)
         {
@@ -186,6 +234,39 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var options = new FetchCommandOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CommandResource> FetchWithHeaders(FetchCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> FetchWithHeadersAsync(FetchCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CommandResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -275,6 +356,40 @@ namespace Twilio.Rest.Preview.Wireless
         }
         #endif
 
+        public static ResourceSetResponse<CommandResource> ReadWithHeaders(ReadCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            var records = new ResourceSet<CommandResource>(page, options, client);
+            return new ResourceSetResponse<CommandResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CommandResource> ReadWithHeaders(
+            string device = null,
+            string sim = null,
+            string status = null,
+            string direction = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCommandOptions(){ Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CommandResource>> ReadWithHeadersAsync(ReadCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            var records = new ResourceSet<CommandResource>(page, options, client);
+            return new ResourceSetResponse<CommandResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

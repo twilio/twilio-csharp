@@ -157,6 +157,44 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         }
         #endif
 
+
+        public static TwilioResponse<MessageResource> CreateWithHeaders(CreateMessageOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageResource>> CreateWithHeadersAsync(CreateMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MessageResource> CreateWithHeaders(
+            string pathId,
+            MessageResource.AssistantsV1ServiceAssistantSendMessageRequest assistantsV1ServiceAssistantSendMessageRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageOptions(pathId, assistantsV1ServiceAssistantSendMessageRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageResource>> CreateWithHeadersAsync(
+            string pathId,
+            MessageResource.AssistantsV1ServiceAssistantSendMessageRequest assistantsV1ServiceAssistantSendMessageRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageOptions(pathId, assistantsV1ServiceAssistantSendMessageRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a MessageResource object

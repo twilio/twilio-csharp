@@ -113,6 +113,39 @@ namespace Twilio.Rest.Intelligence.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PrebuiltOperatorResource> FetchWithHeaders(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PrebuiltOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PrebuiltOperatorResource>> FetchWithHeadersAsync(FetchPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PrebuiltOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PrebuiltOperatorResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPrebuiltOperatorOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PrebuiltOperatorResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPrebuiltOperatorOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadPrebuiltOperatorOptions options, ITwilioRestClient client)
         {
@@ -192,6 +225,38 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
 
+        public static ResourceSetResponse<PrebuiltOperatorResource> ReadWithHeaders(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PrebuiltOperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<PrebuiltOperatorResource>(page, options, client);
+            return new ResourceSetResponse<PrebuiltOperatorResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PrebuiltOperatorResource> ReadWithHeaders(
+            PrebuiltOperatorResource.AvailabilityEnum availability = null,
+            string languageCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPrebuiltOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PrebuiltOperatorResource>> ReadWithHeadersAsync(ReadPrebuiltOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PrebuiltOperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<PrebuiltOperatorResource>(page, options, client);
+            return new ResourceSetResponse<PrebuiltOperatorResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -97,6 +97,39 @@ namespace Twilio.Rest.Routes.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<TrunkResource> FetchWithHeaders(FetchTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> FetchWithHeadersAsync(FetchTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TrunkResource> FetchWithHeaders(
+                    string pathSipTrunkDomain, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTrunkOptions(pathSipTrunkDomain){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> FetchWithHeadersAsync(string pathSipTrunkDomain, ITwilioRestClient client = null)
+        {
+            var options = new FetchTrunkOptions(pathSipTrunkDomain){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateTrunkOptions options, ITwilioRestClient client)
         {
@@ -172,6 +205,47 @@ namespace Twilio.Rest.Routes.V2
         {
             var options = new UpdateTrunkOptions(pathSipTrunkDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<TrunkResource> UpdateWithHeaders(UpdateTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> UpdateWithHeadersAsync(UpdateTrunkOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TrunkResource> UpdateWithHeaders(
+            string pathSipTrunkDomain,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTrunkOptions(pathSipTrunkDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> UpdateWithHeadersAsync(
+            string pathSipTrunkDomain,
+            string voiceRegion = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTrunkOptions(pathSipTrunkDomain){ VoiceRegion = voiceRegion, FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

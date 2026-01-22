@@ -108,6 +108,46 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+
+        public static TwilioResponse<EndUserResource> CreateWithHeaders(CreateEndUserOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> CreateWithHeadersAsync(CreateEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EndUserResource> CreateWithHeaders(
+            string friendlyName,
+            string type,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEndUserOptions(friendlyName, type){  Attributes = attributes };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string type,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEndUserOptions(friendlyName, type){  Attributes = attributes };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific End User. </summary>
         /// <param name="options"> Delete EndUser parameters </param>
@@ -138,7 +178,7 @@ namespace Twilio.Rest.Trusthub.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +191,7 @@ namespace Twilio.Rest.Trusthub.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -174,6 +214,38 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new DeleteEndUserOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEndUserOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEndUserOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -238,6 +310,39 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new FetchEndUserOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<EndUserResource> FetchWithHeaders(FetchEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> FetchWithHeadersAsync(FetchEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EndUserResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEndUserOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchEndUserOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -311,6 +416,36 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+        public static ResourceSetResponse<EndUserResource> ReadWithHeaders(ReadEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EndUserResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<EndUserResource>(page, options, client);
+            return new ResourceSetResponse<EndUserResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EndUserResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEndUserOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EndUserResource>> ReadWithHeadersAsync(ReadEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EndUserResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<EndUserResource>(page, options, client);
+            return new ResourceSetResponse<EndUserResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -434,6 +569,47 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new UpdateEndUserOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<EndUserResource> UpdateWithHeaders(UpdateEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> UpdateWithHeadersAsync(UpdateEndUserOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EndUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EndUserResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateEndUserOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EndUserResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            object attributes = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateEndUserOptions(pathSid){ FriendlyName = friendlyName, Attributes = attributes };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

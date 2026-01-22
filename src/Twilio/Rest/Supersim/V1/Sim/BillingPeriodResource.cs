@@ -123,6 +123,37 @@ namespace Twilio.Rest.Supersim.V1.Sim
         }
         #endif
 
+        public static ResourceSetResponse<BillingPeriodResource> ReadWithHeaders(ReadBillingPeriodOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BillingPeriodResource>.FromJson("billing_periods", response.Content);
+            var records = new ResourceSet<BillingPeriodResource>(page, options, client);
+            return new ResourceSetResponse<BillingPeriodResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BillingPeriodResource> ReadWithHeaders(
+            string pathSimSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBillingPeriodOptions(pathSimSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BillingPeriodResource>> ReadWithHeadersAsync(ReadBillingPeriodOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BillingPeriodResource>.FromJson("billing_periods", response.Content);
+            var records = new ResourceSet<BillingPeriodResource>(page, options, client);
+            return new ResourceSetResponse<BillingPeriodResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

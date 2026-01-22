@@ -123,6 +123,48 @@ namespace Twilio.Rest.Iam.V1
         }
         #endif
 
+
+        public static TwilioResponse<NewApiKeyResource> CreateWithHeaders(CreateNewApiKeyOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewApiKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewApiKeyResource>> CreateWithHeadersAsync(CreateNewApiKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewApiKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewApiKeyResource> CreateWithHeaders(
+            string accountSid,
+            string friendlyName = null,
+            NewApiKeyResource.KeytypeEnum keyType = null,
+            object policy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewApiKeyOptions(accountSid){  FriendlyName = friendlyName, KeyType = keyType, Policy = policy };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewApiKeyResource>> CreateWithHeadersAsync(
+            string accountSid,
+            string friendlyName = null,
+            NewApiKeyResource.KeytypeEnum keyType = null,
+            object policy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewApiKeyOptions(accountSid){  FriendlyName = friendlyName, KeyType = keyType, Policy = policy };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewApiKeyResource object

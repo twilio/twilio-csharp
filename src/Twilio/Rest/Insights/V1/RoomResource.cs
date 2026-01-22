@@ -223,6 +223,39 @@ namespace Twilio.Rest.Insights.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<RoomResource> FetchWithHeaders(FetchRoomOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoomResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoomResource>> FetchWithHeadersAsync(FetchRoomOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoomResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RoomResource> FetchWithHeaders(
+                    string pathRoomSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRoomOptions(pathRoomSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoomResource>> FetchWithHeadersAsync(string pathRoomSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRoomOptions(pathRoomSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadRoomOptions options, ITwilioRestClient client)
         {
@@ -314,6 +347,41 @@ namespace Twilio.Rest.Insights.V1
         }
         #endif
 
+        public static ResourceSetResponse<RoomResource> ReadWithHeaders(ReadRoomOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RoomResource>.FromJson("rooms", response.Content);
+            var records = new ResourceSet<RoomResource>(page, options, client);
+            return new ResourceSetResponse<RoomResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RoomResource> ReadWithHeaders(
+            List<RoomResource.RoomTypeEnum> roomType = null,
+            List<RoomResource.CodecEnum> codec = null,
+            string roomName = null,
+            DateTime? createdAfter = null,
+            DateTime? createdBefore = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRoomOptions(){ RoomType = roomType, Codec = codec, RoomName = roomName, CreatedAfter = createdAfter, CreatedBefore = createdBefore, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RoomResource>> ReadWithHeadersAsync(ReadRoomOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RoomResource>.FromJson("rooms", response.Content);
+            var records = new ResourceSet<RoomResource>(page, options, client);
+            return new ResourceSetResponse<RoomResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

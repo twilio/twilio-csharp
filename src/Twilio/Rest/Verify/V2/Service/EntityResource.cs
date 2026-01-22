@@ -106,6 +106,44 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<EntityResource> CreateWithHeaders(CreateEntityOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EntityResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EntityResource>> CreateWithHeadersAsync(CreateEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EntityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EntityResource> CreateWithHeaders(
+            string pathServiceSid,
+            string identity,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEntityOptions(pathServiceSid, identity){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EntityResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string identity,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEntityOptions(pathServiceSid, identity){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Entity. </summary>
         /// <param name="options"> Delete Entity parameters </param>
@@ -138,7 +176,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +189,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -176,6 +214,38 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new DeleteEntityOptions(pathServiceSid, pathIdentity) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -245,6 +315,40 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new FetchEntityOptions(pathServiceSid, pathIdentity){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<EntityResource> FetchWithHeaders(FetchEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EntityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EntityResource>> FetchWithHeadersAsync(FetchEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EntityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EntityResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathIdentity, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEntityOptions(pathServiceSid, pathIdentity){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EntityResource>> FetchWithHeadersAsync(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new FetchEntityOptions(pathServiceSid, pathIdentity){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -324,6 +428,37 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+        public static ResourceSetResponse<EntityResource> ReadWithHeaders(ReadEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EntityResource>.FromJson("entities", response.Content);
+            var records = new ResourceSet<EntityResource>(page, options, client);
+            return new ResourceSetResponse<EntityResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EntityResource> ReadWithHeaders(
+            string pathServiceSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEntityOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EntityResource>> ReadWithHeadersAsync(ReadEntityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EntityResource>.FromJson("entities", response.Content);
+            var records = new ResourceSet<EntityResource>(page, options, client);
+            return new ResourceSetResponse<EntityResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

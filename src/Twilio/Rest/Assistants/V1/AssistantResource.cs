@@ -450,6 +450,42 @@ namespace Twilio.Rest.Assistants.V1
         }
         #endif
 
+
+        public static TwilioResponse<AssistantResource> CreateWithHeaders(CreateAssistantOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> CreateWithHeadersAsync(CreateAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AssistantResource> CreateWithHeaders(
+            AssistantResource.AssistantsV1ServiceCreateAssistantRequest assistantsV1ServiceCreateAssistantRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssistantOptions(assistantsV1ServiceCreateAssistantRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> CreateWithHeadersAsync(
+            AssistantResource.AssistantsV1ServiceCreateAssistantRequest assistantsV1ServiceCreateAssistantRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssistantOptions(assistantsV1ServiceCreateAssistantRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete an assistant </summary>
         /// <param name="options"> Delete Assistant parameters </param>
@@ -480,7 +516,7 @@ namespace Twilio.Rest.Assistants.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -493,7 +529,7 @@ namespace Twilio.Rest.Assistants.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -516,6 +552,38 @@ namespace Twilio.Rest.Assistants.V1
         {
             var options = new DeleteAssistantOptions(pathId) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAssistantOptions(pathId)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAssistantOptions(pathId) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -580,6 +648,39 @@ namespace Twilio.Rest.Assistants.V1
         {
             var options = new FetchAssistantOptions(pathId){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AssistantResource> FetchWithHeaders(FetchAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> FetchWithHeadersAsync(FetchAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AssistantResource> FetchWithHeaders(
+                    string pathId, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAssistantOptions(pathId){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchAssistantOptions(pathId){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -653,6 +754,36 @@ namespace Twilio.Rest.Assistants.V1
         }
         #endif
 
+        public static ResourceSetResponse<AssistantResource> ReadWithHeaders(ReadAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AssistantResource>.FromJson("assistants", response.Content);
+            var records = new ResourceSet<AssistantResource>(page, options, client);
+            return new ResourceSetResponse<AssistantResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AssistantResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAssistantOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AssistantResource>> ReadWithHeadersAsync(ReadAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AssistantResource>.FromJson("assistants", response.Content);
+            var records = new ResourceSet<AssistantResource>(page, options, client);
+            return new ResourceSetResponse<AssistantResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -769,6 +900,43 @@ namespace Twilio.Rest.Assistants.V1
         {
             var options = new UpdateAssistantOptions(pathId){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AssistantResource> UpdateWithHeaders(UpdateAssistantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> UpdateWithHeadersAsync(UpdateAssistantOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssistantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AssistantResource> UpdateWithHeaders(
+            string pathId,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAssistantOptions(pathId){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssistantResource>> UpdateWithHeadersAsync(
+            string pathId,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAssistantOptions(pathId){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

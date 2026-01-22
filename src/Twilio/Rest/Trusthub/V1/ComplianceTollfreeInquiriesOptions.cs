@@ -136,6 +136,12 @@ namespace Twilio.Rest.Trusthub.V1
         ///<summary> List of keywords that users can text in to opt in to receive messages. </summary> 
         public List<string> OptInKeywords { get; set; }
 
+        ///<summary> Unique identifier for the created Vetting . </summary> 
+        public string VettingId { get; set; }
+
+        ///<summary> Name of the vetting provider. </summary> 
+        public string VettingProvider { get; set; }
+
 
         /// <summary> Construct a new CreateComplianceTollfreeInquiryOptions </summary>
         /// <param name="tollfreePhoneNumber"> The Tollfree phone number to be verified </param>
@@ -298,6 +304,14 @@ namespace Twilio.Rest.Trusthub.V1
             if (OptInKeywords != null)
             {
                 p.AddRange(OptInKeywords.Select(OptInKeywords => new KeyValuePair<string, string>("OptInKeywords", OptInKeywords)));
+            }
+            if (VettingId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingId", VettingId));
+            }
+            if (VettingProvider != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VettingProvider", VettingProvider));
             }
             return p;
         }

@@ -121,6 +121,41 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<FunctionVersionResource> FetchWithHeaders(FetchFunctionVersionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FunctionVersionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FunctionVersionResource>> FetchWithHeadersAsync(FetchFunctionVersionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FunctionVersionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FunctionVersionResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathFunctionSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FunctionVersionResource>> FetchWithHeadersAsync(string pathServiceSid, string pathFunctionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadFunctionVersionOptions options, ITwilioRestClient client)
         {
@@ -204,6 +239,38 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
         #endif
 
+        public static ResourceSetResponse<FunctionVersionResource> ReadWithHeaders(ReadFunctionVersionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FunctionVersionResource>.FromJson("function_versions", response.Content);
+            var records = new ResourceSet<FunctionVersionResource>(page, options, client);
+            return new ResourceSetResponse<FunctionVersionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FunctionVersionResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathFunctionSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FunctionVersionResource>> ReadWithHeadersAsync(ReadFunctionVersionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FunctionVersionResource>.FromJson("function_versions", response.Content);
+            var records = new ResourceSet<FunctionVersionResource>(page, options, client);
+            return new ResourceSetResponse<FunctionVersionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

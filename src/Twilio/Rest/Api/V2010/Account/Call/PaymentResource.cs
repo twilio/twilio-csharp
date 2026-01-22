@@ -238,6 +238,76 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
+
+        public static TwilioResponse<PaymentResource> CreateWithHeaders(CreatePaymentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PaymentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PaymentResource>> CreateWithHeadersAsync(CreatePaymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PaymentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PaymentResource> CreateWithHeaders(
+            string pathCallSid,
+            string idempotencyKey,
+            Uri statusCallback,
+            string pathAccountSid = null,
+            PaymentResource.BankAccountTypeEnum bankAccountType = null,
+            decimal? chargeAmount = null,
+            string currency = null,
+            string description = null,
+            string input = null,
+            int? minPostalCodeLength = null,
+            object parameter = null,
+            string paymentConnector = null,
+            PaymentResource.PaymentMethodEnum paymentMethod = null,
+            bool? postalCode = null,
+            bool? securityCode = null,
+            int? timeout = null,
+            PaymentResource.TokenTypeEnum tokenType = null,
+            string validCardTypes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PaymentResource>> CreateWithHeadersAsync(
+            string pathCallSid,
+            string idempotencyKey,
+            Uri statusCallback,
+            string pathAccountSid = null,
+            PaymentResource.BankAccountTypeEnum bankAccountType = null,
+            decimal? chargeAmount = null,
+            string currency = null,
+            string description = null,
+            string input = null,
+            int? minPostalCodeLength = null,
+            object parameter = null,
+            string paymentConnector = null,
+            PaymentResource.PaymentMethodEnum paymentMethod = null,
+            bool? postalCode = null,
+            bool? securityCode = null,
+            int? timeout = null,
+            PaymentResource.TokenTypeEnum tokenType = null,
+            string validCardTypes = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdatePaymentOptions options, ITwilioRestClient client)
         {
@@ -333,6 +403,55 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){ PathAccountSid = pathAccountSid, Capture = capture, Status = status };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<PaymentResource> UpdateWithHeaders(UpdatePaymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PaymentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PaymentResource>> UpdateWithHeadersAsync(UpdatePaymentOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PaymentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PaymentResource> UpdateWithHeaders(
+            string pathCallSid,
+            string pathSid,
+            string idempotencyKey,
+            Uri statusCallback,
+            string pathAccountSid = null,
+            PaymentResource.CaptureEnum capture = null,
+            PaymentResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){ PathAccountSid = pathAccountSid, Capture = capture, Status = status };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PaymentResource>> UpdateWithHeadersAsync(
+            string pathCallSid,
+            string pathSid,
+            string idempotencyKey,
+            Uri statusCallback,
+            string pathAccountSid = null,
+            PaymentResource.CaptureEnum capture = null,
+            PaymentResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePaymentOptions(pathCallSid, pathSid, idempotencyKey, statusCallback){ PathAccountSid = pathAccountSid, Capture = capture, Status = status };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

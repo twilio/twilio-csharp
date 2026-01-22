@@ -97,6 +97,39 @@ namespace Twilio.Rest.Video.V1.Room
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<RecordingRulesResource> FetchWithHeaders(FetchRecordingRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingRulesResource>> FetchWithHeadersAsync(FetchRecordingRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RecordingRulesResource> FetchWithHeaders(
+                    string pathRoomSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingRulesOptions(pathRoomSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingRulesResource>> FetchWithHeadersAsync(string pathRoomSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingRulesOptions(pathRoomSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateRecordingRulesOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,45 @@ namespace Twilio.Rest.Video.V1.Room
         {
             var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<RecordingRulesResource> UpdateWithHeaders(UpdateRecordingRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingRulesResource>> UpdateWithHeadersAsync(UpdateRecordingRulesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RecordingRulesResource> UpdateWithHeaders(
+            string pathRoomSid,
+            object rules = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingRulesResource>> UpdateWithHeadersAsync(
+            string pathRoomSid,
+            object rules = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRecordingRulesOptions(pathRoomSid){ Rules = rules };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

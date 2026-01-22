@@ -100,6 +100,42 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<InsightsSessionResource> CreateWithHeaders(CreateInsightsSessionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsSessionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsSessionResource>> CreateWithHeadersAsync(CreateInsightsSessionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsSessionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InsightsSessionResource> CreateWithHeaders(
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsSessionOptions(){  Authorization = authorization };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsSessionResource>> CreateWithHeadersAsync(
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsSessionOptions(){  Authorization = authorization };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a InsightsSessionResource object

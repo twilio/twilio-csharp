@@ -115,6 +115,40 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AuthorizedConnectAppResource> FetchWithHeaders(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizedConnectAppResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizedConnectAppResource>> FetchWithHeadersAsync(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizedConnectAppResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AuthorizedConnectAppResource> FetchWithHeaders(
+                    string pathConnectAppSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizedConnectAppResource>> FetchWithHeadersAsync(string pathConnectAppSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client)
         {
@@ -192,6 +226,37 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+        public static ResourceSetResponse<AuthorizedConnectAppResource> ReadWithHeaders(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
+            var records = new ResourceSet<AuthorizedConnectAppResource>(page, options, client);
+            return new ResourceSetResponse<AuthorizedConnectAppResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AuthorizedConnectAppResource> ReadWithHeaders(
+            string pathAccountSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAuthorizedConnectAppOptions(){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AuthorizedConnectAppResource>> ReadWithHeadersAsync(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
+            var records = new ResourceSet<AuthorizedConnectAppResource>(page, options, client);
+            return new ResourceSetResponse<AuthorizedConnectAppResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

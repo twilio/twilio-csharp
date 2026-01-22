@@ -124,6 +124,54 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<InsightsAssessmentsCommentResource> CreateWithHeaders(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsAssessmentsCommentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsAssessmentsCommentResource>> CreateWithHeadersAsync(CreateInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsAssessmentsCommentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InsightsAssessmentsCommentResource> CreateWithHeaders(
+            string categoryId,
+            string categoryName,
+            string comment,
+            string segmentId,
+            string agentId,
+            decimal? offset,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, agentId, offset){  Authorization = authorization };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsAssessmentsCommentResource>> CreateWithHeadersAsync(
+            string categoryId,
+            string categoryName,
+            string comment,
+            string segmentId,
+            string agentId,
+            decimal? offset,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsAssessmentsCommentOptions(categoryId, categoryName, comment, segmentId, agentId, offset){  Authorization = authorization };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client)
         {
@@ -207,6 +255,39 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<InsightsAssessmentsCommentResource> ReadWithHeaders(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InsightsAssessmentsCommentResource>.FromJson("comments", response.Content);
+            var records = new ResourceSet<InsightsAssessmentsCommentResource>(page, options, client);
+            return new ResourceSetResponse<InsightsAssessmentsCommentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InsightsAssessmentsCommentResource> ReadWithHeaders(
+            string authorization = null,
+            string segmentId = null,
+            string agentId = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsAssessmentsCommentOptions(){ Authorization = authorization, SegmentId = segmentId, AgentId = agentId, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InsightsAssessmentsCommentResource>> ReadWithHeadersAsync(ReadInsightsAssessmentsCommentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InsightsAssessmentsCommentResource>.FromJson("comments", response.Content);
+            var records = new ResourceSet<InsightsAssessmentsCommentResource>(page, options, client);
+            return new ResourceSetResponse<InsightsAssessmentsCommentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -187,6 +187,78 @@ namespace Twilio.Rest.Notify.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<NotificationResource> CreateWithHeaders(CreateNotificationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> CreateWithHeadersAsync(CreateNotificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NotificationResource> CreateWithHeaders(
+            string pathServiceSid,
+            List<string> identity = null,
+            List<string> tag = null,
+            string body = null,
+            NotificationResource.PriorityEnum priority = null,
+            int? ttl = null,
+            string title = null,
+            string sound = null,
+            string action = null,
+            object data = null,
+            object apn = null,
+            object gcm = null,
+            object sms = null,
+            object facebookMessenger = null,
+            object fcm = null,
+            List<string> segment = null,
+            object alexa = null,
+            List<string> toBinding = null,
+            string deliveryCallbackUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNotificationOptions(pathServiceSid){  Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            List<string> identity = null,
+            List<string> tag = null,
+            string body = null,
+            NotificationResource.PriorityEnum priority = null,
+            int? ttl = null,
+            string title = null,
+            string sound = null,
+            string action = null,
+            object data = null,
+            object apn = null,
+            object gcm = null,
+            object sms = null,
+            object facebookMessenger = null,
+            object fcm = null,
+            List<string> segment = null,
+            object alexa = null,
+            List<string> toBinding = null,
+            string deliveryCallbackUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNotificationOptions(pathServiceSid){  Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object

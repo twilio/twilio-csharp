@@ -95,6 +95,39 @@ namespace Twilio.Rest.Messaging.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<DeactivationsResource> FetchWithHeaders(FetchDeactivationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeactivationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeactivationsResource>> FetchWithHeadersAsync(FetchDeactivationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeactivationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DeactivationsResource> FetchWithHeaders(
+                    DateTime? date = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDeactivationsOptions(){ Date = date };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeactivationsResource>> FetchWithHeadersAsync(DateTime? date = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchDeactivationsOptions(){ Date = date };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a DeactivationsResource object

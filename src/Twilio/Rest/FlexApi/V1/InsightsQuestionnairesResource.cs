@@ -116,6 +116,50 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<InsightsQuestionnairesResource> CreateWithHeaders(CreateInsightsQuestionnairesOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> CreateWithHeadersAsync(CreateInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InsightsQuestionnairesResource> CreateWithHeaders(
+            string name,
+            string description = null,
+            bool? active = null,
+            List<string> questionSids = null,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> CreateWithHeadersAsync(
+            string name,
+            string description = null,
+            bool? active = null,
+            List<string> questionSids = null,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInsightsQuestionnairesOptions(name){  Description = description, Active = active, QuestionSids = questionSids, Authorization = authorization };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> To delete the questionnaire </summary>
         /// <param name="options"> Delete InsightsQuestionnaires parameters </param>
@@ -146,7 +190,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -159,7 +203,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -184,6 +228,38 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)  { Authorization = authorization };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)      { Authorization = authorization }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInsightsQuestionnairesOptions(pathQuestionnaireSid)  { Authorization = authorization };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -251,6 +327,40 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<InsightsQuestionnairesResource> FetchWithHeaders(FetchInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> FetchWithHeadersAsync(FetchInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InsightsQuestionnairesResource> FetchWithHeaders(
+                    string pathQuestionnaireSid, 
+                    string authorization = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> FetchWithHeadersAsync(string pathQuestionnaireSid, string authorization = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchInsightsQuestionnairesOptions(pathQuestionnaireSid){ Authorization = authorization };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -332,6 +442,38 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<InsightsQuestionnairesResource> ReadWithHeaders(ReadInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InsightsQuestionnairesResource>.FromJson("questionnaires", response.Content);
+            var records = new ResourceSet<InsightsQuestionnairesResource>(page, options, client);
+            return new ResourceSetResponse<InsightsQuestionnairesResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InsightsQuestionnairesResource> ReadWithHeaders(
+            string authorization = null,
+            bool? includeInactive = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsQuestionnairesOptions(){ Authorization = authorization, IncludeInactive = includeInactive, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InsightsQuestionnairesResource>> ReadWithHeadersAsync(ReadInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InsightsQuestionnairesResource>.FromJson("questionnaires", response.Content);
+            var records = new ResourceSet<InsightsQuestionnairesResource>(page, options, client);
+            return new ResourceSetResponse<InsightsQuestionnairesResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -467,6 +609,53 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InsightsQuestionnairesResource> UpdateWithHeaders(UpdateInsightsQuestionnairesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> UpdateWithHeadersAsync(UpdateInsightsQuestionnairesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InsightsQuestionnairesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InsightsQuestionnairesResource> UpdateWithHeaders(
+            string pathQuestionnaireSid,
+            bool? active,
+            string name = null,
+            string description = null,
+            List<string> questionSids = null,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InsightsQuestionnairesResource>> UpdateWithHeadersAsync(
+            string pathQuestionnaireSid,
+            bool? active,
+            string name = null,
+            string description = null,
+            List<string> questionSids = null,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInsightsQuestionnairesOptions(pathQuestionnaireSid, active){ Name = name, Description = description, QuestionSids = questionSids, Authorization = authorization };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

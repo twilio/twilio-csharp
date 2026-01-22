@@ -97,6 +97,39 @@ namespace Twilio.Rest.Marketplace.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ModuleDataManagementResource> FetchWithHeaders(FetchModuleDataManagementOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataManagementResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataManagementResource>> FetchWithHeadersAsync(FetchModuleDataManagementOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataManagementResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ModuleDataManagementResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchModuleDataManagementOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataManagementResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchModuleDataManagementOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateModuleDataManagementOptions options, ITwilioRestClient client)
         {
@@ -192,6 +225,57 @@ namespace Twilio.Rest.Marketplace.V1
         {
             var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ModuleDataManagementResource> UpdateWithHeaders(UpdateModuleDataManagementOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataManagementResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataManagementResource>> UpdateWithHeadersAsync(UpdateModuleDataManagementOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataManagementResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ModuleDataManagementResource> UpdateWithHeaders(
+            string pathSid,
+            string moduleInfo = null,
+            string description = null,
+            string documentation = null,
+            string policies = null,
+            string support = null,
+            string configuration = null,
+            string pricing = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataManagementResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string moduleInfo = null,
+            string description = null,
+            string documentation = null,
+            string policies = null,
+            string support = null,
+            string configuration = null,
+            string pricing = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateModuleDataManagementOptions(pathSid){ ModuleInfo = moduleInfo, Description = description, Documentation = documentation, Policies = policies, Support = support, Configuration = configuration, Pricing = pricing };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

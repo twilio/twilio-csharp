@@ -92,6 +92,38 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SettingsResource> FetchWithHeaders(FetchSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingsResource>> FetchWithHeadersAsync(FetchSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SettingsResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSettingsOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingsResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchSettingsOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateSettingsOptions options, ITwilioRestClient client)
         {
@@ -157,6 +189,43 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         {
             var options = new UpdateSettingsOptions(){ DialingPermissionsInheritance = dialingPermissionsInheritance };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SettingsResource> UpdateWithHeaders(UpdateSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingsResource>> UpdateWithHeadersAsync(UpdateSettingsOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SettingsResource> UpdateWithHeaders(
+            bool? dialingPermissionsInheritance = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSettingsOptions(){ DialingPermissionsInheritance = dialingPermissionsInheritance };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingsResource>> UpdateWithHeadersAsync(
+            bool? dialingPermissionsInheritance = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSettingsOptions(){ DialingPermissionsInheritance = dialingPermissionsInheritance };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

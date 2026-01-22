@@ -100,6 +100,42 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
         #endif
 
+
+        public static TwilioResponse<BulkCountryUpdateResource> CreateWithHeaders(CreateBulkCountryUpdateOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkCountryUpdateResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkCountryUpdateResource>> CreateWithHeadersAsync(CreateBulkCountryUpdateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkCountryUpdateResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BulkCountryUpdateResource> CreateWithHeaders(
+            string updateRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkCountryUpdateOptions(updateRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkCountryUpdateResource>> CreateWithHeadersAsync(
+            string updateRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkCountryUpdateOptions(updateRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a BulkCountryUpdateResource object

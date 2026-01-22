@@ -112,6 +112,42 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult.Payload
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<DataResource> FetchWithHeaders(FetchDataOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DataResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DataResource>> FetchWithHeadersAsync(FetchDataOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DataResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DataResource> FetchWithHeaders(
+                    string pathReferenceSid, 
+                    string pathAddOnResultSid, 
+                    string pathPayloadSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDataOptions(pathReferenceSid, pathAddOnResultSid, pathPayloadSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DataResource>> FetchWithHeadersAsync(string pathReferenceSid, string pathAddOnResultSid, string pathPayloadSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchDataOptions(pathReferenceSid, pathAddOnResultSid, pathPayloadSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a DataResource object

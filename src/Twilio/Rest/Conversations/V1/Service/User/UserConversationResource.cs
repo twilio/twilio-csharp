@@ -94,7 +94,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -134,6 +134,38 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         {
             var options = new DeleteUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathChatServiceSid, string pathUserSid, string pathConversationSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathChatServiceSid, string pathUserSid, string pathConversationSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -208,6 +240,41 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         {
             var options = new FetchUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<UserConversationResource> FetchWithHeaders(FetchUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserConversationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserConversationResource>> FetchWithHeadersAsync(FetchUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserConversationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UserConversationResource> FetchWithHeaders(
+                    string pathChatServiceSid, 
+                    string pathUserSid, 
+                    string pathConversationSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserConversationResource>> FetchWithHeadersAsync(string pathChatServiceSid, string pathUserSid, string pathConversationSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -293,6 +360,38 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         }
         #endif
 
+        public static ResourceSetResponse<UserConversationResource> ReadWithHeaders(ReadUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UserConversationResource>.FromJson("conversations", response.Content);
+            var records = new ResourceSet<UserConversationResource>(page, options, client);
+            return new ResourceSetResponse<UserConversationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UserConversationResource> ReadWithHeaders(
+            string pathChatServiceSid,
+            string pathUserSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUserConversationOptions(pathChatServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UserConversationResource>> ReadWithHeadersAsync(ReadUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UserConversationResource>.FromJson("conversations", response.Content);
+            var records = new ResourceSet<UserConversationResource>(page, options, client);
+            return new ResourceSetResponse<UserConversationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -432,6 +531,53 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         {
             var options = new UpdateUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){ NotificationLevel = notificationLevel, LastReadTimestamp = lastReadTimestamp, LastReadMessageIndex = lastReadMessageIndex };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<UserConversationResource> UpdateWithHeaders(UpdateUserConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserConversationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserConversationResource>> UpdateWithHeadersAsync(UpdateUserConversationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserConversationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserConversationResource> UpdateWithHeaders(
+            string pathChatServiceSid,
+            string pathUserSid,
+            string pathConversationSid,
+            UserConversationResource.NotificationLevelEnum notificationLevel = null,
+            DateTime? lastReadTimestamp = null,
+            int? lastReadMessageIndex = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){ NotificationLevel = notificationLevel, LastReadTimestamp = lastReadTimestamp, LastReadMessageIndex = lastReadMessageIndex };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserConversationResource>> UpdateWithHeadersAsync(
+            string pathChatServiceSid,
+            string pathUserSid,
+            string pathConversationSid,
+            UserConversationResource.NotificationLevelEnum notificationLevel = null,
+            DateTime? lastReadTimestamp = null,
+            int? lastReadMessageIndex = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserConversationOptions(pathChatServiceSid, pathUserSid, pathConversationSid){ NotificationLevel = notificationLevel, LastReadTimestamp = lastReadTimestamp, LastReadMessageIndex = lastReadMessageIndex };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

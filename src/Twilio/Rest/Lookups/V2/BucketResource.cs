@@ -94,7 +94,7 @@ namespace Twilio.Rest.Lookups.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Lookups.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -132,6 +132,38 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new DeleteBucketOptions(pathField, pathBucket) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathField, string pathBucket, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBucketOptions(pathField, pathBucket)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathField, string pathBucket, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBucketOptions(pathField, pathBucket) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -201,6 +233,40 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new FetchBucketOptions(pathField, pathBucket){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BucketResource> FetchWithHeaders(FetchBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> FetchWithHeadersAsync(FetchBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BucketResource> FetchWithHeaders(
+                    string pathField, 
+                    string pathBucket, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBucketOptions(pathField, pathBucket){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> FetchWithHeadersAsync(string pathField, string pathBucket, ITwilioRestClient client = null)
+        {
+            var options = new FetchBucketOptions(pathField, pathBucket){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -277,6 +343,45 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new UpdateBucketOptions(pathField, pathBucket){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<BucketResource> UpdateWithHeaders(UpdateBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> UpdateWithHeadersAsync(UpdateBucketOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BucketResource> UpdateWithHeaders(
+            string pathField,
+            string pathBucket,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBucketOptions(pathField, pathBucket){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> UpdateWithHeadersAsync(
+            string pathField,
+            string pathBucket,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBucketOptions(pathField, pathBucket){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

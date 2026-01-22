@@ -149,6 +149,39 @@ namespace Twilio.Rest.Insights.V1.Call
         }
         #endif
 
+        public static ResourceSetResponse<MetricResource> ReadWithHeaders(ReadMetricOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<MetricResource>.FromJson("metrics", response.Content);
+            var records = new ResourceSet<MetricResource>(page, options, client);
+            return new ResourceSetResponse<MetricResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<MetricResource> ReadWithHeaders(
+            string pathCallSid,
+            MetricResource.TwilioEdgeEnum edge = null,
+            MetricResource.StreamDirectionEnum direction = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadMetricOptions(pathCallSid){ Edge = edge, Direction = direction, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<MetricResource>> ReadWithHeadersAsync(ReadMetricOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<MetricResource>.FromJson("metrics", response.Content);
+            var records = new ResourceSet<MetricResource>(page, options, client);
+            return new ResourceSetResponse<MetricResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

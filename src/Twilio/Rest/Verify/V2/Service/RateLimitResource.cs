@@ -110,6 +110,46 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<RateLimitResource> CreateWithHeaders(CreateRateLimitOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> CreateWithHeadersAsync(CreateRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RateLimitResource> CreateWithHeaders(
+            string pathServiceSid,
+            string uniqueName,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRateLimitOptions(pathServiceSid, uniqueName){  Description = description };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string uniqueName,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRateLimitOptions(pathServiceSid, uniqueName){  Description = description };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Rate Limit. </summary>
         /// <param name="options"> Delete RateLimit parameters </param>
@@ -142,7 +182,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -155,7 +195,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -180,6 +220,38 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new DeleteRateLimitOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRateLimitOptions(pathServiceSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRateLimitOptions(pathServiceSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -249,6 +321,40 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new FetchRateLimitOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<RateLimitResource> FetchWithHeaders(FetchRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> FetchWithHeadersAsync(FetchRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RateLimitResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRateLimitOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRateLimitOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -328,6 +434,37 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+        public static ResourceSetResponse<RateLimitResource> ReadWithHeaders(ReadRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RateLimitResource>.FromJson("rate_limits", response.Content);
+            var records = new ResourceSet<RateLimitResource>(page, options, client);
+            return new ResourceSetResponse<RateLimitResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RateLimitResource> ReadWithHeaders(
+            string pathServiceSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRateLimitOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RateLimitResource>> ReadWithHeadersAsync(ReadRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RateLimitResource>.FromJson("rate_limits", response.Content);
+            var records = new ResourceSet<RateLimitResource>(page, options, client);
+            return new ResourceSetResponse<RateLimitResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -453,6 +590,47 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new UpdateRateLimitOptions(pathServiceSid, pathSid){ Description = description };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<RateLimitResource> UpdateWithHeaders(UpdateRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> UpdateWithHeadersAsync(UpdateRateLimitOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RateLimitResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathSid,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRateLimitOptions(pathServiceSid, pathSid){ Description = description };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSid,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRateLimitOptions(pathServiceSid, pathSid){ Description = description };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

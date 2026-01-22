@@ -97,6 +97,39 @@ namespace Twilio.Rest.Supersim.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<NetworkResource> FetchWithHeaders(FetchNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkResource>> FetchWithHeadersAsync(FetchNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<NetworkResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchNetworkOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchNetworkOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadNetworkOptions options, ITwilioRestClient client)
         {
@@ -180,6 +213,39 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<NetworkResource> ReadWithHeaders(ReadNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<NetworkResource>.FromJson("networks", response.Content);
+            var records = new ResourceSet<NetworkResource>(page, options, client);
+            return new ResourceSetResponse<NetworkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<NetworkResource> ReadWithHeaders(
+            string isoCountry = null,
+            string mcc = null,
+            string mnc = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadNetworkOptions(){ IsoCountry = isoCountry, Mcc = mcc, Mnc = mnc, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<NetworkResource>> ReadWithHeadersAsync(ReadNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<NetworkResource>.FromJson("networks", response.Content);
+            var records = new ResourceSet<NetworkResource>(page, options, client);
+            return new ResourceSetResponse<NetworkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -165,6 +165,50 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+
+        public static TwilioResponse<BrandRegistrationResource> CreateWithHeaders(CreateBrandRegistrationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> CreateWithHeadersAsync(CreateBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BrandRegistrationResource> CreateWithHeaders(
+            string customerProfileBundleSid,
+            string a2PProfileBundleSid,
+            string brandType = null,
+            bool? mock = null,
+            bool? skipAutomaticSecVet = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> CreateWithHeadersAsync(
+            string customerProfileBundleSid,
+            string a2PProfileBundleSid,
+            string brandType = null,
+            bool? mock = null,
+            bool? skipAutomaticSecVet = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){  BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchBrandRegistrationOptions options, ITwilioRestClient client)
         {
@@ -227,6 +271,39 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new FetchBrandRegistrationOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BrandRegistrationResource> FetchWithHeaders(FetchBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> FetchWithHeadersAsync(FetchBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BrandRegistrationResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBrandRegistrationOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBrandRegistrationOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -300,6 +377,36 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+        public static ResourceSetResponse<BrandRegistrationResource> ReadWithHeaders(ReadBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BrandRegistrationResource>.FromJson("data", response.Content);
+            var records = new ResourceSet<BrandRegistrationResource>(page, options, client);
+            return new ResourceSetResponse<BrandRegistrationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BrandRegistrationResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBrandRegistrationOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BrandRegistrationResource>> ReadWithHeadersAsync(ReadBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BrandRegistrationResource>.FromJson("data", response.Content);
+            var records = new ResourceSet<BrandRegistrationResource>(page, options, client);
+            return new ResourceSetResponse<BrandRegistrationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -415,6 +522,43 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new UpdateBrandRegistrationOptions(pathSid){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<BrandRegistrationResource> UpdateWithHeaders(UpdateBrandRegistrationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> UpdateWithHeadersAsync(UpdateBrandRegistrationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BrandRegistrationResource> UpdateWithHeaders(
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationResource>> UpdateWithHeadersAsync(
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBrandRegistrationOptions(pathSid){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

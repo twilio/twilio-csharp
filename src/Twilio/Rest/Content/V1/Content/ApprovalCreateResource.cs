@@ -136,6 +136,44 @@ namespace Twilio.Rest.Content.V1.Content
         }
         #endif
 
+
+        public static TwilioResponse<ApprovalCreateResource> CreateWithHeaders(CreateApprovalCreateOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApprovalCreateResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApprovalCreateResource>> CreateWithHeadersAsync(CreateApprovalCreateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApprovalCreateResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ApprovalCreateResource> CreateWithHeaders(
+            string pathContentSid,
+            ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateApprovalCreateOptions(pathContentSid, contentApprovalRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApprovalCreateResource>> CreateWithHeadersAsync(
+            string pathContentSid,
+            ApprovalCreateResource.ContentApprovalRequest contentApprovalRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateApprovalCreateOptions(pathContentSid, contentApprovalRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ApprovalCreateResource object

@@ -100,6 +100,42 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
+
+        public static TwilioResponse<BulkConsentsResource> CreateWithHeaders(CreateBulkConsentsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkConsentsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkConsentsResource>> CreateWithHeadersAsync(CreateBulkConsentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkConsentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BulkConsentsResource> CreateWithHeaders(
+            List<object> items,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkConsentsOptions(items){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkConsentsResource>> CreateWithHeadersAsync(
+            List<object> items,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkConsentsOptions(items){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a BulkConsentsResource object

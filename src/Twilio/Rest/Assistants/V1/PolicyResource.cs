@@ -112,6 +112,38 @@ namespace Twilio.Rest.Assistants.V1
         }
         #endif
 
+        public static ResourceSetResponse<PolicyResource> ReadWithHeaders(ReadPolicyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PolicyResource>.FromJson("policies", response.Content);
+            var records = new ResourceSet<PolicyResource>(page, options, client);
+            return new ResourceSetResponse<PolicyResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PolicyResource> ReadWithHeaders(
+            string toolId = null,
+            string knowledgeId = null,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPolicyOptions(){ ToolId = toolId, KnowledgeId = knowledgeId, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PolicyResource>> ReadWithHeadersAsync(ReadPolicyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PolicyResource>.FromJson("policies", response.Content);
+            var records = new ResourceSet<PolicyResource>(page, options, client);
+            return new ResourceSetResponse<PolicyResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

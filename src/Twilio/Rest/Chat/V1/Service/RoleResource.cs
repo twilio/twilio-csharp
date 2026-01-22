@@ -127,6 +127,48 @@ namespace Twilio.Rest.Chat.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<RoleResource> CreateWithHeaders(CreateRoleOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> CreateWithHeadersAsync(CreateRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RoleResource> CreateWithHeaders(
+            string pathServiceSid,
+            string friendlyName,
+            RoleResource.RoleTypeEnum type,
+            List<string> permission,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRoleOptions(pathServiceSid, friendlyName, type, permission){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string friendlyName,
+            RoleResource.RoleTypeEnum type,
+            List<string> permission,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRoleOptions(pathServiceSid, friendlyName, type, permission){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Role parameters </param>
@@ -159,7 +201,7 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -172,7 +214,7 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -197,6 +239,38 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             var options = new DeleteRoleOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoleOptions(pathServiceSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoleOptions(pathServiceSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -266,6 +340,40 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             var options = new FetchRoleOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<RoleResource> FetchWithHeaders(FetchRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> FetchWithHeadersAsync(FetchRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RoleResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRoleOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRoleOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -345,6 +453,37 @@ namespace Twilio.Rest.Chat.V1.Service
         }
         #endif
 
+        public static ResourceSetResponse<RoleResource> ReadWithHeaders(ReadRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RoleResource>.FromJson("roles", response.Content);
+            var records = new ResourceSet<RoleResource>(page, options, client);
+            return new ResourceSetResponse<RoleResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RoleResource> ReadWithHeaders(
+            string pathServiceSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRoleOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RoleResource>> ReadWithHeadersAsync(ReadRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RoleResource>.FromJson("roles", response.Content);
+            var records = new ResourceSet<RoleResource>(page, options, client);
+            return new ResourceSetResponse<RoleResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -470,6 +609,47 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<RoleResource> UpdateWithHeaders(UpdateRoleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> UpdateWithHeadersAsync(UpdateRoleOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RoleResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathSid,
+            List<string> permission,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSid,
+            List<string> permission,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

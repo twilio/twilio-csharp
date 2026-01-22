@@ -140,6 +140,45 @@ namespace Twilio.Rest.Content.V2
         }
         #endif
 
+        public static ResourceSetResponse<ContentAndApprovalsResource> ReadWithHeaders(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ContentAndApprovalsResource>.FromJson("contents", response.Content);
+            var records = new ResourceSet<ContentAndApprovalsResource>(page, options, client);
+            return new ResourceSetResponse<ContentAndApprovalsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ContentAndApprovalsResource> ReadWithHeaders(
+            int? pageSize = null,
+            string sortByDate = null,
+            string sortByContentName = null,
+            DateTime? dateCreatedAfter = null,
+            DateTime? dateCreatedBefore = null,
+            string contentName = null,
+            string content = null,
+            List<string> language = null,
+            List<string> contentType = null,
+            List<string> channelEligibility = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadContentAndApprovalsOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ContentAndApprovalsResource>> ReadWithHeadersAsync(ReadContentAndApprovalsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ContentAndApprovalsResource>.FromJson("contents", response.Content);
+            var records = new ResourceSet<ContentAndApprovalsResource>(page, options, client);
+            return new ResourceSetResponse<ContentAndApprovalsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

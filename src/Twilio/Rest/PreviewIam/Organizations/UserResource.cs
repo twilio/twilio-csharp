@@ -307,6 +307,44 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         #endif
 
+
+        public static TwilioResponse<UserResource> CreateWithHeaders(CreateUserOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> CreateWithHeadersAsync(CreateUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> CreateWithHeaders(
+            string pathOrganizationSid,
+            UserResource.ScimUser scimUser,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserOptions(pathOrganizationSid, scimUser){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> CreateWithHeadersAsync(
+            string pathOrganizationSid,
+            UserResource.ScimUser scimUser,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserOptions(pathOrganizationSid, scimUser){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete User parameters </param>
@@ -339,7 +377,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -352,7 +390,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -377,6 +415,38 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserOptions(pathOrganizationSid, pathUserSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -446,6 +516,40 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<UserResource> FetchWithHeaders(FetchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> FetchWithHeadersAsync(FetchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UserResource> FetchWithHeaders(
+                    string pathOrganizationSid, 
+                    string pathUserSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> FetchWithHeadersAsync(string pathOrganizationSid, string pathUserSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchUserOptions(pathOrganizationSid, pathUserSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -525,6 +629,37 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         #endif
 
+        public static ResourceSetResponse<UserResource> ReadWithHeaders(ReadUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UserResource>.FromJson("Resources", response.Content);
+            var records = new ResourceSet<UserResource>(page, options, client);
+            return new ResourceSetResponse<UserResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UserResource> ReadWithHeaders(
+            string pathOrganizationSid,
+            string filter = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUserOptions(pathOrganizationSid){ Filter = filter, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UserResource>> ReadWithHeadersAsync(ReadUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UserResource>.FromJson("Resources", response.Content);
+            var records = new ResourceSet<UserResource>(page, options, client);
+            return new ResourceSetResponse<UserResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -655,6 +790,49 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> UpdateWithHeaders(UpdateUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> UpdateWithHeadersAsync(UpdateUserOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> UpdateWithHeaders(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimUser scimUser,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> UpdateWithHeadersAsync(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimUser scimUser,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserOptions(pathOrganizationSid, pathUserSid, scimUser){ IfMatch = ifMatch };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

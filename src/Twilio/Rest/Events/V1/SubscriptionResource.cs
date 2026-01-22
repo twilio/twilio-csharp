@@ -108,6 +108,46 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+
+        public static TwilioResponse<SubscriptionResource> CreateWithHeaders(CreateSubscriptionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> CreateWithHeadersAsync(CreateSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SubscriptionResource> CreateWithHeaders(
+            string description,
+            string sinkSid,
+            List<object> types,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> CreateWithHeadersAsync(
+            string description,
+            string sinkSid,
+            List<object> types,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSubscriptionOptions(description, sinkSid, types){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Subscription. </summary>
         /// <param name="options"> Delete Subscription parameters </param>
@@ -138,7 +178,7 @@ namespace Twilio.Rest.Events.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +191,7 @@ namespace Twilio.Rest.Events.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -174,6 +214,38 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new DeleteSubscriptionOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSubscriptionOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSubscriptionOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -238,6 +310,39 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new FetchSubscriptionOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SubscriptionResource> FetchWithHeaders(FetchSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> FetchWithHeadersAsync(FetchSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SubscriptionResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscriptionOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscriptionOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -315,6 +420,37 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+        public static ResourceSetResponse<SubscriptionResource> ReadWithHeaders(ReadSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SubscriptionResource>.FromJson("subscriptions", response.Content);
+            var records = new ResourceSet<SubscriptionResource>(page, options, client);
+            return new ResourceSetResponse<SubscriptionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SubscriptionResource> ReadWithHeaders(
+            string sinkSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSubscriptionOptions(){ SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SubscriptionResource>> ReadWithHeadersAsync(ReadSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SubscriptionResource>.FromJson("subscriptions", response.Content);
+            var records = new ResourceSet<SubscriptionResource>(page, options, client);
+            return new ResourceSetResponse<SubscriptionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -434,6 +570,45 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new UpdateSubscriptionOptions(pathSid){ Description = description };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SubscriptionResource> UpdateWithHeaders(UpdateSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> UpdateWithHeadersAsync(UpdateSubscriptionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SubscriptionResource> UpdateWithHeaders(
+            string pathSid,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscriptionResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string description = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscriptionOptions(pathSid){ Description = description };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

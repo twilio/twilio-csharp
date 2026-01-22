@@ -113,6 +113,40 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<RegulationResource> FetchWithHeaders(FetchRegulationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RegulationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RegulationResource>> FetchWithHeadersAsync(FetchRegulationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RegulationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RegulationResource> FetchWithHeaders(
+                    string pathSid, 
+                    bool? includeConstraints = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RegulationResource>> FetchWithHeadersAsync(string pathSid, bool? includeConstraints = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchRegulationOptions(pathSid){ IncludeConstraints = includeConstraints };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadRegulationOptions options, ITwilioRestClient client)
         {
@@ -200,6 +234,40 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        public static ResourceSetResponse<RegulationResource> ReadWithHeaders(ReadRegulationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RegulationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<RegulationResource>(page, options, client);
+            return new ResourceSetResponse<RegulationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RegulationResource> ReadWithHeaders(
+            RegulationResource.EndUserTypeEnum endUserType = null,
+            string isoCountry = null,
+            string numberType = null,
+            bool? includeConstraints = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRegulationOptions(){ EndUserType = endUserType, IsoCountry = isoCountry, NumberType = numberType, IncludeConstraints = includeConstraints, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RegulationResource>> ReadWithHeadersAsync(ReadRegulationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RegulationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<RegulationResource>(page, options, client);
+            return new ResourceSetResponse<RegulationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

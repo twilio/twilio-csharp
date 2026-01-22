@@ -214,6 +214,78 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<VerificationResource> CreateWithHeaders(CreateVerificationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> CreateWithHeadersAsync(CreateVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<VerificationResource> CreateWithHeaders(
+            string pathServiceSid,
+            string to,
+            string channel,
+            string customFriendlyName = null,
+            string customMessage = null,
+            string sendDigits = null,
+            string locale = null,
+            string customCode = null,
+            string amount = null,
+            string payee = null,
+            object rateLimits = null,
+            object channelConfiguration = null,
+            string appHash = null,
+            string templateSid = null,
+            string templateCustomSubstitutions = null,
+            string deviceIp = null,
+            bool? enableSnaClientToken = null,
+            VerificationResource.RiskCheckEnum riskCheck = null,
+            string tags = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, EnableSnaClientToken = enableSnaClientToken, RiskCheck = riskCheck, Tags = tags };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string to,
+            string channel,
+            string customFriendlyName = null,
+            string customMessage = null,
+            string sendDigits = null,
+            string locale = null,
+            string customCode = null,
+            string amount = null,
+            string payee = null,
+            object rateLimits = null,
+            object channelConfiguration = null,
+            string appHash = null,
+            string templateSid = null,
+            string templateCustomSubstitutions = null,
+            string deviceIp = null,
+            bool? enableSnaClientToken = null,
+            VerificationResource.RiskCheckEnum riskCheck = null,
+            string tags = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVerificationOptions(pathServiceSid, to, channel){  CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions, DeviceIp = deviceIp, EnableSnaClientToken = enableSnaClientToken, RiskCheck = riskCheck, Tags = tags };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchVerificationOptions options, ITwilioRestClient client)
         {
@@ -281,6 +353,40 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new FetchVerificationOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<VerificationResource> FetchWithHeaders(FetchVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> FetchWithHeadersAsync(FetchVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<VerificationResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -360,6 +466,47 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<VerificationResource> UpdateWithHeaders(UpdateVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> UpdateWithHeadersAsync(UpdateVerificationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<VerificationResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathSid,
+            VerificationResource.StatusEnum status,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSid,
+            VerificationResource.StatusEnum status,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -122,6 +122,45 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
         #endif
 
+        public static TwilioResponse<AnonymizeResource> UpdateWithHeaders(UpdateAnonymizeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnonymizeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnonymizeResource>> UpdateWithHeadersAsync(UpdateAnonymizeOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnonymizeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AnonymizeResource> UpdateWithHeaders(
+            string pathRoomSid,
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAnonymizeOptions(pathRoomSid, pathSid){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnonymizeResource>> UpdateWithHeadersAsync(
+            string pathRoomSid,
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAnonymizeOptions(pathRoomSid, pathSid){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AnonymizeResource object

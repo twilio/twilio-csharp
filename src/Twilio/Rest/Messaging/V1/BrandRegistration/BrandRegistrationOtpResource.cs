@@ -102,6 +102,42 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         }
         #endif
 
+
+        public static TwilioResponse<BrandRegistrationOtpResource> CreateWithHeaders(CreateBrandRegistrationOtpOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationOtpResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationOtpResource>> CreateWithHeadersAsync(CreateBrandRegistrationOtpOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BrandRegistrationOtpResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BrandRegistrationOtpResource> CreateWithHeaders(
+            string pathBrandRegistrationSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBrandRegistrationOtpOptions(pathBrandRegistrationSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BrandRegistrationOtpResource>> CreateWithHeadersAsync(
+            string pathBrandRegistrationSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBrandRegistrationOtpOptions(pathBrandRegistrationSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a BrandRegistrationOtpResource object

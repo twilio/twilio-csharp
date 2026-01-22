@@ -151,6 +151,40 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<InteractionChannelResource> FetchWithHeaders(FetchInteractionChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelResource>> FetchWithHeadersAsync(FetchInteractionChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InteractionChannelResource> FetchWithHeaders(
+                    string pathInteractionSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionChannelOptions(pathInteractionSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelResource>> FetchWithHeadersAsync(string pathInteractionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionChannelOptions(pathInteractionSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadInteractionChannelOptions options, ITwilioRestClient client)
         {
@@ -228,6 +262,37 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         }
         #endif
 
+        public static ResourceSetResponse<InteractionChannelResource> ReadWithHeaders(ReadInteractionChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InteractionChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<InteractionChannelResource>(page, options, client);
+            return new ResourceSetResponse<InteractionChannelResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InteractionChannelResource> ReadWithHeaders(
+            string pathInteractionSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInteractionChannelOptions(pathInteractionSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InteractionChannelResource>> ReadWithHeadersAsync(ReadInteractionChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InteractionChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<InteractionChannelResource>(page, options, client);
+            return new ResourceSetResponse<InteractionChannelResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -357,6 +422,49 @@ namespace Twilio.Rest.FlexApi.V1.Interaction
         {
             var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionChannelResource> UpdateWithHeaders(UpdateInteractionChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelResource>> UpdateWithHeadersAsync(UpdateInteractionChannelOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionChannelResource> UpdateWithHeaders(
+            string pathInteractionSid,
+            string pathSid,
+            InteractionChannelResource.UpdateChannelStatusEnum status,
+            object routing = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionChannelResource>> UpdateWithHeadersAsync(
+            string pathInteractionSid,
+            string pathSid,
+            InteractionChannelResource.UpdateChannelStatusEnum status,
+            object routing = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionChannelOptions(pathInteractionSid, pathSid, status){ Routing = routing };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

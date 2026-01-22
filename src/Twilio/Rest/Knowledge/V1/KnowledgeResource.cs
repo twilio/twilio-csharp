@@ -265,6 +265,42 @@ namespace Twilio.Rest.Knowledge.V1
         }
         #endif
 
+
+        public static TwilioResponse<KnowledgeResource> CreateWithHeaders(CreateKnowledgeOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> CreateWithHeadersAsync(CreateKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<KnowledgeResource> CreateWithHeaders(
+            KnowledgeResource.KnowledgeV1ServiceCreateKnowledgeRequest knowledgeV1ServiceCreateKnowledgeRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateKnowledgeOptions(knowledgeV1ServiceCreateKnowledgeRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> CreateWithHeadersAsync(
+            KnowledgeResource.KnowledgeV1ServiceCreateKnowledgeRequest knowledgeV1ServiceCreateKnowledgeRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateKnowledgeOptions(knowledgeV1ServiceCreateKnowledgeRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete knowledge </summary>
         /// <param name="options"> Delete Knowledge parameters </param>
@@ -295,7 +331,7 @@ namespace Twilio.Rest.Knowledge.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -308,7 +344,7 @@ namespace Twilio.Rest.Knowledge.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -331,6 +367,38 @@ namespace Twilio.Rest.Knowledge.V1
         {
             var options = new DeleteKnowledgeOptions(pathId) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteKnowledgeOptions(pathId)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteKnowledgeOptions(pathId) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -395,6 +463,39 @@ namespace Twilio.Rest.Knowledge.V1
         {
             var options = new FetchKnowledgeOptions(pathId){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<KnowledgeResource> FetchWithHeaders(FetchKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> FetchWithHeadersAsync(FetchKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<KnowledgeResource> FetchWithHeaders(
+                    string pathId, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchKnowledgeOptions(pathId){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchKnowledgeOptions(pathId){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -472,6 +573,37 @@ namespace Twilio.Rest.Knowledge.V1
         }
         #endif
 
+        public static ResourceSetResponse<KnowledgeResource> ReadWithHeaders(ReadKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<KnowledgeResource>.FromJson("knowledge", response.Content);
+            var records = new ResourceSet<KnowledgeResource>(page, options, client);
+            return new ResourceSetResponse<KnowledgeResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<KnowledgeResource> ReadWithHeaders(
+            int? pageSize = null,
+            string tags = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadKnowledgeOptions(){ PageSize = pageSize, Tags = tags, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<KnowledgeResource>> ReadWithHeadersAsync(ReadKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<KnowledgeResource>.FromJson("knowledge", response.Content);
+            var records = new ResourceSet<KnowledgeResource>(page, options, client);
+            return new ResourceSetResponse<KnowledgeResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -588,6 +720,43 @@ namespace Twilio.Rest.Knowledge.V1
         {
             var options = new UpdateKnowledgeOptions(pathId){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<KnowledgeResource> UpdateWithHeaders(UpdateKnowledgeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> UpdateWithHeadersAsync(UpdateKnowledgeOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<KnowledgeResource> UpdateWithHeaders(
+            string pathId,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateKnowledgeOptions(pathId){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeResource>> UpdateWithHeadersAsync(
+            string pathId,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateKnowledgeOptions(pathId){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

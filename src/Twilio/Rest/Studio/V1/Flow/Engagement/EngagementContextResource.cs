@@ -102,6 +102,40 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<EngagementContextResource> FetchWithHeaders(FetchEngagementContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EngagementContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EngagementContextResource>> FetchWithHeadersAsync(FetchEngagementContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EngagementContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EngagementContextResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathEngagementSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EngagementContextResource>> FetchWithHeadersAsync(string pathFlowSid, string pathEngagementSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a EngagementContextResource object

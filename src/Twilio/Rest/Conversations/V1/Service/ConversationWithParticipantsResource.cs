@@ -181,6 +181,68 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<ConversationWithParticipantsResource> CreateWithHeaders(CreateConversationWithParticipantsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConversationWithParticipantsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConversationWithParticipantsResource>> CreateWithHeadersAsync(CreateConversationWithParticipantsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConversationWithParticipantsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConversationWithParticipantsResource> CreateWithHeaders(
+            string pathChatServiceSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string messagingServiceSid = null,
+            string attributes = null,
+            ConversationWithParticipantsResource.StateEnum state = null,
+            string timersInactive = null,
+            string timersClosed = null,
+            string bindingsEmailAddress = null,
+            string bindingsEmailName = null,
+            List<string> participant = null,
+            ConversationWithParticipantsResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateConversationWithParticipantsOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, Participant = participant, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConversationWithParticipantsResource>> CreateWithHeadersAsync(
+            string pathChatServiceSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string messagingServiceSid = null,
+            string attributes = null,
+            ConversationWithParticipantsResource.StateEnum state = null,
+            string timersInactive = null,
+            string timersClosed = null,
+            string bindingsEmailAddress = null,
+            string bindingsEmailName = null,
+            List<string> participant = null,
+            ConversationWithParticipantsResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateConversationWithParticipantsOptions(pathChatServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, BindingsEmailAddress = bindingsEmailAddress, BindingsEmailName = bindingsEmailName, Participant = participant, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ConversationWithParticipantsResource object

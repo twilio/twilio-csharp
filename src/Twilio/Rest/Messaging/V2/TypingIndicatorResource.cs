@@ -115,6 +115,44 @@ namespace Twilio.Rest.Messaging.V2
         }
         #endif
 
+
+        public static TwilioResponse<TypingIndicatorResource> CreateWithHeaders(CreateTypingIndicatorOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TypingIndicatorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TypingIndicatorResource>> CreateWithHeadersAsync(CreateTypingIndicatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TypingIndicatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TypingIndicatorResource> CreateWithHeaders(
+            TypingIndicatorResource.ChannelEnum channel,
+            string messageId,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTypingIndicatorOptions(channel, messageId){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TypingIndicatorResource>> CreateWithHeadersAsync(
+            TypingIndicatorResource.ChannelEnum channel,
+            string messageId,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTypingIndicatorOptions(channel, messageId){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TypingIndicatorResource object

@@ -179,6 +179,44 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<NewChallengeResource> CreateWithHeaders(CreateNewChallengeOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewChallengeResource>> CreateWithHeadersAsync(CreateNewChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewChallengeResource> CreateWithHeaders(
+            string pathServiceSid,
+            NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewChallengeResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewChallengeResource object

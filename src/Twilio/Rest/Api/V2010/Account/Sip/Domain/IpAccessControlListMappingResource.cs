@@ -112,6 +112,46 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
         #endif
 
+
+        public static TwilioResponse<IpAccessControlListMappingResource> CreateWithHeaders(CreateIpAccessControlListMappingOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpAccessControlListMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpAccessControlListMappingResource>> CreateWithHeadersAsync(CreateIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpAccessControlListMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IpAccessControlListMappingResource> CreateWithHeaders(
+            string pathDomainSid,
+            string ipAccessControlListSid,
+            string pathAccountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpAccessControlListMappingOptions(pathDomainSid, ipAccessControlListSid){  PathAccountSid = pathAccountSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpAccessControlListMappingResource>> CreateWithHeadersAsync(
+            string pathDomainSid,
+            string ipAccessControlListSid,
+            string pathAccountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpAccessControlListMappingOptions(pathDomainSid, ipAccessControlListSid){  PathAccountSid = pathAccountSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete an IpAccessControlListMapping resource. </summary>
         /// <param name="options"> Delete IpAccessControlListMapping parameters </param>
@@ -146,7 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -159,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -186,6 +226,38 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             var options = new DeleteIpAccessControlListMappingOptions(pathDomainSid, pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpAccessControlListMappingOptions(pathDomainSid, pathSid)         { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpAccessControlListMappingOptions(pathDomainSid, pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -260,6 +332,41 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             var options = new FetchIpAccessControlListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<IpAccessControlListMappingResource> FetchWithHeaders(FetchIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpAccessControlListMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpAccessControlListMappingResource>> FetchWithHeadersAsync(FetchIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpAccessControlListMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<IpAccessControlListMappingResource> FetchWithHeaders(
+                    string pathDomainSid, 
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchIpAccessControlListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpAccessControlListMappingResource>> FetchWithHeadersAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchIpAccessControlListMappingOptions(pathDomainSid, pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -345,6 +452,38 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
         #endif
 
+        public static ResourceSetResponse<IpAccessControlListMappingResource> ReadWithHeaders(ReadIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<IpAccessControlListMappingResource>.FromJson("ip_access_control_list_mappings", response.Content);
+            var records = new ResourceSet<IpAccessControlListMappingResource>(page, options, client);
+            return new ResourceSetResponse<IpAccessControlListMappingResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<IpAccessControlListMappingResource> ReadWithHeaders(
+            string pathDomainSid,
+            string pathAccountSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadIpAccessControlListMappingOptions(pathDomainSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<IpAccessControlListMappingResource>> ReadWithHeadersAsync(ReadIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<IpAccessControlListMappingResource>.FromJson("ip_access_control_list_mappings", response.Content);
+            var records = new ResourceSet<IpAccessControlListMappingResource>(page, options, client);
+            return new ResourceSetResponse<IpAccessControlListMappingResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

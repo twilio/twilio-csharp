@@ -136,6 +136,60 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+
+        public static TwilioResponse<ByocTrunkResource> CreateWithHeaders(CreateByocTrunkOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> CreateWithHeadersAsync(CreateByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ByocTrunkResource> CreateWithHeaders(
+            string friendlyName = null,
+            Uri voiceUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? cnamLookupEnabled = null,
+            string connectionPolicySid = null,
+            string fromDomainSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateByocTrunkOptions(){  FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> CreateWithHeadersAsync(
+            string friendlyName = null,
+            Uri voiceUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? cnamLookupEnabled = null,
+            string connectionPolicySid = null,
+            string fromDomainSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateByocTrunkOptions(){  FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete ByocTrunk parameters </param>
@@ -166,7 +220,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -179,7 +233,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -202,6 +256,38 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new DeleteByocTrunkOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteByocTrunkOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteByocTrunkOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -266,6 +352,39 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new FetchByocTrunkOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ByocTrunkResource> FetchWithHeaders(FetchByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> FetchWithHeadersAsync(FetchByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ByocTrunkResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchByocTrunkOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchByocTrunkOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -339,6 +458,36 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+        public static ResourceSetResponse<ByocTrunkResource> ReadWithHeaders(ReadByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+            var records = new ResourceSet<ByocTrunkResource>(page, options, client);
+            return new ResourceSetResponse<ByocTrunkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ByocTrunkResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadByocTrunkOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ByocTrunkResource>> ReadWithHeadersAsync(ReadByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ByocTrunkResource>.FromJson("byoc_trunks", response.Content);
+            var records = new ResourceSet<ByocTrunkResource>(page, options, client);
+            return new ResourceSetResponse<ByocTrunkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -494,6 +643,63 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new UpdateByocTrunkOptions(pathSid){ FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ByocTrunkResource> UpdateWithHeaders(UpdateByocTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> UpdateWithHeadersAsync(UpdateByocTrunkOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ByocTrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ByocTrunkResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            Uri voiceUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? cnamLookupEnabled = null,
+            string connectionPolicySid = null,
+            string fromDomainSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateByocTrunkOptions(pathSid){ FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ByocTrunkResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            Uri voiceUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? cnamLookupEnabled = null,
+            string connectionPolicySid = null,
+            string fromDomainSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateByocTrunkOptions(pathSid){ FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, CnamLookupEnabled = cnamLookupEnabled, ConnectionPolicySid = connectionPolicySid, FromDomainSid = fromDomainSid };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

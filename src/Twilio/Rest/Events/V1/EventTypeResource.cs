@@ -97,6 +97,39 @@ namespace Twilio.Rest.Events.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<EventTypeResource> FetchWithHeaders(FetchEventTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EventTypeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EventTypeResource>> FetchWithHeadersAsync(FetchEventTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EventTypeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EventTypeResource> FetchWithHeaders(
+                    string pathType, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEventTypeOptions(pathType){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EventTypeResource>> FetchWithHeadersAsync(string pathType, ITwilioRestClient client = null)
+        {
+            var options = new FetchEventTypeOptions(pathType){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadEventTypeOptions options, ITwilioRestClient client)
         {
@@ -172,6 +205,37 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+        public static ResourceSetResponse<EventTypeResource> ReadWithHeaders(ReadEventTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EventTypeResource>.FromJson("types", response.Content);
+            var records = new ResourceSet<EventTypeResource>(page, options, client);
+            return new ResourceSetResponse<EventTypeResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EventTypeResource> ReadWithHeaders(
+            string schemaId = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEventTypeOptions(){ SchemaId = schemaId, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EventTypeResource>> ReadWithHeadersAsync(ReadEventTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EventTypeResource>.FromJson("types", response.Content);
+            var records = new ResourceSet<EventTypeResource>(page, options, client);
+            return new ResourceSetResponse<EventTypeResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -123,6 +123,44 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+
+        public static TwilioResponse<BundleCopyResource> CreateWithHeaders(CreateBundleCopyOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleCopyResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleCopyResource>> CreateWithHeadersAsync(CreateBundleCopyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleCopyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BundleCopyResource> CreateWithHeaders(
+            string pathBundleSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleCopyOptions(pathBundleSid){  FriendlyName = friendlyName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleCopyResource>> CreateWithHeadersAsync(
+            string pathBundleSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleCopyOptions(pathBundleSid){  FriendlyName = friendlyName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadBundleCopyOptions options, ITwilioRestClient client)
         {
@@ -200,6 +238,37 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+        public static ResourceSetResponse<BundleCopyResource> ReadWithHeaders(ReadBundleCopyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BundleCopyResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<BundleCopyResource>(page, options, client);
+            return new ResourceSetResponse<BundleCopyResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BundleCopyResource> ReadWithHeaders(
+            string pathBundleSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBundleCopyOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BundleCopyResource>> ReadWithHeadersAsync(ReadBundleCopyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BundleCopyResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<BundleCopyResource>(page, options, client);
+            return new ResourceSetResponse<BundleCopyResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

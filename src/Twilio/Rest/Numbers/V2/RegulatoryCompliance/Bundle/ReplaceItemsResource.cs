@@ -123,6 +123,44 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+
+        public static TwilioResponse<ReplaceItemsResource> CreateWithHeaders(CreateReplaceItemsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReplaceItemsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReplaceItemsResource>> CreateWithHeadersAsync(CreateReplaceItemsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReplaceItemsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ReplaceItemsResource> CreateWithHeaders(
+            string pathBundleSid,
+            string fromBundleSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateReplaceItemsOptions(pathBundleSid, fromBundleSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReplaceItemsResource>> CreateWithHeadersAsync(
+            string pathBundleSid,
+            string fromBundleSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateReplaceItemsOptions(pathBundleSid, fromBundleSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ReplaceItemsResource object

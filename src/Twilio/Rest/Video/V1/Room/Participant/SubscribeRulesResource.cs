@@ -102,6 +102,40 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SubscribeRulesResource> FetchWithHeaders(FetchSubscribeRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscribeRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscribeRulesResource>> FetchWithHeadersAsync(FetchSubscribeRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscribeRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SubscribeRulesResource> FetchWithHeaders(
+                    string pathRoomSid, 
+                    string pathParticipantSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscribeRulesResource>> FetchWithHeadersAsync(string pathRoomSid, string pathParticipantSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscribeRulesOptions(pathRoomSid, pathParticipantSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateSubscribeRulesOptions options, ITwilioRestClient client)
         {
@@ -179,6 +213,47 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         {
             var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SubscribeRulesResource> UpdateWithHeaders(UpdateSubscribeRulesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscribeRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscribeRulesResource>> UpdateWithHeadersAsync(UpdateSubscribeRulesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SubscribeRulesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SubscribeRulesResource> UpdateWithHeaders(
+            string pathRoomSid,
+            string pathParticipantSid,
+            object rules = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SubscribeRulesResource>> UpdateWithHeadersAsync(
+            string pathRoomSid,
+            string pathParticipantSid,
+            object rules = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscribeRulesOptions(pathRoomSid, pathParticipantSid){ Rules = rules };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

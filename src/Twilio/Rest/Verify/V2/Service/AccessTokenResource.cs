@@ -130,6 +130,50 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<AccessTokenResource> CreateWithHeaders(CreateAccessTokenOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccessTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccessTokenResource>> CreateWithHeadersAsync(CreateAccessTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccessTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AccessTokenResource> CreateWithHeaders(
+            string pathServiceSid,
+            string identity,
+            AccessTokenResource.FactorTypesEnum factorType,
+            string factorFriendlyName = null,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){  FactorFriendlyName = factorFriendlyName, Ttl = ttl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccessTokenResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string identity,
+            AccessTokenResource.FactorTypesEnum factorType,
+            string factorFriendlyName = null,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){  FactorFriendlyName = factorFriendlyName, Ttl = ttl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchAccessTokenOptions options, ITwilioRestClient client)
         {
@@ -197,6 +241,40 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var options = new FetchAccessTokenOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AccessTokenResource> FetchWithHeaders(FetchAccessTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccessTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccessTokenResource>> FetchWithHeadersAsync(FetchAccessTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccessTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AccessTokenResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAccessTokenOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccessTokenResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAccessTokenOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

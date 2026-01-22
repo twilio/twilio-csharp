@@ -170,6 +170,41 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ReservationResource> FetchWithHeaders(FetchReservationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReservationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReservationResource>> FetchWithHeadersAsync(FetchReservationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReservationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ReservationResource> FetchWithHeaders(
+                    string pathWorkspaceSid, 
+                    string pathTaskSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReservationResource>> FetchWithHeadersAsync(string pathWorkspaceSid, string pathTaskSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
         {
@@ -261,6 +296,40 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
         #endif
 
+        public static ResourceSetResponse<ReservationResource> ReadWithHeaders(ReadReservationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ReservationResource>.FromJson("reservations", response.Content);
+            var records = new ResourceSet<ReservationResource>(page, options, client);
+            return new ResourceSetResponse<ReservationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ReservationResource> ReadWithHeaders(
+            string pathWorkspaceSid,
+            string pathTaskSid,
+            ReservationResource.StatusEnum reservationStatus = null,
+            string workerSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ ReservationStatus = reservationStatus, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ReservationResource>> ReadWithHeadersAsync(ReadReservationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ReservationResource>.FromJson("reservations", response.Content);
+            var records = new ResourceSet<ReservationResource>(page, options, client);
+            return new ResourceSetResponse<ReservationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -608,6 +677,157 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         {
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ReservationResource> UpdateWithHeaders(UpdateReservationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReservationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReservationResource>> UpdateWithHeadersAsync(UpdateReservationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReservationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ReservationResource> UpdateWithHeaders(
+            string pathWorkspaceSid,
+            string pathTaskSid,
+            string pathSid,
+            ReservationResource.StatusEnum reservationStatus = null,
+            string workerActivitySid = null,
+            string instruction = null,
+            string dequeuePostWorkActivitySid = null,
+            string dequeueFrom = null,
+            string dequeueRecord = null,
+            int? dequeueTimeout = null,
+            string dequeueTo = null,
+            Uri dequeueStatusCallbackUrl = null,
+            string callFrom = null,
+            string callRecord = null,
+            int? callTimeout = null,
+            string callTo = null,
+            Uri callUrl = null,
+            Uri callStatusCallbackUrl = null,
+            bool? callAccept = null,
+            string redirectCallSid = null,
+            bool? redirectAccept = null,
+            Uri redirectUrl = null,
+            string to = null,
+            string from = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
+            int? timeout = null,
+            bool? record = null,
+            bool? muted = null,
+            string beep = null,
+            bool? startConferenceOnEnter = null,
+            bool? endConferenceOnExit = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? earlyMedia = null,
+            int? maxParticipants = null,
+            Uri conferenceStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+            List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
+            string conferenceRecord = null,
+            string conferenceTrim = null,
+            string recordingChannels = null,
+            Uri recordingStatusCallback = null,
+            Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+            Uri conferenceRecordingStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+            string region = null,
+            string sipAuthUsername = null,
+            string sipAuthPassword = null,
+            List<string> dequeueStatusCallbackEvent = null,
+            string postWorkActivitySid = null,
+            ReservationResource.SupervisorModeEnum supervisorMode = null,
+            string supervisor = null,
+            bool? endConferenceOnCustomerExit = null,
+            bool? beepOnCustomerEntrance = null,
+            string jitterBufferSize = null,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReservationResource>> UpdateWithHeadersAsync(
+            string pathWorkspaceSid,
+            string pathTaskSid,
+            string pathSid,
+            ReservationResource.StatusEnum reservationStatus = null,
+            string workerActivitySid = null,
+            string instruction = null,
+            string dequeuePostWorkActivitySid = null,
+            string dequeueFrom = null,
+            string dequeueRecord = null,
+            int? dequeueTimeout = null,
+            string dequeueTo = null,
+            Uri dequeueStatusCallbackUrl = null,
+            string callFrom = null,
+            string callRecord = null,
+            int? callTimeout = null,
+            string callTo = null,
+            Uri callUrl = null,
+            Uri callStatusCallbackUrl = null,
+            bool? callAccept = null,
+            string redirectCallSid = null,
+            bool? redirectAccept = null,
+            Uri redirectUrl = null,
+            string to = null,
+            string from = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            List<ReservationResource.CallStatusEnum> statusCallbackEvent = null,
+            int? timeout = null,
+            bool? record = null,
+            bool? muted = null,
+            string beep = null,
+            bool? startConferenceOnEnter = null,
+            bool? endConferenceOnExit = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? earlyMedia = null,
+            int? maxParticipants = null,
+            Uri conferenceStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+            List<ReservationResource.ConferenceEventEnum> conferenceStatusCallbackEvent = null,
+            string conferenceRecord = null,
+            string conferenceTrim = null,
+            string recordingChannels = null,
+            Uri recordingStatusCallback = null,
+            Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+            Uri conferenceRecordingStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+            string region = null,
+            string sipAuthUsername = null,
+            string sipAuthPassword = null,
+            List<string> dequeueStatusCallbackEvent = null,
+            string postWorkActivitySid = null,
+            ReservationResource.SupervisorModeEnum supervisorMode = null,
+            string supervisor = null,
+            bool? endConferenceOnCustomerExit = null,
+            bool? beepOnCustomerEntrance = null,
+            string jitterBufferSize = null,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor, EndConferenceOnCustomerExit = endConferenceOnCustomerExit, BeepOnCustomerEntrance = beepOnCustomerEntrance, JitterBufferSize = jitterBufferSize, IfMatch = ifMatch };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

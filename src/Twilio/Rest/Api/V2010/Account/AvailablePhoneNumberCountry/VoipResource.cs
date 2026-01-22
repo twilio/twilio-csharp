@@ -188,6 +188,56 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         }
         #endif
 
+        public static ResourceSetResponse<VoipResource> ReadWithHeaders(ReadVoipOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<VoipResource>.FromJson("available_phone_numbers", response.Content);
+            var records = new ResourceSet<VoipResource>(page, options, client);
+            return new ResourceSetResponse<VoipResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<VoipResource> ReadWithHeaders(
+            string pathCountryCode,
+            string pathAccountSid = null,
+            int? areaCode = null,
+            string contains = null,
+            bool? smsEnabled = null,
+            bool? mmsEnabled = null,
+            bool? voiceEnabled = null,
+            bool? excludeAllAddressRequired = null,
+            bool? excludeLocalAddressRequired = null,
+            bool? excludeForeignAddressRequired = null,
+            bool? beta = null,
+            Types.PhoneNumber nearNumber = null,
+            string nearLatLong = null,
+            int? distance = null,
+            string inPostalCode = null,
+            string inRegion = null,
+            string inRateCenter = null,
+            string inLata = null,
+            string inLocality = null,
+            bool? faxEnabled = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadVoipOptions(pathCountryCode){ PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<VoipResource>> ReadWithHeadersAsync(ReadVoipOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<VoipResource>.FromJson("available_phone_numbers", response.Content);
+            var records = new ResourceSet<VoipResource>(page, options, client);
+            return new ResourceSetResponse<VoipResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

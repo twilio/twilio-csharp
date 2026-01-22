@@ -107,6 +107,41 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<LogResource> FetchWithHeaders(FetchLogOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LogResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LogResource>> FetchWithHeadersAsync(FetchLogOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LogResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<LogResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathEnvironmentSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LogResource>> FetchWithHeadersAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchLogOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadLogOptions options, ITwilioRestClient client)
         {
@@ -202,6 +237,41 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
         #endif
 
+        public static ResourceSetResponse<LogResource> ReadWithHeaders(ReadLogOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<LogResource>.FromJson("logs", response.Content);
+            var records = new ResourceSet<LogResource>(page, options, client);
+            return new ResourceSetResponse<LogResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<LogResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string functionSid = null,
+            DateTime? startDate = null,
+            DateTime? endDate = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){ FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<LogResource>> ReadWithHeadersAsync(ReadLogOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<LogResource>.FromJson("logs", response.Content);
+            var records = new ResourceSet<LogResource>(page, options, client);
+            return new ResourceSetResponse<LogResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -104,6 +104,44 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
+
+        public static TwilioResponse<ModuleDataResource> CreateWithHeaders(CreateModuleDataOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataResource>> CreateWithHeadersAsync(CreateModuleDataOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ModuleDataResource> CreateWithHeaders(
+            string moduleInfo = null,
+            string configuration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateModuleDataOptions(){  ModuleInfo = moduleInfo, Configuration = configuration };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataResource>> CreateWithHeadersAsync(
+            string moduleInfo = null,
+            string configuration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateModuleDataOptions(){  ModuleInfo = moduleInfo, Configuration = configuration };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchModuleDataOptions options, ITwilioRestClient client)
         {
@@ -161,6 +199,38 @@ namespace Twilio.Rest.Marketplace.V1
         {
             var options = new FetchModuleDataOptions(){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ModuleDataResource> FetchWithHeaders(FetchModuleDataOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataResource>> FetchWithHeadersAsync(FetchModuleDataOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ModuleDataResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ModuleDataResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchModuleDataOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ModuleDataResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchModuleDataOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

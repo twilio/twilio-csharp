@@ -68,6 +68,25 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new Sip();
+
+            elem.Uri(new Uri("https://example.com"), "priority", "weight", "username", "password");
+
+            elem.Headers();
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Sip>" + Environment.NewLine +
+                "  <Uri priority=\"priority\" weight=\"weight\" username=\"username\" password=\"password\">https://example.com</Uri>" + Environment.NewLine +
+                "  <Headers></Headers>" + Environment.NewLine +
+                "</Sip>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithTextNode()
         {
             var elem = new Sip();
@@ -91,6 +110,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Sip>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Sip>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new Sip();
+            var child = new SipUri();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Sip>" + Environment.NewLine +
+                "  <Uri>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </Uri>" + Environment.NewLine +
                 "</Sip>",
                 elem.ToString()
             );

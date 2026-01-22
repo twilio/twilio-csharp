@@ -120,6 +120,52 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
+
+        public static TwilioResponse<CompositionSettingsResource> CreateWithHeaders(CreateCompositionSettingsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionSettingsResource>> CreateWithHeadersAsync(CreateCompositionSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CompositionSettingsResource> CreateWithHeaders(
+            string friendlyName,
+            string awsCredentialsSid = null,
+            string encryptionKeySid = null,
+            Uri awsS3Url = null,
+            bool? awsStorageEnabled = null,
+            bool? encryptionEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCompositionSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionSettingsResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string awsCredentialsSid = null,
+            string encryptionKeySid = null,
+            Uri awsS3Url = null,
+            bool? awsStorageEnabled = null,
+            bool? encryptionEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCompositionSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchCompositionSettingsOptions options, ITwilioRestClient client)
         {
@@ -177,6 +223,38 @@ namespace Twilio.Rest.Video.V1
         {
             var options = new FetchCompositionSettingsOptions(){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CompositionSettingsResource> FetchWithHeaders(FetchCompositionSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionSettingsResource>> FetchWithHeadersAsync(FetchCompositionSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CompositionSettingsResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCompositionSettingsOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionSettingsResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchCompositionSettingsOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

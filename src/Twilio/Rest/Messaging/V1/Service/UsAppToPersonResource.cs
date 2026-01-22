@@ -166,6 +166,74 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<UsAppToPersonResource> CreateWithHeaders(CreateUsAppToPersonOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> CreateWithHeadersAsync(CreateUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UsAppToPersonResource> CreateWithHeaders(
+            string pathMessagingServiceSid,
+            string brandRegistrationSid,
+            string description,
+            string messageFlow,
+            List<string> messageSamples,
+            string usAppToPersonUsecase,
+            bool? hasEmbeddedLinks,
+            bool? hasEmbeddedPhone,
+            string optInMessage = null,
+            string optOutMessage = null,
+            string helpMessage = null,
+            List<string> optInKeywords = null,
+            List<string> optOutKeywords = null,
+            List<string> helpKeywords = null,
+            bool? subscriberOptIn = null,
+            bool? ageGated = null,
+            bool? directLending = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> CreateWithHeadersAsync(
+            string pathMessagingServiceSid,
+            string brandRegistrationSid,
+            string description,
+            string messageFlow,
+            List<string> messageSamples,
+            string usAppToPersonUsecase,
+            bool? hasEmbeddedLinks,
+            bool? hasEmbeddedPhone,
+            string optInMessage = null,
+            string optOutMessage = null,
+            string helpMessage = null,
+            List<string> optInKeywords = null,
+            List<string> optOutKeywords = null,
+            List<string> helpKeywords = null,
+            bool? subscriberOptIn = null,
+            bool? ageGated = null,
+            bool? directLending = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUsAppToPersonOptions(pathMessagingServiceSid, brandRegistrationSid, description, messageFlow, messageSamples, usAppToPersonUsecase, hasEmbeddedLinks, hasEmbeddedPhone){  OptInMessage = optInMessage, OptOutMessage = optOutMessage, HelpMessage = helpMessage, OptInKeywords = optInKeywords, OptOutKeywords = optOutKeywords, HelpKeywords = helpKeywords, SubscriberOptIn = subscriberOptIn, AgeGated = ageGated, DirectLending = directLending };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete UsAppToPerson parameters </param>
@@ -198,7 +266,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -211,7 +279,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -236,6 +304,38 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -305,6 +405,40 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<UsAppToPersonResource> FetchWithHeaders(FetchUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> FetchWithHeadersAsync(FetchUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UsAppToPersonResource> FetchWithHeaders(
+                    string pathMessagingServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> FetchWithHeadersAsync(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -384,6 +518,37 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
 
+        public static ResourceSetResponse<UsAppToPersonResource> ReadWithHeaders(ReadUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+            var records = new ResourceSet<UsAppToPersonResource>(page, options, client);
+            return new ResourceSetResponse<UsAppToPersonResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UsAppToPersonResource> ReadWithHeaders(
+            string pathMessagingServiceSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UsAppToPersonResource>> ReadWithHeadersAsync(ReadUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+            var records = new ResourceSet<UsAppToPersonResource>(page, options, client);
+            return new ResourceSetResponse<UsAppToPersonResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -533,6 +698,59 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<UsAppToPersonResource> UpdateWithHeaders(UpdateUsAppToPersonOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> UpdateWithHeadersAsync(UpdateUsAppToPersonOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UsAppToPersonResource> UpdateWithHeaders(
+            string pathMessagingServiceSid,
+            string pathSid,
+            bool? hasEmbeddedLinks,
+            bool? hasEmbeddedPhone,
+            List<string> messageSamples,
+            string messageFlow,
+            string description,
+            bool? ageGated,
+            bool? directLending,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonResource>> UpdateWithHeadersAsync(
+            string pathMessagingServiceSid,
+            string pathSid,
+            bool? hasEmbeddedLinks,
+            bool? hasEmbeddedPhone,
+            List<string> messageSamples,
+            string messageFlow,
+            string description,
+            bool? ageGated,
+            bool? directLending,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUsAppToPersonOptions(pathMessagingServiceSid, pathSid, hasEmbeddedLinks, hasEmbeddedPhone, messageSamples, messageFlow, description, ageGated, directLending){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -97,6 +97,40 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
+
+        public static TwilioResponse<PortingWebhookConfigurationResource> CreateWithHeaders(CreatePortingWebhookConfigurationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PortingWebhookConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PortingWebhookConfigurationResource>> CreateWithHeadersAsync(CreatePortingWebhookConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PortingWebhookConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PortingWebhookConfigurationResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePortingWebhookConfigurationOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PortingWebhookConfigurationResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePortingWebhookConfigurationOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PortingWebhookConfigurationResource object

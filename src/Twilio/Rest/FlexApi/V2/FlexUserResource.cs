@@ -102,6 +102,40 @@ namespace Twilio.Rest.FlexApi.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<FlexUserResource> FetchWithHeaders(FetchFlexUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexUserResource>> FetchWithHeadersAsync(FetchFlexUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FlexUserResource> FetchWithHeaders(
+                    string pathInstanceSid, 
+                    string pathFlexUserSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFlexUserOptions(pathInstanceSid, pathFlexUserSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexUserResource>> FetchWithHeadersAsync(string pathInstanceSid, string pathFlexUserSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFlexUserOptions(pathInstanceSid, pathFlexUserSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateFlexUserOptions options, ITwilioRestClient client)
         {
@@ -187,6 +221,51 @@ namespace Twilio.Rest.FlexApi.V2
         {
             var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ Email = email, UserSid = userSid, Locale = locale };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FlexUserResource> UpdateWithHeaders(UpdateFlexUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexUserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexUserResource>> UpdateWithHeadersAsync(UpdateFlexUserOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlexUserResource> UpdateWithHeaders(
+            string pathInstanceSid,
+            string pathFlexUserSid,
+            string email = null,
+            string userSid = null,
+            string locale = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ Email = email, UserSid = userSid, Locale = locale };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexUserResource>> UpdateWithHeadersAsync(
+            string pathInstanceSid,
+            string pathFlexUserSid,
+            string email = null,
+            string userSid = null,
+            string locale = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexUserOptions(pathInstanceSid, pathFlexUserSid){ Email = email, UserSid = userSid, Locale = locale };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

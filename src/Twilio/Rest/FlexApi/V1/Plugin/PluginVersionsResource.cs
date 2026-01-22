@@ -130,6 +130,56 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         }
         #endif
 
+
+        public static TwilioResponse<PluginVersionsResource> CreateWithHeaders(CreatePluginVersionsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionsResource>> CreateWithHeadersAsync(CreatePluginVersionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PluginVersionsResource> CreateWithHeaders(
+            string pathPluginSid,
+            string version,
+            Uri pluginUrl,
+            string changelog = null,
+            bool? varPrivate = null,
+            string cliVersion = null,
+            string validateStatus = null,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = varPrivate, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionsResource>> CreateWithHeadersAsync(
+            string pathPluginSid,
+            string version,
+            Uri pluginUrl,
+            string changelog = null,
+            bool? varPrivate = null,
+            string cliVersion = null,
+            string validateStatus = null,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginVersionsOptions(pathPluginSid, version, pluginUrl){  Changelog = changelog, Private = varPrivate, CliVersion = cliVersion, ValidateStatus = validateStatus, FlexMetadata = flexMetadata };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchPluginVersionsOptions options, ITwilioRestClient client)
         {
@@ -200,6 +250,41 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         {
             var options = new FetchPluginVersionsOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<PluginVersionsResource> FetchWithHeaders(FetchPluginVersionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionsResource>> FetchWithHeadersAsync(FetchPluginVersionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PluginVersionsResource> FetchWithHeaders(
+                    string pathPluginSid, 
+                    string pathSid, 
+                    string flexMetadata = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginVersionsOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionsResource>> FetchWithHeadersAsync(string pathPluginSid, string pathSid, string flexMetadata = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginVersionsOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -283,6 +368,38 @@ namespace Twilio.Rest.FlexApi.V1.Plugin
         }
         #endif
 
+        public static ResourceSetResponse<PluginVersionsResource> ReadWithHeaders(ReadPluginVersionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PluginVersionsResource>.FromJson("plugin_versions", response.Content);
+            var records = new ResourceSet<PluginVersionsResource>(page, options, client);
+            return new ResourceSetResponse<PluginVersionsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PluginVersionsResource> ReadWithHeaders(
+            string pathPluginSid,
+            string flexMetadata = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPluginVersionsOptions(pathPluginSid){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PluginVersionsResource>> ReadWithHeadersAsync(ReadPluginVersionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PluginVersionsResource>.FromJson("plugin_versions", response.Content);
+            var records = new ResourceSet<PluginVersionsResource>(page, options, client);
+            return new ResourceSetResponse<PluginVersionsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

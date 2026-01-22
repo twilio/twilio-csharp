@@ -102,6 +102,40 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ExecutionContextResource> FetchWithHeaders(FetchExecutionContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionContextResource>> FetchWithHeadersAsync(FetchExecutionContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ExecutionContextResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathExecutionSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionContextOptions(pathFlowSid, pathExecutionSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionContextResource>> FetchWithHeadersAsync(string pathFlowSid, string pathExecutionSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionContextOptions(pathFlowSid, pathExecutionSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ExecutionContextResource object

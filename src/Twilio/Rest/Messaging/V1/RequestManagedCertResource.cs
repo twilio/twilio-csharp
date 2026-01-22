@@ -103,6 +103,43 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+        public static TwilioResponse<RequestManagedCertResource> UpdateWithHeaders(UpdateRequestManagedCertOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RequestManagedCertResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RequestManagedCertResource>> UpdateWithHeadersAsync(UpdateRequestManagedCertOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RequestManagedCertResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RequestManagedCertResource> UpdateWithHeaders(
+            string pathDomainSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRequestManagedCertOptions(pathDomainSid){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RequestManagedCertResource>> UpdateWithHeadersAsync(
+            string pathDomainSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRequestManagedCertOptions(pathDomainSid){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a RequestManagedCertResource object

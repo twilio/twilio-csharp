@@ -116,6 +116,39 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<InsightsSegmentsResource> ReadWithHeaders(ReadInsightsSegmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+            var records = new ResourceSet<InsightsSegmentsResource>(page, options, client);
+            return new ResourceSetResponse<InsightsSegmentsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InsightsSegmentsResource> ReadWithHeaders(
+            string authorization = null,
+            string segmentId = null,
+            List<string> reservationId = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInsightsSegmentsOptions(){ Authorization = authorization, SegmentId = segmentId, ReservationId = reservationId, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InsightsSegmentsResource>> ReadWithHeadersAsync(ReadInsightsSegmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InsightsSegmentsResource>.FromJson("segments", response.Content);
+            var records = new ResourceSet<InsightsSegmentsResource>(page, options, client);
+            return new ResourceSetResponse<InsightsSegmentsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

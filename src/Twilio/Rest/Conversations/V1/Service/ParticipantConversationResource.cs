@@ -132,6 +132,39 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
         #endif
 
+        public static ResourceSetResponse<ParticipantConversationResource> ReadWithHeaders(ReadParticipantConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ParticipantConversationResource>.FromJson("conversations", response.Content);
+            var records = new ResourceSet<ParticipantConversationResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantConversationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ParticipantConversationResource> ReadWithHeaders(
+            string pathChatServiceSid,
+            string identity = null,
+            string address = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadParticipantConversationOptions(pathChatServiceSid){ Identity = identity, Address = address, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ParticipantConversationResource>> ReadWithHeadersAsync(ReadParticipantConversationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ParticipantConversationResource>.FromJson("conversations", response.Content);
+            var records = new ResourceSet<ParticipantConversationResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantConversationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

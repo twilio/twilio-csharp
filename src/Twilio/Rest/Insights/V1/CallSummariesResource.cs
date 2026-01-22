@@ -340,6 +340,72 @@ namespace Twilio.Rest.Insights.V1
         }
         #endif
 
+        public static ResourceSetResponse<CallSummariesResource> ReadWithHeaders(ReadCallSummariesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CallSummariesResource>.FromJson("call_summaries", response.Content);
+            var records = new ResourceSet<CallSummariesResource>(page, options, client);
+            return new ResourceSetResponse<CallSummariesResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CallSummariesResource> ReadWithHeaders(
+            string from = null,
+            string to = null,
+            string fromCarrier = null,
+            string toCarrier = null,
+            string fromCountryCode = null,
+            string toCountryCode = null,
+            bool? verifiedCaller = null,
+            bool? hasTag = null,
+            string startTime = null,
+            string endTime = null,
+            string callType = null,
+            string callState = null,
+            string direction = null,
+            CallSummariesResource.ProcessingStateRequestEnum processingState = null,
+            CallSummariesResource.SortByEnum sortBy = null,
+            string subaccount = null,
+            bool? abnormalSession = null,
+            CallSummariesResource.AnsweredByEnum answeredBy = null,
+            string answeredByAnnotation = null,
+            string connectivityIssueAnnotation = null,
+            string qualityIssueAnnotation = null,
+            bool? spamAnnotation = null,
+            string callScoreAnnotation = null,
+            bool? brandedEnabled = null,
+            bool? voiceIntegrityEnabled = null,
+            string brandedBundleSid = null,
+            bool? brandedLogo = null,
+            string brandedType = null,
+            string brandedUseCase = null,
+            string brandedCallReason = null,
+            string voiceIntegrityBundleSid = null,
+            string voiceIntegrityUseCase = null,
+            string businessProfileIdentity = null,
+            string businessProfileIndustry = null,
+            string businessProfileBundleSid = null,
+            string businessProfileType = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCallSummariesOptions(){ From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, AnsweredBy = answeredBy, AnsweredByAnnotation = answeredByAnnotation, ConnectivityIssueAnnotation = connectivityIssueAnnotation, QualityIssueAnnotation = qualityIssueAnnotation, SpamAnnotation = spamAnnotation, CallScoreAnnotation = callScoreAnnotation, BrandedEnabled = brandedEnabled, VoiceIntegrityEnabled = voiceIntegrityEnabled, BrandedBundleSid = brandedBundleSid, BrandedLogo = brandedLogo, BrandedType = brandedType, BrandedUseCase = brandedUseCase, BrandedCallReason = brandedCallReason, VoiceIntegrityBundleSid = voiceIntegrityBundleSid, VoiceIntegrityUseCase = voiceIntegrityUseCase, BusinessProfileIdentity = businessProfileIdentity, BusinessProfileIndustry = businessProfileIndustry, BusinessProfileBundleSid = businessProfileBundleSid, BusinessProfileType = businessProfileType, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CallSummariesResource>> ReadWithHeadersAsync(ReadCallSummariesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CallSummariesResource>.FromJson("call_summaries", response.Content);
+            var records = new ResourceSet<CallSummariesResource>(page, options, client);
+            return new ResourceSetResponse<CallSummariesResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

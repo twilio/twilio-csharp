@@ -202,6 +202,42 @@ namespace Twilio.Rest.Insights.V1.Conference
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ConferenceParticipantResource> FetchWithHeaders(FetchConferenceParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConferenceParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConferenceParticipantResource>> FetchWithHeadersAsync(FetchConferenceParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConferenceParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ConferenceParticipantResource> FetchWithHeaders(
+                    string pathConferenceSid, 
+                    string pathParticipantSid, 
+                    string events = null, 
+                    string metrics = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchConferenceParticipantOptions(pathConferenceSid, pathParticipantSid){ Events = events,Metrics = metrics };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConferenceParticipantResource>> FetchWithHeadersAsync(string pathConferenceSid, string pathParticipantSid, string events = null, string metrics = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchConferenceParticipantOptions(pathConferenceSid, pathParticipantSid){ Events = events,Metrics = metrics };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadConferenceParticipantOptions options, ITwilioRestClient client)
         {
@@ -291,6 +327,40 @@ namespace Twilio.Rest.Insights.V1.Conference
         }
         #endif
 
+        public static ResourceSetResponse<ConferenceParticipantResource> ReadWithHeaders(ReadConferenceParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ConferenceParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ConferenceParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ConferenceParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ConferenceParticipantResource> ReadWithHeaders(
+            string pathConferenceSid,
+            string participantSid = null,
+            string label = null,
+            string events = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadConferenceParticipantOptions(pathConferenceSid){ ParticipantSid = participantSid, Label = label, Events = events, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ConferenceParticipantResource>> ReadWithHeadersAsync(ReadConferenceParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ConferenceParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ConferenceParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ConferenceParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

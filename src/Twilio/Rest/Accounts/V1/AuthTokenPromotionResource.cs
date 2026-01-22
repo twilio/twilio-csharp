@@ -97,6 +97,41 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
+        public static TwilioResponse<AuthTokenPromotionResource> UpdateWithHeaders(UpdateAuthTokenPromotionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthTokenPromotionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthTokenPromotionResource>> UpdateWithHeadersAsync(UpdateAuthTokenPromotionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthTokenPromotionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AuthTokenPromotionResource> UpdateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAuthTokenPromotionOptions(){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthTokenPromotionResource>> UpdateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAuthTokenPromotionOptions(){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a AuthTokenPromotionResource object

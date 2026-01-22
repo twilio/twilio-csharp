@@ -208,6 +208,44 @@ namespace Twilio.Rest.Lookups.V2
         }
         #endif
 
+
+        public static TwilioResponse<LookupOverrideResource> CreateWithHeaders(CreateLookupOverrideOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> CreateWithHeadersAsync(CreateLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<LookupOverrideResource> CreateWithHeaders(
+            string pathField,
+            string pathPhoneNumber,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateLookupOverrideOptions(pathField, pathPhoneNumber){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> CreateWithHeadersAsync(
+            string pathField,
+            string pathPhoneNumber,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateLookupOverrideOptions(pathField, pathPhoneNumber){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete an Override for a specific package and phone number. </summary>
         /// <param name="options"> Delete LookupOverride parameters </param>
@@ -240,7 +278,7 @@ namespace Twilio.Rest.Lookups.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -253,7 +291,7 @@ namespace Twilio.Rest.Lookups.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -278,6 +316,38 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new DeleteLookupOverrideOptions(pathField, pathPhoneNumber) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathField, string pathPhoneNumber, ITwilioRestClient client = null)
+        {
+            var options = new DeleteLookupOverrideOptions(pathField, pathPhoneNumber)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathField, string pathPhoneNumber, ITwilioRestClient client = null)
+        {
+            var options = new DeleteLookupOverrideOptions(pathField, pathPhoneNumber) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -347,6 +417,40 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new FetchLookupOverrideOptions(pathField, pathPhoneNumber){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<LookupOverrideResource> FetchWithHeaders(FetchLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> FetchWithHeadersAsync(FetchLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<LookupOverrideResource> FetchWithHeaders(
+                    string pathField, 
+                    string pathPhoneNumber, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchLookupOverrideOptions(pathField, pathPhoneNumber){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> FetchWithHeadersAsync(string pathField, string pathPhoneNumber, ITwilioRestClient client = null)
+        {
+            var options = new FetchLookupOverrideOptions(pathField, pathPhoneNumber){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -423,6 +527,45 @@ namespace Twilio.Rest.Lookups.V2
         {
             var options = new UpdateLookupOverrideOptions(pathField, pathPhoneNumber){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<LookupOverrideResource> UpdateWithHeaders(UpdateLookupOverrideOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> UpdateWithHeadersAsync(UpdateLookupOverrideOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<LookupOverrideResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<LookupOverrideResource> UpdateWithHeaders(
+            string pathField,
+            string pathPhoneNumber,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateLookupOverrideOptions(pathField, pathPhoneNumber){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<LookupOverrideResource>> UpdateWithHeadersAsync(
+            string pathField,
+            string pathPhoneNumber,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateLookupOverrideOptions(pathField, pathPhoneNumber){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -161,6 +161,52 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+
+        public static TwilioResponse<IpCommandResource> CreateWithHeaders(CreateIpCommandOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpCommandResource>> CreateWithHeadersAsync(CreateIpCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IpCommandResource> CreateWithHeaders(
+            string sim,
+            string payload,
+            int? devicePort,
+            IpCommandResource.PayloadTypeEnum payloadType = null,
+            Uri callbackUrl = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpCommandOptions(sim, payload, devicePort){  PayloadType = payloadType, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpCommandResource>> CreateWithHeadersAsync(
+            string sim,
+            string payload,
+            int? devicePort,
+            IpCommandResource.PayloadTypeEnum payloadType = null,
+            Uri callbackUrl = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpCommandOptions(sim, payload, devicePort){  PayloadType = payloadType, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchIpCommandOptions options, ITwilioRestClient client)
         {
@@ -223,6 +269,39 @@ namespace Twilio.Rest.Supersim.V1
         {
             var options = new FetchIpCommandOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<IpCommandResource> FetchWithHeaders(FetchIpCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpCommandResource>> FetchWithHeadersAsync(FetchIpCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<IpCommandResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchIpCommandOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpCommandResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchIpCommandOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -312,6 +391,40 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<IpCommandResource> ReadWithHeaders(ReadIpCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<IpCommandResource>.FromJson("ip_commands", response.Content);
+            var records = new ResourceSet<IpCommandResource>(page, options, client);
+            return new ResourceSetResponse<IpCommandResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<IpCommandResource> ReadWithHeaders(
+            string sim = null,
+            string simIccid = null,
+            IpCommandResource.StatusEnum status = null,
+            IpCommandResource.DirectionEnum direction = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadIpCommandOptions(){ Sim = sim, SimIccid = simIccid, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<IpCommandResource>> ReadWithHeadersAsync(ReadIpCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<IpCommandResource>.FromJson("ip_commands", response.Content);
+            var records = new ResourceSet<IpCommandResource>(page, options, client);
+            return new ResourceSetResponse<IpCommandResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

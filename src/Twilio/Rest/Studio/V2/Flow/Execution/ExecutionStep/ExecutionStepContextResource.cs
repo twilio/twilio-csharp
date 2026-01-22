@@ -107,6 +107,41 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution.ExecutionStep
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ExecutionStepContextResource> FetchWithHeaders(FetchExecutionStepContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionStepContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionStepContextResource>> FetchWithHeadersAsync(FetchExecutionStepContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionStepContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ExecutionStepContextResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathExecutionSid, 
+                    string pathStepSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionStepContextOptions(pathFlowSid, pathExecutionSid, pathStepSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionStepContextResource>> FetchWithHeadersAsync(string pathFlowSid, string pathExecutionSid, string pathStepSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionStepContextOptions(pathFlowSid, pathExecutionSid, pathStepSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ExecutionStepContextResource object

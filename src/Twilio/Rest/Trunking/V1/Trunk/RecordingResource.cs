@@ -126,6 +126,39 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<RecordingResource> FetchWithHeaders(FetchRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingResource>> FetchWithHeadersAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RecordingResource> FetchWithHeaders(
+                    string pathTrunkSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingOptions(pathTrunkSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingResource>> FetchWithHeadersAsync(string pathTrunkSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingOptions(pathTrunkSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateRecordingOptions options, ITwilioRestClient client)
         {
@@ -201,6 +234,47 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new UpdateRecordingOptions(pathTrunkSid){ Mode = mode, Trim = trim };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<RecordingResource> UpdateWithHeaders(UpdateRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingResource>> UpdateWithHeadersAsync(UpdateRecordingOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RecordingResource> UpdateWithHeaders(
+            string pathTrunkSid,
+            RecordingResource.RecordingModeEnum mode = null,
+            RecordingResource.RecordingTrimEnum trim = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRecordingOptions(pathTrunkSid){ Mode = mode, Trim = trim };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingResource>> UpdateWithHeadersAsync(
+            string pathTrunkSid,
+            RecordingResource.RecordingModeEnum mode = null,
+            RecordingResource.RecordingTrimEnum trim = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRecordingOptions(pathTrunkSid){ Mode = mode, Trim = trim };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

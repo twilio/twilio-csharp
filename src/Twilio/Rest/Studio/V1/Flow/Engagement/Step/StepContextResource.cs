@@ -107,6 +107,41 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<StepContextResource> FetchWithHeaders(FetchStepContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<StepContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StepContextResource>> FetchWithHeadersAsync(FetchStepContextOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<StepContextResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<StepContextResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathEngagementSid, 
+                    string pathStepSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StepContextResource>> FetchWithHeadersAsync(string pathFlowSid, string pathEngagementSid, string pathStepSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a StepContextResource object

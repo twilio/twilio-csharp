@@ -104,6 +104,44 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+
+        public static TwilioResponse<SourceIpMappingResource> CreateWithHeaders(CreateSourceIpMappingOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> CreateWithHeadersAsync(CreateSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SourceIpMappingResource> CreateWithHeaders(
+            string ipRecordSid,
+            string sipDomainSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> CreateWithHeadersAsync(
+            string ipRecordSid,
+            string sipDomainSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSourceIpMappingOptions(ipRecordSid, sipDomainSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SourceIpMapping parameters </param>
@@ -134,7 +172,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -147,7 +185,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -170,6 +208,38 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new DeleteSourceIpMappingOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSourceIpMappingOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSourceIpMappingOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -234,6 +304,39 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new FetchSourceIpMappingOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SourceIpMappingResource> FetchWithHeaders(FetchSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> FetchWithHeadersAsync(FetchSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SourceIpMappingResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSourceIpMappingOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSourceIpMappingOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -307,6 +410,36 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+        public static ResourceSetResponse<SourceIpMappingResource> ReadWithHeaders(ReadSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+            var records = new ResourceSet<SourceIpMappingResource>(page, options, client);
+            return new ResourceSetResponse<SourceIpMappingResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SourceIpMappingResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSourceIpMappingOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SourceIpMappingResource>> ReadWithHeadersAsync(ReadSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SourceIpMappingResource>.FromJson("source_ip_mappings", response.Content);
+            var records = new ResourceSet<SourceIpMappingResource>(page, options, client);
+            return new ResourceSetResponse<SourceIpMappingResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -426,6 +559,45 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SourceIpMappingResource> UpdateWithHeaders(UpdateSourceIpMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> UpdateWithHeadersAsync(UpdateSourceIpMappingOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SourceIpMappingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SourceIpMappingResource> UpdateWithHeaders(
+            string pathSid,
+            string sipDomainSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SourceIpMappingResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string sipDomainSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSourceIpMappingOptions(pathSid, sipDomainSid){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

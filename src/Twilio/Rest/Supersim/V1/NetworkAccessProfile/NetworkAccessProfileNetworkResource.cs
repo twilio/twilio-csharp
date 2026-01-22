@@ -106,6 +106,44 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
         #endif
 
+
+        public static TwilioResponse<NetworkAccessProfileNetworkResource> CreateWithHeaders(CreateNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkAccessProfileNetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkAccessProfileNetworkResource>> CreateWithHeadersAsync(CreateNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkAccessProfileNetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NetworkAccessProfileNetworkResource> CreateWithHeaders(
+            string pathNetworkAccessProfileSid,
+            string network,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, network){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkAccessProfileNetworkResource>> CreateWithHeadersAsync(
+            string pathNetworkAccessProfileSid,
+            string network,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, network){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove a Network resource from the Network Access Profile resource's. </summary>
         /// <param name="options"> Delete NetworkAccessProfileNetwork parameters </param>
@@ -138,7 +176,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +189,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -176,6 +214,38 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         {
             var options = new DeleteNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathNetworkAccessProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathNetworkAccessProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -245,6 +315,40 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         {
             var options = new FetchNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<NetworkAccessProfileNetworkResource> FetchWithHeaders(FetchNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkAccessProfileNetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkAccessProfileNetworkResource>> FetchWithHeadersAsync(FetchNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NetworkAccessProfileNetworkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<NetworkAccessProfileNetworkResource> FetchWithHeaders(
+                    string pathNetworkAccessProfileSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NetworkAccessProfileNetworkResource>> FetchWithHeadersAsync(string pathNetworkAccessProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -324,6 +428,37 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         }
         #endif
 
+        public static ResourceSetResponse<NetworkAccessProfileNetworkResource> ReadWithHeaders(ReadNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<NetworkAccessProfileNetworkResource>.FromJson("networks", response.Content);
+            var records = new ResourceSet<NetworkAccessProfileNetworkResource>(page, options, client);
+            return new ResourceSetResponse<NetworkAccessProfileNetworkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<NetworkAccessProfileNetworkResource> ReadWithHeaders(
+            string pathNetworkAccessProfileSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadNetworkAccessProfileNetworkOptions(pathNetworkAccessProfileSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<NetworkAccessProfileNetworkResource>> ReadWithHeadersAsync(ReadNetworkAccessProfileNetworkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<NetworkAccessProfileNetworkResource>.FromJson("networks", response.Content);
+            var records = new ResourceSet<NetworkAccessProfileNetworkResource>(page, options, client);
+            return new ResourceSetResponse<NetworkAccessProfileNetworkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

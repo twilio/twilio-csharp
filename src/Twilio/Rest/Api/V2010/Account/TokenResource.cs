@@ -106,6 +106,44 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static TwilioResponse<TokenResource> CreateWithHeaders(CreateTokenOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TokenResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TokenResource>> CreateWithHeadersAsync(CreateTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TokenResource> CreateWithHeaders(
+            string pathAccountSid = null,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTokenOptions(){  PathAccountSid = pathAccountSid, Ttl = ttl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TokenResource>> CreateWithHeadersAsync(
+            string pathAccountSid = null,
+            int? ttl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTokenOptions(){  PathAccountSid = pathAccountSid, Ttl = ttl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TokenResource object

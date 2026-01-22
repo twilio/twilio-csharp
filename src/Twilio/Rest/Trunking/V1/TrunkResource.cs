@@ -155,6 +155,56 @@ namespace Twilio.Rest.Trunking.V1
         }
         #endif
 
+
+        public static TwilioResponse<TrunkResource> CreateWithHeaders(CreateTrunkOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> CreateWithHeadersAsync(CreateTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TrunkResource> CreateWithHeaders(
+            string friendlyName = null,
+            string domainName = null,
+            Uri disasterRecoveryUrl = null,
+            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
+            TrunkResource.TransferSettingEnum transferMode = null,
+            bool? secure = null,
+            bool? cnamLookupEnabled = null,
+            TrunkResource.TransferCallerIdEnum transferCallerId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrunkOptions(){  FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> CreateWithHeadersAsync(
+            string friendlyName = null,
+            string domainName = null,
+            Uri disasterRecoveryUrl = null,
+            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
+            TrunkResource.TransferSettingEnum transferMode = null,
+            bool? secure = null,
+            bool? cnamLookupEnabled = null,
+            TrunkResource.TransferCallerIdEnum transferCallerId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrunkOptions(){  FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Trunk parameters </param>
@@ -185,7 +235,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -198,7 +248,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -221,6 +271,38 @@ namespace Twilio.Rest.Trunking.V1
         {
             var options = new DeleteTrunkOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTrunkOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTrunkOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -285,6 +367,39 @@ namespace Twilio.Rest.Trunking.V1
         {
             var options = new FetchTrunkOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TrunkResource> FetchWithHeaders(FetchTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> FetchWithHeadersAsync(FetchTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TrunkResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTrunkOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTrunkOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -358,6 +473,36 @@ namespace Twilio.Rest.Trunking.V1
         }
         #endif
 
+        public static ResourceSetResponse<TrunkResource> ReadWithHeaders(ReadTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TrunkResource>.FromJson("trunks", response.Content);
+            var records = new ResourceSet<TrunkResource>(page, options, client);
+            return new ResourceSetResponse<TrunkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TrunkResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTrunkOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TrunkResource>> ReadWithHeadersAsync(ReadTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TrunkResource>.FromJson("trunks", response.Content);
+            var records = new ResourceSet<TrunkResource>(page, options, client);
+            return new ResourceSetResponse<TrunkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -505,6 +650,59 @@ namespace Twilio.Rest.Trunking.V1
         {
             var options = new UpdateTrunkOptions(pathSid){ FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<TrunkResource> UpdateWithHeaders(UpdateTrunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> UpdateWithHeadersAsync(UpdateTrunkOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrunkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TrunkResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            string domainName = null,
+            Uri disasterRecoveryUrl = null,
+            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
+            TrunkResource.TransferSettingEnum transferMode = null,
+            bool? secure = null,
+            bool? cnamLookupEnabled = null,
+            TrunkResource.TransferCallerIdEnum transferCallerId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTrunkOptions(pathSid){ FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrunkResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            string domainName = null,
+            Uri disasterRecoveryUrl = null,
+            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
+            TrunkResource.TransferSettingEnum transferMode = null,
+            bool? secure = null,
+            bool? cnamLookupEnabled = null,
+            TrunkResource.TransferCallerIdEnum transferCallerId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTrunkOptions(pathSid){ FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled, TransferCallerId = transferCallerId };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

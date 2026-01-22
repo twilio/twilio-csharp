@@ -100,6 +100,42 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
+
+        public static TwilioResponse<SafelistResource> CreateWithHeaders(CreateSafelistOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SafelistResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SafelistResource>> CreateWithHeadersAsync(CreateSafelistOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SafelistResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SafelistResource> CreateWithHeaders(
+            string phoneNumber,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSafelistOptions(phoneNumber){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SafelistResource>> CreateWithHeadersAsync(
+            string phoneNumber,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSafelistOptions(phoneNumber){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove a phone number or phone number 1k prefix from SafeList. </summary>
         /// <param name="options"> Delete Safelist parameters </param>
@@ -128,7 +164,7 @@ namespace Twilio.Rest.Accounts.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -141,7 +177,7 @@ namespace Twilio.Rest.Accounts.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -162,6 +198,38 @@ namespace Twilio.Rest.Accounts.V1
         {
             var options = new DeleteSafelistOptions() ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSafelistOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSafelistOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(ITwilioRestClient client = null)
+        {
+            var options = new DeleteSafelistOptions()  ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new DeleteSafelistOptions() ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -224,6 +292,39 @@ namespace Twilio.Rest.Accounts.V1
         {
             var options = new FetchSafelistOptions(){ PhoneNumber = phoneNumber };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SafelistResource> FetchWithHeaders(FetchSafelistOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SafelistResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SafelistResource>> FetchWithHeadersAsync(FetchSafelistOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SafelistResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SafelistResource> FetchWithHeaders(
+                    string phoneNumber = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSafelistOptions(){ PhoneNumber = phoneNumber };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SafelistResource>> FetchWithHeadersAsync(string phoneNumber = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchSafelistOptions(){ PhoneNumber = phoneNumber };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

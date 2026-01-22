@@ -159,6 +159,58 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<ChannelResource> CreateWithHeaders(CreateChannelOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> CreateWithHeadersAsync(CreateChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ChannelResource> CreateWithHeaders(
+            string pathServiceSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            string attributes = null,
+            ChannelResource.ChannelTypeEnum type = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string createdBy = null,
+            ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateChannelOptions(pathServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            string attributes = null,
+            ChannelResource.ChannelTypeEnum type = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string createdBy = null,
+            ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateChannelOptions(pathServiceSid){  FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Channel parameters </param>
@@ -191,7 +243,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -204,7 +256,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -231,6 +283,38 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         {
             var options = new DeleteChannelOptions(pathServiceSid, pathSid)  { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSid, ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteChannelOptions(pathServiceSid, pathSid)         { XTwilioWebhookEnabled = xTwilioWebhookEnabled }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSid, ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteChannelOptions(pathServiceSid, pathSid)  { XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -300,6 +384,40 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         {
             var options = new FetchChannelOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ChannelResource> FetchWithHeaders(FetchChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> FetchWithHeadersAsync(FetchChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ChannelResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchChannelOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchChannelOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -383,6 +501,38 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         }
         #endif
 
+        public static ResourceSetResponse<ChannelResource> ReadWithHeaders(ReadChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<ChannelResource>(page, options, client);
+            return new ResourceSetResponse<ChannelResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ChannelResource> ReadWithHeaders(
+            string pathServiceSid,
+            List<ChannelResource.ChannelTypeEnum> type = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadChannelOptions(pathServiceSid){ Type = type, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ChannelResource>> ReadWithHeadersAsync(ReadChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<ChannelResource>(page, options, client);
+            return new ResourceSetResponse<ChannelResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -532,6 +682,59 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         {
             var options = new UpdateChannelOptions(pathServiceSid, pathSid){ FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ChannelResource> UpdateWithHeaders(UpdateChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> UpdateWithHeadersAsync(UpdateChannelOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ChannelResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            string attributes = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string createdBy = null,
+            ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){ FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChannelResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSid,
+            string friendlyName = null,
+            string uniqueName = null,
+            string attributes = null,
+            DateTime? dateCreated = null,
+            DateTime? dateUpdated = null,
+            string createdBy = null,
+            ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){ FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

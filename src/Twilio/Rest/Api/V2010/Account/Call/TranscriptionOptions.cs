@@ -73,8 +73,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> The provider will add punctuation to recognition result </summary> 
         public bool? EnableAutomaticPunctuation { get; set; }
 
-        ///<summary> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators . </summary> 
+        ///<summary> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators </summary> 
         public string IntelligenceService { get; set; }
+
+        ///<summary> Whether the callback includes raw provider data. </summary> 
+        public bool? EnableProviderData { get; set; }
 
 
         /// <summary> Construct a new CreateRealtimeTranscriptionOptions </summary>
@@ -145,6 +148,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (IntelligenceService != null)
             {
                 p.Add(new KeyValuePair<string, string>("IntelligenceService", IntelligenceService));
+            }
+            if (EnableProviderData != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EnableProviderData", EnableProviderData.Value.ToString().ToLower()));
             }
             return p;
         }

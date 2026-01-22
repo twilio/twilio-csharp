@@ -92,6 +92,38 @@ namespace Twilio.Rest.Messaging.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<UsecaseResource> FetchWithHeaders(FetchUsecaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsecaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsecaseResource>> FetchWithHeadersAsync(FetchUsecaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsecaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UsecaseResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUsecaseOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsecaseResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchUsecaseOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a UsecaseResource object

@@ -116,6 +116,48 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         }
         #endif
 
+
+        public static TwilioResponse<BucketResource> CreateWithHeaders(CreateBucketOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> CreateWithHeadersAsync(CreateBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BucketResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathRateLimitSid,
+            int? max,
+            int? interval,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBucketOptions(pathServiceSid, pathRateLimitSid, max, interval){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathRateLimitSid,
+            int? max,
+            int? interval,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBucketOptions(pathServiceSid, pathRateLimitSid, max, interval){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Bucket. </summary>
         /// <param name="options"> Delete Bucket parameters </param>
@@ -150,7 +192,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -163,7 +205,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -190,6 +232,38 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             var options = new DeleteBucketOptions(pathServiceSid, pathRateLimitSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathRateLimitSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBucketOptions(pathServiceSid, pathRateLimitSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathRateLimitSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBucketOptions(pathServiceSid, pathRateLimitSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -264,6 +338,41 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             var options = new FetchBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BucketResource> FetchWithHeaders(FetchBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> FetchWithHeadersAsync(FetchBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BucketResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathRateLimitSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> FetchWithHeadersAsync(string pathServiceSid, string pathRateLimitSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -349,6 +458,38 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         }
         #endif
 
+        public static ResourceSetResponse<BucketResource> ReadWithHeaders(ReadBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BucketResource>.FromJson("buckets", response.Content);
+            var records = new ResourceSet<BucketResource>(page, options, client);
+            return new ResourceSetResponse<BucketResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BucketResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathRateLimitSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBucketOptions(pathServiceSid, pathRateLimitSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BucketResource>> ReadWithHeadersAsync(ReadBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BucketResource>.FromJson("buckets", response.Content);
+            var records = new ResourceSet<BucketResource>(page, options, client);
+            return new ResourceSetResponse<BucketResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -484,6 +625,51 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             var options = new UpdateBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){ Max = max, Interval = interval };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<BucketResource> UpdateWithHeaders(UpdateBucketOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> UpdateWithHeadersAsync(UpdateBucketOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BucketResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BucketResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathRateLimitSid,
+            string pathSid,
+            int? max = null,
+            int? interval = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){ Max = max, Interval = interval };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BucketResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathRateLimitSid,
+            string pathSid,
+            int? max = null,
+            int? interval = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBucketOptions(pathServiceSid, pathRateLimitSid, pathSid){ Max = max, Interval = interval };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

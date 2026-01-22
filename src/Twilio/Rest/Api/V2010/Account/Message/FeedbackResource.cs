@@ -125,6 +125,46 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
         #endif
 
+
+        public static TwilioResponse<FeedbackResource> CreateWithHeaders(CreateFeedbackOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FeedbackResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FeedbackResource>> CreateWithHeadersAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FeedbackResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FeedbackResource> CreateWithHeaders(
+            string pathMessageSid,
+            string pathAccountSid = null,
+            FeedbackResource.OutcomeEnum outcome = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFeedbackOptions(pathMessageSid){  PathAccountSid = pathAccountSid, Outcome = outcome };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FeedbackResource>> CreateWithHeadersAsync(
+            string pathMessageSid,
+            string pathAccountSid = null,
+            FeedbackResource.OutcomeEnum outcome = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFeedbackOptions(pathMessageSid){  PathAccountSid = pathAccountSid, Outcome = outcome };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object

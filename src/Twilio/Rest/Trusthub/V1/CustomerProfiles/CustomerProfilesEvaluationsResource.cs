@@ -119,6 +119,44 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         }
         #endif
 
+
+        public static TwilioResponse<CustomerProfilesEvaluationsResource> CreateWithHeaders(CreateCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesEvaluationsResource>> CreateWithHeadersAsync(CreateCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomerProfilesEvaluationsResource> CreateWithHeaders(
+            string pathCustomerProfileSid,
+            string policySid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, policySid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesEvaluationsResource>> CreateWithHeadersAsync(
+            string pathCustomerProfileSid,
+            string policySid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, policySid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchCustomerProfilesEvaluationsOptions options, ITwilioRestClient client)
         {
@@ -186,6 +224,40 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         {
             var options = new FetchCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CustomerProfilesEvaluationsResource> FetchWithHeaders(FetchCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesEvaluationsResource>> FetchWithHeadersAsync(FetchCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CustomerProfilesEvaluationsResource> FetchWithHeaders(
+                    string pathCustomerProfileSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesEvaluationsResource>> FetchWithHeadersAsync(string pathCustomerProfileSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesEvaluationsOptions(pathCustomerProfileSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -265,6 +337,37 @@ namespace Twilio.Rest.Trusthub.V1.CustomerProfiles
         }
         #endif
 
+        public static ResourceSetResponse<CustomerProfilesEvaluationsResource> ReadWithHeaders(ReadCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomerProfilesEvaluationsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesEvaluationsResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesEvaluationsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CustomerProfilesEvaluationsResource> ReadWithHeaders(
+            string pathCustomerProfileSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomerProfilesEvaluationsOptions(pathCustomerProfileSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CustomerProfilesEvaluationsResource>> ReadWithHeadersAsync(ReadCustomerProfilesEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomerProfilesEvaluationsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesEvaluationsResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesEvaluationsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -120,6 +120,52 @@ namespace Twilio.Rest.FlexApi.V2
         }
         #endif
 
+
+        public static TwilioResponse<WebChannelsResource> CreateWithHeaders(CreateWebChannelsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelsResource>> CreateWithHeadersAsync(CreateWebChannelsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WebChannelsResource> CreateWithHeaders(
+            string addressSid,
+            string chatFriendlyName = null,
+            string customerFriendlyName = null,
+            string preEngagementData = null,
+            string identity = null,
+            string uiVersion = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, Identity = identity, UiVersion = uiVersion };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelsResource>> CreateWithHeadersAsync(
+            string addressSid,
+            string chatFriendlyName = null,
+            string customerFriendlyName = null,
+            string preEngagementData = null,
+            string identity = null,
+            string uiVersion = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWebChannelsOptions(addressSid){  ChatFriendlyName = chatFriendlyName, CustomerFriendlyName = customerFriendlyName, PreEngagementData = preEngagementData, Identity = identity, UiVersion = uiVersion };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WebChannelsResource object

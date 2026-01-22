@@ -125,6 +125,46 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
 
+
+        public static TwilioResponse<CustomOperatorResource> CreateWithHeaders(CreateCustomOperatorOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> CreateWithHeadersAsync(CreateCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomOperatorResource> CreateWithHeaders(
+            string friendlyName,
+            string operatorType,
+            object config,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomOperatorOptions(friendlyName, operatorType, config){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string operatorType,
+            object config,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomOperatorOptions(friendlyName, operatorType, config){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Custom Operator. </summary>
         /// <param name="options"> Delete CustomOperator parameters </param>
@@ -155,7 +195,7 @@ namespace Twilio.Rest.Intelligence.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -168,7 +208,7 @@ namespace Twilio.Rest.Intelligence.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -191,6 +231,38 @@ namespace Twilio.Rest.Intelligence.V2
         {
             var options = new DeleteCustomOperatorOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomOperatorOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomOperatorOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -255,6 +327,39 @@ namespace Twilio.Rest.Intelligence.V2
         {
             var options = new FetchCustomOperatorOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CustomOperatorResource> FetchWithHeaders(FetchCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> FetchWithHeadersAsync(FetchCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CustomOperatorResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomOperatorOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomOperatorOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -336,6 +441,38 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
 
+        public static ResourceSetResponse<CustomOperatorResource> ReadWithHeaders(ReadCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomOperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<CustomOperatorResource>(page, options, client);
+            return new ResourceSetResponse<CustomOperatorResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CustomOperatorResource> ReadWithHeaders(
+            CustomOperatorResource.AvailabilityEnum availability = null,
+            string languageCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CustomOperatorResource>> ReadWithHeadersAsync(ReadCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomOperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<CustomOperatorResource>(page, options, client);
+            return new ResourceSetResponse<CustomOperatorResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -463,6 +600,49 @@ namespace Twilio.Rest.Intelligence.V2
         {
             var options = new UpdateCustomOperatorOptions(pathSid, friendlyName, config){ IfMatch = ifMatch };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<CustomOperatorResource> UpdateWithHeaders(UpdateCustomOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> UpdateWithHeadersAsync(UpdateCustomOperatorOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomOperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomOperatorResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName,
+            object config,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCustomOperatorOptions(pathSid, friendlyName, config){ IfMatch = ifMatch };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomOperatorResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName,
+            object config,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCustomOperatorOptions(pathSid, friendlyName, config){ IfMatch = ifMatch };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

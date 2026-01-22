@@ -111,6 +111,40 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+
+        public static TwilioResponse<BulkHostedNumberOrderResource> CreateWithHeaders(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkHostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkHostedNumberOrderResource>> CreateWithHeadersAsync(CreateBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkHostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BulkHostedNumberOrderResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkHostedNumberOrderOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkHostedNumberOrderResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBulkHostedNumberOrderOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client)
         {
@@ -176,6 +210,40 @@ namespace Twilio.Rest.Numbers.V2
         {
             var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BulkHostedNumberOrderResource> FetchWithHeaders(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkHostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkHostedNumberOrderResource>> FetchWithHeadersAsync(FetchBulkHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BulkHostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BulkHostedNumberOrderResource> FetchWithHeaders(
+                    string pathBulkHostingSid, 
+                    string orderStatus = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BulkHostedNumberOrderResource>> FetchWithHeadersAsync(string pathBulkHostingSid, string orderStatus = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchBulkHostedNumberOrderOptions(pathBulkHostingSid){ OrderStatus = orderStatus };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

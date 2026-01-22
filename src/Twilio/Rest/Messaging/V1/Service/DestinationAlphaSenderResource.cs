@@ -110,6 +110,46 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<DestinationAlphaSenderResource> CreateWithHeaders(CreateDestinationAlphaSenderOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DestinationAlphaSenderResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DestinationAlphaSenderResource>> CreateWithHeadersAsync(CreateDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DestinationAlphaSenderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<DestinationAlphaSenderResource> CreateWithHeaders(
+            string pathServiceSid,
+            string alphaSender,
+            string isoCountryCode = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateDestinationAlphaSenderOptions(pathServiceSid, alphaSender){  IsoCountryCode = isoCountryCode };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DestinationAlphaSenderResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string alphaSender,
+            string isoCountryCode = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateDestinationAlphaSenderOptions(pathServiceSid, alphaSender){  IsoCountryCode = isoCountryCode };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete DestinationAlphaSender parameters </param>
@@ -142,7 +182,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -155,7 +195,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -180,6 +220,38 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var options = new DeleteDestinationAlphaSenderOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteDestinationAlphaSenderOptions(pathServiceSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteDestinationAlphaSenderOptions(pathServiceSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -249,6 +321,40 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var options = new FetchDestinationAlphaSenderOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<DestinationAlphaSenderResource> FetchWithHeaders(FetchDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DestinationAlphaSenderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DestinationAlphaSenderResource>> FetchWithHeadersAsync(FetchDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DestinationAlphaSenderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DestinationAlphaSenderResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDestinationAlphaSenderOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DestinationAlphaSenderResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchDestinationAlphaSenderOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -332,6 +438,38 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
         #endif
 
+        public static ResourceSetResponse<DestinationAlphaSenderResource> ReadWithHeaders(ReadDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<DestinationAlphaSenderResource>.FromJson("alpha_senders", response.Content);
+            var records = new ResourceSet<DestinationAlphaSenderResource>(page, options, client);
+            return new ResourceSetResponse<DestinationAlphaSenderResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<DestinationAlphaSenderResource> ReadWithHeaders(
+            string pathServiceSid,
+            string isoCountryCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadDestinationAlphaSenderOptions(pathServiceSid){ IsoCountryCode = isoCountryCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<DestinationAlphaSenderResource>> ReadWithHeadersAsync(ReadDestinationAlphaSenderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<DestinationAlphaSenderResource>.FromJson("alpha_senders", response.Content);
+            var records = new ResourceSet<DestinationAlphaSenderResource>(page, options, client);
+            return new ResourceSetResponse<DestinationAlphaSenderResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

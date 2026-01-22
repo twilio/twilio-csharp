@@ -95,6 +95,39 @@ namespace Twilio.Rest.Insights.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SettingResource> FetchWithHeaders(FetchSettingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingResource>> FetchWithHeadersAsync(FetchSettingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SettingResource> FetchWithHeaders(
+                    string subaccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSettingOptions(){ SubaccountSid = subaccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingResource>> FetchWithHeadersAsync(string subaccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchSettingOptions(){ SubaccountSid = subaccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateSettingOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,47 @@ namespace Twilio.Rest.Insights.V1
         {
             var options = new UpdateSettingOptions(){ AdvancedFeatures = advancedFeatures, VoiceTrace = voiceTrace, SubaccountSid = subaccountSid };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SettingResource> UpdateWithHeaders(UpdateSettingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingResource>> UpdateWithHeadersAsync(UpdateSettingOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SettingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SettingResource> UpdateWithHeaders(
+            bool? advancedFeatures = null,
+            bool? voiceTrace = null,
+            string subaccountSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSettingOptions(){ AdvancedFeatures = advancedFeatures, VoiceTrace = voiceTrace, SubaccountSid = subaccountSid };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SettingResource>> UpdateWithHeadersAsync(
+            bool? advancedFeatures = null,
+            bool? voiceTrace = null,
+            string subaccountSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSettingOptions(){ AdvancedFeatures = advancedFeatures, VoiceTrace = voiceTrace, SubaccountSid = subaccountSid };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

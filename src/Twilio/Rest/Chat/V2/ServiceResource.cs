@@ -100,6 +100,42 @@ namespace Twilio.Rest.Chat.V2
         }
         #endif
 
+
+        public static TwilioResponse<ServiceResource> CreateWithHeaders(CreateServiceOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> CreateWithHeadersAsync(CreateServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> CreateWithHeaders(
+            string friendlyName,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateServiceOptions(friendlyName){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> CreateWithHeadersAsync(
+            string friendlyName,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateServiceOptions(friendlyName){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -130,7 +166,7 @@ namespace Twilio.Rest.Chat.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -143,7 +179,7 @@ namespace Twilio.Rest.Chat.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -166,6 +202,38 @@ namespace Twilio.Rest.Chat.V2
         {
             var options = new DeleteServiceOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -230,6 +298,39 @@ namespace Twilio.Rest.Chat.V2
         {
             var options = new FetchServiceOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ServiceResource> FetchWithHeaders(FetchServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> FetchWithHeadersAsync(FetchServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ServiceResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -303,6 +404,36 @@ namespace Twilio.Rest.Chat.V2
         }
         #endif
 
+        public static ResourceSetResponse<ServiceResource> ReadWithHeaders(ReadServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            var records = new ResourceSet<ServiceResource>(page, options, client);
+            return new ResourceSetResponse<ServiceResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ServiceResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ServiceResource>> ReadWithHeadersAsync(ReadServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            var records = new ResourceSet<ServiceResource>(page, options, client);
+            return new ResourceSetResponse<ServiceResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -542,6 +673,105 @@ namespace Twilio.Rest.Chat.V2
         {
             var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, DefaultServiceRoleSid = defaultServiceRoleSid, DefaultChannelRoleSid = defaultChannelRoleSid, DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid, ReadStatusEnabled = readStatusEnabled, ReachabilityEnabled = reachabilityEnabled, TypingIndicatorTimeout = typingIndicatorTimeout, ConsumptionReportInterval = consumptionReportInterval, NotificationsNewMessageEnabled = notificationsNewMessageEnabled, NotificationsNewMessageTemplate = notificationsNewMessageTemplate, NotificationsNewMessageSound = notificationsNewMessageSound, NotificationsNewMessageBadgeCountEnabled = notificationsNewMessageBadgeCountEnabled, NotificationsAddedToChannelEnabled = notificationsAddedToChannelEnabled, NotificationsAddedToChannelTemplate = notificationsAddedToChannelTemplate, NotificationsAddedToChannelSound = notificationsAddedToChannelSound, NotificationsRemovedFromChannelEnabled = notificationsRemovedFromChannelEnabled, NotificationsRemovedFromChannelTemplate = notificationsRemovedFromChannelTemplate, NotificationsRemovedFromChannelSound = notificationsRemovedFromChannelSound, NotificationsInvitedToChannelEnabled = notificationsInvitedToChannelEnabled, NotificationsInvitedToChannelTemplate = notificationsInvitedToChannelTemplate, NotificationsInvitedToChannelSound = notificationsInvitedToChannelSound, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, LimitsChannelMembers = limitsChannelMembers, LimitsUserChannels = limitsUserChannels, MediaCompatibilityMessage = mediaCompatibilityMessage, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, NotificationsLogEnabled = notificationsLogEnabled };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> UpdateWithHeaders(UpdateServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> UpdateWithHeadersAsync(UpdateServiceOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            string defaultServiceRoleSid = null,
+            string defaultChannelRoleSid = null,
+            string defaultChannelCreatorRoleSid = null,
+            bool? readStatusEnabled = null,
+            bool? reachabilityEnabled = null,
+            int? typingIndicatorTimeout = null,
+            int? consumptionReportInterval = null,
+            bool? notificationsNewMessageEnabled = null,
+            string notificationsNewMessageTemplate = null,
+            string notificationsNewMessageSound = null,
+            bool? notificationsNewMessageBadgeCountEnabled = null,
+            bool? notificationsAddedToChannelEnabled = null,
+            string notificationsAddedToChannelTemplate = null,
+            string notificationsAddedToChannelSound = null,
+            bool? notificationsRemovedFromChannelEnabled = null,
+            string notificationsRemovedFromChannelTemplate = null,
+            string notificationsRemovedFromChannelSound = null,
+            bool? notificationsInvitedToChannelEnabled = null,
+            string notificationsInvitedToChannelTemplate = null,
+            string notificationsInvitedToChannelSound = null,
+            Uri preWebhookUrl = null,
+            Uri postWebhookUrl = null,
+            Twilio.Http.HttpMethod webhookMethod = null,
+            List<string> webhookFilters = null,
+            int? limitsChannelMembers = null,
+            int? limitsUserChannels = null,
+            string mediaCompatibilityMessage = null,
+            int? preWebhookRetryCount = null,
+            int? postWebhookRetryCount = null,
+            bool? notificationsLogEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, DefaultServiceRoleSid = defaultServiceRoleSid, DefaultChannelRoleSid = defaultChannelRoleSid, DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid, ReadStatusEnabled = readStatusEnabled, ReachabilityEnabled = reachabilityEnabled, TypingIndicatorTimeout = typingIndicatorTimeout, ConsumptionReportInterval = consumptionReportInterval, NotificationsNewMessageEnabled = notificationsNewMessageEnabled, NotificationsNewMessageTemplate = notificationsNewMessageTemplate, NotificationsNewMessageSound = notificationsNewMessageSound, NotificationsNewMessageBadgeCountEnabled = notificationsNewMessageBadgeCountEnabled, NotificationsAddedToChannelEnabled = notificationsAddedToChannelEnabled, NotificationsAddedToChannelTemplate = notificationsAddedToChannelTemplate, NotificationsAddedToChannelSound = notificationsAddedToChannelSound, NotificationsRemovedFromChannelEnabled = notificationsRemovedFromChannelEnabled, NotificationsRemovedFromChannelTemplate = notificationsRemovedFromChannelTemplate, NotificationsRemovedFromChannelSound = notificationsRemovedFromChannelSound, NotificationsInvitedToChannelEnabled = notificationsInvitedToChannelEnabled, NotificationsInvitedToChannelTemplate = notificationsInvitedToChannelTemplate, NotificationsInvitedToChannelSound = notificationsInvitedToChannelSound, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, LimitsChannelMembers = limitsChannelMembers, LimitsUserChannels = limitsUserChannels, MediaCompatibilityMessage = mediaCompatibilityMessage, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, NotificationsLogEnabled = notificationsLogEnabled };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            string defaultServiceRoleSid = null,
+            string defaultChannelRoleSid = null,
+            string defaultChannelCreatorRoleSid = null,
+            bool? readStatusEnabled = null,
+            bool? reachabilityEnabled = null,
+            int? typingIndicatorTimeout = null,
+            int? consumptionReportInterval = null,
+            bool? notificationsNewMessageEnabled = null,
+            string notificationsNewMessageTemplate = null,
+            string notificationsNewMessageSound = null,
+            bool? notificationsNewMessageBadgeCountEnabled = null,
+            bool? notificationsAddedToChannelEnabled = null,
+            string notificationsAddedToChannelTemplate = null,
+            string notificationsAddedToChannelSound = null,
+            bool? notificationsRemovedFromChannelEnabled = null,
+            string notificationsRemovedFromChannelTemplate = null,
+            string notificationsRemovedFromChannelSound = null,
+            bool? notificationsInvitedToChannelEnabled = null,
+            string notificationsInvitedToChannelTemplate = null,
+            string notificationsInvitedToChannelSound = null,
+            Uri preWebhookUrl = null,
+            Uri postWebhookUrl = null,
+            Twilio.Http.HttpMethod webhookMethod = null,
+            List<string> webhookFilters = null,
+            int? limitsChannelMembers = null,
+            int? limitsUserChannels = null,
+            string mediaCompatibilityMessage = null,
+            int? preWebhookRetryCount = null,
+            int? postWebhookRetryCount = null,
+            bool? notificationsLogEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(pathSid){ FriendlyName = friendlyName, DefaultServiceRoleSid = defaultServiceRoleSid, DefaultChannelRoleSid = defaultChannelRoleSid, DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid, ReadStatusEnabled = readStatusEnabled, ReachabilityEnabled = reachabilityEnabled, TypingIndicatorTimeout = typingIndicatorTimeout, ConsumptionReportInterval = consumptionReportInterval, NotificationsNewMessageEnabled = notificationsNewMessageEnabled, NotificationsNewMessageTemplate = notificationsNewMessageTemplate, NotificationsNewMessageSound = notificationsNewMessageSound, NotificationsNewMessageBadgeCountEnabled = notificationsNewMessageBadgeCountEnabled, NotificationsAddedToChannelEnabled = notificationsAddedToChannelEnabled, NotificationsAddedToChannelTemplate = notificationsAddedToChannelTemplate, NotificationsAddedToChannelSound = notificationsAddedToChannelSound, NotificationsRemovedFromChannelEnabled = notificationsRemovedFromChannelEnabled, NotificationsRemovedFromChannelTemplate = notificationsRemovedFromChannelTemplate, NotificationsRemovedFromChannelSound = notificationsRemovedFromChannelSound, NotificationsInvitedToChannelEnabled = notificationsInvitedToChannelEnabled, NotificationsInvitedToChannelTemplate = notificationsInvitedToChannelTemplate, NotificationsInvitedToChannelSound = notificationsInvitedToChannelSound, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, LimitsChannelMembers = limitsChannelMembers, LimitsUserChannels = limitsUserChannels, MediaCompatibilityMessage = mediaCompatibilityMessage, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, NotificationsLogEnabled = notificationsLogEnabled };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

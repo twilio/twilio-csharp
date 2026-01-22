@@ -130,6 +130,38 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         }
         #endif
 
+        public static ResourceSetResponse<UserChannelResource> ReadWithHeaders(ReadUserChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UserChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<UserChannelResource>(page, options, client);
+            return new ResourceSetResponse<UserChannelResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UserChannelResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathUserSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UserChannelResource>> ReadWithHeadersAsync(ReadUserChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UserChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<UserChannelResource>(page, options, client);
+            return new ResourceSetResponse<UserChannelResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

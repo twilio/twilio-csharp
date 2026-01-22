@@ -112,6 +112,42 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AssignedAddOnExtensionResource> FetchWithHeaders(FetchAssignedAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnExtensionResource>> FetchWithHeadersAsync(FetchAssignedAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AssignedAddOnExtensionResource> FetchWithHeaders(
+                    string pathResourceSid, 
+                    string pathAssignedAddOnSid, 
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAssignedAddOnExtensionOptions(pathResourceSid, pathAssignedAddOnSid, pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnExtensionResource>> FetchWithHeadersAsync(string pathResourceSid, string pathAssignedAddOnSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAssignedAddOnExtensionOptions(pathResourceSid, pathAssignedAddOnSid, pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAssignedAddOnExtensionOptions options, ITwilioRestClient client)
         {
@@ -201,6 +237,39 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         }
         #endif
 
+        public static ResourceSetResponse<AssignedAddOnExtensionResource> ReadWithHeaders(ReadAssignedAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
+            var records = new ResourceSet<AssignedAddOnExtensionResource>(page, options, client);
+            return new ResourceSetResponse<AssignedAddOnExtensionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AssignedAddOnExtensionResource> ReadWithHeaders(
+            string pathResourceSid,
+            string pathAssignedAddOnSid,
+            string pathAccountSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAssignedAddOnExtensionOptions(pathResourceSid, pathAssignedAddOnSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AssignedAddOnExtensionResource>> ReadWithHeadersAsync(ReadAssignedAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
+            var records = new ResourceSet<AssignedAddOnExtensionResource>(page, options, client);
+            return new ResourceSetResponse<AssignedAddOnExtensionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -266,6 +266,45 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+        public static TwilioResponse<NewVerifyFactorResource> UpdateWithHeaders(UpdateNewVerifyFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewVerifyFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewVerifyFactorResource>> UpdateWithHeadersAsync(UpdateNewVerifyFactorOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewVerifyFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewVerifyFactorResource> UpdateWithHeaders(
+            string pathServiceSid,
+            NewVerifyFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateNewVerifyFactorOptions(pathServiceSid, verifyPasskeysFactorRequest){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewVerifyFactorResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            NewVerifyFactorResource.VerifyPasskeysFactorRequest verifyPasskeysFactorRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateNewVerifyFactorOptions(pathServiceSid, verifyPasskeysFactorRequest){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a NewVerifyFactorResource object

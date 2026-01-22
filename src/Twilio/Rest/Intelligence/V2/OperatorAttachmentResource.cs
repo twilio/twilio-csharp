@@ -108,6 +108,44 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
 
+
+        public static TwilioResponse<OperatorAttachmentResource> CreateWithHeaders(CreateOperatorAttachmentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorAttachmentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorAttachmentResource>> CreateWithHeadersAsync(CreateOperatorAttachmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorAttachmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<OperatorAttachmentResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathOperatorSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOperatorAttachmentOptions(pathServiceSid, pathOperatorSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorAttachmentResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathOperatorSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOperatorAttachmentOptions(pathServiceSid, pathOperatorSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Detach an Operator from a Service. </summary>
         /// <param name="options"> Delete OperatorAttachment parameters </param>
@@ -140,7 +178,7 @@ namespace Twilio.Rest.Intelligence.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -153,7 +191,7 @@ namespace Twilio.Rest.Intelligence.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -178,6 +216,38 @@ namespace Twilio.Rest.Intelligence.V2
         {
             var options = new DeleteOperatorAttachmentOptions(pathServiceSid, pathOperatorSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteOperatorAttachmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteOperatorAttachmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathOperatorSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOperatorAttachmentOptions(pathServiceSid, pathOperatorSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathOperatorSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOperatorAttachmentOptions(pathServiceSid, pathOperatorSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
     
