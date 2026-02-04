@@ -97,6 +97,39 @@ namespace Twilio.Rest.Messaging.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<DomainConfigMessagingServiceResource> FetchWithHeaders(FetchDomainConfigMessagingServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigMessagingServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigMessagingServiceResource>> FetchWithHeadersAsync(FetchDomainConfigMessagingServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigMessagingServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DomainConfigMessagingServiceResource> FetchWithHeaders(
+                    string pathMessagingServiceSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainConfigMessagingServiceOptions(pathMessagingServiceSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigMessagingServiceResource>> FetchWithHeadersAsync(string pathMessagingServiceSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainConfigMessagingServiceOptions(pathMessagingServiceSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a DomainConfigMessagingServiceResource object

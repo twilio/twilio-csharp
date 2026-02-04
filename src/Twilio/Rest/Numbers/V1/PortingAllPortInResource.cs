@@ -124,6 +124,41 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
+        public static ResourceSetResponse<PortingAllPortInResource> ReadWithHeaders(ReadPortingAllPortInOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PortingAllPortInResource>.FromJson("port_in_requests", response.Content);
+            var records = new ResourceSet<PortingAllPortInResource>(page, options, client);
+            return new ResourceSetResponse<PortingAllPortInResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PortingAllPortInResource> ReadWithHeaders(
+            string token = null,
+            int? size = null,
+            string portInRequestSid = null,
+            string portInRequestStatus = null,
+            string createdBefore = null,
+            string createdAfter = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPortingAllPortInOptions(){ Token = token, Size = size, PortInRequestSid = portInRequestSid, PortInRequestStatus = portInRequestStatus, CreatedBefore = createdBefore, CreatedAfter = createdAfter, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PortingAllPortInResource>> ReadWithHeadersAsync(ReadPortingAllPortInOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PortingAllPortInResource>.FromJson("port_in_requests", response.Content);
+            var records = new ResourceSet<PortingAllPortInResource>(page, options, client);
+            return new ResourceSetResponse<PortingAllPortInResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

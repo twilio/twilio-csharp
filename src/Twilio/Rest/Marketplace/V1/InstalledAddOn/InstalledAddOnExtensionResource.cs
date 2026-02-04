@@ -102,6 +102,40 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<InstalledAddOnExtensionResource> FetchWithHeaders(FetchInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnExtensionResource>> FetchWithHeadersAsync(FetchInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InstalledAddOnExtensionResource> FetchWithHeaders(
+                    string pathInstalledAddOnSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnExtensionResource>> FetchWithHeadersAsync(string pathInstalledAddOnSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client)
         {
@@ -179,6 +213,37 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
         #endif
 
+        public static ResourceSetResponse<InstalledAddOnExtensionResource> ReadWithHeaders(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
+            var records = new ResourceSet<InstalledAddOnExtensionResource>(page, options, client);
+            return new ResourceSetResponse<InstalledAddOnExtensionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InstalledAddOnExtensionResource> ReadWithHeaders(
+            string pathInstalledAddOnSid,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInstalledAddOnExtensionOptions(pathInstalledAddOnSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InstalledAddOnExtensionResource>> ReadWithHeadersAsync(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
+            var records = new ResourceSet<InstalledAddOnExtensionResource>(page, options, client);
+            return new ResourceSetResponse<InstalledAddOnExtensionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -304,6 +369,47 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         {
             var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InstalledAddOnExtensionResource> UpdateWithHeaders(UpdateInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnExtensionResource>> UpdateWithHeadersAsync(UpdateInstalledAddOnExtensionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnExtensionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InstalledAddOnExtensionResource> UpdateWithHeaders(
+            string pathInstalledAddOnSid,
+            string pathSid,
+            bool? enabled,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnExtensionResource>> UpdateWithHeadersAsync(
+            string pathInstalledAddOnSid,
+            string pathSid,
+            bool? enabled,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

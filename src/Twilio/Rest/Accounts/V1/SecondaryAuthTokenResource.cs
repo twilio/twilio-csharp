@@ -96,6 +96,40 @@ namespace Twilio.Rest.Accounts.V1
         }
         #endif
 
+
+        public static TwilioResponse<SecondaryAuthTokenResource> CreateWithHeaders(CreateSecondaryAuthTokenOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SecondaryAuthTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SecondaryAuthTokenResource>> CreateWithHeadersAsync(CreateSecondaryAuthTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SecondaryAuthTokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SecondaryAuthTokenResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSecondaryAuthTokenOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SecondaryAuthTokenResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSecondaryAuthTokenOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete the secondary Auth Token from your account </summary>
         /// <param name="options"> Delete SecondaryAuthToken parameters </param>
@@ -124,7 +158,7 @@ namespace Twilio.Rest.Accounts.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -137,7 +171,7 @@ namespace Twilio.Rest.Accounts.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -158,6 +192,38 @@ namespace Twilio.Rest.Accounts.V1
         {
             var options = new DeleteSecondaryAuthTokenOptions() ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSecondaryAuthTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSecondaryAuthTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(ITwilioRestClient client = null)
+        {
+            var options = new DeleteSecondaryAuthTokenOptions()  ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new DeleteSecondaryAuthTokenOptions() ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
     

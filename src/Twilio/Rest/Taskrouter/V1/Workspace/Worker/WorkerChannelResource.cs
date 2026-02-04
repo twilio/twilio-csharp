@@ -107,6 +107,41 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<WorkerChannelResource> FetchWithHeaders(FetchWorkerChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkerChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkerChannelResource>> FetchWithHeadersAsync(FetchWorkerChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkerChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WorkerChannelResource> FetchWithHeaders(
+                    string pathWorkspaceSid, 
+                    string pathWorkerSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkerChannelResource>> FetchWithHeadersAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadWorkerChannelOptions options, ITwilioRestClient client)
         {
@@ -190,6 +225,38 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
         #endif
 
+        public static ResourceSetResponse<WorkerChannelResource> ReadWithHeaders(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<WorkerChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<WorkerChannelResource>(page, options, client);
+            return new ResourceSetResponse<WorkerChannelResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<WorkerChannelResource> ReadWithHeaders(
+            string pathWorkspaceSid,
+            string pathWorkerSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<WorkerChannelResource>> ReadWithHeadersAsync(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<WorkerChannelResource>.FromJson("channels", response.Content);
+            var records = new ResourceSet<WorkerChannelResource>(page, options, client);
+            return new ResourceSetResponse<WorkerChannelResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -325,6 +392,51 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ Capacity = capacity, Available = available };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<WorkerChannelResource> UpdateWithHeaders(UpdateWorkerChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkerChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkerChannelResource>> UpdateWithHeadersAsync(UpdateWorkerChannelOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkerChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WorkerChannelResource> UpdateWithHeaders(
+            string pathWorkspaceSid,
+            string pathWorkerSid,
+            string pathSid,
+            int? capacity = null,
+            bool? available = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ Capacity = capacity, Available = available };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkerChannelResource>> UpdateWithHeadersAsync(
+            string pathWorkspaceSid,
+            string pathWorkerSid,
+            string pathSid,
+            int? capacity = null,
+            bool? available = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){ Capacity = capacity, Available = available };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

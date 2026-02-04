@@ -137,6 +137,44 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         }
         #endif
 
+
+        public static TwilioResponse<InteractionTransferResource> CreateWithHeaders(CreateInteractionTransferOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> CreateWithHeadersAsync(CreateInteractionTransferOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionTransferResource> CreateWithHeaders(
+            string pathInteractionSid,
+            string pathChannelSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionTransferOptions(pathInteractionSid, pathChannelSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> CreateWithHeadersAsync(
+            string pathInteractionSid,
+            string pathChannelSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionTransferOptions(pathInteractionSid, pathChannelSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchInteractionTransferOptions options, ITwilioRestClient client)
         {
@@ -209,6 +247,41 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             var options = new FetchInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<InteractionTransferResource> FetchWithHeaders(FetchInteractionTransferOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> FetchWithHeadersAsync(FetchInteractionTransferOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InteractionTransferResource> FetchWithHeaders(
+                    string pathInteractionSid, 
+                    string pathChannelSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> FetchWithHeadersAsync(string pathInteractionSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -291,6 +364,47 @@ namespace Twilio.Rest.FlexApi.V1.Interaction.InteractionChannel
         {
             var options = new UpdateInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionTransferResource> UpdateWithHeaders(UpdateInteractionTransferOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> UpdateWithHeadersAsync(UpdateInteractionTransferOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionTransferResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionTransferResource> UpdateWithHeaders(
+            string pathInteractionSid,
+            string pathChannelSid,
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionTransferResource>> UpdateWithHeadersAsync(
+            string pathInteractionSid,
+            string pathChannelSid,
+            string pathSid,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionTransferOptions(pathInteractionSid, pathChannelSid, pathSid){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

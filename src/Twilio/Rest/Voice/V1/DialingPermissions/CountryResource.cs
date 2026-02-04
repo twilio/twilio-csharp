@@ -97,6 +97,39 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<CountryResource> FetchWithHeaders(FetchCountryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CountryResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CountryResource>> FetchWithHeadersAsync(FetchCountryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CountryResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CountryResource> FetchWithHeaders(
+                    string pathIsoCode, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCountryOptions(pathIsoCode){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CountryResource>> FetchWithHeadersAsync(string pathIsoCode, ITwilioRestClient client = null)
+        {
+            var options = new FetchCountryOptions(pathIsoCode){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadCountryOptions options, ITwilioRestClient client)
         {
@@ -192,6 +225,42 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
         #endif
 
+        public static ResourceSetResponse<CountryResource> ReadWithHeaders(ReadCountryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CountryResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<CountryResource>(page, options, client);
+            return new ResourceSetResponse<CountryResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CountryResource> ReadWithHeaders(
+            string isoCode = null,
+            string continent = null,
+            string countryCode = null,
+            bool? lowRiskNumbersEnabled = null,
+            bool? highRiskSpecialNumbersEnabled = null,
+            bool? highRiskTollfraudNumbersEnabled = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCountryOptions(){ IsoCode = isoCode, Continent = continent, CountryCode = countryCode, LowRiskNumbersEnabled = lowRiskNumbersEnabled, HighRiskSpecialNumbersEnabled = highRiskSpecialNumbersEnabled, HighRiskTollfraudNumbersEnabled = highRiskTollfraudNumbersEnabled, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CountryResource>> ReadWithHeadersAsync(ReadCountryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CountryResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<CountryResource>(page, options, client);
+            return new ResourceSetResponse<CountryResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

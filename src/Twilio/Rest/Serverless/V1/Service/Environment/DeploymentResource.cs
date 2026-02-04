@@ -116,6 +116,48 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
         #endif
 
+
+        public static TwilioResponse<DeploymentResource> CreateWithHeaders(CreateDeploymentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeploymentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeploymentResource>> CreateWithHeadersAsync(CreateDeploymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeploymentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<DeploymentResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string buildSid = null,
+            bool? isPlugin = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid){  BuildSid = buildSid, IsPlugin = isPlugin };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeploymentResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string buildSid = null,
+            bool? isPlugin = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid){  BuildSid = buildSid, IsPlugin = isPlugin };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchDeploymentOptions options, ITwilioRestClient client)
         {
@@ -188,6 +230,41 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var options = new FetchDeploymentOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<DeploymentResource> FetchWithHeaders(FetchDeploymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeploymentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeploymentResource>> FetchWithHeadersAsync(FetchDeploymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DeploymentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DeploymentResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathEnvironmentSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDeploymentOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DeploymentResource>> FetchWithHeadersAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchDeploymentOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -273,6 +350,38 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
         #endif
 
+        public static ResourceSetResponse<DeploymentResource> ReadWithHeaders(ReadDeploymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<DeploymentResource>.FromJson("deployments", response.Content);
+            var records = new ResourceSet<DeploymentResource>(page, options, client);
+            return new ResourceSetResponse<DeploymentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<DeploymentResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadDeploymentOptions(pathServiceSid, pathEnvironmentSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<DeploymentResource>> ReadWithHeadersAsync(ReadDeploymentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<DeploymentResource>.FromJson("deployments", response.Content);
+            var records = new ResourceSet<DeploymentResource>(page, options, client);
+            return new ResourceSetResponse<DeploymentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

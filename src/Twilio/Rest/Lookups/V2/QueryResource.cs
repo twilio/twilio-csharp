@@ -895,6 +895,40 @@ namespace Twilio.Rest.Lookups.V2
         }
         #endif
 
+
+        public static TwilioResponse<QueryResource> CreateWithHeaders(CreateQueryOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<QueryResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<QueryResource>> CreateWithHeadersAsync(CreateQueryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<QueryResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<QueryResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateQueryOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<QueryResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateQueryOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a QueryResource object

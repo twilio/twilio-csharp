@@ -63,7 +63,7 @@ namespace Twilio.Rest.Messaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Messaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -99,6 +99,38 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new DeleteDomainCertsOptions(pathDomainSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteDomainCertsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteDomainCertsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathDomainSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteDomainCertsOptions(pathDomainSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathDomainSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteDomainCertsOptions(pathDomainSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -163,6 +195,39 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new FetchDomainCertsOptions(pathDomainSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<DomainCertsResource> FetchWithHeaders(FetchDomainCertsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainCertsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainCertsResource>> FetchWithHeadersAsync(FetchDomainCertsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainCertsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DomainCertsResource> FetchWithHeaders(
+                    string pathDomainSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainCertsOptions(pathDomainSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainCertsResource>> FetchWithHeadersAsync(string pathDomainSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainCertsOptions(pathDomainSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -236,6 +301,45 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<DomainCertsResource> UpdateWithHeaders(UpdateDomainCertsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainCertsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainCertsResource>> UpdateWithHeadersAsync(UpdateDomainCertsOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainCertsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<DomainCertsResource> UpdateWithHeaders(
+            string pathDomainSid,
+            string tlsCert,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainCertsResource>> UpdateWithHeadersAsync(
+            string pathDomainSid,
+            string tlsCert,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateDomainCertsOptions(pathDomainSid, tlsCert){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

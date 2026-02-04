@@ -114,6 +114,39 @@ namespace Twilio.Rest.Intelligence.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<OperatorResource> FetchWithHeaders(FetchOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorResource>> FetchWithHeadersAsync(FetchOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<OperatorResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchOperatorOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchOperatorOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadOperatorOptions options, ITwilioRestClient client)
         {
@@ -193,6 +226,38 @@ namespace Twilio.Rest.Intelligence.V2
         }
         #endif
 
+        public static ResourceSetResponse<OperatorResource> ReadWithHeaders(ReadOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<OperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<OperatorResource>(page, options, client);
+            return new ResourceSetResponse<OperatorResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<OperatorResource> ReadWithHeaders(
+            OperatorResource.AvailabilityEnum availability = null,
+            string languageCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadOperatorOptions(){ Availability = availability, LanguageCode = languageCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<OperatorResource>> ReadWithHeadersAsync(ReadOperatorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<OperatorResource>.FromJson("operators", response.Content);
+            var records = new ResourceSet<OperatorResource>(page, options, client);
+            return new ResourceSetResponse<OperatorResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

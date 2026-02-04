@@ -109,6 +109,39 @@ namespace Twilio.Rest.Verify.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<FormResource> FetchWithHeaders(FetchFormOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FormResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FormResource>> FetchWithHeadersAsync(FetchFormOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FormResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FormResource> FetchWithHeaders(
+                    FormResource.FormTypesEnum pathFormType, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFormOptions(pathFormType){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FormResource>> FetchWithHeadersAsync(FormResource.FormTypesEnum pathFormType, ITwilioRestClient client = null)
+        {
+            var options = new FetchFormOptions(pathFormType){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a FormResource object

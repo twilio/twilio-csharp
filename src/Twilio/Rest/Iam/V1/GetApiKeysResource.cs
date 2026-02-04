@@ -108,6 +108,37 @@ namespace Twilio.Rest.Iam.V1
         }
         #endif
 
+        public static ResourceSetResponse<GetApiKeysResource> ReadWithHeaders(ReadGetApiKeysOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<GetApiKeysResource>.FromJson("keys", response.Content);
+            var records = new ResourceSet<GetApiKeysResource>(page, options, client);
+            return new ResourceSetResponse<GetApiKeysResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<GetApiKeysResource> ReadWithHeaders(
+            string accountSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadGetApiKeysOptions(accountSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<GetApiKeysResource>> ReadWithHeadersAsync(ReadGetApiKeysOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<GetApiKeysResource>.FromJson("keys", response.Content);
+            var records = new ResourceSet<GetApiKeysResource>(page, options, client);
+            return new ResourceSetResponse<GetApiKeysResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

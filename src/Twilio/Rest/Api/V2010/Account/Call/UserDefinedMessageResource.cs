@@ -116,6 +116,48 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
+
+        public static TwilioResponse<UserDefinedMessageResource> CreateWithHeaders(CreateUserDefinedMessageOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserDefinedMessageResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserDefinedMessageResource>> CreateWithHeadersAsync(CreateUserDefinedMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserDefinedMessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserDefinedMessageResource> CreateWithHeaders(
+            string pathCallSid,
+            string content,
+            string pathAccountSid = null,
+            string idempotencyKey = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserDefinedMessageOptions(pathCallSid, content){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserDefinedMessageResource>> CreateWithHeadersAsync(
+            string pathCallSid,
+            string content,
+            string pathAccountSid = null,
+            string idempotencyKey = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserDefinedMessageOptions(pathCallSid, content){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a UserDefinedMessageResource object

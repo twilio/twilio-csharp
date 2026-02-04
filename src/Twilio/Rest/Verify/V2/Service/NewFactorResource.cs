@@ -294,6 +294,44 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<NewFactorResource> CreateWithHeaders(CreateNewFactorOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewFactorResource>> CreateWithHeadersAsync(CreateNewFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewFactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewFactorResource> CreateWithHeaders(
+            string pathServiceSid,
+            NewFactorResource.CreateNewPasskeysFactorRequest createNewPasskeysFactorRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewFactorOptions(pathServiceSid, createNewPasskeysFactorRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewFactorResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            NewFactorResource.CreateNewPasskeysFactorRequest createNewPasskeysFactorRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewFactorOptions(pathServiceSid, createNewPasskeysFactorRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewFactorResource object

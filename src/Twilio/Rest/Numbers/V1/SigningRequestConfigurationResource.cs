@@ -97,6 +97,40 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
+
+        public static TwilioResponse<SigningRequestConfigurationResource> CreateWithHeaders(CreateSigningRequestConfigurationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SigningRequestConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SigningRequestConfigurationResource>> CreateWithHeadersAsync(CreateSigningRequestConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SigningRequestConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SigningRequestConfigurationResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSigningRequestConfigurationOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SigningRequestConfigurationResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSigningRequestConfigurationOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client)
         {
@@ -176,6 +210,38 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
+        public static ResourceSetResponse<SigningRequestConfigurationResource> ReadWithHeaders(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+            var records = new ResourceSet<SigningRequestConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<SigningRequestConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SigningRequestConfigurationResource> ReadWithHeaders(
+            string country = null,
+            string product = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSigningRequestConfigurationOptions(){ Country = country, Product = product, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SigningRequestConfigurationResource>> ReadWithHeadersAsync(ReadSigningRequestConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SigningRequestConfigurationResource>.FromJson("configurations", response.Content);
+            var records = new ResourceSet<SigningRequestConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<SigningRequestConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

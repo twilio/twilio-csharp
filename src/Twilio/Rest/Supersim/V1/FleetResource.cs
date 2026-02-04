@@ -144,6 +144,58 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+
+        public static TwilioResponse<FleetResource> CreateWithHeaders(CreateFleetOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> CreateWithHeadersAsync(CreateFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FleetResource> CreateWithHeaders(
+            string networkAccessProfile,
+            string uniqueName = null,
+            bool? dataEnabled = null,
+            int? dataLimit = null,
+            Uri ipCommandsUrl = null,
+            Twilio.Http.HttpMethod ipCommandsMethod = null,
+            bool? smsCommandsEnabled = null,
+            Uri smsCommandsUrl = null,
+            Twilio.Http.HttpMethod smsCommandsMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFleetOptions(networkAccessProfile){  UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> CreateWithHeadersAsync(
+            string networkAccessProfile,
+            string uniqueName = null,
+            bool? dataEnabled = null,
+            int? dataLimit = null,
+            Uri ipCommandsUrl = null,
+            Twilio.Http.HttpMethod ipCommandsMethod = null,
+            bool? smsCommandsEnabled = null,
+            Uri smsCommandsUrl = null,
+            Twilio.Http.HttpMethod smsCommandsMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFleetOptions(networkAccessProfile){  UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchFleetOptions options, ITwilioRestClient client)
         {
@@ -206,6 +258,39 @@ namespace Twilio.Rest.Supersim.V1
         {
             var options = new FetchFleetOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<FleetResource> FetchWithHeaders(FetchFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> FetchWithHeadersAsync(FetchFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FleetResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFleetOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFleetOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -283,6 +368,37 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<FleetResource> ReadWithHeaders(ReadFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FleetResource>.FromJson("fleets", response.Content);
+            var records = new ResourceSet<FleetResource>(page, options, client);
+            return new ResourceSetResponse<FleetResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FleetResource> ReadWithHeaders(
+            string networkAccessProfile = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFleetOptions(){ NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FleetResource>> ReadWithHeadersAsync(ReadFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FleetResource>.FromJson("fleets", response.Content);
+            var records = new ResourceSet<FleetResource>(page, options, client);
+            return new ResourceSetResponse<FleetResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -426,6 +542,57 @@ namespace Twilio.Rest.Supersim.V1
         {
             var options = new UpdateFleetOptions(pathSid){ UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FleetResource> UpdateWithHeaders(UpdateFleetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> UpdateWithHeadersAsync(UpdateFleetOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FleetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FleetResource> UpdateWithHeaders(
+            string pathSid,
+            string uniqueName = null,
+            string networkAccessProfile = null,
+            Uri ipCommandsUrl = null,
+            Twilio.Http.HttpMethod ipCommandsMethod = null,
+            Uri smsCommandsUrl = null,
+            Twilio.Http.HttpMethod smsCommandsMethod = null,
+            int? dataLimit = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFleetOptions(pathSid){ UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FleetResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string uniqueName = null,
+            string networkAccessProfile = null,
+            Uri ipCommandsUrl = null,
+            Twilio.Http.HttpMethod ipCommandsMethod = null,
+            Uri smsCommandsUrl = null,
+            Twilio.Http.HttpMethod smsCommandsMethod = null,
+            int? dataLimit = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFleetOptions(pathSid){ UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, IpCommandsUrl = ipCommandsUrl, IpCommandsMethod = ipCommandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod, DataLimit = dataLimit };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

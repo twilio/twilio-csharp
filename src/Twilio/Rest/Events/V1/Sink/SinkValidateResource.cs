@@ -106,6 +106,44 @@ namespace Twilio.Rest.Events.V1.Sink
         }
         #endif
 
+
+        public static TwilioResponse<SinkValidateResource> CreateWithHeaders(CreateSinkValidateOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkValidateResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkValidateResource>> CreateWithHeadersAsync(CreateSinkValidateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkValidateResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SinkValidateResource> CreateWithHeaders(
+            string pathSid,
+            string testId,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSinkValidateOptions(pathSid, testId){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkValidateResource>> CreateWithHeadersAsync(
+            string pathSid,
+            string testId,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSinkValidateOptions(pathSid, testId){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a SinkValidateResource object

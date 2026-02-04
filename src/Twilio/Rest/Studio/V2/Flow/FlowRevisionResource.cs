@@ -115,6 +115,40 @@ namespace Twilio.Rest.Studio.V2.Flow
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<FlowRevisionResource> FetchWithHeaders(FetchFlowRevisionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowRevisionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowRevisionResource>> FetchWithHeadersAsync(FetchFlowRevisionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowRevisionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FlowRevisionResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathRevision, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowRevisionOptions(pathSid, pathRevision){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowRevisionResource>> FetchWithHeadersAsync(string pathSid, string pathRevision, ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowRevisionOptions(pathSid, pathRevision){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadFlowRevisionOptions options, ITwilioRestClient client)
         {
@@ -192,6 +226,37 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
         #endif
 
+        public static ResourceSetResponse<FlowRevisionResource> ReadWithHeaders(ReadFlowRevisionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FlowRevisionResource>.FromJson("revisions", response.Content);
+            var records = new ResourceSet<FlowRevisionResource>(page, options, client);
+            return new ResourceSetResponse<FlowRevisionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FlowRevisionResource> ReadWithHeaders(
+            string pathSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFlowRevisionOptions(pathSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FlowRevisionResource>> ReadWithHeadersAsync(ReadFlowRevisionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FlowRevisionResource>.FromJson("revisions", response.Content);
+            var records = new ResourceSet<FlowRevisionResource>(page, options, client);
+            return new ResourceSetResponse<FlowRevisionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

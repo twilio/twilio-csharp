@@ -112,6 +112,48 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<PluginConfigurationResource> CreateWithHeaders(CreatePluginConfigurationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginConfigurationResource>> CreateWithHeadersAsync(CreatePluginConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PluginConfigurationResource> CreateWithHeaders(
+            string name,
+            List<object> plugins = null,
+            string description = null,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginConfigurationOptions(name){  Plugins = plugins, Description = description, FlexMetadata = flexMetadata };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginConfigurationResource>> CreateWithHeadersAsync(
+            string name,
+            List<object> plugins = null,
+            string description = null,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginConfigurationOptions(name){  Plugins = plugins, Description = description, FlexMetadata = flexMetadata };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchPluginConfigurationOptions options, ITwilioRestClient client)
         {
@@ -177,6 +219,40 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchPluginConfigurationOptions(pathSid){ FlexMetadata = flexMetadata };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<PluginConfigurationResource> FetchWithHeaders(FetchPluginConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginConfigurationResource>> FetchWithHeadersAsync(FetchPluginConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PluginConfigurationResource> FetchWithHeaders(
+                    string pathSid, 
+                    string flexMetadata = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginConfigurationOptions(pathSid){ FlexMetadata = flexMetadata };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginConfigurationResource>> FetchWithHeadersAsync(string pathSid, string flexMetadata = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginConfigurationOptions(pathSid){ FlexMetadata = flexMetadata };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -254,6 +330,37 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<PluginConfigurationResource> ReadWithHeaders(ReadPluginConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PluginConfigurationResource>.FromJson("configurations", response.Content);
+            var records = new ResourceSet<PluginConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<PluginConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PluginConfigurationResource> ReadWithHeaders(
+            string flexMetadata = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPluginConfigurationOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PluginConfigurationResource>> ReadWithHeadersAsync(ReadPluginConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PluginConfigurationResource>.FromJson("configurations", response.Content);
+            var records = new ResourceSet<PluginConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<PluginConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

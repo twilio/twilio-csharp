@@ -107,7 +107,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -147,6 +147,38 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -221,6 +253,41 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<FactorResource> FetchWithHeaders(FetchFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FactorResource>> FetchWithHeadersAsync(FetchFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FactorResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathIdentity, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FactorResource>> FetchWithHeadersAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -306,6 +373,38 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         }
         #endif
 
+        public static ResourceSetResponse<FactorResource> ReadWithHeaders(ReadFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FactorResource>.FromJson("factors", response.Content);
+            var records = new ResourceSet<FactorResource>(page, options, client);
+            return new ResourceSetResponse<FactorResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FactorResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFactorOptions(pathServiceSid, pathIdentity){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FactorResource>> ReadWithHeadersAsync(ReadFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FactorResource>.FromJson("factors", response.Content);
+            var records = new ResourceSet<FactorResource>(page, options, client);
+            return new ResourceSetResponse<FactorResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -469,6 +568,65 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, ConfigNotificationPlatform = configNotificationPlatform };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FactorResource> UpdateWithHeaders(UpdateFactorOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FactorResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FactorResource>> UpdateWithHeadersAsync(UpdateFactorOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FactorResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FactorResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathSid,
+            string authPayload = null,
+            string friendlyName = null,
+            string configNotificationToken = null,
+            string configSdkVersion = null,
+            int? configTimeStep = null,
+            int? configSkew = null,
+            int? configCodeLength = null,
+            FactorResource.TotpAlgorithmsEnum configAlg = null,
+            string configNotificationPlatform = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, ConfigNotificationPlatform = configNotificationPlatform };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FactorResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathSid,
+            string authPayload = null,
+            string friendlyName = null,
+            string configNotificationToken = null,
+            string configSdkVersion = null,
+            int? configTimeStep = null,
+            int? configSkew = null,
+            int? configCodeLength = null,
+            FactorResource.TotpAlgorithmsEnum configAlg = null,
+            string configNotificationPlatform = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg, ConfigNotificationPlatform = configNotificationPlatform };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

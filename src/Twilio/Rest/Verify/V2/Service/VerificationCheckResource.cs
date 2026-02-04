@@ -142,6 +142,54 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         #endif
 
+
+        public static TwilioResponse<VerificationCheckResource> CreateWithHeaders(CreateVerificationCheckOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationCheckResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationCheckResource>> CreateWithHeadersAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationCheckResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<VerificationCheckResource> CreateWithHeaders(
+            string pathServiceSid,
+            string code = null,
+            string to = null,
+            string verificationSid = null,
+            string amount = null,
+            string payee = null,
+            string snaClientToken = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, SnaClientToken = snaClientToken };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationCheckResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string code = null,
+            string to = null,
+            string verificationSid = null,
+            string amount = null,
+            string payee = null,
+            string snaClientToken = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVerificationCheckOptions(pathServiceSid){  Code = code, To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee, SnaClientToken = snaClientToken };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a VerificationCheckResource object

@@ -110,6 +110,37 @@ namespace Twilio.Rest.Knowledge.V1.Knowledge
         }
         #endif
 
+        public static ResourceSetResponse<ChunkResource> ReadWithHeaders(ReadChunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ChunkResource>.FromJson("chunks", response.Content);
+            var records = new ResourceSet<ChunkResource>(page, options, client);
+            return new ResourceSetResponse<ChunkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ChunkResource> ReadWithHeaders(
+            string pathId,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadChunkOptions(pathId){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ChunkResource>> ReadWithHeadersAsync(ReadChunkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ChunkResource>.FromJson("chunks", response.Content);
+            var records = new ResourceSet<ChunkResource>(page, options, client);
+            return new ResourceSetResponse<ChunkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

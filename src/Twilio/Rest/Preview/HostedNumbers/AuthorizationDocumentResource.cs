@@ -136,6 +136,52 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
 
+
+        public static TwilioResponse<AuthorizationDocumentResource> CreateWithHeaders(CreateAuthorizationDocumentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> CreateWithHeadersAsync(CreateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AuthorizationDocumentResource> CreateWithHeaders(
+            List<string> hostedNumberOrderSids,
+            string addressSid,
+            string email,
+            string contactTitle,
+            string contactPhoneNumber,
+            List<string> ccEmails = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){  CcEmails = ccEmails };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> CreateWithHeadersAsync(
+            List<string> hostedNumberOrderSids,
+            string addressSid,
+            string email,
+            string contactTitle,
+            string contactPhoneNumber,
+            List<string> ccEmails = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){  CcEmails = ccEmails };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
@@ -198,6 +244,39 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             var options = new FetchAuthorizationDocumentOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AuthorizationDocumentResource> FetchWithHeaders(FetchAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> FetchWithHeadersAsync(FetchAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AuthorizationDocumentResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizationDocumentOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizationDocumentOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -279,6 +358,38 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
 
+        public static ResourceSetResponse<AuthorizationDocumentResource> ReadWithHeaders(ReadAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AuthorizationDocumentResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<AuthorizationDocumentResource>(page, options, client);
+            return new ResourceSetResponse<AuthorizationDocumentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AuthorizationDocumentResource> ReadWithHeaders(
+            string email = null,
+            AuthorizationDocumentResource.StatusEnum status = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAuthorizationDocumentOptions(){ Email = email, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AuthorizationDocumentResource>> ReadWithHeadersAsync(ReadAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AuthorizationDocumentResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<AuthorizationDocumentResource>(page, options, client);
+            return new ResourceSetResponse<AuthorizationDocumentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -422,6 +533,57 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             var options = new UpdateAuthorizationDocumentOptions(pathSid){ HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AuthorizationDocumentResource> UpdateWithHeaders(UpdateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> UpdateWithHeadersAsync(UpdateAuthorizationDocumentOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AuthorizationDocumentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AuthorizationDocumentResource> UpdateWithHeaders(
+            string pathSid,
+            List<string> hostedNumberOrderSids = null,
+            string addressSid = null,
+            string email = null,
+            List<string> ccEmails = null,
+            AuthorizationDocumentResource.StatusEnum status = null,
+            string contactTitle = null,
+            string contactPhoneNumber = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAuthorizationDocumentOptions(pathSid){ HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizationDocumentResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            List<string> hostedNumberOrderSids = null,
+            string addressSid = null,
+            string email = null,
+            List<string> ccEmails = null,
+            AuthorizationDocumentResource.StatusEnum status = null,
+            string contactTitle = null,
+            string contactPhoneNumber = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAuthorizationDocumentOptions(pathSid){ HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

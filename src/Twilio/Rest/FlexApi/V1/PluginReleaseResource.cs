@@ -104,6 +104,44 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<PluginReleaseResource> CreateWithHeaders(CreatePluginReleaseOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginReleaseResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginReleaseResource>> CreateWithHeadersAsync(CreatePluginReleaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginReleaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PluginReleaseResource> CreateWithHeaders(
+            string configurationId,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginReleaseOptions(configurationId){  FlexMetadata = flexMetadata };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginReleaseResource>> CreateWithHeadersAsync(
+            string configurationId,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePluginReleaseOptions(configurationId){  FlexMetadata = flexMetadata };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchPluginReleaseOptions options, ITwilioRestClient client)
         {
@@ -169,6 +207,40 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchPluginReleaseOptions(pathSid){ FlexMetadata = flexMetadata };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<PluginReleaseResource> FetchWithHeaders(FetchPluginReleaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginReleaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginReleaseResource>> FetchWithHeadersAsync(FetchPluginReleaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginReleaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PluginReleaseResource> FetchWithHeaders(
+                    string pathSid, 
+                    string flexMetadata = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginReleaseOptions(pathSid){ FlexMetadata = flexMetadata };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginReleaseResource>> FetchWithHeadersAsync(string pathSid, string flexMetadata = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPluginReleaseOptions(pathSid){ FlexMetadata = flexMetadata };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -246,6 +318,37 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<PluginReleaseResource> ReadWithHeaders(ReadPluginReleaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PluginReleaseResource>.FromJson("releases", response.Content);
+            var records = new ResourceSet<PluginReleaseResource>(page, options, client);
+            return new ResourceSetResponse<PluginReleaseResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PluginReleaseResource> ReadWithHeaders(
+            string flexMetadata = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPluginReleaseOptions(){ FlexMetadata = flexMetadata, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PluginReleaseResource>> ReadWithHeadersAsync(ReadPluginReleaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PluginReleaseResource>.FromJson("releases", response.Content);
+            var records = new ResourceSet<PluginReleaseResource>(page, options, client);
+            return new ResourceSetResponse<PluginReleaseResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

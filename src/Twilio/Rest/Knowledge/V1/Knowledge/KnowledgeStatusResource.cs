@@ -97,6 +97,39 @@ namespace Twilio.Rest.Knowledge.V1.Knowledge
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<KnowledgeStatusResource> FetchWithHeaders(FetchKnowledgeStatusOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeStatusResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeStatusResource>> FetchWithHeadersAsync(FetchKnowledgeStatusOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<KnowledgeStatusResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<KnowledgeStatusResource> FetchWithHeaders(
+                    string pathId, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchKnowledgeStatusOptions(pathId){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<KnowledgeStatusResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchKnowledgeStatusOptions(pathId){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a KnowledgeStatusResource object

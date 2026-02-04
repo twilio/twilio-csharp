@@ -123,6 +123,42 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
+
+        public static TwilioResponse<ReferralConversionResource> CreateWithHeaders(CreateReferralConversionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReferralConversionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReferralConversionResource>> CreateWithHeadersAsync(CreateReferralConversionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ReferralConversionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ReferralConversionResource> CreateWithHeaders(
+            ReferralConversionResource.CreateReferralConversionRequest createReferralConversionRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateReferralConversionOptions(createReferralConversionRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ReferralConversionResource>> CreateWithHeadersAsync(
+            ReferralConversionResource.CreateReferralConversionRequest createReferralConversionRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateReferralConversionOptions(createReferralConversionRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ReferralConversionResource object

@@ -97,6 +97,39 @@ namespace Twilio.Rest.Assistants.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SessionResource> FetchWithHeaders(FetchSessionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SessionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SessionResource>> FetchWithHeadersAsync(FetchSessionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SessionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SessionResource> FetchWithHeaders(
+                    string pathId, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSessionOptions(pathId){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SessionResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchSessionOptions(pathId){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadSessionOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,36 @@ namespace Twilio.Rest.Assistants.V1
         }
         #endif
 
+        public static ResourceSetResponse<SessionResource> ReadWithHeaders(ReadSessionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SessionResource>.FromJson("sessions", response.Content);
+            var records = new ResourceSet<SessionResource>(page, options, client);
+            return new ResourceSetResponse<SessionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SessionResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSessionOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SessionResource>> ReadWithHeadersAsync(ReadSessionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SessionResource>.FromJson("sessions", response.Content);
+            var records = new ResourceSet<SessionResource>(page, options, client);
+            return new ResourceSetResponse<SessionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

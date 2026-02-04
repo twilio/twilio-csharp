@@ -273,6 +273,42 @@ namespace Twilio.Rest.Iam.V1
         }
         #endif
 
+
+        public static TwilioResponse<OAuthAppResource> CreateWithHeaders(CreateOAuthAppOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OAuthAppResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OAuthAppResource>> CreateWithHeadersAsync(CreateOAuthAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OAuthAppResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<OAuthAppResource> CreateWithHeaders(
+            OAuthAppResource.IamV1AccountVendorOauthAppCreateRequest iamV1AccountVendorOauthAppCreateRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOAuthAppOptions(iamV1AccountVendorOauthAppCreateRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OAuthAppResource>> CreateWithHeadersAsync(
+            OAuthAppResource.IamV1AccountVendorOauthAppCreateRequest iamV1AccountVendorOauthAppCreateRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOAuthAppOptions(iamV1AccountVendorOauthAppCreateRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete OAuthApp parameters </param>
@@ -303,7 +339,7 @@ namespace Twilio.Rest.Iam.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -316,7 +352,7 @@ namespace Twilio.Rest.Iam.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -339,6 +375,38 @@ namespace Twilio.Rest.Iam.V1
         {
             var options = new DeleteOAuthAppOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteOAuthAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteOAuthAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOAuthAppOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOAuthAppOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -413,6 +481,45 @@ namespace Twilio.Rest.Iam.V1
         {
             var options = new UpdateOAuthAppOptions(pathSid, iamV1AccountVendorOauthAppUpdateRequest){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<OAuthAppResource> UpdateWithHeaders(UpdateOAuthAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OAuthAppResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OAuthAppResource>> UpdateWithHeadersAsync(UpdateOAuthAppOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OAuthAppResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<OAuthAppResource> UpdateWithHeaders(
+            string pathSid,
+            OAuthAppResource.IamV1AccountVendorOauthAppUpdateRequest iamV1AccountVendorOauthAppUpdateRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateOAuthAppOptions(pathSid, iamV1AccountVendorOauthAppUpdateRequest){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OAuthAppResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            OAuthAppResource.IamV1AccountVendorOauthAppUpdateRequest iamV1AccountVendorOauthAppUpdateRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateOAuthAppOptions(pathSid, iamV1AccountVendorOauthAppUpdateRequest){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -97,6 +97,39 @@ namespace Twilio.Rest.Monitor.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AlertResource> FetchWithHeaders(FetchAlertOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AlertResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AlertResource>> FetchWithHeadersAsync(FetchAlertOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AlertResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AlertResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAlertOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AlertResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAlertOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAlertOptions options, ITwilioRestClient client)
         {
@@ -180,6 +213,39 @@ namespace Twilio.Rest.Monitor.V1
         }
         #endif
 
+        public static ResourceSetResponse<AlertResource> ReadWithHeaders(ReadAlertOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AlertResource>.FromJson("alerts", response.Content);
+            var records = new ResourceSet<AlertResource>(page, options, client);
+            return new ResourceSetResponse<AlertResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AlertResource> ReadWithHeaders(
+            string logLevel = null,
+            DateTime? startDate = null,
+            DateTime? endDate = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAlertOptions(){ LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AlertResource>> ReadWithHeadersAsync(ReadAlertOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AlertResource>.FromJson("alerts", response.Content);
+            var records = new ResourceSet<AlertResource>(page, options, client);
+            return new ResourceSetResponse<AlertResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

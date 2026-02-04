@@ -118,6 +118,41 @@ namespace Twilio.Rest.Numbers.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PortingPortabilityResource> FetchWithHeaders(FetchPortingPortabilityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PortingPortabilityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PortingPortabilityResource>> FetchWithHeadersAsync(FetchPortingPortabilityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PortingPortabilityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PortingPortabilityResource> FetchWithHeaders(
+                    Types.PhoneNumber pathPhoneNumber, 
+                    string targetAccountSid = null, 
+                    string addressSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PortingPortabilityResource>> FetchWithHeadersAsync(Types.PhoneNumber pathPhoneNumber, string targetAccountSid = null, string addressSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPortingPortabilityOptions(pathPhoneNumber){ TargetAccountSid = targetAccountSid,AddressSid = addressSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PortingPortabilityResource object

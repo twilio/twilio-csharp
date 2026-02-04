@@ -118,6 +118,39 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         }
         #endif
 
+        public static ResourceSetResponse<SentenceResource> ReadWithHeaders(ReadSentenceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SentenceResource>.FromJson("sentences", response.Content);
+            var records = new ResourceSet<SentenceResource>(page, options, client);
+            return new ResourceSetResponse<SentenceResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SentenceResource> ReadWithHeaders(
+            string pathTranscriptSid,
+            bool? redacted = null,
+            bool? wordTimestamps = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSentenceOptions(pathTranscriptSid){ Redacted = redacted, WordTimestamps = wordTimestamps, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SentenceResource>> ReadWithHeadersAsync(ReadSentenceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SentenceResource>.FromJson("sentences", response.Content);
+            var records = new ResourceSet<SentenceResource>(page, options, client);
+            return new ResourceSetResponse<SentenceResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

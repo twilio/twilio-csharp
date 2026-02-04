@@ -128,6 +128,39 @@ namespace Twilio.Rest.Insights.V1.Call
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AnnotationResource> FetchWithHeaders(FetchAnnotationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnnotationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnnotationResource>> FetchWithHeadersAsync(FetchAnnotationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnnotationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AnnotationResource> FetchWithHeaders(
+                    string pathCallSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAnnotationOptions(pathCallSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnnotationResource>> FetchWithHeadersAsync(string pathCallSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAnnotationOptions(pathCallSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateAnnotationOptions options, ITwilioRestClient client)
         {
@@ -223,6 +256,57 @@ namespace Twilio.Rest.Insights.V1.Call
         {
             var options = new UpdateAnnotationOptions(pathCallSid){ AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssues = qualityIssues, Spam = spam, CallScore = callScore, Comment = comment, Incident = incident };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AnnotationResource> UpdateWithHeaders(UpdateAnnotationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnnotationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnnotationResource>> UpdateWithHeadersAsync(UpdateAnnotationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AnnotationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AnnotationResource> UpdateWithHeaders(
+            string pathCallSid,
+            AnnotationResource.AnsweredByEnum answeredBy = null,
+            AnnotationResource.ConnectivityIssueEnum connectivityIssue = null,
+            string qualityIssues = null,
+            bool? spam = null,
+            int? callScore = null,
+            string comment = null,
+            string incident = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAnnotationOptions(pathCallSid){ AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssues = qualityIssues, Spam = spam, CallScore = callScore, Comment = comment, Incident = incident };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AnnotationResource>> UpdateWithHeadersAsync(
+            string pathCallSid,
+            AnnotationResource.AnsweredByEnum answeredBy = null,
+            AnnotationResource.ConnectivityIssueEnum connectivityIssue = null,
+            string qualityIssues = null,
+            bool? spam = null,
+            int? callScore = null,
+            string comment = null,
+            string incident = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAnnotationOptions(pathCallSid){ AnsweredBy = answeredBy, ConnectivityIssue = connectivityIssue, QualityIssues = qualityIssues, Spam = spam, CallScore = callScore, Comment = comment, Incident = incident };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

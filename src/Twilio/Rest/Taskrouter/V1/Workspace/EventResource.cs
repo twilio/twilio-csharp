@@ -102,6 +102,40 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<EventResource> FetchWithHeaders(FetchEventOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EventResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EventResource>> FetchWithHeadersAsync(FetchEventOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EventResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EventResource> FetchWithHeaders(
+                    string pathWorkspaceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEventOptions(pathWorkspaceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EventResource>> FetchWithHeadersAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchEventOptions(pathWorkspaceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadEventOptions options, ITwilioRestClient client)
         {
@@ -223,6 +257,48 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
         #endif
 
+        public static ResourceSetResponse<EventResource> ReadWithHeaders(ReadEventOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EventResource>.FromJson("events", response.Content);
+            var records = new ResourceSet<EventResource>(page, options, client);
+            return new ResourceSetResponse<EventResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EventResource> ReadWithHeaders(
+            string pathWorkspaceSid,
+            DateTime? endDate = null,
+            string eventType = null,
+            int? minutes = null,
+            string reservationSid = null,
+            DateTime? startDate = null,
+            string taskQueueSid = null,
+            string taskSid = null,
+            string workerSid = null,
+            string workflowSid = null,
+            string taskChannel = null,
+            string sid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEventOptions(pathWorkspaceSid){ EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, TaskChannel = taskChannel, Sid = sid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EventResource>> ReadWithHeadersAsync(ReadEventOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EventResource>.FromJson("events", response.Content);
+            var records = new ResourceSet<EventResource>(page, options, client);
+            return new ResourceSetResponse<EventResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

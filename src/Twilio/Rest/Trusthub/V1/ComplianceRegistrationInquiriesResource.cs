@@ -306,6 +306,118 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+
+        public static TwilioResponse<ComplianceRegistrationInquiriesResource> CreateWithHeaders(CreateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceRegistrationInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceRegistrationInquiriesResource>> CreateWithHeadersAsync(CreateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceRegistrationInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceRegistrationInquiriesResource> CreateWithHeaders(
+            ComplianceRegistrationInquiriesResource.EndUserTypeEnum endUserType,
+            ComplianceRegistrationInquiriesResource.PhoneNumberTypeEnum phoneNumberType,
+            ComplianceRegistrationInquiriesResource.BusinessIdentityTypeEnum businessIdentityType = null,
+            ComplianceRegistrationInquiriesResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
+            string businessLegalName = null,
+            string notificationEmail = null,
+            bool? acceptedNotificationReceipt = null,
+            string businessRegistrationNumber = null,
+            string businessWebsiteUrl = null,
+            string friendlyName = null,
+            string authorizedRepresentative1FirstName = null,
+            string authorizedRepresentative1LastName = null,
+            string authorizedRepresentative1Phone = null,
+            string authorizedRepresentative1Email = null,
+            string authorizedRepresentative1DateOfBirth = null,
+            string addressStreet = null,
+            string addressStreetSecondary = null,
+            string addressCity = null,
+            string addressSubdivision = null,
+            string addressPostalCode = null,
+            string addressCountryCode = null,
+            string emergencyAddressStreet = null,
+            string emergencyAddressStreetSecondary = null,
+            string emergencyAddressCity = null,
+            string emergencyAddressSubdivision = null,
+            string emergencyAddressPostalCode = null,
+            string emergencyAddressCountryCode = null,
+            bool? useAddressAsEmergencyAddress = null,
+            string fileName = null,
+            string file = null,
+            string firstName = null,
+            string lastName = null,
+            string dateOfBirth = null,
+            string individualEmail = null,
+            string individualPhone = null,
+            bool? isIsvEmbed = null,
+            string isvRegisteringForSelfOrTenant = null,
+            string statusCallbackUrl = null,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl, ThemeSetId = themeSetId };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceRegistrationInquiriesResource>> CreateWithHeadersAsync(
+            ComplianceRegistrationInquiriesResource.EndUserTypeEnum endUserType,
+            ComplianceRegistrationInquiriesResource.PhoneNumberTypeEnum phoneNumberType,
+            ComplianceRegistrationInquiriesResource.BusinessIdentityTypeEnum businessIdentityType = null,
+            ComplianceRegistrationInquiriesResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
+            string businessLegalName = null,
+            string notificationEmail = null,
+            bool? acceptedNotificationReceipt = null,
+            string businessRegistrationNumber = null,
+            string businessWebsiteUrl = null,
+            string friendlyName = null,
+            string authorizedRepresentative1FirstName = null,
+            string authorizedRepresentative1LastName = null,
+            string authorizedRepresentative1Phone = null,
+            string authorizedRepresentative1Email = null,
+            string authorizedRepresentative1DateOfBirth = null,
+            string addressStreet = null,
+            string addressStreetSecondary = null,
+            string addressCity = null,
+            string addressSubdivision = null,
+            string addressPostalCode = null,
+            string addressCountryCode = null,
+            string emergencyAddressStreet = null,
+            string emergencyAddressStreetSecondary = null,
+            string emergencyAddressCity = null,
+            string emergencyAddressSubdivision = null,
+            string emergencyAddressPostalCode = null,
+            string emergencyAddressCountryCode = null,
+            bool? useAddressAsEmergencyAddress = null,
+            string fileName = null,
+            string file = null,
+            string firstName = null,
+            string lastName = null,
+            string dateOfBirth = null,
+            string individualEmail = null,
+            string individualPhone = null,
+            bool? isIsvEmbed = null,
+            string isvRegisteringForSelfOrTenant = null,
+            string statusCallbackUrl = null,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceRegistrationInquiriesOptions(endUserType, phoneNumberType){  BusinessIdentityType = businessIdentityType, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessLegalName = businessLegalName, NotificationEmail = notificationEmail, AcceptedNotificationReceipt = acceptedNotificationReceipt, BusinessRegistrationNumber = businessRegistrationNumber, BusinessWebsiteUrl = businessWebsiteUrl, FriendlyName = friendlyName, AuthorizedRepresentative1FirstName = authorizedRepresentative1FirstName, AuthorizedRepresentative1LastName = authorizedRepresentative1LastName, AuthorizedRepresentative1Phone = authorizedRepresentative1Phone, AuthorizedRepresentative1Email = authorizedRepresentative1Email, AuthorizedRepresentative1DateOfBirth = authorizedRepresentative1DateOfBirth, AddressStreet = addressStreet, AddressStreetSecondary = addressStreetSecondary, AddressCity = addressCity, AddressSubdivision = addressSubdivision, AddressPostalCode = addressPostalCode, AddressCountryCode = addressCountryCode, EmergencyAddressStreet = emergencyAddressStreet, EmergencyAddressStreetSecondary = emergencyAddressStreetSecondary, EmergencyAddressCity = emergencyAddressCity, EmergencyAddressSubdivision = emergencyAddressSubdivision, EmergencyAddressPostalCode = emergencyAddressPostalCode, EmergencyAddressCountryCode = emergencyAddressCountryCode, UseAddressAsEmergencyAddress = useAddressAsEmergencyAddress, FileName = fileName, File = file, FirstName = firstName, LastName = lastName, DateOfBirth = dateOfBirth, IndividualEmail = individualEmail, IndividualPhone = individualPhone, IsIsvEmbed = isIsvEmbed, IsvRegisteringForSelfOrTenant = isvRegisteringForSelfOrTenant, StatusCallbackUrl = statusCallbackUrl, ThemeSetId = themeSetId };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client)
         {
@@ -381,6 +493,47 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceRegistrationInquiriesResource> UpdateWithHeaders(UpdateComplianceRegistrationInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceRegistrationInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceRegistrationInquiriesResource>> UpdateWithHeadersAsync(UpdateComplianceRegistrationInquiriesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceRegistrationInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceRegistrationInquiriesResource> UpdateWithHeaders(
+            string pathRegistrationId,
+            bool? isIsvEmbed = null,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceRegistrationInquiriesResource>> UpdateWithHeadersAsync(
+            string pathRegistrationId,
+            bool? isIsvEmbed = null,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceRegistrationInquiriesOptions(pathRegistrationId){ IsIsvEmbed = isIsvEmbed, ThemeSetId = themeSetId };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

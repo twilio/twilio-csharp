@@ -94,7 +94,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -130,6 +130,38 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new DeleteSimOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSimOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSimOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -194,6 +226,39 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new FetchSimOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SimResource> FetchWithHeaders(FetchSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SimResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SimResource>> FetchWithHeadersAsync(FetchSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SimResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SimResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSimOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SimResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSimOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -287,6 +352,41 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
 
+        public static ResourceSetResponse<SimResource> ReadWithHeaders(ReadSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SimResource>.FromJson("sims", response.Content);
+            var records = new ResourceSet<SimResource>(page, options, client);
+            return new ResourceSetResponse<SimResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SimResource> ReadWithHeaders(
+            SimResource.StatusEnum status = null,
+            string iccid = null,
+            string ratePlan = null,
+            string eId = null,
+            string simRegistrationCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSimOptions(){ Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SimResource>> ReadWithHeadersAsync(ReadSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SimResource>.FromJson("sims", response.Content);
+            var records = new ResourceSet<SimResource>(page, options, client);
+            return new ResourceSetResponse<SimResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -474,6 +574,79 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus, AccountSid = accountSid };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SimResource> UpdateWithHeaders(UpdateSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SimResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SimResource>> UpdateWithHeadersAsync(UpdateSimOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SimResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SimResource> UpdateWithHeaders(
+            string pathSid,
+            string uniqueName = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            string friendlyName = null,
+            string ratePlan = null,
+            SimResource.StatusEnum status = null,
+            Twilio.Http.HttpMethod commandsCallbackMethod = null,
+            Uri commandsCallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            SimResource.ResetStatusEnum resetStatus = null,
+            string accountSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus, AccountSid = accountSid };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SimResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string uniqueName = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            string friendlyName = null,
+            string ratePlan = null,
+            SimResource.StatusEnum status = null,
+            Twilio.Http.HttpMethod commandsCallbackMethod = null,
+            Uri commandsCallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            SimResource.ResetStatusEnum resetStatus = null,
+            string accountSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSimOptions(pathSid){ UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus, AccountSid = accountSid };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -97,6 +97,39 @@ namespace Twilio.Rest.Bulkexports.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ExportConfigurationResource> FetchWithHeaders(FetchExportConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportConfigurationResource>> FetchWithHeadersAsync(FetchExportConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ExportConfigurationResource> FetchWithHeaders(
+                    string pathResourceType, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchExportConfigurationOptions(pathResourceType){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportConfigurationResource>> FetchWithHeadersAsync(string pathResourceType, ITwilioRestClient client = null)
+        {
+            var options = new FetchExportConfigurationOptions(pathResourceType){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateExportConfigurationOptions options, ITwilioRestClient client)
         {
@@ -176,6 +209,49 @@ namespace Twilio.Rest.Bulkexports.V1
         {
             var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ExportConfigurationResource> UpdateWithHeaders(UpdateExportConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportConfigurationResource>> UpdateWithHeadersAsync(UpdateExportConfigurationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ExportConfigurationResource> UpdateWithHeaders(
+            string pathResourceType,
+            bool? enabled = null,
+            Uri webhookUrl = null,
+            string webhookMethod = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportConfigurationResource>> UpdateWithHeadersAsync(
+            string pathResourceType,
+            bool? enabled = null,
+            Uri webhookUrl = null,
+            string webhookMethod = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateExportConfigurationOptions(pathResourceType){ Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

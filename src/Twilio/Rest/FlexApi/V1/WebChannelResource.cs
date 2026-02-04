@@ -131,6 +131,52 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<WebChannelResource> CreateWithHeaders(CreateWebChannelOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> CreateWithHeadersAsync(CreateWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WebChannelResource> CreateWithHeaders(
+            string flexFlowSid,
+            string identity,
+            string customerFriendlyName,
+            string chatFriendlyName,
+            string chatUniqueName = null,
+            string preEngagementData = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWebChannelOptions(flexFlowSid, identity, customerFriendlyName, chatFriendlyName){  ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> CreateWithHeadersAsync(
+            string flexFlowSid,
+            string identity,
+            string customerFriendlyName,
+            string chatFriendlyName,
+            string chatUniqueName = null,
+            string preEngagementData = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWebChannelOptions(flexFlowSid, identity, customerFriendlyName, chatFriendlyName){  ChatUniqueName = chatUniqueName, PreEngagementData = preEngagementData };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete WebChannel parameters </param>
@@ -161,7 +207,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -174,7 +220,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -197,6 +243,38 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new DeleteWebChannelOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWebChannelOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWebChannelOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -261,6 +339,39 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchWebChannelOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<WebChannelResource> FetchWithHeaders(FetchWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> FetchWithHeadersAsync(FetchWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WebChannelResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWebChannelOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchWebChannelOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -334,6 +445,36 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<WebChannelResource> ReadWithHeaders(ReadWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<WebChannelResource>.FromJson("flex_chat_channels", response.Content);
+            var records = new ResourceSet<WebChannelResource>(page, options, client);
+            return new ResourceSetResponse<WebChannelResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<WebChannelResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadWebChannelOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<WebChannelResource>> ReadWithHeadersAsync(ReadWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<WebChannelResource>.FromJson("flex_chat_channels", response.Content);
+            var records = new ResourceSet<WebChannelResource>(page, options, client);
+            return new ResourceSetResponse<WebChannelResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -457,6 +598,47 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateWebChannelOptions(pathSid){ ChatStatus = chatStatus, PostEngagementData = postEngagementData };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<WebChannelResource> UpdateWithHeaders(UpdateWebChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> UpdateWithHeadersAsync(UpdateWebChannelOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebChannelResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WebChannelResource> UpdateWithHeaders(
+            string pathSid,
+            WebChannelResource.ChatStatusEnum chatStatus = null,
+            string postEngagementData = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWebChannelOptions(pathSid){ ChatStatus = chatStatus, PostEngagementData = postEngagementData };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebChannelResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            WebChannelResource.ChatStatusEnum chatStatus = null,
+            string postEngagementData = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWebChannelOptions(pathSid){ ChatStatus = chatStatus, PostEngagementData = postEngagementData };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

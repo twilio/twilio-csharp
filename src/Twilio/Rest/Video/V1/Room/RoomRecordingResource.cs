@@ -122,7 +122,7 @@ namespace Twilio.Rest.Video.V1.Room
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Video.V1.Room
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -160,6 +160,38 @@ namespace Twilio.Rest.Video.V1.Room
         {
             var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -229,6 +261,40 @@ namespace Twilio.Rest.Video.V1.Room
         {
             var options = new FetchRoomRecordingOptions(pathRoomSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<RoomRecordingResource> FetchWithHeaders(FetchRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoomRecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoomRecordingResource>> FetchWithHeadersAsync(FetchRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoomRecordingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RoomRecordingResource> FetchWithHeaders(
+                    string pathRoomSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRoomRecordingOptions(pathRoomSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoomRecordingResource>> FetchWithHeadersAsync(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRoomRecordingOptions(pathRoomSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -324,6 +390,41 @@ namespace Twilio.Rest.Video.V1.Room
         }
         #endif
 
+        public static ResourceSetResponse<RoomRecordingResource> ReadWithHeaders(ReadRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RoomRecordingResource>.FromJson("recordings", response.Content);
+            var records = new ResourceSet<RoomRecordingResource>(page, options, client);
+            return new ResourceSetResponse<RoomRecordingResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RoomRecordingResource> ReadWithHeaders(
+            string pathRoomSid,
+            RoomRecordingResource.StatusEnum status = null,
+            string sourceSid = null,
+            DateTime? dateCreatedAfter = null,
+            DateTime? dateCreatedBefore = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRoomRecordingOptions(pathRoomSid){ Status = status, SourceSid = sourceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RoomRecordingResource>> ReadWithHeadersAsync(ReadRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RoomRecordingResource>.FromJson("recordings", response.Content);
+            var records = new ResourceSet<RoomRecordingResource>(page, options, client);
+            return new ResourceSetResponse<RoomRecordingResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

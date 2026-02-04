@@ -195,6 +195,74 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<FlexFlowResource> CreateWithHeaders(CreateFlexFlowOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> CreateWithHeadersAsync(CreateFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlexFlowResource> CreateWithHeaders(
+            string friendlyName,
+            string chatServiceSid,
+            FlexFlowResource.ChannelTypeEnum channelType,
+            string contactIdentity = null,
+            bool? enabled = null,
+            FlexFlowResource.IntegrationTypeEnum integrationType = null,
+            string integrationFlowSid = null,
+            Uri integrationUrl = null,
+            string integrationWorkspaceSid = null,
+            string integrationWorkflowSid = null,
+            string integrationChannel = null,
+            int? integrationTimeout = null,
+            int? integrationPriority = null,
+            bool? integrationCreationOnMessage = null,
+            bool? longLived = null,
+            bool? janitorEnabled = null,
+            int? integrationRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){  ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string chatServiceSid,
+            FlexFlowResource.ChannelTypeEnum channelType,
+            string contactIdentity = null,
+            bool? enabled = null,
+            FlexFlowResource.IntegrationTypeEnum integrationType = null,
+            string integrationFlowSid = null,
+            Uri integrationUrl = null,
+            string integrationWorkspaceSid = null,
+            string integrationWorkflowSid = null,
+            string integrationChannel = null,
+            int? integrationTimeout = null,
+            int? integrationPriority = null,
+            bool? integrationCreationOnMessage = null,
+            bool? longLived = null,
+            bool? janitorEnabled = null,
+            int? integrationRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){  ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete FlexFlow parameters </param>
@@ -225,7 +293,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -238,7 +306,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -261,6 +329,38 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new DeleteFlexFlowOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFlexFlowOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFlexFlowOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -325,6 +425,39 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchFlexFlowOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<FlexFlowResource> FetchWithHeaders(FetchFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> FetchWithHeadersAsync(FetchFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FlexFlowResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFlexFlowOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFlexFlowOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -402,6 +535,37 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<FlexFlowResource> ReadWithHeaders(ReadFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FlexFlowResource>.FromJson("flex_flows", response.Content);
+            var records = new ResourceSet<FlexFlowResource>(page, options, client);
+            return new ResourceSetResponse<FlexFlowResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FlexFlowResource> ReadWithHeaders(
+            string friendlyName = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFlexFlowOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FlexFlowResource>> ReadWithHeadersAsync(ReadFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FlexFlowResource>.FromJson("flex_flows", response.Content);
+            var records = new ResourceSet<FlexFlowResource>(page, options, client);
+            return new ResourceSetResponse<FlexFlowResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -585,6 +749,77 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateFlexFlowOptions(pathSid){ FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FlexFlowResource> UpdateWithHeaders(UpdateFlexFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> UpdateWithHeadersAsync(UpdateFlexFlowOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlexFlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlexFlowResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            string chatServiceSid = null,
+            FlexFlowResource.ChannelTypeEnum channelType = null,
+            string contactIdentity = null,
+            bool? enabled = null,
+            FlexFlowResource.IntegrationTypeEnum integrationType = null,
+            string integrationFlowSid = null,
+            Uri integrationUrl = null,
+            string integrationWorkspaceSid = null,
+            string integrationWorkflowSid = null,
+            string integrationChannel = null,
+            int? integrationTimeout = null,
+            int? integrationPriority = null,
+            bool? integrationCreationOnMessage = null,
+            bool? longLived = null,
+            bool? janitorEnabled = null,
+            int? integrationRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexFlowOptions(pathSid){ FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlexFlowResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            string chatServiceSid = null,
+            FlexFlowResource.ChannelTypeEnum channelType = null,
+            string contactIdentity = null,
+            bool? enabled = null,
+            FlexFlowResource.IntegrationTypeEnum integrationType = null,
+            string integrationFlowSid = null,
+            Uri integrationUrl = null,
+            string integrationWorkspaceSid = null,
+            string integrationWorkflowSid = null,
+            string integrationChannel = null,
+            int? integrationTimeout = null,
+            int? integrationPriority = null,
+            bool? integrationCreationOnMessage = null,
+            bool? longLived = null,
+            bool? janitorEnabled = null,
+            int? integrationRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlexFlowOptions(pathSid){ FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled, IntegrationRetryCount = integrationRetryCount };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

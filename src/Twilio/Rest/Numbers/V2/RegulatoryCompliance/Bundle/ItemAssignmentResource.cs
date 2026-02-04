@@ -106,6 +106,44 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+
+        public static TwilioResponse<ItemAssignmentResource> CreateWithHeaders(CreateItemAssignmentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ItemAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ItemAssignmentResource>> CreateWithHeadersAsync(CreateItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ItemAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ItemAssignmentResource> CreateWithHeaders(
+            string pathBundleSid,
+            string objectSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateItemAssignmentOptions(pathBundleSid, objectSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ItemAssignmentResource>> CreateWithHeadersAsync(
+            string pathBundleSid,
+            string objectSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateItemAssignmentOptions(pathBundleSid, objectSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete ItemAssignment parameters </param>
@@ -138,7 +176,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +189,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -176,6 +214,38 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             var options = new DeleteItemAssignmentOptions(pathBundleSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteItemAssignmentOptions(pathBundleSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteItemAssignmentOptions(pathBundleSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -245,6 +315,40 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             var options = new FetchItemAssignmentOptions(pathBundleSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ItemAssignmentResource> FetchWithHeaders(FetchItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ItemAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ItemAssignmentResource>> FetchWithHeadersAsync(FetchItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ItemAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ItemAssignmentResource> FetchWithHeaders(
+                    string pathBundleSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchItemAssignmentOptions(pathBundleSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ItemAssignmentResource>> FetchWithHeadersAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchItemAssignmentOptions(pathBundleSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -324,6 +428,37 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+        public static ResourceSetResponse<ItemAssignmentResource> ReadWithHeaders(ReadItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ItemAssignmentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<ItemAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<ItemAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ItemAssignmentResource> ReadWithHeaders(
+            string pathBundleSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadItemAssignmentOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ItemAssignmentResource>> ReadWithHeadersAsync(ReadItemAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ItemAssignmentResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<ItemAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<ItemAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

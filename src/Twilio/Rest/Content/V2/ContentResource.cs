@@ -140,6 +140,45 @@ namespace Twilio.Rest.Content.V2
         }
         #endif
 
+        public static ResourceSetResponse<ContentResource> ReadWithHeaders(ReadContentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ContentResource>.FromJson("contents", response.Content);
+            var records = new ResourceSet<ContentResource>(page, options, client);
+            return new ResourceSetResponse<ContentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ContentResource> ReadWithHeaders(
+            int? pageSize = null,
+            string sortByDate = null,
+            string sortByContentName = null,
+            DateTime? dateCreatedAfter = null,
+            DateTime? dateCreatedBefore = null,
+            string contentName = null,
+            string content = null,
+            List<string> language = null,
+            List<string> contentType = null,
+            List<string> channelEligibility = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadContentOptions(){ PageSize = pageSize, SortByDate = sortByDate, SortByContentName = sortByContentName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ContentName = contentName, Content = content, Language = language, ContentType = contentType, ChannelEligibility = channelEligibility, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ContentResource>> ReadWithHeadersAsync(ReadContentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ContentResource>.FromJson("contents", response.Content);
+            var records = new ResourceSet<ContentResource>(page, options, client);
+            return new ResourceSetResponse<ContentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

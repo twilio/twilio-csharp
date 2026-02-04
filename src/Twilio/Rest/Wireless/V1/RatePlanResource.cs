@@ -156,6 +156,64 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
 
+
+        public static TwilioResponse<RatePlanResource> CreateWithHeaders(CreateRatePlanOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> CreateWithHeadersAsync(CreateRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RatePlanResource> CreateWithHeaders(
+            string uniqueName = null,
+            string friendlyName = null,
+            bool? dataEnabled = null,
+            int? dataLimit = null,
+            string dataMetering = null,
+            bool? messagingEnabled = null,
+            bool? voiceEnabled = null,
+            bool? nationalRoamingEnabled = null,
+            List<string> internationalRoaming = null,
+            int? nationalRoamingDataLimit = null,
+            int? internationalRoamingDataLimit = null,
+            RatePlanResource.DataLimitStrategyEnum dataLimitStrategy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit, DataLimitStrategy = dataLimitStrategy };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> CreateWithHeadersAsync(
+            string uniqueName = null,
+            string friendlyName = null,
+            bool? dataEnabled = null,
+            int? dataLimit = null,
+            string dataMetering = null,
+            bool? messagingEnabled = null,
+            bool? voiceEnabled = null,
+            bool? nationalRoamingEnabled = null,
+            List<string> internationalRoaming = null,
+            int? nationalRoamingDataLimit = null,
+            int? internationalRoamingDataLimit = null,
+            RatePlanResource.DataLimitStrategyEnum dataLimitStrategy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRatePlanOptions(){  UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit, DataLimitStrategy = dataLimitStrategy };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete RatePlan parameters </param>
@@ -186,7 +244,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -199,7 +257,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -222,6 +280,38 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new DeleteRatePlanOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRatePlanOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRatePlanOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -286,6 +376,39 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new FetchRatePlanOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<RatePlanResource> FetchWithHeaders(FetchRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> FetchWithHeadersAsync(FetchRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RatePlanResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRatePlanOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchRatePlanOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -359,6 +482,36 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
 
+        public static ResourceSetResponse<RatePlanResource> ReadWithHeaders(ReadRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RatePlanResource>.FromJson("rate_plans", response.Content);
+            var records = new ResourceSet<RatePlanResource>(page, options, client);
+            return new ResourceSetResponse<RatePlanResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RatePlanResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRatePlanOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RatePlanResource>> ReadWithHeadersAsync(ReadRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RatePlanResource>.FromJson("rate_plans", response.Content);
+            var records = new ResourceSet<RatePlanResource>(page, options, client);
+            return new ResourceSetResponse<RatePlanResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -482,6 +635,47 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new UpdateRatePlanOptions(pathSid){ UniqueName = uniqueName, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<RatePlanResource> UpdateWithHeaders(UpdateRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> UpdateWithHeadersAsync(UpdateRatePlanOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RatePlanResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RatePlanResource> UpdateWithHeaders(
+            string pathSid,
+            string uniqueName = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRatePlanOptions(pathSid){ UniqueName = uniqueName, FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RatePlanResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string uniqueName = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateRatePlanOptions(pathSid){ UniqueName = uniqueName, FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

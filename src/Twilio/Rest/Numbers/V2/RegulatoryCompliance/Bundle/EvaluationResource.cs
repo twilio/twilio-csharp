@@ -115,6 +115,42 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+
+        public static TwilioResponse<EvaluationResource> CreateWithHeaders(CreateEvaluationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EvaluationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EvaluationResource>> CreateWithHeadersAsync(CreateEvaluationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EvaluationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EvaluationResource> CreateWithHeaders(
+            string pathBundleSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEvaluationOptions(pathBundleSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EvaluationResource>> CreateWithHeadersAsync(
+            string pathBundleSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEvaluationOptions(pathBundleSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchEvaluationOptions options, ITwilioRestClient client)
         {
@@ -182,6 +218,40 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             var options = new FetchEvaluationOptions(pathBundleSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<EvaluationResource> FetchWithHeaders(FetchEvaluationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EvaluationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EvaluationResource>> FetchWithHeadersAsync(FetchEvaluationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EvaluationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EvaluationResource> FetchWithHeaders(
+                    string pathBundleSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEvaluationOptions(pathBundleSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EvaluationResource>> FetchWithHeadersAsync(string pathBundleSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchEvaluationOptions(pathBundleSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -261,6 +331,37 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
         #endif
 
+        public static ResourceSetResponse<EvaluationResource> ReadWithHeaders(ReadEvaluationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EvaluationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<EvaluationResource>(page, options, client);
+            return new ResourceSetResponse<EvaluationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EvaluationResource> ReadWithHeaders(
+            string pathBundleSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEvaluationOptions(pathBundleSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EvaluationResource>> ReadWithHeadersAsync(ReadEvaluationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EvaluationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<EvaluationResource>(page, options, client);
+            return new ResourceSetResponse<EvaluationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

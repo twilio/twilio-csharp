@@ -124,6 +124,54 @@ namespace Twilio.Rest.Sync.V1
         }
         #endif
 
+
+        public static TwilioResponse<ServiceResource> CreateWithHeaders(CreateServiceOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> CreateWithHeadersAsync(CreateServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> CreateWithHeaders(
+            string friendlyName = null,
+            Uri webhookUrl = null,
+            bool? reachabilityWebhooksEnabled = null,
+            bool? aclEnabled = null,
+            bool? reachabilityDebouncingEnabled = null,
+            int? reachabilityDebouncingWindow = null,
+            bool? webhooksFromRestEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateServiceOptions(){  FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> CreateWithHeadersAsync(
+            string friendlyName = null,
+            Uri webhookUrl = null,
+            bool? reachabilityWebhooksEnabled = null,
+            bool? aclEnabled = null,
+            bool? reachabilityDebouncingEnabled = null,
+            int? reachabilityDebouncingWindow = null,
+            bool? webhooksFromRestEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateServiceOptions(){  FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Service parameters </param>
@@ -154,7 +202,7 @@ namespace Twilio.Rest.Sync.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -167,7 +215,7 @@ namespace Twilio.Rest.Sync.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -190,6 +238,38 @@ namespace Twilio.Rest.Sync.V1
         {
             var options = new DeleteServiceOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -254,6 +334,39 @@ namespace Twilio.Rest.Sync.V1
         {
             var options = new FetchServiceOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ServiceResource> FetchWithHeaders(FetchServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> FetchWithHeadersAsync(FetchServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ServiceResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -327,6 +440,36 @@ namespace Twilio.Rest.Sync.V1
         }
         #endif
 
+        public static ResourceSetResponse<ServiceResource> ReadWithHeaders(ReadServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            var records = new ResourceSet<ServiceResource>(page, options, client);
+            return new ResourceSetResponse<ServiceResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ServiceResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadServiceOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ServiceResource>> ReadWithHeadersAsync(ReadServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            var records = new ResourceSet<ServiceResource>(page, options, client);
+            return new ResourceSetResponse<ServiceResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -470,6 +613,57 @@ namespace Twilio.Rest.Sync.V1
         {
             var options = new UpdateServiceOptions(pathSid){ WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> UpdateWithHeaders(UpdateServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> UpdateWithHeadersAsync(UpdateServiceOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ServiceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ServiceResource> UpdateWithHeaders(
+            string pathSid,
+            Uri webhookUrl = null,
+            string friendlyName = null,
+            bool? reachabilityWebhooksEnabled = null,
+            bool? aclEnabled = null,
+            bool? reachabilityDebouncingEnabled = null,
+            int? reachabilityDebouncingWindow = null,
+            bool? webhooksFromRestEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(pathSid){ WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ServiceResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            Uri webhookUrl = null,
+            string friendlyName = null,
+            bool? reachabilityWebhooksEnabled = null,
+            bool? aclEnabled = null,
+            bool? reachabilityDebouncingEnabled = null,
+            int? reachabilityDebouncingWindow = null,
+            bool? webhooksFromRestEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(pathSid){ WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

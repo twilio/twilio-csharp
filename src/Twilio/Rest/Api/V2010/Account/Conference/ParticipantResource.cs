@@ -325,6 +325,144 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
         #endif
 
+
+        public static TwilioResponse<ParticipantResource> CreateWithHeaders(CreateParticipantOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> CreateWithHeadersAsync(CreateParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ParticipantResource> CreateWithHeaders(
+            string pathConferenceSid,
+            IEndpoint from,
+            IEndpoint to,
+            string pathAccountSid = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            List<string> statusCallbackEvent = null,
+            string label = null,
+            int? timeout = null,
+            bool? record = null,
+            bool? muted = null,
+            string beep = null,
+            bool? startConferenceOnEnter = null,
+            bool? endConferenceOnExit = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? earlyMedia = null,
+            int? maxParticipants = null,
+            string conferenceRecord = null,
+            string conferenceTrim = null,
+            Uri conferenceStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+            List<string> conferenceStatusCallbackEvent = null,
+            string recordingChannels = null,
+            Uri recordingStatusCallback = null,
+            Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+            string sipAuthUsername = null,
+            string sipAuthPassword = null,
+            string region = null,
+            Uri conferenceRecordingStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+            List<string> recordingStatusCallbackEvent = null,
+            List<string> conferenceRecordingStatusCallbackEvent = null,
+            bool? coaching = null,
+            string callSidToCoach = null,
+            string jitterBufferSize = null,
+            string byoc = null,
+            string callerId = null,
+            string callReason = null,
+            string recordingTrack = null,
+            int? timeLimit = null,
+            string machineDetection = null,
+            int? machineDetectionTimeout = null,
+            int? machineDetectionSpeechThreshold = null,
+            int? machineDetectionSpeechEndThreshold = null,
+            int? machineDetectionSilenceTimeout = null,
+            Uri amdStatusCallback = null,
+            Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
+            string trim = null,
+            string callToken = null,
+            Uri clientNotificationUrl = null,
+            string callerDisplayName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateParticipantOptions(pathConferenceSid, from, to){  PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AmdStatusCallback = amdStatusCallback, AmdStatusCallbackMethod = amdStatusCallbackMethod, Trim = trim, CallToken = callToken, ClientNotificationUrl = clientNotificationUrl, CallerDisplayName = callerDisplayName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> CreateWithHeadersAsync(
+            string pathConferenceSid,
+            IEndpoint from,
+            IEndpoint to,
+            string pathAccountSid = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            List<string> statusCallbackEvent = null,
+            string label = null,
+            int? timeout = null,
+            bool? record = null,
+            bool? muted = null,
+            string beep = null,
+            bool? startConferenceOnEnter = null,
+            bool? endConferenceOnExit = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? earlyMedia = null,
+            int? maxParticipants = null,
+            string conferenceRecord = null,
+            string conferenceTrim = null,
+            Uri conferenceStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null,
+            List<string> conferenceStatusCallbackEvent = null,
+            string recordingChannels = null,
+            Uri recordingStatusCallback = null,
+            Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+            string sipAuthUsername = null,
+            string sipAuthPassword = null,
+            string region = null,
+            Uri conferenceRecordingStatusCallback = null,
+            Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null,
+            List<string> recordingStatusCallbackEvent = null,
+            List<string> conferenceRecordingStatusCallbackEvent = null,
+            bool? coaching = null,
+            string callSidToCoach = null,
+            string jitterBufferSize = null,
+            string byoc = null,
+            string callerId = null,
+            string callReason = null,
+            string recordingTrack = null,
+            int? timeLimit = null,
+            string machineDetection = null,
+            int? machineDetectionTimeout = null,
+            int? machineDetectionSpeechThreshold = null,
+            int? machineDetectionSpeechEndThreshold = null,
+            int? machineDetectionSilenceTimeout = null,
+            Uri amdStatusCallback = null,
+            Twilio.Http.HttpMethod amdStatusCallbackMethod = null,
+            string trim = null,
+            string callToken = null,
+            Uri clientNotificationUrl = null,
+            string callerDisplayName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateParticipantOptions(pathConferenceSid, from, to){  PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Label = label, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach, JitterBufferSize = jitterBufferSize, Byoc = byoc, CallerId = callerId, CallReason = callReason, RecordingTrack = recordingTrack, TimeLimit = timeLimit, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AmdStatusCallback = amdStatusCallback, AmdStatusCallbackMethod = amdStatusCallbackMethod, Trim = trim, CallToken = callToken, ClientNotificationUrl = clientNotificationUrl, CallerDisplayName = callerDisplayName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Kick a participant from a given conference </summary>
         /// <param name="options"> Delete Participant parameters </param>
@@ -359,7 +497,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -372,7 +510,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -399,6 +537,38 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             var options = new DeleteParticipantOptions(pathConferenceSid, pathCallSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(pathConferenceSid, pathCallSid)         { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(pathConferenceSid, pathCallSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -473,6 +643,41 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             var options = new FetchParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ParticipantResource> FetchWithHeaders(FetchParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> FetchWithHeadersAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ParticipantResource> FetchWithHeaders(
+                    string pathConferenceSid, 
+                    string pathCallSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> FetchWithHeadersAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -570,6 +775,41 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
         #endif
 
+        public static ResourceSetResponse<ParticipantResource> ReadWithHeaders(ReadParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ParticipantResource> ReadWithHeaders(
+            string pathConferenceSid,
+            string pathAccountSid = null,
+            bool? muted = null,
+            bool? hold = null,
+            bool? coaching = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadParticipantOptions(pathConferenceSid){ PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, Coaching = coaching, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ParticipantResource>> ReadWithHeadersAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+            var records = new ResourceSet<ParticipantResource>(page, options, client);
+            return new ResourceSetResponse<ParticipantResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -745,6 +985,71 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod, WaitUrl = waitUrl, WaitMethod = waitMethod, BeepOnExit = beepOnExit, EndConferenceOnExit = endConferenceOnExit, Coaching = coaching, CallSidToCoach = callSidToCoach };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ParticipantResource> UpdateWithHeaders(UpdateParticipantOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> UpdateWithHeadersAsync(UpdateParticipantOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ParticipantResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ParticipantResource> UpdateWithHeaders(
+            string pathConferenceSid,
+            string pathCallSid,
+            string pathAccountSid = null,
+            bool? muted = null,
+            bool? hold = null,
+            Uri holdUrl = null,
+            Twilio.Http.HttpMethod holdMethod = null,
+            Uri announceUrl = null,
+            Twilio.Http.HttpMethod announceMethod = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? beepOnExit = null,
+            bool? endConferenceOnExit = null,
+            bool? coaching = null,
+            string callSidToCoach = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod, WaitUrl = waitUrl, WaitMethod = waitMethod, BeepOnExit = beepOnExit, EndConferenceOnExit = endConferenceOnExit, Coaching = coaching, CallSidToCoach = callSidToCoach };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantResource>> UpdateWithHeadersAsync(
+            string pathConferenceSid,
+            string pathCallSid,
+            string pathAccountSid = null,
+            bool? muted = null,
+            bool? hold = null,
+            Uri holdUrl = null,
+            Twilio.Http.HttpMethod holdMethod = null,
+            Uri announceUrl = null,
+            Twilio.Http.HttpMethod announceMethod = null,
+            Uri waitUrl = null,
+            Twilio.Http.HttpMethod waitMethod = null,
+            bool? beepOnExit = null,
+            bool? endConferenceOnExit = null,
+            bool? coaching = null,
+            string callSidToCoach = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){ PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod, WaitUrl = waitUrl, WaitMethod = waitMethod, BeepOnExit = beepOnExit, EndConferenceOnExit = endConferenceOnExit, Coaching = coaching, CallSidToCoach = callSidToCoach };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

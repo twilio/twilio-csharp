@@ -122,6 +122,52 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
         #endif
 
+
+        public static TwilioResponse<OriginationUrlResource> CreateWithHeaders(CreateOriginationUrlOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> CreateWithHeadersAsync(CreateOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<OriginationUrlResource> CreateWithHeaders(
+            string pathTrunkSid,
+            int? weight,
+            int? priority,
+            bool? enabled,
+            string friendlyName,
+            Uri sipUrl,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOriginationUrlOptions(pathTrunkSid, weight, priority, enabled, friendlyName, sipUrl){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> CreateWithHeadersAsync(
+            string pathTrunkSid,
+            int? weight,
+            int? priority,
+            bool? enabled,
+            string friendlyName,
+            Uri sipUrl,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateOriginationUrlOptions(pathTrunkSid, weight, priority, enabled, friendlyName, sipUrl){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete OriginationUrl parameters </param>
@@ -154,7 +200,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -167,7 +213,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -192,6 +238,38 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new DeleteOriginationUrlOptions(pathTrunkSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOriginationUrlOptions(pathTrunkSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOriginationUrlOptions(pathTrunkSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -261,6 +339,40 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new FetchOriginationUrlOptions(pathTrunkSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<OriginationUrlResource> FetchWithHeaders(FetchOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> FetchWithHeadersAsync(FetchOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<OriginationUrlResource> FetchWithHeaders(
+                    string pathTrunkSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchOriginationUrlOptions(pathTrunkSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> FetchWithHeadersAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchOriginationUrlOptions(pathTrunkSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -340,6 +452,37 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
         #endif
 
+        public static ResourceSetResponse<OriginationUrlResource> ReadWithHeaders(ReadOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
+            var records = new ResourceSet<OriginationUrlResource>(page, options, client);
+            return new ResourceSetResponse<OriginationUrlResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<OriginationUrlResource> ReadWithHeaders(
+            string pathTrunkSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadOriginationUrlOptions(pathTrunkSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<OriginationUrlResource>> ReadWithHeadersAsync(ReadOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
+            var records = new ResourceSet<OriginationUrlResource>(page, options, client);
+            return new ResourceSetResponse<OriginationUrlResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -481,6 +624,55 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new UpdateOriginationUrlOptions(pathTrunkSid, pathSid){ Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<OriginationUrlResource> UpdateWithHeaders(UpdateOriginationUrlOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> UpdateWithHeadersAsync(UpdateOriginationUrlOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OriginationUrlResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<OriginationUrlResource> UpdateWithHeaders(
+            string pathTrunkSid,
+            string pathSid,
+            int? weight = null,
+            int? priority = null,
+            bool? enabled = null,
+            string friendlyName = null,
+            Uri sipUrl = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateOriginationUrlOptions(pathTrunkSid, pathSid){ Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OriginationUrlResource>> UpdateWithHeadersAsync(
+            string pathTrunkSid,
+            string pathSid,
+            int? weight = null,
+            int? priority = null,
+            bool? enabled = null,
+            string friendlyName = null,
+            Uri sipUrl = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateOriginationUrlOptions(pathTrunkSid, pathSid){ Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

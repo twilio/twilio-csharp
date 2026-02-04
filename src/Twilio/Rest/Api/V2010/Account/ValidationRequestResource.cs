@@ -126,6 +126,54 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static TwilioResponse<ValidationRequestResource> CreateWithHeaders(CreateValidationRequestOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ValidationRequestResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ValidationRequestResource>> CreateWithHeadersAsync(CreateValidationRequestOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ValidationRequestResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ValidationRequestResource> CreateWithHeaders(
+            Types.PhoneNumber phoneNumber,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            int? callDelay = null,
+            string extension = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateValidationRequestOptions(phoneNumber){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ValidationRequestResource>> CreateWithHeadersAsync(
+            Types.PhoneNumber phoneNumber,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            int? callDelay = null,
+            string extension = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateValidationRequestOptions(phoneNumber){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ValidationRequestResource object

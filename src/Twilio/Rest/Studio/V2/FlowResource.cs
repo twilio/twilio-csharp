@@ -125,6 +125,48 @@ namespace Twilio.Rest.Studio.V2
         }
         #endif
 
+
+        public static TwilioResponse<FlowResource> CreateWithHeaders(CreateFlowOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> CreateWithHeadersAsync(CreateFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlowResource> CreateWithHeaders(
+            string friendlyName,
+            FlowResource.StatusEnum status,
+            object definition,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            FlowResource.StatusEnum status,
+            object definition,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Flow. </summary>
         /// <param name="options"> Delete Flow parameters </param>
@@ -155,7 +197,7 @@ namespace Twilio.Rest.Studio.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -168,7 +210,7 @@ namespace Twilio.Rest.Studio.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -191,6 +233,38 @@ namespace Twilio.Rest.Studio.V2
         {
             var options = new DeleteFlowOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFlowOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFlowOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -255,6 +329,39 @@ namespace Twilio.Rest.Studio.V2
         {
             var options = new FetchFlowOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<FlowResource> FetchWithHeaders(FetchFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> FetchWithHeadersAsync(FetchFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FlowResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -328,6 +435,36 @@ namespace Twilio.Rest.Studio.V2
         }
         #endif
 
+        public static ResourceSetResponse<FlowResource> ReadWithHeaders(ReadFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FlowResource>.FromJson("flows", response.Content);
+            var records = new ResourceSet<FlowResource>(page, options, client);
+            return new ResourceSetResponse<FlowResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FlowResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFlowOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FlowResource>> ReadWithHeadersAsync(ReadFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FlowResource>.FromJson("flows", response.Content);
+            var records = new ResourceSet<FlowResource>(page, options, client);
+            return new ResourceSetResponse<FlowResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -459,6 +596,51 @@ namespace Twilio.Rest.Studio.V2
         {
             var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FlowResource> UpdateWithHeaders(UpdateFlowOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> UpdateWithHeadersAsync(UpdateFlowOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlowResource> UpdateWithHeaders(
+            string pathSid,
+            FlowResource.StatusEnum status,
+            string friendlyName = null,
+            object definition = null,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            FlowResource.StatusEnum status,
+            string friendlyName = null,
+            object definition = null,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

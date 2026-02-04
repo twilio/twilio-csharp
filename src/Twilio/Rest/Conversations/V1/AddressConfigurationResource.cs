@@ -187,6 +187,64 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
+
+        public static TwilioResponse<AddressConfigurationResource> CreateWithHeaders(CreateAddressConfigurationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> CreateWithHeadersAsync(CreateAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AddressConfigurationResource> CreateWithHeaders(
+            AddressConfigurationResource.TypeEnum type,
+            string address,
+            string friendlyName = null,
+            bool? autoCreationEnabled = null,
+            AddressConfigurationResource.AutoCreationTypeEnum autoCreationType = null,
+            string autoCreationConversationServiceSid = null,
+            string autoCreationWebhookUrl = null,
+            AddressConfigurationResource.MethodEnum autoCreationWebhookMethod = null,
+            List<string> autoCreationWebhookFilters = null,
+            string autoCreationStudioFlowSid = null,
+            int? autoCreationStudioRetryCount = null,
+            string addressCountry = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> CreateWithHeadersAsync(
+            AddressConfigurationResource.TypeEnum type,
+            string address,
+            string friendlyName = null,
+            bool? autoCreationEnabled = null,
+            AddressConfigurationResource.AutoCreationTypeEnum autoCreationType = null,
+            string autoCreationConversationServiceSid = null,
+            string autoCreationWebhookUrl = null,
+            AddressConfigurationResource.MethodEnum autoCreationWebhookMethod = null,
+            List<string> autoCreationWebhookFilters = null,
+            string autoCreationStudioFlowSid = null,
+            int? autoCreationStudioRetryCount = null,
+            string addressCountry = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAddressConfigurationOptions(type, address){  FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount, AddressCountry = addressCountry };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove an existing address configuration </summary>
         /// <param name="options"> Delete AddressConfiguration parameters </param>
@@ -217,7 +275,7 @@ namespace Twilio.Rest.Conversations.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -230,7 +288,7 @@ namespace Twilio.Rest.Conversations.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -253,6 +311,38 @@ namespace Twilio.Rest.Conversations.V1
         {
             var options = new DeleteAddressConfigurationOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAddressConfigurationOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAddressConfigurationOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -317,6 +407,39 @@ namespace Twilio.Rest.Conversations.V1
         {
             var options = new FetchAddressConfigurationOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AddressConfigurationResource> FetchWithHeaders(FetchAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> FetchWithHeadersAsync(FetchAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AddressConfigurationResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAddressConfigurationOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAddressConfigurationOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -394,6 +517,37 @@ namespace Twilio.Rest.Conversations.V1
         }
         #endif
 
+        public static ResourceSetResponse<AddressConfigurationResource> ReadWithHeaders(ReadAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AddressConfigurationResource>.FromJson("address_configurations", response.Content);
+            var records = new ResourceSet<AddressConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<AddressConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AddressConfigurationResource> ReadWithHeaders(
+            string type = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAddressConfigurationOptions(){ Type = type, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AddressConfigurationResource>> ReadWithHeadersAsync(ReadAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AddressConfigurationResource>.FromJson("address_configurations", response.Content);
+            var records = new ResourceSet<AddressConfigurationResource>(page, options, client);
+            return new ResourceSetResponse<AddressConfigurationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -545,6 +699,61 @@ namespace Twilio.Rest.Conversations.V1
         {
             var options = new UpdateAddressConfigurationOptions(pathSid){ FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AddressConfigurationResource> UpdateWithHeaders(UpdateAddressConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> UpdateWithHeadersAsync(UpdateAddressConfigurationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AddressConfigurationResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            bool? autoCreationEnabled = null,
+            AddressConfigurationResource.AutoCreationTypeEnum autoCreationType = null,
+            string autoCreationConversationServiceSid = null,
+            string autoCreationWebhookUrl = null,
+            AddressConfigurationResource.MethodEnum autoCreationWebhookMethod = null,
+            List<string> autoCreationWebhookFilters = null,
+            string autoCreationStudioFlowSid = null,
+            int? autoCreationStudioRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAddressConfigurationOptions(pathSid){ FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressConfigurationResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            bool? autoCreationEnabled = null,
+            AddressConfigurationResource.AutoCreationTypeEnum autoCreationType = null,
+            string autoCreationConversationServiceSid = null,
+            string autoCreationWebhookUrl = null,
+            AddressConfigurationResource.MethodEnum autoCreationWebhookMethod = null,
+            List<string> autoCreationWebhookFilters = null,
+            string autoCreationStudioFlowSid = null,
+            int? autoCreationStudioRetryCount = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAddressConfigurationOptions(pathSid){ FriendlyName = friendlyName, AutoCreationEnabled = autoCreationEnabled, AutoCreationType = autoCreationType, AutoCreationConversationServiceSid = autoCreationConversationServiceSid, AutoCreationWebhookUrl = autoCreationWebhookUrl, AutoCreationWebhookMethod = autoCreationWebhookMethod, AutoCreationWebhookFilters = autoCreationWebhookFilters, AutoCreationStudioFlowSid = autoCreationStudioFlowSid, AutoCreationStudioRetryCount = autoCreationStudioRetryCount };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

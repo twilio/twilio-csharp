@@ -97,6 +97,40 @@ namespace Twilio.Rest.Numbers.V1
         }
         #endif
 
+
+        public static TwilioResponse<EligibilityResource> CreateWithHeaders(CreateEligibilityOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EligibilityResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EligibilityResource>> CreateWithHeadersAsync(CreateEligibilityOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EligibilityResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EligibilityResource> CreateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEligibilityOptions(){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EligibilityResource>> CreateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEligibilityOptions(){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a EligibilityResource object

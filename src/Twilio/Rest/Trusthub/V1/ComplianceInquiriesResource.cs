@@ -108,6 +108,46 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+
+        public static TwilioResponse<ComplianceInquiriesResource> CreateWithHeaders(CreateComplianceInquiriesOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceInquiriesResource>> CreateWithHeadersAsync(CreateComplianceInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceInquiriesResource> CreateWithHeaders(
+            string notificationEmail = null,
+            string themeSetId = null,
+            string primaryProfileSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceInquiriesOptions(){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId, PrimaryProfileSid = primaryProfileSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceInquiriesResource>> CreateWithHeadersAsync(
+            string notificationEmail = null,
+            string themeSetId = null,
+            string primaryProfileSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceInquiriesOptions(){  NotificationEmail = notificationEmail, ThemeSetId = themeSetId, PrimaryProfileSid = primaryProfileSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateComplianceInquiriesOptions options, ITwilioRestClient client)
         {
@@ -183,6 +223,47 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceInquiriesResource> UpdateWithHeaders(UpdateComplianceInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceInquiriesResource>> UpdateWithHeadersAsync(UpdateComplianceInquiriesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceInquiriesResource> UpdateWithHeaders(
+            string pathCustomerId,
+            string primaryProfileSid,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceInquiriesResource>> UpdateWithHeadersAsync(
+            string pathCustomerId,
+            string primaryProfileSid,
+            string themeSetId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateComplianceInquiriesOptions(pathCustomerId, primaryProfileSid){ ThemeSetId = themeSetId };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

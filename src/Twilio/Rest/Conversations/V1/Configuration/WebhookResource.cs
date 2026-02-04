@@ -118,6 +118,38 @@ namespace Twilio.Rest.Conversations.V1.Configuration
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<WebhookResource> FetchWithHeaders(FetchWebhookOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> FetchWithHeadersAsync(FetchWebhookOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WebhookResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWebhookOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchWebhookOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateWebhookOptions options, ITwilioRestClient client)
         {
@@ -199,6 +231,51 @@ namespace Twilio.Rest.Conversations.V1.Configuration
         {
             var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<WebhookResource> UpdateWithHeaders(UpdateWebhookOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> UpdateWithHeadersAsync(UpdateWebhookOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WebhookResource> UpdateWithHeaders(
+            string method = null,
+            List<string> filters = null,
+            string preWebhookUrl = null,
+            string postWebhookUrl = null,
+            WebhookResource.TargetEnum target = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> UpdateWithHeadersAsync(
+            string method = null,
+            List<string> filters = null,
+            string preWebhookUrl = null,
+            string postWebhookUrl = null,
+            WebhookResource.TargetEnum target = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWebhookOptions(){ Method = method, Filters = filters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, Target = target };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -97,6 +97,39 @@ namespace Twilio.Rest.Trusthub.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PoliciesResource> FetchWithHeaders(FetchPoliciesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PoliciesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PoliciesResource>> FetchWithHeadersAsync(FetchPoliciesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PoliciesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PoliciesResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPoliciesOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PoliciesResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPoliciesOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadPoliciesOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,36 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+        public static ResourceSetResponse<PoliciesResource> ReadWithHeaders(ReadPoliciesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PoliciesResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<PoliciesResource>(page, options, client);
+            return new ResourceSetResponse<PoliciesResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PoliciesResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPoliciesOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PoliciesResource>> ReadWithHeadersAsync(ReadPoliciesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PoliciesResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<PoliciesResource>(page, options, client);
+            return new ResourceSetResponse<PoliciesResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

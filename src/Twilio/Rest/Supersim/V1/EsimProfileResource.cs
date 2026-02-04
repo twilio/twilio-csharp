@@ -129,6 +129,48 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+
+        public static TwilioResponse<EsimProfileResource> CreateWithHeaders(CreateEsimProfileOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EsimProfileResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EsimProfileResource>> CreateWithHeadersAsync(CreateEsimProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EsimProfileResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<EsimProfileResource> CreateWithHeaders(
+            string callbackUrl = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            bool? generateMatchingId = null,
+            string eid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, GenerateMatchingId = generateMatchingId, Eid = eid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EsimProfileResource>> CreateWithHeadersAsync(
+            string callbackUrl = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            bool? generateMatchingId = null,
+            string eid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateEsimProfileOptions(){  CallbackUrl = callbackUrl, CallbackMethod = callbackMethod, GenerateMatchingId = generateMatchingId, Eid = eid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchEsimProfileOptions options, ITwilioRestClient client)
         {
@@ -191,6 +233,39 @@ namespace Twilio.Rest.Supersim.V1
         {
             var options = new FetchEsimProfileOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<EsimProfileResource> FetchWithHeaders(FetchEsimProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EsimProfileResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EsimProfileResource>> FetchWithHeadersAsync(FetchEsimProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EsimProfileResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EsimProfileResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEsimProfileOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EsimProfileResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchEsimProfileOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -276,6 +351,39 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<EsimProfileResource> ReadWithHeaders(ReadEsimProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<EsimProfileResource>.FromJson("esim_profiles", response.Content);
+            var records = new ResourceSet<EsimProfileResource>(page, options, client);
+            return new ResourceSetResponse<EsimProfileResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<EsimProfileResource> ReadWithHeaders(
+            string eid = null,
+            string simSid = null,
+            EsimProfileResource.StatusEnum status = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadEsimProfileOptions(){ Eid = eid, SimSid = simSid, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<EsimProfileResource>> ReadWithHeadersAsync(ReadEsimProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<EsimProfileResource>.FromJson("esim_profiles", response.Content);
+            var records = new ResourceSet<EsimProfileResource>(page, options, client);
+            return new ResourceSetResponse<EsimProfileResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

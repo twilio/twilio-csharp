@@ -138,6 +138,54 @@ namespace Twilio.Rest.IpMessaging.V1
         }
         #endif
 
+
+        public static TwilioResponse<CredentialResource> CreateWithHeaders(CreateCredentialOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> CreateWithHeadersAsync(CreateCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CredentialResource> CreateWithHeaders(
+            CredentialResource.PushServiceEnum type,
+            string friendlyName = null,
+            string certificate = null,
+            string privateKey = null,
+            bool? sandbox = null,
+            string apiKey = null,
+            string secret = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCredentialOptions(type){  FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> CreateWithHeadersAsync(
+            CredentialResource.PushServiceEnum type,
+            string friendlyName = null,
+            string certificate = null,
+            string privateKey = null,
+            bool? sandbox = null,
+            string apiKey = null,
+            string secret = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCredentialOptions(type){  FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Credential parameters </param>
@@ -168,7 +216,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -181,7 +229,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -204,6 +252,38 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var options = new DeleteCredentialOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCredentialOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCredentialOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -268,6 +348,39 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var options = new FetchCredentialOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CredentialResource> FetchWithHeaders(FetchCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> FetchWithHeadersAsync(FetchCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CredentialResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCredentialOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCredentialOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -341,6 +454,36 @@ namespace Twilio.Rest.IpMessaging.V1
         }
         #endif
 
+        public static ResourceSetResponse<CredentialResource> ReadWithHeaders(ReadCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CredentialResource>.FromJson("credentials", response.Content);
+            var records = new ResourceSet<CredentialResource>(page, options, client);
+            return new ResourceSetResponse<CredentialResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CredentialResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCredentialOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CredentialResource>> ReadWithHeadersAsync(ReadCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CredentialResource>.FromJson("credentials", response.Content);
+            var records = new ResourceSet<CredentialResource>(page, options, client);
+            return new ResourceSetResponse<CredentialResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -480,6 +623,55 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var options = new UpdateCredentialOptions(pathSid){ FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<CredentialResource> UpdateWithHeaders(UpdateCredentialOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> UpdateWithHeadersAsync(UpdateCredentialOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CredentialResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CredentialResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            string certificate = null,
+            string privateKey = null,
+            bool? sandbox = null,
+            string apiKey = null,
+            string secret = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCredentialOptions(pathSid){ FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CredentialResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            string certificate = null,
+            string privateKey = null,
+            bool? sandbox = null,
+            string apiKey = null,
+            string secret = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCredentialOptions(pathSid){ FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

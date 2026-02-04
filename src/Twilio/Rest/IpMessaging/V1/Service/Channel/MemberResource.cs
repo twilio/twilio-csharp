@@ -116,6 +116,48 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
         #endif
 
+
+        public static TwilioResponse<MemberResource> CreateWithHeaders(CreateMemberOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> CreateWithHeadersAsync(CreateMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MemberResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathChannelSid,
+            string identity,
+            string roleSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){  RoleSid = roleSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathChannelSid,
+            string identity,
+            string roleSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){  RoleSid = roleSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Member parameters </param>
@@ -150,7 +192,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -163,7 +205,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -190,6 +232,38 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -264,6 +338,41 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<MemberResource> FetchWithHeaders(FetchMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> FetchWithHeadersAsync(FetchMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<MemberResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathChannelSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> FetchWithHeadersAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -353,6 +462,39 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
         #endif
 
+        public static ResourceSetResponse<MemberResource> ReadWithHeaders(ReadMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<MemberResource>.FromJson("members", response.Content);
+            var records = new ResourceSet<MemberResource>(page, options, client);
+            return new ResourceSetResponse<MemberResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<MemberResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathChannelSid,
+            List<string> identity = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadMemberOptions(pathServiceSid, pathChannelSid){ Identity = identity, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<MemberResource>> ReadWithHeadersAsync(ReadMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<MemberResource>.FromJson("members", response.Content);
+            var records = new ResourceSet<MemberResource>(page, options, client);
+            return new ResourceSetResponse<MemberResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -488,6 +630,51 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){ RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<MemberResource> UpdateWithHeaders(UpdateMemberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> UpdateWithHeadersAsync(UpdateMemberOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MemberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MemberResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathChannelSid,
+            string pathSid,
+            string roleSid = null,
+            int? lastConsumedMessageIndex = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){ RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MemberResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathChannelSid,
+            string pathSid,
+            string roleSid = null,
+            int? lastConsumedMessageIndex = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){ RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

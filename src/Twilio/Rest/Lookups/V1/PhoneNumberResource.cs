@@ -109,6 +109,43 @@ namespace Twilio.Rest.Lookups.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(
+                    string pathPhoneNumber, 
+                    string countryCode = null, 
+                    List<string> type = null, 
+                    List<string> addOns = null, 
+                    Dictionary<string, object> addOnsData = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ CountryCode = countryCode,Type = type,AddOns = addOns,AddOnsData = addOnsData };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(string pathPhoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ CountryCode = countryCode,Type = type,AddOns = addOns,AddOnsData = addOnsData };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object

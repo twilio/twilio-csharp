@@ -120,6 +120,52 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
+
+        public static TwilioResponse<RecordingSettingsResource> CreateWithHeaders(CreateRecordingSettingsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingSettingsResource>> CreateWithHeadersAsync(CreateRecordingSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RecordingSettingsResource> CreateWithHeaders(
+            string friendlyName,
+            string awsCredentialsSid = null,
+            string encryptionKeySid = null,
+            Uri awsS3Url = null,
+            bool? awsStorageEnabled = null,
+            bool? encryptionEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRecordingSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingSettingsResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string awsCredentialsSid = null,
+            string encryptionKeySid = null,
+            Uri awsS3Url = null,
+            bool? awsStorageEnabled = null,
+            bool? encryptionEnabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRecordingSettingsOptions(friendlyName){  AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchRecordingSettingsOptions options, ITwilioRestClient client)
         {
@@ -177,6 +223,38 @@ namespace Twilio.Rest.Video.V1
         {
             var options = new FetchRecordingSettingsOptions(){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<RecordingSettingsResource> FetchWithHeaders(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingSettingsResource>> FetchWithHeadersAsync(FetchRecordingSettingsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RecordingSettingsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RecordingSettingsResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingSettingsOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RecordingSettingsResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchRecordingSettingsOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
     

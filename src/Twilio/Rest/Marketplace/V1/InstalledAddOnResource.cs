@@ -112,6 +112,48 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
+
+        public static TwilioResponse<InstalledAddOnResource> CreateWithHeaders(CreateInstalledAddOnOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> CreateWithHeadersAsync(CreateInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InstalledAddOnResource> CreateWithHeaders(
+            string availableAddOnSid,
+            bool? acceptTermsOfService,
+            object configuration = null,
+            string uniqueName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInstalledAddOnOptions(availableAddOnSid, acceptTermsOfService){  Configuration = configuration, UniqueName = uniqueName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> CreateWithHeadersAsync(
+            string availableAddOnSid,
+            bool? acceptTermsOfService,
+            object configuration = null,
+            string uniqueName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInstalledAddOnOptions(availableAddOnSid, acceptTermsOfService){  Configuration = configuration, UniqueName = uniqueName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove an Add-on installation from your account </summary>
         /// <param name="options"> Delete InstalledAddOn parameters </param>
@@ -142,7 +184,7 @@ namespace Twilio.Rest.Marketplace.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -155,7 +197,7 @@ namespace Twilio.Rest.Marketplace.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -178,6 +220,38 @@ namespace Twilio.Rest.Marketplace.V1
         {
             var options = new DeleteInstalledAddOnOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInstalledAddOnOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInstalledAddOnOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -242,6 +316,39 @@ namespace Twilio.Rest.Marketplace.V1
         {
             var options = new FetchInstalledAddOnOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<InstalledAddOnResource> FetchWithHeaders(FetchInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> FetchWithHeadersAsync(FetchInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InstalledAddOnResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInstalledAddOnOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInstalledAddOnOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -315,6 +422,36 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
+        public static ResourceSetResponse<InstalledAddOnResource> ReadWithHeaders(ReadInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
+            var records = new ResourceSet<InstalledAddOnResource>(page, options, client);
+            return new ResourceSetResponse<InstalledAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InstalledAddOnResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInstalledAddOnOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InstalledAddOnResource>> ReadWithHeadersAsync(ReadInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
+            var records = new ResourceSet<InstalledAddOnResource>(page, options, client);
+            return new ResourceSetResponse<InstalledAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -438,6 +575,47 @@ namespace Twilio.Rest.Marketplace.V1
         {
             var options = new UpdateInstalledAddOnOptions(pathSid){ Configuration = configuration, UniqueName = uniqueName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InstalledAddOnResource> UpdateWithHeaders(UpdateInstalledAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> UpdateWithHeadersAsync(UpdateInstalledAddOnOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InstalledAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InstalledAddOnResource> UpdateWithHeaders(
+            string pathSid,
+            object configuration = null,
+            string uniqueName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInstalledAddOnOptions(pathSid){ Configuration = configuration, UniqueName = uniqueName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InstalledAddOnResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            object configuration = null,
+            string uniqueName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInstalledAddOnOptions(pathSid){ Configuration = configuration, UniqueName = uniqueName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

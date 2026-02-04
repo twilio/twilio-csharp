@@ -142,6 +142,62 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static TwilioResponse<AddressResource> CreateWithHeaders(CreateAddressOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> CreateWithHeadersAsync(CreateAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AddressResource> CreateWithHeaders(
+            string customerName,
+            string street,
+            string city,
+            string region,
+            string postalCode,
+            string isoCountry,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            bool? emergencyEnabled = null,
+            bool? autoCorrectAddress = null,
+            string streetSecondary = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> CreateWithHeadersAsync(
+            string customerName,
+            string street,
+            string city,
+            string region,
+            string postalCode,
+            string isoCountry,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            bool? emergencyEnabled = null,
+            bool? autoCorrectAddress = null,
+            string streetSecondary = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Address parameters </param>
@@ -174,7 +230,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -187,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -212,6 +268,38 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new DeleteAddressOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAddressOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAddressOptions(pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -281,6 +369,40 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AddressResource> FetchWithHeaders(FetchAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> FetchWithHeadersAsync(FetchAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AddressResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> FetchWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAddressOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -376,6 +498,41 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+        public static ResourceSetResponse<AddressResource> ReadWithHeaders(ReadAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AddressResource>.FromJson("addresses", response.Content);
+            var records = new ResourceSet<AddressResource>(page, options, client);
+            return new ResourceSetResponse<AddressResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AddressResource> ReadWithHeaders(
+            string pathAccountSid = null,
+            string customerName = null,
+            string friendlyName = null,
+            bool? emergencyEnabled = null,
+            string isoCountry = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAddressOptions(){ PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AddressResource>> ReadWithHeadersAsync(ReadAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AddressResource>.FromJson("addresses", response.Content);
+            var records = new ResourceSet<AddressResource>(page, options, client);
+            return new ResourceSetResponse<AddressResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -533,6 +690,63 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AddressResource> UpdateWithHeaders(UpdateAddressOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> UpdateWithHeadersAsync(UpdateAddressOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AddressResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AddressResource> UpdateWithHeaders(
+            string pathSid,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            string customerName = null,
+            string street = null,
+            string city = null,
+            string region = null,
+            string postalCode = null,
+            bool? emergencyEnabled = null,
+            bool? autoCorrectAddress = null,
+            string streetSecondary = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AddressResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            string customerName = null,
+            string street = null,
+            string city = null,
+            string region = null,
+            string postalCode = null,
+            bool? emergencyEnabled = null,
+            bool? autoCorrectAddress = null,
+            string streetSecondary = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAddressOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress, StreetSecondary = streetSecondary };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

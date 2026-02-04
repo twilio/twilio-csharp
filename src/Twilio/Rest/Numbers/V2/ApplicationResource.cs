@@ -209,6 +209,42 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+
+        public static TwilioResponse<ApplicationResource> CreateWithHeaders(CreateApplicationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApplicationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApplicationResource>> CreateWithHeadersAsync(CreateApplicationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApplicationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ApplicationResource> CreateWithHeaders(
+            ApplicationResource.CreateShortCodeApplicationRequest createShortCodeApplicationRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateApplicationOptions(createShortCodeApplicationRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApplicationResource>> CreateWithHeadersAsync(
+            ApplicationResource.CreateShortCodeApplicationRequest createShortCodeApplicationRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateApplicationOptions(createShortCodeApplicationRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchApplicationOptions options, ITwilioRestClient client)
         {
@@ -271,6 +307,39 @@ namespace Twilio.Rest.Numbers.V2
         {
             var options = new FetchApplicationOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ApplicationResource> FetchWithHeaders(FetchApplicationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApplicationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApplicationResource>> FetchWithHeadersAsync(FetchApplicationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApplicationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ApplicationResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchApplicationOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApplicationResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchApplicationOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -344,6 +413,36 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+        public static ResourceSetResponse<ApplicationResource> ReadWithHeaders(ReadApplicationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ApplicationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<ApplicationResource>(page, options, client);
+            return new ResourceSetResponse<ApplicationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ApplicationResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadApplicationOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ApplicationResource>> ReadWithHeadersAsync(ReadApplicationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ApplicationResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<ApplicationResource>(page, options, client);
+            return new ResourceSetResponse<ApplicationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

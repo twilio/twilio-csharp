@@ -112,6 +112,46 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
         #endif
 
+
+        public static TwilioResponse<AssignedAddOnResource> CreateWithHeaders(CreateAssignedAddOnOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnResource>> CreateWithHeadersAsync(CreateAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AssignedAddOnResource> CreateWithHeaders(
+            string pathResourceSid,
+            string installedAddOnSid,
+            string pathAccountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssignedAddOnOptions(pathResourceSid, installedAddOnSid){  PathAccountSid = pathAccountSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnResource>> CreateWithHeadersAsync(
+            string pathResourceSid,
+            string installedAddOnSid,
+            string pathAccountSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssignedAddOnOptions(pathResourceSid, installedAddOnSid){  PathAccountSid = pathAccountSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove the assignment of an Add-on installation from the Number specified. </summary>
         /// <param name="options"> Delete AssignedAddOn parameters </param>
@@ -146,7 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -159,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -186,6 +226,38 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathResourceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid)         { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathResourceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -260,6 +332,41 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AssignedAddOnResource> FetchWithHeaders(FetchAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnResource>> FetchWithHeadersAsync(FetchAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssignedAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AssignedAddOnResource> FetchWithHeaders(
+                    string pathResourceSid, 
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssignedAddOnResource>> FetchWithHeadersAsync(string pathResourceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -345,6 +452,38 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
         #endif
 
+        public static ResourceSetResponse<AssignedAddOnResource> ReadWithHeaders(ReadAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
+            var records = new ResourceSet<AssignedAddOnResource>(page, options, client);
+            return new ResourceSetResponse<AssignedAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AssignedAddOnResource> ReadWithHeaders(
+            string pathResourceSid,
+            string pathAccountSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAssignedAddOnOptions(pathResourceSid){ PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AssignedAddOnResource>> ReadWithHeadersAsync(ReadAssignedAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
+            var records = new ResourceSet<AssignedAddOnResource>(page, options, client);
+            return new ResourceSetResponse<AssignedAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -108,6 +108,46 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+
+        public static TwilioResponse<ExternalCampaignResource> CreateWithHeaders(CreateExternalCampaignOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExternalCampaignResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExternalCampaignResource>> CreateWithHeadersAsync(CreateExternalCampaignOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExternalCampaignResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ExternalCampaignResource> CreateWithHeaders(
+            string campaignId,
+            string messagingServiceSid,
+            bool? cnpMigration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  CnpMigration = cnpMigration };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExternalCampaignResource>> CreateWithHeadersAsync(
+            string campaignId,
+            string messagingServiceSid,
+            bool? cnpMigration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExternalCampaignOptions(campaignId, messagingServiceSid){  CnpMigration = cnpMigration };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ExternalCampaignResource object

@@ -161,6 +161,58 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
+
+        public static TwilioResponse<CompositionResource> CreateWithHeaders(CreateCompositionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionResource>> CreateWithHeadersAsync(CreateCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CompositionResource> CreateWithHeaders(
+            string roomSid,
+            object videoLayout = null,
+            List<string> audioSources = null,
+            List<string> audioSourcesExcluded = null,
+            string resolution = null,
+            CompositionResource.FormatEnum format = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? trim = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCompositionOptions(roomSid){  VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionResource>> CreateWithHeadersAsync(
+            string roomSid,
+            object videoLayout = null,
+            List<string> audioSources = null,
+            List<string> audioSourcesExcluded = null,
+            string resolution = null,
+            CompositionResource.FormatEnum format = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            bool? trim = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCompositionOptions(roomSid){  VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a Recording Composition resource identified by a Composition SID. </summary>
         /// <param name="options"> Delete Composition parameters </param>
@@ -191,7 +243,7 @@ namespace Twilio.Rest.Video.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -204,7 +256,7 @@ namespace Twilio.Rest.Video.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -227,6 +279,38 @@ namespace Twilio.Rest.Video.V1
         {
             var options = new DeleteCompositionOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCompositionOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCompositionOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -291,6 +375,39 @@ namespace Twilio.Rest.Video.V1
         {
             var options = new FetchCompositionOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CompositionResource> FetchWithHeaders(FetchCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionResource>> FetchWithHeadersAsync(FetchCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CompositionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CompositionResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCompositionOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CompositionResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCompositionOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -380,6 +497,40 @@ namespace Twilio.Rest.Video.V1
         }
         #endif
 
+        public static ResourceSetResponse<CompositionResource> ReadWithHeaders(ReadCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CompositionResource>.FromJson("compositions", response.Content);
+            var records = new ResourceSet<CompositionResource>(page, options, client);
+            return new ResourceSetResponse<CompositionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CompositionResource> ReadWithHeaders(
+            CompositionResource.StatusEnum status = null,
+            DateTime? dateCreatedAfter = null,
+            DateTime? dateCreatedBefore = null,
+            string roomSid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCompositionOptions(){ Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, RoomSid = roomSid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CompositionResource>> ReadWithHeadersAsync(ReadCompositionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CompositionResource>.FromJson("compositions", response.Content);
+            var records = new ResourceSet<CompositionResource>(page, options, client);
+            return new ResourceSetResponse<CompositionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

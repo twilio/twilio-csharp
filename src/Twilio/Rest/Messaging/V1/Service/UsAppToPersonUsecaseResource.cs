@@ -100,6 +100,40 @@ namespace Twilio.Rest.Messaging.V1.Service
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<UsAppToPersonUsecaseResource> FetchWithHeaders(FetchUsAppToPersonUsecaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonUsecaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonUsecaseResource>> FetchWithHeadersAsync(FetchUsAppToPersonUsecaseOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UsAppToPersonUsecaseResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UsAppToPersonUsecaseResource> FetchWithHeaders(
+                    string pathMessagingServiceSid, 
+                    string brandRegistrationSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){ BrandRegistrationSid = brandRegistrationSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UsAppToPersonUsecaseResource>> FetchWithHeadersAsync(string pathMessagingServiceSid, string brandRegistrationSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchUsAppToPersonUsecaseOptions(pathMessagingServiceSid){ BrandRegistrationSid = brandRegistrationSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a UsAppToPersonUsecaseResource object

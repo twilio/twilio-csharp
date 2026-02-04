@@ -117,6 +117,40 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AccountResource> FetchWithHeaders(FetchAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> FetchWithHeadersAsync(FetchAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AccountResource> FetchWithHeaders(
+                    string pathOrganizationSid, 
+                    string pathAccountSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAccountOptions(pathOrganizationSid, pathAccountSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> FetchWithHeadersAsync(string pathOrganizationSid, string pathAccountSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAccountOptions(pathOrganizationSid, pathAccountSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAccountOptions options, ITwilioRestClient client)
         {
@@ -194,6 +228,37 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         #endif
 
+        public static ResourceSetResponse<AccountResource> ReadWithHeaders(ReadAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AccountResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<AccountResource>(page, options, client);
+            return new ResourceSetResponse<AccountResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AccountResource> ReadWithHeaders(
+            string pathOrganizationSid,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAccountOptions(pathOrganizationSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AccountResource>> ReadWithHeadersAsync(ReadAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AccountResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<AccountResource>(page, options, client);
+            return new ResourceSetResponse<AccountResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

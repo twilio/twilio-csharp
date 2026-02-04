@@ -80,9 +80,6 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if (GlobalConstants.IsOnlyOneSet(edge,region))
-                Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
-
             Region = region;
             Edge = edge;
         }
@@ -115,9 +112,6 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if (GlobalConstants.IsOnlyOneSet(edge,region))
-                 Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
-
             Region = region;
             Edge = edge;
         }
@@ -130,12 +124,6 @@ namespace Twilio.Clients
         /// <returns>response of the request</returns>
         public Response Request(Request request)
         {
-
-            if (string.IsNullOrEmpty(Edge) && !string.IsNullOrEmpty(Region) && GlobalConstants.RegionToEdgeMap.TryGetValue(Region, out var edge))
-            {
-                Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
-                Edge = edge;
-            }
 
             if(_username != null && _password != null){
                 request.SetAuth(_username, _password);

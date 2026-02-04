@@ -106,6 +106,44 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static TwilioResponse<NewKeyResource> CreateWithHeaders(CreateNewKeyOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewKeyResource>> CreateWithHeadersAsync(CreateNewKeyOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NewKeyResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NewKeyResource> CreateWithHeaders(
+            string pathAccountSid = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NewKeyResource>> CreateWithHeadersAsync(
+            string pathAccountSid = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateNewKeyOptions(){  PathAccountSid = pathAccountSid, FriendlyName = friendlyName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewKeyResource object

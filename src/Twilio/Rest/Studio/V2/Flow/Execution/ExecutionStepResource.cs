@@ -107,6 +107,41 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ExecutionStepResource> FetchWithHeaders(FetchExecutionStepOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionStepResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionStepResource>> FetchWithHeadersAsync(FetchExecutionStepOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionStepResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ExecutionStepResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathExecutionSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionStepOptions(pathFlowSid, pathExecutionSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionStepResource>> FetchWithHeadersAsync(string pathFlowSid, string pathExecutionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionStepOptions(pathFlowSid, pathExecutionSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadExecutionStepOptions options, ITwilioRestClient client)
         {
@@ -190,6 +225,38 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         }
         #endif
 
+        public static ResourceSetResponse<ExecutionStepResource> ReadWithHeaders(ReadExecutionStepOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ExecutionStepResource>.FromJson("steps", response.Content);
+            var records = new ResourceSet<ExecutionStepResource>(page, options, client);
+            return new ResourceSetResponse<ExecutionStepResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ExecutionStepResource> ReadWithHeaders(
+            string pathFlowSid,
+            string pathExecutionSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadExecutionStepOptions(pathFlowSid, pathExecutionSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ExecutionStepResource>> ReadWithHeadersAsync(ReadExecutionStepOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ExecutionStepResource>.FromJson("steps", response.Content);
+            var records = new ResourceSet<ExecutionStepResource>(page, options, client);
+            return new ResourceSetResponse<ExecutionStepResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

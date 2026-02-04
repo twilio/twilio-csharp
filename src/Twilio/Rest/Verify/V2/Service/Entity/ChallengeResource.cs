@@ -187,6 +187,56 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         }
         #endif
 
+
+        public static TwilioResponse<ChallengeResource> CreateWithHeaders(CreateChallengeOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> CreateWithHeadersAsync(CreateChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ChallengeResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string factorSid,
+            DateTime? expirationDate = null,
+            string detailsMessage = null,
+            List<object> detailsFields = null,
+            object hiddenDetails = null,
+            string authPayload = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){  ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathIdentity,
+            string factorSid,
+            DateTime? expirationDate = null,
+            string detailsMessage = null,
+            List<object> detailsFields = null,
+            object hiddenDetails = null,
+            string authPayload = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){  ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchChallengeOptions options, ITwilioRestClient client)
         {
@@ -259,6 +309,41 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ChallengeResource> FetchWithHeaders(FetchChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> FetchWithHeadersAsync(FetchChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ChallengeResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathIdentity, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> FetchWithHeadersAsync(string pathServiceSid, string pathIdentity, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -356,6 +441,41 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         }
         #endif
 
+        public static ResourceSetResponse<ChallengeResource> ReadWithHeaders(ReadChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ChallengeResource>.FromJson("challenges", response.Content);
+            var records = new ResourceSet<ChallengeResource>(page, options, client);
+            return new ResourceSetResponse<ChallengeResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ChallengeResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string factorSid = null,
+            ChallengeResource.ChallengeStatusesEnum status = null,
+            ChallengeResource.ListOrdersEnum order = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){ FactorSid = factorSid, Status = status, Order = order, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ChallengeResource>> ReadWithHeadersAsync(ReadChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ChallengeResource>.FromJson("challenges", response.Content);
+            var records = new ResourceSet<ChallengeResource>(page, options, client);
+            return new ResourceSetResponse<ChallengeResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -491,6 +611,51 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ChallengeResource> UpdateWithHeaders(UpdateChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> UpdateWithHeadersAsync(UpdateChallengeOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ChallengeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ChallengeResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathSid,
+            string authPayload = null,
+            object metadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ChallengeResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathIdentity,
+            string pathSid,
+            string authPayload = null,
+            object metadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){ AuthPayload = authPayload, Metadata = metadata };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

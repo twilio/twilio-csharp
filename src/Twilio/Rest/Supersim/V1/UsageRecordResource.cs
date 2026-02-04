@@ -163,6 +163,44 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<UsageRecordResource> ReadWithHeaders(ReadUsageRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UsageRecordResource>.FromJson("usage_records", response.Content);
+            var records = new ResourceSet<UsageRecordResource>(page, options, client);
+            return new ResourceSetResponse<UsageRecordResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UsageRecordResource> ReadWithHeaders(
+            string sim = null,
+            string fleet = null,
+            string network = null,
+            string isoCountry = null,
+            UsageRecordResource.GroupEnum group = null,
+            UsageRecordResource.GranularityEnum granularity = null,
+            DateTime? startTime = null,
+            DateTime? endTime = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUsageRecordOptions(){ Sim = sim, Fleet = fleet, Network = network, IsoCountry = isoCountry, Group = group, Granularity = granularity, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UsageRecordResource>> ReadWithHeadersAsync(ReadUsageRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UsageRecordResource>.FromJson("usage_records", response.Content);
+            var records = new ResourceSet<UsageRecordResource>(page, options, client);
+            return new ResourceSetResponse<UsageRecordResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

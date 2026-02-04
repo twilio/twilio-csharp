@@ -179,6 +179,54 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
 
+
+        public static TwilioResponse<CommandResource> CreateWithHeaders(CreateCommandOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> CreateWithHeadersAsync(CreateCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CommandResource> CreateWithHeaders(
+            string command,
+            string sim = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            CommandResource.CommandModeEnum commandMode = null,
+            string includeSid = null,
+            bool? deliveryReceiptRequested = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCommandOptions(command){  Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> CreateWithHeadersAsync(
+            string command,
+            string sim = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            CommandResource.CommandModeEnum commandMode = null,
+            string includeSid = null,
+            bool? deliveryReceiptRequested = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCommandOptions(command){  Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a Command instance from your account. </summary>
         /// <param name="options"> Delete Command parameters </param>
@@ -209,7 +257,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -222,7 +270,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -245,6 +293,38 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new DeleteCommandOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCommandOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCommandOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -309,6 +389,39 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new FetchCommandOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CommandResource> FetchWithHeaders(FetchCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> FetchWithHeadersAsync(FetchCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CommandResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommandResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -398,6 +511,40 @@ namespace Twilio.Rest.Wireless.V1
         }
         #endif
 
+        public static ResourceSetResponse<CommandResource> ReadWithHeaders(ReadCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            var records = new ResourceSet<CommandResource>(page, options, client);
+            return new ResourceSetResponse<CommandResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CommandResource> ReadWithHeaders(
+            string sim = null,
+            CommandResource.StatusEnum status = null,
+            CommandResource.DirectionEnum direction = null,
+            CommandResource.TransportEnum transport = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCommandOptions(){ Sim = sim, Status = status, Direction = direction, Transport = transport, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CommandResource>> ReadWithHeadersAsync(ReadCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            var records = new ResourceSet<CommandResource>(page, options, client);
+            return new ResourceSetResponse<CommandResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

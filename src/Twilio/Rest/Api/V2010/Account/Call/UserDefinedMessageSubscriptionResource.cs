@@ -120,6 +120,50 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
 
+
+        public static TwilioResponse<UserDefinedMessageSubscriptionResource> CreateWithHeaders(CreateUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserDefinedMessageSubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserDefinedMessageSubscriptionResource>> CreateWithHeadersAsync(CreateUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserDefinedMessageSubscriptionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserDefinedMessageSubscriptionResource> CreateWithHeaders(
+            string pathCallSid,
+            Uri callback,
+            string pathAccountSid = null,
+            string idempotencyKey = null,
+            Twilio.Http.HttpMethod method = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserDefinedMessageSubscriptionResource>> CreateWithHeadersAsync(
+            string pathCallSid,
+            Uri callback,
+            string pathAccountSid = null,
+            string idempotencyKey = null,
+            Twilio.Http.HttpMethod method = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateUserDefinedMessageSubscriptionOptions(pathCallSid, callback){  PathAccountSid = pathAccountSid, IdempotencyKey = idempotencyKey, Method = method };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific User Defined Message Subscription. </summary>
         /// <param name="options"> Delete UserDefinedMessageSubscription parameters </param>
@@ -154,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -167,7 +211,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -194,6 +238,38 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var options = new DeleteUserDefinedMessageSubscriptionOptions(pathCallSid, pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteUserDefinedMessageSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathCallSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserDefinedMessageSubscriptionOptions(pathCallSid, pathSid)         { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathCallSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserDefinedMessageSubscriptionOptions(pathCallSid, pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
     

@@ -168,6 +168,50 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
         #endif
 
+
+        public static TwilioResponse<MessageInteractionResource> CreateWithHeaders(CreateMessageInteractionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageInteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageInteractionResource>> CreateWithHeadersAsync(CreateMessageInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageInteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MessageInteractionResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathSessionSid,
+            string pathParticipantSid,
+            string body = null,
+            List<Uri> mediaUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){  Body = body, MediaUrl = mediaUrl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageInteractionResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathSessionSid,
+            string pathParticipantSid,
+            string body = null,
+            List<Uri> mediaUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){  Body = body, MediaUrl = mediaUrl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchMessageInteractionOptions options, ITwilioRestClient client)
         {
@@ -245,6 +289,42 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         {
             var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<MessageInteractionResource> FetchWithHeaders(FetchMessageInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageInteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageInteractionResource>> FetchWithHeadersAsync(FetchMessageInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessageInteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<MessageInteractionResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSessionSid, 
+                    string pathParticipantSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessageInteractionResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSessionSid, string pathParticipantSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -336,6 +416,39 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
         #endif
 
+        public static ResourceSetResponse<MessageInteractionResource> ReadWithHeaders(ReadMessageInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<MessageInteractionResource>.FromJson("interactions", response.Content);
+            var records = new ResourceSet<MessageInteractionResource>(page, options, client);
+            return new ResourceSetResponse<MessageInteractionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<MessageInteractionResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathSessionSid,
+            string pathParticipantSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<MessageInteractionResource>> ReadWithHeadersAsync(ReadMessageInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<MessageInteractionResource>.FromJson("interactions", response.Content);
+            var records = new ResourceSet<MessageInteractionResource>(page, options, client);
+            return new ResourceSetResponse<MessageInteractionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

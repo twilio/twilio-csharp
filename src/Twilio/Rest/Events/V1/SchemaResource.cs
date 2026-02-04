@@ -97,6 +97,39 @@ namespace Twilio.Rest.Events.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SchemaResource> FetchWithHeaders(FetchSchemaOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SchemaResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SchemaResource>> FetchWithHeadersAsync(FetchSchemaOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SchemaResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SchemaResource> FetchWithHeaders(
+                    string pathId, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSchemaOptions(pathId){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SchemaResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
+        {
+            var options = new FetchSchemaOptions(pathId){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a SchemaResource object

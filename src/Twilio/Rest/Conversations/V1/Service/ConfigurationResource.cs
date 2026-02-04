@@ -97,6 +97,39 @@ namespace Twilio.Rest.Conversations.V1.Service
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ConfigurationResource> FetchWithHeaders(FetchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> FetchWithHeadersAsync(FetchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ConfigurationResource> FetchWithHeaders(
+                    string pathChatServiceSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchConfigurationOptions(pathChatServiceSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> FetchWithHeadersAsync(string pathChatServiceSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchConfigurationOptions(pathChatServiceSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateConfigurationOptions options, ITwilioRestClient client)
         {
@@ -180,6 +213,51 @@ namespace Twilio.Rest.Conversations.V1.Service
         {
             var options = new UpdateConfigurationOptions(pathChatServiceSid){ DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationResource> UpdateWithHeaders(UpdateConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> UpdateWithHeadersAsync(UpdateConfigurationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationResource> UpdateWithHeaders(
+            string pathChatServiceSid,
+            string defaultConversationCreatorRoleSid = null,
+            string defaultConversationRoleSid = null,
+            string defaultChatServiceRoleSid = null,
+            bool? reachabilityEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(pathChatServiceSid){ DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> UpdateWithHeadersAsync(
+            string pathChatServiceSid,
+            string defaultConversationCreatorRoleSid = null,
+            string defaultConversationRoleSid = null,
+            string defaultChatServiceRoleSid = null,
+            bool? reachabilityEnabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(pathChatServiceSid){ DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -198,6 +198,74 @@ namespace Twilio.Rest.Numbers.V3
         }
         #endif
 
+
+        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(
+            Types.PhoneNumber phoneNumber,
+            bool? smsCapability,
+            string accountSid = null,
+            string friendlyName = null,
+            string uniqueName = null,
+            List<string> ccEmails = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string smsApplicationSid = null,
+            string addressSid = null,
+            string email = null,
+            HostedNumberOrderResource.VerificationTypeEnum verificationType = null,
+            string verificationDocumentSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){  AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(
+            Types.PhoneNumber phoneNumber,
+            bool? smsCapability,
+            string accountSid = null,
+            string friendlyName = null,
+            string uniqueName = null,
+            List<string> ccEmails = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string smsApplicationSid = null,
+            string addressSid = null,
+            string email = null,
+            HostedNumberOrderResource.VerificationTypeEnum verificationType = null,
+            string verificationDocumentSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){  AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a HostedNumberOrderResource object

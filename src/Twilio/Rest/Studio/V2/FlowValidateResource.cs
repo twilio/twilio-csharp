@@ -125,6 +125,49 @@ namespace Twilio.Rest.Studio.V2
         }
         #endif
 
+        public static TwilioResponse<FlowValidateResource> UpdateWithHeaders(UpdateFlowValidateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowValidateResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowValidateResource>> UpdateWithHeadersAsync(UpdateFlowValidateOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowValidateResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlowValidateResource> UpdateWithHeaders(
+            string friendlyName,
+            FlowValidateResource.StatusEnum status,
+            object definition,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowValidateOptions(friendlyName, status, definition){ CommitMessage = commitMessage };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowValidateResource>> UpdateWithHeadersAsync(
+            string friendlyName,
+            FlowValidateResource.StatusEnum status,
+            object definition,
+            string commitMessage = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowValidateOptions(friendlyName, status, definition){ CommitMessage = commitMessage };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a FlowValidateResource object

@@ -133,6 +133,52 @@ namespace Twilio.Rest.Taskrouter.V1
         }
         #endif
 
+
+        public static TwilioResponse<WorkspaceResource> CreateWithHeaders(CreateWorkspaceOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> CreateWithHeadersAsync(CreateWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WorkspaceResource> CreateWithHeaders(
+            string friendlyName,
+            Uri eventCallbackUrl = null,
+            string eventsFilter = null,
+            bool? multiTaskEnabled = null,
+            string template = null,
+            WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWorkspaceOptions(friendlyName){  EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, MultiTaskEnabled = multiTaskEnabled, Template = template, PrioritizeQueueOrder = prioritizeQueueOrder };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            Uri eventCallbackUrl = null,
+            string eventsFilter = null,
+            bool? multiTaskEnabled = null,
+            string template = null,
+            WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateWorkspaceOptions(friendlyName){  EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, MultiTaskEnabled = multiTaskEnabled, Template = template, PrioritizeQueueOrder = prioritizeQueueOrder };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Workspace parameters </param>
@@ -163,7 +209,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -176,7 +222,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -199,6 +245,38 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var options = new DeleteWorkspaceOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWorkspaceOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWorkspaceOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -263,6 +341,39 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var options = new FetchWorkspaceOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<WorkspaceResource> FetchWithHeaders(FetchWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> FetchWithHeadersAsync(FetchWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WorkspaceResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkspaceOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkspaceOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -340,6 +451,37 @@ namespace Twilio.Rest.Taskrouter.V1
         }
         #endif
 
+        public static ResourceSetResponse<WorkspaceResource> ReadWithHeaders(ReadWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<WorkspaceResource>.FromJson("workspaces", response.Content);
+            var records = new ResourceSet<WorkspaceResource>(page, options, client);
+            return new ResourceSetResponse<WorkspaceResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<WorkspaceResource> ReadWithHeaders(
+            string friendlyName = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadWorkspaceOptions(){ FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<WorkspaceResource>> ReadWithHeadersAsync(ReadWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<WorkspaceResource>.FromJson("workspaces", response.Content);
+            var records = new ResourceSet<WorkspaceResource>(page, options, client);
+            return new ResourceSetResponse<WorkspaceResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -483,6 +625,57 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             var options = new UpdateWorkspaceOptions(pathSid){ DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<WorkspaceResource> UpdateWithHeaders(UpdateWorkspaceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> UpdateWithHeadersAsync(UpdateWorkspaceOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkspaceResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<WorkspaceResource> UpdateWithHeaders(
+            string pathSid,
+            string defaultActivitySid = null,
+            Uri eventCallbackUrl = null,
+            string eventsFilter = null,
+            string friendlyName = null,
+            bool? multiTaskEnabled = null,
+            string timeoutActivitySid = null,
+            WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkspaceOptions(pathSid){ DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkspaceResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string defaultActivitySid = null,
+            Uri eventCallbackUrl = null,
+            string eventsFilter = null,
+            string friendlyName = null,
+            bool? multiTaskEnabled = null,
+            string timeoutActivitySid = null,
+            WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkspaceOptions(pathSid){ DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

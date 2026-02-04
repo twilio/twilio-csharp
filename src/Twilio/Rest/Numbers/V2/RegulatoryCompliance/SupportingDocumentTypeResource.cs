@@ -97,6 +97,39 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<SupportingDocumentTypeResource> FetchWithHeaders(FetchSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentTypeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentTypeResource>> FetchWithHeadersAsync(FetchSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SupportingDocumentTypeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SupportingDocumentTypeResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSupportingDocumentTypeOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SupportingDocumentTypeResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSupportingDocumentTypeOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadSupportingDocumentTypeOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,36 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        public static ResourceSetResponse<SupportingDocumentTypeResource> ReadWithHeaders(ReadSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SupportingDocumentTypeResource>.FromJson("supporting_document_types", response.Content);
+            var records = new ResourceSet<SupportingDocumentTypeResource>(page, options, client);
+            return new ResourceSetResponse<SupportingDocumentTypeResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SupportingDocumentTypeResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSupportingDocumentTypeOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SupportingDocumentTypeResource>> ReadWithHeadersAsync(ReadSupportingDocumentTypeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SupportingDocumentTypeResource>.FromJson("supporting_document_types", response.Content);
+            var records = new ResourceSet<SupportingDocumentTypeResource>(page, options, client);
+            return new ResourceSetResponse<SupportingDocumentTypeResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

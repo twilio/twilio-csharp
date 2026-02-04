@@ -221,14 +221,6 @@ namespace Twilio
         /// <returns>The rest client</returns>
         public static ITwilioRestClient GetRestClient()
         {
-            if (GlobalConstants.IsOnlyOneSet(_edge,_region))
-                Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
-
-            if (string.IsNullOrEmpty(_edge) && !string.IsNullOrEmpty(_region) && GlobalConstants.RegionToEdgeMap.TryGetValue(_region, out var edge))
-            {
-                Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
-                _edge = edge;
-            }
 
             if (_restClient != null)
             {

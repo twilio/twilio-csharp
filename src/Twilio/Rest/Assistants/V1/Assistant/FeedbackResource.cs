@@ -150,6 +150,44 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         }
         #endif
 
+
+        public static TwilioResponse<FeedbackResource> CreateWithHeaders(CreateFeedbackOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FeedbackResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FeedbackResource>> CreateWithHeadersAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FeedbackResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FeedbackResource> CreateWithHeaders(
+            string pathId,
+            FeedbackResource.AssistantsV1ServiceCreateFeedbackRequest assistantsV1ServiceCreateFeedbackRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFeedbackOptions(pathId, assistantsV1ServiceCreateFeedbackRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FeedbackResource>> CreateWithHeadersAsync(
+            string pathId,
+            FeedbackResource.AssistantsV1ServiceCreateFeedbackRequest assistantsV1ServiceCreateFeedbackRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateFeedbackOptions(pathId, assistantsV1ServiceCreateFeedbackRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadFeedbackOptions options, ITwilioRestClient client)
         {
@@ -227,6 +265,37 @@ namespace Twilio.Rest.Assistants.V1.Assistant
         }
         #endif
 
+        public static ResourceSetResponse<FeedbackResource> ReadWithHeaders(ReadFeedbackOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<FeedbackResource>.FromJson("feedbacks", response.Content);
+            var records = new ResourceSet<FeedbackResource>(page, options, client);
+            return new ResourceSetResponse<FeedbackResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<FeedbackResource> ReadWithHeaders(
+            string pathId,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadFeedbackOptions(pathId){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<FeedbackResource>> ReadWithHeadersAsync(ReadFeedbackOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<FeedbackResource>.FromJson("feedbacks", response.Content);
+            var records = new ResourceSet<FeedbackResource>(page, options, client);
+            return new ResourceSetResponse<FeedbackResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

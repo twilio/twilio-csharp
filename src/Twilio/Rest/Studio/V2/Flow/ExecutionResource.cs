@@ -127,6 +127,48 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
         #endif
 
+
+        public static TwilioResponse<ExecutionResource> CreateWithHeaders(CreateExecutionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> CreateWithHeadersAsync(CreateExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ExecutionResource> CreateWithHeaders(
+            string pathFlowSid,
+            Types.PhoneNumber to,
+            Types.PhoneNumber from,
+            object parameters = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExecutionOptions(pathFlowSid, to, from){  Parameters = parameters };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> CreateWithHeadersAsync(
+            string pathFlowSid,
+            Types.PhoneNumber to,
+            Types.PhoneNumber from,
+            object parameters = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExecutionOptions(pathFlowSid, to, from){  Parameters = parameters };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete the Execution and all Steps relating to it. </summary>
         /// <param name="options"> Delete Execution parameters </param>
@@ -159,7 +201,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -172,7 +214,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -197,6 +239,38 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var options = new DeleteExecutionOptions(pathFlowSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteExecutionOptions(pathFlowSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteExecutionOptions(pathFlowSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -266,6 +340,40 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var options = new FetchExecutionOptions(pathFlowSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ExecutionResource> FetchWithHeaders(FetchExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> FetchWithHeadersAsync(FetchExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ExecutionResource> FetchWithHeaders(
+                    string pathFlowSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionOptions(pathFlowSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> FetchWithHeadersAsync(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchExecutionOptions(pathFlowSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -353,6 +461,39 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
         #endif
 
+        public static ResourceSetResponse<ExecutionResource> ReadWithHeaders(ReadExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ExecutionResource>.FromJson("executions", response.Content);
+            var records = new ResourceSet<ExecutionResource>(page, options, client);
+            return new ResourceSetResponse<ExecutionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ExecutionResource> ReadWithHeaders(
+            string pathFlowSid,
+            DateTime? dateCreatedFrom = null,
+            DateTime? dateCreatedTo = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadExecutionOptions(pathFlowSid){ DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ExecutionResource>> ReadWithHeadersAsync(ReadExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ExecutionResource>.FromJson("executions", response.Content);
+            var records = new ResourceSet<ExecutionResource>(page, options, client);
+            return new ResourceSetResponse<ExecutionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -478,6 +619,47 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ExecutionResource> UpdateWithHeaders(UpdateExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> UpdateWithHeadersAsync(UpdateExecutionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExecutionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ExecutionResource> UpdateWithHeaders(
+            string pathFlowSid,
+            string pathSid,
+            ExecutionResource.StatusEnum status,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExecutionResource>> UpdateWithHeadersAsync(
+            string pathFlowSid,
+            string pathSid,
+            ExecutionResource.StatusEnum status,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

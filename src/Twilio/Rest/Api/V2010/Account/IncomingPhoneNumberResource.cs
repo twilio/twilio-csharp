@@ -256,6 +256,90 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+
+        public static TwilioResponse<IncomingPhoneNumberResource> CreateWithHeaders(CreateIncomingPhoneNumberOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> CreateWithHeadersAsync(CreateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IncomingPhoneNumberResource> CreateWithHeaders(
+            string pathAccountSid = null,
+            Types.PhoneNumber phoneNumber = null,
+            string areaCode = null,
+            string apiVersion = null,
+            string friendlyName = null,
+            string smsApplicationSid = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string voiceApplicationSid = null,
+            bool? voiceCallerIdLookup = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null,
+            string emergencyAddressSid = null,
+            string trunkSid = null,
+            string identitySid = null,
+            string addressSid = null,
+            IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+            string bundleSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIncomingPhoneNumberOptions(){  PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, IdentitySid = identitySid, AddressSid = addressSid, VoiceReceiveMode = voiceReceiveMode, BundleSid = bundleSid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> CreateWithHeadersAsync(
+            string pathAccountSid = null,
+            Types.PhoneNumber phoneNumber = null,
+            string areaCode = null,
+            string apiVersion = null,
+            string friendlyName = null,
+            string smsApplicationSid = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string voiceApplicationSid = null,
+            bool? voiceCallerIdLookup = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null,
+            string emergencyAddressSid = null,
+            string trunkSid = null,
+            string identitySid = null,
+            string addressSid = null,
+            IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+            string bundleSid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIncomingPhoneNumberOptions(){  PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, IdentitySid = identitySid, AddressSid = addressSid, VoiceReceiveMode = voiceReceiveMode, BundleSid = bundleSid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a phone-numbers belonging to the account used to make the request. </summary>
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
@@ -288,7 +372,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -301,7 +385,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -326,6 +410,38 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new DeleteIncomingPhoneNumberOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIncomingPhoneNumberOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIncomingPhoneNumberOptions(pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -395,6 +511,40 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new FetchIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<IncomingPhoneNumberResource> FetchWithHeaders(FetchIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> FetchWithHeadersAsync(FetchIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<IncomingPhoneNumberResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> FetchWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -490,6 +640,41 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+        public static ResourceSetResponse<IncomingPhoneNumberResource> ReadWithHeaders(ReadIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<IncomingPhoneNumberResource>.FromJson("incoming_phone_numbers", response.Content);
+            var records = new ResourceSet<IncomingPhoneNumberResource>(page, options, client);
+            return new ResourceSetResponse<IncomingPhoneNumberResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<IncomingPhoneNumberResource> ReadWithHeaders(
+            string pathAccountSid = null,
+            bool? beta = null,
+            string friendlyName = null,
+            Types.PhoneNumber phoneNumber = null,
+            string origin = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadIncomingPhoneNumberOptions(){ PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<IncomingPhoneNumberResource>> ReadWithHeadersAsync(ReadIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<IncomingPhoneNumberResource>.FromJson("incoming_phone_numbers", response.Content);
+            var records = new ResourceSet<IncomingPhoneNumberResource>(page, options, client);
+            return new ResourceSetResponse<IncomingPhoneNumberResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -703,6 +888,91 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new UpdateIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, IdentitySid = identitySid, AddressSid = addressSid, BundleSid = bundleSid };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<IncomingPhoneNumberResource> UpdateWithHeaders(UpdateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> UpdateWithHeadersAsync(UpdateIncomingPhoneNumberOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IncomingPhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IncomingPhoneNumberResource> UpdateWithHeaders(
+            string pathSid,
+            string pathAccountSid = null,
+            string accountSid = null,
+            string apiVersion = null,
+            string friendlyName = null,
+            string smsApplicationSid = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string voiceApplicationSid = null,
+            bool? voiceCallerIdLookup = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null,
+            string emergencyAddressSid = null,
+            string trunkSid = null,
+            IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+            string identitySid = null,
+            string addressSid = null,
+            string bundleSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, IdentitySid = identitySid, AddressSid = addressSid, BundleSid = bundleSid };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IncomingPhoneNumberResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string pathAccountSid = null,
+            string accountSid = null,
+            string apiVersion = null,
+            string friendlyName = null,
+            string smsApplicationSid = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsUrl = null,
+            Uri statusCallback = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string voiceApplicationSid = null,
+            bool? voiceCallerIdLookup = null,
+            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+            Uri voiceFallbackUrl = null,
+            Twilio.Http.HttpMethod voiceMethod = null,
+            Uri voiceUrl = null,
+            IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null,
+            string emergencyAddressSid = null,
+            string trunkSid = null,
+            IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+            string identitySid = null,
+            string addressSid = null,
+            string bundleSid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateIncomingPhoneNumberOptions(pathSid){ PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, IdentitySid = identitySid, AddressSid = addressSid, BundleSid = bundleSid };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

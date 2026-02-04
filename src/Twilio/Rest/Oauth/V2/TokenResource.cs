@@ -128,6 +128,56 @@ namespace Twilio.Rest.Oauth.V2
         }
         #endif
 
+
+        public static TwilioResponse<TokenResource> CreateWithHeaders(CreateTokenOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetNoAuthRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TokenResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TokenResource>> CreateWithHeadersAsync(CreateTokenOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetNoAuthRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TokenResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TokenResource> CreateWithHeaders(
+            string grantType = null,
+            string clientId = null,
+            string clientSecret = null,
+            string code = null,
+            string redirectUri = null,
+            string audience = null,
+            string refreshToken = null,
+            string scope = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TokenResource>> CreateWithHeadersAsync(
+            string grantType = null,
+            string clientId = null,
+            string clientSecret = null,
+            string code = null,
+            string redirectUri = null,
+            string audience = null,
+            string refreshToken = null,
+            string scope = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TokenResource object

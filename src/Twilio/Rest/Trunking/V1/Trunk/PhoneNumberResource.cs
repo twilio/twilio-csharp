@@ -121,6 +121,44 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
         #endif
 
+
+        public static TwilioResponse<PhoneNumberResource> CreateWithHeaders(CreatePhoneNumberOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> CreateWithHeadersAsync(CreatePhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PhoneNumberResource> CreateWithHeaders(
+            string pathTrunkSid,
+            string phoneNumberSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePhoneNumberOptions(pathTrunkSid, phoneNumberSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> CreateWithHeadersAsync(
+            string pathTrunkSid,
+            string phoneNumberSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreatePhoneNumberOptions(pathTrunkSid, phoneNumberSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
@@ -153,7 +191,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -166,7 +204,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -191,6 +229,38 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeletePhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeletePhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -260,6 +330,40 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(
+                    string pathTrunkSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -339,6 +443,37 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
         #endif
 
+        public static ResourceSetResponse<PhoneNumberResource> ReadWithHeaders(ReadPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
+            var records = new ResourceSet<PhoneNumberResource>(page, options, client);
+            return new ResourceSetResponse<PhoneNumberResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<PhoneNumberResource> ReadWithHeaders(
+            string pathTrunkSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadPhoneNumberOptions(pathTrunkSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<PhoneNumberResource>> ReadWithHeadersAsync(ReadPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
+            var records = new ResourceSet<PhoneNumberResource>(page, options, client);
+            return new ResourceSetResponse<PhoneNumberResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

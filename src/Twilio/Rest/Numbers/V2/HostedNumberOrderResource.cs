@@ -193,6 +193,72 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+
+        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(
+            Types.PhoneNumber phoneNumber,
+            Types.PhoneNumber contactPhoneNumber,
+            string addressSid,
+            string email,
+            string accountSid = null,
+            string friendlyName = null,
+            List<string> ccEmails = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            bool? smsCapability = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string smsApplicationSid = null,
+            string contactTitle = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateHostedNumberOrderOptions(phoneNumber, contactPhoneNumber, addressSid, email){  AccountSid = accountSid, FriendlyName = friendlyName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsCapability = smsCapability, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, ContactTitle = contactTitle };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(
+            Types.PhoneNumber phoneNumber,
+            Types.PhoneNumber contactPhoneNumber,
+            string addressSid,
+            string email,
+            string accountSid = null,
+            string friendlyName = null,
+            List<string> ccEmails = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            bool? smsCapability = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+            Uri statusCallbackUrl = null,
+            Twilio.Http.HttpMethod statusCallbackMethod = null,
+            string smsApplicationSid = null,
+            string contactTitle = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateHostedNumberOrderOptions(phoneNumber, contactPhoneNumber, addressSid, email){  AccountSid = accountSid, FriendlyName = friendlyName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsCapability = smsCapability, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, ContactTitle = contactTitle };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Cancel the HostedNumberOrder (only available when the status is in `received`). </summary>
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
@@ -223,7 +289,7 @@ namespace Twilio.Rest.Numbers.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -236,7 +302,7 @@ namespace Twilio.Rest.Numbers.V2
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -259,6 +325,38 @@ namespace Twilio.Rest.Numbers.V2
         {
             var options = new DeleteHostedNumberOrderOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteHostedNumberOrderOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteHostedNumberOrderOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -323,6 +421,39 @@ namespace Twilio.Rest.Numbers.V2
         {
             var options = new FetchHostedNumberOrderOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<HostedNumberOrderResource> FetchWithHeaders(FetchHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> FetchWithHeadersAsync(FetchHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<HostedNumberOrderResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchHostedNumberOrderOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchHostedNumberOrderOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -416,6 +547,41 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+        public static ResourceSetResponse<HostedNumberOrderResource> ReadWithHeaders(ReadHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<HostedNumberOrderResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<HostedNumberOrderResource>(page, options, client);
+            return new ResourceSetResponse<HostedNumberOrderResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<HostedNumberOrderResource> ReadWithHeaders(
+            HostedNumberOrderResource.StatusEnum status = null,
+            bool? smsCapability = null,
+            Types.PhoneNumber phoneNumber = null,
+            string incomingPhoneNumberSid = null,
+            string friendlyName = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadHostedNumberOrderOptions(){ Status = status, SmsCapability = smsCapability, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<HostedNumberOrderResource>> ReadWithHeadersAsync(ReadHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<HostedNumberOrderResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<HostedNumberOrderResource>(page, options, client);
+            return new ResourceSetResponse<HostedNumberOrderResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -543,6 +709,49 @@ namespace Twilio.Rest.Numbers.V2
         {
             var options = new UpdateHostedNumberOrderOptions(pathSid, status){ VerificationCallDelay = verificationCallDelay, VerificationCallExtension = verificationCallExtension };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<HostedNumberOrderResource> UpdateWithHeaders(UpdateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> UpdateWithHeadersAsync(UpdateHostedNumberOrderOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<HostedNumberOrderResource> UpdateWithHeaders(
+            string pathSid,
+            HostedNumberOrderResource.StatusEnum status,
+            int? verificationCallDelay = null,
+            string verificationCallExtension = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateHostedNumberOrderOptions(pathSid, status){ VerificationCallDelay = verificationCallDelay, VerificationCallExtension = verificationCallExtension };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            HostedNumberOrderResource.StatusEnum status,
+            int? verificationCallDelay = null,
+            string verificationCallExtension = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateHostedNumberOrderOptions(pathSid, status){ VerificationCallDelay = verificationCallDelay, VerificationCallExtension = verificationCallExtension };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

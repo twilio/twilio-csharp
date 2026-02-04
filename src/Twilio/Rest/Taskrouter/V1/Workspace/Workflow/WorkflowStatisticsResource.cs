@@ -117,6 +117,45 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<WorkflowStatisticsResource> FetchWithHeaders(FetchWorkflowStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkflowStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkflowStatisticsResource>> FetchWithHeadersAsync(FetchWorkflowStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WorkflowStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WorkflowStatisticsResource> FetchWithHeaders(
+                    string pathWorkspaceSid, 
+                    string pathWorkflowSid, 
+                    int? minutes = null, 
+                    DateTime? startDate = null, 
+                    DateTime? endDate = null, 
+                    string taskChannel = null, 
+                    string splitByWaitTime = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){ Minutes = minutes,StartDate = startDate,EndDate = endDate,TaskChannel = taskChannel,SplitByWaitTime = splitByWaitTime };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WorkflowStatisticsResource>> FetchWithHeadersAsync(string pathWorkspaceSid, string pathWorkflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){ Minutes = minutes,StartDate = startDate,EndDate = endDate,TaskChannel = taskChannel,SplitByWaitTime = splitByWaitTime };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WorkflowStatisticsResource object

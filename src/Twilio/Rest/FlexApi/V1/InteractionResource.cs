@@ -112,6 +112,48 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<InteractionResource> CreateWithHeaders(CreateInteractionOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> CreateWithHeadersAsync(CreateInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionResource> CreateWithHeaders(
+            object channel,
+            object routing = null,
+            string interactionContextSid = null,
+            string webhookTtid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid, WebhookTtid = webhookTtid };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> CreateWithHeadersAsync(
+            object channel,
+            object routing = null,
+            string interactionContextSid = null,
+            string webhookTtid = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateInteractionOptions(channel){  Routing = routing, InteractionContextSid = interactionContextSid, WebhookTtid = webhookTtid };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchInteractionOptions options, ITwilioRestClient client)
         {
@@ -174,6 +216,39 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new FetchInteractionOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<InteractionResource> FetchWithHeaders(FetchInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> FetchWithHeadersAsync(FetchInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InteractionResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -247,6 +322,45 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateInteractionOptions(pathSid){ WebhookTtid = webhookTtid };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionResource> UpdateWithHeaders(UpdateInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> UpdateWithHeadersAsync(UpdateInteractionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<InteractionResource> UpdateWithHeaders(
+            string pathSid,
+            string webhookTtid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionOptions(pathSid){ WebhookTtid = webhookTtid };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string webhookTtid = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateInteractionOptions(pathSid){ WebhookTtid = webhookTtid };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -152,6 +152,54 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
         #endif
 
+
+        public static TwilioResponse<SyncMapItemResource> CreateWithHeaders(CreateSyncMapItemOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> CreateWithHeadersAsync(CreateSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SyncMapItemResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathMapSid,
+            string key,
+            object data,
+            int? ttl = null,
+            int? itemTtl = null,
+            int? collectionTtl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){  Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathMapSid,
+            string key,
+            object data,
+            int? ttl = null,
+            int? itemTtl = null,
+            int? collectionTtl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){  Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete SyncMapItem parameters </param>
@@ -186,7 +234,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -199,7 +247,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -228,6 +276,38 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey)  { IfMatch = ifMatch };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathMapSid, string pathKey, string ifMatch = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey)            { IfMatch = ifMatch }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathMapSid, string pathKey, string ifMatch = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey)  { IfMatch = ifMatch };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -302,6 +382,41 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SyncMapItemResource> FetchWithHeaders(FetchSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> FetchWithHeadersAsync(FetchSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SyncMapItemResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathMapSid, 
+                    string pathKey, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> FetchWithHeadersAsync(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -399,6 +514,41 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
         #endif
 
+        public static ResourceSetResponse<SyncMapItemResource> ReadWithHeaders(ReadSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SyncMapItemResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<SyncMapItemResource>(page, options, client);
+            return new ResourceSetResponse<SyncMapItemResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SyncMapItemResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathMapSid,
+            SyncMapItemResource.QueryResultOrderEnum order = null,
+            string from = null,
+            SyncMapItemResource.QueryFromBoundTypeEnum bounds = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSyncMapItemOptions(pathServiceSid, pathMapSid){ Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SyncMapItemResource>> ReadWithHeadersAsync(ReadSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SyncMapItemResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<SyncMapItemResource>(page, options, client);
+            return new ResourceSetResponse<SyncMapItemResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -546,6 +696,57 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){ Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SyncMapItemResource> UpdateWithHeaders(UpdateSyncMapItemOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> UpdateWithHeadersAsync(UpdateSyncMapItemOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncMapItemResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SyncMapItemResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathMapSid,
+            string pathKey,
+            object data = null,
+            int? ttl = null,
+            int? itemTtl = null,
+            int? collectionTtl = null,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){ Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncMapItemResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathMapSid,
+            string pathKey,
+            object data = null,
+            int? ttl = null,
+            int? itemTtl = null,
+            int? collectionTtl = null,
+            string ifMatch = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){ Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

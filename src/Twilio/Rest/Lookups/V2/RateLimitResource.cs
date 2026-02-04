@@ -145,6 +145,39 @@ namespace Twilio.Rest.Lookups.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<RateLimitResource> FetchWithHeaders(FetchRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> FetchWithHeadersAsync(FetchRateLimitOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RateLimitResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<RateLimitResource> FetchWithHeaders(
+                    List<string> fields = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchRateLimitOptions(){ Fields = fields };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RateLimitResource>> FetchWithHeadersAsync(List<string> fields = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchRateLimitOptions(){ Fields = fields };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a RateLimitResource object

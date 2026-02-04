@@ -100,6 +100,40 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<EncryptedSentencesResource> FetchWithHeaders(FetchEncryptedSentencesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EncryptedSentencesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EncryptedSentencesResource>> FetchWithHeadersAsync(FetchEncryptedSentencesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<EncryptedSentencesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<EncryptedSentencesResource> FetchWithHeaders(
+                    string pathTranscriptSid, 
+                    bool? redacted = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchEncryptedSentencesOptions(pathTranscriptSid){ Redacted = redacted };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<EncryptedSentencesResource>> FetchWithHeadersAsync(string pathTranscriptSid, bool? redacted = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchEncryptedSentencesOptions(pathTranscriptSid){ Redacted = redacted };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a EncryptedSentencesResource object

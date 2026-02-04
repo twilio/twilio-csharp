@@ -75,7 +75,7 @@ namespace Twilio.Rest.Numbers.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Numbers.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -111,6 +111,38 @@ namespace Twilio.Rest.Numbers.V1
         {
             var options = new DeletePortingWebhookConfigurationDeleteOptions(pathWebhookType) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeletePortingWebhookConfigurationDeleteOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeletePortingWebhookConfigurationDeleteOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null)
+        {
+            var options = new DeletePortingWebhookConfigurationDeleteOptions(pathWebhookType)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(PortingWebhookConfigurationDeleteResource.WebhookTypeEnum pathWebhookType, ITwilioRestClient client = null)
+        {
+            var options = new DeletePortingWebhookConfigurationDeleteOptions(pathWebhookType) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
     

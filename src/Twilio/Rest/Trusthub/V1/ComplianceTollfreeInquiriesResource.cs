@@ -141,6 +141,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="externalReferenceId"> A legally recognized business registration number. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingId"> Unique identifier for the created Vetting . </param>
+        /// <param name="vettingProvider"> Name of the vetting provider. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ComplianceTollfreeInquiries </returns>
         public static ComplianceTollfreeInquiriesResource Create(
@@ -180,9 +182,11 @@ namespace Twilio.Rest.Trusthub.V1
                                           bool? ageGatedContent = null,
                                           string externalReferenceId = null,
                                           List<string> optInKeywords = null,
+                                          string vettingId = null,
+                                          string vettingProvider = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords };
+            var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords, VettingId = vettingId, VettingProvider = vettingProvider };
             return Create(options, client);
         }
 
@@ -224,6 +228,8 @@ namespace Twilio.Rest.Trusthub.V1
         /// <param name="ageGatedContent"> Indicates if the content is age gated. </param>
         /// <param name="externalReferenceId"> A legally recognized business registration number. </param>
         /// <param name="optInKeywords"> List of keywords that users can text in to opt in to receive messages. </param>
+        /// <param name="vettingId"> Unique identifier for the created Vetting . </param>
+        /// <param name="vettingProvider"> Name of the vetting provider. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ComplianceTollfreeInquiries </returns>
         public static async System.Threading.Tasks.Task<ComplianceTollfreeInquiriesResource> CreateAsync(
@@ -263,13 +269,125 @@ namespace Twilio.Rest.Trusthub.V1
                                                                                   bool? ageGatedContent = null,
                                                                                   string externalReferenceId = null,
                                                                                   List<string> optInKeywords = null,
+                                                                                  string vettingId = null,
+                                                                                  string vettingProvider = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords };
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords, VettingId = vettingId, VettingProvider = vettingProvider };
             return await CreateAsync(options, client);
         }
         #endif
 
+
+        public static TwilioResponse<ComplianceTollfreeInquiriesResource> CreateWithHeaders(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceTollfreeInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceTollfreeInquiriesResource>> CreateWithHeadersAsync(CreateComplianceTollfreeInquiriesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ComplianceTollfreeInquiriesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ComplianceTollfreeInquiriesResource> CreateWithHeaders(
+            Types.PhoneNumber tollfreePhoneNumber,
+            string notificationEmail,
+            string customerProfileSid = null,
+            string businessName = null,
+            string businessWebsite = null,
+            List<string> useCaseCategories = null,
+            string useCaseSummary = null,
+            string productionMessageSample = null,
+            List<string> optInImageUrls = null,
+            ComplianceTollfreeInquiriesResource.OptInTypeEnum optInType = null,
+            string messageVolume = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string themeSetId = null,
+            bool? skipMessagingUseCase = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            ComplianceTollfreeInquiriesResource.BusinessTypeEnum businessType = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            string externalReferenceId = null,
+            List<string> optInKeywords = null,
+            string vettingId = null,
+            string vettingProvider = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords, VettingId = vettingId, VettingProvider = vettingProvider };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ComplianceTollfreeInquiriesResource>> CreateWithHeadersAsync(
+            Types.PhoneNumber tollfreePhoneNumber,
+            string notificationEmail,
+            string customerProfileSid = null,
+            string businessName = null,
+            string businessWebsite = null,
+            List<string> useCaseCategories = null,
+            string useCaseSummary = null,
+            string productionMessageSample = null,
+            List<string> optInImageUrls = null,
+            ComplianceTollfreeInquiriesResource.OptInTypeEnum optInType = null,
+            string messageVolume = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string themeSetId = null,
+            bool? skipMessagingUseCase = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            ComplianceTollfreeInquiriesResource.BusinessTypeEnum businessType = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            string externalReferenceId = null,
+            List<string> optInKeywords = null,
+            string vettingId = null,
+            string vettingProvider = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateComplianceTollfreeInquiriesOptions(tollfreePhoneNumber, notificationEmail){  CustomerProfileSid = customerProfileSid, BusinessName = businessName, BusinessWebsite = businessWebsite, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ThemeSetId = themeSetId, SkipMessagingUseCase = skipMessagingUseCase, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, ExternalReferenceId = externalReferenceId, OptInKeywords = optInKeywords, VettingId = vettingId, VettingProvider = vettingProvider };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ComplianceTollfreeInquiriesResource object

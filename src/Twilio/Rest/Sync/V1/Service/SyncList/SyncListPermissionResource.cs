@@ -67,7 +67,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -107,6 +107,38 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         {
             var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -181,6 +213,41 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         {
             var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SyncListPermissionResource> FetchWithHeaders(FetchSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncListPermissionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncListPermissionResource>> FetchWithHeadersAsync(FetchSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncListPermissionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SyncListPermissionResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathListSid, 
+                    string pathIdentity, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncListPermissionResource>> FetchWithHeadersAsync(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -266,6 +333,38 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         }
         #endif
 
+        public static ResourceSetResponse<SyncListPermissionResource> ReadWithHeaders(ReadSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
+            var records = new ResourceSet<SyncListPermissionResource>(page, options, client);
+            return new ResourceSetResponse<SyncListPermissionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SyncListPermissionResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathListSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSyncListPermissionOptions(pathServiceSid, pathListSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SyncListPermissionResource>> ReadWithHeadersAsync(ReadSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
+            var records = new ResourceSet<SyncListPermissionResource>(page, options, client);
+            return new ResourceSetResponse<SyncListPermissionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -405,6 +504,53 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         {
             var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SyncListPermissionResource> UpdateWithHeaders(UpdateSyncListPermissionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncListPermissionResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncListPermissionResource>> UpdateWithHeadersAsync(UpdateSyncListPermissionOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SyncListPermissionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SyncListPermissionResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathListSid,
+            string pathIdentity,
+            bool? read,
+            bool? write,
+            bool? manage,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SyncListPermissionResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathListSid,
+            string pathIdentity,
+            bool? read,
+            bool? write,
+            bool? manage,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

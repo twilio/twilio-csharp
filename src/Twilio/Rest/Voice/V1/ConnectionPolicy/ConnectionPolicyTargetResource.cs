@@ -122,6 +122,52 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         }
         #endif
 
+
+        public static TwilioResponse<ConnectionPolicyTargetResource> CreateWithHeaders(CreateConnectionPolicyTargetOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> CreateWithHeadersAsync(CreateConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConnectionPolicyTargetResource> CreateWithHeaders(
+            string pathConnectionPolicySid,
+            Uri target,
+            string friendlyName = null,
+            int? priority = null,
+            int? weight = null,
+            bool? enabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateConnectionPolicyTargetOptions(pathConnectionPolicySid, target){  FriendlyName = friendlyName, Priority = priority, Weight = weight, Enabled = enabled };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> CreateWithHeadersAsync(
+            string pathConnectionPolicySid,
+            Uri target,
+            string friendlyName = null,
+            int? priority = null,
+            int? weight = null,
+            bool? enabled = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateConnectionPolicyTargetOptions(pathConnectionPolicySid, target){  FriendlyName = friendlyName, Priority = priority, Weight = weight, Enabled = enabled };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete ConnectionPolicyTarget parameters </param>
@@ -154,7 +200,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -167,7 +213,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -192,6 +238,38 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         {
             var options = new DeleteConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -261,6 +339,40 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         {
             var options = new FetchConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ConnectionPolicyTargetResource> FetchWithHeaders(FetchConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> FetchWithHeadersAsync(FetchConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ConnectionPolicyTargetResource> FetchWithHeaders(
+                    string pathConnectionPolicySid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> FetchWithHeadersAsync(string pathConnectionPolicySid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -340,6 +452,37 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         }
         #endif
 
+        public static ResourceSetResponse<ConnectionPolicyTargetResource> ReadWithHeaders(ReadConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ConnectionPolicyTargetResource>.FromJson("targets", response.Content);
+            var records = new ResourceSet<ConnectionPolicyTargetResource>(page, options, client);
+            return new ResourceSetResponse<ConnectionPolicyTargetResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ConnectionPolicyTargetResource> ReadWithHeaders(
+            string pathConnectionPolicySid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadConnectionPolicyTargetOptions(pathConnectionPolicySid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ConnectionPolicyTargetResource>> ReadWithHeadersAsync(ReadConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ConnectionPolicyTargetResource>.FromJson("targets", response.Content);
+            var records = new ResourceSet<ConnectionPolicyTargetResource>(page, options, client);
+            return new ResourceSetResponse<ConnectionPolicyTargetResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -481,6 +624,55 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
         {
             var options = new UpdateConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){ FriendlyName = friendlyName, Target = target, Priority = priority, Weight = weight, Enabled = enabled };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ConnectionPolicyTargetResource> UpdateWithHeaders(UpdateConnectionPolicyTargetOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> UpdateWithHeadersAsync(UpdateConnectionPolicyTargetOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConnectionPolicyTargetResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConnectionPolicyTargetResource> UpdateWithHeaders(
+            string pathConnectionPolicySid,
+            string pathSid,
+            string friendlyName = null,
+            Uri target = null,
+            int? priority = null,
+            int? weight = null,
+            bool? enabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){ FriendlyName = friendlyName, Target = target, Priority = priority, Weight = weight, Enabled = enabled };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConnectionPolicyTargetResource>> UpdateWithHeadersAsync(
+            string pathConnectionPolicySid,
+            string pathSid,
+            string friendlyName = null,
+            Uri target = null,
+            int? priority = null,
+            int? weight = null,
+            bool? enabled = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConnectionPolicyTargetOptions(pathConnectionPolicySid, pathSid){ FriendlyName = friendlyName, Target = target, Priority = priority, Weight = weight, Enabled = enabled };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

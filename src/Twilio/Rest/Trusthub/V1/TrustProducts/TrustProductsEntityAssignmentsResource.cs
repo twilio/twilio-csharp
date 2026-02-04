@@ -106,6 +106,44 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         }
         #endif
 
+
+        public static TwilioResponse<TrustProductsEntityAssignmentsResource> CreateWithHeaders(CreateTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEntityAssignmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEntityAssignmentsResource>> CreateWithHeadersAsync(CreateTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEntityAssignmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TrustProductsEntityAssignmentsResource> CreateWithHeaders(
+            string pathTrustProductSid,
+            string objectSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrustProductsEntityAssignmentsOptions(pathTrustProductSid, objectSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEntityAssignmentsResource>> CreateWithHeadersAsync(
+            string pathTrustProductSid,
+            string objectSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrustProductsEntityAssignmentsOptions(pathTrustProductSid, objectSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Remove an Assignment Item Instance. </summary>
         /// <param name="options"> Delete TrustProductsEntityAssignments parameters </param>
@@ -138,7 +176,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +189,7 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -176,6 +214,38 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             var options = new DeleteTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathTrustProductSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathTrustProductSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -245,6 +315,40 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             var options = new FetchTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TrustProductsEntityAssignmentsResource> FetchWithHeaders(FetchTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEntityAssignmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEntityAssignmentsResource>> FetchWithHeadersAsync(FetchTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEntityAssignmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TrustProductsEntityAssignmentsResource> FetchWithHeaders(
+                    string pathTrustProductSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEntityAssignmentsResource>> FetchWithHeadersAsync(string pathTrustProductSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTrustProductsEntityAssignmentsOptions(pathTrustProductSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -328,6 +432,38 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         }
         #endif
 
+        public static ResourceSetResponse<TrustProductsEntityAssignmentsResource> ReadWithHeaders(ReadTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TrustProductsEntityAssignmentsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<TrustProductsEntityAssignmentsResource>(page, options, client);
+            return new ResourceSetResponse<TrustProductsEntityAssignmentsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TrustProductsEntityAssignmentsResource> ReadWithHeaders(
+            string pathTrustProductSid,
+            string objectType = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTrustProductsEntityAssignmentsOptions(pathTrustProductSid){ ObjectType = objectType, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TrustProductsEntityAssignmentsResource>> ReadWithHeadersAsync(ReadTrustProductsEntityAssignmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TrustProductsEntityAssignmentsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<TrustProductsEntityAssignmentsResource>(page, options, client);
+            return new ResourceSetResponse<TrustProductsEntityAssignmentsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

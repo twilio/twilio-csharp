@@ -159,6 +159,56 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
         #endif
 
+
+        public static TwilioResponse<TriggerResource> CreateWithHeaders(CreateTriggerOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> CreateWithHeadersAsync(CreateTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TriggerResource> CreateWithHeaders(
+            Uri callbackUrl,
+            string triggerValue,
+            string usageCategory,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            string friendlyName = null,
+            TriggerResource.RecurringEnum recurring = null,
+            TriggerResource.TriggerFieldEnum triggerBy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){  PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> CreateWithHeadersAsync(
+            Uri callbackUrl,
+            string triggerValue,
+            string usageCategory,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            string friendlyName = null,
+            TriggerResource.RecurringEnum recurring = null,
+            TriggerResource.TriggerFieldEnum triggerBy = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){  PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete Trigger parameters </param>
@@ -191,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -204,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -229,6 +279,38 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             var options = new DeleteTriggerOptions(pathSid)  { PathAccountSid = pathAccountSid };
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTriggerOptions(pathSid)      { PathAccountSid = pathAccountSid }   ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTriggerOptions(pathSid)  { PathAccountSid = pathAccountSid };
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -298,6 +380,40 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             var options = new FetchTriggerOptions(pathSid){ PathAccountSid = pathAccountSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TriggerResource> FetchWithHeaders(FetchTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> FetchWithHeadersAsync(FetchTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TriggerResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTriggerOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> FetchWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchTriggerOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -389,6 +505,40 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
         #endif
 
+        public static ResourceSetResponse<TriggerResource> ReadWithHeaders(ReadTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TriggerResource>.FromJson("usage_triggers", response.Content);
+            var records = new ResourceSet<TriggerResource>(page, options, client);
+            return new ResourceSetResponse<TriggerResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TriggerResource> ReadWithHeaders(
+            string pathAccountSid = null,
+            TriggerResource.RecurringEnum recurring = null,
+            TriggerResource.TriggerFieldEnum triggerBy = null,
+            string usageCategory = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTriggerOptions(){ PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TriggerResource>> ReadWithHeadersAsync(ReadTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TriggerResource>.FromJson("usage_triggers", response.Content);
+            var records = new ResourceSet<TriggerResource>(page, options, client);
+            return new ResourceSetResponse<TriggerResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -522,6 +672,51 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             var options = new UpdateTriggerOptions(pathSid){ PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<TriggerResource> UpdateWithHeaders(UpdateTriggerOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> UpdateWithHeadersAsync(UpdateTriggerOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TriggerResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TriggerResource> UpdateWithHeaders(
+            string pathSid,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTriggerOptions(pathSid){ PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TriggerResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string pathAccountSid = null,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTriggerOptions(pathSid){ PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

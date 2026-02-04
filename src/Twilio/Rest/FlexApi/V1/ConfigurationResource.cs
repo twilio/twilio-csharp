@@ -109,6 +109,39 @@ namespace Twilio.Rest.FlexApi.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ConfigurationResource> FetchWithHeaders(FetchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> FetchWithHeadersAsync(FetchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ConfigurationResource> FetchWithHeaders(
+                    string uiVersion = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchConfigurationOptions(){ UiVersion = uiVersion };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> FetchWithHeadersAsync(string uiVersion = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchConfigurationOptions(){ UiVersion = uiVersion };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateConfigurationOptions options, ITwilioRestClient client)
         {
@@ -171,6 +204,41 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateConfigurationOptions(){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationResource> UpdateWithHeaders(UpdateConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> UpdateWithHeadersAsync(UpdateConfigurationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ConfigurationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationResource> UpdateWithHeaders(
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationResource>> UpdateWithHeadersAsync(
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateConfigurationOptions(){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

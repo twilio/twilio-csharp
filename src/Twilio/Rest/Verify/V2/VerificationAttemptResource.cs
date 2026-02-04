@@ -126,6 +126,39 @@ namespace Twilio.Rest.Verify.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<VerificationAttemptResource> FetchWithHeaders(FetchVerificationAttemptOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationAttemptResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationAttemptResource>> FetchWithHeadersAsync(FetchVerificationAttemptOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VerificationAttemptResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<VerificationAttemptResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationAttemptOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VerificationAttemptResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationAttemptOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadVerificationAttemptOptions options, ITwilioRestClient client)
         {
@@ -229,6 +262,44 @@ namespace Twilio.Rest.Verify.V2
         }
         #endif
 
+        public static ResourceSetResponse<VerificationAttemptResource> ReadWithHeaders(ReadVerificationAttemptOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<VerificationAttemptResource>.FromJson("attempts", response.Content);
+            var records = new ResourceSet<VerificationAttemptResource>(page, options, client);
+            return new ResourceSetResponse<VerificationAttemptResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<VerificationAttemptResource> ReadWithHeaders(
+            DateTime? dateCreatedAfter = null,
+            DateTime? dateCreatedBefore = null,
+            string channelDataTo = null,
+            string country = null,
+            VerificationAttemptResource.ChannelsEnum channel = null,
+            string verifyServiceSid = null,
+            string verificationSid = null,
+            VerificationAttemptResource.ConversionStatusEnum status = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadVerificationAttemptOptions(){ DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, ChannelDataTo = channelDataTo, Country = country, Channel = channel, VerifyServiceSid = verifyServiceSid, VerificationSid = verificationSid, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<VerificationAttemptResource>> ReadWithHeadersAsync(ReadVerificationAttemptOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<VerificationAttemptResource>.FromJson("attempts", response.Content);
+            var records = new ResourceSet<VerificationAttemptResource>(page, options, client);
+            return new ResourceSetResponse<VerificationAttemptResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

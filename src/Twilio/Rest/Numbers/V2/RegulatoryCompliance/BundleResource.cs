@@ -181,6 +181,56 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+
+        public static TwilioResponse<BundleResource> CreateWithHeaders(CreateBundleOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> CreateWithHeadersAsync(CreateBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BundleResource> CreateWithHeaders(
+            string friendlyName,
+            string email,
+            Uri statusCallback = null,
+            string regulationSid = null,
+            string isoCountry = null,
+            BundleResource.EndUserTypeEnum endUserType = null,
+            string numberType = null,
+            bool? isTest = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string email,
+            Uri statusCallback = null,
+            string regulationSid = null,
+            string isoCountry = null,
+            BundleResource.EndUserTypeEnum endUserType = null,
+            string numberType = null,
+            bool? isTest = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleOptions(friendlyName, email){  StatusCallback = statusCallback, RegulationSid = regulationSid, IsoCountry = isoCountry, EndUserType = endUserType, NumberType = numberType, IsTest = isTest };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Bundle. </summary>
         /// <param name="options"> Delete Bundle parameters </param>
@@ -211,7 +261,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -224,7 +274,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -247,6 +297,38 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new DeleteBundleOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBundleOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBundleOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -311,6 +393,39 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new FetchBundleOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BundleResource> FetchWithHeaders(FetchBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> FetchWithHeadersAsync(FetchBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BundleResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBundleOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBundleOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -428,6 +543,47 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        public static ResourceSetResponse<BundleResource> ReadWithHeaders(ReadBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BundleResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<BundleResource>(page, options, client);
+            return new ResourceSetResponse<BundleResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BundleResource> ReadWithHeaders(
+            BundleResource.StatusEnum status = null,
+            string friendlyName = null,
+            string regulationSid = null,
+            string isoCountry = null,
+            string numberType = null,
+            bool? hasValidUntilDate = null,
+            BundleResource.SortByEnum sortBy = null,
+            BundleResource.SortDirectionEnum sortDirection = null,
+            DateTime? validUntilDateBefore = null,
+            DateTime? validUntilDate = null,
+            DateTime? validUntilDateAfter = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BundleResource>> ReadWithHeadersAsync(ReadBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BundleResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<BundleResource>(page, options, client);
+            return new ResourceSetResponse<BundleResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -559,6 +715,51 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<BundleResource> UpdateWithHeaders(UpdateBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> UpdateWithHeadersAsync(UpdateBundleOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BundleResource> UpdateWithHeaders(
+            string pathSid,
+            BundleResource.StatusEnum status = null,
+            Uri statusCallback = null,
+            string friendlyName = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            BundleResource.StatusEnum status = null,
+            Uri statusCallback = null,
+            string friendlyName = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateBundleOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

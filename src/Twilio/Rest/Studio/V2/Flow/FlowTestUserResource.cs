@@ -97,6 +97,39 @@ namespace Twilio.Rest.Studio.V2.Flow
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<FlowTestUserResource> FetchWithHeaders(FetchFlowTestUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowTestUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowTestUserResource>> FetchWithHeadersAsync(FetchFlowTestUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowTestUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<FlowTestUserResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowTestUserOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowTestUserResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchFlowTestUserOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateFlowTestUserOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,45 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var options = new UpdateFlowTestUserOptions(pathSid, testUsers){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<FlowTestUserResource> UpdateWithHeaders(UpdateFlowTestUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowTestUserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowTestUserResource>> UpdateWithHeadersAsync(UpdateFlowTestUserOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<FlowTestUserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<FlowTestUserResource> UpdateWithHeaders(
+            string pathSid,
+            List<string> testUsers,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowTestUserOptions(pathSid, testUsers){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<FlowTestUserResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            List<string> testUsers,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateFlowTestUserOptions(pathSid, testUsers){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

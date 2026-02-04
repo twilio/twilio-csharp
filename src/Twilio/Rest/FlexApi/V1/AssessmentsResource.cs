@@ -140,6 +140,62 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+
+        public static TwilioResponse<AssessmentsResource> CreateWithHeaders(CreateAssessmentsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssessmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssessmentsResource>> CreateWithHeadersAsync(CreateAssessmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssessmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AssessmentsResource> CreateWithHeaders(
+            string categorySid,
+            string categoryName,
+            string segmentId,
+            string agentId,
+            decimal? offset,
+            string metricId,
+            string metricName,
+            string answerText,
+            string answerId,
+            string questionnaireSid,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssessmentsResource>> CreateWithHeadersAsync(
+            string categorySid,
+            string categoryName,
+            string segmentId,
+            string agentId,
+            decimal? offset,
+            string metricId,
+            string metricName,
+            string answerText,
+            string answerId,
+            string questionnaireSid,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAssessmentsOptions(categorySid, categoryName, segmentId, agentId, offset, metricId, metricName, answerText, answerId, questionnaireSid){  Authorization = authorization };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAssessmentsOptions options, ITwilioRestClient client)
         {
@@ -219,6 +275,38 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static ResourceSetResponse<AssessmentsResource> ReadWithHeaders(ReadAssessmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AssessmentsResource>.FromJson("assessments", response.Content);
+            var records = new ResourceSet<AssessmentsResource>(page, options, client);
+            return new ResourceSetResponse<AssessmentsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AssessmentsResource> ReadWithHeaders(
+            string authorization = null,
+            string segmentId = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAssessmentsOptions(){ Authorization = authorization, SegmentId = segmentId, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AssessmentsResource>> ReadWithHeadersAsync(ReadAssessmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AssessmentsResource>.FromJson("assessments", response.Content);
+            var records = new ResourceSet<AssessmentsResource>(page, options, client);
+            return new ResourceSetResponse<AssessmentsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -350,6 +438,51 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AssessmentsResource> UpdateWithHeaders(UpdateAssessmentsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssessmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssessmentsResource>> UpdateWithHeadersAsync(UpdateAssessmentsOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AssessmentsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AssessmentsResource> UpdateWithHeaders(
+            string pathAssessmentSid,
+            decimal? offset,
+            string answerText,
+            string answerId,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AssessmentsResource>> UpdateWithHeadersAsync(
+            string pathAssessmentSid,
+            decimal? offset,
+            string answerText,
+            string answerId,
+            string authorization = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAssessmentsOptions(pathAssessmentSid, offset, answerText, answerId){ Authorization = authorization };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

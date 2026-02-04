@@ -113,6 +113,47 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static TwilioResponse<PluginVersionArchiveResource> UpdateWithHeaders(UpdatePluginVersionArchiveOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionArchiveResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionArchiveResource>> UpdateWithHeadersAsync(UpdatePluginVersionArchiveOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginVersionArchiveResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PluginVersionArchiveResource> UpdateWithHeaders(
+            string pathPluginSid,
+            string pathSid,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePluginVersionArchiveOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginVersionArchiveResource>> UpdateWithHeadersAsync(
+            string pathPluginSid,
+            string pathSid,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePluginVersionArchiveOptions(pathPluginSid, pathSid){ FlexMetadata = flexMetadata };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a PluginVersionArchiveResource object

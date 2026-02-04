@@ -141,6 +141,48 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+
+        public static TwilioResponse<SmsCommandResource> CreateWithHeaders(CreateSmsCommandOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SmsCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SmsCommandResource>> CreateWithHeadersAsync(CreateSmsCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SmsCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SmsCommandResource> CreateWithHeaders(
+            string sim,
+            string payload,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSmsCommandOptions(sim, payload){  CallbackMethod = callbackMethod, CallbackUrl = callbackUrl };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SmsCommandResource>> CreateWithHeadersAsync(
+            string sim,
+            string payload,
+            Twilio.Http.HttpMethod callbackMethod = null,
+            Uri callbackUrl = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSmsCommandOptions(sim, payload){  CallbackMethod = callbackMethod, CallbackUrl = callbackUrl };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchSmsCommandOptions options, ITwilioRestClient client)
         {
@@ -203,6 +245,39 @@ namespace Twilio.Rest.Supersim.V1
         {
             var options = new FetchSmsCommandOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SmsCommandResource> FetchWithHeaders(FetchSmsCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SmsCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SmsCommandResource>> FetchWithHeadersAsync(FetchSmsCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SmsCommandResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SmsCommandResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSmsCommandOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SmsCommandResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSmsCommandOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -288,6 +363,39 @@ namespace Twilio.Rest.Supersim.V1
         }
         #endif
 
+        public static ResourceSetResponse<SmsCommandResource> ReadWithHeaders(ReadSmsCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SmsCommandResource>.FromJson("sms_commands", response.Content);
+            var records = new ResourceSet<SmsCommandResource>(page, options, client);
+            return new ResourceSetResponse<SmsCommandResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SmsCommandResource> ReadWithHeaders(
+            string sim = null,
+            SmsCommandResource.StatusEnum status = null,
+            SmsCommandResource.DirectionEnum direction = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSmsCommandOptions(){ Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SmsCommandResource>> ReadWithHeadersAsync(ReadSmsCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SmsCommandResource>.FromJson("sms_commands", response.Content);
+            var records = new ResourceSet<SmsCommandResource>(page, options, client);
+            return new ResourceSetResponse<SmsCommandResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

@@ -113,7 +113,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -153,6 +153,38 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -227,6 +259,41 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         {
             var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<InteractionResource> FetchWithHeaders(FetchInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> FetchWithHeadersAsync(FetchInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<InteractionResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<InteractionResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSessionSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<InteractionResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSessionSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -312,6 +379,38 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
         #endif
 
+        public static ResourceSetResponse<InteractionResource> ReadWithHeaders(ReadInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<InteractionResource>.FromJson("interactions", response.Content);
+            var records = new ResourceSet<InteractionResource>(page, options, client);
+            return new ResourceSetResponse<InteractionResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<InteractionResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathSessionSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<InteractionResource>> ReadWithHeadersAsync(ReadInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<InteractionResource>.FromJson("interactions", response.Content);
+            var records = new ResourceSet<InteractionResource>(page, options, client);
+            return new ResourceSetResponse<InteractionResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

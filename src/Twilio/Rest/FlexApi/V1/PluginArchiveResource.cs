@@ -107,6 +107,45 @@ namespace Twilio.Rest.FlexApi.V1
         }
         #endif
 
+        public static TwilioResponse<PluginArchiveResource> UpdateWithHeaders(UpdatePluginArchiveOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginArchiveResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginArchiveResource>> UpdateWithHeadersAsync(UpdatePluginArchiveOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PluginArchiveResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<PluginArchiveResource> UpdateWithHeaders(
+            string pathSid,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePluginArchiveOptions(pathSid){ FlexMetadata = flexMetadata };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PluginArchiveResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string flexMetadata = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdatePluginArchiveOptions(pathSid){ FlexMetadata = flexMetadata };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a PluginArchiveResource object

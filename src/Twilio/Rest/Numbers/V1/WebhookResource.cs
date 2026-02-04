@@ -92,6 +92,38 @@ namespace Twilio.Rest.Numbers.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<WebhookResource> FetchWithHeaders(FetchWebhookOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> FetchWithHeadersAsync(FetchWebhookOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<WebhookResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<WebhookResource> FetchWithHeaders(
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchWebhookOptions(){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<WebhookResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        {
+            var options = new FetchWebhookOptions(){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WebhookResource object

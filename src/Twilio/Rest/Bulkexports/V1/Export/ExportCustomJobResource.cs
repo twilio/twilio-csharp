@@ -126,6 +126,54 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         }
         #endif
 
+
+        public static TwilioResponse<ExportCustomJobResource> CreateWithHeaders(CreateExportCustomJobOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportCustomJobResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportCustomJobResource>> CreateWithHeadersAsync(CreateExportCustomJobOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ExportCustomJobResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ExportCustomJobResource> CreateWithHeaders(
+            string pathResourceType,
+            string startDay,
+            string endDay,
+            string friendlyName,
+            string webhookUrl = null,
+            string webhookMethod = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){  WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ExportCustomJobResource>> CreateWithHeadersAsync(
+            string pathResourceType,
+            string startDay,
+            string endDay,
+            string friendlyName,
+            string webhookUrl = null,
+            string webhookMethod = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){  WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadExportCustomJobOptions options, ITwilioRestClient client)
         {
@@ -203,6 +251,37 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         }
         #endif
 
+        public static ResourceSetResponse<ExportCustomJobResource> ReadWithHeaders(ReadExportCustomJobOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ExportCustomJobResource>.FromJson("jobs", response.Content);
+            var records = new ResourceSet<ExportCustomJobResource>(page, options, client);
+            return new ResourceSetResponse<ExportCustomJobResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ExportCustomJobResource> ReadWithHeaders(
+            string pathResourceType,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadExportCustomJobOptions(pathResourceType){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ExportCustomJobResource>> ReadWithHeadersAsync(ReadExportCustomJobOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ExportCustomJobResource>.FromJson("jobs", response.Content);
+            var records = new ResourceSet<ExportCustomJobResource>(page, options, client);
+            return new ResourceSetResponse<ExportCustomJobResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

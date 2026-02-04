@@ -112,6 +112,46 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         }
         #endif
 
+
+        public static TwilioResponse<StreamMessageResource> CreateWithHeaders(CreateStreamMessageOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<StreamMessageResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StreamMessageResource>> CreateWithHeadersAsync(CreateStreamMessageOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<StreamMessageResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<StreamMessageResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathStreamSid,
+            object data,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StreamMessageResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathStreamSid,
+            object data,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a StreamMessageResource object

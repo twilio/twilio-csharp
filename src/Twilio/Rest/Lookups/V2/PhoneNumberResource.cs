@@ -581,6 +581,54 @@ namespace Twilio.Rest.Lookups.V2
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<PhoneNumberResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<PhoneNumberResource> FetchWithHeaders(
+                    string pathPhoneNumber, 
+                    string fields = null, 
+                    string countryCode = null, 
+                    string firstName = null, 
+                    string lastName = null, 
+                    string addressLine1 = null, 
+                    string addressLine2 = null, 
+                    string city = null, 
+                    string state = null, 
+                    string postalCode = null, 
+                    string addressCountryCode = null, 
+                    string nationalId = null, 
+                    string dateOfBirth = null, 
+                    string lastVerifiedDate = null, 
+                    string verificationSid = null, 
+                    string partnerSubId = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth,LastVerifiedDate = lastVerifiedDate,VerificationSid = verificationSid,PartnerSubId = partnerSubId };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<PhoneNumberResource>> FetchWithHeadersAsync(string pathPhoneNumber, string fields = null, string countryCode = null, string firstName = null, string lastName = null, string addressLine1 = null, string addressLine2 = null, string city = null, string state = null, string postalCode = null, string addressCountryCode = null, string nationalId = null, string dateOfBirth = null, string lastVerifiedDate = null, string verificationSid = null, string partnerSubId = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(pathPhoneNumber){ Fields = fields,CountryCode = countryCode,FirstName = firstName,LastName = lastName,AddressLine1 = addressLine1,AddressLine2 = addressLine2,City = city,State = state,PostalCode = postalCode,AddressCountryCode = addressCountryCode,NationalId = nationalId,DateOfBirth = dateOfBirth,LastVerifiedDate = lastVerifiedDate,VerificationSid = verificationSid,PartnerSubId = partnerSubId };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object

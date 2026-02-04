@@ -127,6 +127,42 @@ namespace Twilio.Rest.Api.V2010
         }
         #endif
 
+
+        public static TwilioResponse<AccountResource> CreateWithHeaders(CreateAccountOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> CreateWithHeadersAsync(CreateAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AccountResource> CreateWithHeaders(
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAccountOptions(){  FriendlyName = friendlyName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> CreateWithHeadersAsync(
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateAccountOptions(){  FriendlyName = friendlyName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchAccountOptions options, ITwilioRestClient client)
         {
@@ -189,6 +225,39 @@ namespace Twilio.Rest.Api.V2010
         {
             var options = new FetchAccountOptions(){ PathSid = pathSid };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<AccountResource> FetchWithHeaders(FetchAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> FetchWithHeadersAsync(FetchAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AccountResource> FetchWithHeaders(
+                    string pathSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAccountOptions(){ PathSid = pathSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> FetchWithHeadersAsync(string pathSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAccountOptions(){ PathSid = pathSid };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -270,6 +339,38 @@ namespace Twilio.Rest.Api.V2010
         }
         #endif
 
+        public static ResourceSetResponse<AccountResource> ReadWithHeaders(ReadAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AccountResource>.FromJson("accounts", response.Content);
+            var records = new ResourceSet<AccountResource>(page, options, client);
+            return new ResourceSetResponse<AccountResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AccountResource> ReadWithHeaders(
+            string friendlyName = null,
+            AccountResource.StatusEnum status = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAccountOptions(){ FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AccountResource>> ReadWithHeadersAsync(ReadAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AccountResource>.FromJson("accounts", response.Content);
+            var records = new ResourceSet<AccountResource>(page, options, client);
+            return new ResourceSetResponse<AccountResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -393,6 +494,47 @@ namespace Twilio.Rest.Api.V2010
         {
             var options = new UpdateAccountOptions(){ PathSid = pathSid, FriendlyName = friendlyName, Status = status };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<AccountResource> UpdateWithHeaders(UpdateAccountOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> UpdateWithHeadersAsync(UpdateAccountOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AccountResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<AccountResource> UpdateWithHeaders(
+            string pathSid = null,
+            string friendlyName = null,
+            AccountResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountOptions(){ PathSid = pathSid, FriendlyName = friendlyName, Status = status };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AccountResource>> UpdateWithHeadersAsync(
+            string pathSid = null,
+            string friendlyName = null,
+            AccountResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateAccountOptions(){ PathSid = pathSid, FriendlyName = friendlyName, Status = status };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

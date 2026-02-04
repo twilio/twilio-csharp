@@ -97,6 +97,39 @@ namespace Twilio.Rest.Messaging.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<DomainConfigResource> FetchWithHeaders(FetchDomainConfigOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigResource>> FetchWithHeadersAsync(FetchDomainConfigOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<DomainConfigResource> FetchWithHeaders(
+                    string pathDomainSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainConfigOptions(pathDomainSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigResource>> FetchWithHeadersAsync(string pathDomainSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchDomainConfigOptions(pathDomainSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateDomainConfigOptions options, ITwilioRestClient client)
         {
@@ -180,6 +213,51 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<DomainConfigResource> UpdateWithHeaders(UpdateDomainConfigOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigResource>> UpdateWithHeadersAsync(UpdateDomainConfigOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<DomainConfigResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<DomainConfigResource> UpdateWithHeaders(
+            string pathDomainSid,
+            Uri fallbackUrl = null,
+            Uri callbackUrl = null,
+            bool? continueOnFailure = null,
+            bool? disableHttps = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<DomainConfigResource>> UpdateWithHeadersAsync(
+            string pathDomainSid,
+            Uri fallbackUrl = null,
+            Uri callbackUrl = null,
+            bool? continueOnFailure = null,
+            bool? disableHttps = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateDomainConfigOptions(pathDomainSid){ FallbackUrl = fallbackUrl, CallbackUrl = callbackUrl, ContinueOnFailure = continueOnFailure, DisableHttps = disableHttps };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -138,6 +138,46 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+
+        public static TwilioResponse<SinkResource> CreateWithHeaders(CreateSinkOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> CreateWithHeadersAsync(CreateSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SinkResource> CreateWithHeaders(
+            string description,
+            SinkResource.SinkTypeEnum sinkType,
+            object sinkConfiguration,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSinkOptions(description, sinkType, sinkConfiguration){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> CreateWithHeadersAsync(
+            string description,
+            SinkResource.SinkTypeEnum sinkType,
+            object sinkConfiguration,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateSinkOptions(description, sinkType, sinkConfiguration){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Sink. </summary>
         /// <param name="options"> Delete Sink parameters </param>
@@ -168,7 +208,7 @@ namespace Twilio.Rest.Events.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -181,7 +221,7 @@ namespace Twilio.Rest.Events.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -204,6 +244,38 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new DeleteSinkOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSinkOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSinkOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -268,6 +340,39 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new FetchSinkOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<SinkResource> FetchWithHeaders(FetchSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> FetchWithHeadersAsync(FetchSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<SinkResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchSinkOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchSinkOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -349,6 +454,38 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+        public static ResourceSetResponse<SinkResource> ReadWithHeaders(ReadSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<SinkResource>.FromJson("sinks", response.Content);
+            var records = new ResourceSet<SinkResource>(page, options, client);
+            return new ResourceSetResponse<SinkResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<SinkResource> ReadWithHeaders(
+            bool? inUse = null,
+            string status = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadSinkOptions(){ InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<SinkResource>> ReadWithHeadersAsync(ReadSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<SinkResource>.FromJson("sinks", response.Content);
+            var records = new ResourceSet<SinkResource>(page, options, client);
+            return new ResourceSetResponse<SinkResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -468,6 +605,45 @@ namespace Twilio.Rest.Events.V1
         {
             var options = new UpdateSinkOptions(pathSid, description){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<SinkResource> UpdateWithHeaders(UpdateSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> UpdateWithHeadersAsync(UpdateSinkOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<SinkResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<SinkResource> UpdateWithHeaders(
+            string pathSid,
+            string description,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSinkOptions(pathSid, description){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<SinkResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string description,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateSinkOptions(pathSid, description){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

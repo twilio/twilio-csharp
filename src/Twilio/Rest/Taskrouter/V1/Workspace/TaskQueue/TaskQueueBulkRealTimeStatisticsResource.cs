@@ -103,6 +103,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
         #endif
 
+
+        public static TwilioResponse<TaskQueueBulkRealTimeStatisticsResource> CreateWithHeaders(CreateTaskQueueBulkRealTimeStatisticsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TaskQueueBulkRealTimeStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TaskQueueBulkRealTimeStatisticsResource>> CreateWithHeadersAsync(CreateTaskQueueBulkRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TaskQueueBulkRealTimeStatisticsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TaskQueueBulkRealTimeStatisticsResource> CreateWithHeaders(
+            string pathWorkspaceSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTaskQueueBulkRealTimeStatisticsOptions(pathWorkspaceSid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TaskQueueBulkRealTimeStatisticsResource>> CreateWithHeadersAsync(
+            string pathWorkspaceSid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTaskQueueBulkRealTimeStatisticsOptions(pathWorkspaceSid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TaskQueueBulkRealTimeStatisticsResource object

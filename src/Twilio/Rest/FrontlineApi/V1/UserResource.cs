@@ -110,6 +110,39 @@ namespace Twilio.Rest.FrontlineApi.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<UserResource> FetchWithHeaders(FetchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> FetchWithHeadersAsync(FetchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UserResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUserOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchUserOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateUserOptions options, ITwilioRestClient client)
         {
@@ -193,6 +226,51 @@ namespace Twilio.Rest.FrontlineApi.V1
         {
             var options = new UpdateUserOptions(pathSid){ FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> UpdateWithHeaders(UpdateUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> UpdateWithHeadersAsync(UpdateUserOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+            string avatar = null,
+            UserResource.StateTypeEnum state = null,
+            bool? isAvailable = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserOptions(pathSid){ FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+            string avatar = null,
+            UserResource.StateTypeEnum state = null,
+            bool? isAvailable = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserOptions(pathSid){ FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

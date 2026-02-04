@@ -119,6 +119,44 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         }
         #endif
 
+
+        public static TwilioResponse<TrustProductsEvaluationsResource> CreateWithHeaders(CreateTrustProductsEvaluationsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEvaluationsResource>> CreateWithHeadersAsync(CreateTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TrustProductsEvaluationsResource> CreateWithHeaders(
+            string pathTrustProductSid,
+            string policySid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrustProductsEvaluationsOptions(pathTrustProductSid, policySid){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEvaluationsResource>> CreateWithHeadersAsync(
+            string pathTrustProductSid,
+            string policySid,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTrustProductsEvaluationsOptions(pathTrustProductSid, policySid){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client)
         {
@@ -186,6 +224,40 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         {
             var options = new FetchTrustProductsEvaluationsOptions(pathTrustProductSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TrustProductsEvaluationsResource> FetchWithHeaders(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEvaluationsResource>> FetchWithHeadersAsync(FetchTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TrustProductsEvaluationsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TrustProductsEvaluationsResource> FetchWithHeaders(
+                    string pathTrustProductSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTrustProductsEvaluationsOptions(pathTrustProductSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TrustProductsEvaluationsResource>> FetchWithHeadersAsync(string pathTrustProductSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTrustProductsEvaluationsOptions(pathTrustProductSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -265,6 +337,37 @@ namespace Twilio.Rest.Trusthub.V1.TrustProducts
         }
         #endif
 
+        public static ResourceSetResponse<TrustProductsEvaluationsResource> ReadWithHeaders(ReadTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TrustProductsEvaluationsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<TrustProductsEvaluationsResource>(page, options, client);
+            return new ResourceSetResponse<TrustProductsEvaluationsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TrustProductsEvaluationsResource> ReadWithHeaders(
+            string pathTrustProductSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTrustProductsEvaluationsOptions(pathTrustProductSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TrustProductsEvaluationsResource>> ReadWithHeadersAsync(ReadTrustProductsEvaluationsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TrustProductsEvaluationsResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<TrustProductsEvaluationsResource>(page, options, client);
+            return new ResourceSetResponse<TrustProductsEvaluationsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

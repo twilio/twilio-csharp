@@ -143,6 +143,44 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         #endif
 
+
+        public static TwilioResponse<RoleAssignmentResource> CreateWithHeaders(CreateRoleAssignmentOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleAssignmentResource>> CreateWithHeadersAsync(CreateRoleAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<RoleAssignmentResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<RoleAssignmentResource> CreateWithHeaders(
+            string pathOrganizationSid,
+            RoleAssignmentResource.PublicApiCreateRoleAssignmentRequest publicApiCreateRoleAssignmentRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRoleAssignmentOptions(pathOrganizationSid, publicApiCreateRoleAssignmentRequest){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<RoleAssignmentResource>> CreateWithHeadersAsync(
+            string pathOrganizationSid,
+            RoleAssignmentResource.PublicApiCreateRoleAssignmentRequest publicApiCreateRoleAssignmentRequest,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateRoleAssignmentOptions(pathOrganizationSid, publicApiCreateRoleAssignmentRequest){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a role assignment for the given organization </summary>
         /// <param name="options"> Delete RoleAssignment parameters </param>
@@ -175,7 +213,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -188,7 +226,7 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -213,6 +251,38 @@ namespace Twilio.Rest.PreviewIam.Organizations
         {
             var options = new DeleteRoleAssignmentOptions(pathOrganizationSid, pathRoleAssignmentSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteRoleAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteRoleAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathOrganizationSid, string pathRoleAssignmentSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoleAssignmentOptions(pathOrganizationSid, pathRoleAssignmentSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathOrganizationSid, string pathRoleAssignmentSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoleAssignmentOptions(pathOrganizationSid, pathRoleAssignmentSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -300,6 +370,39 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         #endif
 
+        public static ResourceSetResponse<RoleAssignmentResource> ReadWithHeaders(ReadRoleAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<RoleAssignmentResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<RoleAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<RoleAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<RoleAssignmentResource> ReadWithHeaders(
+            string pathOrganizationSid,
+            int? pageSize = null,
+            string identity = null,
+            string scope = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<RoleAssignmentResource>> ReadWithHeadersAsync(ReadRoleAssignmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<RoleAssignmentResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<RoleAssignmentResource>(page, options, client);
+            return new ResourceSetResponse<RoleAssignmentResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

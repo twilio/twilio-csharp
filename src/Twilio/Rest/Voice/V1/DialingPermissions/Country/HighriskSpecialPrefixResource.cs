@@ -110,6 +110,37 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         }
         #endif
 
+        public static ResourceSetResponse<HighriskSpecialPrefixResource> ReadWithHeaders(ReadHighriskSpecialPrefixOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<HighriskSpecialPrefixResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<HighriskSpecialPrefixResource>(page, options, client);
+            return new ResourceSetResponse<HighriskSpecialPrefixResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<HighriskSpecialPrefixResource> ReadWithHeaders(
+            string pathIsoCode,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<HighriskSpecialPrefixResource>> ReadWithHeadersAsync(ReadHighriskSpecialPrefixOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<HighriskSpecialPrefixResource>.FromJson("content", response.Content);
+            var records = new ResourceSet<HighriskSpecialPrefixResource>(page, options, client);
+            return new ResourceSetResponse<HighriskSpecialPrefixResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

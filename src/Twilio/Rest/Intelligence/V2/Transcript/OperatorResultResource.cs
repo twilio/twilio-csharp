@@ -123,6 +123,41 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<OperatorResultResource> FetchWithHeaders(FetchOperatorResultOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorResultResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorResultResource>> FetchWithHeadersAsync(FetchOperatorResultOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<OperatorResultResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<OperatorResultResource> FetchWithHeaders(
+                    string pathTranscriptSid, 
+                    string pathOperatorSid, 
+                    bool? redacted = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchOperatorResultOptions(pathTranscriptSid, pathOperatorSid){ Redacted = redacted };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperatorResultResource>> FetchWithHeadersAsync(string pathTranscriptSid, string pathOperatorSid, bool? redacted = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchOperatorResultOptions(pathTranscriptSid, pathOperatorSid){ Redacted = redacted };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadOperatorResultOptions options, ITwilioRestClient client)
         {
@@ -204,6 +239,38 @@ namespace Twilio.Rest.Intelligence.V2.Transcript
         }
         #endif
 
+        public static ResourceSetResponse<OperatorResultResource> ReadWithHeaders(ReadOperatorResultOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<OperatorResultResource>.FromJson("operator_results", response.Content);
+            var records = new ResourceSet<OperatorResultResource>(page, options, client);
+            return new ResourceSetResponse<OperatorResultResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<OperatorResultResource> ReadWithHeaders(
+            string pathTranscriptSid,
+            bool? redacted = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadOperatorResultOptions(pathTranscriptSid){ Redacted = redacted, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<OperatorResultResource>> ReadWithHeadersAsync(ReadOperatorResultOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<OperatorResultResource>.FromJson("operator_results", response.Content);
+            var records = new ResourceSet<OperatorResultResource>(page, options, client);
+            return new ResourceSetResponse<OperatorResultResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

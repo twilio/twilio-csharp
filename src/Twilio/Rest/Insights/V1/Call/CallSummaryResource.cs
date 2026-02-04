@@ -166,6 +166,40 @@ namespace Twilio.Rest.Insights.V1.Call
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<CallSummaryResource> FetchWithHeaders(FetchCallSummaryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CallSummaryResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CallSummaryResource>> FetchWithHeadersAsync(FetchCallSummaryOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CallSummaryResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CallSummaryResource> FetchWithHeaders(
+                    string pathCallSid, 
+                    CallSummaryResource.ProcessingStateEnum processingState = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCallSummaryOptions(pathCallSid){ ProcessingState = processingState };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CallSummaryResource>> FetchWithHeadersAsync(string pathCallSid, CallSummaryResource.ProcessingStateEnum processingState = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchCallSummaryOptions(pathCallSid){ ProcessingState = processingState };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a CallSummaryResource object

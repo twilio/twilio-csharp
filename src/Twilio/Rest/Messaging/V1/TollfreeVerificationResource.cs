@@ -305,6 +305,114 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+
+        public static TwilioResponse<TollfreeVerificationResource> CreateWithHeaders(CreateTollfreeVerificationOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> CreateWithHeadersAsync(CreateTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TollfreeVerificationResource> CreateWithHeaders(
+            string businessName,
+            string businessWebsite,
+            string notificationEmail,
+            List<string> useCaseCategories,
+            string useCaseSummary,
+            string productionMessageSample,
+            List<string> optInImageUrls,
+            TollfreeVerificationResource.OptInTypeEnum optInType,
+            string messageVolume,
+            string tollfreePhoneNumberSid,
+            string customerProfileSid = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string externalReferenceId = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            string businessType = null,
+            string businessRegistrationPhoneNumber = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            List<string> optInKeywords = null,
+            TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+            string vettingId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> CreateWithHeadersAsync(
+            string businessName,
+            string businessWebsite,
+            string notificationEmail,
+            List<string> useCaseCategories,
+            string useCaseSummary,
+            string productionMessageSample,
+            List<string> optInImageUrls,
+            TollfreeVerificationResource.OptInTypeEnum optInType,
+            string messageVolume,
+            string tollfreePhoneNumberSid,
+            string customerProfileSid = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string externalReferenceId = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            string businessType = null,
+            string businessRegistrationPhoneNumber = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            List<string> optInKeywords = null,
+            TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+            string vettingId = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a tollfree verification </summary>
         /// <param name="options"> Delete TollfreeVerification parameters </param>
@@ -335,7 +443,7 @@ namespace Twilio.Rest.Messaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -348,7 +456,7 @@ namespace Twilio.Rest.Messaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -371,6 +479,38 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new DeleteTollfreeVerificationOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTollfreeVerificationOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTollfreeVerificationOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -435,6 +575,39 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new FetchTollfreeVerificationOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TollfreeVerificationResource> FetchWithHeaders(FetchTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> FetchWithHeadersAsync(FetchTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TollfreeVerificationResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTollfreeVerificationOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTollfreeVerificationOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -528,6 +701,41 @@ namespace Twilio.Rest.Messaging.V1
         }
         #endif
 
+        public static ResourceSetResponse<TollfreeVerificationResource> ReadWithHeaders(ReadTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TollfreeVerificationResource>.FromJson("verifications", response.Content);
+            var records = new ResourceSet<TollfreeVerificationResource>(page, options, client);
+            return new ResourceSetResponse<TollfreeVerificationResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TollfreeVerificationResource> ReadWithHeaders(
+            string tollfreePhoneNumberSid = null,
+            TollfreeVerificationResource.StatusEnum status = null,
+            string externalReferenceId = null,
+            bool? includeSubAccounts = null,
+            long? pageSize = null,
+            List<string> trustProductSid = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTollfreeVerificationOptions(){ TollfreePhoneNumberSid = tollfreePhoneNumberSid, Status = status, ExternalReferenceId = externalReferenceId, IncludeSubAccounts = includeSubAccounts, PageSize = pageSize, TrustProductSid = trustProductSid, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TollfreeVerificationResource>> ReadWithHeadersAsync(ReadTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TollfreeVerificationResource>.FromJson("verifications", response.Content);
+            var records = new ResourceSet<TollfreeVerificationResource>(page, options, client);
+            return new ResourceSetResponse<TollfreeVerificationResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -783,6 +991,113 @@ namespace Twilio.Rest.Messaging.V1
         {
             var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<TollfreeVerificationResource> UpdateWithHeaders(UpdateTollfreeVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> UpdateWithHeadersAsync(UpdateTollfreeVerificationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TollfreeVerificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TollfreeVerificationResource> UpdateWithHeaders(
+            string pathSid,
+            string businessName = null,
+            string businessWebsite = null,
+            string notificationEmail = null,
+            List<string> useCaseCategories = null,
+            string useCaseSummary = null,
+            string productionMessageSample = null,
+            List<string> optInImageUrls = null,
+            TollfreeVerificationResource.OptInTypeEnum optInType = null,
+            string messageVolume = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string editReason = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            string businessType = null,
+            string businessRegistrationPhoneNumber = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            List<string> optInKeywords = null,
+            TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+            string vettingId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TollfreeVerificationResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string businessName = null,
+            string businessWebsite = null,
+            string notificationEmail = null,
+            List<string> useCaseCategories = null,
+            string useCaseSummary = null,
+            string productionMessageSample = null,
+            List<string> optInImageUrls = null,
+            TollfreeVerificationResource.OptInTypeEnum optInType = null,
+            string messageVolume = null,
+            string businessStreetAddress = null,
+            string businessStreetAddress2 = null,
+            string businessCity = null,
+            string businessStateProvinceRegion = null,
+            string businessPostalCode = null,
+            string businessCountry = null,
+            string additionalInformation = null,
+            string businessContactFirstName = null,
+            string businessContactLastName = null,
+            string businessContactEmail = null,
+            Types.PhoneNumber businessContactPhone = null,
+            string editReason = null,
+            string businessRegistrationNumber = null,
+            string businessRegistrationAuthority = null,
+            string businessRegistrationCountry = null,
+            string businessType = null,
+            string businessRegistrationPhoneNumber = null,
+            string doingBusinessAs = null,
+            string optInConfirmationMessage = null,
+            string helpMessageSample = null,
+            string privacyPolicyUrl = null,
+            string termsAndConditionsUrl = null,
+            bool? ageGatedContent = null,
+            List<string> optInKeywords = null,
+            TollfreeVerificationResource.VettingProviderEnum vettingProvider = null,
+            string vettingId = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTollfreeVerificationOptions(pathSid){ BusinessName = businessName, BusinessWebsite = businessWebsite, NotificationEmail = notificationEmail, UseCaseCategories = useCaseCategories, UseCaseSummary = useCaseSummary, ProductionMessageSample = productionMessageSample, OptInImageUrls = optInImageUrls, OptInType = optInType, MessageVolume = messageVolume, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, EditReason = editReason, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

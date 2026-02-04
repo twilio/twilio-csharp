@@ -151,6 +151,50 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
         #endif
 
+
+        public static TwilioResponse<BuildResource> CreateWithHeaders(CreateBuildOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BuildResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BuildResource>> CreateWithHeadersAsync(CreateBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BuildResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BuildResource> CreateWithHeaders(
+            string pathServiceSid,
+            List<string> assetVersions = null,
+            List<string> functionVersions = null,
+            string dependencies = null,
+            string runtime = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBuildOptions(pathServiceSid){  AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BuildResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            List<string> assetVersions = null,
+            List<string> functionVersions = null,
+            string dependencies = null,
+            string runtime = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBuildOptions(pathServiceSid){  AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a Build resource. </summary>
         /// <param name="options"> Delete Build parameters </param>
@@ -183,7 +227,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -196,7 +240,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -221,6 +265,38 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             var options = new DeleteBuildOptions(pathServiceSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBuildOptions(pathServiceSid, pathSid)        ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBuildOptions(pathServiceSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -290,6 +366,40 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             var options = new FetchBuildOptions(pathServiceSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<BuildResource> FetchWithHeaders(FetchBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BuildResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BuildResource>> FetchWithHeadersAsync(FetchBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BuildResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<BuildResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchBuildOptions(pathServiceSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BuildResource>> FetchWithHeadersAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBuildOptions(pathServiceSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -369,6 +479,37 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
         #endif
 
+        public static ResourceSetResponse<BuildResource> ReadWithHeaders(ReadBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<BuildResource>.FromJson("builds", response.Content);
+            var records = new ResourceSet<BuildResource>(page, options, client);
+            return new ResourceSetResponse<BuildResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<BuildResource> ReadWithHeaders(
+            string pathServiceSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadBuildOptions(pathServiceSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<BuildResource>> ReadWithHeadersAsync(ReadBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<BuildResource>.FromJson("builds", response.Content);
+            var records = new ResourceSet<BuildResource>(page, options, client);
+            return new ResourceSetResponse<BuildResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

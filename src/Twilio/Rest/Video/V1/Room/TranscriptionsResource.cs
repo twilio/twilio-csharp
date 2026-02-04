@@ -120,6 +120,44 @@ namespace Twilio.Rest.Video.V1.Room
         }
         #endif
 
+
+        public static TwilioResponse<TranscriptionsResource> CreateWithHeaders(CreateTranscriptionsOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> CreateWithHeadersAsync(CreateTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TranscriptionsResource> CreateWithHeaders(
+            string pathRoomSid,
+            object configuration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTranscriptionsOptions(pathRoomSid){  Configuration = configuration };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> CreateWithHeadersAsync(
+            string pathRoomSid,
+            object configuration = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateTranscriptionsOptions(pathRoomSid){  Configuration = configuration };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildFetchRequest(FetchTranscriptionsOptions options, ITwilioRestClient client)
         {
@@ -187,6 +225,40 @@ namespace Twilio.Rest.Video.V1.Room
         {
             var options = new FetchTranscriptionsOptions(pathRoomSid, pathTtid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<TranscriptionsResource> FetchWithHeaders(FetchTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> FetchWithHeadersAsync(FetchTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<TranscriptionsResource> FetchWithHeaders(
+                    string pathRoomSid, 
+                    string pathTtid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchTranscriptionsOptions(pathRoomSid, pathTtid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> FetchWithHeadersAsync(string pathRoomSid, string pathTtid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTranscriptionsOptions(pathRoomSid, pathTtid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -266,6 +338,37 @@ namespace Twilio.Rest.Video.V1.Room
         }
         #endif
 
+        public static ResourceSetResponse<TranscriptionsResource> ReadWithHeaders(ReadTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
+            var records = new ResourceSet<TranscriptionsResource>(page, options, client);
+            return new ResourceSetResponse<TranscriptionsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TranscriptionsResource> ReadWithHeaders(
+            string pathRoomSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionsOptions(pathRoomSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TranscriptionsResource>> ReadWithHeadersAsync(ReadTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TranscriptionsResource>.FromJson("transcriptions", response.Content);
+            var records = new ResourceSet<TranscriptionsResource>(page, options, client);
+            return new ResourceSetResponse<TranscriptionsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -394,6 +497,47 @@ namespace Twilio.Rest.Video.V1.Room
         }
         #endif
 
+        public static TwilioResponse<TranscriptionsResource> UpdateWithHeaders(UpdateTranscriptionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> UpdateWithHeadersAsync(UpdateTranscriptionsOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<TranscriptionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<TranscriptionsResource> UpdateWithHeaders(
+            string pathRoomSid,
+            string pathTtid,
+            TranscriptionsResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<TranscriptionsResource>> UpdateWithHeadersAsync(
+            string pathRoomSid,
+            string pathTtid,
+            TranscriptionsResource.StatusEnum status = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a TranscriptionsResource object
@@ -440,6 +584,10 @@ namespace Twilio.Rest.Video.V1.Room
         ///<summary> The SID of the transcriptions's room. </summary> 
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
+
+        ///<summary> The SID of the transcriptions's associated call. </summary> 
+        [JsonProperty("source_sid")]
+        public string SourceSid { get; private set; }
 
         
         [JsonProperty("status")]

@@ -116,6 +116,48 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
         #endif
 
+
+        public static TwilioResponse<VariableResource> CreateWithHeaders(CreateVariableOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> CreateWithHeadersAsync(CreateVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<VariableResource> CreateWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string key,
+            string value,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVariableOptions(pathServiceSid, pathEnvironmentSid, key, value){  };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> CreateWithHeadersAsync(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string key,
+            string value,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateVariableOptions(pathServiceSid, pathEnvironmentSid, key, value){  };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Variable. </summary>
         /// <param name="options"> Delete Variable parameters </param>
@@ -150,7 +192,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -163,7 +205,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -190,6 +232,38 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var options = new DeleteVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -264,6 +338,41 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<VariableResource> FetchWithHeaders(FetchVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> FetchWithHeadersAsync(FetchVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<VariableResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathEnvironmentSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> FetchWithHeadersAsync(string pathServiceSid, string pathEnvironmentSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -349,6 +458,38 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
         #endif
 
+        public static ResourceSetResponse<VariableResource> ReadWithHeaders(ReadVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<VariableResource>.FromJson("variables", response.Content);
+            var records = new ResourceSet<VariableResource>(page, options, client);
+            return new ResourceSetResponse<VariableResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<VariableResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadVariableOptions(pathServiceSid, pathEnvironmentSid){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<VariableResource>> ReadWithHeadersAsync(ReadVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<VariableResource>.FromJson("variables", response.Content);
+            var records = new ResourceSet<VariableResource>(page, options, client);
+            return new ResourceSetResponse<VariableResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -484,6 +625,51 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){ Key = key, Value = value };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<VariableResource> UpdateWithHeaders(UpdateVariableOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> UpdateWithHeadersAsync(UpdateVariableOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<VariableResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<VariableResource> UpdateWithHeaders(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string pathSid,
+            string key = null,
+            string value = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){ Key = key, Value = value };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<VariableResource>> UpdateWithHeadersAsync(
+            string pathServiceSid,
+            string pathEnvironmentSid,
+            string pathSid,
+            string key = null,
+            string value = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){ Key = key, Value = value };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

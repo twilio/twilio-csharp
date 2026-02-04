@@ -97,6 +97,39 @@ namespace Twilio.Rest.Marketplace.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<AvailableAddOnResource> FetchWithHeaders(FetchAvailableAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AvailableAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AvailableAddOnResource>> FetchWithHeadersAsync(FetchAvailableAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<AvailableAddOnResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<AvailableAddOnResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchAvailableAddOnOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<AvailableAddOnResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAvailableAddOnOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadAvailableAddOnOptions options, ITwilioRestClient client)
         {
@@ -168,6 +201,36 @@ namespace Twilio.Rest.Marketplace.V1
         }
         #endif
 
+        public static ResourceSetResponse<AvailableAddOnResource> ReadWithHeaders(ReadAvailableAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+            var records = new ResourceSet<AvailableAddOnResource>(page, options, client);
+            return new ResourceSetResponse<AvailableAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<AvailableAddOnResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadAvailableAddOnOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<AvailableAddOnResource>> ReadWithHeadersAsync(ReadAvailableAddOnOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
+            var records = new ResourceSet<AvailableAddOnResource>(page, options, client);
+            return new ResourceSetResponse<AvailableAddOnResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

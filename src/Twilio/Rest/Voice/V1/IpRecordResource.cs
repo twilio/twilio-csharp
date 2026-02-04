@@ -108,6 +108,46 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+
+        public static TwilioResponse<IpRecordResource> CreateWithHeaders(CreateIpRecordOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> CreateWithHeadersAsync(CreateIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IpRecordResource> CreateWithHeaders(
+            string ipAddress,
+            string friendlyName = null,
+            int? cidrPrefixLength = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpRecordOptions(ipAddress){  FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> CreateWithHeadersAsync(
+            string ipAddress,
+            string friendlyName = null,
+            int? cidrPrefixLength = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateIpRecordOptions(ipAddress){  FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> delete </summary>
         /// <param name="options"> Delete IpRecord parameters </param>
@@ -138,7 +178,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -151,7 +191,7 @@ namespace Twilio.Rest.Voice.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -174,6 +214,38 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new DeleteIpRecordOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpRecordOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpRecordOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -238,6 +310,39 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new FetchIpRecordOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<IpRecordResource> FetchWithHeaders(FetchIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> FetchWithHeadersAsync(FetchIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<IpRecordResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchIpRecordOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchIpRecordOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -311,6 +416,36 @@ namespace Twilio.Rest.Voice.V1
         }
         #endif
 
+        public static ResourceSetResponse<IpRecordResource> ReadWithHeaders(ReadIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<IpRecordResource>.FromJson("ip_records", response.Content);
+            var records = new ResourceSet<IpRecordResource>(page, options, client);
+            return new ResourceSetResponse<IpRecordResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<IpRecordResource> ReadWithHeaders(
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadIpRecordOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<IpRecordResource>> ReadWithHeadersAsync(ReadIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<IpRecordResource>.FromJson("ip_records", response.Content);
+            var records = new ResourceSet<IpRecordResource>(page, options, client);
+            return new ResourceSetResponse<IpRecordResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -430,6 +565,45 @@ namespace Twilio.Rest.Voice.V1
         {
             var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<IpRecordResource> UpdateWithHeaders(UpdateIpRecordOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> UpdateWithHeadersAsync(UpdateIpRecordOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<IpRecordResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<IpRecordResource> UpdateWithHeaders(
+            string pathSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<IpRecordResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateIpRecordOptions(pathSid){ FriendlyName = friendlyName };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

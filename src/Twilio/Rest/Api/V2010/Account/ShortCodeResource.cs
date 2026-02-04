@@ -102,6 +102,40 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<ShortCodeResource> FetchWithHeaders(FetchShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ShortCodeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ShortCodeResource>> FetchWithHeadersAsync(FetchShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ShortCodeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ShortCodeResource> FetchWithHeaders(
+                    string pathSid, 
+                    string pathAccountSid = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchShortCodeOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ShortCodeResource>> FetchWithHeadersAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchShortCodeOptions(pathSid){ PathAccountSid = pathAccountSid };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildReadRequest(ReadShortCodeOptions options, ITwilioRestClient client)
         {
@@ -187,6 +221,39 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
 
+        public static ResourceSetResponse<ShortCodeResource> ReadWithHeaders(ReadShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<ShortCodeResource>.FromJson("short_codes", response.Content);
+            var records = new ResourceSet<ShortCodeResource>(page, options, client);
+            return new ResourceSetResponse<ShortCodeResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<ShortCodeResource> ReadWithHeaders(
+            string pathAccountSid = null,
+            string friendlyName = null,
+            string shortCode = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadShortCodeOptions(){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<ShortCodeResource>> ReadWithHeadersAsync(ReadShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ShortCodeResource>.FromJson("short_codes", response.Content);
+            var records = new ResourceSet<ShortCodeResource>(page, options, client);
+            return new ResourceSetResponse<ShortCodeResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -332,6 +399,57 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var options = new UpdateShortCodeOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ShortCodeResource> UpdateWithHeaders(UpdateShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ShortCodeResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ShortCodeResource>> UpdateWithHeadersAsync(UpdateShortCodeOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ShortCodeResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ShortCodeResource> UpdateWithHeaders(
+            string pathSid,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            string apiVersion = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateShortCodeOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ShortCodeResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            string pathAccountSid = null,
+            string friendlyName = null,
+            string apiVersion = null,
+            Uri smsUrl = null,
+            Twilio.Http.HttpMethod smsMethod = null,
+            Uri smsFallbackUrl = null,
+            Twilio.Http.HttpMethod smsFallbackMethod = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateShortCodeOptions(pathSid){ PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

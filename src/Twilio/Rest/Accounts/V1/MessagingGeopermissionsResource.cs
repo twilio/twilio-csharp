@@ -95,6 +95,39 @@ namespace Twilio.Rest.Accounts.V1
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<MessagingGeopermissionsResource> FetchWithHeaders(FetchMessagingGeopermissionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessagingGeopermissionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessagingGeopermissionsResource>> FetchWithHeadersAsync(FetchMessagingGeopermissionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessagingGeopermissionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<MessagingGeopermissionsResource> FetchWithHeaders(
+                    string countryCode = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchMessagingGeopermissionsOptions(){ CountryCode = countryCode };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessagingGeopermissionsResource>> FetchWithHeadersAsync(string countryCode = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchMessagingGeopermissionsOptions(){ CountryCode = countryCode };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateMessagingGeopermissionsOptions options, ITwilioRestClient client)
         {
@@ -160,6 +193,43 @@ namespace Twilio.Rest.Accounts.V1
         {
             var options = new UpdateMessagingGeopermissionsOptions(permissions){  };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<MessagingGeopermissionsResource> UpdateWithHeaders(UpdateMessagingGeopermissionsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessagingGeopermissionsResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessagingGeopermissionsResource>> UpdateWithHeadersAsync(UpdateMessagingGeopermissionsOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<MessagingGeopermissionsResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<MessagingGeopermissionsResource> UpdateWithHeaders(
+            List<object> permissions,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMessagingGeopermissionsOptions(permissions){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<MessagingGeopermissionsResource>> UpdateWithHeadersAsync(
+            List<object> permissions,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateMessagingGeopermissionsOptions(permissions){  };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

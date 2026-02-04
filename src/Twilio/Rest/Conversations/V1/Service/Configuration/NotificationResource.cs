@@ -97,6 +97,39 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
             return await FetchAsync(options, client);
         }
         #endif
+            
+        public static TwilioResponse<NotificationResource> FetchWithHeaders(FetchNotificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> FetchWithHeadersAsync(FetchNotificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<NotificationResource> FetchWithHeaders(
+                    string pathChatServiceSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchNotificationOptions(pathChatServiceSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> FetchWithHeadersAsync(string pathChatServiceSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchNotificationOptions(pathChatServiceSid){  };
+            return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateNotificationOptions options, ITwilioRestClient client)
         {
@@ -216,6 +249,69 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         {
             var options = new UpdateNotificationOptions(pathChatServiceSid){ LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<NotificationResource> UpdateWithHeaders(UpdateNotificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> UpdateWithHeadersAsync(UpdateNotificationOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<NotificationResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<NotificationResource> UpdateWithHeaders(
+            string pathChatServiceSid,
+            bool? logEnabled = null,
+            bool? newMessageEnabled = null,
+            string newMessageTemplate = null,
+            string newMessageSound = null,
+            bool? newMessageBadgeCountEnabled = null,
+            bool? addedToConversationEnabled = null,
+            string addedToConversationTemplate = null,
+            string addedToConversationSound = null,
+            bool? removedFromConversationEnabled = null,
+            string removedFromConversationTemplate = null,
+            string removedFromConversationSound = null,
+            bool? newMessageWithMediaEnabled = null,
+            string newMessageWithMediaTemplate = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateNotificationOptions(pathChatServiceSid){ LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<NotificationResource>> UpdateWithHeadersAsync(
+            string pathChatServiceSid,
+            bool? logEnabled = null,
+            bool? newMessageEnabled = null,
+            string newMessageTemplate = null,
+            string newMessageSound = null,
+            bool? newMessageBadgeCountEnabled = null,
+            bool? addedToConversationEnabled = null,
+            string addedToConversationTemplate = null,
+            string addedToConversationSound = null,
+            bool? removedFromConversationEnabled = null,
+            string removedFromConversationTemplate = null,
+            string removedFromConversationSound = null,
+            bool? newMessageWithMediaEnabled = null,
+            string newMessageWithMediaTemplate = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateNotificationOptions(pathChatServiceSid){ LogEnabled = logEnabled, NewMessageEnabled = newMessageEnabled, NewMessageTemplate = newMessageTemplate, NewMessageSound = newMessageSound, NewMessageBadgeCountEnabled = newMessageBadgeCountEnabled, AddedToConversationEnabled = addedToConversationEnabled, AddedToConversationTemplate = addedToConversationTemplate, AddedToConversationSound = addedToConversationSound, RemovedFromConversationEnabled = removedFromConversationEnabled, RemovedFromConversationTemplate = removedFromConversationTemplate, RemovedFromConversationSound = removedFromConversationSound, NewMessageWithMediaEnabled = newMessageWithMediaEnabled, NewMessageWithMediaTemplate = newMessageWithMediaTemplate };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

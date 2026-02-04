@@ -222,6 +222,75 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Uri/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="sipUrl"> The SIP URI, the body of the TwiML Element. </param>
+        /// <param name="priority"> The priority of this SIP URI </param>
+        /// <param name="weight"> The weight of this SIP URI </param>
+        /// <param name="username"> The username for authentication </param>
+        /// <param name="password"> The password for authentication </param>
+        public Sip Uri(Uri sipUrl = null,
+                       string priority = null,
+                       string weight = null,
+                       string username = null,
+                       string password = null)
+        {
+            var newChild = new SipUri(sipUrl, priority, weight, username, password);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Uri/> element as a child of this element
+        /// </summary>
+        /// <param name="sipUri"> A SipUri instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Sip SipUri(SipUri sipUri)
+        {
+            this.Append(sipUri);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Uri/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="sipUrl"> The SIP URI, the body of the TwiML Element. </param>
+        /// <param name="priority"> The priority of this SIP URI </param>
+        /// <param name="weight"> The weight of this SIP URI </param>
+        /// <param name="username"> The username for authentication </param>
+        /// <param name="password"> The password for authentication </param>
+        [System.Obsolete("This method is deprecated, use .Uri() instead.")]
+        public Sip SipUri(Uri sipUrl = null,
+                          string priority = null,
+                          string weight = null,
+                          string username = null,
+                          string password = null)
+        {
+            return Uri(sipUrl, priority, weight, username, password);
+        }
+
+        /// <summary>
+        /// Create a new <Headers/> element and append it as a child of this element.
+        /// </summary>
+        public Sip Headers()
+        {
+            var newChild = new Headers();
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Headers/> element as a child of this element
+        /// </summary>
+        /// <param name="headers"> A Headers instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Sip Headers(Headers headers)
+        {
+            this.Append(headers);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

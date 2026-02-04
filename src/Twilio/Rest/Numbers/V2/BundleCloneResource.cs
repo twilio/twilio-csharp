@@ -131,6 +131,48 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
 
+
+        public static TwilioResponse<BundleCloneResource> CreateWithHeaders(CreateBundleCloneOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleCloneResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleCloneResource>> CreateWithHeadersAsync(CreateBundleCloneOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<BundleCloneResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<BundleCloneResource> CreateWithHeaders(
+            string pathBundleSid,
+            string targetAccountSid,
+            bool? moveToDraft = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleCloneOptions(pathBundleSid, targetAccountSid){  MoveToDraft = moveToDraft, FriendlyName = friendlyName };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<BundleCloneResource>> CreateWithHeadersAsync(
+            string pathBundleSid,
+            string targetAccountSid,
+            bool? moveToDraft = null,
+            string friendlyName = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateBundleCloneOptions(pathBundleSid, targetAccountSid){  MoveToDraft = moveToDraft, FriendlyName = friendlyName };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a BundleCloneResource object

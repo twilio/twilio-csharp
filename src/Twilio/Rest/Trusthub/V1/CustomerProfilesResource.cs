@@ -128,6 +128,48 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+
+        public static TwilioResponse<CustomerProfilesResource> CreateWithHeaders(CreateCustomerProfilesOptions options, ITwilioRestClient client = null) 
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> CreateWithHeadersAsync(CreateCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomerProfilesResource> CreateWithHeaders(
+            string friendlyName,
+            string email,
+            string policySid,
+            Uri statusCallback = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
+        return CreateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> CreateWithHeadersAsync(
+            string friendlyName,
+            string email,
+            string policySid,
+            Uri statusCallback = null,
+        ITwilioRestClient client = null)
+        {
+        var options = new CreateCustomerProfilesOptions(friendlyName, email, policySid){  StatusCallback = statusCallback };
+        return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
         
         /// <summary> Delete a specific Customer-Profile. </summary>
         /// <param name="options"> Delete CustomerProfiles parameters </param>
@@ -158,7 +200,7 @@ namespace Twilio.Rest.Trusthub.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -171,7 +213,7 @@ namespace Twilio.Rest.Trusthub.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -194,6 +236,38 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new DeleteCustomerProfilesOptions(pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomerProfilesOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCustomerProfilesOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -258,6 +332,39 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new FetchCustomerProfilesOptions(pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<CustomerProfilesResource> FetchWithHeaders(FetchCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> FetchWithHeadersAsync(FetchCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<CustomerProfilesResource> FetchWithHeaders(
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesOptions(pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCustomerProfilesOptions(pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -343,6 +450,39 @@ namespace Twilio.Rest.Trusthub.V1
         }
         #endif
 
+        public static ResourceSetResponse<CustomerProfilesResource> ReadWithHeaders(ReadCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomerProfilesResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CustomerProfilesResource> ReadWithHeaders(
+            CustomerProfilesResource.StatusEnum status = null,
+            string friendlyName = null,
+            string policySid = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomerProfilesOptions(){ Status = status, FriendlyName = friendlyName, PolicySid = policySid, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CustomerProfilesResource>> ReadWithHeadersAsync(ReadCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomerProfilesResource>.FromJson("results", response.Content);
+            var records = new ResourceSet<CustomerProfilesResource>(page, options, client);
+            return new ResourceSetResponse<CustomerProfilesResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
@@ -474,6 +614,51 @@ namespace Twilio.Rest.Trusthub.V1
         {
             var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<CustomerProfilesResource> UpdateWithHeaders(UpdateCustomerProfilesOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> UpdateWithHeadersAsync(UpdateCustomerProfilesOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<CustomerProfilesResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomerProfilesResource> UpdateWithHeaders(
+            string pathSid,
+            CustomerProfilesResource.StatusEnum status = null,
+            Uri statusCallback = null,
+            string friendlyName = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomerProfilesResource>> UpdateWithHeadersAsync(
+            string pathSid,
+            CustomerProfilesResource.StatusEnum status = null,
+            Uri statusCallback = null,
+            string friendlyName = null,
+            string email = null,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateCustomerProfilesOptions(pathSid){ Status = status, StatusCallback = statusCallback, FriendlyName = friendlyName, Email = email };
+            return await UpdateWithHeadersAsync(options, client);
         }
         #endif
 

@@ -134,6 +134,43 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
         #endif
 
+        public static ResourceSetResponse<TaskQueuesStatisticsResource> ReadWithHeaders(ReadTaskQueuesStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
+            var records = new ResourceSet<TaskQueuesStatisticsResource>(page, options, client);
+            return new ResourceSetResponse<TaskQueuesStatisticsResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TaskQueuesStatisticsResource> ReadWithHeaders(
+            string pathWorkspaceSid,
+            DateTime? endDate = null,
+            string friendlyName = null,
+            int? minutes = null,
+            DateTime? startDate = null,
+            string taskChannel = null,
+            string splitByWaitTime = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){ EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TaskQueuesStatisticsResource>> ReadWithHeadersAsync(ReadTaskQueuesStatisticsOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
+            var records = new ResourceSet<TaskQueuesStatisticsResource>(page, options, client);
+            return new ResourceSetResponse<TaskQueuesStatisticsResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>

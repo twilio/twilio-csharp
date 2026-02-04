@@ -81,7 +81,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
 
         #if !NET35
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
         }
         #endif
 
@@ -121,6 +121,38 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid) ;
             return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid)           ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
         
@@ -195,6 +227,41 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid){  };
             return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<UserBindingResource> FetchWithHeaders(FetchUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserBindingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserBindingResource>> FetchWithHeadersAsync(FetchUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserBindingResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<UserBindingResource> FetchWithHeaders(
+                    string pathServiceSid, 
+                    string pathUserSid, 
+                    string pathSid, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid){  };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserBindingResource>> FetchWithHeadersAsync(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid){  };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
         
@@ -284,6 +351,39 @@ namespace Twilio.Rest.Chat.V2.Service.User
         }
         #endif
 
+        public static ResourceSetResponse<UserBindingResource> ReadWithHeaders(ReadUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<UserBindingResource>.FromJson("bindings", response.Content);
+            var records = new ResourceSet<UserBindingResource>(page, options, client);
+            return new ResourceSetResponse<UserBindingResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<UserBindingResource> ReadWithHeaders(
+            string pathServiceSid,
+            string pathUserSid,
+            List<UserBindingResource.BindingTypeEnum> bindingType = null,
+            long? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){ BindingType = bindingType, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<UserBindingResource>> ReadWithHeadersAsync(ReadUserBindingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UserBindingResource>.FromJson("bindings", response.Content);
+            var records = new ResourceSet<UserBindingResource>(page, options, client);
+            return new ResourceSetResponse<UserBindingResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
         
         /// <summary> Fetch the target page of records </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
