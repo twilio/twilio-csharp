@@ -1,6 +1,31 @@
 twilio-csharp Changelog
 =======================
 
+[2026-02-05] Version 7.14.3
+---------------------------
+**Library - Chore**
+- [PR #814](https://github.com/twilio/twilio-csharp/pull/814): added Exception as per new Api Standards. Thanks to [@sbansla](https://github.com/sbansla)!
+
+**Library - Fix**
+- [PR #819](https://github.com/twilio/twilio-csharp/pull/819): Regional endpoint processing. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Twiml**
+- Add `recording_configuration` attribute to `<Recording>` noun
+
+**Api**
+- Clarify the behavior of date filters with the Calls API
+- Added Phone Number `type` property to `/IncomingPhoneNumbers` resource
+
+**Memory**
+- ## 2026-01-23
+- No path changes (updated metadata only)
+- ## 2026-01-22
+- No path changes (updated metadata only)
+- ## 2026-01-22
+- **Modified 1 path(s)**:
+- `/v1/Stores/{storeId}/Profiles/{profileId}` (added delete)
+
+
 [2026-01-22] Version 7.14.2
 ---------------------------
 **Library - Chore**
