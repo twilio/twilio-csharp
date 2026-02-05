@@ -166,9 +166,19 @@ jobs:
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user
         shell: cmd
 
+      - name: List certificates in DigiCert ONE
+        run: |
+          smctl certificate ls
+        shell: cmd
+
       - name: Certificates Sync
         run: |
           smctl windows certsync
+        shell: cmd
+
+      - name: List certificates in DigiCert ONE
+        run: |
+          smctl certificate ls
         shell: cmd
 
       - name: Signing using Nuget
