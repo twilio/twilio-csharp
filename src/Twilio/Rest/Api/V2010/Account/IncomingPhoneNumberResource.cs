@@ -1148,6 +1148,10 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("status")]
         public string Status { get; private set; }
 
+        ///<summary> The phone number type. </summary> 
+        [JsonProperty("type")]
+        public string Type { get; private set; }
+
 
 
         private IncomingPhoneNumberResource() {

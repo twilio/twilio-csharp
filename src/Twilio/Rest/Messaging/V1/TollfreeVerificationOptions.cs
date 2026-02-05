@@ -97,16 +97,16 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> An optional external reference ID supplied by customer and echoed back on status retrieval. </summary> 
         public string ExternalReferenceId { get; set; }
 
-        ///<summary> A legally recognized business registration number </summary> 
+        ///<summary> A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR. </summary> 
         public string BusinessRegistrationNumber { get; set; }
 
-        ///<summary> The organizational authority for business registrations </summary> 
+        ///<summary> The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR. </summary> 
         public string BusinessRegistrationAuthority { get; set; }
 
-        ///<summary> Country business is registered in </summary> 
+        ///<summary> The country where the business is registered. Required for all business types except SOLE_PROPRIETOR. </summary> 
         public string BusinessRegistrationCountry { get; set; }
 
-        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
+        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field. </summary> 
         public string BusinessType { get; set; }
 
         ///<summary> The E.164 formatted number associated with the business. </summary> 

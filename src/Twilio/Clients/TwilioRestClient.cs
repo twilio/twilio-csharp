@@ -80,9 +80,6 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if (GlobalConstants.IsOnlyOneSet(edge,region))
-                Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
-
             Region = region;
             Edge = edge;
         }
@@ -115,9 +112,6 @@ namespace Twilio.Clients
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
 
-            if (GlobalConstants.IsOnlyOneSet(edge,region))
-                 Console.WriteLine("Deprecation Warning: For regional processing, DNS is of format product.edge.region.twilio.com;otherwise use product.twilio.com");
-
             Region = region;
             Edge = edge;
         }
@@ -130,12 +124,6 @@ namespace Twilio.Clients
         /// <returns>response of the request</returns>
         public Response Request(Request request)
         {
-
-            if (string.IsNullOrEmpty(Edge) && !string.IsNullOrEmpty(Region) && GlobalConstants.RegionToEdgeMap.TryGetValue(Region, out var edge))
-            {
-                Console.WriteLine("Deprecation Warning: Setting default `edge` for provided `region`");
-                Edge = edge;
-            }
 
             if(_username != null && _password != null){
                 request.SetAuth(_username, _password);
@@ -246,18 +234,42 @@ namespace Twilio.Clients
             }
             catch (JsonReaderException) { /* Allow null check below to handle */ }
 
-            if (restException == null)
+            if (restException != null)
             {
-                throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
+                throw new ApiException(
+                    restException.Code,
+                    (int)response.StatusCode,
+                    restException.Message ?? "Unable to make request, " + response.StatusCode,
+                    restException.MoreInfo,
+                    restException.Details
+                );
             }
 
-            throw new ApiException(
-                restException.Code,
-                (int)response.StatusCode,
-                restException.Message ?? "Unable to make request, " + response.StatusCode,
-                restException.MoreInfo,
-                restException.Details
-            );
+            
+            // Try to deserialize as RFC 9457 format first (RestApiStandardException)
+            RestApiStandardException restApiStandardException = null;
+            try
+            {
+                restApiStandardException = RestApiStandardException.FromJson(response.Content);
+            }
+            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
+
+            // Check if it's a valid RFC 9457 response (has 'type' field)
+            if (restApiStandardException != null)
+            {
+                throw new ApiStandardException(
+                    restApiStandardException.Code,
+                    (int)response.StatusCode,
+                    restApiStandardException.Type,
+                    restApiStandardException.Title,
+                    restApiStandardException.Detail,
+                    restApiStandardException.Instance,
+                    restApiStandardException.Errors
+                );
+            }
+            
+            // If both RestException and RestApiStandardException are null and throw default exception
+            throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
         }
 
         /// <summary>
