@@ -118,9 +118,6 @@ jobs:
         with:
           global-json-file: global.json
 
-#      - name: Remove dotnet 7 and 8
-#        run: sudo rm -rf /usr/share/dotnet/sdk/7* /usr/share/dotnet/sdk/8*
-
       - name: Get installed dotnet version
         run: dotnet --version
 
@@ -185,7 +182,7 @@ jobs:
         run: |
           dotnet build -c Release
           dotnet pack -c Release
-          nuget sign **/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
+          nuget sign **/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
           nuget push **/*.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json -SkipDuplicate
         env:
           RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
