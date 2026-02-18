@@ -471,10 +471,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         #endif
         /// <summary> Retrieve a list of all Bundles for an account. </summary>
         /// <param name="status"> The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details. </param>
+        /// <param name="bundleSids"> A comma-separated list of Bundle SIDs to filter the results (maximum 20). Each Bundle SID must match `^BU[0-9a-fA-F]{32}$`. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. The column can contain 255 variable characters. </param>
         /// <param name="regulationSid"> The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
         /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
+        /// <param name="endUserType"> The end user type of the regulation of the Bundle. Can be `business` or `individual`. </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
@@ -487,10 +489,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> A single instance of Bundle </returns>
         public static ResourceSet<BundleResource> Read(
                                                      BundleResource.StatusEnum status = null,
+                                                     string bundleSids = null,
                                                      string friendlyName = null,
                                                      string regulationSid = null,
                                                      string isoCountry = null,
                                                      string numberType = null,
+                                                     BundleResource.EndUserTypeEnum endUserType = null,
                                                      bool? hasValidUntilDate = null,
                                                      BundleResource.SortByEnum sortBy = null,
                                                      BundleResource.SortDirectionEnum sortDirection = null,
@@ -501,17 +505,19 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadBundleOptions(){ Status = status, BundleSids = bundleSids, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, EndUserType = endUserType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of all Bundles for an account. </summary>
         /// <param name="status"> The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details. </param>
+        /// <param name="bundleSids"> A comma-separated list of Bundle SIDs to filter the results (maximum 20). Each Bundle SID must match `^BU[0-9a-fA-F]{32}$`. </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource. The column can contain 255 variable characters. </param>
         /// <param name="regulationSid"> The unique string of a [Regulation resource](https://www.twilio.com/docs/phone-numbers/regulatory/api/regulations) that is associated to the Bundle resource. </param>
         /// <param name="isoCountry"> The 2-digit [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request. </param>
         /// <param name="numberType"> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </param>
+        /// <param name="endUserType"> The end user type of the regulation of the Bundle. Can be `business` or `individual`. </param>
         /// <param name="hasValidUntilDate"> Indicates that the Bundle is a valid Bundle until a specified expiration date. </param>
         /// <param name="sortBy"> Can be `valid-until` or `date-updated`. Defaults to `date-created`. </param>
         /// <param name="sortDirection"> Default is `DESC`. Can be `ASC` or `DESC`. </param>
@@ -524,10 +530,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// <returns> Task that resolves to A single instance of Bundle </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<BundleResource>> ReadAsync(
                                                                                              BundleResource.StatusEnum status = null,
+                                                                                             string bundleSids = null,
                                                                                              string friendlyName = null,
                                                                                              string regulationSid = null,
                                                                                              string isoCountry = null,
                                                                                              string numberType = null,
+                                                                                             BundleResource.EndUserTypeEnum endUserType = null,
                                                                                              bool? hasValidUntilDate = null,
                                                                                              BundleResource.SortByEnum sortBy = null,
                                                                                              BundleResource.SortDirectionEnum sortDirection = null,
@@ -538,7 +546,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadBundleOptions(){ Status = status, BundleSids = bundleSids, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, EndUserType = endUserType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -554,10 +562,12 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         public static ResourceSetResponse<BundleResource> ReadWithHeaders(
             BundleResource.StatusEnum status = null,
+            string bundleSids = null,
             string friendlyName = null,
             string regulationSid = null,
             string isoCountry = null,
             string numberType = null,
+            BundleResource.EndUserTypeEnum endUserType = null,
             bool? hasValidUntilDate = null,
             BundleResource.SortByEnum sortBy = null,
             BundleResource.SortDirectionEnum sortDirection = null,
@@ -568,7 +578,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadBundleOptions(){ Status = status, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadBundleOptions(){ Status = status, BundleSids = bundleSids, FriendlyName = friendlyName, RegulationSid = regulationSid, IsoCountry = isoCountry, NumberType = numberType, EndUserType = endUserType, HasValidUntilDate = hasValidUntilDate, SortBy = sortBy, SortDirection = sortDirection, ValidUntilDateBefore = validUntilDateBefore, ValidUntilDate = validUntilDate, ValidUntilDateAfter = validUntilDateAfter, PageSize = pageSize, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 

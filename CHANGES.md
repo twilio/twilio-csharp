@@ -1,6 +1,38 @@
 twilio-csharp Changelog
 =======================
 
+[2026-02-18] Version 7.14.4
+---------------------------
+**Library - Chore**
+- [PR #821](https://github.com/twilio/twilio-csharp/pull/821): rename certificate fingerprint for code signing. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #817](https://github.com/twilio/twilio-csharp/pull/817): migrate to binary code signing. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Remove inequality examples from Calls StartTime and EndTime filter descriptions
+
+**Memory**
+- ## 2026-02-06
+- Minor updates (formatting, metadata)
+- ## 2026-02-06
+- Minor updates (formatting, metadata)
+- ## 2026-02-06
+- ## 2026-01-23
+- ## 2026-01-23
+- **Added 3 new path(s)**:
+- `/v1/Stores/{storeId}/Profiles/Imports` (ListProfileImportsV2, CreateProfilesImportV2)
+- `/v1/Stores/{storeId}/Profiles/Imports/{importId}` (FetchProfileImportV2)
+- **Removed 6 path(s)**:
+- `/v1/KnowledgeBases/{kbId}/Knowledge` (ListKnowledge, CreateKnowledge)
+- `/v1/KnowledgeBases/{kbId}/Search` (KnowledgeSearch)
+- `/v1/KnowledgeBases/{kbId}/Knowledge/{knowledgeId}` (RetrieveKnowledge, PatchKnowledge, DeleteKnowledge)
+- `/v1/KnowledgeBases/{kbId}/Knowledge/{knowledgeId}/Chunks` (ListKnowledgeChunks)
+- `/v1/ControlPlane/KnowledgeBases` (ListKnowledgeBases, CreateKnowledgeBase)
+- `/v1/ControlPlane/KnowledgeBases/{kbId}` (GetKnowledgeBase, UpdateKnowledgeBase, DeleteKnowledgeBase)
+- ## 2026-01-05
+- ## 2026-01-05
+- Initial release with 26 paths and 48 operations
+
+
 [2026-02-05] Version 7.14.3
 ---------------------------
 **Library - Chore**

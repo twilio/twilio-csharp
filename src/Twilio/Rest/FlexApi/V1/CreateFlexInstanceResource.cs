@@ -99,7 +99,7 @@ namespace Twilio.Rest.FlexApi.V1
         private static Request BuildCreateRequest(CreateCreateFlexInstanceOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v1/instances";
+            string path = "/v1/Instances";
 
 
             return new Request(

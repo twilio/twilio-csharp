@@ -393,7 +393,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`. </summary> 
         public CallResource.StatusEnum Status { get; set; }
 
-        ///<summary> Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date. </summary> 
+        ///<summary> Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. </summary> 
         public DateTime? StartTime { get; set; }
 
         ///<summary> Only include calls that started before this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started before this date. </summary> 
@@ -402,7 +402,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> Only include calls that started on or after this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on or after this date. </summary> 
         public DateTime? StartTimeAfter { get; set; }
 
-        ///<summary> Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date. </summary> 
+        ///<summary> Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. </summary> 
         public DateTime? EndTime { get; set; }
 
         ///<summary> Only include calls that ended before this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended before this date. </summary> 

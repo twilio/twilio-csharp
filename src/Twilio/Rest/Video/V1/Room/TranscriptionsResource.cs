@@ -467,15 +467,17 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> The SID of the room with the transcriptions resource to update. </param>
         /// <param name="pathTtid"> The Twilio type id of the transcriptions resource to update. </param>
         /// <param name="status">  </param>
+        /// <param name="configuration"> A collection of properties that describe transcription behaviour. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcriptions </returns>
         public static TranscriptionsResource Update(
                                           string pathRoomSid,
                                           string pathTtid,
                                           TranscriptionsResource.StatusEnum status = null,
+                                          object configuration = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status, Configuration = configuration };
             return Update(options, client);
         }
 
@@ -484,15 +486,17 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> The SID of the room with the transcriptions resource to update. </param>
         /// <param name="pathTtid"> The Twilio type id of the transcriptions resource to update. </param>
         /// <param name="status">  </param>
+        /// <param name="configuration"> A collection of properties that describe transcription behaviour. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcriptions </returns>
         public static async System.Threading.Tasks.Task<TranscriptionsResource> UpdateAsync(
                                                                               string pathRoomSid,
                                                                               string pathTtid,
                                                                               TranscriptionsResource.StatusEnum status = null,
+                                                                              object configuration = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status, Configuration = configuration };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -520,9 +524,10 @@ namespace Twilio.Rest.Video.V1.Room
             string pathRoomSid,
             string pathTtid,
             TranscriptionsResource.StatusEnum status = null,
+            object configuration = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status, Configuration = configuration };
             return UpdateWithHeaders(options, client);
         }
 
@@ -531,9 +536,10 @@ namespace Twilio.Rest.Video.V1.Room
             string pathRoomSid,
             string pathTtid,
             TranscriptionsResource.StatusEnum status = null,
+            object configuration = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status };
+            var options = new UpdateTranscriptionsOptions(pathRoomSid, pathTtid){ Status = status, Configuration = configuration };
             return await UpdateWithHeadersAsync(options, client);
         }
         #endif

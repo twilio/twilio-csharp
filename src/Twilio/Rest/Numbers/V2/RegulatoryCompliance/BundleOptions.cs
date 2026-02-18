@@ -174,6 +174,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         ///<summary> The verification status of the Bundle resource. Please refer to [Bundle Statuses](https://www.twilio.com/docs/phone-numbers/regulatory/api/bundles#bundle-statuses) for more details. </summary> 
         public BundleResource.StatusEnum Status { get; set; }
 
+        ///<summary> A comma-separated list of Bundle SIDs to filter the results (maximum 20). Each Bundle SID must match `^BU[0-9a-fA-F]{32}$`. </summary> 
+        public string BundleSids { get; set; }
+
         ///<summary> The string that you assigned to describe the resource. The column can contain 255 variable characters. </summary> 
         public string FriendlyName { get; set; }
 
@@ -185,6 +188,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
 
         ///<summary> The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`. </summary> 
         public string NumberType { get; set; }
+
+        ///<summary> The end user type of the regulation of the Bundle. Can be `business` or `individual`. </summary> 
+        public BundleResource.EndUserTypeEnum EndUserType { get; set; }
 
         ///<summary> Indicates that the Bundle is a valid Bundle until a specified expiration date. </summary> 
         public bool? HasValidUntilDate { get; set; }
@@ -217,6 +223,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
+            if (BundleSids != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BundleSids", BundleSids));
+            }
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
@@ -232,6 +242,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             if (NumberType != null)
             {
                 p.Add(new KeyValuePair<string, string>("NumberType", NumberType));
+            }
+            if (EndUserType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EndUserType", EndUserType.ToString()));
             }
             if (HasValidUntilDate != null)
             {

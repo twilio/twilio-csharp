@@ -140,6 +140,9 @@ namespace Twilio.Rest.Video.V1.Room
         
         public TranscriptionsResource.StatusEnum Status { get; set; }
 
+        ///<summary> A collection of properties that describe transcription behaviour. </summary> 
+        public object Configuration { get; set; }
+
 
 
         /// <summary> Construct a new UpdateRoomTranscriptionsOptions </summary>
@@ -160,6 +163,10 @@ namespace Twilio.Rest.Video.V1.Room
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+            if (Configuration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
             }
             return p;
         }
