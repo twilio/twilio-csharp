@@ -222,12 +222,13 @@ namespace Twilio.Http
                 }
 
 #if !NET35
-                result += WebUtility.UrlEncode(pair.Key) + "=" + WebUtility.UrlEncode(pair.Value);
+                result += Uri.EscapeDataString(pair.Key) + "=" + Uri.EscapeDataString(pair.Value);
 #else
                 result += HttpUtility.UrlEncode(pair.Key) + "=" + HttpUtility.UrlEncode(pair.Value);
 #endif
             }
-
+            Console.WriteLine("Writing encoded Query Parameters: =====> ");
+            Console.WriteLine(result);
             return result;
         }
 
