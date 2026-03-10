@@ -82,6 +82,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly BankAccountTypeEnum CommercialChecking = new BankAccountTypeEnum("commercial-checking");
 
         }
+        public sealed class ConfirmationEnum : StringEnum
+        {
+            private ConfirmationEnum(string value) : base(value) {}
+            public ConfirmationEnum() {}
+            public static implicit operator ConfirmationEnum(string value)
+            {
+                return new ConfirmationEnum(value);
+            }
+            public static readonly ConfirmationEnum True = new ConfirmationEnum("true");
+            public static readonly ConfirmationEnum False = new ConfirmationEnum("false");
+
+        }
         public sealed class CaptureEnum : StringEnum
         {
             private CaptureEnum(string value) : base(value) {}
@@ -96,6 +108,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly CaptureEnum PostalCode = new CaptureEnum("postal-code");
             public static readonly CaptureEnum BankRoutingNumber = new CaptureEnum("bank-routing-number");
             public static readonly CaptureEnum BankAccountNumber = new CaptureEnum("bank-account-number");
+            public static readonly CaptureEnum PaymentCardNumberMatcher = new CaptureEnum("payment-card-number-matcher");
+            public static readonly CaptureEnum ExpirationDateMatcher = new CaptureEnum("expiration-date-matcher");
+            public static readonly CaptureEnum SecurityCodeMatcher = new CaptureEnum("security-code-matcher");
+            public static readonly CaptureEnum PostalCodeMatcher = new CaptureEnum("postal-code-matcher");
 
         }
 
@@ -163,6 +179,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`. </param>
         /// <param name="tokenType">  </param>
         /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex` </param>
+        /// <param name="requireMatchingInputs"> A comma-separated list of payment information fields that require the caller to enter the same value twice for confirmation. Supported values are `payment-card-number`, `expiration-date`, `security-code`, and `postal-code`. </param>
+        /// <param name="confirmation"> Whether to prompt the caller to confirm their payment information before submitting to the payment gateway. If `true`, the caller will hear the last 4 digits of their card or account number and must press 1 to confirm or 2 to cancel. Default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Payment </returns>
         public static PaymentResource Create(
@@ -184,9 +202,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           int? timeout = null,
                                           PaymentResource.TokenTypeEnum tokenType = null,
                                           string validCardTypes = null,
+                                          string requireMatchingInputs = null,
+                                          PaymentResource.ConfirmationEnum confirmation = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+            var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes, RequireMatchingInputs = requireMatchingInputs, Confirmation = confirmation };
             return Create(options, client);
         }
 
@@ -210,6 +230,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`. </param>
         /// <param name="tokenType">  </param>
         /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex` </param>
+        /// <param name="requireMatchingInputs"> A comma-separated list of payment information fields that require the caller to enter the same value twice for confirmation. Supported values are `payment-card-number`, `expiration-date`, `security-code`, and `postal-code`. </param>
+        /// <param name="confirmation"> Whether to prompt the caller to confirm their payment information before submitting to the payment gateway. If `true`, the caller will hear the last 4 digits of their card or account number and must press 1 to confirm or 2 to cancel. Default is `false`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payment </returns>
         public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(
@@ -231,9 +253,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   int? timeout = null,
                                                                                   PaymentResource.TokenTypeEnum tokenType = null,
                                                                                   string validCardTypes = null,
+                                                                                  string requireMatchingInputs = null,
+                                                                                  PaymentResource.ConfirmationEnum confirmation = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes, RequireMatchingInputs = requireMatchingInputs, Confirmation = confirmation };
             return await CreateAsync(options, client);
         }
         #endif
@@ -276,9 +300,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             int? timeout = null,
             PaymentResource.TokenTypeEnum tokenType = null,
             string validCardTypes = null,
+            string requireMatchingInputs = null,
+            PaymentResource.ConfirmationEnum confirmation = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes, RequireMatchingInputs = requireMatchingInputs, Confirmation = confirmation };
         return CreateWithHeaders(options, client);
         }
 
@@ -302,9 +328,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             int? timeout = null,
             PaymentResource.TokenTypeEnum tokenType = null,
             string validCardTypes = null,
+            string requireMatchingInputs = null,
+            PaymentResource.ConfirmationEnum confirmation = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes };
+        var options = new CreatePaymentOptions(pathCallSid, idempotencyKey, statusCallback){  PathAccountSid = pathAccountSid, BankAccountType = bankAccountType, ChargeAmount = chargeAmount, Currency = currency, Description = description, Input = input, MinPostalCodeLength = minPostalCodeLength, Parameter = parameter, PaymentConnector = paymentConnector, PaymentMethod = paymentMethod, PostalCode = postalCode, SecurityCode = securityCode, Timeout = timeout, TokenType = tokenType, ValidCardTypes = validCardTypes, RequireMatchingInputs = requireMatchingInputs, Confirmation = confirmation };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

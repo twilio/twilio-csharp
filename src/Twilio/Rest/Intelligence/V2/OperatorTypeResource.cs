@@ -219,30 +219,34 @@ namespace Twilio.Rest.Intelligence.V2
         #endif
         /// <summary> Retrieves a list of all Operator Types for an Account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="languageCode"> Returns Operator Types that support the provided language code. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OperatorType </returns>
         public static ResourceSet<OperatorTypeResource> Read(
                                                      long? pageSize = null,
+                                                     string languageCode = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, LanguageCode = languageCode, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieves a list of all Operator Types for an Account. </summary>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
+        /// <param name="languageCode"> Returns Operator Types that support the provided language code. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OperatorType </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<OperatorTypeResource>> ReadAsync(
                                                                                              long? pageSize = null,
+                                                                                             string languageCode = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, LanguageCode = languageCode, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -258,10 +262,11 @@ namespace Twilio.Rest.Intelligence.V2
 
         public static ResourceSetResponse<OperatorTypeResource> ReadWithHeaders(
             long? pageSize = null,
+            string languageCode = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadOperatorTypeOptions(){ PageSize = pageSize, LanguageCode = languageCode, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 

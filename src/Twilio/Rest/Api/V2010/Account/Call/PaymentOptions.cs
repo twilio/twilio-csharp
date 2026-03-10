@@ -82,6 +82,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex` </summary> 
         public string ValidCardTypes { get; set; }
 
+        ///<summary> A comma-separated list of payment information fields that require the caller to enter the same value twice for confirmation. Supported values are `payment-card-number`, `expiration-date`, `security-code`, and `postal-code`. </summary> 
+        public string RequireMatchingInputs { get; set; }
+
+        ///<summary> Whether to prompt the caller to confirm their payment information before submitting to the payment gateway. If `true`, the caller will hear the last 4 digits of their card or account number and must press 1 to confirm or 2 to cancel. Default is `false`. </summary> 
+        public PaymentResource.ConfirmationEnum Confirmation { get; set; }
+
 
         /// <summary> Construct a new CreatePaymentsOptions </summary>
         /// <param name="pathCallSid"> The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF. </param>
@@ -163,6 +169,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (ValidCardTypes != null)
             {
                 p.Add(new KeyValuePair<string, string>("ValidCardTypes", ValidCardTypes));
+            }
+            if (RequireMatchingInputs != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RequireMatchingInputs", RequireMatchingInputs));
+            }
+            if (Confirmation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Confirmation", Confirmation.ToString()));
             }
             return p;
         }

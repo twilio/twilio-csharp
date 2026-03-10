@@ -52,6 +52,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> Indicates that this SMS campaign will send messages that contain phone numbers. </summary> 
         public bool? HasEmbeddedPhone { get; }
 
+        ///<summary> The version of the Messaging API to use for this request </summary> 
+        public string XTwilioApiVersion { get; set; }
+
         ///<summary> If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum. </summary> 
         public string OptInMessage { get; set; }
 
@@ -78,6 +81,12 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
         public bool? DirectLending { get; set; }
+
+        ///<summary> The URL of the privacy policy for the campaign. </summary> 
+        public Uri PrivacyPolicyUrl { get; set; }
+
+        ///<summary> The URL of the terms and conditions for the campaign. </summary> 
+        public Uri TermsAndConditionsUrl { get; set; }
 
 
         /// <summary> Construct a new CreateUsAppToPersonOptions </summary>
@@ -174,10 +183,28 @@ namespace Twilio.Rest.Messaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("DirectLending", DirectLending.Value.ToString().ToLower()));
             }
+            if (PrivacyPolicyUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrivacyPolicyUrl", Serializers.Url(PrivacyPolicyUrl)));
+            }
+            if (TermsAndConditionsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TermsAndConditionsUrl", Serializers.Url(TermsAndConditionsUrl)));
+            }
             return p;
         }
 
         
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (XTwilioApiVersion != null)
+        {
+            p.Add(new KeyValuePair<string, string>("X-Twilio-Api-Version", XTwilioApiVersion));
+        }
+        return p;
+    }
 
     }
 
@@ -226,6 +253,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         ///<summary> The SID of the US A2P Compliance resource to fetch `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
         public string PathSid { get; }
 
+        ///<summary> The version of the Messaging API to use for this request </summary> 
+        public string XTwilioApiVersion { get; set; }
+
 
 
         /// <summary> Construct a new FetchUsAppToPersonOptions </summary>
@@ -247,6 +277,16 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
     
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (XTwilioApiVersion != null)
+        {
+            p.Add(new KeyValuePair<string, string>("X-Twilio-Api-Version", XTwilioApiVersion));
+        }
+        return p;
+    }
 
     }
 
@@ -257,6 +297,9 @@ namespace Twilio.Rest.Messaging.V1.Service
     
         ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to fetch the resource from. </summary> 
         public string PathMessagingServiceSid { get; }
+
+        ///<summary> The version of the Messaging API to use for this request </summary> 
+        public string XTwilioApiVersion { get; set; }
 
 
 
@@ -281,6 +324,16 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
     
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (XTwilioApiVersion != null)
+        {
+            p.Add(new KeyValuePair<string, string>("X-Twilio-Api-Version", XTwilioApiVersion));
+        }
+        return p;
+    }
 
     }
 
@@ -314,6 +367,15 @@ namespace Twilio.Rest.Messaging.V1.Service
 
         ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
         public bool? DirectLending { get; }
+
+        ///<summary> The version of the Messaging API to use for this request </summary> 
+        public string XTwilioApiVersion { get; set; }
+
+        ///<summary> The URL of the privacy policy for the campaign. </summary> 
+        public Uri PrivacyPolicyUrl { get; set; }
+
+        ///<summary> The URL of the terms and conditions for the campaign. </summary> 
+        public Uri TermsAndConditionsUrl { get; set; }
 
 
 
@@ -374,10 +436,28 @@ namespace Twilio.Rest.Messaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("DirectLending", DirectLending.Value.ToString().ToLower()));
             }
+            if (PrivacyPolicyUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PrivacyPolicyUrl", Serializers.Url(PrivacyPolicyUrl)));
+            }
+            if (TermsAndConditionsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TermsAndConditionsUrl", Serializers.Url(TermsAndConditionsUrl)));
+            }
             return p;
         }
 
         
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (XTwilioApiVersion != null)
+        {
+            p.Add(new KeyValuePair<string, string>("X-Twilio-Api-Version", XTwilioApiVersion));
+        }
+        return p;
+    }
 
     }
 

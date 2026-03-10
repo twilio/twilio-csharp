@@ -57,6 +57,9 @@ namespace Twilio.Rest.Intelligence.V2
     public class ReadOperatorTypeOptions : ReadOptions<OperatorTypeResource>
     {
     
+        ///<summary> Returns Operator Types that support the provided language code. </summary> 
+        public string LanguageCode { get; set; }
+
 
 
 
@@ -69,6 +72,10 @@ namespace Twilio.Rest.Intelligence.V2
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+            if (LanguageCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LanguageCode", LanguageCode));
             }
             return p;
         }

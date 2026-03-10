@@ -37,9 +37,6 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address to receive the notification about the verification result. . </summary> 
         public string NotificationEmail { get; }
 
-        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
-        public List<string> UseCaseCategories { get; }
-
         ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
         public string UseCaseSummary { get; }
 
@@ -57,6 +54,9 @@ namespace Twilio.Rest.Messaging.V1
 
         ///<summary> The SID of the Phone Number associated with the Tollfree Verification. </summary> 
         public string TollfreePhoneNumberSid { get; }
+
+        ///<summary> The category of the use case for the Tollfree Number. List as many as are applicable. </summary> 
+        public List<TollfreeVerificationResource.UseCaseCategoriesEnum> UseCaseCategories { get; }
 
         ///<summary> Customer's Profile Bundle BundleSid. </summary> 
         public string CustomerProfileSid { get; set; }
@@ -100,14 +100,14 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR. </summary> 
         public string BusinessRegistrationNumber { get; set; }
 
-        ///<summary> The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR. </summary> 
-        public string BusinessRegistrationAuthority { get; set; }
+        
+        public TollfreeVerificationResource.BusinessRegistrationAuthorityEnum BusinessRegistrationAuthority { get; set; }
 
         ///<summary> The country where the business is registered. Required for all business types except SOLE_PROPRIETOR. </summary> 
         public string BusinessRegistrationCountry { get; set; }
 
-        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field. </summary> 
-        public string BusinessType { get; set; }
+        
+        public TollfreeVerificationResource.BusinessTypeEnum BusinessType { get; set; }
 
         ///<summary> The E.164 formatted number associated with the business. </summary> 
         public string BusinessRegistrationPhoneNumber { get; set; }
@@ -144,25 +144,25 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
-        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
         /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
         /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
         /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
         /// <param name="optInType">  </param>
         /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
-        public CreateTollfreeVerificationOptions(string businessName, string businessWebsite, string notificationEmail, List<string> useCaseCategories, string useCaseSummary, string productionMessageSample, List<string> optInImageUrls, TollfreeVerificationResource.OptInTypeEnum optInType, string messageVolume, string tollfreePhoneNumberSid)
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many as are applicable. </param>
+        public CreateTollfreeVerificationOptions(string businessName, string businessWebsite, string notificationEmail, string useCaseSummary, string productionMessageSample, List<string> optInImageUrls, TollfreeVerificationResource.OptInTypeEnum optInType, string messageVolume, string tollfreePhoneNumberSid, List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories)
         {
             BusinessName = businessName;
             BusinessWebsite = businessWebsite;
             NotificationEmail = notificationEmail;
-            UseCaseCategories = useCaseCategories;
             UseCaseSummary = useCaseSummary;
             ProductionMessageSample = productionMessageSample;
             OptInImageUrls = optInImageUrls;
             OptInType = optInType;
             MessageVolume = messageVolume;
             TollfreePhoneNumberSid = tollfreePhoneNumberSid;
+            UseCaseCategories = useCaseCategories;
             OptInKeywords = new List<string>();
         }
 
@@ -183,10 +183,6 @@ namespace Twilio.Rest.Messaging.V1
             if (NotificationEmail != null)
             {
                 p.Add(new KeyValuePair<string, string>("NotificationEmail", NotificationEmail));
-            }
-            if (UseCaseCategories != null)
-            {
-                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories)));
             }
             if (UseCaseSummary != null)
             {
@@ -211,6 +207,10 @@ namespace Twilio.Rest.Messaging.V1
             if (TollfreePhoneNumberSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TollfreePhoneNumberSid", TollfreePhoneNumberSid));
+            }
+            if (UseCaseCategories != null)
+            {
+                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories.ToString())));
             }
             if (CustomerProfileSid != null)
             {
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (BusinessRegistrationAuthority != null)
             {
-                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority.ToString()));
             }
             if (BusinessRegistrationCountry != null)
             {
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (BusinessType != null)
             {
-                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType));
+                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType.ToString()));
             }
             if (BusinessRegistrationPhoneNumber != null)
             {
@@ -462,8 +462,8 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> The email address to receive the notification about the verification result. . </summary> 
         public string NotificationEmail { get; set; }
 
-        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
-        public List<string> UseCaseCategories { get; set; }
+        ///<summary> The category of the use case for the Tollfree Number. List as many as are applicable. </summary> 
+        public List<TollfreeVerificationResource.UseCaseCategoriesEnum> UseCaseCategories { get; set; }
 
         ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
         public string UseCaseSummary { get; set; }
@@ -516,17 +516,17 @@ namespace Twilio.Rest.Messaging.V1
         ///<summary> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </summary> 
         public string EditReason { get; set; }
 
-        ///<summary> A legaly recognized business registration number </summary> 
+        ///<summary> A legally recognized business registration number </summary> 
         public string BusinessRegistrationNumber { get; set; }
 
-        ///<summary> The organizational authority for business registrations </summary> 
-        public string BusinessRegistrationAuthority { get; set; }
+        
+        public TollfreeVerificationResource.BusinessRegistrationAuthorityEnum BusinessRegistrationAuthority { get; set; }
 
         ///<summary> Country business is registered in </summary> 
         public string BusinessRegistrationCountry { get; set; }
 
-        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
-        public string BusinessType { get; set; }
+        
+        public TollfreeVerificationResource.BusinessTypeEnum BusinessType { get; set; }
 
         ///<summary> The E.164 formatted number associated with the business. </summary> 
         public string BusinessRegistrationPhoneNumber { get; set; }
@@ -565,7 +565,7 @@ namespace Twilio.Rest.Messaging.V1
         public UpdateTollfreeVerificationOptions(string pathSid)
         {
             PathSid = pathSid;
-            UseCaseCategories = new List<string>();
+            UseCaseCategories = new List<TollfreeVerificationResource.UseCaseCategoriesEnum>();
             OptInImageUrls = new List<string>();
             OptInKeywords = new List<string>();
         }
@@ -590,7 +590,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (UseCaseCategories != null)
             {
-                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories)));
+                p.AddRange(UseCaseCategories.Select(UseCaseCategories => new KeyValuePair<string, string>("UseCaseCategories", UseCaseCategories.ToString())));
             }
             if (UseCaseSummary != null)
             {
@@ -666,7 +666,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (BusinessRegistrationAuthority != null)
             {
-                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority));
+                p.Add(new KeyValuePair<string, string>("BusinessRegistrationAuthority", BusinessRegistrationAuthority.ToString()));
             }
             if (BusinessRegistrationCountry != null)
             {
@@ -674,7 +674,7 @@ namespace Twilio.Rest.Messaging.V1
             }
             if (BusinessType != null)
             {
-                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType));
+                p.Add(new KeyValuePair<string, string>("BusinessType", BusinessType.ToString()));
             }
             if (BusinessRegistrationPhoneNumber != null)
             {

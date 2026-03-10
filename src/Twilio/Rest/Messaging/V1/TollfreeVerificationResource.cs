@@ -66,6 +66,60 @@ namespace Twilio.Rest.Messaging.V1
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class BusinessRegistrationAuthorityEnum : StringEnum
+        {
+            private BusinessRegistrationAuthorityEnum(string value) : base(value) {}
+            public BusinessRegistrationAuthorityEnum() {}
+            public static implicit operator BusinessRegistrationAuthorityEnum(string value)
+            {
+                return new BusinessRegistrationAuthorityEnum(value);
+            }
+            public static readonly BusinessRegistrationAuthorityEnum Ein = new BusinessRegistrationAuthorityEnum("EIN");
+            public static readonly BusinessRegistrationAuthorityEnum Cbn = new BusinessRegistrationAuthorityEnum("CBN");
+            public static readonly BusinessRegistrationAuthorityEnum Crn = new BusinessRegistrationAuthorityEnum("CRN");
+            public static readonly BusinessRegistrationAuthorityEnum ProvincialNumber = new BusinessRegistrationAuthorityEnum("PROVINCIAL_NUMBER");
+            public static readonly BusinessRegistrationAuthorityEnum Vat = new BusinessRegistrationAuthorityEnum("VAT");
+            public static readonly BusinessRegistrationAuthorityEnum Acn = new BusinessRegistrationAuthorityEnum("ACN");
+            public static readonly BusinessRegistrationAuthorityEnum Abn = new BusinessRegistrationAuthorityEnum("ABN");
+            public static readonly BusinessRegistrationAuthorityEnum Brn = new BusinessRegistrationAuthorityEnum("BRN");
+            public static readonly BusinessRegistrationAuthorityEnum Siren = new BusinessRegistrationAuthorityEnum("SIREN");
+            public static readonly BusinessRegistrationAuthorityEnum Siret = new BusinessRegistrationAuthorityEnum("SIRET");
+            public static readonly BusinessRegistrationAuthorityEnum Nzbn = new BusinessRegistrationAuthorityEnum("NZBN");
+            public static readonly BusinessRegistrationAuthorityEnum UstIdnr = new BusinessRegistrationAuthorityEnum("USt-IdNr");
+            public static readonly BusinessRegistrationAuthorityEnum Cif = new BusinessRegistrationAuthorityEnum("CIF");
+            public static readonly BusinessRegistrationAuthorityEnum Nif = new BusinessRegistrationAuthorityEnum("NIF");
+            public static readonly BusinessRegistrationAuthorityEnum Cnpj = new BusinessRegistrationAuthorityEnum("CNPJ");
+            public static readonly BusinessRegistrationAuthorityEnum Uid = new BusinessRegistrationAuthorityEnum("UID");
+            public static readonly BusinessRegistrationAuthorityEnum Neq = new BusinessRegistrationAuthorityEnum("NEQ");
+            public static readonly BusinessRegistrationAuthorityEnum Other = new BusinessRegistrationAuthorityEnum("OTHER");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class UseCaseCategoriesEnum : StringEnum
+        {
+            private UseCaseCategoriesEnum(string value) : base(value) {}
+            public UseCaseCategoriesEnum() {}
+            public static implicit operator UseCaseCategoriesEnum(string value)
+            {
+                return new UseCaseCategoriesEnum(value);
+            }
+
+            public static readonly UseCaseCategoriesEnum TwoFactorAuthentication = new UseCaseCategoriesEnum("TWO_FACTOR_AUTHENTICATION");
+            public static readonly UseCaseCategoriesEnum AccountNotifications = new UseCaseCategoriesEnum("ACCOUNT_NOTIFICATIONS");
+            public static readonly UseCaseCategoriesEnum CustomerCare = new UseCaseCategoriesEnum("CUSTOMER_CARE");
+            public static readonly UseCaseCategoriesEnum CharityNonprofit = new UseCaseCategoriesEnum("CHARITY_NONPROFIT");
+            public static readonly UseCaseCategoriesEnum DeliveryNotifications = new UseCaseCategoriesEnum("DELIVERY_NOTIFICATIONS");
+            public static readonly UseCaseCategoriesEnum FraudAlertMessaging = new UseCaseCategoriesEnum("FRAUD_ALERT_MESSAGING");
+            public static readonly UseCaseCategoriesEnum Events = new UseCaseCategoriesEnum("EVENTS");
+            public static readonly UseCaseCategoriesEnum HigherEducation = new UseCaseCategoriesEnum("HIGHER_EDUCATION");
+            public static readonly UseCaseCategoriesEnum K12 = new UseCaseCategoriesEnum("K12");
+            public static readonly UseCaseCategoriesEnum Marketing = new UseCaseCategoriesEnum("MARKETING");
+            public static readonly UseCaseCategoriesEnum PollingAndVotingNonPolitical = new UseCaseCategoriesEnum("POLLING_AND_VOTING_NON_POLITICAL");
+            public static readonly UseCaseCategoriesEnum PoliticalElectionCampaigns = new UseCaseCategoriesEnum("POLITICAL_ELECTION_CAMPAIGNS");
+            public static readonly UseCaseCategoriesEnum PublicServiceAnnouncement = new UseCaseCategoriesEnum("PUBLIC_SERVICE_ANNOUNCEMENT");
+            public static readonly UseCaseCategoriesEnum SecurityAlert = new UseCaseCategoriesEnum("SECURITY_ALERT");
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class BusinessTypeEnum : StringEnum
         {
             private BusinessTypeEnum(string value) : base(value) {}
@@ -139,13 +193,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
-        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
         /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
         /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
         /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
         /// <param name="optInType">  </param>
         /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many as are applicable. </param>
         /// <param name="customerProfileSid"> Customer's Profile Bundle BundleSid. </param>
         /// <param name="businessStreetAddress"> The address of the business or organization using the Tollfree number. </param>
         /// <param name="businessStreetAddress2"> The address of the business or organization using the Tollfree number. </param>
@@ -160,9 +214,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="businessRegistrationNumber"> A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR. </param>
-        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR. </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessRegistrationCountry"> The country where the business is registered. Required for all business types except SOLE_PROPRIETOR. </param>
-        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field. </param>
+        /// <param name="businessType">  </param>
         /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
         /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
         /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
@@ -179,13 +233,13 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessName,
                                           string businessWebsite,
                                           string notificationEmail,
-                                          List<string> useCaseCategories,
                                           string useCaseSummary,
                                           string productionMessageSample,
                                           List<string> optInImageUrls,
                                           TollfreeVerificationResource.OptInTypeEnum optInType,
                                           string messageVolume,
                                           string tollfreePhoneNumberSid,
+                                          List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories,
                                           string customerProfileSid = null,
                                           string businessStreetAddress = null,
                                           string businessStreetAddress2 = null,
@@ -200,9 +254,9 @@ namespace Twilio.Rest.Messaging.V1
                                           Types.PhoneNumber businessContactPhone = null,
                                           string externalReferenceId = null,
                                           string businessRegistrationNumber = null,
-                                          string businessRegistrationAuthority = null,
+                                          TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                           string businessRegistrationCountry = null,
-                                          string businessType = null,
+                                          TollfreeVerificationResource.BusinessTypeEnum businessType = null,
                                           string businessRegistrationPhoneNumber = null,
                                           string doingBusinessAs = null,
                                           string optInConfirmationMessage = null,
@@ -215,7 +269,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string vettingId = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+            var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid, useCaseCategories){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return Create(options, client);
         }
 
@@ -224,13 +278,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
-        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
         /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
         /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
         /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
         /// <param name="optInType">  </param>
         /// <param name="messageVolume"> Estimate monthly volume of messages from the Tollfree Number. </param>
         /// <param name="tollfreePhoneNumberSid"> The SID of the Phone Number associated with the Tollfree Verification. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many as are applicable. </param>
         /// <param name="customerProfileSid"> Customer's Profile Bundle BundleSid. </param>
         /// <param name="businessStreetAddress"> The address of the business or organization using the Tollfree number. </param>
         /// <param name="businessStreetAddress2"> The address of the business or organization using the Tollfree number. </param>
@@ -245,9 +299,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="externalReferenceId"> An optional external reference ID supplied by customer and echoed back on status retrieval. </param>
         /// <param name="businessRegistrationNumber"> A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR. </param>
-        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR. </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessRegistrationCountry"> The country where the business is registered. Required for all business types except SOLE_PROPRIETOR. </param>
-        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field. </param>
+        /// <param name="businessType">  </param>
         /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
         /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
         /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
@@ -264,13 +318,13 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string businessName,
                                                                                   string businessWebsite,
                                                                                   string notificationEmail,
-                                                                                  List<string> useCaseCategories,
                                                                                   string useCaseSummary,
                                                                                   string productionMessageSample,
                                                                                   List<string> optInImageUrls,
                                                                                   TollfreeVerificationResource.OptInTypeEnum optInType,
                                                                                   string messageVolume,
                                                                                   string tollfreePhoneNumberSid,
+                                                                                  List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories,
                                                                                   string customerProfileSid = null,
                                                                                   string businessStreetAddress = null,
                                                                                   string businessStreetAddress2 = null,
@@ -285,9 +339,9 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   Types.PhoneNumber businessContactPhone = null,
                                                                                   string externalReferenceId = null,
                                                                                   string businessRegistrationNumber = null,
-                                                                                  string businessRegistrationAuthority = null,
+                                                                                  TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                                                                   string businessRegistrationCountry = null,
-                                                                                  string businessType = null,
+                                                                                  TollfreeVerificationResource.BusinessTypeEnum businessType = null,
                                                                                   string businessRegistrationPhoneNumber = null,
                                                                                   string doingBusinessAs = null,
                                                                                   string optInConfirmationMessage = null,
@@ -300,7 +354,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                                   string vettingId = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid, useCaseCategories){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
             return await CreateAsync(options, client);
         }
         #endif
@@ -328,13 +382,13 @@ namespace Twilio.Rest.Messaging.V1
             string businessName,
             string businessWebsite,
             string notificationEmail,
-            List<string> useCaseCategories,
             string useCaseSummary,
             string productionMessageSample,
             List<string> optInImageUrls,
             TollfreeVerificationResource.OptInTypeEnum optInType,
             string messageVolume,
             string tollfreePhoneNumberSid,
+            List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories,
             string customerProfileSid = null,
             string businessStreetAddress = null,
             string businessStreetAddress2 = null,
@@ -349,9 +403,9 @@ namespace Twilio.Rest.Messaging.V1
             Types.PhoneNumber businessContactPhone = null,
             string externalReferenceId = null,
             string businessRegistrationNumber = null,
-            string businessRegistrationAuthority = null,
+            TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
             string businessRegistrationCountry = null,
-            string businessType = null,
+            TollfreeVerificationResource.BusinessTypeEnum businessType = null,
             string businessRegistrationPhoneNumber = null,
             string doingBusinessAs = null,
             string optInConfirmationMessage = null,
@@ -364,7 +418,7 @@ namespace Twilio.Rest.Messaging.V1
             string vettingId = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid, useCaseCategories){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
         return CreateWithHeaders(options, client);
         }
 
@@ -373,13 +427,13 @@ namespace Twilio.Rest.Messaging.V1
             string businessName,
             string businessWebsite,
             string notificationEmail,
-            List<string> useCaseCategories,
             string useCaseSummary,
             string productionMessageSample,
             List<string> optInImageUrls,
             TollfreeVerificationResource.OptInTypeEnum optInType,
             string messageVolume,
             string tollfreePhoneNumberSid,
+            List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories,
             string customerProfileSid = null,
             string businessStreetAddress = null,
             string businessStreetAddress2 = null,
@@ -394,9 +448,9 @@ namespace Twilio.Rest.Messaging.V1
             Types.PhoneNumber businessContactPhone = null,
             string externalReferenceId = null,
             string businessRegistrationNumber = null,
-            string businessRegistrationAuthority = null,
+            TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
             string businessRegistrationCountry = null,
-            string businessType = null,
+            TollfreeVerificationResource.BusinessTypeEnum businessType = null,
             string businessRegistrationPhoneNumber = null,
             string doingBusinessAs = null,
             string optInConfirmationMessage = null,
@@ -409,7 +463,7 @@ namespace Twilio.Rest.Messaging.V1
             string vettingId = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseCategories, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
+        var options = new CreateTollfreeVerificationOptions(businessName, businessWebsite, notificationEmail, useCaseSummary, productionMessageSample, optInImageUrls, optInType, messageVolume, tollfreePhoneNumberSid, useCaseCategories){  CustomerProfileSid = customerProfileSid, BusinessStreetAddress = businessStreetAddress, BusinessStreetAddress2 = businessStreetAddress2, BusinessCity = businessCity, BusinessStateProvinceRegion = businessStateProvinceRegion, BusinessPostalCode = businessPostalCode, BusinessCountry = businessCountry, AdditionalInformation = additionalInformation, BusinessContactFirstName = businessContactFirstName, BusinessContactLastName = businessContactLastName, BusinessContactEmail = businessContactEmail, BusinessContactPhone = businessContactPhone, ExternalReferenceId = externalReferenceId, BusinessRegistrationNumber = businessRegistrationNumber, BusinessRegistrationAuthority = businessRegistrationAuthority, BusinessRegistrationCountry = businessRegistrationCountry, BusinessType = businessType, BusinessRegistrationPhoneNumber = businessRegistrationPhoneNumber, DoingBusinessAs = doingBusinessAs, OptInConfirmationMessage = optInConfirmationMessage, HelpMessageSample = helpMessageSample, PrivacyPolicyUrl = privacyPolicyUrl, TermsAndConditionsUrl = termsAndConditionsUrl, AgeGatedContent = ageGatedContent, OptInKeywords = optInKeywords, VettingProvider = vettingProvider, VettingId = vettingId };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
@@ -833,7 +887,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
-        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many as are applicable. </param>
         /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
         /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
         /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
@@ -851,10 +905,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
-        /// <param name="businessRegistrationNumber"> A legaly recognized business registration number </param>
-        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationNumber"> A legally recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessRegistrationCountry"> Country business is registered in </param>
-        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessType">  </param>
         /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
         /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
         /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
@@ -872,7 +926,7 @@ namespace Twilio.Rest.Messaging.V1
                                           string businessName = null,
                                           string businessWebsite = null,
                                           string notificationEmail = null,
-                                          List<string> useCaseCategories = null,
+                                          List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories = null,
                                           string useCaseSummary = null,
                                           string productionMessageSample = null,
                                           List<string> optInImageUrls = null,
@@ -891,9 +945,9 @@ namespace Twilio.Rest.Messaging.V1
                                           Types.PhoneNumber businessContactPhone = null,
                                           string editReason = null,
                                           string businessRegistrationNumber = null,
-                                          string businessRegistrationAuthority = null,
+                                          TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                           string businessRegistrationCountry = null,
-                                          string businessType = null,
+                                          TollfreeVerificationResource.BusinessTypeEnum businessType = null,
                                           string businessRegistrationPhoneNumber = null,
                                           string doingBusinessAs = null,
                                           string optInConfirmationMessage = null,
@@ -916,7 +970,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessName"> The name of the business or organization using the Tollfree number. </param>
         /// <param name="businessWebsite"> The website of the business or organization using the Tollfree number. </param>
         /// <param name="notificationEmail"> The email address to receive the notification about the verification result. . </param>
-        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many are applicable.. </param>
+        /// <param name="useCaseCategories"> The category of the use case for the Tollfree Number. List as many as are applicable. </param>
         /// <param name="useCaseSummary"> Use this to further explain how messaging is used by the business or organization. </param>
         /// <param name="productionMessageSample"> An example of message content, i.e. a sample message. </param>
         /// <param name="optInImageUrls"> Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL. </param>
@@ -934,10 +988,10 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="businessContactEmail"> The email address of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="businessContactPhone"> The E.164 formatted phone number of the contact for the business or organization using the Tollfree number. </param>
         /// <param name="editReason"> Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'. </param>
-        /// <param name="businessRegistrationNumber"> A legaly recognized business registration number </param>
-        /// <param name="businessRegistrationAuthority"> The organizational authority for business registrations </param>
+        /// <param name="businessRegistrationNumber"> A legally recognized business registration number </param>
+        /// <param name="businessRegistrationAuthority">  </param>
         /// <param name="businessRegistrationCountry"> Country business is registered in </param>
-        /// <param name="businessType"> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </param>
+        /// <param name="businessType">  </param>
         /// <param name="businessRegistrationPhoneNumber"> The E.164 formatted number associated with the business. </param>
         /// <param name="doingBusinessAs"> Trade name, sub entity, or downstream business name of business being submitted for verification </param>
         /// <param name="optInConfirmationMessage"> The confirmation message sent to users when they opt in to receive messages. </param>
@@ -955,7 +1009,7 @@ namespace Twilio.Rest.Messaging.V1
                                                                               string businessName = null,
                                                                               string businessWebsite = null,
                                                                               string notificationEmail = null,
-                                                                              List<string> useCaseCategories = null,
+                                                                              List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories = null,
                                                                               string useCaseSummary = null,
                                                                               string productionMessageSample = null,
                                                                               List<string> optInImageUrls = null,
@@ -974,9 +1028,9 @@ namespace Twilio.Rest.Messaging.V1
                                                                               Types.PhoneNumber businessContactPhone = null,
                                                                               string editReason = null,
                                                                               string businessRegistrationNumber = null,
-                                                                              string businessRegistrationAuthority = null,
+                                                                              TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
                                                                               string businessRegistrationCountry = null,
-                                                                              string businessType = null,
+                                                                              TollfreeVerificationResource.BusinessTypeEnum businessType = null,
                                                                               string businessRegistrationPhoneNumber = null,
                                                                               string doingBusinessAs = null,
                                                                               string optInConfirmationMessage = null,
@@ -1018,7 +1072,7 @@ namespace Twilio.Rest.Messaging.V1
             string businessName = null,
             string businessWebsite = null,
             string notificationEmail = null,
-            List<string> useCaseCategories = null,
+            List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories = null,
             string useCaseSummary = null,
             string productionMessageSample = null,
             List<string> optInImageUrls = null,
@@ -1037,9 +1091,9 @@ namespace Twilio.Rest.Messaging.V1
             Types.PhoneNumber businessContactPhone = null,
             string editReason = null,
             string businessRegistrationNumber = null,
-            string businessRegistrationAuthority = null,
+            TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
             string businessRegistrationCountry = null,
-            string businessType = null,
+            TollfreeVerificationResource.BusinessTypeEnum businessType = null,
             string businessRegistrationPhoneNumber = null,
             string doingBusinessAs = null,
             string optInConfirmationMessage = null,
@@ -1062,7 +1116,7 @@ namespace Twilio.Rest.Messaging.V1
             string businessName = null,
             string businessWebsite = null,
             string notificationEmail = null,
-            List<string> useCaseCategories = null,
+            List<TollfreeVerificationResource.UseCaseCategoriesEnum> useCaseCategories = null,
             string useCaseSummary = null,
             string productionMessageSample = null,
             List<string> optInImageUrls = null,
@@ -1081,9 +1135,9 @@ namespace Twilio.Rest.Messaging.V1
             Types.PhoneNumber businessContactPhone = null,
             string editReason = null,
             string businessRegistrationNumber = null,
-            string businessRegistrationAuthority = null,
+            TollfreeVerificationResource.BusinessRegistrationAuthorityEnum businessRegistrationAuthority = null,
             string businessRegistrationCountry = null,
-            string businessType = null,
+            TollfreeVerificationResource.BusinessTypeEnum businessType = null,
             string businessRegistrationPhoneNumber = null,
             string doingBusinessAs = null,
             string optInConfirmationMessage = null,
@@ -1217,9 +1271,9 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("notification_email")]
         public string NotificationEmail { get; private set; }
 
-        ///<summary> The category of the use case for the Tollfree Number. List as many are applicable.. </summary> 
+        ///<summary> The category of the use case for the Tollfree Number. List as many as are applicable. </summary> 
         [JsonProperty("use_case_categories")]
-        public List<string> UseCaseCategories { get; private set; }
+        public List<TollfreeVerificationResource.UseCaseCategoriesEnum> UseCaseCategories { get; private set; }
 
         ///<summary> Use this to further explain how messaging is used by the business or organization. </summary> 
         [JsonProperty("use_case_summary")]
@@ -1282,15 +1336,15 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("business_registration_number")]
         public string BusinessRegistrationNumber { get; private set; }
 
-        ///<summary> The organizational authority for business registrations </summary> 
+        
         [JsonProperty("business_registration_authority")]
-        public string BusinessRegistrationAuthority { get; private set; }
+        public TollfreeVerificationResource.BusinessRegistrationAuthorityEnum BusinessRegistrationAuthority { get; private set; }
 
         ///<summary> Country business is registered in </summary> 
         [JsonProperty("business_registration_country")]
         public string BusinessRegistrationCountry { get; private set; }
 
-        ///<summary> The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT </summary> 
+        
         [JsonProperty("business_type")]
         public TollfreeVerificationResource.BusinessTypeEnum BusinessType { get; private set; }
 

@@ -76,6 +76,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators </summary> 
         public string IntelligenceService { get; set; }
 
+        ///<summary> The ID of the Conversations Configuration for customizing conversation behavior in Intelligence Service </summary> 
+        public string ConversationConfiguration { get; set; }
+
+        ///<summary> The ID of the Conversation for associating this Transcription with an existing Conversation in Intelligence Service </summary> 
+        public string ConversationId { get; set; }
+
         ///<summary> Whether the callback includes raw provider data. </summary> 
         public bool? EnableProviderData { get; set; }
 
@@ -148,6 +154,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (IntelligenceService != null)
             {
                 p.Add(new KeyValuePair<string, string>("IntelligenceService", IntelligenceService));
+            }
+            if (ConversationConfiguration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConversationConfiguration", ConversationConfiguration));
+            }
+            if (ConversationId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConversationId", ConversationId));
             }
             if (EnableProviderData != null)
             {
