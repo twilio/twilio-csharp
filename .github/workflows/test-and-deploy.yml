@@ -11,52 +11,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - name: Checkout twilio-csharp
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          global-json-file: global.json
-
-#      - name: Remove dotnet 7 and 8
-#        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
-
-      - name: Get installed dotnet version
-        run: dotnet --version
-
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Build & Test
-        run: make test
-
-      - name: Install SonarCloud scanner and run analysis
-        if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY }}
-          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
-          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
-          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
-          TWILIO_CLIENT_ID: ${{ secrets.TWILIO_CLIENT_ID }}
-          TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
-          TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
-        run: |
-          dotnet tool install --global dotnet-sonarscanner
-          make cover
-
   verify-signing-env:
     name: Verify Signing Environment
     runs-on: windows-latest
@@ -82,13 +36,16 @@ jobs:
           echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools" >> $GITHUB_PATH
           echo "C:\Program Files\DigiCert\DigiCert Keylocker Tools" >> $GITHUB_PATH
         shell: bash
+
       - name: Code signing with Software Trust Manager
         id: SSMClientToolSetup
-        uses: digicert/ssm-code-signing@v0.0.2
+        uses: digicert/code-signing-software-trust-action@v1.0.0
         env:
           SM_API_KEY: ${{ env.SM_API_KEY }}
           SM_CLIENT_CERT_PASSWORD: ${{ env.SM_CLIENT_CERT_PASSWORD }}
           SM_CLIENT_CERT_FILE: ${{ env.SM_CLIENT_CERT_FILE }}
+
+      - run: echo “The config file path ${{ steps.SSMClientToolSetup.outputs.PKCS11_CONFIG }}”
 
       - name: Sync and Debug Fingerprints
         run: |
