@@ -122,7 +122,7 @@ jobs:
 
       - name: List certificates in DigiCert ONE
         run: |
-          smctl certificate ls
+          smctl certificate ls --filter="certificate_status=Issued"
         shell: cmd
 
       - name: Sync and Debug Fingerprints
