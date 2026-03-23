@@ -111,7 +111,7 @@ jobs:
         run: |
           $env:SM_LOG_LEVEL="debug"
           smctl windows certsync
-        shell: cmd
+        shell: powershell
 
       - name: List certificates in DigiCert ONE
         run: |
