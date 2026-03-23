@@ -107,10 +107,17 @@ jobs:
           smctl certificate ls
         shell: cmd
 
-      - name: Certificates Sync
+      - name: Certificates Sync with Debug Logs
         run: |
+          # Force the environment variable for the current process
           $env:SM_LOG_LEVEL="debug"
-          smctl windows certsync
+          
+          # Run sync and pipe both standard and error streams to the log
+          smctl windows certsync 2>&1 | Write-Host
+          
+          # If it still shows nothing, check if the tool is even responding
+          Write-Host "Checking SMCTL Version and Health..."
+          smctl healthcheck
         shell: powershell
 
       - name: List certificates in DigiCert ONE
