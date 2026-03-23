@@ -57,6 +57,51 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           make cover
 
+  verify-signing-env:
+    name: Verify Signing Environment
+    runs-on: windows-latest
+    # Run this before code-signing to catch credential issues early
+    steps:
+      - name: Set up Client Certificate
+        run: |
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > Certificate_pkcs12.p12
+        shell: bash
+
+      - name: Code signing Setup (Validation)
+        uses: digicert/ssm-code-signing@v0.0.2
+        env:
+          SM_API_KEY: ${{ secrets.SM_API_KEY }}
+          SM_CLIENT_CERT_PASSWORD: ${{ secrets.SM_CLIENT_CERT_PASSWORD }}
+          SM_CLIENT_CERT_FILE: ${{ github.workspace }}\Certificate_pkcs12.p12
+          SM_HOST: ${{ secrets.SM_HOST }}
+
+      - name: Sync and Debug Fingerprints
+        run: |
+          # 1. Sync from Cloud
+          smctl windows certsync
+          
+          # 2. List all certs with BOTH SHA1 and SHA256
+          Write-Host "--- DETECTED CERTIFICATES ---"
+          Get-ChildItem Cert:\CurrentUser\My | ForEach-Object {
+            $sha1 = $_.Thumbprint
+            $sha256 = (Get-CertificateHash -Certificate $_ -Algorithm SHA256)
+            Write-Host "Subject: $($_.Subject)"
+            Write-Host "  > SHA1 (NuGet <7.0): $sha1"
+            Write-Host "  > SHA256 (NuGet 7.0+): $sha256"
+            Write-Host "---------------------------"
+          }
+          
+          # 3. Validation Logic: Fail if the secret doesn't match a local cert
+          $expected = "${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }}"
+          $found = Get-ChildItem Cert:\CurrentUser\My | Where-Object { (Get-CertificateHash -Certificate $_ -Algorithm SHA256) -eq $expected }
+          
+          if (-not $found) {
+            Write-Error "CRITICAL: No local cert matches SHA256 Secret: $expected"
+            exit 1
+          } else {
+            Write-Host "SUCCESS: Fingerprint verified and ready for signing."
+          }
+        shell: powershell
   deploy:
     name: Deploy
     if: success() && github.ref_type == 'tag'
