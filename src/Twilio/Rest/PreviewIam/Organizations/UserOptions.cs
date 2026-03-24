@@ -167,6 +167,63 @@ namespace Twilio.Rest.PreviewIam.Organizations
 
     }
 
+    /// <summary> patch </summary>
+    public class PatchUserOptions : IOptions<UserResource>
+    {
+    
+        
+        public string PathOrganizationSid { get; }
+
+        
+        public string PathUserSid { get; }
+
+        
+        public UserResource.ScimPatchRequest ScimPatchRequest { get; }
+
+        
+        public string IfMatch { get; set; }
+
+
+
+        /// <summary> Construct a new PatchOrganizationUserOptions </summary>
+        /// <param name="pathOrganizationSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="scimPatchRequest">  </param>
+        public PatchUserOptions(string pathOrganizationSid, string pathUserSid, UserResource.ScimPatchRequest scimPatchRequest)
+        {
+            PathOrganizationSid = pathOrganizationSid;
+            PathUserSid = pathUserSid;
+            ScimPatchRequest = scimPatchRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (ScimPatchRequest != null)
+            {
+                body = UserResource.ToJson(ScimPatchRequest);
+            }
+            return body;
+        }
+
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (IfMatch != null)
+        {
+            p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+        }
+        return p;
+    }
+
+    }
+
+
     /// <summary> update </summary>
     public class UpdateUserOptions : IOptions<UserResource>
     {

@@ -230,6 +230,71 @@ namespace Twilio.Rest.PreviewIam.Organizations
                 }
             }
         }
+        public class ScimPatchOperation
+        {
+            [JsonProperty("op")]
+            public string Op {get; private set;}
+            [JsonProperty("path")]
+            public string Path {get; private set;}
+            [JsonProperty("value")]
+            public object Value {get; private set;}
+            public ScimPatchOperation() { }
+            public class Builder
+            {
+                private ScimPatchOperation _scimPatchOperation = new ScimPatchOperation();
+                public Builder()
+                {
+                }
+                public Builder WithOp(string op)
+                {
+                    _scimPatchOperation.Op= op;
+                    return this;
+                }
+                public Builder WithPath(string path)
+                {
+                    _scimPatchOperation.Path= path;
+                    return this;
+                }
+                public Builder WithValue(object value)
+                {
+                    _scimPatchOperation.Value= value;
+                    return this;
+                }
+                public ScimPatchOperation Build()
+                {
+                    return _scimPatchOperation;
+                }
+            }
+        }
+        public class ScimPatchRequest
+        {
+            [JsonProperty("schemas")]
+            public List<string> Schemas {get; private set;}
+            [JsonProperty("Operations")]
+            public List<ScimPatchOperation> Operations {get; private set;}
+            public ScimPatchRequest() { }
+            public class Builder
+            {
+                private ScimPatchRequest _scimPatchRequest = new ScimPatchRequest();
+                public Builder()
+                {
+                }
+                public Builder WithSchemas(List<string> schemas)
+                {
+                    _scimPatchRequest.Schemas= schemas;
+                    return this;
+                }
+                public Builder WithOperations(List<ScimPatchOperation> operations)
+                {
+                    _scimPatchRequest.Operations= operations;
+                    return this;
+                }
+                public ScimPatchRequest Build()
+                {
+                    return _scimPatchRequest;
+                }
+            }
+        }
 
     
 
@@ -708,6 +773,133 @@ namespace Twilio.Rest.PreviewIam.Organizations
             return Page<UserResource>.FromJson("Resources", response.Content);
         }
 
+        
+        private static Request BuildPatchRequest(PatchUserOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/Organizations/{OrganizationSid}/scim/Users/{UserSid}";
+
+            string PathOrganizationSid = options.PathOrganizationSid.ToString();
+            path = path.Replace("{"+"OrganizationSid"+"}", PathOrganizationSid);
+            string PathUserSid = options.PathUserSid.ToString();
+            path = path.Replace("{"+"UserSid"+"}", PathUserSid);
+
+            return new Request(
+            HttpMethod.Patch,
+            Rest.Domain.PreviewIam,
+            path,
+
+            contentType: EnumConstants.ContentTypeEnum.JSON,
+            body: options.GetBody(),
+            headerParams: options.GetHeaderParams()
+            );
+        }
+
+        /// <summary> patch </summary>
+        /// <param name="options"> Patch User parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of User </returns>
+        public static UserResource Patch(PatchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> patch </summary>
+        /// <param name="options"> Patch User parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of User </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<UserResource> PatchAsync(PatchUserOptions options,
+            ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> patch </summary>
+        /// <param name="pathOrganizationSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="scimPatchRequest">  </param>
+        /// <param name="ifMatch">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of User </returns>
+        public static UserResource Patch(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimPatchRequest scimPatchRequest,
+            string ifMatch = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchUserOptions(pathOrganizationSid, pathUserSid, scimPatchRequest){ IfMatch = ifMatch };
+            return Patch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> patch </summary>
+        /// <param name="pathOrganizationSid">  </param>
+        /// <param name="pathUserSid">  </param>
+        /// <param name="scimPatchRequest">  </param>
+        /// <param name="ifMatch">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> PatchAsync(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimPatchRequest scimPatchRequest,
+            string ifMatch = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchUserOptions(pathOrganizationSid, pathUserSid, scimPatchRequest){ IfMatch = ifMatch };
+            return await PatchAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> PatchWithHeaders(PatchUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> PatchWithHeadersAsync(PatchUserOptions options,
+                ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<UserResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<UserResource> PatchWithHeaders(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimPatchRequest scimPatchRequest,
+            string ifMatch = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchUserOptions(pathOrganizationSid, pathUserSid, scimPatchRequest){ IfMatch = ifMatch };
+            return PatchWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<UserResource>> PatchWithHeadersAsync(
+            string pathOrganizationSid,
+            string pathUserSid,
+            UserResource.ScimPatchRequest scimPatchRequest,
+            string ifMatch = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchUserOptions(pathOrganizationSid, pathUserSid, scimPatchRequest){ IfMatch = ifMatch };
+            return await PatchWithHeadersAsync(options, client);
+        }
+        #endif
         
         private static Request BuildUpdateRequest(UpdateUserOptions options, ITwilioRestClient client)
         {

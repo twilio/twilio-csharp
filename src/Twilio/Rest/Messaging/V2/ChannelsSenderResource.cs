@@ -41,6 +41,9 @@ namespace Twilio.Rest.Messaging.V2
             public string VerificationCode {get; private set;}
             [JsonProperty("voice_application_sid")]
             public string VoiceApplicationSid {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("account_type")]
+            public ChannelsSenderResource.AccountTypeEnum AccountType {get; private set;}
             public MessagingV2ChannelsSenderConfiguration() { }
             public class Builder
             {
@@ -66,6 +69,11 @@ namespace Twilio.Rest.Messaging.V2
                 public Builder WithVoiceApplicationSid(string voiceApplicationSid)
                 {
                     _messagingV2ChannelsSenderConfiguration.VoiceApplicationSid= voiceApplicationSid;
+                    return this;
+                }
+                public Builder WithAccountType(ChannelsSenderResource.AccountTypeEnum accountType)
+                {
+                    _messagingV2ChannelsSenderConfiguration.AccountType= accountType;
                     return this;
                 }
                 public MessagingV2ChannelsSenderConfiguration Build()
@@ -755,6 +763,19 @@ namespace Twilio.Rest.Messaging.V2
             }
             public static readonly CallbackMethodEnum Post = new CallbackMethodEnum("POST");
             public static readonly CallbackMethodEnum Put = new CallbackMethodEnum("PUT");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class AccountTypeEnum : StringEnum
+        {
+            private AccountTypeEnum(string value) : base(value) {}
+            public AccountTypeEnum() {}
+            public static implicit operator AccountTypeEnum(string value)
+            {
+                return new AccountTypeEnum(value);
+            }
+            public static readonly AccountTypeEnum Isv = new AccountTypeEnum("ISV");
+            public static readonly AccountTypeEnum Isvsubaccount = new AccountTypeEnum("ISVSubAccount");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

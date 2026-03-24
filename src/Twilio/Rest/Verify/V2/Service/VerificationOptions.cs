@@ -40,7 +40,7 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> A custom user defined friendly name that overwrites the existing one in the verification message </summary> 
         public string CustomFriendlyName { get; set; }
 
-        ///<summary> The text of a custom message to use for the verification. </summary> 
+        ///<summary> The text of a custom message to use for the verification [DEPRECATED]. </summary> 
         public string CustomMessage { get; set; }
 
         ///<summary> The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits). </summary> 

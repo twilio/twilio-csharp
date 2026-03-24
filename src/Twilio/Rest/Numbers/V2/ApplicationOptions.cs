@@ -90,6 +90,21 @@ namespace Twilio.Rest.Numbers.V2
     public class ReadApplicationOptions : ReadOptions<ApplicationResource>
     {
     
+        ///<summary> The Account SID to filter by. </summary> 
+        public string AccountSid { get; set; }
+
+        ///<summary> The ISO country to filter by. </summary> 
+        public string IsoCountry { get; set; }
+
+        ///<summary> The application status to filter by. </summary> 
+        public string Status { get; set; }
+
+        ///<summary> The friendly name to filter by. </summary> 
+        public string FriendlyName { get; set; }
+
+        ///<summary> The application SID to filter by. </summary> 
+        public string Sid { get; set; }
+
 
 
 
@@ -99,6 +114,26 @@ namespace Twilio.Rest.Numbers.V2
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid));
+            }
+            if (IsoCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+            }
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status));
+            }
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+            if (Sid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Sid", Sid));
+            }
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

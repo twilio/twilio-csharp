@@ -117,8 +117,508 @@ namespace Twilio.Rest.Numbers.V2
                 }
             }
         }
+        public class CreateShortCodeApplicationResponseSetup
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("request_type")]
+            public ApplicationResource.RequestTypeEnum RequestType {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("traffic_type")]
+            public ApplicationResource.TrafficTypeEnum TrafficType {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("lease_type")]
+            public ApplicationResource.LeaseTypeEnum LeaseType {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("payment_frequency")]
+            public ApplicationResource.PaymentFrequencyEnum PaymentFrequency {get; private set;}
+            [JsonProperty("short_code_preference")]
+            public string ShortCodePreference {get; private set;}
+            [JsonProperty("mms_enabled")]
+            public bool? MmsEnabled {get; private set;}
+            [JsonProperty("free_to_end_user")]
+            public bool? FreeToEndUser {get; private set;}
+            [JsonProperty("charges_apply")]
+            public bool? ChargesApply {get; private set;}
+            [JsonProperty("current_provider")]
+            public string CurrentProvider {get; private set;}
+            [JsonProperty("migrated_mms_enabled")]
+            public bool? MigratedMmsEnabled {get; private set;}
+            [JsonProperty("migrated_live_traffic")]
+            public bool? MigratedLiveTraffic {get; private set;}
+            public CreateShortCodeApplicationResponseSetup() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseSetup _createShortCodeApplicationResponseSetup = new CreateShortCodeApplicationResponseSetup();
+                public Builder()
+                {
+                }
+                public Builder WithRequestType(ApplicationResource.RequestTypeEnum requestType)
+                {
+                    _createShortCodeApplicationResponseSetup.RequestType= requestType;
+                    return this;
+                }
+                public Builder WithTrafficType(ApplicationResource.TrafficTypeEnum trafficType)
+                {
+                    _createShortCodeApplicationResponseSetup.TrafficType= trafficType;
+                    return this;
+                }
+                public Builder WithLeaseType(ApplicationResource.LeaseTypeEnum leaseType)
+                {
+                    _createShortCodeApplicationResponseSetup.LeaseType= leaseType;
+                    return this;
+                }
+                public Builder WithPaymentFrequency(ApplicationResource.PaymentFrequencyEnum paymentFrequency)
+                {
+                    _createShortCodeApplicationResponseSetup.PaymentFrequency= paymentFrequency;
+                    return this;
+                }
+                public Builder WithShortCodePreference(string shortCodePreference)
+                {
+                    _createShortCodeApplicationResponseSetup.ShortCodePreference= shortCodePreference;
+                    return this;
+                }
+                public Builder WithMmsEnabled(bool? mmsEnabled)
+                {
+                    _createShortCodeApplicationResponseSetup.MmsEnabled= mmsEnabled;
+                    return this;
+                }
+                public Builder WithFreeToEndUser(bool? freeToEndUser)
+                {
+                    _createShortCodeApplicationResponseSetup.FreeToEndUser= freeToEndUser;
+                    return this;
+                }
+                public Builder WithChargesApply(bool? chargesApply)
+                {
+                    _createShortCodeApplicationResponseSetup.ChargesApply= chargesApply;
+                    return this;
+                }
+                public Builder WithCurrentProvider(string currentProvider)
+                {
+                    _createShortCodeApplicationResponseSetup.CurrentProvider= currentProvider;
+                    return this;
+                }
+                public Builder WithMigratedMmsEnabled(bool? migratedMmsEnabled)
+                {
+                    _createShortCodeApplicationResponseSetup.MigratedMmsEnabled= migratedMmsEnabled;
+                    return this;
+                }
+                public Builder WithMigratedLiveTraffic(bool? migratedLiveTraffic)
+                {
+                    _createShortCodeApplicationResponseSetup.MigratedLiveTraffic= migratedLiveTraffic;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseSetup Build()
+                {
+                    return _createShortCodeApplicationResponseSetup;
+                }
+            }
+        }
+        public class CreateShortCodeApplicationResponseBusinessInformation
+        {
+            [JsonProperty("managing_company_profile")]
+            public string ManagingCompanyProfile {get; private set;}
+            [JsonProperty("customer_facing_profile")]
+            public string CustomerFacingProfile {get; private set;}
+            [JsonProperty("business_website")]
+            public string BusinessWebsite {get; private set;}
+            [JsonProperty("ein_managing_company_profile")]
+            public string EinManagingCompanyProfile {get; private set;}
+            [JsonProperty("ein_customer_facing_profile")]
+            public string EinCustomerFacingProfile {get; private set;}
+            public CreateShortCodeApplicationResponseBusinessInformation() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseBusinessInformation _createShortCodeApplicationResponseBusinessInformation = new CreateShortCodeApplicationResponseBusinessInformation();
+                public Builder()
+                {
+                }
+                public Builder WithManagingCompanyProfile(string managingCompanyProfile)
+                {
+                    _createShortCodeApplicationResponseBusinessInformation.ManagingCompanyProfile= managingCompanyProfile;
+                    return this;
+                }
+                public Builder WithCustomerFacingProfile(string customerFacingProfile)
+                {
+                    _createShortCodeApplicationResponseBusinessInformation.CustomerFacingProfile= customerFacingProfile;
+                    return this;
+                }
+                public Builder WithBusinessWebsite(string businessWebsite)
+                {
+                    _createShortCodeApplicationResponseBusinessInformation.BusinessWebsite= businessWebsite;
+                    return this;
+                }
+                public Builder WithEinManagingCompanyProfile(string einManagingCompanyProfile)
+                {
+                    _createShortCodeApplicationResponseBusinessInformation.EinManagingCompanyProfile= einManagingCompanyProfile;
+                    return this;
+                }
+                public Builder WithEinCustomerFacingProfile(string einCustomerFacingProfile)
+                {
+                    _createShortCodeApplicationResponseBusinessInformation.EinCustomerFacingProfile= einCustomerFacingProfile;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseBusinessInformation Build()
+                {
+                    return _createShortCodeApplicationResponseBusinessInformation;
+                }
+            }
+        }
+        public class CreateShortCodeApplicationResponseUserSignUp
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("sign_up_options")]
+            public List<ApplicationResource.SignUpOptionsEnum> SignUpOptions {get; private set;}
+            [JsonProperty("double_opt_in_process")]
+            public bool? DoubleOptInProcess {get; private set;}
+            [JsonProperty("double_opt_in_message")]
+            public string DoubleOptInMessage {get; private set;}
+            [JsonProperty("sign_up_confirmation_message")]
+            public string SignUpConfirmationMessage {get; private set;}
+            [JsonProperty("double_opt_in_response_message")]
+            public string DoubleOptInResponseMessage {get; private set;}
+            [JsonProperty("online_web_form_message")]
+            public string OnlineWebFormMessage {get; private set;}
+            [JsonProperty("keyword_message")]
+            public string KeywordMessage {get; private set;}
+            [JsonProperty("ivr_message")]
+            public string IvrMessage {get; private set;}
+            [JsonProperty("other_form_message")]
+            public string OtherFormMessage {get; private set;}
+            public CreateShortCodeApplicationResponseUserSignUp() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseUserSignUp _createShortCodeApplicationResponseUserSignUp = new CreateShortCodeApplicationResponseUserSignUp();
+                public Builder()
+                {
+                }
+                public Builder WithSignUpOptions(List<ApplicationResource.SignUpOptionsEnum> signUpOptions)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.SignUpOptions= signUpOptions;
+                    return this;
+                }
+                public Builder WithDoubleOptInProcess(bool? doubleOptInProcess)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.DoubleOptInProcess= doubleOptInProcess;
+                    return this;
+                }
+                public Builder WithDoubleOptInMessage(string doubleOptInMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.DoubleOptInMessage= doubleOptInMessage;
+                    return this;
+                }
+                public Builder WithSignUpConfirmationMessage(string signUpConfirmationMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.SignUpConfirmationMessage= signUpConfirmationMessage;
+                    return this;
+                }
+                public Builder WithDoubleOptInResponseMessage(string doubleOptInResponseMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.DoubleOptInResponseMessage= doubleOptInResponseMessage;
+                    return this;
+                }
+                public Builder WithOnlineWebFormMessage(string onlineWebFormMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.OnlineWebFormMessage= onlineWebFormMessage;
+                    return this;
+                }
+                public Builder WithKeywordMessage(string keywordMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.KeywordMessage= keywordMessage;
+                    return this;
+                }
+                public Builder WithIvrMessage(string ivrMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.IvrMessage= ivrMessage;
+                    return this;
+                }
+                public Builder WithOtherFormMessage(string otherFormMessage)
+                {
+                    _createShortCodeApplicationResponseUserSignUp.OtherFormMessage= otherFormMessage;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseUserSignUp Build()
+                {
+                    return _createShortCodeApplicationResponseUserSignUp;
+                }
+            }
+        }
+        public class CreateShortCodeApplicationResponseComplianceKeywords
+        {
+            [JsonProperty("help")]
+            public string Help {get; private set;}
+            [JsonProperty("stop")]
+            public string Stop {get; private set;}
+            [JsonProperty("info")]
+            public string Info {get; private set;}
+            [JsonProperty("aide")]
+            public string Aide {get; private set;}
+            [JsonProperty("arret")]
+            public string Arret {get; private set;}
+            [JsonProperty("opt_out_filtering")]
+            public bool? OptOutFiltering {get; private set;}
+            public CreateShortCodeApplicationResponseComplianceKeywords() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseComplianceKeywords _createShortCodeApplicationResponseComplianceKeywords = new CreateShortCodeApplicationResponseComplianceKeywords();
+                public Builder()
+                {
+                }
+                public Builder WithHelp(string help)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.Help= help;
+                    return this;
+                }
+                public Builder WithStop(string stop)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.Stop= stop;
+                    return this;
+                }
+                public Builder WithInfo(string info)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.Info= info;
+                    return this;
+                }
+                public Builder WithAide(string aide)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.Aide= aide;
+                    return this;
+                }
+                public Builder WithArret(string arret)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.Arret= arret;
+                    return this;
+                }
+                public Builder WithOptOutFiltering(bool? optOutFiltering)
+                {
+                    _createShortCodeApplicationResponseComplianceKeywords.OptOutFiltering= optOutFiltering;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseComplianceKeywords Build()
+                {
+                    return _createShortCodeApplicationResponseComplianceKeywords;
+                }
+            }
+        }
+        public class CreateShortCodeApplicationResponseContentExamples
+        {
+            [JsonProperty("examples")]
+            public List<string> Examples {get; private set;}
+            public CreateShortCodeApplicationResponseContentExamples() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseContentExamples _createShortCodeApplicationResponseContentExamples = new CreateShortCodeApplicationResponseContentExamples();
+                public Builder()
+                {
+                }
+                public Builder WithExamples(List<string> examples)
+                {
+                    _createShortCodeApplicationResponseContentExamples.Examples= examples;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseContentExamples Build()
+                {
+                    return _createShortCodeApplicationResponseContentExamples;
+                }
+            }
+        }
+        public class CreateShortCodeApplicationResponseSmsCampaignDetails
+        {
+            [JsonProperty("campaign_name")]
+            public string CampaignName {get; private set;}
+            [JsonProperty("campaign_brand_website")]
+            public string CampaignBrandWebsite {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("customer_care_channel")]
+            public ApplicationResource.CustomerCareChannelEnum CustomerCareChannel {get; private set;}
+            [JsonProperty("customer_care_value")]
+            public string CustomerCareValue {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("campaign_frequency")]
+            public List<ApplicationResource.CampaignFrequencyEnum> CampaignFrequency {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("sc_use_case_categories")]
+            public List<ApplicationResource.ScUseCaseCategoriesEnum> ScUseCaseCategories {get; private set;}
+            [JsonProperty("sms_terms_of_service_url")]
+            public string SmsTermsOfServiceUrl {get; private set;}
+            [JsonProperty("sms_privacy_policy_url")]
+            public string SmsPrivacyPolicyUrl {get; private set;}
+            [JsonProperty("monthly_outbound_volume_expected")]
+            public string MonthlyOutboundVolumeExpected {get; private set;}
+            [JsonProperty("monthly_inbound_volume_expected")]
+            public string MonthlyInboundVolumeExpected {get; private set;}
+            [JsonProperty("avg_monthly_messages_sent_to_each_subscriber")]
+            public string AvgMonthlyMessagesSentToEachSubscriber {get; private set;}
+            [JsonProperty("avg_monthly_messages_received_from_subscribers")]
+            public string AvgMonthlyMessagesReceivedFromSubscribers {get; private set;}
+            [JsonProperty("estimated_total_subscribers")]
+            public string EstimatedTotalSubscribers {get; private set;}
+            [JsonProperty("duration_of_the_campaign")]
+            public string DurationOfTheCampaign {get; private set;}
+            [JsonProperty("planned_traffic_spikes")]
+            public string PlannedTrafficSpikes {get; private set;}
+            [JsonProperty("spike_details")]
+            public string SpikeDetails {get; private set;}
+            [JsonProperty("expected_traffic_start_date")]
+            public string ExpectedTrafficStartDate {get; private set;}
+            public CreateShortCodeApplicationResponseSmsCampaignDetails() { }
+            public class Builder
+            {
+                private CreateShortCodeApplicationResponseSmsCampaignDetails _createShortCodeApplicationResponseSmsCampaignDetails = new CreateShortCodeApplicationResponseSmsCampaignDetails();
+                public Builder()
+                {
+                }
+                public Builder WithCampaignName(string campaignName)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.CampaignName= campaignName;
+                    return this;
+                }
+                public Builder WithCampaignBrandWebsite(string campaignBrandWebsite)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.CampaignBrandWebsite= campaignBrandWebsite;
+                    return this;
+                }
+                public Builder WithCustomerCareChannel(ApplicationResource.CustomerCareChannelEnum customerCareChannel)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.CustomerCareChannel= customerCareChannel;
+                    return this;
+                }
+                public Builder WithCustomerCareValue(string customerCareValue)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.CustomerCareValue= customerCareValue;
+                    return this;
+                }
+                public Builder WithCampaignFrequency(List<ApplicationResource.CampaignFrequencyEnum> campaignFrequency)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.CampaignFrequency= campaignFrequency;
+                    return this;
+                }
+                public Builder WithScUseCaseCategories(List<ApplicationResource.ScUseCaseCategoriesEnum> scUseCaseCategories)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.ScUseCaseCategories= scUseCaseCategories;
+                    return this;
+                }
+                public Builder WithSmsTermsOfServiceUrl(string smsTermsOfServiceUrl)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.SmsTermsOfServiceUrl= smsTermsOfServiceUrl;
+                    return this;
+                }
+                public Builder WithSmsPrivacyPolicyUrl(string smsPrivacyPolicyUrl)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.SmsPrivacyPolicyUrl= smsPrivacyPolicyUrl;
+                    return this;
+                }
+                public Builder WithMonthlyOutboundVolumeExpected(string monthlyOutboundVolumeExpected)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.MonthlyOutboundVolumeExpected= monthlyOutboundVolumeExpected;
+                    return this;
+                }
+                public Builder WithMonthlyInboundVolumeExpected(string monthlyInboundVolumeExpected)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.MonthlyInboundVolumeExpected= monthlyInboundVolumeExpected;
+                    return this;
+                }
+                public Builder WithAvgMonthlyMessagesSentToEachSubscriber(string avgMonthlyMessagesSentToEachSubscriber)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.AvgMonthlyMessagesSentToEachSubscriber= avgMonthlyMessagesSentToEachSubscriber;
+                    return this;
+                }
+                public Builder WithAvgMonthlyMessagesReceivedFromSubscribers(string avgMonthlyMessagesReceivedFromSubscribers)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.AvgMonthlyMessagesReceivedFromSubscribers= avgMonthlyMessagesReceivedFromSubscribers;
+                    return this;
+                }
+                public Builder WithEstimatedTotalSubscribers(string estimatedTotalSubscribers)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.EstimatedTotalSubscribers= estimatedTotalSubscribers;
+                    return this;
+                }
+                public Builder WithDurationOfTheCampaign(string durationOfTheCampaign)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.DurationOfTheCampaign= durationOfTheCampaign;
+                    return this;
+                }
+                public Builder WithPlannedTrafficSpikes(string plannedTrafficSpikes)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.PlannedTrafficSpikes= plannedTrafficSpikes;
+                    return this;
+                }
+                public Builder WithSpikeDetails(string spikeDetails)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.SpikeDetails= spikeDetails;
+                    return this;
+                }
+                public Builder WithExpectedTrafficStartDate(string expectedTrafficStartDate)
+                {
+                    _createShortCodeApplicationResponseSmsCampaignDetails.ExpectedTrafficStartDate= expectedTrafficStartDate;
+                    return this;
+                }
+                public CreateShortCodeApplicationResponseSmsCampaignDetails Build()
+                {
+                    return _createShortCodeApplicationResponseSmsCampaignDetails;
+                }
+            }
+        }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class LeaseTypeEnum : StringEnum
+        {
+            private LeaseTypeEnum(string value) : base(value) {}
+            public LeaseTypeEnum() {}
+            public static implicit operator LeaseTypeEnum(string value)
+            {
+                return new LeaseTypeEnum(value);
+            }
+            public static readonly LeaseTypeEnum Random = new LeaseTypeEnum("RANDOM");
+            public static readonly LeaseTypeEnum Vanity = new LeaseTypeEnum("VANITY");
+            public static readonly LeaseTypeEnum SelfLeased = new LeaseTypeEnum("SELF_LEASED");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TrafficTypeEnum : StringEnum
+        {
+            private TrafficTypeEnum(string value) : base(value) {}
+            public TrafficTypeEnum() {}
+            public static implicit operator TrafficTypeEnum(string value)
+            {
+                return new TrafficTypeEnum(value);
+            }
+            public static readonly TrafficTypeEnum Transactional = new TrafficTypeEnum("TRANSACTIONAL");
+            public static readonly TrafficTypeEnum Promotional = new TrafficTypeEnum("PROMOTIONAL");
+            public static readonly TrafficTypeEnum Both = new TrafficTypeEnum("BOTH");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class PaymentFrequencyEnum : StringEnum
+        {
+            private PaymentFrequencyEnum(string value) : base(value) {}
+            public PaymentFrequencyEnum() {}
+            public static implicit operator PaymentFrequencyEnum(string value)
+            {
+                return new PaymentFrequencyEnum(value);
+            }
+            public static readonly PaymentFrequencyEnum Quarterly = new PaymentFrequencyEnum("QUARTERLY");
+            public static readonly PaymentFrequencyEnum Yearly = new PaymentFrequencyEnum("YEARLY");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class SignUpOptionsEnum : StringEnum
+        {
+            private SignUpOptionsEnum(string value) : base(value) {}
+            public SignUpOptionsEnum() {}
+            public static implicit operator SignUpOptionsEnum(string value)
+            {
+                return new SignUpOptionsEnum(value);
+            }
+
+            public static readonly SignUpOptionsEnum OnlineWebForm = new SignUpOptionsEnum("ONLINE_WEB_FORM");
+            public static readonly SignUpOptionsEnum Ivr = new SignUpOptionsEnum("IVR");
+            public static readonly SignUpOptionsEnum Verbally = new SignUpOptionsEnum("VERBALLY");
+            public static readonly SignUpOptionsEnum MobileAppOrDigitalKiosk = new SignUpOptionsEnum("MOBILE_APP_OR_DIGITAL_KIOSK");
+            public static readonly SignUpOptionsEnum PaperForm = new SignUpOptionsEnum("PAPER_FORM");
+            public static readonly SignUpOptionsEnum ShortcodeKeyword = new SignUpOptionsEnum("SHORTCODE_KEYWORD");
+            public static readonly SignUpOptionsEnum OtherForm = new SignUpOptionsEnum("OTHER_FORM");
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class StateEnum : StringEnum
         {
@@ -139,6 +639,74 @@ namespace Twilio.Rest.Numbers.V2
             public static readonly StateEnum Canceled = new StateEnum("CANCELED");
             public static readonly StateEnum Archived = new StateEnum("ARCHIVED");
 
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CampaignFrequencyEnum : StringEnum
+        {
+            private CampaignFrequencyEnum(string value) : base(value) {}
+            public CampaignFrequencyEnum() {}
+            public static implicit operator CampaignFrequencyEnum(string value)
+            {
+                return new CampaignFrequencyEnum(value);
+            }
+
+            public static readonly CampaignFrequencyEnum OneMessagePerSignup = new CampaignFrequencyEnum("ONE_MESSAGE_PER_SIGNUP");
+            public static readonly CampaignFrequencyEnum LimitedNumberOfMessagesPerSignup = new CampaignFrequencyEnum("LIMITED_NUMBER_OF_MESSAGES_PER_SIGNUP");
+            public static readonly CampaignFrequencyEnum LimitedNumberOfMessagesAtRecurringIntervals = new CampaignFrequencyEnum("LIMITED_NUMBER_OF_MESSAGES_AT_RECURRING_INTERVALS");
+            public static readonly CampaignFrequencyEnum VariableNumberOfMessagesAtUnpredictableIntervals = new CampaignFrequencyEnum("VARIABLE_NUMBER_OF_MESSAGES_AT_UNPREDICTABLE_INTERVALS");
+            public static readonly CampaignFrequencyEnum LimitedNumberOfMessagesInResponseToKeywords = new CampaignFrequencyEnum("LIMITED_NUMBER_OF_MESSAGES_IN_RESPONSE_TO_KEYWORDS");
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class RequestTypeEnum : StringEnum
+        {
+            private RequestTypeEnum(string value) : base(value) {}
+            public RequestTypeEnum() {}
+            public static implicit operator RequestTypeEnum(string value)
+            {
+                return new RequestTypeEnum(value);
+            }
+            public static readonly RequestTypeEnum New = new RequestTypeEnum("NEW");
+            public static readonly RequestTypeEnum Migration = new RequestTypeEnum("MIGRATION");
+            public static readonly RequestTypeEnum Lease = new RequestTypeEnum("LEASE");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CustomerCareChannelEnum : StringEnum
+        {
+            private CustomerCareChannelEnum(string value) : base(value) {}
+            public CustomerCareChannelEnum() {}
+            public static implicit operator CustomerCareChannelEnum(string value)
+            {
+                return new CustomerCareChannelEnum(value);
+            }
+            public static readonly CustomerCareChannelEnum TollFreeNumber = new CustomerCareChannelEnum("TOLL_FREE_NUMBER");
+            public static readonly CustomerCareChannelEnum Email = new CustomerCareChannelEnum("EMAIL");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ScUseCaseCategoriesEnum : StringEnum
+        {
+            private ScUseCaseCategoriesEnum(string value) : base(value) {}
+            public ScUseCaseCategoriesEnum() {}
+            public static implicit operator ScUseCaseCategoriesEnum(string value)
+            {
+                return new ScUseCaseCategoriesEnum(value);
+            }
+
+            public static readonly ScUseCaseCategoriesEnum TwoFactorAuthentication = new ScUseCaseCategoriesEnum("TWO_FACTOR_AUTHENTICATION");
+            public static readonly ScUseCaseCategoriesEnum AccountNotifications = new ScUseCaseCategoriesEnum("ACCOUNT_NOTIFICATIONS");
+            public static readonly ScUseCaseCategoriesEnum CustomerCare = new ScUseCaseCategoriesEnum("CUSTOMER_CARE");
+            public static readonly ScUseCaseCategoriesEnum CharityNonprofit = new ScUseCaseCategoriesEnum("CHARITY_NONPROFIT");
+            public static readonly ScUseCaseCategoriesEnum DeliveryNotifications = new ScUseCaseCategoriesEnum("DELIVERY_NOTIFICATIONS");
+            public static readonly ScUseCaseCategoriesEnum FraudAlertMessaging = new ScUseCaseCategoriesEnum("FRAUD_ALERT_MESSAGING");
+            public static readonly ScUseCaseCategoriesEnum Events = new ScUseCaseCategoriesEnum("EVENTS");
+            public static readonly ScUseCaseCategoriesEnum HigherEducation = new ScUseCaseCategoriesEnum("HIGHER_EDUCATION");
+            public static readonly ScUseCaseCategoriesEnum K12 = new ScUseCaseCategoriesEnum("K12");
+            public static readonly ScUseCaseCategoriesEnum Marketing = new ScUseCaseCategoriesEnum("MARKETING");
+            public static readonly ScUseCaseCategoriesEnum PollingAndVotingNonPolitical = new ScUseCaseCategoriesEnum("POLLING_AND_VOTING_NON_POLITICAL");
+            public static readonly ScUseCaseCategoriesEnum PoliticalElectionCampaigns = new ScUseCaseCategoriesEnum("POLITICAL_ELECTION_CAMPAIGNS");
+            public static readonly ScUseCaseCategoriesEnum PublicServiceAnnouncement = new ScUseCaseCategoriesEnum("PUBLIC_SERVICE_ANNOUNCEMENT");
+            public static readonly ScUseCaseCategoriesEnum SecurityAlert = new ScUseCaseCategoriesEnum("SECURITY_ALERT");
         }
 
         
@@ -384,31 +952,51 @@ namespace Twilio.Rest.Numbers.V2
         }
         #endif
         /// <summary> list of all short code applications for an account </summary>
+        /// <param name="accountSid"> The Account SID to filter by. </param>
+        /// <param name="isoCountry"> The ISO country to filter by. </param>
+        /// <param name="status"> The application status to filter by. </param>
+        /// <param name="friendlyName"> The friendly name to filter by. </param>
+        /// <param name="sid"> The application SID to filter by. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
         public static ResourceSet<ApplicationResource> Read(
+                                                     string accountSid = null,
+                                                     string isoCountry = null,
+                                                     string status = null,
+                                                     string friendlyName = null,
+                                                     string sid = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadApplicationOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadApplicationOptions(){ AccountSid = accountSid, IsoCountry = isoCountry, Status = status, FriendlyName = friendlyName, Sid = sid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> list of all short code applications for an account </summary>
+        /// <param name="accountSid"> The Account SID to filter by. </param>
+        /// <param name="isoCountry"> The ISO country to filter by. </param>
+        /// <param name="status"> The application status to filter by. </param>
+        /// <param name="friendlyName"> The friendly name to filter by. </param>
+        /// <param name="sid"> The application SID to filter by. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 50. </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(
+                                                                                             string accountSid = null,
+                                                                                             string isoCountry = null,
+                                                                                             string status = null,
+                                                                                             string friendlyName = null,
+                                                                                             string sid = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadApplicationOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadApplicationOptions(){ AccountSid = accountSid, IsoCountry = isoCountry, Status = status, FriendlyName = friendlyName, Sid = sid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -423,11 +1011,16 @@ namespace Twilio.Rest.Numbers.V2
         }
 
         public static ResourceSetResponse<ApplicationResource> ReadWithHeaders(
+            string accountSid = null,
+            string isoCountry = null,
+            string status = null,
+            string friendlyName = null,
+            string sid = null,
             int? pageSize = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadApplicationOptions(){ PageSize = pageSize, Limit = limit};
+            var options = new ReadApplicationOptions(){ AccountSid = accountSid, IsoCountry = isoCountry, Status = status, FriendlyName = friendlyName, Sid = sid, PageSize = pageSize, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 
@@ -530,17 +1123,37 @@ namespace Twilio.Rest.Numbers.V2
         [JsonProperty("sid")]
         public string Sid { get; private set; }
 
-        ///<summary> The Bundle SID for regulatory compliance. </summary> 
-        [JsonProperty("bundle_sid")]
-        public string BundleSid { get; private set; }
-
         ///<summary> The Application Requirements SID. </summary> 
         [JsonProperty("application_requirements_sid")]
         public string ApplicationRequirementsSid { get; private set; }
 
+        ///<summary> The version of the application requirements. </summary> 
+        [JsonProperty("application_requirements_version")]
+        public int? ApplicationRequirementsVersion { get; private set; }
+
+        ///<summary> The Account SID associated with the application. </summary> 
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+
+        ///<summary> The Bundle SID for regulatory compliance. </summary> 
+        [JsonProperty("bundle_sid")]
+        public string BundleSid { get; private set; }
+
+        ///<summary> The reviewer of the application. </summary> 
+        [JsonProperty("reviewer")]
+        public string Reviewer { get; private set; }
+
+        ///<summary> The Zendesk ticket ID associated with the application. </summary> 
+        [JsonProperty("zendesk_ticket_id")]
+        public string ZendeskTicketId { get; private set; }
+
         ///<summary> The friendly name of the application. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+
+        ///<summary> The notification emails for the application. </summary> 
+        [JsonProperty("notification_emails")]
+        public List<string> NotificationEmails { get; private set; }
 
         ///<summary> The ISO country code. </summary> 
         [JsonProperty("iso_country")]
@@ -549,6 +1162,46 @@ namespace Twilio.Rest.Numbers.V2
         ///<summary> The state of the application. </summary> 
         [JsonProperty("state")]
         public ApplicationResource.StateEnum State { get; private set; }
+
+        ///<summary> The setup </summary> 
+        [JsonProperty("setup")]
+        public CreateShortCodeApplicationResponseSetup Setup { get; private set; }
+
+        ///<summary> The business_information </summary> 
+        [JsonProperty("business_information")]
+        public CreateShortCodeApplicationResponseBusinessInformation BusinessInformation { get; private set; }
+
+        ///<summary> The user_sign_up </summary> 
+        [JsonProperty("user_sign_up")]
+        public CreateShortCodeApplicationResponseUserSignUp UserSignUp { get; private set; }
+
+        ///<summary> The compliance_keywords </summary> 
+        [JsonProperty("compliance_keywords")]
+        public CreateShortCodeApplicationResponseComplianceKeywords ComplianceKeywords { get; private set; }
+
+        ///<summary> The content_examples </summary> 
+        [JsonProperty("content_examples")]
+        public CreateShortCodeApplicationResponseContentExamples ContentExamples { get; private set; }
+
+        ///<summary> The sms_campaign_details </summary> 
+        [JsonProperty("sms_campaign_details")]
+        public CreateShortCodeApplicationResponseSmsCampaignDetails SmsCampaignDetails { get; private set; }
+
+        ///<summary> The date and time the application was created. </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time the application was last updated. </summary> 
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The identity of the user who created the application. </summary> 
+        [JsonProperty("created_by")]
+        public string CreatedBy { get; private set; }
+
+        ///<summary> The identity of the user who last updated the application. </summary> 
+        [JsonProperty("updated_by")]
+        public string UpdatedBy { get; private set; }
 
 
 

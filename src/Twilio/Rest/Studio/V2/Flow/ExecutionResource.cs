@@ -714,6 +714,14 @@ namespace Twilio.Rest.Studio.V2.Flow
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
 
+        ///<summary> The SID of the Contact. </summary> 
+        [JsonProperty("contact_sid")]
+        public string ContactSid { get; private set; }
+
+        ///<summary> The Flow version number at the time of Execution creation. </summary> 
+        [JsonProperty("flow_version")]
+        public int? FlowVersion { get; private set; }
+
         ///<summary> The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution. </summary> 
         [JsonProperty("context")]
         public object Context { get; private set; }

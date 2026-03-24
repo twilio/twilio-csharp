@@ -348,6 +348,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
 
+        ///<summary> The SID of the User that created or last updated the Flow. </summary> 
+        [JsonProperty("author_sid")]
+        public string AuthorSid { get; private set; }
+
         ///<summary> The string that you assigned to describe the Flow. </summary> 
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
