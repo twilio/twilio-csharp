@@ -112,7 +112,7 @@ jobs:
       - name: Certificates Sync with Debug Logs
         run: |
           $env:SM_LOG_LEVEL="debug"
-          smctl windows certsync --keypair-alias="cert_1446579873" 2>&1 | Write-Host
+          smctl windows certsync --keypair-alias="key_1446579873" 2>&1 | Write-Host
           
           Write-Host "Checking SMCTL Version and Health..."
           smctl healthcheck
