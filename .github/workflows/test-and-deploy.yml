@@ -109,6 +109,12 @@ jobs:
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user
         shell: cmd
 
+      - name: Check Certificate State
+        run: |
+          # Query the exact certificate ID attached to key_1446579873
+          smctl certificate ls --filter id=214fc4dc-8635-4860-9e34-d98fdeb25952
+        shell: powershell
+        
       - name: Certificates Sync with Debug Logs
         run: |
           $env:SM_LOG_LEVEL="debug"
