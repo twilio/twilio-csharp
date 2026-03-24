@@ -64,23 +64,29 @@ jobs:
     steps:
       - name: Set up Client Certificate
         run: |
-          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > /d/Certificate_pkcs12.p12
+          # Use the runner's temp directory instead of hardcoding D:\
+          CERT_PATH="${{ runner.temp }}/Certificate_pkcs12.p12"
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > "$CERT_PATH"
+          
+          # Set the path as an environment variable for subsequent steps
+          echo "SM_CLIENT_CERT_FILE=$CERT_PATH" >> "$GITHUB_ENV"
         shell: bash
 
       - name: Set variables
         id: variables
         run: |
-          dir
-          echo "::set-output name=KEYPAIR_NAME::gt-standard-keypair"
-          echo "::set-output name=CERTIFICATE_NAME::gt-certificate"
+          # Use the modern $GITHUB_OUTPUT syntax
+          echo "KEYPAIR_NAME=gt-standard-keypair" >> "$GITHUB_OUTPUT"
+          echo "CERTIFICATE_NAME=gt-certificate" >> "$GITHUB_OUTPUT"
+          
           echo "SM_HOST=${{ secrets.SM_HOST }}" >> "$GITHUB_ENV"
           echo "SM_API_KEY=${{ secrets.SM_API_KEY }}" >> "$GITHUB_ENV"
-          echo "SM_CLIENT_CERT_FILE=D:\\Certificate_pkcs12.p12" >> "$GITHUB_ENV"
           echo "SM_CLIENT_CERT_PASSWORD=${{ secrets.SM_CLIENT_CERT_PASSWORD }}" >> "$GITHUB_ENV"
           echo "BUILD_TOOLS_VERSION=31.0.0" >> "$GITHUB_ENV"
-          echo "C:\Program Files (x86)\Windows Kits\10\App Certification Kit" >> $GITHUB_PATH
-          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools" >> $GITHUB_PATH
-          echo "C:\Program Files\DigiCert\DigiCert Keylocker Tools" >> $GITHUB_PATH
+          
+          echo "C:\Program Files (x86)\Windows Kits\10\App Certification Kit" >> "$GITHUB_PATH"
+          echo "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools" >> "$GITHUB_PATH"
+          echo "C:\Program Files\DigiCert\DigiCert Keylocker Tools" >> "$GITHUB_PATH"
         shell: bash
 
       - name: Code signing with Software Trust Manager
@@ -91,59 +97,53 @@ jobs:
           SM_CLIENT_CERT_PASSWORD: ${{ env.SM_CLIENT_CERT_PASSWORD }}
           SM_CLIENT_CERT_FILE: ${{ env.SM_CLIENT_CERT_FILE }}
 
-      - run: echo “The config file path ${{ steps.SSMClientToolSetup.outputs.PKCS11_CONFIG }}”
-      
+      - run: echo "The config file path ${{ steps.SSMClientToolSetup.outputs.PKCS11_CONFIG }}"
+        shell: bash
+        
       - name: Setup Keylocker KSP on windows
         run: |
-          curl -X GET  https://one.digicert.com/signingmanager/api-ui/v1/releases/Keylockertools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o Keylockertools-windows-x64.msi 
+          curl -X GET https://one.digicert.com/signingmanager/api-ui/v1/releases/Keylockertools-windows-x64.msi/download -H "x-api-key:%SM_API_KEY%" -o Keylockertools-windows-x64.msi 
           msiexec /i Keylockertools-windows-x64.msi /quiet /qn
           smksp_registrar.exe list 
           smctl.exe keypair ls 
           C:\Windows\System32\certutil.exe -csp "DigiCert Signing Manager KSP" -key -user
         shell: cmd
 
-      - name: List certificates in DigiCert ONE
-        run: |
-          smctl certificate ls
-        shell: cmd
-
       - name: Certificates Sync with Debug Logs
         run: |
-          # Force the environment variable for the current process
           $env:SM_LOG_LEVEL="debug"
+          smctl windows certsync --keypair-alias="cert_1446579873" 2>&1 | Write-Host
           
-          # Run sync and pipe both standard and error streams to the log
-          smctl windows certsync 2>&1 | Write-Host
-          
-          # If it still shows nothing, check if the tool is even responding
           Write-Host "Checking SMCTL Version and Health..."
           smctl healthcheck
         shell: powershell
 
       - name: List certificates in DigiCert ONE
         run: |
-          smctl certificate ls --filter="certificate_status=Issued"
+          smctl certificate ls 
         shell: cmd
 
       - name: Sync and Debug Fingerprints
         run: |
-          # 1. Sync from Cloud
           smctl windows certsync
           
-          # 2. List all certs with BOTH SHA1 and SHA256
           Write-Host "--- DETECTED CERTIFICATES ---"
           Get-ChildItem Cert:\CurrentUser\My | ForEach-Object {
             $sha1 = $_.Thumbprint
-            $sha256 = (Get-CertificateHash -Certificate $_ -Algorithm SHA256)
+            # Use native .NET method for SHA256
+            $sha256 = $_.GetCertHashString("SHA256")
+            
             Write-Host "Subject: $($_.Subject)"
             Write-Host "  > SHA1 (NuGet <7.0): $sha1"
             Write-Host "  > SHA256 (NuGet 7.0+): $sha256"
             Write-Host "---------------------------"
           }
           
-          # 3. Validation Logic: Fail if the secret doesn't match a local cert
-          $expected = "${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }}"
-          $found = Get-ChildItem Cert:\CurrentUser\My | Where-Object { (Get-CertificateHash -Certificate $_ -Algorithm SHA256) -eq $expected }
+          # Clean up the expected secret (remove spaces, force uppercase)
+          $expected = "${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }}".Replace(" ", "").ToUpper()
+          
+          # Find the cert matching the cleaned SHA256 hash
+          $found = Get-ChildItem Cert:\CurrentUser\My | Where-Object { $_.GetCertHashString("SHA256") -eq $expected }
           
           if (-not $found) {
             Write-Error "CRITICAL: No local cert matches SHA256 Secret: $expected"
