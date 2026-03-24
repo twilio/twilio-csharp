@@ -115,13 +115,15 @@ jobs:
           smctl certificate ls --filter id=214fc4dc-8635-4860-9e34-d98fdeb25952
         shell: powershell
         
-      - name: Certificates Sync with Debug Logs
+      - name: Sync Certificates to Windows Store
         run: |
-          $env:SM_LOG_LEVEL="debug"
-          smctl windows certsync --keypair-alias="key_1446579873" 2>&1 | Write-Host
+          Write-Host "Performing global sync to Windows KSP..."
+          # Running without flags syncs all valid certificates to the CurrentUser store
+          smctl windows certsync
           
-          Write-Host "Checking SMCTL Version and Health..."
-          smctl healthcheck
+          Write-Host "--- VERIFYING CERTIFICATE IN LOCAL STORE ---"
+          # Let's verify Windows actually sees the fingerprint we just found
+          Get-ChildItem Cert:\CurrentUser\My | Where-Object { $_.Thumbprint -eq "63dd2262a809f5ea7020f4289eff3d6e01ad8637" }
         shell: powershell
 
       - name: List certificates in DigiCert ONE
