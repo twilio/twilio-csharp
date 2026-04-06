@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Twilio.Rest;
@@ -120,12 +121,34 @@ namespace Twilio.Base
         /// <returns>Page of results</returns>
         public static Page<T> FromJson(string recordKey, string json)
         {
+            return FromJson(recordKey, json, null);
+        }
+
+        /// <summary>
+        /// Converts a JSON payload to a Page of results
+        /// </summary>
+        /// <param name="recordKey">JSON key where the records are</param>
+        /// <param name="json">JSON payload</param>
+        /// <param name="requestUrl">Original request URL, used for token-based pagination</param>
+        /// <returns>Page of results</returns>
+        public static Page<T> FromJson(string recordKey, string json, string requestUrl)
+        {
             var root = JObject.Parse(json);
             var records = root[recordKey];
-            var parsedRecords = records.Children().Select(
-                record => JsonConvert.DeserializeObject<T>(record.ToString())
-            ).ToList();
-            
+            List<T> parsedRecords;
+            if (records.Children().Any() && records.Children().First().Type != JTokenType.Object)
+            {
+                parsedRecords = records.Children().Select(
+                    record => (T)System.Activator.CreateInstance(typeof(T), record.ToString())
+                ).ToList();
+            }
+            else
+            {
+                parsedRecords = records.Children().Select(
+                    record => JsonConvert.DeserializeObject<T>(record.ToString())
+                ).ToList();
+            }
+
             if(root["uri"] != null){
                 var uriNode = root["uri"];
                 if (uriNode != null)
@@ -147,9 +170,25 @@ namespace Twilio.Base
                 }
             }
 
-            // next-gen API
             if(root["meta"] != null){
                 var meta = root["meta"];
+
+                // token-based pagination
+                if (meta["pageSize"] != null)
+                {
+                    var nextToken = meta["nextToken"]?.Value<string>();
+                    var previousToken = meta["previousToken"]?.Value<string>();
+                    string baseUrl = requestUrl != null ? requestUrl.Split('?')[0] : null;
+
+                    return new Page<T>(
+                        parsedRecords,
+                        meta["pageSize"].Value<int>(),
+                        nextPageUrl: nextToken != null && baseUrl != null ? baseUrl + "?pageToken=" + nextToken : null,
+                        previousPageUrl: previousToken != null && baseUrl != null ? baseUrl + "?pageToken=" + previousToken : null
+                    );
+                }
+
+                // next-gen API
                 return new Page<T>(
                     parsedRecords,
                     meta["page_size"].Value<int>(),
