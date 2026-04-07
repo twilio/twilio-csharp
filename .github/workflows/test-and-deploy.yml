@@ -66,7 +66,10 @@ jobs:
         run: |
           # Use the runner's temp directory instead of hardcoding D:\
           CERT_PATH="${{ runner.temp }}/Certificate_pkcs12.p12"
-          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > "$CERT_PATH"
+          
+          # tr -d removes hidden newlines and spaces that break the decoder. 
+          # base64 -di decodes and ignores any remaining non-base64 "garbage"
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | tr -d '\n\r ' | base64 -di > "$CERT_PATH"
           
           # Set the path as an environment variable for subsequent steps
           echo "SM_CLIENT_CERT_FILE=$CERT_PATH" >> "$GITHUB_ENV"
