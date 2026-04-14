@@ -32,10 +32,10 @@ namespace Twilio.Rest.Insights.V2
     
         public class InsightsV2CreatePhoneNumbersReportRequestTimeRange
         {
-            [JsonProperty("start_time")]
-            public DateTime? StartTime {get; private set;}
-            [JsonProperty("end_time")]
-            public DateTime? EndTime {get; private set;}
+            [JsonProperty("start_datetime")]
+            public DateTime? StartDatetime {get; private set;}
+            [JsonProperty("end_datetime")]
+            public DateTime? EndDatetime {get; private set;}
             public InsightsV2CreatePhoneNumbersReportRequestTimeRange() { }
             public class Builder
             {
@@ -43,14 +43,14 @@ namespace Twilio.Rest.Insights.V2
                 public Builder()
                 {
                 }
-                public Builder WithStartTime(DateTime? startTime)
+                public Builder WithStartDatetime(DateTime? startDatetime)
                 {
-                    _insightsV2CreatePhoneNumbersReportRequestTimeRange.StartTime= startTime;
+                    _insightsV2CreatePhoneNumbersReportRequestTimeRange.StartDatetime= startDatetime;
                     return this;
                 }
-                public Builder WithEndTime(DateTime? endTime)
+                public Builder WithEndDatetime(DateTime? endDatetime)
                 {
-                    _insightsV2CreatePhoneNumbersReportRequestTimeRange.EndTime= endTime;
+                    _insightsV2CreatePhoneNumbersReportRequestTimeRange.EndDatetime= endDatetime;
                     return this;
                 }
                 public InsightsV2CreatePhoneNumbersReportRequestTimeRange Build()
@@ -155,10 +155,10 @@ namespace Twilio.Rest.Insights.V2
         }
         public class ReportMetadata
         {
-            [JsonProperty("start_time")]
-            public DateTime? StartTime {get; private set;}
-            [JsonProperty("end_time")]
-            public DateTime? EndTime {get; private set;}
+            [JsonProperty("start_datetime")]
+            public DateTime? StartDatetime {get; private set;}
+            [JsonProperty("end_datetime")]
+            public DateTime? EndDatetime {get; private set;}
             [JsonProperty("filters")]
             public List<ReportFilter> Filters {get; private set;}
             public ReportMetadata() { }
@@ -168,14 +168,14 @@ namespace Twilio.Rest.Insights.V2
                 public Builder()
                 {
                 }
-                public Builder WithStartTime(DateTime? startTime)
+                public Builder WithStartDatetime(DateTime? startDatetime)
                 {
-                    _reportMetadata.StartTime= startTime;
+                    _reportMetadata.StartDatetime= startDatetime;
                     return this;
                 }
-                public Builder WithEndTime(DateTime? endTime)
+                public Builder WithEndDatetime(DateTime? endDatetime)
                 {
-                    _reportMetadata.EndTime= endTime;
+                    _reportMetadata.EndDatetime= endDatetime;
                     return this;
                 }
                 public Builder WithFilters(List<ReportFilter> filters)

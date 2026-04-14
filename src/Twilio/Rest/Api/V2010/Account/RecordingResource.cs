@@ -101,7 +101,9 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+           
         }
 
         #if !NET35
@@ -114,7 +116,8 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
         }
         #endif
 
@@ -146,7 +149,8 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
             return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
         }
 
@@ -155,7 +159,8 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
             return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
         }
         #endif

@@ -263,6 +263,16 @@ namespace Twilio.TwiML.Voice
         /// <param name="interruptSensitivity"> Set the sensitivity of the interrupt feature for speech. The value can be low,
         ///                            medium, or high </param>
         /// <param name="debug"> Multiple debug options to be used for troubleshooting </param>
+        /// <param name="backgroundnoisereduction"> This parameters enables background noise filtering on the audio stream
+        ///                                before it reaches the STT engine, improving transcription accuracy in noisy
+        ///                                environments </param>
+        /// <param name="speechtimeout"> Set the duration of silence that indicates the end of speech </param>
+        /// <param name="deepgramsmartformat"> This parameter enables Deepgram's smart formatting feature, which automatically
+        ///                           applies punctuation, capitalization, and formatting (e.g. numbers, dates, currency) to
+        ///                           transcripts </param>
+        /// <param name="ignorebackchannel"> This parameter brief caller acknowledgments (e.g. "yeah", "uh-huh") are ignored
+        ///                         and will not interrupt the agent while it is speaking. </param>
+        /// <param name="events"> This parameter allows you to enable event subscriptions </param>
         public Connect ConversationRelay(string url = null,
                                          string language = null,
                                          string ttsLanguage = null,
@@ -283,7 +293,12 @@ namespace Twilio.TwiML.Voice
                                          bool? reportInputDuringAgentSpeech = null,
                                          string elevenlabsTextNormalization = null,
                                          string interruptSensitivity = null,
-                                         string debug = null)
+                                         string debug = null,
+                                         string backgroundnoisereduction = null,
+                                         string speechtimeout = null,
+                                         string deepgramsmartformat = null,
+                                         string ignorebackchannel = null,
+                                         string events = null)
         {
             var newChild = new ConversationRelay(
                 url,
@@ -306,7 +321,12 @@ namespace Twilio.TwiML.Voice
                 reportInputDuringAgentSpeech,
                 elevenlabsTextNormalization,
                 interruptSensitivity,
-                debug
+                debug,
+                backgroundnoisereduction,
+                speechtimeout,
+                deepgramsmartformat,
+                ignorebackchannel,
+                events
             );
             this.Append(newChild);
             return this;

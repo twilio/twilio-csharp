@@ -100,6 +100,26 @@ namespace Twilio.TwiML.Voice
         /// Multiple debug options to be used for troubleshooting
         /// </summary>
         public string Debug { get; set; }
+        /// <summary>
+        /// This parameters enables background noise filtering on the audio stream before it reaches the STT engine, improving transcription accuracy in noisy environments
+        /// </summary>
+        public string Backgroundnoisereduction { get; set; }
+        /// <summary>
+        /// Set the duration of silence that indicates the end of speech
+        /// </summary>
+        public string Speechtimeout { get; set; }
+        /// <summary>
+        /// This parameter enables Deepgram's smart formatting feature, which automatically applies punctuation, capitalization, and formatting (e.g. numbers, dates, currency) to transcripts
+        /// </summary>
+        public string Deepgramsmartformat { get; set; }
+        /// <summary>
+        /// This parameter brief caller acknowledgments (e.g. "yeah", "uh-huh") are ignored and will not interrupt the agent while it is speaking.
+        /// </summary>
+        public string Ignorebackchannel { get; set; }
+        /// <summary>
+        /// This parameter allows you to enable event subscriptions
+        /// </summary>
+        public string Events { get; set; }
 
         /// <summary>
         /// Create a new ConversationRelay
@@ -133,6 +153,16 @@ namespace Twilio.TwiML.Voice
         /// <param name="interruptSensitivity"> Set the sensitivity of the interrupt feature for speech. The value can be low,
         ///                            medium, or high </param>
         /// <param name="debug"> Multiple debug options to be used for troubleshooting </param>
+        /// <param name="backgroundnoisereduction"> This parameters enables background noise filtering on the audio stream
+        ///                                before it reaches the STT engine, improving transcription accuracy in noisy
+        ///                                environments </param>
+        /// <param name="speechtimeout"> Set the duration of silence that indicates the end of speech </param>
+        /// <param name="deepgramsmartformat"> This parameter enables Deepgram's smart formatting feature, which automatically
+        ///                           applies punctuation, capitalization, and formatting (e.g. numbers, dates, currency) to
+        ///                           transcripts </param>
+        /// <param name="ignorebackchannel"> This parameter brief caller acknowledgments (e.g. "yeah", "uh-huh") are ignored
+        ///                         and will not interrupt the agent while it is speaking. </param>
+        /// <param name="events"> This parameter allows you to enable event subscriptions </param>
         public ConversationRelay(string url = null,
                                  string language = null,
                                  string ttsLanguage = null,
@@ -153,7 +183,12 @@ namespace Twilio.TwiML.Voice
                                  bool? reportInputDuringAgentSpeech = null,
                                  string elevenlabsTextNormalization = null,
                                  string interruptSensitivity = null,
-                                 string debug = null) : base("ConversationRelay")
+                                 string debug = null,
+                                 string backgroundnoisereduction = null,
+                                 string speechtimeout = null,
+                                 string deepgramsmartformat = null,
+                                 string ignorebackchannel = null,
+                                 string events = null) : base("ConversationRelay")
         {
             this.Url = url;
             this.LanguageAttribute = language;
@@ -176,6 +211,11 @@ namespace Twilio.TwiML.Voice
             this.ElevenlabsTextNormalization = elevenlabsTextNormalization;
             this.InterruptSensitivity = interruptSensitivity;
             this.Debug = debug;
+            this.Backgroundnoisereduction = backgroundnoisereduction;
+            this.Speechtimeout = speechtimeout;
+            this.Deepgramsmartformat = deepgramsmartformat;
+            this.Ignorebackchannel = ignorebackchannel;
+            this.Events = events;
         }
 
         /// <summary>
@@ -267,6 +307,26 @@ namespace Twilio.TwiML.Voice
             if (this.Debug != null)
             {
                 attributes.Add(new XAttribute("debug", this.Debug));
+            }
+            if (this.Backgroundnoisereduction != null)
+            {
+                attributes.Add(new XAttribute("backgroundnoisereduction", this.Backgroundnoisereduction));
+            }
+            if (this.Speechtimeout != null)
+            {
+                attributes.Add(new XAttribute("speechtimeout", this.Speechtimeout));
+            }
+            if (this.Deepgramsmartformat != null)
+            {
+                attributes.Add(new XAttribute("deepgramsmartformat", this.Deepgramsmartformat));
+            }
+            if (this.Ignorebackchannel != null)
+            {
+                attributes.Add(new XAttribute("ignorebackchannel", this.Ignorebackchannel));
+            }
+            if (this.Events != null)
+            {
+                attributes.Add(new XAttribute("events", this.Events));
             }
             return attributes;
         }

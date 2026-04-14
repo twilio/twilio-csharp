@@ -82,6 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///<summary> The ID of the Conversation for associating this Transcription with an existing Conversation in Intelligence Service </summary> 
         public string ConversationId { get; set; }
 
+        ///<summary> The ID of the RealTimeTranscription Configuration for configuring all the non-default behaviors in one go. </summary> 
+        public string ConfigurationId { get; set; }
+
         ///<summary> Whether the callback includes raw provider data. </summary> 
         public bool? EnableProviderData { get; set; }
 
@@ -162,6 +165,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (ConversationId != null)
             {
                 p.Add(new KeyValuePair<string, string>("ConversationId", ConversationId));
+            }
+            if (ConfigurationId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConfigurationId", ConfigurationId));
             }
             if (EnableProviderData != null)
             {

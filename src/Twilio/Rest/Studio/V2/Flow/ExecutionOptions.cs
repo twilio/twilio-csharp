@@ -154,6 +154,9 @@ namespace Twilio.Rest.Studio.V2.Flow
         ///<summary> The SID of the Flow with the Execution resources to read. </summary> 
         public string PathFlowSid { get; }
 
+        ///<summary> Only show Execution resources with the given status. Can be: `active` or `ended`. </summary> 
+        public ExecutionResource.StatusEnum Status { get; set; }
+
         ///<summary> Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. </summary> 
         public DateTime? DateCreatedFrom { get; set; }
 
@@ -175,6 +178,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("status", Status.ToString()));
+            }
             if (DateCreatedFrom != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateCreatedFrom", Serializers.DateTimeIso8601(DateCreatedFrom)));

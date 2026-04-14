@@ -42,7 +42,6 @@ namespace Twilio.Rest
         public static readonly Domain Marketplace = new Domain("marketplace");
         public static readonly Domain Messaging = new Domain("messaging");
         public static readonly Domain Monitor = new Domain("monitor");
-        public static readonly Domain Memory = new Domain("memory");
         public static readonly Domain Notify = new Domain("notify");
         public static readonly Domain Numbers = new Domain("numbers");
         public static readonly Domain Oauth = new Domain("oauth");

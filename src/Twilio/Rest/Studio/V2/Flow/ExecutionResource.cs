@@ -201,7 +201,9 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+           
         }
 
         #if !NET35
@@ -214,7 +216,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
         }
         #endif
 
@@ -246,7 +249,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
-            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
             return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
         }
 
@@ -255,7 +259,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400;
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
             return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
         }
         #endif
@@ -421,6 +426,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         #endif
         /// <summary> Retrieve a list of all Executions for the Flow. </summary>
         /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to read. </param>
+        /// <param name="status"> Only show Execution resources with the given status. Can be: `active` or `ended`. </param>
         /// <param name="dateCreatedFrom"> Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. </param>
         /// <param name="dateCreatedTo"> Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -429,19 +435,21 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <returns> A single instance of Execution </returns>
         public static ResourceSet<ExecutionResource> Read(
                                                      string pathFlowSid,
+                                                     ExecutionResource.StatusEnum status = null,
                                                      DateTime? dateCreatedFrom = null,
                                                      DateTime? dateCreatedTo = null,
                                                      long? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadExecutionOptions(pathFlowSid){ DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
+            var options = new ReadExecutionOptions(pathFlowSid){ Status = status, DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of all Executions for the Flow. </summary>
         /// <param name="pathFlowSid"> The SID of the Flow with the Execution resources to read. </param>
+        /// <param name="status"> Only show Execution resources with the given status. Can be: `active` or `ended`. </param>
         /// <param name="dateCreatedFrom"> Only show Execution resources starting on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. </param>
         /// <param name="dateCreatedTo"> Only show Execution resources starting before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time, given as `YYYY-MM-DDThh:mm:ss-hh:mm`. </param>
         /// <param name="pageSize"> How many resources to return in each list page. The default is 50, and the maximum is 1000. </param>
@@ -450,13 +458,14 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// <returns> Task that resolves to A single instance of Execution </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(
                                                                                              string pathFlowSid,
+                                                                                             ExecutionResource.StatusEnum status = null,
                                                                                              DateTime? dateCreatedFrom = null,
                                                                                              DateTime? dateCreatedTo = null,
                                                                                              long? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadExecutionOptions(pathFlowSid){ DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
+            var options = new ReadExecutionOptions(pathFlowSid){ Status = status, DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -472,13 +481,14 @@ namespace Twilio.Rest.Studio.V2.Flow
 
         public static ResourceSetResponse<ExecutionResource> ReadWithHeaders(
             string pathFlowSid,
+            ExecutionResource.StatusEnum status = null,
             DateTime? dateCreatedFrom = null,
             DateTime? dateCreatedTo = null,
             long? pageSize = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadExecutionOptions(pathFlowSid){ DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
+            var options = new ReadExecutionOptions(pathFlowSid){ Status = status, DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 
@@ -737,6 +747,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The SID or identifier that triggered this Execution. For example, a Call SID if triggered by an incoming call, a Message SID if triggered by an incoming message, a Request SID if triggered by a REST API request, and so on. </summary> 
+        [JsonProperty("initiated_by")]
+        public string InitiatedBy { get; private set; }
 
         ///<summary> The absolute URL of the resource. </summary> 
         [JsonProperty("url")]

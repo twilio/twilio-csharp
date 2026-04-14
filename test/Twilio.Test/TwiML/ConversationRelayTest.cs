@@ -50,11 +50,16 @@ namespace Twilio.Tests.TwiML
                 true,
                 "elevenlabs_text_normalization",
                 "interrupt_sensitivity",
-                "debug"
+                "debug",
+                "backgroundNoiseReduction",
+                "speechTimeout",
+                "deepgramSmartFormat",
+                "ignoreBackchannel",
+                "events"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\"></ConversationRelay>",
+                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\"></ConversationRelay>",
                 elem.ToString()
             );
         }

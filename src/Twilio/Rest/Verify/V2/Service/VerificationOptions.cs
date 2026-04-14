@@ -82,7 +82,7 @@ namespace Twilio.Rest.Verify.V2.Service
         
         public VerificationResource.RiskCheckEnum RiskCheck { get; set; }
 
-        ///<summary> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. </summary> 
+        ///<summary> A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The tags will also be included as part of the verification and message status event type payloads. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length. **This value should not contain PII.** </summary> 
         public string Tags { get; set; }
 
 

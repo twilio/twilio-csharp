@@ -24,9 +24,122 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-
 namespace Twilio.Rest.Numbers.V3
 {
+            
+public class HostedNumberOrderCreateResource : Resource
+{
+        ///<summary> A 34 character string that uniquely identifies this HostedNumberOrder. </summary> 
+        [JsonProperty("sid")]
+            public string Sid { get; private set; }
+
+        ///<summary> A 34 character string that uniquely identifies the account. </summary> 
+        [JsonProperty("accountSid")]
+            public string AccountSid { get; private set; }
+
+        ///<summary> A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted. </summary> 
+        [JsonProperty("incomingPhoneNumberSid")]
+            public string IncomingPhoneNumberSid { get; private set; }
+
+        ///<summary> A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number. </summary> 
+        [JsonProperty("addressSid")]
+            public string AddressSid { get; private set; }
+
+        ///<summary> A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign. </summary> 
+        [JsonProperty("signingDocumentSid")]
+            public string SigningDocumentSid { get; private set; }
+
+        ///<summary> Phone number to be hosted. This must be in [E.164](https://en.wikipedia.org/wiki/E.164) format, e.g., +16175551212 </summary> 
+        [JsonProperty("phoneNumber")]
+            [JsonConverter(typeof(PhoneNumberConverter))]
+            public Types.PhoneNumber PhoneNumber { get; private set; }
+
+        ///<summary> The capabilities </summary> 
+        [JsonProperty("capabilities")]
+            public PhoneNumberCapabilities Capabilities { get; private set; }
+
+        ///<summary> A 64 character string that is a human-readable text that describes this resource. </summary> 
+        [JsonProperty("friendlyName")]
+            public string FriendlyName { get; private set; }
+
+        ///<summary> Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID. </summary> 
+        [JsonProperty("uniqueName")]
+            public string UniqueName { get; private set; }
+
+        
+        [JsonProperty("status")]
+            public HostedNumberOrderResource.StatusEnum Status { get; private set; }
+
+        ///<summary> A message that explains why a hosted_number_order went to status \"action-required\" </summary> 
+        [JsonProperty("failureReason")]
+            public string FailureReason { get; private set; }
+
+        ///<summary> The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("dateCreated")]
+            public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
+        [JsonProperty("dateUpdated")]
+            public DateTime? DateUpdated { get; private set; }
+
+        ///<summary> The number of attempts made to verify ownership of the phone number that is being hosted. </summary> 
+        [JsonProperty("verificationAttempts")]
+            public int? VerificationAttempts { get; private set; }
+
+        ///<summary> Email of the owner of this phone number that is being hosted. </summary> 
+        [JsonProperty("email")]
+            public string Email { get; private set; }
+
+        ///<summary> A list of emails that LOA document for this HostedNumberOrder will be carbon copied to. </summary> 
+        [JsonProperty("ccEmails")]
+            public List<string> CcEmails { get; private set; }
+
+        ///<summary> The URL of this HostedNumberOrder. </summary> 
+        [JsonProperty("url")]
+            public Uri Url { get; private set; }
+
+        
+        [JsonProperty("verificationType")]
+            public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; private set; }
+
+        ///<summary> A 34 character string that uniquely identifies the Identity Document resource that represents the document for verifying ownership of the number to be hosted. </summary> 
+        [JsonProperty("verificationDocumentSid")]
+            public string VerificationDocumentSid { get; private set; }
+
+        ///<summary> A numerical extension to be used when making the ownership verification call. </summary> 
+        [JsonProperty("extension")]
+            public string Extension { get; private set; }
+
+        ///<summary> A value between 0-30 specifying the number of seconds to delay initiating the ownership verification call. </summary> 
+        [JsonProperty("callDelay")]
+            public int? CallDelay { get; private set; }
+
+        ///<summary> A verification code provided in the response for a user to enter when they pick up the phone call. </summary> 
+        [JsonProperty("verificationCode")]
+            public string VerificationCode { get; private set; }
+
+        ///<summary> A list of 34 character strings that are unique identifiers for the calls placed as part of ownership verification. </summary> 
+        [JsonProperty("verificationCallSids")]
+            public List<string> VerificationCallSids { get; private set; }
+
+    public static HostedNumberOrderCreateResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<HostedNumberOrderCreateResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+
     public class HostedNumberOrderResource : Resource
     {
     
@@ -67,7 +180,7 @@ namespace Twilio.Rest.Numbers.V3
 
         }
 
-        
+            
         private static Request BuildCreateRequest(CreateHostedNumberOrderOptions options, ITwilioRestClient client)
         {
             
@@ -88,11 +201,11 @@ namespace Twilio.Rest.Numbers.V3
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
-        public static HostedNumberOrderResource Create(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static HostedNumberOrderCreateResource Create(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
+            return HostedNumberOrderCreateResource.FromJson(response.Content);
         }
 
         #if !NET35
@@ -100,11 +213,11 @@ namespace Twilio.Rest.Numbers.V3
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderCreateResource> CreateAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
+            return HostedNumberOrderCreateResource.FromJson(response.Content);
         }
         #endif
 
@@ -128,7 +241,7 @@ namespace Twilio.Rest.Numbers.V3
         /// <param name="verificationDocumentSid"> Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns>
-        public static HostedNumberOrderResource Create(
+        public static HostedNumberOrderCreateResource Create(
                                           Types.PhoneNumber phoneNumber,
                                           bool? smsCapability,
                                           string accountSid = null,
@@ -173,7 +286,7 @@ namespace Twilio.Rest.Numbers.V3
         /// <param name="verificationDocumentSid"> Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns>
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(
+        public static async System.Threading.Tasks.Task<HostedNumberOrderCreateResource> CreateAsync(
                                                                                   Types.PhoneNumber phoneNumber,
                                                                                   bool? smsCapability,
                                                                                   string accountSid = null,
@@ -199,25 +312,25 @@ namespace Twilio.Rest.Numbers.V3
         #endif
 
 
-        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null) 
+        public static TwilioResponse<HostedNumberOrderCreateResource> CreateWithHeaders(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null) 
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
-            var resource = FromJson(response.Content);
-            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+            var resource = HostedNumberOrderCreateResource.FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderCreateResource>(resource, response.Headers, response.StatusCode);
         }
 
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderCreateResource>> CreateWithHeadersAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            var resource = FromJson(response.Content);
-            return new TwilioResponse<HostedNumberOrderResource>(resource, response.Headers, response.StatusCode);
+            var resource = HostedNumberOrderCreateResource.FromJson(response.Content);
+            return new TwilioResponse<HostedNumberOrderCreateResource>(resource, response.Headers, response.StatusCode);
         }
         #endif
 
-        public static TwilioResponse<HostedNumberOrderResource> CreateWithHeaders(
+        public static TwilioResponse<HostedNumberOrderCreateResource> CreateWithHeaders(
             Types.PhoneNumber phoneNumber,
             bool? smsCapability,
             string accountSid = null,
@@ -242,7 +355,7 @@ namespace Twilio.Rest.Numbers.V3
         }
 
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderResource>> CreateWithHeadersAsync(
+        public static async System.Threading.Tasks.Task<TwilioResponse<HostedNumberOrderCreateResource>> CreateWithHeadersAsync(
             Types.PhoneNumber phoneNumber,
             bool? smsCapability,
             string accountSid = null,
@@ -266,23 +379,6 @@ namespace Twilio.Rest.Numbers.V3
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
-    
-        /// <summary>
-        /// Converts a JSON string into a HostedNumberOrderResource object
-        /// </summary>
-        /// <param name="json"> Raw JSON string </param>
-        /// <returns> HostedNumberOrderResource object represented by the provided JSON </returns>
-        public static HostedNumberOrderResource FromJson(string json)
-        {
-            try
-            {
-                return JsonConvert.DeserializeObject<HostedNumberOrderResource>(json);
-            }
-            catch (JsonException e)
-            {
-                throw new ApiException(e.Message, e);
-            }
-        }
         /// <summary>
     /// Converts an object into a json string
     /// </summary>
@@ -299,106 +395,5 @@ namespace Twilio.Rest.Numbers.V3
             throw new ApiException(e.Message, e);
         }
     }
-
-    
-        ///<summary> A 34 character string that uniquely identifies this HostedNumberOrder. </summary> 
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the account. </summary> 
-        [JsonProperty("accountSid")]
-        public string AccountSid { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted. </summary> 
-        [JsonProperty("incomingPhoneNumberSid")]
-        public string IncomingPhoneNumberSid { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number. </summary> 
-        [JsonProperty("addressSid")]
-        public string AddressSid { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign. </summary> 
-        [JsonProperty("signingDocumentSid")]
-        public string SigningDocumentSid { get; private set; }
-
-        ///<summary> Phone number to be hosted. This must be in [E.164](https://en.wikipedia.org/wiki/E.164) format, e.g., +16175551212 </summary> 
-        [JsonProperty("phoneNumber")]
-        [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; private set; }
-
-        ///<summary> The capabilities </summary> 
-        [JsonProperty("capabilities")]
-        public PhoneNumberCapabilities Capabilities { get; private set; }
-
-        ///<summary> A 64 character string that is a human-readable text that describes this resource. </summary> 
-        [JsonProperty("friendlyName")]
-        public string FriendlyName { get; private set; }
-
-        ///<summary> Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID. </summary> 
-        [JsonProperty("uniqueName")]
-        public string UniqueName { get; private set; }
-
-        
-        [JsonProperty("status")]
-        public HostedNumberOrderResource.StatusEnum Status { get; private set; }
-
-        ///<summary> A message that explains why a hosted_number_order went to status \"action-required\" </summary> 
-        [JsonProperty("failureReason")]
-        public string FailureReason { get; private set; }
-
-        ///<summary> The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("dateCreated")]
-        public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format. </summary> 
-        [JsonProperty("dateUpdated")]
-        public DateTime? DateUpdated { get; private set; }
-
-        ///<summary> The number of attempts made to verify ownership of the phone number that is being hosted. </summary> 
-        [JsonProperty("verificationAttempts")]
-        public int? VerificationAttempts { get; private set; }
-
-        ///<summary> Email of the owner of this phone number that is being hosted. </summary> 
-        [JsonProperty("email")]
-        public string Email { get; private set; }
-
-        ///<summary> A list of emails that LOA document for this HostedNumberOrder will be carbon copied to. </summary> 
-        [JsonProperty("ccEmails")]
-        public List<string> CcEmails { get; private set; }
-
-        ///<summary> The URL of this HostedNumberOrder. </summary> 
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-
-        
-        [JsonProperty("verificationType")]
-        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; private set; }
-
-        ///<summary> A 34 character string that uniquely identifies the Identity Document resource that represents the document for verifying ownership of the number to be hosted. </summary> 
-        [JsonProperty("verificationDocumentSid")]
-        public string VerificationDocumentSid { get; private set; }
-
-        ///<summary> A numerical extension to be used when making the ownership verification call. </summary> 
-        [JsonProperty("extension")]
-        public string Extension { get; private set; }
-
-        ///<summary> A value between 0-30 specifying the number of seconds to delay initiating the ownership verification call. </summary> 
-        [JsonProperty("callDelay")]
-        public int? CallDelay { get; private set; }
-
-        ///<summary> A verification code provided in the response for a user to enter when they pick up the phone call. </summary> 
-        [JsonProperty("verificationCode")]
-        public string VerificationCode { get; private set; }
-
-        ///<summary> A list of 34 character strings that are unique identifiers for the calls placed as part of ownership verification. </summary> 
-        [JsonProperty("verificationCallSids")]
-        public List<string> VerificationCallSids { get; private set; }
-
-
-
-        private HostedNumberOrderResource() {
-
-        }
     }
 }
-

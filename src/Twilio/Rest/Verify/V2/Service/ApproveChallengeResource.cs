@@ -345,10 +345,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     
-        ///<summary> An object that contains challenge options. Currently only used for `passkeys`. </summary> 
-        [JsonProperty("options")]
-        public object Options { get; private set; }
-
         ///<summary> A 34 character string that uniquely identifies this Challenge. </summary> 
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -420,6 +416,10 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> Contains a dictionary of URL links to nested resources of this Challenge. </summary> 
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+
+        ///<summary> An object that contains challenge options. Currently only used for `passkeys`. </summary> 
+        [JsonProperty("options")]
+        public object Options { get; private set; }
 
 
 

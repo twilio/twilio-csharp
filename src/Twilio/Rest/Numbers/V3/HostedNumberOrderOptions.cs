@@ -25,7 +25,7 @@ namespace Twilio.Rest.Numbers.V3
 {
 
     /// <summary> Host a phone number's capability on Twilio's platform. </summary>
-    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
+    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderCreateResource>
     {
         
         ///<summary> The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format </summary> 
