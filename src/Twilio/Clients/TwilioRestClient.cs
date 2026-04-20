@@ -226,6 +226,29 @@ namespace Twilio.Clients
                 return response;
             }
 
+            // Try to deserialize as RFC 9457 format first (RestApiStandardException)
+            RestApiStandardException restApiStandardException = null;
+            try
+            {
+                restApiStandardException = RestApiStandardException.FromJson(response.Content);
+            }
+            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
+
+            // Check if it's a valid RFC 9457 response (has 'type' field)
+            // Type is mandatory field
+            if (restApiStandardException != null && restApiStandardException.Type != null)
+            {
+                throw new ApiStandardException(
+                    restApiStandardException.Code,
+                    (int)response.StatusCode,
+                    restApiStandardException.Type,
+                    restApiStandardException.Title,
+                    restApiStandardException.Detail,
+                    restApiStandardException.Instance,
+                    restApiStandardException.Errors
+                );
+            }
+            
             // Deserialize and throw exception
             RestException restException = null;
             try
@@ -245,29 +268,6 @@ namespace Twilio.Clients
                 );
             }
 
-            
-            // Try to deserialize as RFC 9457 format first (RestApiStandardException)
-            RestApiStandardException restApiStandardException = null;
-            try
-            {
-                restApiStandardException = RestApiStandardException.FromJson(response.Content);
-            }
-            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
-
-            // Check if it's a valid RFC 9457 response (has 'type' field)
-            if (restApiStandardException != null)
-            {
-                throw new ApiStandardException(
-                    restApiStandardException.Code,
-                    (int)response.StatusCode,
-                    restApiStandardException.Type,
-                    restApiStandardException.Title,
-                    restApiStandardException.Detail,
-                    restApiStandardException.Instance,
-                    restApiStandardException.Errors
-                );
-            }
-            
             // If both RestException and RestApiStandardException are null and throw default exception
             throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
         }
