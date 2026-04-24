@@ -153,9 +153,12 @@ namespace Twilio.Jwt
         /// <returns>seconds since epoch</returns>
         public static long ConvertToUnixTimestamp(DateTime date)
         {
+#if NET35
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            var utcDate = date.ToUniversalTime();
-            return Convert.ToInt64((utcDate - epoch).TotalSeconds);;
+            return Convert.ToInt64((date.ToUniversalTime() - epoch).TotalSeconds);
+#else
+            return new DateTimeOffset(date.ToUniversalTime()).ToUnixTimeSeconds();
+#endif
         }
     }
 }
