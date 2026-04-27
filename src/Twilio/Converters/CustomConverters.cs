@@ -35,7 +35,12 @@ namespace Twilio.Converters
                 }
                 if (reader.TokenType == JsonToken.Date)
                 {
-                    return (DateTime)reader.Value;
+                    var dt = ConvertToDateTime(reader.Value);
+                    if (objectType == typeof(List<DateTime>))
+                    {
+                        return new List<DateTime> { dt };
+                    }
+                    return dt;
                 }
                 if (reader.TokenType == JsonToken.StartArray)
                 {
@@ -52,7 +57,7 @@ namespace Twilio.Converters
                         }
                         else if (reader.TokenType == JsonToken.Date)
                         {
-                            dateTimes.Add((DateTime)reader.Value);
+                            dateTimes.Add(ConvertToDateTime(reader.Value));
                         }
                         else if (reader.TokenType == JsonToken.EndArray)
                         {
@@ -68,6 +73,15 @@ namespace Twilio.Converters
                     }
                 }
                 throw new JsonSerializationException("Failed to deserialize DateTime.");
+            }
+
+            private static DateTime ConvertToDateTime(object value)
+            {
+                if (value is DateTime dt)
+                    return dt;
+                if (value is DateTimeOffset dto)
+                    return dto.DateTime;
+                throw new JsonSerializationException($"Cannot convert {value?.GetType()} to DateTime.");
             }
 
             public override bool CanConvert(Type objectType)
