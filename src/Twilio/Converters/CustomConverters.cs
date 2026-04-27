@@ -29,6 +29,14 @@ namespace Twilio.Converters
 
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    return null;
+                }
+                if (reader.TokenType == JsonToken.Date)
+                {
+                    return (DateTime)reader.Value;
+                }
                 if (reader.TokenType == JsonToken.StartArray)
                 {
                     var dateTimes = new List<DateTime>();
@@ -41,6 +49,10 @@ namespace Twilio.Converters
                             {
                                 dateTimes.Add(dateTime);
                             }
+                        }
+                        else if (reader.TokenType == JsonToken.Date)
+                        {
+                            dateTimes.Add((DateTime)reader.Value);
                         }
                         else if (reader.TokenType == JsonToken.EndArray)
                         {
