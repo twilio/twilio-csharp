@@ -29,6 +29,19 @@ namespace Twilio.Converters
 
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    return null;
+                }
+                if (reader.TokenType == JsonToken.Date)
+                {
+                    var dt = ConvertToDateTime(reader.Value);
+                    if (objectType == typeof(List<DateTime>))
+                    {
+                        return new List<DateTime> { dt };
+                    }
+                    return dt;
+                }
                 if (reader.TokenType == JsonToken.StartArray)
                 {
                     var dateTimes = new List<DateTime>();
@@ -41,6 +54,10 @@ namespace Twilio.Converters
                             {
                                 dateTimes.Add(dateTime);
                             }
+                        }
+                        else if (reader.TokenType == JsonToken.Date)
+                        {
+                            dateTimes.Add(ConvertToDateTime(reader.Value));
                         }
                         else if (reader.TokenType == JsonToken.EndArray)
                         {
@@ -56,6 +73,15 @@ namespace Twilio.Converters
                     }
                 }
                 throw new JsonSerializationException("Failed to deserialize DateTime.");
+            }
+
+            private static DateTime ConvertToDateTime(object value)
+            {
+                if (value is DateTime dt)
+                    return dt;
+                if (value is DateTimeOffset dto)
+                    return dto.DateTime;
+                throw new JsonSerializationException($"Cannot convert {value?.GetType()} to DateTime.");
             }
 
             public override bool CanConvert(Type objectType)
