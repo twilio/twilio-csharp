@@ -189,12 +189,14 @@ namespace Twilio.TwiML.Voice
         /// <param name="trim"> Trim the recording </param>
         /// <param name="track"> To indicate which audio track should be recorded </param>
         /// <param name="channels"> The recording channels for the final recording </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         public Start Recording(string recordingStatusCallback = null,
                                Recording.RecordingStatusCallbackMethodEnum recordingStatusCallbackMethod = null,
                                IEnumerable<Recording.EventEnum> recordingStatusCallbackEvent = null,
                                Recording.TrimEnum trim = null,
                                Recording.TrackEnum track = null,
-                               Recording.ChannelsEnum channels = null)
+                               Recording.ChannelsEnum channels = null,
+                               string recordingConfigurationId = null)
         {
             var newChild = new Recording(
                 recordingStatusCallback,
@@ -202,7 +204,8 @@ namespace Twilio.TwiML.Voice
                 recordingStatusCallbackEvent,
                 trim,
                 track,
-                channels
+                channels,
+                recordingConfigurationId
             );
             this.Append(newChild);
             return this;

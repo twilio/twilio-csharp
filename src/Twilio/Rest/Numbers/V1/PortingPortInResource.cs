@@ -32,17 +32,17 @@ namespace Twilio.Rest.Numbers.V1
     
         public class NumbersV1PortingAddress
         {
-            [JsonProperty("street")]
+            [JsonProperty("street", NullValueHandling = NullValueHandling.Ignore)]
             public string Street {get; private set;}
-            [JsonProperty("city")]
+            [JsonProperty("city", NullValueHandling = NullValueHandling.Ignore)]
             public string City {get; private set;}
-            [JsonProperty("state")]
+            [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
             public string State {get; private set;}
-            [JsonProperty("zip")]
+            [JsonProperty("zip", NullValueHandling = NullValueHandling.Ignore)]
             public string Zip {get; private set;}
-            [JsonProperty("country")]
+            [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
             public string Country {get; private set;}
-            [JsonProperty("street_2")]
+            [JsonProperty("street_2", NullValueHandling = NullValueHandling.Ignore)]
             public string Street2 {get; private set;}
             public NumbersV1PortingAddress() { }
             public class Builder
@@ -89,30 +89,30 @@ namespace Twilio.Rest.Numbers.V1
         }
         public class NumbersV1PortingLosingCarrierInformation
         {
-            [JsonProperty("customer_name")]
+            [JsonProperty("customer_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CustomerName {get; private set;}
-            [JsonProperty("authorized_representative")]
+            [JsonProperty("authorized_representative", NullValueHandling = NullValueHandling.Ignore)]
             public string AuthorizedRepresentative {get; private set;}
-            [JsonProperty("authorized_representative_email")]
+            [JsonProperty("authorized_representative_email", NullValueHandling = NullValueHandling.Ignore)]
             public string AuthorizedRepresentativeEmail {get; private set;}
-            [JsonProperty("account_number")]
+            [JsonProperty("account_number", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountNumber {get; private set;}
-            [JsonProperty("account_telephone_number")]
+            [JsonProperty("account_telephone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountTelephoneNumber {get; private set;}
-            [JsonProperty("address_sid")]
+            [JsonProperty("address_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressSid {get; private set;}
-            [JsonProperty("address")]
+            [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
             public NumbersV1PortingAddress Address {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("customer_type")]
+            [JsonProperty("customer_type", NullValueHandling = NullValueHandling.Ignore)]
             public PortingPortInResource.CustomerTypeEnum CustomerType {get; private set;}
-            [JsonProperty("authorized_representative_katakana")]
+            [JsonProperty("authorized_representative_katakana", NullValueHandling = NullValueHandling.Ignore)]
             public string AuthorizedRepresentativeKatakana {get; private set;}
-            [JsonProperty("sub_municipality")]
+            [JsonProperty("sub_municipality", NullValueHandling = NullValueHandling.Ignore)]
             public string SubMunicipality {get; private set;}
-            [JsonProperty("building")]
+            [JsonProperty("building", NullValueHandling = NullValueHandling.Ignore)]
             public string Building {get; private set;}
-            [JsonProperty("katakana_name")]
+            [JsonProperty("katakana_name", NullValueHandling = NullValueHandling.Ignore)]
             public string KatakanaName {get; private set;}
             public NumbersV1PortingLosingCarrierInformation() { }
             public class Builder
@@ -189,9 +189,9 @@ namespace Twilio.Rest.Numbers.V1
         }
         public class NumbersV1PortingPortInCreatePhoneNumbers
         {
-            [JsonProperty("phone_number")]
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string PhoneNumber {get; private set;}
-            [JsonProperty("pin")]
+            [JsonProperty("pin", NullValueHandling = NullValueHandling.Ignore)]
             public string Pin {get; private set;}
             public NumbersV1PortingPortInCreatePhoneNumbers() { }
             public class Builder
@@ -218,27 +218,27 @@ namespace Twilio.Rest.Numbers.V1
         }
         public class NumbersV1PortingPortInCreate
         {
-            [JsonProperty("account_sid")]
+            [JsonProperty("account_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountSid {get; private set;}
-            [JsonProperty("documents")]
+            [JsonProperty("documents", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Documents {get; private set;}
-            [JsonProperty("losing_carrier_information")]
+            [JsonProperty("losing_carrier_information", NullValueHandling = NullValueHandling.Ignore)]
             public NumbersV1PortingLosingCarrierInformation LosingCarrierInformation {get; private set;}
-            [JsonProperty("phone_numbers")]
+            [JsonProperty("phone_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public List<NumbersV1PortingPortInCreatePhoneNumbers> PhoneNumbers {get; private set;}
-            [JsonProperty("notification_emails")]
+            [JsonProperty("notification_emails", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> NotificationEmails {get; private set;}
-            [JsonProperty("target_port_in_date")]
+            [JsonProperty("target_port_in_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? TargetPortInDate {get; private set;}
-            [JsonProperty("target_port_in_time_range_start")]
+            [JsonProperty("target_port_in_time_range_start", NullValueHandling = NullValueHandling.Ignore)]
             public string TargetPortInTimeRangeStart {get; private set;}
-            [JsonProperty("target_port_in_time_range_end")]
+            [JsonProperty("target_port_in_time_range_end", NullValueHandling = NullValueHandling.Ignore)]
             public string TargetPortInTimeRangeEnd {get; private set;}
-            [JsonProperty("bundle_sid")]
+            [JsonProperty("bundle_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string BundleSid {get; private set;}
-            [JsonProperty("portability_advance_carrier")]
+            [JsonProperty("portability_advance_carrier", NullValueHandling = NullValueHandling.Ignore)]
             public string PortabilityAdvanceCarrier {get; private set;}
-            [JsonProperty("auto_cancel_approval_numbers")]
+            [JsonProperty("auto_cancel_approval_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public string AutoCancelApprovalNumbers {get; private set;}
             public NumbersV1PortingPortInCreate() { }
             public class Builder
@@ -310,29 +310,29 @@ namespace Twilio.Rest.Numbers.V1
         }
         public class NumbersV1PortingPortInPhoneNumberResult
         {
-            [JsonProperty("not_portability_reason")]
+            [JsonProperty("not_portability_reason", NullValueHandling = NullValueHandling.Ignore)]
             public string NotPortabilityReason {get; private set;}
-            [JsonProperty("not_portability_reason_code")]
+            [JsonProperty("not_portability_reason_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? NotPortabilityReasonCode {get; private set;}
-            [JsonProperty("number_type")]
+            [JsonProperty("number_type", NullValueHandling = NullValueHandling.Ignore)]
             public string NumberType {get; private set;}
-            [JsonProperty("phone_number")]
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string PhoneNumber {get; private set;}
-            [JsonProperty("port_date")]
+            [JsonProperty("port_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? PortDate {get; private set;}
-            [JsonProperty("port_in_phone_number_sid")]
+            [JsonProperty("port_in_phone_number_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string PortInPhoneNumberSid {get; private set;}
-            [JsonProperty("port_in_phone_number_status")]
+            [JsonProperty("port_in_phone_number_status", NullValueHandling = NullValueHandling.Ignore)]
             public string PortInPhoneNumberStatus {get; private set;}
-            [JsonProperty("portable")]
+            [JsonProperty("portable", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Portable {get; private set;}
-            [JsonProperty("rejection_reason")]
+            [JsonProperty("rejection_reason", NullValueHandling = NullValueHandling.Ignore)]
             public string RejectionReason {get; private set;}
-            [JsonProperty("rejection_reason_code")]
+            [JsonProperty("rejection_reason_code", NullValueHandling = NullValueHandling.Ignore)]
             public string RejectionReasonCode {get; private set;}
-            [JsonProperty("status_last_time_updated_timestamp")]
+            [JsonProperty("status_last_time_updated_timestamp", NullValueHandling = NullValueHandling.Ignore)]
             public string StatusLastTimeUpdatedTimestamp {get; private set;}
-            [JsonProperty("external_porting_vendor_phone_number_id")]
+            [JsonProperty("external_porting_vendor_phone_number_id", NullValueHandling = NullValueHandling.Ignore)]
             public string ExternalPortingVendorPhoneNumberId {get; private set;}
             public NumbersV1PortingPortInPhoneNumberResult() { }
             public class Builder

@@ -32,9 +32,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
     
         public class ScimName
         {
-            [JsonProperty("givenName")]
+            [JsonProperty("givenName", NullValueHandling = NullValueHandling.Ignore)]
             public string GivenName {get; private set;}
-            [JsonProperty("familyName")]
+            [JsonProperty("familyName", NullValueHandling = NullValueHandling.Ignore)]
             public string FamilyName {get; private set;}
             public ScimName() { }
             public class Builder
@@ -61,11 +61,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimEmailAddress
         {
-            [JsonProperty("primary")]
+            [JsonProperty("primary", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Primary {get; private set;}
-            [JsonProperty("value")]
+            [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
             public string Value {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
             public ScimEmailAddress() { }
             public class Builder
@@ -97,13 +97,13 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimMeta
         {
-            [JsonProperty("resourceType")]
+            [JsonProperty("resourceType", NullValueHandling = NullValueHandling.Ignore)]
             public string ResourceType {get; private set;}
-            [JsonProperty("created")]
+            [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? Created {get; private set;}
-            [JsonProperty("lastModified")]
+            [JsonProperty("lastModified", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? LastModified {get; private set;}
-            [JsonProperty("version")]
+            [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
             public string Version {get; private set;}
             public ScimMeta() { }
             public class Builder
@@ -140,27 +140,27 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimUser
         {
-            [JsonProperty("userName")]
+            [JsonProperty("userName", NullValueHandling = NullValueHandling.Ignore)]
             public string UserName {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("externalId")]
+            [JsonProperty("externalId", NullValueHandling = NullValueHandling.Ignore)]
             public string ExternalId {get; private set;}
-            [JsonProperty("displayName")]
+            [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
             public string DisplayName {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public ScimName Name {get; private set;}
-            [JsonProperty("emails")]
+            [JsonProperty("emails", NullValueHandling = NullValueHandling.Ignore)]
             public List<ScimEmailAddress> Emails {get; private set;}
-            [JsonProperty("active")]
+            [JsonProperty("active", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Active {get; private set;}
-            [JsonProperty("locale")]
+            [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
             public string Locale {get; private set;}
-            [JsonProperty("timezone")]
+            [JsonProperty("timezone", NullValueHandling = NullValueHandling.Ignore)]
             public string Timezone {get; private set;}
-            [JsonProperty("schemas")]
+            [JsonProperty("schemas", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Schemas {get; private set;}
-            [JsonProperty("meta")]
+            [JsonProperty("meta", NullValueHandling = NullValueHandling.Ignore)]
             public ScimMeta Meta {get; private set;}
             public ScimUser() { }
             public class Builder
@@ -232,11 +232,11 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimPatchOperation
         {
-            [JsonProperty("op")]
+            [JsonProperty("op", NullValueHandling = NullValueHandling.Ignore)]
             public string Op {get; private set;}
-            [JsonProperty("path")]
+            [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
             public string Path {get; private set;}
-            [JsonProperty("value")]
+            [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
             public object Value {get; private set;}
             public ScimPatchOperation() { }
             public class Builder
@@ -268,9 +268,9 @@ namespace Twilio.Rest.PreviewIam.Organizations
         }
         public class ScimPatchRequest
         {
-            [JsonProperty("schemas")]
+            [JsonProperty("schemas", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Schemas {get; private set;}
-            [JsonProperty("Operations")]
+            [JsonProperty("Operations", NullValueHandling = NullValueHandling.Ignore)]
             public List<ScimPatchOperation> Operations {get; private set;}
             public ScimPatchRequest() { }
             public class Builder

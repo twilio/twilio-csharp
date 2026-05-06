@@ -32,15 +32,15 @@ namespace Twilio.Rest.Assistants.V1
     
         public class AssistantsV1ServiceCreatePolicyRequest
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy_details")]
+            [JsonProperty("policy_details", NullValueHandling = NullValueHandling.Ignore)]
             public object PolicyDetails {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
             public AssistantsV1ServiceCreatePolicyRequest() { }
             public class Builder
@@ -82,19 +82,19 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateToolRequest
         {
-            [JsonProperty("enabled")]
+            [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Enabled {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("assistant_id")]
+            [JsonProperty("assistant_id", NullValueHandling = NullValueHandling.Ignore)]
             public string AssistantId {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("meta")]
+            [JsonProperty("meta", NullValueHandling = NullValueHandling.Ignore)]
             public object Meta {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
             public AssistantsV1ServiceCreateToolRequest() { }
             public class Builder
@@ -146,19 +146,19 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceUpdateToolRequest
         {
-            [JsonProperty("assistant_id")]
+            [JsonProperty("assistant_id", NullValueHandling = NullValueHandling.Ignore)]
             public string AssistantId {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("enabled")]
+            [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Enabled {get; private set;}
-            [JsonProperty("meta")]
+            [JsonProperty("meta", NullValueHandling = NullValueHandling.Ignore)]
             public object Meta {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
             public AssistantsV1ServiceUpdateToolRequest() { }
             public class Builder
@@ -210,23 +210,23 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServicePolicy
         {
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("policy_details")]
+            [JsonProperty("policy_details", NullValueHandling = NullValueHandling.Ignore)]
             public object PolicyDetails {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("account_sid")]
+            [JsonProperty("account_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountSid {get; private set;}
-            [JsonProperty("user_sid")]
+            [JsonProperty("user_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string UserSid {get; private set;}
-            [JsonProperty("date_created")]
+            [JsonProperty("date_created", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateCreated {get; private set;}
-            [JsonProperty("date_updated")]
+            [JsonProperty("date_updated", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateUpdated {get; private set;}
             public AssistantsV1ServicePolicy() { }
             public class Builder

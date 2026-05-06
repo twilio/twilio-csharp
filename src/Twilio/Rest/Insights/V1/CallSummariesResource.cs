@@ -533,27 +533,27 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("connect_duration")]
         public int? ConnectDuration { get; private set; }
 
-        ///<summary> The calling party. </summary> 
+        ///<summary> `object` The calling party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties. </summary> 
         [JsonProperty("from")]
         public object From { get; private set; }
 
-        ///<summary> The called party. </summary> 
+        ///<summary> `object` The called party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties. </summary> 
         [JsonProperty("to")]
         public object To { get; private set; }
 
-        ///<summary> Contains metrics and properties for the Twilio media gateway of a PSTN call. </summary> 
+        ///<summary> `object` Contains metrics and properties for the Twilio media gateway of a PSTN call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> Contains metrics and properties for the Twilio media gateway of a Client call. </summary> 
+        ///<summary> `object` Contains metrics and properties for the Twilio media gateway of a Client call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 
-        ///<summary> Contains metrics and properties for the SDK sensor library for Client calls. </summary> 
+        ///<summary> `object` Contains metrics and properties for the SDK sensor library for Client calls. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. </summary> 
+        ///<summary> `object` Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
@@ -565,19 +565,19 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> Attributes capturing call-flow-specific details. </summary> 
+        ///<summary> `object` Attributes capturing call-flow-specific details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#attributes-object) for the object properties. </summary> 
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
 
-        ///<summary> Contains edge-agnostic call-level details. </summary> 
+        ///<summary> `object` Contains edge-agnostic call-level details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#properties-object) for the object properties. </summary> 
         [JsonProperty("properties")]
         public object Properties { get; private set; }
 
-        ///<summary> Contains trusted communications details including Branded Call and verified caller ID. </summary> 
+        ///<summary> `object` Contains trusted communications details including Branded Call and verified caller ID. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#trust-object) for the object properties. </summary> 
         [JsonProperty("trust")]
         public object Trust { get; private set; }
 
-        ///<summary> The annotation </summary> 
+        ///<summary> `object` Programmatically labeled annotations for the Call. Developers can update the Call Summary records with Annotation during or after a Call. Annotations can be updated as long as the Call Summary record is addressable via the API. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#annotation-object) for the object properties. </summary> 
         [JsonProperty("annotation")]
         public object Annotation { get; private set; }
 

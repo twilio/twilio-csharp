@@ -32,12 +32,16 @@ namespace Twilio.Rest.PreviewIam.Organizations
     
         public class PublicApiCreateRoleAssignmentRequest
         {
-            [JsonProperty("role_sid")]
+            [JsonProperty("role_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string RoleSid {get; private set;}
-            [JsonProperty("scope")]
+            [JsonProperty("scope", NullValueHandling = NullValueHandling.Ignore)]
             public string Scope {get; private set;}
-            [JsonProperty("identity")]
+            [JsonProperty("identity", NullValueHandling = NullValueHandling.Ignore)]
             public string Identity {get; private set;}
+            [JsonProperty("resource_type", NullValueHandling = NullValueHandling.Ignore)]
+            public string ResourceType {get; private set;}
+            [JsonProperty("resource_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string ResourceId {get; private set;}
             public PublicApiCreateRoleAssignmentRequest() { }
             public class Builder
             {
@@ -58,6 +62,16 @@ namespace Twilio.Rest.PreviewIam.Organizations
                 public Builder WithIdentity(string identity)
                 {
                     _publicApiCreateRoleAssignmentRequest.Identity= identity;
+                    return this;
+                }
+                public Builder WithResourceType(string resourceType)
+                {
+                    _publicApiCreateRoleAssignmentRequest.ResourceType= resourceType;
+                    return this;
+                }
+                public Builder WithResourceId(string resourceId)
+                {
+                    _publicApiCreateRoleAssignmentRequest.ResourceId= resourceId;
                     return this;
                 }
                 public PublicApiCreateRoleAssignmentRequest Build()
@@ -338,6 +352,8 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pageSize">  </param>
         /// <param name="identity">  </param>
         /// <param name="scope">  </param>
+        /// <param name="resourceType"> Filter by resource type for resource-level role assignments </param>
+        /// <param name="resourceId"> Filter by resource id for resource-level role assignments </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RoleAssignment </returns>
@@ -346,10 +362,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                      int? pageSize = null,
                                                      string identity = null,
                                                      string scope = null,
+                                                     string resourceType = null,
+                                                     string resourceId = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, Limit = limit};
+            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, ResourceType = resourceType, ResourceId = resourceId, Limit = limit};
             return Read(options, client);
         }
 
@@ -359,6 +377,8 @@ namespace Twilio.Rest.PreviewIam.Organizations
         /// <param name="pageSize">  </param>
         /// <param name="identity">  </param>
         /// <param name="scope">  </param>
+        /// <param name="resourceType"> Filter by resource type for resource-level role assignments </param>
+        /// <param name="resourceId"> Filter by resource id for resource-level role assignments </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoleAssignment </returns>
@@ -367,10 +387,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
                                                                                              int? pageSize = null,
                                                                                              string identity = null,
                                                                                              string scope = null,
+                                                                                             string resourceType = null,
+                                                                                             string resourceId = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, Limit = limit};
+            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, ResourceType = resourceType, ResourceId = resourceId, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -389,10 +411,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
             int? pageSize = null,
             string identity = null,
             string scope = null,
+            string resourceType = null,
+            string resourceId = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, Limit = limit};
+            var options = new ReadRoleAssignmentOptions(pathOrganizationSid){ PageSize = pageSize, Identity = identity, Scope = scope, ResourceType = resourceType, ResourceId = resourceId, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 
@@ -506,6 +530,14 @@ namespace Twilio.Rest.PreviewIam.Organizations
         ///<summary> Twilio Sid representing scope of this assignment </summary> 
         [JsonProperty("identity")]
         public string Identity { get; private set; }
+
+        ///<summary> The resource type for resource-level role assignments </summary> 
+        [JsonProperty("resource_type")]
+        public string ResourceType { get; private set; }
+
+        ///<summary> The resource id for resource-level role assignments </summary> 
+        [JsonProperty("resource_id")]
+        public string ResourceId { get; private set; }
 
 
 

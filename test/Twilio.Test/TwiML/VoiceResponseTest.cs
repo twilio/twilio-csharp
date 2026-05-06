@@ -77,6 +77,7 @@ namespace Twilio.Tests.TwiML
                 Dial.RecordEnum.DoNotRecord,
                 Dial.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
+                "recording_configuration_id",
                 Twilio.Http.HttpMethod.Get,
                 new[] {Dial.RecordingEventEnum.InProgress},
                 true,
@@ -149,7 +150,8 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 new[] {Record.RecordingEventEnum.InProgress},
                 true,
-                new Uri("https://example.com")
+                new Uri("https://example.com"),
+                "recording_configuration_id"
             );
 
             elem.Redirect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
@@ -206,7 +208,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
                 "  <Connect action=\"https://example.com\" method=\"GET\"></Connect>" + Environment.NewLine +
-                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\" referUrl=\"https://example.com\" referMethod=\"GET\" events=\"call-progress-event\">number</Dial>" + Environment.NewLine +
+                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingConfigurationId=\"recording_configuration_id\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\" referUrl=\"https://example.com\" referMethod=\"GET\" events=\"call-progress-event\">number</Dial>" + Environment.NewLine +
                 "  <Echo></Echo>" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" maxQueueSize=\"1\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
                 "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\" actionOnEmptyResult=\"true\" speechModel=\"speech_model\" enhanced=\"true\"></Gather>" + Environment.NewLine +
@@ -215,7 +217,7 @@ namespace Twilio.Tests.TwiML
                 "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
-                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>" + Environment.NewLine +
+                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\" recordingConfigurationId=\"recording_configuration_id\"></Record>" + Environment.NewLine +
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"af-ZA\">message</Say>" + Environment.NewLine +

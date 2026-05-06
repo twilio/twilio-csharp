@@ -32,7 +32,7 @@ namespace Twilio.Rest.Marketplace.V1
     
         public class CreateReferralConversionRequest
         {
-            [JsonProperty("referral_account_sid")]
+            [JsonProperty("referral_account_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string ReferralAccountSid {get; private set;}
             public CreateReferralConversionRequest() { }
             public class Builder

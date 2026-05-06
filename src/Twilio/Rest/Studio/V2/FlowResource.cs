@@ -92,6 +92,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="status">  </param>
         /// <param name="definition"> JSON representation of flow definition. </param>
         /// <param name="commitMessage"> Description of change made in the revision. </param>
+        /// <param name="authorSid"> The SID of the User that created the Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Create(
@@ -99,9 +100,10 @@ namespace Twilio.Rest.Studio.V2
                                           FlowResource.StatusEnum status,
                                           object definition,
                                           string commitMessage = null,
+                                          string authorSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+            var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage, AuthorSid = authorSid };
             return Create(options, client);
         }
 
@@ -111,6 +113,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="status">  </param>
         /// <param name="definition"> JSON representation of flow definition. </param>
         /// <param name="commitMessage"> Description of change made in the revision. </param>
+        /// <param name="authorSid"> The SID of the User that created the Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(
@@ -118,9 +121,10 @@ namespace Twilio.Rest.Studio.V2
                                                                                   FlowResource.StatusEnum status,
                                                                                   object definition,
                                                                                   string commitMessage = null,
+                                                                                  string authorSid = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage, AuthorSid = authorSid };
             return await CreateAsync(options, client);
         }
         #endif
@@ -149,9 +153,10 @@ namespace Twilio.Rest.Studio.V2
             FlowResource.StatusEnum status,
             object definition,
             string commitMessage = null,
+            string authorSid = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage, AuthorSid = authorSid };
         return CreateWithHeaders(options, client);
         }
 
@@ -161,9 +166,10 @@ namespace Twilio.Rest.Studio.V2
             FlowResource.StatusEnum status,
             object definition,
             string commitMessage = null,
+            string authorSid = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage };
+        var options = new CreateFlowOptions(friendlyName, status, definition){  CommitMessage = commitMessage, AuthorSid = authorSid };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
@@ -568,6 +574,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The string that you assigned to describe the Flow. </param>
         /// <param name="definition"> JSON representation of flow definition. </param>
         /// <param name="commitMessage"> Description of change made in the revision. </param>
+        /// <param name="authorSid"> The SID of the User that created or last updated the Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Update(
@@ -576,9 +583,10 @@ namespace Twilio.Rest.Studio.V2
                                           string friendlyName = null,
                                           object definition = null,
                                           string commitMessage = null,
+                                          string authorSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage, AuthorSid = authorSid };
             return Update(options, client);
         }
 
@@ -589,6 +597,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The string that you assigned to describe the Flow. </param>
         /// <param name="definition"> JSON representation of flow definition. </param>
         /// <param name="commitMessage"> Description of change made in the revision. </param>
+        /// <param name="authorSid"> The SID of the User that created or last updated the Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<FlowResource> UpdateAsync(
@@ -597,9 +606,10 @@ namespace Twilio.Rest.Studio.V2
                                                                               string friendlyName = null,
                                                                               object definition = null,
                                                                               string commitMessage = null,
+                                                                              string authorSid = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage, AuthorSid = authorSid };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -629,9 +639,10 @@ namespace Twilio.Rest.Studio.V2
             string friendlyName = null,
             object definition = null,
             string commitMessage = null,
+            string authorSid = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage, AuthorSid = authorSid };
             return UpdateWithHeaders(options, client);
         }
 
@@ -642,9 +653,10 @@ namespace Twilio.Rest.Studio.V2
             string friendlyName = null,
             object definition = null,
             string commitMessage = null,
+            string authorSid = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage };
+            var options = new UpdateFlowOptions(pathSid, status){ FriendlyName = friendlyName, Definition = definition, CommitMessage = commitMessage, AuthorSid = authorSid };
             return await UpdateWithHeadersAsync(options, client);
         }
         #endif

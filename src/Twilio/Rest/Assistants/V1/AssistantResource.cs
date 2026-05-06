@@ -32,9 +32,9 @@ namespace Twilio.Rest.Assistants.V1
     
         public class AssistantsV1ServiceCustomerAi
         {
-            [JsonProperty("perception_engine_enabled")]
+            [JsonProperty("perception_engine_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? PerceptionEngineEnabled {get; private set;}
-            [JsonProperty("personalization_engine_enabled")]
+            [JsonProperty("personalization_engine_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? PersonalizationEngineEnabled {get; private set;}
             public AssistantsV1ServiceCustomerAi() { }
             public class Builder
@@ -61,11 +61,11 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceSegmentCredential
         {
-            [JsonProperty("profile_api_key")]
+            [JsonProperty("profile_api_key", NullValueHandling = NullValueHandling.Ignore)]
             public string ProfileApiKey {get; private set;}
-            [JsonProperty("space_id")]
+            [JsonProperty("space_id", NullValueHandling = NullValueHandling.Ignore)]
             public string SpaceId {get; private set;}
-            [JsonProperty("write_key")]
+            [JsonProperty("write_key", NullValueHandling = NullValueHandling.Ignore)]
             public string WriteKey {get; private set;}
             public AssistantsV1ServiceSegmentCredential() { }
             public class Builder
@@ -97,15 +97,15 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateAssistantRequest
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("customer_ai")]
+            [JsonProperty("customer_ai", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCustomerAi CustomerAi {get; private set;}
-            [JsonProperty("owner")]
+            [JsonProperty("owner", NullValueHandling = NullValueHandling.Ignore)]
             public string Owner {get; private set;}
-            [JsonProperty("personality_prompt")]
+            [JsonProperty("personality_prompt", NullValueHandling = NullValueHandling.Ignore)]
             public string PersonalityPrompt {get; private set;}
-            [JsonProperty("segment_credential")]
+            [JsonProperty("segment_credential", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceSegmentCredential SegmentCredential {get; private set;}
             public AssistantsV1ServiceCreateAssistantRequest() { }
             public class Builder
@@ -147,15 +147,15 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceUpdateAssistantRequest
         {
-            [JsonProperty("customer_ai")]
+            [JsonProperty("customer_ai", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCustomerAi CustomerAi {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("owner")]
+            [JsonProperty("owner", NullValueHandling = NullValueHandling.Ignore)]
             public string Owner {get; private set;}
-            [JsonProperty("personality_prompt")]
+            [JsonProperty("personality_prompt", NullValueHandling = NullValueHandling.Ignore)]
             public string PersonalityPrompt {get; private set;}
-            [JsonProperty("segment_credential")]
+            [JsonProperty("segment_credential", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceSegmentCredential SegmentCredential {get; private set;}
             public AssistantsV1ServiceUpdateAssistantRequest() { }
             public class Builder
@@ -197,27 +197,27 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceKnowledge
         {
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("date_created")]
+            [JsonProperty("date_created", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateCreated {get; private set;}
-            [JsonProperty("date_updated")]
+            [JsonProperty("date_updated", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateUpdated {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("account_sid")]
+            [JsonProperty("account_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountSid {get; private set;}
-            [JsonProperty("knowledge_source_details")]
+            [JsonProperty("knowledge_source_details", NullValueHandling = NullValueHandling.Ignore)]
             public object KnowledgeSourceDetails {get; private set;}
-            [JsonProperty("status")]
+            [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
             public string Status {get; private set;}
-            [JsonProperty("url")]
+            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
             public string Url {get; private set;}
-            [JsonProperty("embedding_model")]
+            [JsonProperty("embedding_model", NullValueHandling = NullValueHandling.Ignore)]
             public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceKnowledge() { }
             public class Builder
@@ -289,27 +289,27 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceTool
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("enabled")]
+            [JsonProperty("enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Enabled {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("meta")]
+            [JsonProperty("meta", NullValueHandling = NullValueHandling.Ignore)]
             public object Meta {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("requires_auth")]
+            [JsonProperty("requires_auth", NullValueHandling = NullValueHandling.Ignore)]
             public bool? RequiresAuth {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("date_created")]
+            [JsonProperty("date_created", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateCreated {get; private set;}
-            [JsonProperty("date_updated")]
+            [JsonProperty("date_updated", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? DateUpdated {get; private set;}
-            [JsonProperty("account_sid")]
+            [JsonProperty("account_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string AccountSid {get; private set;}
-            [JsonProperty("url")]
+            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
             public string Url {get; private set;}
             public AssistantsV1ServiceTool() { }
             public class Builder

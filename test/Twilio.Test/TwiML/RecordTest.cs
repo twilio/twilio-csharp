@@ -41,11 +41,12 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 new[] {Record.RecordingEventEnum.InProgress},
                 true,
-                new Uri("https://example.com")
+                new Uri("https://example.com"),
+                "recording_configuration_id"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>",
+                "<Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\" recordingConfigurationId=\"recording_configuration_id\"></Record>",
                 elem.ToString()
             );
         }

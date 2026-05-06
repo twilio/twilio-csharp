@@ -148,6 +148,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio. </summary> 
         public string RecordingTrack { get; set; }
 
+        ///<summary> The identifier of the configuration to be used when creating and processing the recording </summary> 
+        public string RecordingConfigurationId { get; set; }
+
         ///<summary> The maximum duration of the call in seconds. Constraints depend on account and configuration. </summary> 
         public int? TimeLimit { get; set; }
 
@@ -357,6 +360,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (RecordingTrack != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
+            }
+            if (RecordingConfigurationId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingConfigurationId", RecordingConfigurationId));
             }
             if (TimeLimit != null)
             {

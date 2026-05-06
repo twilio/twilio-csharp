@@ -33,16 +33,16 @@ namespace Twilio.Rest.Messaging.V3
         public class TypingIndicatorRequest
         {
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("channel")]
+            [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
             public TypingIndicatorResource.ChannelEnum Channel {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("event")]
+            [JsonProperty("event", NullValueHandling = NullValueHandling.Ignore)]
             public TypingIndicatorResource.EventEnum Event {get; private set;}
-            [JsonProperty("from")]
+            [JsonProperty("from", NullValueHandling = NullValueHandling.Ignore)]
             public string From {get; private set;}
-            [JsonProperty("messageId")]
+            [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
             public string MessageId {get; private set;}
-            [JsonProperty("to")]
+            [JsonProperty("to", NullValueHandling = NullValueHandling.Ignore)]
             public string To {get; private set;}
             public TypingIndicatorRequest() { }
             public class Builder

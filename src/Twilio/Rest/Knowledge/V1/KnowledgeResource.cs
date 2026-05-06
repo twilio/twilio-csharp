@@ -32,15 +32,15 @@ namespace Twilio.Rest.Knowledge.V1
     
         public class KnowledgeV1ServiceCreatePolicyRequest
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy_details")]
+            [JsonProperty("policy_details", NullValueHandling = NullValueHandling.Ignore)]
             public object PolicyDetails {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
             public KnowledgeV1ServiceCreatePolicyRequest() { }
             public class Builder
@@ -82,17 +82,17 @@ namespace Twilio.Rest.Knowledge.V1
         }
         public class KnowledgeV1ServiceCreateKnowledgeRequest
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("knowledge_source_details")]
+            [JsonProperty("knowledge_source_details", NullValueHandling = NullValueHandling.Ignore)]
             public object KnowledgeSourceDetails {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public KnowledgeV1ServiceCreatePolicyRequest Policy {get; private set;}
-            [JsonProperty("embedding_model")]
+            [JsonProperty("embedding_model", NullValueHandling = NullValueHandling.Ignore)]
             public string EmbeddingModel {get; private set;}
             public KnowledgeV1ServiceCreateKnowledgeRequest() { }
             public class Builder
@@ -139,17 +139,17 @@ namespace Twilio.Rest.Knowledge.V1
         }
         public class KnowledgeV1ServiceUpdateKnowledgeRequest
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("knowledge_source_details")]
+            [JsonProperty("knowledge_source_details", NullValueHandling = NullValueHandling.Ignore)]
             public object KnowledgeSourceDetails {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public KnowledgeV1ServiceCreatePolicyRequest Policy {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("embedding_model")]
+            [JsonProperty("embedding_model", NullValueHandling = NullValueHandling.Ignore)]
             public string EmbeddingModel {get; private set;}
             public KnowledgeV1ServiceUpdateKnowledgeRequest() { }
             public class Builder

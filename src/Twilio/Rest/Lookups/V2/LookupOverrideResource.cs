@@ -33,9 +33,9 @@ namespace Twilio.Rest.Lookups.V2
         public class OverridesRequest
         {
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("line_type")]
+            [JsonProperty("line_type", NullValueHandling = NullValueHandling.Ignore)]
             public LookupOverrideResource.LineTypeEnum LineType {get; private set;}
-            [JsonProperty("reason")]
+            [JsonProperty("reason", NullValueHandling = NullValueHandling.Ignore)]
             public string Reason {get; private set;}
             public OverridesRequest() { }
             public class Builder

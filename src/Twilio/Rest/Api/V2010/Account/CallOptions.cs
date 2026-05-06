@@ -73,6 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </summary> 
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
 
+        ///<summary> The identifier of the configuration to be used when creating and processing the recording </summary> 
+        public string RecordingConfigurationId { get; set; }
+
         ///<summary> The username used to authenticate the caller making a SIP call. </summary> 
         public string SipAuthUsername { get; set; }
 
@@ -212,6 +215,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (RecordingStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingStatusCallbackMethod", RecordingStatusCallbackMethod.ToString()));
+            }
+            if (RecordingConfigurationId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingConfigurationId", RecordingConfigurationId));
             }
             if (SipAuthUsername != null)
             {

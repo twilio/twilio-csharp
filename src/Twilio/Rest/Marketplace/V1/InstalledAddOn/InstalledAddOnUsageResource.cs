@@ -32,11 +32,11 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
     
         public class MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems
         {
-            [JsonProperty("quantity")]
+            [JsonProperty("quantity", NullValueHandling = NullValueHandling.Ignore)]
             public decimal? Quantity {get; private set;}
-            [JsonProperty("sid")]
+            [JsonProperty("sid", NullValueHandling = NullValueHandling.Ignore)]
             public string Sid {get; private set;}
-            [JsonProperty("submitted")]
+            [JsonProperty("submitted", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Submitted {get; private set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems() { }
             public class Builder
@@ -68,9 +68,9 @@ namespace Twilio.Rest.Marketplace.V1.InstalledAddOn
         }
         public class MarketplaceV1InstalledAddOnInstalledAddOnUsage
         {
-            [JsonProperty("billable_items")]
+            [JsonProperty("billable_items", NullValueHandling = NullValueHandling.Ignore)]
             public List<MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems> BillableItems {get; private set;}
-            [JsonProperty("total_submitted")]
+            [JsonProperty("total_submitted", NullValueHandling = NullValueHandling.Ignore)]
             public decimal? TotalSubmitted {get; private set;}
             public MarketplaceV1InstalledAddOnInstalledAddOnUsage() { }
             public class Builder

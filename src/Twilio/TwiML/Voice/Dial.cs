@@ -181,6 +181,10 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
+        /// Configuration for the recording
+        /// </summary>
+        public string RecordingConfigurationId { get; set; }
+        /// <summary>
         /// Recording status callback URL method
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
@@ -230,6 +234,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="record"> Record the call </param>
         /// <param name="trim"> Trim the recording </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="answerOnBridge"> Preserve the ringing behavior of the inbound call until the Dialed call picks up
@@ -252,6 +257,7 @@ namespace Twilio.TwiML.Voice
                     Dial.RecordEnum record = null,
                     Dial.TrimEnum trim = null,
                     Uri recordingStatusCallback = null,
+                    string recordingConfigurationId = null,
                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                     IEnumerable<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                     bool? answerOnBridge = null,
@@ -272,6 +278,7 @@ namespace Twilio.TwiML.Voice
             this.Record = record;
             this.Trim = trim;
             this.RecordingStatusCallback = recordingStatusCallback;
+            this.RecordingConfigurationId = recordingConfigurationId;
             this.RecordingStatusCallbackMethod = recordingStatusCallbackMethod;
             this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.AnswerOnBridge = answerOnBridge;
@@ -332,6 +339,10 @@ namespace Twilio.TwiML.Voice
             if (this.RecordingStatusCallback != null)
             {
                 attributes.Add(new XAttribute("recordingStatusCallback", Serializers.Url(this.RecordingStatusCallback)));
+            }
+            if (this.RecordingConfigurationId != null)
+            {
+                attributes.Add(new XAttribute("recordingConfigurationId", this.RecordingConfigurationId));
             }
             if (this.RecordingStatusCallbackMethod != null)
             {
@@ -423,6 +434,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="waitMethod"> Wait URL method </param>
         /// <param name="maxParticipants"> Maximum number of participants </param>
         /// <param name="record"> Record the conference </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         /// <param name="region"> Conference region </param>
         /// <param name="coach"> Call coach </param>
         /// <param name="trim"> Trim the conference recording </param>
@@ -444,6 +456,7 @@ namespace Twilio.TwiML.Voice
                                Twilio.Http.HttpMethod waitMethod = null,
                                int? maxParticipants = null,
                                Conference.RecordEnum record = null,
+                               string recordingConfigurationId = null,
                                Conference.RegionEnum region = null,
                                string coach = null,
                                Conference.TrimEnum trim = null,
@@ -467,6 +480,7 @@ namespace Twilio.TwiML.Voice
                 waitMethod,
                 maxParticipants,
                 record,
+                recordingConfigurationId,
                 region,
                 coach,
                 trim,

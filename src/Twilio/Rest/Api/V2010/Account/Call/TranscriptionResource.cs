@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="intelligenceService"> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators </param>
         /// <param name="conversationConfiguration"> The ID of the Conversations Configuration for customizing conversation behavior in Intelligence Service </param>
         /// <param name="conversationId"> The ID of the Conversation for associating this Transcription with an existing Conversation in Intelligence Service </param>
-        /// <param name="configurationId"> The ID of the RealTimeTranscription Configuration for configuring all the non-default behaviors in one go. </param>
+        /// <param name="transcriptionConfigurationId"> The ID of the RealTimeTranscription Configuration for configuring all the non-default behaviors in one go. </param>
         /// <param name="enableProviderData"> Whether the callback includes raw provider data. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns>
@@ -157,11 +157,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                           string intelligenceService = null,
                                           string conversationConfiguration = null,
                                           string conversationId = null,
-                                          string configurationId = null,
+                                          string transcriptionConfigurationId = null,
                                           bool? enableProviderData = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, ConfigurationId = configurationId, EnableProviderData = enableProviderData };
+            var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, TranscriptionConfigurationId = transcriptionConfigurationId, EnableProviderData = enableProviderData };
             return Create(options, client);
         }
 
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="intelligenceService"> The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators </param>
         /// <param name="conversationConfiguration"> The ID of the Conversations Configuration for customizing conversation behavior in Intelligence Service </param>
         /// <param name="conversationId"> The ID of the Conversation for associating this Transcription with an existing Conversation in Intelligence Service </param>
-        /// <param name="configurationId"> The ID of the RealTimeTranscription Configuration for configuring all the non-default behaviors in one go. </param>
+        /// <param name="transcriptionConfigurationId"> The ID of the RealTimeTranscription Configuration for configuring all the non-default behaviors in one go. </param>
         /// <param name="enableProviderData"> Whether the callback includes raw provider data. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns>
@@ -208,11 +208,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                   string intelligenceService = null,
                                                                                   string conversationConfiguration = null,
                                                                                   string conversationId = null,
-                                                                                  string configurationId = null,
+                                                                                  string transcriptionConfigurationId = null,
                                                                                   bool? enableProviderData = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, ConfigurationId = configurationId, EnableProviderData = enableProviderData };
+        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, TranscriptionConfigurationId = transcriptionConfigurationId, EnableProviderData = enableProviderData };
             return await CreateAsync(options, client);
         }
         #endif
@@ -255,11 +255,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             string intelligenceService = null,
             string conversationConfiguration = null,
             string conversationId = null,
-            string configurationId = null,
+            string transcriptionConfigurationId = null,
             bool? enableProviderData = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, ConfigurationId = configurationId, EnableProviderData = enableProviderData };
+        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, TranscriptionConfigurationId = transcriptionConfigurationId, EnableProviderData = enableProviderData };
         return CreateWithHeaders(options, client);
         }
 
@@ -283,11 +283,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             string intelligenceService = null,
             string conversationConfiguration = null,
             string conversationId = null,
-            string configurationId = null,
+            string transcriptionConfigurationId = null,
             bool? enableProviderData = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, ConfigurationId = configurationId, EnableProviderData = enableProviderData };
+        var options = new CreateTranscriptionOptions(pathCallSid){  PathAccountSid = pathAccountSid, Name = name, Track = track, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, InboundTrackLabel = inboundTrackLabel, OutboundTrackLabel = outboundTrackLabel, PartialResults = partialResults, LanguageCode = languageCode, TranscriptionEngine = transcriptionEngine, ProfanityFilter = profanityFilter, SpeechModel = speechModel, Hints = hints, EnableAutomaticPunctuation = enableAutomaticPunctuation, IntelligenceService = intelligenceService, ConversationConfiguration = conversationConfiguration, ConversationId = conversationId, TranscriptionConfigurationId = transcriptionConfigurationId, EnableProviderData = enableProviderData };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

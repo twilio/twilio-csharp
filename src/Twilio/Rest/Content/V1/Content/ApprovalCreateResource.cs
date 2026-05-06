@@ -32,9 +32,9 @@ namespace Twilio.Rest.Content.V1.Content
     
         public class ContentApprovalRequest
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("category")]
+            [JsonProperty("category", NullValueHandling = NullValueHandling.Ignore)]
             public string Category {get; private set;}
             public ContentApprovalRequest() { }
             public class Builder

@@ -32,25 +32,25 @@ namespace Twilio.Rest.Lookups.V2
     
         public class IdentityMatchParameters
         {
-            [JsonProperty("first_name")]
+            [JsonProperty("first_name", NullValueHandling = NullValueHandling.Ignore)]
             public string FirstName {get; private set;}
-            [JsonProperty("last_name")]
+            [JsonProperty("last_name", NullValueHandling = NullValueHandling.Ignore)]
             public string LastName {get; private set;}
-            [JsonProperty("address_line1")]
+            [JsonProperty("address_line1", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressLine1 {get; private set;}
-            [JsonProperty("address_line2")]
+            [JsonProperty("address_line2", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressLine2 {get; private set;}
-            [JsonProperty("city")]
+            [JsonProperty("city", NullValueHandling = NullValueHandling.Ignore)]
             public string City {get; private set;}
-            [JsonProperty("state")]
+            [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
             public string State {get; private set;}
-            [JsonProperty("postal_code")]
+            [JsonProperty("postal_code", NullValueHandling = NullValueHandling.Ignore)]
             public string PostalCode {get; private set;}
-            [JsonProperty("address_country_code")]
+            [JsonProperty("address_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressCountryCode {get; private set;}
-            [JsonProperty("national_id")]
+            [JsonProperty("national_id", NullValueHandling = NullValueHandling.Ignore)]
             public string NationalId {get; private set;}
-            [JsonProperty("date_of_birth")]
+            [JsonProperty("date_of_birth", NullValueHandling = NullValueHandling.Ignore)]
             public string DateOfBirth {get; private set;}
             public IdentityMatchParameters() { }
             public class Builder
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class ReassignedNumberParameters
         {
-            [JsonProperty("last_verified_date")]
+            [JsonProperty("last_verified_date", NullValueHandling = NullValueHandling.Ignore)]
             public string LastVerifiedDate {get; private set;}
             public ReassignedNumberParameters() { }
             public class Builder
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class RiskParameters
         {
-            [JsonProperty("partner_sub_id")]
+            [JsonProperty("partner_sub_id", NullValueHandling = NullValueHandling.Ignore)]
             public string PartnerSubId {get; private set;}
             public RiskParameters() { }
             public class Builder
@@ -161,20 +161,20 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LookupBatchRequest
         {
-            [JsonProperty("phone_number")]
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string PhoneNumber {get; private set;}
-            [JsonProperty("correlation_id")]
+            [JsonProperty("correlation_id", NullValueHandling = NullValueHandling.Ignore)]
             public string CorrelationId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("fields")]
+            [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
             public List<QueryResource.FieldsEnum> Fields {get; private set;}
-            [JsonProperty("country_code")]
+            [JsonProperty("country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string CountryCode {get; private set;}
-            [JsonProperty("identity_match")]
+            [JsonProperty("identity_match", NullValueHandling = NullValueHandling.Ignore)]
             public IdentityMatchParameters IdentityMatch {get; private set;}
-            [JsonProperty("reassigned_number")]
+            [JsonProperty("reassigned_number", NullValueHandling = NullValueHandling.Ignore)]
             public ReassignedNumberParameters ReassignedNumber {get; private set;}
-            [JsonProperty("sms_pumping_risk")]
+            [JsonProperty("sms_pumping_risk", NullValueHandling = NullValueHandling.Ignore)]
             public RiskParameters SmsPumpingRisk {get; private set;}
             public LookupBatchRequest() { }
             public class Builder
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LookupRequest
         {
-            [JsonProperty("phone_numbers")]
+            [JsonProperty("phone_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public List<LookupBatchRequest> PhoneNumbers {get; private set;}
             public LookupRequest() { }
             public class Builder
@@ -248,11 +248,11 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class CallerNameInfo
         {
-            [JsonProperty("caller_name")]
+            [JsonProperty("caller_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CallerName {get; private set;}
-            [JsonProperty("caller_type")]
+            [JsonProperty("caller_type", NullValueHandling = NullValueHandling.Ignore)]
             public string CallerType {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public CallerNameInfo() { }
             public class Builder
@@ -284,11 +284,11 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LastSimSwapInfo
         {
-            [JsonProperty("last_sim_swap_date")]
+            [JsonProperty("last_sim_swap_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? LastSimSwapDate {get; private set;}
-            [JsonProperty("swapped_period")]
+            [JsonProperty("swapped_period", NullValueHandling = NullValueHandling.Ignore)]
             public string SwappedPeriod {get; private set;}
-            [JsonProperty("swapped_in_period")]
+            [JsonProperty("swapped_in_period", NullValueHandling = NullValueHandling.Ignore)]
             public bool? SwappedInPeriod {get; private set;}
             public LastSimSwapInfo() { }
             public class Builder
@@ -320,15 +320,15 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class SimSwapInfo
         {
-            [JsonProperty("last_sim_swap")]
+            [JsonProperty("last_sim_swap", NullValueHandling = NullValueHandling.Ignore)]
             public LastSimSwapInfo LastSimSwap {get; private set;}
-            [JsonProperty("carrier_name")]
+            [JsonProperty("carrier_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierName {get; private set;}
-            [JsonProperty("mobile_country_code")]
+            [JsonProperty("mobile_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileCountryCode {get; private set;}
-            [JsonProperty("mobile_network_code")]
+            [JsonProperty("mobile_network_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileNetworkCode {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public SimSwapInfo() { }
             public class Builder
@@ -370,9 +370,9 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class CallForwardingInfo
         {
-            [JsonProperty("call_forwarding_enabled")]
+            [JsonProperty("call_forwarding_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? CallForwardingEnabled {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public CallForwardingInfo() { }
             public class Builder
@@ -399,15 +399,15 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LineTypeIntelligenceInfo
         {
-            [JsonProperty("mobile_country_code")]
+            [JsonProperty("mobile_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileCountryCode {get; private set;}
-            [JsonProperty("mobile_network_code")]
+            [JsonProperty("mobile_network_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileNetworkCode {get; private set;}
-            [JsonProperty("carrier_name")]
+            [JsonProperty("carrier_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierName {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public LineTypeIntelligenceInfo() { }
             public class Builder
@@ -449,9 +449,9 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LineStatusInfo
         {
-            [JsonProperty("status")]
+            [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
             public string Status {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public LineStatusInfo() { }
             public class Builder
@@ -478,29 +478,29 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class IdentityMatchInfo
         {
-            [JsonProperty("first_name_match")]
+            [JsonProperty("first_name_match", NullValueHandling = NullValueHandling.Ignore)]
             public string FirstNameMatch {get; private set;}
-            [JsonProperty("last_name_match")]
+            [JsonProperty("last_name_match", NullValueHandling = NullValueHandling.Ignore)]
             public string LastNameMatch {get; private set;}
-            [JsonProperty("address_lines_match")]
+            [JsonProperty("address_lines_match", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressLinesMatch {get; private set;}
-            [JsonProperty("city_match")]
+            [JsonProperty("city_match", NullValueHandling = NullValueHandling.Ignore)]
             public string CityMatch {get; private set;}
-            [JsonProperty("state_match")]
+            [JsonProperty("state_match", NullValueHandling = NullValueHandling.Ignore)]
             public string StateMatch {get; private set;}
-            [JsonProperty("postal_code_match")]
+            [JsonProperty("postal_code_match", NullValueHandling = NullValueHandling.Ignore)]
             public string PostalCodeMatch {get; private set;}
-            [JsonProperty("address_country_match")]
+            [JsonProperty("address_country_match", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressCountryMatch {get; private set;}
-            [JsonProperty("national_id_match")]
+            [JsonProperty("national_id_match", NullValueHandling = NullValueHandling.Ignore)]
             public string NationalIdMatch {get; private set;}
-            [JsonProperty("date_of_birth_match")]
+            [JsonProperty("date_of_birth_match", NullValueHandling = NullValueHandling.Ignore)]
             public string DateOfBirthMatch {get; private set;}
-            [JsonProperty("summary_score")]
+            [JsonProperty("summary_score", NullValueHandling = NullValueHandling.Ignore)]
             public int? SummaryScore {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
-            [JsonProperty("error_message")]
+            [JsonProperty("error_message", NullValueHandling = NullValueHandling.Ignore)]
             public string ErrorMessage {get; private set;}
             public IdentityMatchInfo() { }
             public class Builder
@@ -577,11 +577,11 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class ReassignedNumberInfo
         {
-            [JsonProperty("last_verified_date")]
+            [JsonProperty("last_verified_date", NullValueHandling = NullValueHandling.Ignore)]
             public string LastVerifiedDate {get; private set;}
-            [JsonProperty("is_number_reassigned")]
+            [JsonProperty("is_number_reassigned", NullValueHandling = NullValueHandling.Ignore)]
             public string IsNumberReassigned {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public string ErrorCode {get; private set;}
             public ReassignedNumberInfo() { }
             public class Builder
@@ -613,17 +613,17 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class SmsPumpingRiskInfo
         {
-            [JsonProperty("carrier_risk_category")]
+            [JsonProperty("carrier_risk_category", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierRiskCategory {get; private set;}
-            [JsonProperty("number_blocked")]
+            [JsonProperty("number_blocked", NullValueHandling = NullValueHandling.Ignore)]
             public bool? NumberBlocked {get; private set;}
-            [JsonProperty("number_blocked_date")]
+            [JsonProperty("number_blocked_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? NumberBlockedDate {get; private set;}
-            [JsonProperty("number_blocked_last_3_months")]
+            [JsonProperty("number_blocked_last_3_months", NullValueHandling = NullValueHandling.Ignore)]
             public bool? NumberBlockedLast3Months {get; private set;}
-            [JsonProperty("sms_pumping_risk_score")]
+            [JsonProperty("sms_pumping_risk_score", NullValueHandling = NullValueHandling.Ignore)]
             public int? SmsPumpingRiskScore {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public SmsPumpingRiskInfo() { }
             public class Builder
@@ -670,41 +670,41 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LookupBatchResponse
         {
-            [JsonProperty("correlation_id")]
+            [JsonProperty("correlation_id", NullValueHandling = NullValueHandling.Ignore)]
             public string CorrelationId {get; private set;}
-            [JsonProperty("twilio_error_code")]
+            [JsonProperty("twilio_error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? TwilioErrorCode {get; private set;}
-            [JsonProperty("calling_country_code")]
+            [JsonProperty("calling_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string CallingCountryCode {get; private set;}
-            [JsonProperty("country_code")]
+            [JsonProperty("country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string CountryCode {get; private set;}
-            [JsonProperty("phone_number")]
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string PhoneNumber {get; private set;}
-            [JsonProperty("national_format")]
+            [JsonProperty("national_format", NullValueHandling = NullValueHandling.Ignore)]
             public string NationalFormat {get; private set;}
-            [JsonProperty("valid")]
+            [JsonProperty("valid", NullValueHandling = NullValueHandling.Ignore)]
             public bool? Valid {get; private set;}
-            [JsonProperty("validation_errors")]
+            [JsonProperty("validation_errors", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> ValidationErrors {get; private set;}
-            [JsonProperty("caller_name")]
+            [JsonProperty("caller_name", NullValueHandling = NullValueHandling.Ignore)]
             public CallerNameInfo CallerName {get; private set;}
-            [JsonProperty("sim_swap")]
+            [JsonProperty("sim_swap", NullValueHandling = NullValueHandling.Ignore)]
             public SimSwapInfo SimSwap {get; private set;}
-            [JsonProperty("call_forwarding")]
+            [JsonProperty("call_forwarding", NullValueHandling = NullValueHandling.Ignore)]
             public CallForwardingInfo CallForwarding {get; private set;}
-            [JsonProperty("line_type_intelligence")]
+            [JsonProperty("line_type_intelligence", NullValueHandling = NullValueHandling.Ignore)]
             public LineTypeIntelligenceInfo LineTypeIntelligence {get; private set;}
-            [JsonProperty("line_status")]
+            [JsonProperty("line_status", NullValueHandling = NullValueHandling.Ignore)]
             public LineStatusInfo LineStatus {get; private set;}
-            [JsonProperty("identity_match")]
+            [JsonProperty("identity_match", NullValueHandling = NullValueHandling.Ignore)]
             public IdentityMatchInfo IdentityMatch {get; private set;}
-            [JsonProperty("reassigned_number")]
+            [JsonProperty("reassigned_number", NullValueHandling = NullValueHandling.Ignore)]
             public ReassignedNumberInfo ReassignedNumber {get; private set;}
-            [JsonProperty("sms_pumping_risk")]
+            [JsonProperty("sms_pumping_risk", NullValueHandling = NullValueHandling.Ignore)]
             public SmsPumpingRiskInfo SmsPumpingRisk {get; private set;}
-            [JsonProperty("phone_number_quality_score")]
+            [JsonProperty("phone_number_quality_score", NullValueHandling = NullValueHandling.Ignore)]
             public object PhoneNumberQualityScore {get; private set;}
-            [JsonProperty("pre_fill")]
+            [JsonProperty("pre_fill", NullValueHandling = NullValueHandling.Ignore)]
             public object PreFill {get; private set;}
             public LookupBatchResponse() { }
             public class Builder
