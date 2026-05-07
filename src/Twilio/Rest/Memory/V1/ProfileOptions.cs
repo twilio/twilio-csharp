@@ -96,6 +96,48 @@ namespace Twilio.Rest.Memory.V1
     }
 
 
+    /// <summary> Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination. </summary>
+    public class FetchProfileOptions : IOptions<ProfileFetchResource>
+    {
+    
+        ///<summary> A unique Memory Store ID using Twilio Type ID (TTID) format </summary> 
+        public string PathStoreId { get; }
+
+        ///<summary> The unique identifier for the profile using Twilio Type ID (TTID) format. </summary> 
+        public string PathProfileId { get; }
+
+        ///<summary> Comma separated list of trait group names to include. </summary> 
+        public string TraitGroups { get; set; }
+
+
+
+        /// <summary> Construct a new FetchProfileOptions </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="pathProfileId"> The unique identifier for the profile using Twilio Type ID (TTID) format. </param>
+        public FetchProfileOptions(string pathStoreId, string pathProfileId)
+        {
+            PathStoreId = pathStoreId;
+            PathProfileId = pathProfileId;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (TraitGroups != null)
+            {
+                p.Add(new KeyValuePair<string, string>("traitGroups", TraitGroups));
+            }
+            return p;
+        }
+
+    
+
+    }
+
+
     /// <summary> Return a paginated list of profile IDs ordered by most recently created first. Use the optional paging parameters (`pageSize`, `pageToken`, `orderBy`) to control pagination and sorting. This endpoint is optimized for browsing newly created profiles and lightweight lookups where only the identifiers are needed before requesting full profile details. </summary>
     public class ReadProfileOptions : ReadOptions<ProfileReadResource>
     {

@@ -1,6 +1,17 @@
 twilio-csharp Changelog
 =======================
 
+[2026-05-07] Version 7.14.9
+---------------------------
+**Conversations**
+- update actions api visibility
+
+**Memory**
+- ## 2026-05-07
+- **Content updates**:
+- include store api
+
+
 [2026-05-06] Version 7.14.8
 ---------------------------
 **Library - Fix**

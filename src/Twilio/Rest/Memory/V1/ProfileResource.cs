@@ -82,6 +82,46 @@ public class ProfileCreateResource : Resource
         }
     }
 }
+        public class ProfileFetchResource : Resource
+{
+        ///<summary> The canonical profile ID. </summary> 
+        [JsonProperty("id")]
+            public string Id { get; private set; }
+
+        ///<summary> The time the profile was created. </summary> 
+        [JsonProperty("createdAt")]
+            public DateTime? CreatedAt { get; private set; }
+
+        ///<summary> Multiple trait groups. </summary> 
+        [JsonProperty("traits")]
+            public Dictionary<string, Dictionary<string, Object>> Traits { get; private set; }
+
+        ///<summary> The uri </summary> 
+        [JsonProperty("uri")]
+            public string Uri { get; private set;}
+
+        ///<summary> The message </summary> 
+        [JsonProperty("message")]
+            public string Message { get; private set;}
+
+
+    public static ProfileFetchResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<ProfileFetchResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
         public class ProfileReadResource : Resource
 {
         public string Profiles { get; private set; }
@@ -460,6 +500,113 @@ public class ProfileCreateResource : Resource
         {
             var options = new DeleteProfileOptions(pathStoreId, pathProfileId) ;
             return await DeleteWithHeadersAsync(options, client);
+        }
+        #endif
+            
+        private static Request BuildFetchRequest(FetchProfileOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Stores/{storeId}/Profiles/{profileId}";
+
+            string PathStoreId = options.PathStoreId;
+            path = path.Replace("{"+"storeId"+"}", PathStoreId);
+            string PathProfileId = options.PathProfileId;
+            path = path.Replace("{"+"profileId"+"}", PathProfileId);
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Memory,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination. </summary>
+        /// <param name="options"> Fetch Profile parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Profile </returns>
+        public static ProfileFetchResource Fetch(FetchProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return ProfileFetchResource.FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary> Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination. </summary>
+        /// <param name="options"> Fetch Profile parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Profile </returns>
+        public static async System.Threading.Tasks.Task<ProfileFetchResource> FetchAsync(FetchProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return ProfileFetchResource.FromJson(response.Content);
+        }
+        #endif
+        /// <summary> Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination. </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="pathProfileId"> The unique identifier for the profile using Twilio Type ID (TTID) format. </param>
+        /// <param name="traitGroups"> Comma separated list of trait group names to include. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Profile </returns>
+        public static ProfileFetchResource Fetch(
+                                         string pathStoreId, 
+                                         string pathProfileId, 
+                                         string traitGroups = null, 
+                                        ITwilioRestClient client = null)
+        {
+            var options = new FetchProfileOptions(pathStoreId, pathProfileId){ TraitGroups = traitGroups };
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination. </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="pathProfileId"> The unique identifier for the profile using Twilio Type ID (TTID) format. </param>
+        /// <param name="traitGroups"> Comma separated list of trait group names to include. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Profile </returns>
+        public static async System.Threading.Tasks.Task<ProfileFetchResource> FetchAsync(string pathStoreId, string pathProfileId, string traitGroups = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchProfileOptions(pathStoreId, pathProfileId){ TraitGroups = traitGroups };
+            return await FetchAsync(options, client);
+        }
+        #endif
+            
+        public static TwilioResponse<ProfileFetchResource> FetchWithHeaders(FetchProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            var resource = ProfileFetchResource.FromJson(response.Content);
+            return new TwilioResponse<ProfileFetchResource>(resource, response.Headers, response.StatusCode);
+        }
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ProfileFetchResource>> FetchWithHeadersAsync(FetchProfileOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            var resource = ProfileFetchResource.FromJson(response.Content);
+            return new TwilioResponse<ProfileFetchResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        public static TwilioResponse<ProfileFetchResource> FetchWithHeaders(
+                    string pathStoreId, 
+                    string pathProfileId, 
+                    string traitGroups = null, 
+                ITwilioRestClient client = null)
+        {
+            var options = new FetchProfileOptions(pathStoreId, pathProfileId){ TraitGroups = traitGroups };
+            return FetchWithHeaders(options, client);
+        }
+        
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ProfileFetchResource>> FetchWithHeadersAsync(string pathStoreId, string pathProfileId, string traitGroups = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchProfileOptions(pathStoreId, pathProfileId){ TraitGroups = traitGroups };
+            return await FetchWithHeadersAsync(options, client);
         }
         #endif
             

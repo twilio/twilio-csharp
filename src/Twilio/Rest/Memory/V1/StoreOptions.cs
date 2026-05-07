@@ -56,6 +56,36 @@ namespace Twilio.Rest.Memory.V1
 
     }
 
+    /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+    public class DeleteStoreOptions : IOptions<StoreResource>
+    {
+        
+        ///<summary> A unique Memory Store ID using Twilio Type ID (TTID) format </summary> 
+        public string PathStoreId { get; }
+
+
+
+        /// <summary> Construct a new DeleteStoreOptions </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        public DeleteStoreOptions(string pathStoreId)
+        {
+            PathStoreId = pathStoreId;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+    
+
+    }
+
+
     /// <summary> Retrieve the details of a specific Memory Store by its unique ID. </summary>
     public class FetchStoreOptions : IOptions<StoreFetchResource>
     {

@@ -54,6 +54,34 @@ public class StoreCreateResource : Resource
         }
     }
 }
+        public class StoreDeleteResource : Resource
+{
+        ///<summary> The message </summary> 
+        [JsonProperty("message")]
+            public string Message { get; private set; }
+
+        ///<summary> URI to check operation status. </summary> 
+        [JsonProperty("statusUrl")]
+            public string StatusUrl { get; private set; }
+
+
+    public static StoreDeleteResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<StoreDeleteResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
         public class StoreFetchResource : Resource
 {
         ///<summary> Provides a unique and addressable name to be assigned to this Store. This name is assigned by the developer and can be used in addition to the ID. It is intended to be human-readable and unique within the account. </summary> 
@@ -388,6 +416,111 @@ public class StoreCreateResource : Resource
         {
         var options = new CreateStoreOptions(serviceRequest){  };
         return await CreateWithHeadersAsync(options, client);
+        }
+        #endif
+            
+        /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+        /// <param name="options"> Delete Store parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Store </returns>
+        private static Request BuildDeleteRequest(DeleteStoreOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/ControlPlane/Stores/{storeId}";
+
+            string PathStoreId = options.PathStoreId;
+            path = path.Replace("{"+"storeId"+"}", PathStoreId);
+
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Memory,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+        /// <param name="options"> Delete Store parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Store </returns>
+        public static StoreDeleteResource Delete(DeleteStoreOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+         return StoreDeleteResource.FromJson(response.Content); 
+        
+           
+        }
+
+        #if !NET35
+        /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+        /// <param name="options"> Delete Store parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Store </returns>
+        public static async System.Threading.Tasks.Task<StoreDeleteResource> DeleteAsync(DeleteStoreOptions options,
+                                                                        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+         return StoreDeleteResource.FromJson(response.Content); 
+        
+        }
+        #endif
+
+        /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Store </returns>
+        public static StoreDeleteResource Delete(string pathStoreId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteStoreOptions(pathStoreId)     ;
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries. </summary>
+        /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Store </returns>
+        public static async System.Threading.Tasks.Task<StoreDeleteResource> DeleteAsync(string pathStoreId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteStoreOptions(pathStoreId) ;
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<StoreDeleteResource> DeleteWithHeaders(DeleteStoreOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+         var success = StoreDeleteResource.FromJson(response.Content); 
+        
+            return new TwilioResponse<StoreDeleteResource>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StoreDeleteResource>> DeleteWithHeadersAsync(DeleteStoreOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+         var success = StoreDeleteResource.FromJson(response.Content); 
+        
+            return new TwilioResponse<StoreDeleteResource>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<StoreDeleteResource> DeleteWithHeaders(string pathStoreId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteStoreOptions(pathStoreId)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<StoreDeleteResource>> DeleteWithHeadersAsync(string pathStoreId, ITwilioRestClient client = null)
+        {
+            var options = new DeleteStoreOptions(pathStoreId) ;
+            return await DeleteWithHeadersAsync(options, client);
         }
         #endif
             
