@@ -32,21 +32,21 @@ namespace Twilio.Rest.Numbers.V1
     
         public class NumbersV1CreateEmbeddedRegistrationRequest
         {
-            [JsonProperty("regulationId")]
+            [JsonProperty("regulationId", NullValueHandling = NullValueHandling.Ignore)]
             public string RegulationId {get; private set;}
-            [JsonProperty("regulationVersion")]
+            [JsonProperty("regulationVersion", NullValueHandling = NullValueHandling.Ignore)]
             public int? RegulationVersion {get; private set;}
-            [JsonProperty("friendlyName")]
+            [JsonProperty("friendlyName", NullValueHandling = NullValueHandling.Ignore)]
             public string FriendlyName {get; private set;}
-            [JsonProperty("data")]
+            [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, object> Data {get; private set;}
-            [JsonProperty("statusNotificationEmail")]
+            [JsonProperty("statusNotificationEmail", NullValueHandling = NullValueHandling.Ignore)]
             public string StatusNotificationEmail {get; private set;}
-            [JsonProperty("statusCallbackUrl")]
+            [JsonProperty("statusCallbackUrl", NullValueHandling = NullValueHandling.Ignore)]
             public Uri StatusCallbackUrl {get; private set;}
-            [JsonProperty("comments")]
+            [JsonProperty("comments", NullValueHandling = NullValueHandling.Ignore)]
             public string Comments {get; private set;}
-            [JsonProperty("themeSetId")]
+            [JsonProperty("themeSetId", NullValueHandling = NullValueHandling.Ignore)]
             public string ThemeSetId {get; private set;}
             public NumbersV1CreateEmbeddedRegistrationRequest() { }
             public class Builder
@@ -103,9 +103,9 @@ namespace Twilio.Rest.Numbers.V1
         }
         public class NumbersV1EmbeddedSession
         {
-            [JsonProperty("sessionId")]
+            [JsonProperty("sessionId", NullValueHandling = NullValueHandling.Ignore)]
             public string SessionId {get; private set;}
-            [JsonProperty("sessionToken")]
+            [JsonProperty("sessionToken", NullValueHandling = NullValueHandling.Ignore)]
             public string SessionToken {get; private set;}
             public NumbersV1EmbeddedSession() { }
             public class Builder

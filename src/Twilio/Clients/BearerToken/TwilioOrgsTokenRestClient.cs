@@ -293,7 +293,7 @@ namespace Twilio.Clients.BearerToken
             {
                 restException = RestException.FromJson(response.Content);
             }
-            catch (JsonReaderException) { /* Allow null check below to handle */ }
+            catch (JsonException) { /* Allow null check below to handle */ }
 
             if (restException != null)
             {
@@ -312,7 +312,7 @@ namespace Twilio.Clients.BearerToken
             {
                 restApiStandardException = RestApiStandardException.FromJson(response.Content);
             }
-            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
+            catch (JsonException) { /* Allow fallback to legacy format */ }
 
             if (restApiStandardException != null)
             {

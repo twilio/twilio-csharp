@@ -32,13 +32,13 @@ namespace Twilio.Rest.Assistants.V1.Assistant
     
         public class AssistantsV1ServiceCreateFeedbackRequest
         {
-            [JsonProperty("session_id")]
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
             public string SessionId {get; private set;}
-            [JsonProperty("message_id")]
+            [JsonProperty("message_id", NullValueHandling = NullValueHandling.Ignore)]
             public string MessageId {get; private set;}
-            [JsonProperty("score")]
+            [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
             public float? Score {get; private set;}
-            [JsonProperty("text")]
+            [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
             public string Text {get; private set;}
             public AssistantsV1ServiceCreateFeedbackRequest() { }
             public class Builder

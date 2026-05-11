@@ -35,11 +35,12 @@ namespace Twilio.Tests.TwiML
                 new[] {Recording.EventEnum.InProgress},
                 Recording.TrimEnum.TrimSilence,
                 Recording.TrackEnum.Inbound,
-                Recording.ChannelsEnum.Mono
+                Recording.ChannelsEnum.Mono,
+                "recording_configuration_id"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Recording recordingStatusCallback=\"recording_status_callback\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" trim=\"trim-silence\" track=\"inbound\" channels=\"mono\"></Recording>",
+                "<Recording recordingStatusCallback=\"recording_status_callback\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" trim=\"trim-silence\" track=\"inbound\" channels=\"mono\" recordingConfigurationId=\"recording_configuration_id\"></Recording>",
                 elem.ToString()
             );
         }

@@ -40,6 +40,9 @@ namespace Twilio.Rest.Studio.V2
         ///<summary> Description of change made in the revision. </summary> 
         public string CommitMessage { get; set; }
 
+        ///<summary> The SID of the User that created the Flow. </summary> 
+        public string AuthorSid { get; set; }
+
 
         /// <summary> Construct a new CreateFlowOptions </summary>
         /// <param name="friendlyName"> The string that you assigned to describe the Flow. </param>
@@ -73,6 +76,10 @@ namespace Twilio.Rest.Studio.V2
             if (CommitMessage != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
+            }
+            if (AuthorSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AuthorSid", AuthorSid));
             }
             return p;
         }
@@ -184,6 +191,9 @@ namespace Twilio.Rest.Studio.V2
         ///<summary> Description of change made in the revision. </summary> 
         public string CommitMessage { get; set; }
 
+        ///<summary> The SID of the User that created or last updated the Flow. </summary> 
+        public string AuthorSid { get; set; }
+
 
 
         /// <summary> Construct a new UpdateFlowOptions </summary>
@@ -216,6 +226,10 @@ namespace Twilio.Rest.Studio.V2
             if (CommitMessage != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommitMessage", CommitMessage));
+            }
+            if (AuthorSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AuthorSid", AuthorSid));
             }
             return p;
         }

@@ -39,6 +39,7 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 1,
                 Conference.RecordEnum.DoNotRecord,
+                "recording_configuration_id",
                 Conference.RegionEnum.Us1,
                 "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 Conference.TrimEnum.TrimSilence,
@@ -54,7 +55,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" coach=\"CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" eventCallbackUrl=\"https://example.com\" jitterBufferSize=\"large\" participantLabel=\"participant_label\">name</Conference>",
+                "<Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" recordingConfigurationId=\"recording_configuration_id\" region=\"us1\" coach=\"CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" eventCallbackUrl=\"https://example.com\" jitterBufferSize=\"large\" participantLabel=\"participant_label\">name</Conference>",
                 elem.ToString()
             );
         }

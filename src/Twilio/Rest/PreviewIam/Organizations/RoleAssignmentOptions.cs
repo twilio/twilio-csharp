@@ -109,6 +109,12 @@ namespace Twilio.Rest.PreviewIam.Organizations
         
         public string Scope { get; set; }
 
+        ///<summary> Filter by resource type for resource-level role assignments </summary> 
+        public string ResourceType { get; set; }
+
+        ///<summary> Filter by resource id for resource-level role assignments </summary> 
+        public string ResourceId { get; set; }
+
 
 
         /// <summary> Construct a new ListRoleAssignmentsOptions </summary>
@@ -135,6 +141,14 @@ namespace Twilio.Rest.PreviewIam.Organizations
             if (Scope != null)
             {
                 p.Add(new KeyValuePair<string, string>("Scope", Scope.ToString()));
+            }
+            if (ResourceType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ResourceType", ResourceType));
+            }
+            if (ResourceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ResourceId", ResourceId));
             }
             return p;
         }

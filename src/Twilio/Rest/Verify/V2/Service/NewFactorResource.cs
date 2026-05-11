@@ -32,11 +32,11 @@ namespace Twilio.Rest.Verify.V2.Service
     
         public class CreateNewPasskeysFactorRequestConfigRelyingParty
         {
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("origins")]
+            [JsonProperty("origins", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Origins {get; private set;}
             public CreateNewPasskeysFactorRequestConfigRelyingParty() { }
             public class Builder
@@ -68,16 +68,16 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class CreateNewPasskeysFactorRequestConfig
         {
-            [JsonProperty("relying_party")]
+            [JsonProperty("relying_party", NullValueHandling = NullValueHandling.Ignore)]
             public CreateNewPasskeysFactorRequestConfigRelyingParty RelyingParty {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("authenticator_attachment")]
+            [JsonProperty("authenticator_attachment", NullValueHandling = NullValueHandling.Ignore)]
             public NewFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("discoverable_credentials")]
+            [JsonProperty("discoverable_credentials", NullValueHandling = NullValueHandling.Ignore)]
             public NewFactorResource.DiscoverableCredentialsEnum DiscoverableCredentials {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("user_verification")]
+            [JsonProperty("user_verification", NullValueHandling = NullValueHandling.Ignore)]
             public NewFactorResource.UserVerificationEnum UserVerification {get; private set;}
             public CreateNewPasskeysFactorRequestConfig() { }
             public class Builder
@@ -114,11 +114,11 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class CreateNewPasskeysFactorRequest
         {
-            [JsonProperty("friendly_name")]
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
             public string FriendlyName {get; private set;}
-            [JsonProperty("identity")]
+            [JsonProperty("identity", NullValueHandling = NullValueHandling.Ignore)]
             public string Identity {get; private set;}
-            [JsonProperty("config")]
+            [JsonProperty("config", NullValueHandling = NullValueHandling.Ignore)]
             public CreateNewPasskeysFactorRequestConfig Config {get; private set;}
             public CreateNewPasskeysFactorRequest() { }
             public class Builder

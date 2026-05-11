@@ -32,11 +32,11 @@ namespace Twilio.Rest.Lookups.V2
     
         public class CallerNameInfo
         {
-            [JsonProperty("caller_name")]
+            [JsonProperty("caller_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CallerName {get; private set;}
-            [JsonProperty("caller_type")]
+            [JsonProperty("caller_type", NullValueHandling = NullValueHandling.Ignore)]
             public string CallerType {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public CallerNameInfo() { }
             public class Builder
@@ -68,11 +68,11 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LastSimSwapInfo
         {
-            [JsonProperty("last_sim_swap_date")]
+            [JsonProperty("last_sim_swap_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? LastSimSwapDate {get; private set;}
-            [JsonProperty("swapped_period")]
+            [JsonProperty("swapped_period", NullValueHandling = NullValueHandling.Ignore)]
             public string SwappedPeriod {get; private set;}
-            [JsonProperty("swapped_in_period")]
+            [JsonProperty("swapped_in_period", NullValueHandling = NullValueHandling.Ignore)]
             public bool? SwappedInPeriod {get; private set;}
             public LastSimSwapInfo() { }
             public class Builder
@@ -104,15 +104,15 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class SimSwapInfo
         {
-            [JsonProperty("last_sim_swap")]
+            [JsonProperty("last_sim_swap", NullValueHandling = NullValueHandling.Ignore)]
             public LastSimSwapInfo LastSimSwap {get; private set;}
-            [JsonProperty("carrier_name")]
+            [JsonProperty("carrier_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierName {get; private set;}
-            [JsonProperty("mobile_country_code")]
+            [JsonProperty("mobile_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileCountryCode {get; private set;}
-            [JsonProperty("mobile_network_code")]
+            [JsonProperty("mobile_network_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileNetworkCode {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public SimSwapInfo() { }
             public class Builder
@@ -154,9 +154,9 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class CallForwardingInfo
         {
-            [JsonProperty("call_forwarding_enabled")]
+            [JsonProperty("call_forwarding_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? CallForwardingEnabled {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public CallForwardingInfo() { }
             public class Builder
@@ -183,15 +183,15 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LineTypeIntelligenceInfo
         {
-            [JsonProperty("mobile_country_code")]
+            [JsonProperty("mobile_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileCountryCode {get; private set;}
-            [JsonProperty("mobile_network_code")]
+            [JsonProperty("mobile_network_code", NullValueHandling = NullValueHandling.Ignore)]
             public string MobileNetworkCode {get; private set;}
-            [JsonProperty("carrier_name")]
+            [JsonProperty("carrier_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierName {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public LineTypeIntelligenceInfo() { }
             public class Builder
@@ -233,9 +233,9 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class LineStatusInfo
         {
-            [JsonProperty("status")]
+            [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
             public string Status {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public LineStatusInfo() { }
             public class Builder
@@ -262,29 +262,29 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class IdentityMatchInfo
         {
-            [JsonProperty("first_name_match")]
+            [JsonProperty("first_name_match", NullValueHandling = NullValueHandling.Ignore)]
             public string FirstNameMatch {get; private set;}
-            [JsonProperty("last_name_match")]
+            [JsonProperty("last_name_match", NullValueHandling = NullValueHandling.Ignore)]
             public string LastNameMatch {get; private set;}
-            [JsonProperty("address_lines_match")]
+            [JsonProperty("address_lines_match", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressLinesMatch {get; private set;}
-            [JsonProperty("city_match")]
+            [JsonProperty("city_match", NullValueHandling = NullValueHandling.Ignore)]
             public string CityMatch {get; private set;}
-            [JsonProperty("state_match")]
+            [JsonProperty("state_match", NullValueHandling = NullValueHandling.Ignore)]
             public string StateMatch {get; private set;}
-            [JsonProperty("postal_code_match")]
+            [JsonProperty("postal_code_match", NullValueHandling = NullValueHandling.Ignore)]
             public string PostalCodeMatch {get; private set;}
-            [JsonProperty("address_country_match")]
+            [JsonProperty("address_country_match", NullValueHandling = NullValueHandling.Ignore)]
             public string AddressCountryMatch {get; private set;}
-            [JsonProperty("national_id_match")]
+            [JsonProperty("national_id_match", NullValueHandling = NullValueHandling.Ignore)]
             public string NationalIdMatch {get; private set;}
-            [JsonProperty("date_of_birth_match")]
+            [JsonProperty("date_of_birth_match", NullValueHandling = NullValueHandling.Ignore)]
             public string DateOfBirthMatch {get; private set;}
-            [JsonProperty("summary_score")]
+            [JsonProperty("summary_score", NullValueHandling = NullValueHandling.Ignore)]
             public int? SummaryScore {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
-            [JsonProperty("error_message")]
+            [JsonProperty("error_message", NullValueHandling = NullValueHandling.Ignore)]
             public string ErrorMessage {get; private set;}
             public IdentityMatchInfo() { }
             public class Builder
@@ -361,11 +361,11 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class ReassignedNumberInfo
         {
-            [JsonProperty("last_verified_date")]
+            [JsonProperty("last_verified_date", NullValueHandling = NullValueHandling.Ignore)]
             public string LastVerifiedDate {get; private set;}
-            [JsonProperty("is_number_reassigned")]
+            [JsonProperty("is_number_reassigned", NullValueHandling = NullValueHandling.Ignore)]
             public string IsNumberReassigned {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public string ErrorCode {get; private set;}
             public ReassignedNumberInfo() { }
             public class Builder
@@ -397,17 +397,17 @@ namespace Twilio.Rest.Lookups.V2
         }
         public class SmsPumpingRiskInfo
         {
-            [JsonProperty("carrier_risk_category")]
+            [JsonProperty("carrier_risk_category", NullValueHandling = NullValueHandling.Ignore)]
             public string CarrierRiskCategory {get; private set;}
-            [JsonProperty("number_blocked")]
+            [JsonProperty("number_blocked", NullValueHandling = NullValueHandling.Ignore)]
             public bool? NumberBlocked {get; private set;}
-            [JsonProperty("number_blocked_date")]
+            [JsonProperty("number_blocked_date", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? NumberBlockedDate {get; private set;}
-            [JsonProperty("number_blocked_last_3_months")]
+            [JsonProperty("number_blocked_last_3_months", NullValueHandling = NullValueHandling.Ignore)]
             public bool? NumberBlockedLast3Months {get; private set;}
-            [JsonProperty("sms_pumping_risk_score")]
+            [JsonProperty("sms_pumping_risk_score", NullValueHandling = NullValueHandling.Ignore)]
             public int? SmsPumpingRiskScore {get; private set;}
-            [JsonProperty("error_code")]
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
             public int? ErrorCode {get; private set;}
             public SmsPumpingRiskInfo() { }
             public class Builder

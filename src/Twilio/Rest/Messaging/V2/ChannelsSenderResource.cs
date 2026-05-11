@@ -32,17 +32,17 @@ namespace Twilio.Rest.Messaging.V2
     
         public class MessagingV2ChannelsSenderConfiguration
         {
-            [JsonProperty("waba_id")]
+            [JsonProperty("waba_id", NullValueHandling = NullValueHandling.Ignore)]
             public string WabaId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("verification_method")]
+            [JsonProperty("verification_method", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.VerificationMethodEnum VerificationMethod {get; private set;}
-            [JsonProperty("verification_code")]
+            [JsonProperty("verification_code", NullValueHandling = NullValueHandling.Ignore)]
             public string VerificationCode {get; private set;}
-            [JsonProperty("voice_application_sid")]
+            [JsonProperty("voice_application_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string VoiceApplicationSid {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("account_type")]
+            [JsonProperty("account_type", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.AccountTypeEnum AccountType {get; private set;}
             public MessagingV2ChannelsSenderConfiguration() { }
             public class Builder
@@ -84,19 +84,19 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderWebhook
         {
-            [JsonProperty("callback_url")]
+            [JsonProperty("callback_url", NullValueHandling = NullValueHandling.Ignore)]
             public string CallbackUrl {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("callback_method")]
+            [JsonProperty("callback_method", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.CallbackMethodEnum CallbackMethod {get; private set;}
-            [JsonProperty("fallback_url")]
+            [JsonProperty("fallback_url", NullValueHandling = NullValueHandling.Ignore)]
             public string FallbackUrl {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("fallback_method")]
+            [JsonProperty("fallback_method", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.FallbackMethodEnum FallbackMethod {get; private set;}
-            [JsonProperty("status_callback_url")]
+            [JsonProperty("status_callback_url", NullValueHandling = NullValueHandling.Ignore)]
             public string StatusCallbackUrl {get; private set;}
-            [JsonProperty("status_callback_method")]
+            [JsonProperty("status_callback_method", NullValueHandling = NullValueHandling.Ignore)]
             public string StatusCallbackMethod {get; private set;}
             public MessagingV2ChannelsSenderWebhook() { }
             public class Builder
@@ -143,31 +143,34 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProfile
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("about")]
+            [JsonProperty("about", NullValueHandling = NullValueHandling.Ignore)]
             public string About {get; private set;}
-            [JsonProperty("address")]
+            [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
             public string Address {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("logo_url")]
+            [JsonProperty("logo_url", NullValueHandling = NullValueHandling.Ignore)]
             public string LogoUrl {get; private set;}
-            [JsonProperty("banner_url")]
+            [JsonProperty("banner_url", NullValueHandling = NullValueHandling.Ignore)]
             public string BannerUrl {get; private set;}
-            [JsonProperty("privacy_url")]
+            [JsonProperty("privacy_url", NullValueHandling = NullValueHandling.Ignore)]
             public string PrivacyUrl {get; private set;}
-            [JsonProperty("terms_of_service_url")]
+            [JsonProperty("terms_of_service_url", NullValueHandling = NullValueHandling.Ignore)]
             public string TermsOfServiceUrl {get; private set;}
-            [JsonProperty("accent_color")]
+            [JsonProperty("accent_color", NullValueHandling = NullValueHandling.Ignore)]
             public string AccentColor {get; private set;}
-            [JsonProperty("vertical")]
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("use_case", NullValueHandling = NullValueHandling.Ignore)]
+            public ChannelsSenderResource.UseCaseEnum UseCase {get; private set;}
+            [JsonProperty("vertical", NullValueHandling = NullValueHandling.Ignore)]
             public string Vertical {get; private set;}
-            [JsonProperty("websites")]
+            [JsonProperty("websites", NullValueHandling = NullValueHandling.Ignore)]
             public object Websites {get; private set;}
-            [JsonProperty("emails")]
+            [JsonProperty("emails", NullValueHandling = NullValueHandling.Ignore)]
             public object Emails {get; private set;}
-            [JsonProperty("phone_numbers")]
+            [JsonProperty("phone_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public object PhoneNumbers {get; private set;}
             public MessagingV2ChannelsSenderProfile() { }
             public class Builder
@@ -221,6 +224,11 @@ namespace Twilio.Rest.Messaging.V2
                     _messagingV2ChannelsSenderProfile.AccentColor= accentColor;
                     return this;
                 }
+                public Builder WithUseCase(ChannelsSenderResource.UseCaseEnum useCase)
+                {
+                    _messagingV2ChannelsSenderProfile.UseCase= useCase;
+                    return this;
+                }
                 public Builder WithVertical(string vertical)
                 {
                     _messagingV2ChannelsSenderProfile.Vertical= vertical;
@@ -249,13 +257,13 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderRequestsCreate
         {
-            [JsonProperty("sender_id")]
+            [JsonProperty("sender_id", NullValueHandling = NullValueHandling.Ignore)]
             public string SenderId {get; private set;}
-            [JsonProperty("configuration")]
+            [JsonProperty("configuration", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
-            [JsonProperty("webhook")]
+            [JsonProperty("webhook", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderWebhook Webhook {get; private set;}
-            [JsonProperty("profile")]
+            [JsonProperty("profile", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderProfile Profile {get; private set;}
             public MessagingV2ChannelsSenderRequestsCreate() { }
             public class Builder
@@ -292,11 +300,11 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderRequestsUpdate
         {
-            [JsonProperty("configuration")]
+            [JsonProperty("configuration", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
-            [JsonProperty("webhook")]
+            [JsonProperty("webhook", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderWebhook Webhook {get; private set;}
-            [JsonProperty("profile")]
+            [JsonProperty("profile", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderProfile Profile {get; private set;}
             public MessagingV2ChannelsSenderRequestsUpdate() { }
             public class Builder
@@ -328,9 +336,9 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProfileGenericResponseWebsites
         {
-            [JsonProperty("website")]
+            [JsonProperty("website", NullValueHandling = NullValueHandling.Ignore)]
             public string Website {get; private set;}
-            [JsonProperty("label")]
+            [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
             public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponseWebsites() { }
             public class Builder
@@ -357,9 +365,9 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProfileGenericResponseEmails
         {
-            [JsonProperty("email")]
+            [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
             public string Email {get; private set;}
-            [JsonProperty("label")]
+            [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
             public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponseEmails() { }
             public class Builder
@@ -386,9 +394,9 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers
         {
-            [JsonProperty("phone_number")]
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
             public string PhoneNumber {get; private set;}
-            [JsonProperty("label")]
+            [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
             public string Label {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers() { }
             public class Builder
@@ -415,31 +423,34 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProfileGenericResponse
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("about")]
+            [JsonProperty("about", NullValueHandling = NullValueHandling.Ignore)]
             public string About {get; private set;}
-            [JsonProperty("address")]
+            [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
             public string Address {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("logo_url")]
+            [JsonProperty("logo_url", NullValueHandling = NullValueHandling.Ignore)]
             public string LogoUrl {get; private set;}
-            [JsonProperty("banner_url")]
+            [JsonProperty("banner_url", NullValueHandling = NullValueHandling.Ignore)]
             public string BannerUrl {get; private set;}
-            [JsonProperty("privacy_url")]
+            [JsonProperty("privacy_url", NullValueHandling = NullValueHandling.Ignore)]
             public string PrivacyUrl {get; private set;}
-            [JsonProperty("terms_of_service_url")]
+            [JsonProperty("terms_of_service_url", NullValueHandling = NullValueHandling.Ignore)]
             public string TermsOfServiceUrl {get; private set;}
-            [JsonProperty("accent_color")]
+            [JsonProperty("accent_color", NullValueHandling = NullValueHandling.Ignore)]
             public string AccentColor {get; private set;}
-            [JsonProperty("vertical")]
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("use_case", NullValueHandling = NullValueHandling.Ignore)]
+            public ChannelsSenderResource.UseCaseEnum UseCase {get; private set;}
+            [JsonProperty("vertical", NullValueHandling = NullValueHandling.Ignore)]
             public string Vertical {get; private set;}
-            [JsonProperty("websites")]
+            [JsonProperty("websites", NullValueHandling = NullValueHandling.Ignore)]
             public List<MessagingV2ChannelsSenderProfileGenericResponseWebsites> Websites {get; private set;}
-            [JsonProperty("emails")]
+            [JsonProperty("emails", NullValueHandling = NullValueHandling.Ignore)]
             public List<MessagingV2ChannelsSenderProfileGenericResponseEmails> Emails {get; private set;}
-            [JsonProperty("phone_numbers")]
+            [JsonProperty("phone_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public List<MessagingV2ChannelsSenderProfileGenericResponsePhoneNumbers> PhoneNumbers {get; private set;}
             public MessagingV2ChannelsSenderProfileGenericResponse() { }
             public class Builder
@@ -493,6 +504,11 @@ namespace Twilio.Rest.Messaging.V2
                     _messagingV2ChannelsSenderProfileGenericResponse.AccentColor= accentColor;
                     return this;
                 }
+                public Builder WithUseCase(ChannelsSenderResource.UseCaseEnum useCase)
+                {
+                    _messagingV2ChannelsSenderProfileGenericResponse.UseCase= useCase;
+                    return this;
+                }
                 public Builder WithVertical(string vertical)
                 {
                     _messagingV2ChannelsSenderProfileGenericResponse.Vertical= vertical;
@@ -521,9 +537,9 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderProperties
         {
-            [JsonProperty("quality_rating")]
+            [JsonProperty("quality_rating", NullValueHandling = NullValueHandling.Ignore)]
             public string QualityRating {get; private set;}
-            [JsonProperty("messaging_limit")]
+            [JsonProperty("messaging_limit", NullValueHandling = NullValueHandling.Ignore)]
             public string MessagingLimit {get; private set;}
             public MessagingV2ChannelsSenderProperties() { }
             public class Builder
@@ -550,11 +566,11 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderOfflineReasonsItems
         {
-            [JsonProperty("code")]
+            [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
             public string Code {get; private set;}
-            [JsonProperty("message")]
+            [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
             public string Message {get; private set;}
-            [JsonProperty("more_info")]
+            [JsonProperty("more_info", NullValueHandling = NullValueHandling.Ignore)]
             public Uri MoreInfo {get; private set;}
             public MessagingV2ChannelsSenderOfflineReasonsItems() { }
             public class Builder
@@ -586,10 +602,10 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2RcsCarrier
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("status")]
+            [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.MessagingV2RcsCarrierStatus Status {get; private set;}
             public MessagingV2RcsCarrier() { }
             public class Builder
@@ -616,14 +632,14 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2RcsComplianceCountryResponse
         {
-            [JsonProperty("country")]
+            [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
             public string Country {get; private set;}
-            [JsonProperty("registration_sid")]
+            [JsonProperty("registration_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string RegistrationSid {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("status")]
+            [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
             public ChannelsSenderResource.MessagingV2RcsCountryStatus Status {get; private set;}
-            [JsonProperty("carriers")]
+            [JsonProperty("carriers", NullValueHandling = NullValueHandling.Ignore)]
             public List<MessagingV2RcsCarrier> Carriers {get; private set;}
             public MessagingV2RcsComplianceCountryResponse() { }
             public class Builder
@@ -660,9 +676,9 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2RcsComplianceResponse
         {
-            [JsonProperty("registration_sid")]
+            [JsonProperty("registration_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string RegistrationSid {get; private set;}
-            [JsonProperty("countries")]
+            [JsonProperty("countries", NullValueHandling = NullValueHandling.Ignore)]
             public List<MessagingV2RcsComplianceCountryResponse> Countries {get; private set;}
             public MessagingV2RcsComplianceResponse() { }
             public class Builder
@@ -763,6 +779,21 @@ namespace Twilio.Rest.Messaging.V2
             }
             public static readonly CallbackMethodEnum Post = new CallbackMethodEnum("POST");
             public static readonly CallbackMethodEnum Put = new CallbackMethodEnum("PUT");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class UseCaseEnum : StringEnum
+        {
+            private UseCaseEnum(string value) : base(value) {}
+            public UseCaseEnum() {}
+            public static implicit operator UseCaseEnum(string value)
+            {
+                return new UseCaseEnum(value);
+            }
+            public static readonly UseCaseEnum Promotional = new UseCaseEnum("PROMOTIONAL");
+            public static readonly UseCaseEnum Transactional = new UseCaseEnum("TRANSACTIONAL");
+            public static readonly UseCaseEnum Otp = new UseCaseEnum("OTP");
+            public static readonly UseCaseEnum MultiUse = new UseCaseEnum("MULTI_USE");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

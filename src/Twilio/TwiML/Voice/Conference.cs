@@ -166,6 +166,10 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Conference.RecordEnum Record { get; set; }
         /// <summary>
+        /// Configuration for the recording
+        /// </summary>
+        public string RecordingConfigurationId { get; set; }
+        /// <summary>
         /// Conference region
         /// </summary>
         public Conference.RegionEnum Region { get; set; }
@@ -226,6 +230,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="waitMethod"> Wait URL method </param>
         /// <param name="maxParticipants"> Maximum number of participants </param>
         /// <param name="record"> Record the conference </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         /// <param name="region"> Conference region </param>
         /// <param name="coach"> Call coach </param>
         /// <param name="trim"> Trim the conference recording </param>
@@ -247,6 +252,7 @@ namespace Twilio.TwiML.Voice
                           Twilio.Http.HttpMethod waitMethod = null,
                           int? maxParticipants = null,
                           Conference.RecordEnum record = null,
+                          string recordingConfigurationId = null,
                           Conference.RegionEnum region = null,
                           string coach = null,
                           Conference.TrimEnum trim = null,
@@ -269,6 +275,7 @@ namespace Twilio.TwiML.Voice
             this.WaitMethod = waitMethod;
             this.MaxParticipants = maxParticipants;
             this.Record = record;
+            this.RecordingConfigurationId = recordingConfigurationId;
             this.Region = region;
             this.Coach = coach;
             this.Trim = trim;
@@ -328,6 +335,10 @@ namespace Twilio.TwiML.Voice
             if (this.Record != null)
             {
                 attributes.Add(new XAttribute("record", this.Record.ToString()));
+            }
+            if (this.RecordingConfigurationId != null)
+            {
+                attributes.Add(new XAttribute("recordingConfigurationId", this.RecordingConfigurationId));
             }
             if (this.Region != null)
             {

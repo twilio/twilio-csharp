@@ -32,12 +32,12 @@ namespace Twilio.Rest.Verify.V2.Service
     
         public class VerifyPasskeysFactorRequestResponse
         {
-            [JsonProperty("attestationObject")]
+            [JsonProperty("attestationObject", NullValueHandling = NullValueHandling.Ignore)]
             public string AttestationObject {get; private set;}
-            [JsonProperty("clientDataJSON")]
+            [JsonProperty("clientDataJSON", NullValueHandling = NullValueHandling.Ignore)]
             public string ClientDataJSON {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("transports")]
+            [JsonProperty("transports", NullValueHandling = NullValueHandling.Ignore)]
             public List<NewVerifyFactorResource.TransportsEnum> Transports {get; private set;}
             public VerifyPasskeysFactorRequestResponse() { }
             public class Builder
@@ -69,17 +69,17 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class VerifyPasskeysFactorRequest
         {
-            [JsonProperty("response")]
+            [JsonProperty("response", NullValueHandling = NullValueHandling.Ignore)]
             public VerifyPasskeysFactorRequestResponse Response {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("rawId")]
+            [JsonProperty("rawId", NullValueHandling = NullValueHandling.Ignore)]
             public string RawId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("authenticatorAttachment")]
+            [JsonProperty("authenticatorAttachment", NullValueHandling = NullValueHandling.Ignore)]
             public NewVerifyFactorResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public NewVerifyFactorResource.TypeEnum Type {get; private set;}
             public VerifyPasskeysFactorRequest() { }
             public class Builder

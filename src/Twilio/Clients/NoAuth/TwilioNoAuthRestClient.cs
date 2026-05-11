@@ -171,7 +171,7 @@ namespace Twilio.Clients.NoAuth
             {
                 restException = RestException.FromJson(response.Content);
             }
-            catch (JsonReaderException) { /* Allow null check below to handle */ }
+            catch (JsonException) { /* Allow null check below to handle */ }
 
 
             if (restException != null)
@@ -192,7 +192,7 @@ namespace Twilio.Clients.NoAuth
             {
                 restApiStandardException = RestApiStandardException.FromJson(response.Content);
             }
-            catch (JsonReaderException) { /* Allow fallback to legacy format */ }
+            catch (JsonException) { /* Allow fallback to legacy format */ }
 
             // Check if it's a valid RFC 9457 response (has 'type' field)
             if (restApiStandardException != null)

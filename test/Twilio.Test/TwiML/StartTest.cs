@@ -114,7 +114,8 @@ namespace Twilio.Tests.TwiML
                 new[] {Recording.EventEnum.InProgress},
                 Recording.TrimEnum.TrimSilence,
                 Recording.TrackEnum.Inbound,
-                Recording.ChannelsEnum.Mono
+                Recording.ChannelsEnum.Mono,
+                "recording_configuration_id"
             );
 
             Assert.AreEqual(
@@ -123,7 +124,7 @@ namespace Twilio.Tests.TwiML
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
                 "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
                 "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>" + Environment.NewLine +
-                "  <Recording recordingStatusCallback=\"recording_status_callback\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" trim=\"trim-silence\" track=\"inbound\" channels=\"mono\"></Recording>" + Environment.NewLine +
+                "  <Recording recordingStatusCallback=\"recording_status_callback\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" trim=\"trim-silence\" track=\"inbound\" channels=\"mono\" recordingConfigurationId=\"recording_configuration_id\"></Recording>" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
             );

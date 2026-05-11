@@ -110,6 +110,10 @@ namespace Twilio.TwiML.Voice
         /// The recording channels for the final recording
         /// </summary>
         public Recording.ChannelsEnum Channels { get; set; }
+        /// <summary>
+        /// Configuration for the recording
+        /// </summary>
+        public string RecordingConfigurationId { get; set; }
 
         /// <summary>
         /// Create a new Recording
@@ -120,12 +124,14 @@ namespace Twilio.TwiML.Voice
         /// <param name="trim"> Trim the recording </param>
         /// <param name="track"> To indicate which audio track should be recorded </param>
         /// <param name="channels"> The recording channels for the final recording </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         public Recording(string recordingStatusCallback = null,
                          Recording.RecordingStatusCallbackMethodEnum recordingStatusCallbackMethod = null,
                          IEnumerable<Recording.EventEnum> recordingStatusCallbackEvent = null,
                          Recording.TrimEnum trim = null,
                          Recording.TrackEnum track = null,
-                         Recording.ChannelsEnum channels = null) : base("Recording")
+                         Recording.ChannelsEnum channels = null,
+                         string recordingConfigurationId = null) : base("Recording")
         {
             this.RecordingStatusCallback = recordingStatusCallback;
             this.RecordingStatusCallbackMethod = recordingStatusCallbackMethod;
@@ -133,6 +139,7 @@ namespace Twilio.TwiML.Voice
             this.Trim = trim;
             this.Track = track;
             this.Channels = channels;
+            this.RecordingConfigurationId = recordingConfigurationId;
         }
 
         /// <summary>
@@ -164,6 +171,10 @@ namespace Twilio.TwiML.Voice
             if (this.Channels != null)
             {
                 attributes.Add(new XAttribute("channels", this.Channels.ToString()));
+            }
+            if (this.RecordingConfigurationId != null)
+            {
+                attributes.Add(new XAttribute("recordingConfigurationId", this.RecordingConfigurationId));
             }
             return attributes;
         }

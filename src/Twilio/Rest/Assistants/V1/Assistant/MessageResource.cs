@@ -32,15 +32,15 @@ namespace Twilio.Rest.Assistants.V1.Assistant
     
         public class AssistantsV1ServiceAssistantSendMessageRequest
         {
-            [JsonProperty("identity")]
+            [JsonProperty("identity", NullValueHandling = NullValueHandling.Ignore)]
             public string Identity {get; private set;}
-            [JsonProperty("body")]
+            [JsonProperty("body", NullValueHandling = NullValueHandling.Ignore)]
             public string Body {get; private set;}
-            [JsonProperty("session_id")]
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
             public string SessionId {get; private set;}
-            [JsonProperty("webhook")]
+            [JsonProperty("webhook", NullValueHandling = NullValueHandling.Ignore)]
             public string Webhook {get; private set;}
-            [JsonProperty("mode")]
+            [JsonProperty("mode", NullValueHandling = NullValueHandling.Ignore)]
             public string Mode {get; private set;}
             public AssistantsV1ServiceAssistantSendMessageRequest() { }
             public class Builder

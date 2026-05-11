@@ -32,13 +32,13 @@ namespace Twilio.Rest.Verify.V2.Service
     
         public class ApprovePasskeysChallengeRequestResponse
         {
-            [JsonProperty("authenticatorData")]
+            [JsonProperty("authenticatorData", NullValueHandling = NullValueHandling.Ignore)]
             public string AuthenticatorData {get; private set;}
-            [JsonProperty("clientDataJSON")]
+            [JsonProperty("clientDataJSON", NullValueHandling = NullValueHandling.Ignore)]
             public string ClientDataJSON {get; private set;}
-            [JsonProperty("signature")]
+            [JsonProperty("signature", NullValueHandling = NullValueHandling.Ignore)]
             public string Signature {get; private set;}
-            [JsonProperty("userHandle")]
+            [JsonProperty("userHandle", NullValueHandling = NullValueHandling.Ignore)]
             public string UserHandle {get; private set;}
             public ApprovePasskeysChallengeRequestResponse() { }
             public class Builder
@@ -75,17 +75,17 @@ namespace Twilio.Rest.Verify.V2.Service
         }
         public class ApprovePasskeysChallengeRequest
         {
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("rawId")]
+            [JsonProperty("rawId", NullValueHandling = NullValueHandling.Ignore)]
             public string RawId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("authenticatorAttachment")]
+            [JsonProperty("authenticatorAttachment", NullValueHandling = NullValueHandling.Ignore)]
             public ApproveChallengeResource.AuthenticatorAttachmentEnum AuthenticatorAttachment {get; private set;}
-            [JsonProperty("response")]
+            [JsonProperty("response", NullValueHandling = NullValueHandling.Ignore)]
             public ApprovePasskeysChallengeRequestResponse Response {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public ApproveChallengeResource.TypeEnum Type {get; private set;}
             public ApprovePasskeysChallengeRequest() { }
             public class Builder

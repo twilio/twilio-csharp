@@ -32,7 +32,7 @@ namespace Twilio.Rest.Numbers.V2
     
         public class CreateShortCodeApplicationRequestBusinessInformation
         {
-            [JsonProperty("customer_facing_profile")]
+            [JsonProperty("customer_facing_profile", NullValueHandling = NullValueHandling.Ignore)]
             public string CustomerFacingProfile {get; private set;}
             public CreateShortCodeApplicationRequestBusinessInformation() { }
             public class Builder
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationRequestSetup
         {
-            [JsonProperty("charges_apply")]
+            [JsonProperty("charges_apply", NullValueHandling = NullValueHandling.Ignore)]
             public bool? ChargesApply {get; private set;}
             public CreateShortCodeApplicationRequestSetup() { }
             public class Builder
@@ -76,13 +76,13 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationRequest
         {
-            [JsonProperty("friendly_name")]
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
             public string FriendlyName {get; private set;}
-            [JsonProperty("iso_country")]
+            [JsonProperty("iso_country", NullValueHandling = NullValueHandling.Ignore)]
             public string IsoCountry {get; private set;}
-            [JsonProperty("business_information")]
+            [JsonProperty("business_information", NullValueHandling = NullValueHandling.Ignore)]
             public CreateShortCodeApplicationRequestBusinessInformation BusinessInformation {get; private set;}
-            [JsonProperty("setup")]
+            [JsonProperty("setup", NullValueHandling = NullValueHandling.Ignore)]
             public CreateShortCodeApplicationRequestSetup Setup {get; private set;}
             public CreateShortCodeApplicationRequest() { }
             public class Builder
@@ -120,30 +120,30 @@ namespace Twilio.Rest.Numbers.V2
         public class CreateShortCodeApplicationResponseSetup
         {
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("request_type")]
+            [JsonProperty("request_type", NullValueHandling = NullValueHandling.Ignore)]
             public ApplicationResource.RequestTypeEnum RequestType {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("traffic_type")]
+            [JsonProperty("traffic_type", NullValueHandling = NullValueHandling.Ignore)]
             public ApplicationResource.TrafficTypeEnum TrafficType {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("lease_type")]
+            [JsonProperty("lease_type", NullValueHandling = NullValueHandling.Ignore)]
             public ApplicationResource.LeaseTypeEnum LeaseType {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("payment_frequency")]
+            [JsonProperty("payment_frequency", NullValueHandling = NullValueHandling.Ignore)]
             public ApplicationResource.PaymentFrequencyEnum PaymentFrequency {get; private set;}
-            [JsonProperty("short_code_preference")]
+            [JsonProperty("short_code_preference", NullValueHandling = NullValueHandling.Ignore)]
             public string ShortCodePreference {get; private set;}
-            [JsonProperty("mms_enabled")]
+            [JsonProperty("mms_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? MmsEnabled {get; private set;}
-            [JsonProperty("free_to_end_user")]
+            [JsonProperty("free_to_end_user", NullValueHandling = NullValueHandling.Ignore)]
             public bool? FreeToEndUser {get; private set;}
-            [JsonProperty("charges_apply")]
+            [JsonProperty("charges_apply", NullValueHandling = NullValueHandling.Ignore)]
             public bool? ChargesApply {get; private set;}
-            [JsonProperty("current_provider")]
+            [JsonProperty("current_provider", NullValueHandling = NullValueHandling.Ignore)]
             public string CurrentProvider {get; private set;}
-            [JsonProperty("migrated_mms_enabled")]
+            [JsonProperty("migrated_mms_enabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? MigratedMmsEnabled {get; private set;}
-            [JsonProperty("migrated_live_traffic")]
+            [JsonProperty("migrated_live_traffic", NullValueHandling = NullValueHandling.Ignore)]
             public bool? MigratedLiveTraffic {get; private set;}
             public CreateShortCodeApplicationResponseSetup() { }
             public class Builder
@@ -215,15 +215,15 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationResponseBusinessInformation
         {
-            [JsonProperty("managing_company_profile")]
+            [JsonProperty("managing_company_profile", NullValueHandling = NullValueHandling.Ignore)]
             public string ManagingCompanyProfile {get; private set;}
-            [JsonProperty("customer_facing_profile")]
+            [JsonProperty("customer_facing_profile", NullValueHandling = NullValueHandling.Ignore)]
             public string CustomerFacingProfile {get; private set;}
-            [JsonProperty("business_website")]
+            [JsonProperty("business_website", NullValueHandling = NullValueHandling.Ignore)]
             public string BusinessWebsite {get; private set;}
-            [JsonProperty("ein_managing_company_profile")]
+            [JsonProperty("ein_managing_company_profile", NullValueHandling = NullValueHandling.Ignore)]
             public string EinManagingCompanyProfile {get; private set;}
-            [JsonProperty("ein_customer_facing_profile")]
+            [JsonProperty("ein_customer_facing_profile", NullValueHandling = NullValueHandling.Ignore)]
             public string EinCustomerFacingProfile {get; private set;}
             public CreateShortCodeApplicationResponseBusinessInformation() { }
             public class Builder
@@ -266,23 +266,23 @@ namespace Twilio.Rest.Numbers.V2
         public class CreateShortCodeApplicationResponseUserSignUp
         {
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("sign_up_options")]
+            [JsonProperty("sign_up_options", NullValueHandling = NullValueHandling.Ignore)]
             public List<ApplicationResource.SignUpOptionsEnum> SignUpOptions {get; private set;}
-            [JsonProperty("double_opt_in_process")]
+            [JsonProperty("double_opt_in_process", NullValueHandling = NullValueHandling.Ignore)]
             public bool? DoubleOptInProcess {get; private set;}
-            [JsonProperty("double_opt_in_message")]
+            [JsonProperty("double_opt_in_message", NullValueHandling = NullValueHandling.Ignore)]
             public string DoubleOptInMessage {get; private set;}
-            [JsonProperty("sign_up_confirmation_message")]
+            [JsonProperty("sign_up_confirmation_message", NullValueHandling = NullValueHandling.Ignore)]
             public string SignUpConfirmationMessage {get; private set;}
-            [JsonProperty("double_opt_in_response_message")]
+            [JsonProperty("double_opt_in_response_message", NullValueHandling = NullValueHandling.Ignore)]
             public string DoubleOptInResponseMessage {get; private set;}
-            [JsonProperty("online_web_form_message")]
+            [JsonProperty("online_web_form_message", NullValueHandling = NullValueHandling.Ignore)]
             public string OnlineWebFormMessage {get; private set;}
-            [JsonProperty("keyword_message")]
+            [JsonProperty("keyword_message", NullValueHandling = NullValueHandling.Ignore)]
             public string KeywordMessage {get; private set;}
-            [JsonProperty("ivr_message")]
+            [JsonProperty("ivr_message", NullValueHandling = NullValueHandling.Ignore)]
             public string IvrMessage {get; private set;}
-            [JsonProperty("other_form_message")]
+            [JsonProperty("other_form_message", NullValueHandling = NullValueHandling.Ignore)]
             public string OtherFormMessage {get; private set;}
             public CreateShortCodeApplicationResponseUserSignUp() { }
             public class Builder
@@ -344,17 +344,17 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationResponseComplianceKeywords
         {
-            [JsonProperty("help")]
+            [JsonProperty("help", NullValueHandling = NullValueHandling.Ignore)]
             public string Help {get; private set;}
-            [JsonProperty("stop")]
+            [JsonProperty("stop", NullValueHandling = NullValueHandling.Ignore)]
             public string Stop {get; private set;}
-            [JsonProperty("info")]
+            [JsonProperty("info", NullValueHandling = NullValueHandling.Ignore)]
             public string Info {get; private set;}
-            [JsonProperty("aide")]
+            [JsonProperty("aide", NullValueHandling = NullValueHandling.Ignore)]
             public string Aide {get; private set;}
-            [JsonProperty("arret")]
+            [JsonProperty("arret", NullValueHandling = NullValueHandling.Ignore)]
             public string Arret {get; private set;}
-            [JsonProperty("opt_out_filtering")]
+            [JsonProperty("opt_out_filtering", NullValueHandling = NullValueHandling.Ignore)]
             public bool? OptOutFiltering {get; private set;}
             public CreateShortCodeApplicationResponseComplianceKeywords() { }
             public class Builder
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationResponseContentExamples
         {
-            [JsonProperty("examples")]
+            [JsonProperty("examples", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Examples {get; private set;}
             public CreateShortCodeApplicationResponseContentExamples() { }
             public class Builder
@@ -423,42 +423,42 @@ namespace Twilio.Rest.Numbers.V2
         }
         public class CreateShortCodeApplicationResponseSmsCampaignDetails
         {
-            [JsonProperty("campaign_name")]
+            [JsonProperty("campaign_name", NullValueHandling = NullValueHandling.Ignore)]
             public string CampaignName {get; private set;}
-            [JsonProperty("campaign_brand_website")]
+            [JsonProperty("campaign_brand_website", NullValueHandling = NullValueHandling.Ignore)]
             public string CampaignBrandWebsite {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("customer_care_channel")]
+            [JsonProperty("customer_care_channel", NullValueHandling = NullValueHandling.Ignore)]
             public ApplicationResource.CustomerCareChannelEnum CustomerCareChannel {get; private set;}
-            [JsonProperty("customer_care_value")]
+            [JsonProperty("customer_care_value", NullValueHandling = NullValueHandling.Ignore)]
             public string CustomerCareValue {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("campaign_frequency")]
+            [JsonProperty("campaign_frequency", NullValueHandling = NullValueHandling.Ignore)]
             public List<ApplicationResource.CampaignFrequencyEnum> CampaignFrequency {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("sc_use_case_categories")]
+            [JsonProperty("sc_use_case_categories", NullValueHandling = NullValueHandling.Ignore)]
             public List<ApplicationResource.ScUseCaseCategoriesEnum> ScUseCaseCategories {get; private set;}
-            [JsonProperty("sms_terms_of_service_url")]
+            [JsonProperty("sms_terms_of_service_url", NullValueHandling = NullValueHandling.Ignore)]
             public string SmsTermsOfServiceUrl {get; private set;}
-            [JsonProperty("sms_privacy_policy_url")]
+            [JsonProperty("sms_privacy_policy_url", NullValueHandling = NullValueHandling.Ignore)]
             public string SmsPrivacyPolicyUrl {get; private set;}
-            [JsonProperty("monthly_outbound_volume_expected")]
+            [JsonProperty("monthly_outbound_volume_expected", NullValueHandling = NullValueHandling.Ignore)]
             public string MonthlyOutboundVolumeExpected {get; private set;}
-            [JsonProperty("monthly_inbound_volume_expected")]
+            [JsonProperty("monthly_inbound_volume_expected", NullValueHandling = NullValueHandling.Ignore)]
             public string MonthlyInboundVolumeExpected {get; private set;}
-            [JsonProperty("avg_monthly_messages_sent_to_each_subscriber")]
+            [JsonProperty("avg_monthly_messages_sent_to_each_subscriber", NullValueHandling = NullValueHandling.Ignore)]
             public string AvgMonthlyMessagesSentToEachSubscriber {get; private set;}
-            [JsonProperty("avg_monthly_messages_received_from_subscribers")]
+            [JsonProperty("avg_monthly_messages_received_from_subscribers", NullValueHandling = NullValueHandling.Ignore)]
             public string AvgMonthlyMessagesReceivedFromSubscribers {get; private set;}
-            [JsonProperty("estimated_total_subscribers")]
+            [JsonProperty("estimated_total_subscribers", NullValueHandling = NullValueHandling.Ignore)]
             public string EstimatedTotalSubscribers {get; private set;}
-            [JsonProperty("duration_of_the_campaign")]
+            [JsonProperty("duration_of_the_campaign", NullValueHandling = NullValueHandling.Ignore)]
             public string DurationOfTheCampaign {get; private set;}
-            [JsonProperty("planned_traffic_spikes")]
+            [JsonProperty("planned_traffic_spikes", NullValueHandling = NullValueHandling.Ignore)]
             public string PlannedTrafficSpikes {get; private set;}
-            [JsonProperty("spike_details")]
+            [JsonProperty("spike_details", NullValueHandling = NullValueHandling.Ignore)]
             public string SpikeDetails {get; private set;}
-            [JsonProperty("expected_traffic_start_date")]
+            [JsonProperty("expected_traffic_start_date", NullValueHandling = NullValueHandling.Ignore)]
             public string ExpectedTrafficStartDate {get; private set;}
             public CreateShortCodeApplicationResponseSmsCampaignDetails() { }
             public class Builder

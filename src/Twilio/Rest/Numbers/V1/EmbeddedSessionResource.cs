@@ -32,7 +32,7 @@ namespace Twilio.Rest.Numbers.V1
     
         public class NumbersV1CreateEmbeddedSessionRequest
         {
-            [JsonProperty("themeSetId")]
+            [JsonProperty("themeSetId", NullValueHandling = NullValueHandling.Ignore)]
             public string ThemeSetId {get; private set;}
             public NumbersV1CreateEmbeddedSessionRequest() { }
             public class Builder

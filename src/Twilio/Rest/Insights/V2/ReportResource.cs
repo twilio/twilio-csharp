@@ -32,9 +32,9 @@ namespace Twilio.Rest.Insights.V2
     
         public class InsightsV2CreateAccountReportRequestTimeRange
         {
-            [JsonProperty("start_datetime")]
+            [JsonProperty("start_datetime", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? StartDatetime {get; private set;}
-            [JsonProperty("end_datetime")]
+            [JsonProperty("end_datetime", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? EndDatetime {get; private set;}
             public InsightsV2CreateAccountReportRequestTimeRange() { }
             public class Builder
@@ -61,9 +61,9 @@ namespace Twilio.Rest.Insights.V2
         }
         public class ReportFilter
         {
-            [JsonProperty("key")]
+            [JsonProperty("key", NullValueHandling = NullValueHandling.Ignore)]
             public string Key {get; private set;}
-            [JsonProperty("values")]
+            [JsonProperty("values", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Values {get; private set;}
             public ReportFilter() { }
             public class Builder
@@ -90,9 +90,9 @@ namespace Twilio.Rest.Insights.V2
         }
         public class InsightsV2CreateAccountReportRequest
         {
-            [JsonProperty("time_range")]
+            [JsonProperty("time_range", NullValueHandling = NullValueHandling.Ignore)]
             public InsightsV2CreateAccountReportRequestTimeRange TimeRange {get; private set;}
-            [JsonProperty("filters")]
+            [JsonProperty("filters", NullValueHandling = NullValueHandling.Ignore)]
             public List<ReportFilter> Filters {get; private set;}
             public InsightsV2CreateAccountReportRequest() { }
             public class Builder
@@ -119,11 +119,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class ReportMetadata
         {
-            [JsonProperty("start_datetime")]
+            [JsonProperty("start_datetime", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? StartDatetime {get; private set;}
-            [JsonProperty("end_datetime")]
+            [JsonProperty("end_datetime", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? EndDatetime {get; private set;}
-            [JsonProperty("filters")]
+            [JsonProperty("filters", NullValueHandling = NullValueHandling.Ignore)]
             public List<ReportFilter> Filters {get; private set;}
             public ReportMetadata() { }
             public class Builder
@@ -155,9 +155,9 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportCallDirection
         {
-            [JsonProperty("outbound")]
+            [JsonProperty("outbound", NullValueHandling = NullValueHandling.Ignore)]
             public int? Outbound {get; private set;}
-            [JsonProperty("inbound")]
+            [JsonProperty("inbound", NullValueHandling = NullValueHandling.Ignore)]
             public int? Inbound {get; private set;}
             public AccountReportCallDirection() { }
             public class Builder
@@ -184,15 +184,15 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportCallState
         {
-            [JsonProperty("completed")]
+            [JsonProperty("completed", NullValueHandling = NullValueHandling.Ignore)]
             public int? Completed {get; private set;}
-            [JsonProperty("fail")]
+            [JsonProperty("fail", NullValueHandling = NullValueHandling.Ignore)]
             public int? Fail {get; private set;}
-            [JsonProperty("busy")]
+            [JsonProperty("busy", NullValueHandling = NullValueHandling.Ignore)]
             public int? Busy {get; private set;}
-            [JsonProperty("noanswer")]
+            [JsonProperty("noanswer", NullValueHandling = NullValueHandling.Ignore)]
             public int? Noanswer {get; private set;}
-            [JsonProperty("canceled")]
+            [JsonProperty("canceled", NullValueHandling = NullValueHandling.Ignore)]
             public int? Canceled {get; private set;}
             public AccountReportCallState() { }
             public class Builder
@@ -234,15 +234,15 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportCallType
         {
-            [JsonProperty("carrier")]
+            [JsonProperty("carrier", NullValueHandling = NullValueHandling.Ignore)]
             public int? Carrier {get; private set;}
-            [JsonProperty("sip")]
+            [JsonProperty("sip", NullValueHandling = NullValueHandling.Ignore)]
             public int? Sip {get; private set;}
-            [JsonProperty("trunking")]
+            [JsonProperty("trunking", NullValueHandling = NullValueHandling.Ignore)]
             public int? Trunking {get; private set;}
-            [JsonProperty("client")]
+            [JsonProperty("client", NullValueHandling = NullValueHandling.Ignore)]
             public int? VarClient {get; private set;}
-            [JsonProperty("whatsapp")]
+            [JsonProperty("whatsapp", NullValueHandling = NullValueHandling.Ignore)]
             public int? Whatsapp {get; private set;}
             public AccountReportCallType() { }
             public class Builder
@@ -284,13 +284,13 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportNetworkIssuesSdk
         {
-            [JsonProperty("ice_failures_percentage")]
+            [JsonProperty("ice_failures_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? IceFailuresPercentage {get; private set;}
-            [JsonProperty("high_latency_percentage")]
+            [JsonProperty("high_latency_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighLatencyPercentage {get; private set;}
-            [JsonProperty("high_packet_loss_percentage")]
+            [JsonProperty("high_packet_loss_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighPacketLossPercentage {get; private set;}
-            [JsonProperty("high_jitter_percentage")]
+            [JsonProperty("high_jitter_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighJitterPercentage {get; private set;}
             public AccountReportNetworkIssuesSdk() { }
             public class Builder
@@ -327,11 +327,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportNetworkIssuesTwilioGateway
         {
-            [JsonProperty("high_latency_percentage")]
+            [JsonProperty("high_latency_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighLatencyPercentage {get; private set;}
-            [JsonProperty("high_packet_loss_percentage")]
+            [JsonProperty("high_packet_loss_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighPacketLossPercentage {get; private set;}
-            [JsonProperty("high_jitter_percentage")]
+            [JsonProperty("high_jitter_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? HighJitterPercentage {get; private set;}
             public AccountReportNetworkIssuesTwilioGateway() { }
             public class Builder
@@ -363,9 +363,9 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportNetworkIssues
         {
-            [JsonProperty("sdk")]
+            [JsonProperty("sdk", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportNetworkIssuesSdk Sdk {get; private set;}
-            [JsonProperty("twilio_gateway")]
+            [JsonProperty("twilio_gateway", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportNetworkIssuesTwilioGateway TwilioGateway {get; private set;}
             public AccountReportNetworkIssues() { }
             public class Builder
@@ -392,13 +392,13 @@ namespace Twilio.Rest.Insights.V2
         }
         public class CountyCarrierValueCarriers
         {
-            [JsonProperty("carrier")]
+            [JsonProperty("carrier", NullValueHandling = NullValueHandling.Ignore)]
             public string Carrier {get; private set;}
-            [JsonProperty("total_calls")]
+            [JsonProperty("total_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalCalls {get; private set;}
-            [JsonProperty("blocked_calls")]
+            [JsonProperty("blocked_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? BlockedCalls {get; private set;}
-            [JsonProperty("blocked_calls_percentage")]
+            [JsonProperty("blocked_calls_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? BlockedCallsPercentage {get; private set;}
             public CountyCarrierValueCarriers() { }
             public class Builder
@@ -435,9 +435,9 @@ namespace Twilio.Rest.Insights.V2
         }
         public class CountyCarrierValue
         {
-            [JsonProperty("country")]
+            [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
             public string Country {get; private set;}
-            [JsonProperty("carriers")]
+            [JsonProperty("carriers", NullValueHandling = NullValueHandling.Ignore)]
             public List<CountyCarrierValueCarriers> Carriers {get; private set;}
             public CountyCarrierValue() { }
             public class Builder
@@ -464,17 +464,17 @@ namespace Twilio.Rest.Insights.V2
         }
         public class BrandedUseCaseDetail
         {
-            [JsonProperty("use_case")]
+            [JsonProperty("use_case", NullValueHandling = NullValueHandling.Ignore)]
             public string UseCase {get; private set;}
-            [JsonProperty("enabled_phonenumbers")]
+            [JsonProperty("enabled_phonenumbers", NullValueHandling = NullValueHandling.Ignore)]
             public int? EnabledPhonenumbers {get; private set;}
-            [JsonProperty("total_calls")]
+            [JsonProperty("total_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalCalls {get; private set;}
-            [JsonProperty("answer_rate")]
+            [JsonProperty("answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? AnswerRate {get; private set;}
-            [JsonProperty("human_answer_rate")]
+            [JsonProperty("human_answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? HumanAnswerRate {get; private set;}
-            [JsonProperty("engagement_rate")]
+            [JsonProperty("engagement_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? EngagementRate {get; private set;}
             public BrandedUseCaseDetail() { }
             public class Builder
@@ -521,17 +521,17 @@ namespace Twilio.Rest.Insights.V2
         }
         public class BrandedCalling
         {
-            [JsonProperty("total_branded_calls")]
+            [JsonProperty("total_branded_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalBrandedCalls {get; private set;}
-            [JsonProperty("percent_branded_calls")]
+            [JsonProperty("percent_branded_calls", NullValueHandling = NullValueHandling.Ignore)]
             public float? PercentBrandedCalls {get; private set;}
-            [JsonProperty("answer_rate")]
+            [JsonProperty("answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? AnswerRate {get; private set;}
-            [JsonProperty("human_answer_rate")]
+            [JsonProperty("human_answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? HumanAnswerRate {get; private set;}
-            [JsonProperty("engagement_rate")]
+            [JsonProperty("engagement_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? EngagementRate {get; private set;}
-            [JsonProperty("by_use_case")]
+            [JsonProperty("by_use_case", NullValueHandling = NullValueHandling.Ignore)]
             public List<BrandedUseCaseDetail> ByUseCase {get; private set;}
             public BrandedCalling() { }
             public class Builder
@@ -578,15 +578,15 @@ namespace Twilio.Rest.Insights.V2
         }
         public class VoiceIntegrityCallsPerBundle
         {
-            [JsonProperty("bundle_sid")]
+            [JsonProperty("bundle_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string BundleSid {get; private set;}
-            [JsonProperty("enabled_phonenumbers")]
+            [JsonProperty("enabled_phonenumbers", NullValueHandling = NullValueHandling.Ignore)]
             public int? EnabledPhonenumbers {get; private set;}
-            [JsonProperty("total_calls")]
+            [JsonProperty("total_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalCalls {get; private set;}
-            [JsonProperty("answer_rate")]
+            [JsonProperty("answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? AnswerRate {get; private set;}
-            [JsonProperty("human_answer_rate")]
+            [JsonProperty("human_answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public float? HumanAnswerRate {get; private set;}
             public VoiceIntegrityCallsPerBundle() { }
             public class Builder
@@ -628,11 +628,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class VoiceIntegrity
         {
-            [JsonProperty("enabled_calls")]
+            [JsonProperty("enabled_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? EnabledCalls {get; private set;}
-            [JsonProperty("enabled_percentage")]
+            [JsonProperty("enabled_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? EnabledPercentage {get; private set;}
-            [JsonProperty("calls_per_bundle")]
+            [JsonProperty("calls_per_bundle", NullValueHandling = NullValueHandling.Ignore)]
             public List<VoiceIntegrityCallsPerBundle> CallsPerBundle {get; private set;}
             public VoiceIntegrity() { }
             public class Builder
@@ -664,11 +664,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class StirShakenCallCount
         {
-            [JsonProperty("stsh_a")]
+            [JsonProperty("stsh_a", NullValueHandling = NullValueHandling.Ignore)]
             public int? StshA {get; private set;}
-            [JsonProperty("stsh_b")]
+            [JsonProperty("stsh_b", NullValueHandling = NullValueHandling.Ignore)]
             public int? StshB {get; private set;}
-            [JsonProperty("stsh_c")]
+            [JsonProperty("stsh_c", NullValueHandling = NullValueHandling.Ignore)]
             public int? StshC {get; private set;}
             public StirShakenCallCount() { }
             public class Builder
@@ -700,11 +700,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class StirShakenPercentage
         {
-            [JsonProperty("stsh_a")]
+            [JsonProperty("stsh_a", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshA {get; private set;}
-            [JsonProperty("stsh_b")]
+            [JsonProperty("stsh_b", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshB {get; private set;}
-            [JsonProperty("stsh_c")]
+            [JsonProperty("stsh_c", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshC {get; private set;}
             public StirShakenPercentage() { }
             public class Builder
@@ -736,11 +736,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class StirShakenAnswerRate
         {
-            [JsonProperty("stsh_a")]
+            [JsonProperty("stsh_a", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshA {get; private set;}
-            [JsonProperty("stsh_b")]
+            [JsonProperty("stsh_b", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshB {get; private set;}
-            [JsonProperty("stsh_c")]
+            [JsonProperty("stsh_c", NullValueHandling = NullValueHandling.Ignore)]
             public float? StshC {get; private set;}
             public StirShakenAnswerRate() { }
             public class Builder
@@ -772,11 +772,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class StirShaken
         {
-            [JsonProperty("call_count")]
+            [JsonProperty("call_count", NullValueHandling = NullValueHandling.Ignore)]
             public StirShakenCallCount CallCount {get; private set;}
-            [JsonProperty("percentage")]
+            [JsonProperty("percentage", NullValueHandling = NullValueHandling.Ignore)]
             public StirShakenPercentage Percentage {get; private set;}
-            [JsonProperty("answer_rate")]
+            [JsonProperty("answer_rate", NullValueHandling = NullValueHandling.Ignore)]
             public StirShakenAnswerRate AnswerRate {get; private set;}
             public StirShaken() { }
             public class Builder
@@ -808,23 +808,23 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportKYTOutboundCarrierCalling
         {
-            [JsonProperty("unique_calling_numbers")]
+            [JsonProperty("unique_calling_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public int? UniqueCallingNumbers {get; private set;}
-            [JsonProperty("unique_called_numbers")]
+            [JsonProperty("unique_called_numbers", NullValueHandling = NullValueHandling.Ignore)]
             public int? UniqueCalledNumbers {get; private set;}
-            [JsonProperty("blocked_calls_by_carrier")]
+            [JsonProperty("blocked_calls_by_carrier", NullValueHandling = NullValueHandling.Ignore)]
             public List<CountyCarrierValue> BlockedCallsByCarrier {get; private set;}
-            [JsonProperty("short_duration_calls_percentage")]
+            [JsonProperty("short_duration_calls_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? ShortDurationCallsPercentage {get; private set;}
-            [JsonProperty("long_duration_calls_percentage")]
+            [JsonProperty("long_duration_calls_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? LongDurationCallsPercentage {get; private set;}
-            [JsonProperty("potential_robocalls_percentage")]
+            [JsonProperty("potential_robocalls_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? PotentialRobocallsPercentage {get; private set;}
-            [JsonProperty("branded_calling")]
+            [JsonProperty("branded_calling", NullValueHandling = NullValueHandling.Ignore)]
             public BrandedCalling BrandedCalling {get; private set;}
-            [JsonProperty("voice_integrity")]
+            [JsonProperty("voice_integrity", NullValueHandling = NullValueHandling.Ignore)]
             public VoiceIntegrity VoiceIntegrity {get; private set;}
-            [JsonProperty("stir_shaken")]
+            [JsonProperty("stir_shaken", NullValueHandling = NullValueHandling.Ignore)]
             public StirShaken StirShaken {get; private set;}
             public AccountReportKYTOutboundCarrierCalling() { }
             public class Builder
@@ -886,7 +886,7 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportKYT
         {
-            [JsonProperty("outbound_carrier_calling")]
+            [JsonProperty("outbound_carrier_calling", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportKYTOutboundCarrierCalling OutboundCarrierCalling {get; private set;}
             public AccountReportKYT() { }
             public class Builder
@@ -908,11 +908,11 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReportAnsweringMachineDetection
         {
-            [JsonProperty("total_calls")]
+            [JsonProperty("total_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalCalls {get; private set;}
-            [JsonProperty("answered_by_human_percentage")]
+            [JsonProperty("answered_by_human_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? AnsweredByHumanPercentage {get; private set;}
-            [JsonProperty("answered_by_machine_percentage")]
+            [JsonProperty("answered_by_machine_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? AnsweredByMachinePercentage {get; private set;}
             public AccountReportAnsweringMachineDetection() { }
             public class Builder
@@ -944,35 +944,35 @@ namespace Twilio.Rest.Insights.V2
         }
         public class AccountReport
         {
-            [JsonProperty("call_deliverability_score")]
+            [JsonProperty("call_deliverability_score", NullValueHandling = NullValueHandling.Ignore)]
             public float? CallDeliverabilityScore {get; private set;}
-            [JsonProperty("call_answer_score")]
+            [JsonProperty("call_answer_score", NullValueHandling = NullValueHandling.Ignore)]
             public float? CallAnswerScore {get; private set;}
-            [JsonProperty("total_calls")]
+            [JsonProperty("total_calls", NullValueHandling = NullValueHandling.Ignore)]
             public int? TotalCalls {get; private set;}
-            [JsonProperty("call_direction")]
+            [JsonProperty("call_direction", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportCallDirection CallDirection {get; private set;}
-            [JsonProperty("call_state")]
+            [JsonProperty("call_state", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportCallState CallState {get; private set;}
-            [JsonProperty("call_type")]
+            [JsonProperty("call_type", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportCallType CallType {get; private set;}
-            [JsonProperty("aloc")]
+            [JsonProperty("aloc", NullValueHandling = NullValueHandling.Ignore)]
             public float? Aloc {get; private set;}
-            [JsonProperty("twilio_edge_location")]
+            [JsonProperty("twilio_edge_location", NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, int?> TwilioEdgeLocation {get; private set;}
-            [JsonProperty("caller_country_code")]
+            [JsonProperty("caller_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, int?> CallerCountryCode {get; private set;}
-            [JsonProperty("callee_country_code")]
+            [JsonProperty("callee_country_code", NullValueHandling = NullValueHandling.Ignore)]
             public Dictionary<string, int?> CalleeCountryCode {get; private set;}
-            [JsonProperty("average_queue_time_ms")]
+            [JsonProperty("average_queue_time_ms", NullValueHandling = NullValueHandling.Ignore)]
             public float? AverageQueueTimeMs {get; private set;}
-            [JsonProperty("silent_calls_percentage")]
+            [JsonProperty("silent_calls_percentage", NullValueHandling = NullValueHandling.Ignore)]
             public float? SilentCallsPercentage {get; private set;}
-            [JsonProperty("network_issues")]
+            [JsonProperty("network_issues", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportNetworkIssues NetworkIssues {get; private set;}
-            [JsonProperty("KYT")]
+            [JsonProperty("KYT", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportKYT KYT {get; private set;}
-            [JsonProperty("answering_machine_detection")]
+            [JsonProperty("answering_machine_detection", NullValueHandling = NullValueHandling.Ignore)]
             public AccountReportAnsweringMachineDetection AnsweringMachineDetection {get; private set;}
             public AccountReport() { }
             public class Builder

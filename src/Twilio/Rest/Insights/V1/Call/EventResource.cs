@@ -289,19 +289,19 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("name")]
         public string Name { get; private set; }
 
-        ///<summary> Represents the connection between Twilio and our immediate carrier partners. The events here describe the call lifecycle as reported by Twilio's carrier media gateways. </summary> 
+        ///<summary> `object` Represents the connection between Twilio and our immediate carrier partners. The events here describe the call lifecycle as reported by Twilio's carrier media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("carrier_edge")]
         public object CarrierEdge { get; private set; }
 
-        ///<summary> Represents the Twilio media gateway for SIP interface and SIP trunking calls. The events here describe the call lifecycle as reported by Twilio's public media gateways. </summary> 
+        ///<summary> `object` Represents the Twilio media gateway for SIP interface and SIP trunking calls. The events here describe the call lifecycle as reported by Twilio's public media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> Represents the Voice SDK running locally in the browser or in the Android/iOS application. The events here are emitted by the Voice SDK in response to certain call progress events, network changes, or call quality conditions. </summary> 
+        ///<summary> `object` Represents the Voice SDK running locally in the browser or in the Android/iOS application. The events here are emitted by the Voice SDK in response to certain call progress events, network changes, or call quality conditions. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("sdk_edge")]
         public object SdkEdge { get; private set; }
 
-        ///<summary> Represents the Twilio media gateway for Client calls. The events here describe the call lifecycle as reported by Twilio's Voice SDK media gateways. </summary> 
+        ///<summary> `object` Represents the Twilio media gateway for Client calls. The events here describe the call lifecycle as reported by Twilio's Voice SDK media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
 

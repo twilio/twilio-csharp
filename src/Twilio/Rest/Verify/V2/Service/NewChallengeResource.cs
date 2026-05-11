@@ -32,9 +32,9 @@ namespace Twilio.Rest.Verify.V2.Service
     
         public class CreatePasskeysChallengeRequest
         {
-            [JsonProperty("identity")]
+            [JsonProperty("identity", NullValueHandling = NullValueHandling.Ignore)]
             public string Identity {get; private set;}
-            [JsonProperty("factor_sid")]
+            [JsonProperty("factor_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string FactorSid {get; private set;}
             public CreatePasskeysChallengeRequest() { }
             public class Builder

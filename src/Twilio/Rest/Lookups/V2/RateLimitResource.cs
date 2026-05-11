@@ -32,15 +32,15 @@ namespace Twilio.Rest.Lookups.V2
     
         public class RateLimitResponse
         {
-            [JsonProperty("field")]
+            [JsonProperty("field", NullValueHandling = NullValueHandling.Ignore)]
             public string Field {get; private set;}
-            [JsonProperty("limit")]
+            [JsonProperty("limit", NullValueHandling = NullValueHandling.Ignore)]
             public int? Limit {get; private set;}
-            [JsonProperty("bucket")]
+            [JsonProperty("bucket", NullValueHandling = NullValueHandling.Ignore)]
             public string Bucket {get; private set;}
-            [JsonProperty("owner")]
+            [JsonProperty("owner", NullValueHandling = NullValueHandling.Ignore)]
             public string Owner {get; private set;}
-            [JsonProperty("ttl")]
+            [JsonProperty("ttl", NullValueHandling = NullValueHandling.Ignore)]
             public int? Ttl {get; private set;}
             public RateLimitResponse() { }
             public class Builder

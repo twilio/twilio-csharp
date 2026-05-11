@@ -62,6 +62,7 @@ namespace Twilio.TwiML
         /// <param name="record"> Record the call </param>
         /// <param name="trim"> Trim the recording </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="answerOnBridge"> Preserve the ringing behavior of the inbound call until the Dialed call picks up
@@ -84,6 +85,7 @@ namespace Twilio.TwiML
                                   Dial.RecordEnum record = null,
                                   Dial.TrimEnum trim = null,
                                   Uri recordingStatusCallback = null,
+                                  string recordingConfigurationId = null,
                                   Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                                   IEnumerable<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                   bool? answerOnBridge = null,
@@ -105,6 +107,7 @@ namespace Twilio.TwiML
                 record,
                 trim,
                 recordingStatusCallback,
+                recordingConfigurationId,
                 recordingStatusCallbackMethod,
                 recordingStatusCallbackEvent,
                 answerOnBridge,
@@ -394,6 +397,7 @@ namespace Twilio.TwiML
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="transcribe"> Transcribe the recording </param>
         /// <param name="transcribeCallback"> Transcribe callback URL </param>
+        /// <param name="recordingConfigurationId"> Configuration for the recording </param>
         public VoiceResponse Record(Uri action = null,
                                     Twilio.Http.HttpMethod method = null,
                                     int? timeout = null,
@@ -405,7 +409,8 @@ namespace Twilio.TwiML
                                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                                     IEnumerable<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                     bool? transcribe = null,
-                                    Uri transcribeCallback = null)
+                                    Uri transcribeCallback = null,
+                                    string recordingConfigurationId = null)
         {
             var newChild = new Record(
                 action,
@@ -419,7 +424,8 @@ namespace Twilio.TwiML
                 recordingStatusCallbackMethod,
                 recordingStatusCallbackEvent,
                 transcribe,
-                transcribeCallback
+                transcribeCallback,
+                recordingConfigurationId
             );
             this.Append(newChild);
             return this;

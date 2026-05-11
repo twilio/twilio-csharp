@@ -32,15 +32,15 @@ namespace Twilio.Rest.Assistants.V1
     
         public class AssistantsV1ServiceCreatePolicyRequest
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("id")]
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
             public string Id {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy_details")]
+            [JsonProperty("policy_details", NullValueHandling = NullValueHandling.Ignore)]
             public object PolicyDetails {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
             public AssistantsV1ServiceCreatePolicyRequest() { }
             public class Builder
@@ -82,19 +82,19 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceCreateKnowledgeRequest
         {
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("assistant_id")]
+            [JsonProperty("assistant_id", NullValueHandling = NullValueHandling.Ignore)]
             public string AssistantId {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("knowledge_source_details")]
+            [JsonProperty("knowledge_source_details", NullValueHandling = NullValueHandling.Ignore)]
             public object KnowledgeSourceDetails {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
-            [JsonProperty("embedding_model")]
+            [JsonProperty("embedding_model", NullValueHandling = NullValueHandling.Ignore)]
             public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceCreateKnowledgeRequest() { }
             public class Builder
@@ -146,17 +146,17 @@ namespace Twilio.Rest.Assistants.V1
         }
         public class AssistantsV1ServiceUpdateKnowledgeRequest
         {
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("knowledge_source_details")]
+            [JsonProperty("knowledge_source_details", NullValueHandling = NullValueHandling.Ignore)]
             public object KnowledgeSourceDetails {get; private set;}
-            [JsonProperty("name")]
+            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public AssistantsV1ServiceCreatePolicyRequest Policy {get; private set;}
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("embedding_model")]
+            [JsonProperty("embedding_model", NullValueHandling = NullValueHandling.Ignore)]
             public string EmbeddingModel {get; private set;}
             public AssistantsV1ServiceUpdateKnowledgeRequest() { }
             public class Builder

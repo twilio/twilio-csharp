@@ -32,9 +32,9 @@ namespace Twilio.Rest.Iam.V1
     
         public class IamV1OrganizationVendoroauthappPolicy
         {
-            [JsonProperty("allow")]
+            [JsonProperty("allow", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Allow {get; private set;}
-            [JsonProperty("deny")]
+            [JsonProperty("deny", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Deny {get; private set;}
             public IamV1OrganizationVendoroauthappPolicy() { }
             public class Builder
@@ -61,19 +61,19 @@ namespace Twilio.Rest.Iam.V1
         }
         public class IamV1AccountVendorOauthAppCreateRequest
         {
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("friendly_name")]
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
             public string FriendlyName {get; private set;}
-            [JsonProperty("owner_sid")]
+            [JsonProperty("owner_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string OwnerSid {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("client_sid")]
+            [JsonProperty("client_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string ClientSid {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public IamV1OrganizationVendoroauthappPolicy Policy {get; private set;}
-            [JsonProperty("access_token_ttl")]
+            [JsonProperty("access_token_ttl", NullValueHandling = NullValueHandling.Ignore)]
             public int? AccessTokenTtl {get; private set;}
             public IamV1AccountVendorOauthAppCreateRequest() { }
             public class Builder
@@ -125,9 +125,9 @@ namespace Twilio.Rest.Iam.V1
         }
         public class IamV1OrganizationVendorOauthAppUpdateRequestPolicy
         {
-            [JsonProperty("allow")]
+            [JsonProperty("allow", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Allow {get; private set;}
-            [JsonProperty("deny")]
+            [JsonProperty("deny", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> Deny {get; private set;}
             public IamV1OrganizationVendorOauthAppUpdateRequestPolicy() { }
             public class Builder
@@ -154,15 +154,15 @@ namespace Twilio.Rest.Iam.V1
         }
         public class IamV1AccountVendorOauthAppUpdateRequest
         {
-            [JsonProperty("type")]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public string Type {get; private set;}
-            [JsonProperty("friendly_name")]
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
             public string FriendlyName {get; private set;}
-            [JsonProperty("description")]
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
-            [JsonProperty("policy")]
+            [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public IamV1OrganizationVendorOauthAppUpdateRequestPolicy Policy {get; private set;}
-            [JsonProperty("access_token_ttl")]
+            [JsonProperty("access_token_ttl", NullValueHandling = NullValueHandling.Ignore)]
             public int? AccessTokenTtl {get; private set;}
             public IamV1AccountVendorOauthAppUpdateRequest() { }
             public class Builder
