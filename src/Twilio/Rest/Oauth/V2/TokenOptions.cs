@@ -28,11 +28,11 @@ namespace Twilio.Rest.Oauth.V2
     public class CreateTokenOptions : IOptions<TokenResource>
     {
         
+        ///<summary> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </summary> 
+        public string GrantType { get; }
+
         ///<summary> Optional Account SID to perform on behalf of requests. </summary> 
         public string AccountSid { get; set; }
-
-        ///<summary> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </summary> 
-        public string GrantType { get; set; }
 
         ///<summary> A 34 character string that uniquely identifies this OAuth App. </summary> 
         public string ClientId { get; set; }
@@ -55,7 +55,16 @@ namespace Twilio.Rest.Oauth.V2
         ///<summary> The scope of token </summary> 
         public string Scope { get; set; }
 
+        ///<summary> The PKCE code verifier used to generate the code_challenge in the authorization request. </summary> 
+        public string CodeVerifier { get; set; }
 
+
+        /// <summary> Construct a new CreateOauth2TokenOptions </summary>
+        /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
+        public CreateTokenOptions(string grantType)
+        {
+            GrantType = grantType;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -63,13 +72,13 @@ namespace Twilio.Rest.Oauth.V2
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("account_sid", AccountSid));
-            }
             if (GrantType != null)
             {
                 p.Add(new KeyValuePair<string, string>("grant_type", GrantType));
+            }
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("account_sid", AccountSid));
             }
             if (ClientId != null)
             {
@@ -98,6 +107,10 @@ namespace Twilio.Rest.Oauth.V2
             if (Scope != null)
             {
                 p.Add(new KeyValuePair<string, string>("scope", Scope));
+            }
+            if (CodeVerifier != null)
+            {
+                p.Add(new KeyValuePair<string, string>("code_verifier", CodeVerifier));
             }
             return p;
         }
