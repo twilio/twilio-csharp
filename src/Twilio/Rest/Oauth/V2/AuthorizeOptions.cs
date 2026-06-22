@@ -42,6 +42,12 @@ namespace Twilio.Rest.Oauth.V2
         
         public string State { get; set; }
 
+        
+        public string CodeChallenge { get; set; }
+
+        
+        public AuthorizeResource.CodeChallengeMethodEnum CodeChallengeMethod { get; set; }
+
 
 
 
@@ -70,6 +76,14 @@ namespace Twilio.Rest.Oauth.V2
             if (State != null)
             {
                 p.Add(new KeyValuePair<string, string>("state", State));
+            }
+            if (CodeChallenge != null)
+            {
+                p.Add(new KeyValuePair<string, string>("code_challenge", CodeChallenge));
+            }
+            if (CodeChallengeMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("code_challenge_method", CodeChallengeMethod.ToString()));
             }
             return p;
         }
