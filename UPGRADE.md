@@ -2,6 +2,33 @@
 
 _`MAJOR` version bumps will have upgrade notes posted here._
 
+[2026-07-06] 7.x.x to 8.x.x
+---------------------------
+### Overview
+
+#### Twilio Csharp Helper Library’s major version 8.0.0 is now available.
+#### The Csharp Helper Library version 8.0.0 includes a breaking change related to .NET support.
+#### The minimum supported .NET version is now .NET 8.
+
+Support for **.NET 6** and **.NET 7** has been dropped.  
+To upgrade to 8.x.x, update your applications and build pipelines to target **.NET 8** or later.
+
+#### 7.x.x
+```xml
+<TargetFramework>net6.0</TargetFramework>
+```
+
+or
+
+```xml
+<TargetFramework>net7.0</TargetFramework>
+```
+
+#### 8.x.x
+```xml
+<TargetFramework>net8.0</TargetFramework>
+```
+
 [2024-02-XX] 6.x.x to 7.x.x
 ----------------------------
 ### Overview
