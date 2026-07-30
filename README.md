@@ -73,7 +73,7 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 ## OAuth Feature for Twilio APIs
-We are introducing Client Credentials Flow-based OAuth 2.0 authentication. This feature is currently in beta and its implementation is subject to change.
+We are introducing Client Credentials Flow-based OAuth 2.0 authentication.
 
 API examples [here](https://github.com/twilio/twilio-csharp/blob/main/examples/PublicOAuthAuthentication.md)
 
