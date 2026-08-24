@@ -26,9 +26,6 @@ jobs:
         with:
           global-json-file: global.json
 
-#      - name: Remove dotnet 7 and 8
-#        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
-
       - name: Get installed dotnet version
         run: dotnet --version
 
@@ -73,11 +70,7 @@ jobs:
         with:
           global-json-file: global.json
 
-      # actions/setup-dotnet@v3 will install .net6, .net7 and .net8 by default it will use latest version.
-      # if any latest version of .net is released, delete that as well.
-#      - name: Remove dotnet 7 and 8
-#        run: sudo rm -rf /usr/share/dotnet/sdk/{7*,8*}
-
+      # actions/setup-dotnet installs the SDK pinned in global.json (currently .NET 8).
       - name: Get installed dotnet version
         run: dotnet --version
 
