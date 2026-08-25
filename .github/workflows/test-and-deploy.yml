@@ -111,10 +111,10 @@ jobs:
 #      - name: Build and Push image
 #        run: make docker-build docker-push
 
-      - name: Submit metric to Datadog
-        uses: sendgrid/dx-automator/actions/datadog-release-metric@main
-        env:
-          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      # - name: Submit metric to Datadog
+      #   uses: sendgrid/dx-automator/actions/datadog-release-metric@main
+      #   env:
+      #     DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
   code-signing:
     runs-on: windows-latest-large
