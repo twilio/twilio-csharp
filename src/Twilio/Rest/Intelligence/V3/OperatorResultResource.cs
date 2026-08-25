@@ -28,45 +28,45 @@ namespace Twilio.Rest.Intelligence.V3
 {
             public class OperatorResultFetchResource : Resource
 {
-        ///<summary> The ID of the Account that created the Language Operator. </summary> 
-        [JsonProperty("accountId")]
-            public string AccountId { get; private set; }
-
-        ///<summary> The `id` of the Conversation attached to the Operator Result. </summary> 
-        [JsonProperty("conversationId")]
-            public string ConversationId { get; private set; }
-
-        ///<summary> Timestamp for when the Operator Result was created. </summary> 
-        [JsonProperty("dateCreated")]
-            public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The executionDetails </summary> 
-        [JsonProperty("executionDetails")]
-            public OperatorResultResource.ExecutionDetails _ExecutionDetails { get; private set; }
+        ///<summary> The output format set on the Operator that generated this result. Determines the structure of the `result` object. </summary> 
+        [JsonProperty("outputFormat")]
+            public string OutputFormat { get; private set; }
 
         ///<summary> A unique identifier for the Operator Result. Assigned by Twilio (TTID). </summary> 
         [JsonProperty("id")]
             public string Id { get; private set; }
 
+        ///<summary> The ID of the Account that created the Language Operator. </summary> 
+        [JsonProperty("accountId")]
+            public string AccountId { get; private set; }
+
         ///<summary> The intelligenceConfiguration </summary> 
         [JsonProperty("intelligenceConfiguration")]
             public OperatorResultResource.IntelligenceConfigurationReference IntelligenceConfiguration { get; private set; }
 
-        ///<summary> The metadata </summary> 
-        [JsonProperty("metadata")]
-            public OperatorResultResource.OperatorResultsResponseBaseMetadata Metadata { get; private set; }
+        ///<summary> The `id` of the Conversation attached to the Operator Result. </summary> 
+        [JsonProperty("conversationId")]
+            public string ConversationId { get; private set; }
 
         ///<summary> The operator </summary> 
         [JsonProperty("operator")]
             public OperatorResultResource.OperatorReference Operator { get; private set; }
 
-        ///<summary> The output format set on the Operator that generated this result. Determines the structure of the `result` object. </summary> 
-        [JsonProperty("outputFormat")]
-            public string OutputFormat { get; private set; }
+        ///<summary> Timestamp for when the Operator Result was created. </summary> 
+        [JsonProperty("dateCreated")]
+            public DateTime? DateCreated { get; private set; }
 
         ///<summary> The `id`s of objects related to this Operator Result. </summary> 
         [JsonProperty("referenceIds")]
             public List<string> ReferenceIds { get; private set; }
+
+        ///<summary> The executionDetails </summary> 
+        [JsonProperty("executionDetails")]
+            public OperatorResultResource.ExecutionDetails _ExecutionDetails { get; private set; }
+
+        ///<summary> The metadata </summary> 
+        [JsonProperty("metadata")]
+            public OperatorResultResource.OperatorResultsResponseBaseMetadata Metadata { get; private set; }
 
         ///<summary> The result </summary> 
         [JsonProperty("result")]
@@ -92,45 +92,45 @@ namespace Twilio.Rest.Intelligence.V3
 }
         public class OperatorResultReadResource : Resource
 {
-            ///<summary> The ID of the Account that created the Language Operator. </summary> 
-            [JsonProperty("accountId")]
-                public string AccountId { get; private set; }
-
-            ///<summary> The `id` of the Conversation attached to the Operator Result. </summary> 
-            [JsonProperty("conversationId")]
-                public string ConversationId { get; private set; }
-
-            ///<summary> Timestamp for when the Operator Result was created. </summary> 
-            [JsonProperty("dateCreated")]
-                public DateTime? DateCreated { get; private set; }
-
-            ///<summary> The executionDetails </summary> 
-            [JsonProperty("executionDetails")]
-                public OperatorResultResource.ExecutionDetails _ExecutionDetails { get; private set; }
+            ///<summary> The output format set on the Operator that generated this result. Determines the structure of the `result` object. </summary> 
+            [JsonProperty("outputFormat")]
+                public string OutputFormat { get; private set; }
 
             ///<summary> A unique identifier for the Operator Result. Assigned by Twilio (TTID). </summary> 
             [JsonProperty("id")]
                 public string Id { get; private set; }
 
+            ///<summary> The ID of the Account that created the Language Operator. </summary> 
+            [JsonProperty("accountId")]
+                public string AccountId { get; private set; }
+
             ///<summary> The intelligenceConfiguration </summary> 
             [JsonProperty("intelligenceConfiguration")]
                 public OperatorResultResource.IntelligenceConfigurationReference IntelligenceConfiguration { get; private set; }
 
-            ///<summary> The metadata </summary> 
-            [JsonProperty("metadata")]
-                public OperatorResultResource.OperatorResultsResponseBaseMetadata Metadata { get; private set; }
+            ///<summary> The `id` of the Conversation attached to the Operator Result. </summary> 
+            [JsonProperty("conversationId")]
+                public string ConversationId { get; private set; }
 
             ///<summary> The operator </summary> 
             [JsonProperty("operator")]
                 public OperatorResultResource.OperatorReference Operator { get; private set; }
 
-            ///<summary> The output format set on the Operator that generated this result. Determines the structure of the `result` object. </summary> 
-            [JsonProperty("outputFormat")]
-                public string OutputFormat { get; private set; }
+            ///<summary> Timestamp for when the Operator Result was created. </summary> 
+            [JsonProperty("dateCreated")]
+                public DateTime? DateCreated { get; private set; }
 
             ///<summary> The `id`s of objects related to this Operator Result. </summary> 
             [JsonProperty("referenceIds")]
                 public List<string> ReferenceIds { get; private set; }
+
+            ///<summary> The executionDetails </summary> 
+            [JsonProperty("executionDetails")]
+                public OperatorResultResource.ExecutionDetails _ExecutionDetails { get; private set; }
+
+            ///<summary> The metadata </summary> 
+            [JsonProperty("metadata")]
+                public OperatorResultResource.OperatorResultsResponseBaseMetadata Metadata { get; private set; }
 
             ///<summary> The result </summary> 
             [JsonProperty("result")]
@@ -158,6 +158,78 @@ namespace Twilio.Rest.Intelligence.V3
     public class OperatorResultResource : Resource
     {
     
+        public class IntelligenceConfigurationReference
+        {
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+            public string Id {get; private set;}
+            [JsonProperty("ruleId", NullValueHandling = NullValueHandling.Ignore)]
+            public string RuleId {get; private set;}
+            [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Version {get; private set;}
+            public IntelligenceConfigurationReference() { }
+            public class Builder
+            {
+                private IntelligenceConfigurationReference _intelligenceConfigurationReference = new IntelligenceConfigurationReference();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _intelligenceConfigurationReference.Id= id;
+                    return this;
+                }
+                public Builder WithRuleId(string ruleId)
+                {
+                    _intelligenceConfigurationReference.RuleId= ruleId;
+                    return this;
+                }
+                public Builder WithVersion(int? version)
+                {
+                    _intelligenceConfigurationReference.Version= version;
+                    return this;
+                }
+                public IntelligenceConfigurationReference Build()
+                {
+                    return _intelligenceConfigurationReference;
+                }
+            }
+        }
+        public class OperatorReference
+        {
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+            public string Id {get; private set;}
+            [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Version {get; private set;}
+            [JsonProperty("parameters", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, object> Parameters {get; private set;}
+            public OperatorReference() { }
+            public class Builder
+            {
+                private OperatorReference _operatorReference = new OperatorReference();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _operatorReference.Id= id;
+                    return this;
+                }
+                public Builder WithVersion(int? version)
+                {
+                    _operatorReference.Version= version;
+                    return this;
+                }
+                public Builder WithParameters(Dictionary<string, object> parameters)
+                {
+                    _operatorReference.Parameters= parameters;
+                    return this;
+                }
+                public OperatorReference Build()
+                {
+                    return _operatorReference;
+                }
+            }
+        }
         public class ExecutionDetailsTrigger
         {
             [JsonProperty("on", NullValueHandling = NullValueHandling.Ignore)]
@@ -411,42 +483,6 @@ namespace Twilio.Rest.Intelligence.V3
                 }
             }
         }
-        public class IntelligenceConfigurationReference
-        {
-            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-            public string Id {get; private set;}
-            [JsonProperty("ruleId", NullValueHandling = NullValueHandling.Ignore)]
-            public string RuleId {get; private set;}
-            [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
-            public int? Version {get; private set;}
-            public IntelligenceConfigurationReference() { }
-            public class Builder
-            {
-                private IntelligenceConfigurationReference _intelligenceConfigurationReference = new IntelligenceConfigurationReference();
-                public Builder()
-                {
-                }
-                public Builder WithId(string id)
-                {
-                    _intelligenceConfigurationReference.Id= id;
-                    return this;
-                }
-                public Builder WithRuleId(string ruleId)
-                {
-                    _intelligenceConfigurationReference.RuleId= ruleId;
-                    return this;
-                }
-                public Builder WithVersion(int? version)
-                {
-                    _intelligenceConfigurationReference.Version= version;
-                    return this;
-                }
-                public IntelligenceConfigurationReference Build()
-                {
-                    return _intelligenceConfigurationReference;
-                }
-            }
-        }
         public class SystemMetaData
         {
             [JsonProperty("latencyMs", NullValueHandling = NullValueHandling.Ignore)]
@@ -516,42 +552,6 @@ namespace Twilio.Rest.Intelligence.V3
                 public OperatorResultsResponseBaseMetadata Build()
                 {
                     return _operatorResultsResponseBaseMetadata;
-                }
-            }
-        }
-        public class OperatorReference
-        {
-            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-            public string Id {get; private set;}
-            [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
-            public int? Version {get; private set;}
-            [JsonProperty("parameters", NullValueHandling = NullValueHandling.Ignore)]
-            public Dictionary<string, object> Parameters {get; private set;}
-            public OperatorReference() { }
-            public class Builder
-            {
-                private OperatorReference _operatorReference = new OperatorReference();
-                public Builder()
-                {
-                }
-                public Builder WithId(string id)
-                {
-                    _operatorReference.Id= id;
-                    return this;
-                }
-                public Builder WithVersion(int? version)
-                {
-                    _operatorReference.Version= version;
-                    return this;
-                }
-                public Builder WithParameters(Dictionary<string, object> parameters)
-                {
-                    _operatorReference.Parameters= parameters;
-                    return this;
-                }
-                public OperatorReference Build()
-                {
-                    return _operatorReference;
                 }
             }
         }

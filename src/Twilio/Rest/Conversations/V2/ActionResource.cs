@@ -37,9 +37,9 @@ public class ActionCreateResource : Resource
         [JsonProperty("type")]
             public string Type { get; private set;}
 
-        ///<summary> Current status of the Action. - PENDING: Action accepted, awaiting downstream confirmation - COMPLETED: Downstream backend confirmed the action - FAILED: Downstream backend reported a failure  </summary> 
+        
         [JsonProperty("status")]
-            public ActionResource.StatusEnum Status { get; private set; }
+            public ActionResource.ConversationsV2ActionStatus Status { get; private set; }
 
         ///<summary> The conversation this action belongs to. </summary> 
         [JsonProperty("conversationId")]
@@ -88,9 +88,9 @@ public class ActionCreateResource : Resource
         [JsonProperty("type")]
             public string Type { get; private set;}
 
-        ///<summary> Current status of the Action. - PENDING: Action accepted, awaiting downstream confirmation - COMPLETED: Downstream backend confirmed the action - FAILED: Downstream backend reported a failure  </summary> 
+        
         [JsonProperty("status")]
-            public ActionResource.StatusEnum Status { get; private set;}
+            public ActionResource.ConversationsV2ActionStatus Status { get; private set;}
 
         ///<summary> The conversation this action belongs to. </summary> 
         [JsonProperty("conversationId")]
@@ -142,7 +142,7 @@ public class ActionCreateResource : Resource
             public string Address {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
-            public ActionResource.ChannelEnum Channel {get; private set;}
+            public ActionResource.ConversationsV2Channel Channel {get; private set;}
             public ConversationsV2SendMessageParticipant() { }
             public class Builder
             {
@@ -160,7 +160,7 @@ public class ActionCreateResource : Resource
                     _conversationsV2SendMessageParticipant.Address= address;
                     return this;
                 }
-                public Builder WithChannel(ActionResource.ChannelEnum channel)
+                public Builder WithChannel(ActionResource.ConversationsV2Channel channel)
                 {
                     _conversationsV2SendMessageParticipant.Channel= channel;
                     return this;
@@ -289,33 +289,33 @@ public class ActionCreateResource : Resource
 
     
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class StatusEnum : StringEnum
+        public sealed class ConversationsV2Channel : StringEnum
         {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
+            private ConversationsV2Channel(string value) : base(value) {}
+            public ConversationsV2Channel() {}
+            public static implicit operator ConversationsV2Channel(string value)
             {
-                return new StatusEnum(value);
+                return new ConversationsV2Channel(value);
             }
-            public static readonly StatusEnum Pending = new StatusEnum("PENDING");
-            public static readonly StatusEnum Completed = new StatusEnum("COMPLETED");
-            public static readonly StatusEnum Failed = new StatusEnum("FAILED");
+            public static readonly ConversationsV2Channel Voice = new ConversationsV2Channel("VOICE");
+            public static readonly ConversationsV2Channel Sms = new ConversationsV2Channel("SMS");
+            public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
+            public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
+            public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class ChannelEnum : StringEnum
+        public sealed class ConversationsV2ActionStatus : StringEnum
         {
-            private ChannelEnum(string value) : base(value) {}
-            public ChannelEnum() {}
-            public static implicit operator ChannelEnum(string value)
+            private ConversationsV2ActionStatus(string value) : base(value) {}
+            public ConversationsV2ActionStatus() {}
+            public static implicit operator ConversationsV2ActionStatus(string value)
             {
-                return new ChannelEnum(value);
+                return new ConversationsV2ActionStatus(value);
             }
-            public static readonly ChannelEnum Voice = new ChannelEnum("VOICE");
-            public static readonly ChannelEnum Sms = new ChannelEnum("SMS");
-            public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
-            public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
-            public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
+            public static readonly ConversationsV2ActionStatus Pending = new ConversationsV2ActionStatus("PENDING");
+            public static readonly ConversationsV2ActionStatus Completed = new ConversationsV2ActionStatus("COMPLETED");
+            public static readonly ConversationsV2ActionStatus Failed = new ConversationsV2ActionStatus("FAILED");
 
         }
 

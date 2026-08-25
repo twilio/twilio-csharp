@@ -49,11 +49,12 @@ namespace Twilio.Tests.TwiML
                 true,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                Dial.EventsEnum.CallProgressEvent
+                Dial.EventsEnum.CallProgressEvent,
+                "passports"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingConfigurationId=\"recording_configuration_id\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\" referUrl=\"https://example.com\" referMethod=\"GET\" events=\"call-progress-event\">number</Dial>",
+                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingConfigurationId=\"recording_configuration_id\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\" referUrl=\"https://example.com\" referMethod=\"GET\" events=\"call-progress-event\" passports=\"passports\">number</Dial>",
                 elem.ToString()
             );
         }

@@ -94,6 +94,82 @@ public class TranscriptionCreateResource : Resource
         }
     }
 }
+        public class TranscriptionReadResource : Resource
+{
+            ///<summary> Unique identifier for a Transcription. This is also the transcriptionId returned in the LRO 202 response. </summary> 
+            [JsonProperty("id")]
+                public string Id { get; private set;}
+
+            ///<summary> Twilio Account SID </summary> 
+            [JsonProperty("accountId")]
+                public string AccountId { get; private set;}
+
+            ///<summary> The current status of the transcription operation </summary> 
+            [JsonProperty("status")]
+                public TranscriptionResource.StatusEnum Status { get; private set;}
+
+            ///<summary> Unique identifier for a Transcription configuration. </summary> 
+            [JsonProperty("transcriptionConfigurationId")]
+                public string TranscriptionConfigurationId { get; private set;}
+
+            ///<summary> When this transcript was created </summary> 
+            [JsonProperty("createdAt")]
+                public DateTime? CreatedAt { get; private set;}
+
+            ///<summary> When this transcript was last updated </summary> 
+            [JsonProperty("updatedAt")]
+                public DateTime? UpdatedAt { get; private set;}
+
+            ///<summary> The URL of this resource </summary> 
+            [JsonProperty("url")]
+                public Uri Url { get; private set;}
+
+            ///<summary> The third party media URL </summary> 
+            [JsonProperty("mediaUrl")]
+                public Uri MediaUrl { get; private set; }
+
+            ///<summary> The source ID (recording ID) - used for tracking only </summary> 
+            [JsonProperty("sourceId")]
+                public string SourceId { get; private set; }
+
+            ///<summary> The call/recording start time. When the transcription was created using a sourceId, this value is inferred from the recording resource's start time. When created using a mediaUrl, this reflects the value supplied by the caller.  </summary> 
+            [JsonProperty("audioStartedAt")]
+                public DateTime? AudioStartedAt { get; private set; }
+
+            ///<summary> Maestro conversation ID, populated once the transcription has been stored in Maestro. </summary> 
+            [JsonProperty("conversationId")]
+                public string ConversationId { get; private set; }
+
+            ///<summary> Array of participants in the conversation </summary> 
+            [JsonProperty("participants")]
+                public List<TranscriptionResource.VoiceV3TranscriptionParticipant> Participants { get; private set; }
+
+            ///<summary> Audio duration in seconds </summary> 
+            [JsonProperty("duration")]
+                public int? Duration { get; private set; }
+
+            ///<summary> The resolvedConfiguration </summary> 
+            [JsonProperty("resolvedConfiguration")]
+                public TranscriptionResource.VoiceV3TranscriptionResolvedConfiguration ResolvedConfiguration { get; private set; }
+
+
+    public static TranscriptionReadResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<TranscriptionReadResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
 
     public class TranscriptionResource : Resource
     {
@@ -144,19 +220,19 @@ public class TranscriptionCreateResource : Resource
         }
         public class CreateV3TranscriptionsRequest
         {
-            [JsonProperty("audioStartedAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime? AudioStartedAt {get; private set;}
+            [JsonProperty("transcriptionConfigurationId", NullValueHandling = NullValueHandling.Ignore)]
+            public string TranscriptionConfigurationId {get; private set;}
+            [JsonProperty("sourceId", NullValueHandling = NullValueHandling.Ignore)]
+            public string SourceId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("inputSource", NullValueHandling = NullValueHandling.Ignore)]
             public TranscriptionResource.InputSourceEnum InputSource {get; private set;}
-            [JsonProperty("mediaUrl", NullValueHandling = NullValueHandling.Ignore)]
-            public Uri MediaUrl {get; private set;}
             [JsonProperty("participants", NullValueHandling = NullValueHandling.Ignore)]
             public List<VoiceV3TranscriptionParticipant> Participants {get; private set;}
-            [JsonProperty("sourceId", NullValueHandling = NullValueHandling.Ignore)]
-            public string SourceId {get; private set;}
-            [JsonProperty("transcriptionConfigurationId", NullValueHandling = NullValueHandling.Ignore)]
-            public string TranscriptionConfigurationId {get; private set;}
+            [JsonProperty("mediaUrl", NullValueHandling = NullValueHandling.Ignore)]
+            public Uri MediaUrl {get; private set;}
+            [JsonProperty("audioStartedAt", NullValueHandling = NullValueHandling.Ignore)]
+            public DateTime? AudioStartedAt {get; private set;}
             public CreateV3TranscriptionsRequest() { }
             public class Builder
             {
@@ -164,24 +240,9 @@ public class TranscriptionCreateResource : Resource
                 public Builder()
                 {
                 }
-                public Builder WithAudioStartedAt(DateTime? audioStartedAt)
+                public Builder WithTranscriptionConfigurationId(string transcriptionConfigurationId)
                 {
-                    _createV3TranscriptionsRequest.AudioStartedAt= audioStartedAt;
-                    return this;
-                }
-                public Builder WithInputSource(TranscriptionResource.InputSourceEnum inputSource)
-                {
-                    _createV3TranscriptionsRequest.InputSource= inputSource;
-                    return this;
-                }
-                public Builder WithMediaUrl(Uri mediaUrl)
-                {
-                    _createV3TranscriptionsRequest.MediaUrl= mediaUrl;
-                    return this;
-                }
-                public Builder WithParticipants(List<VoiceV3TranscriptionParticipant> participants)
-                {
-                    _createV3TranscriptionsRequest.Participants= participants;
+                    _createV3TranscriptionsRequest.TranscriptionConfigurationId= transcriptionConfigurationId;
                     return this;
                 }
                 public Builder WithSourceId(string sourceId)
@@ -189,9 +250,24 @@ public class TranscriptionCreateResource : Resource
                     _createV3TranscriptionsRequest.SourceId= sourceId;
                     return this;
                 }
-                public Builder WithTranscriptionConfigurationId(string transcriptionConfigurationId)
+                public Builder WithInputSource(TranscriptionResource.InputSourceEnum inputSource)
                 {
-                    _createV3TranscriptionsRequest.TranscriptionConfigurationId= transcriptionConfigurationId;
+                    _createV3TranscriptionsRequest.InputSource= inputSource;
+                    return this;
+                }
+                public Builder WithParticipants(List<VoiceV3TranscriptionParticipant> participants)
+                {
+                    _createV3TranscriptionsRequest.Participants= participants;
+                    return this;
+                }
+                public Builder WithMediaUrl(Uri mediaUrl)
+                {
+                    _createV3TranscriptionsRequest.MediaUrl= mediaUrl;
+                    return this;
+                }
+                public Builder WithAudioStartedAt(DateTime? audioStartedAt)
+                {
+                    _createV3TranscriptionsRequest.AudioStartedAt= audioStartedAt;
                     return this;
                 }
                 public CreateV3TranscriptionsRequest Build()
@@ -337,23 +413,23 @@ public class TranscriptionCreateResource : Resource
             [JsonProperty("transcriptionConfigurationId", NullValueHandling = NullValueHandling.Ignore)]
             public string TranscriptionConfigurationId {get; private set;}
             [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime CreatedAt {get; private set;}
+            public DateTime? CreatedAt {get; private set;}
             [JsonProperty("updatedAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime UpdatedAt {get; private set;}
+            public DateTime? UpdatedAt {get; private set;}
             [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-            public string Url {get; private set;}
+            public Uri Url {get; private set;}
             [JsonProperty("mediaUrl", NullValueHandling = NullValueHandling.Ignore)]
-            public string MediaUrl {get; private set;}
+            public Uri MediaUrl {get; private set;}
             [JsonProperty("sourceId", NullValueHandling = NullValueHandling.Ignore)]
             public string SourceId {get; private set;}
             [JsonProperty("audioStartedAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime AudioStartedAt {get; private set;}
+            public DateTime? AudioStartedAt {get; private set;}
             [JsonProperty("conversationId", NullValueHandling = NullValueHandling.Ignore)]
             public string ConversationId {get; private set;}
             [JsonProperty("participants", NullValueHandling = NullValueHandling.Ignore)]
             public List<TranscriptionResource.VoiceV3TranscriptionParticipant> Participants {get; private set;}
             [JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
-            public int Duration {get; private set;}
+            public int? Duration {get; private set;}
             [JsonProperty("resolvedConfiguration", NullValueHandling = NullValueHandling.Ignore)]
             public TranscriptionResource.VoiceV3TranscriptionResolvedConfiguration ResolvedConfiguration {get; private set;}
             public VoiceV3TranscriptionTranscription() { }
@@ -383,22 +459,22 @@ public class TranscriptionCreateResource : Resource
                     _voiceV3TranscriptionTranscription.TranscriptionConfigurationId= transcriptionConfigurationId;
                     return this;
                 }
-                public Builder WithCreatedAt(DateTime createdAt)
+                public Builder WithCreatedAt(DateTime? createdAt)
                 {
                     _voiceV3TranscriptionTranscription.CreatedAt= createdAt;
                     return this;
                 }
-                public Builder WithUpdatedAt(DateTime updatedAt)
+                public Builder WithUpdatedAt(DateTime? updatedAt)
                 {
                     _voiceV3TranscriptionTranscription.UpdatedAt= updatedAt;
                     return this;
                 }
-                public Builder WithUrl(string url)
+                public Builder WithUrl(Uri url)
                 {
                     _voiceV3TranscriptionTranscription.Url= url;
                     return this;
                 }
-                public Builder WithMediaUrl(string mediaUrl)
+                public Builder WithMediaUrl(Uri mediaUrl)
                 {
                     _voiceV3TranscriptionTranscription.MediaUrl= mediaUrl;
                     return this;
@@ -408,7 +484,7 @@ public class TranscriptionCreateResource : Resource
                     _voiceV3TranscriptionTranscription.SourceId= sourceId;
                     return this;
                 }
-                public Builder WithAudioStartedAt(DateTime audioStartedAt)
+                public Builder WithAudioStartedAt(DateTime? audioStartedAt)
                 {
                     _voiceV3TranscriptionTranscription.AudioStartedAt= audioStartedAt;
                     return this;
@@ -423,7 +499,7 @@ public class TranscriptionCreateResource : Resource
                     _voiceV3TranscriptionTranscription.Participants= participants;
                     return this;
                 }
-                public Builder WithDuration(int duration)
+                public Builder WithDuration(int? duration)
                 {
                     _voiceV3TranscriptionTranscription.Duration= duration;
                     return this;
@@ -478,6 +554,7 @@ public class TranscriptionCreateResource : Resource
                 return new InputSourceEnum(value);
             }
             public static readonly InputSourceEnum SourceId = new InputSourceEnum("SOURCE_ID");
+            public static readonly InputSourceEnum MediaUrl = new InputSourceEnum("MEDIA_URL");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -714,6 +791,180 @@ public class TranscriptionCreateResource : Resource
             return await FetchWithHeadersAsync(options, client);
         }
         #endif
+            
+        private static Request BuildReadRequest(ReadTranscriptionOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v3/Transcriptions";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Voice,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+        /// <summary> Returns the account's transcriptions, newest first. Filters combine with AND, and paging uses the opaque cursors in meta rather than page numbers: pass meta.nextToken to advance and meta.previousToken to go back. A token is only valid for the filter set that produced it, so changing sourceId or the date range means starting a new walk. Items are the transcription resource itself. Create and fetch-by-id return the long running operation envelope instead, because creation is asynchronous. </summary>
+        /// <param name="options"> Read Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns>
+        public static ResourceSet<TranscriptionReadResource> Read(ReadTranscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TranscriptionReadResource>.FromJson("transcriptions", response.Content);
+            return new ResourceSet<TranscriptionReadResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> Returns the account's transcriptions, newest first. Filters combine with AND, and paging uses the opaque cursors in meta rather than page numbers: pass meta.nextToken to advance and meta.previousToken to go back. A token is only valid for the filter set that produced it, so changing sourceId or the date range means starting a new walk. Items are the transcription resource itself. Create and fetch-by-id return the long running operation envelope instead, because creation is asynchronous. </summary>
+        /// <param name="options"> Read Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionReadResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TranscriptionReadResource>.FromJson("transcriptions", response.Content);
+            return new ResourceSet<TranscriptionReadResource>(page, options, client);
+        }
+        #endif
+        /// <summary> Returns the account's transcriptions, newest first. Filters combine with AND, and paging uses the opaque cursors in meta rather than page numbers: pass meta.nextToken to advance and meta.previousToken to go back. A token is only valid for the filter set that produced it, so changing sourceId or the date range means starting a new walk. Items are the transcription resource itself. Create and fetch-by-id return the long running operation envelope instead, because creation is asynchronous. </summary>
+        /// <param name="createdAfter"> Only include transcriptions created at or after this time (inclusive) </param>
+        /// <param name="createdBefore"> Only include transcriptions created strictly before this time (exclusive) </param>
+        /// <param name="languageCode"> Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US. </param>
+        /// <param name="sourceId"> Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400. </param>
+        /// <param name="status"> Only include transcriptions in this status </param>
+        /// <param name="pageSize"> Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns>
+        public static ResourceSet<TranscriptionReadResource> Read(
+                                                     DateTime? createdAfter = null,
+                                                     DateTime? createdBefore = null,
+                                                     string languageCode = null,
+                                                     string sourceId = null,
+                                                     TranscriptionResource.StatusEnum status = null,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                    ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionOptions(){ CreatedAfter = createdAfter, CreatedBefore = createdBefore, LanguageCode = languageCode, SourceId = sourceId, Status = status, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Returns the account's transcriptions, newest first. Filters combine with AND, and paging uses the opaque cursors in meta rather than page numbers: pass meta.nextToken to advance and meta.previousToken to go back. A token is only valid for the filter set that produced it, so changing sourceId or the date range means starting a new walk. Items are the transcription resource itself. Create and fetch-by-id return the long running operation envelope instead, because creation is asynchronous. </summary>
+        /// <param name="createdAfter"> Only include transcriptions created at or after this time (inclusive) </param>
+        /// <param name="createdBefore"> Only include transcriptions created strictly before this time (exclusive) </param>
+        /// <param name="languageCode"> Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US. </param>
+        /// <param name="sourceId"> Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400. </param>
+        /// <param name="status"> Only include transcriptions in this status </param>
+        /// <param name="pageSize"> Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces. </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionReadResource>> ReadAsync(
+                                                                                             DateTime? createdAfter = null,
+                                                                                             DateTime? createdBefore = null,
+                                                                                             string languageCode = null,
+                                                                                             string sourceId = null,
+                                                                                             TranscriptionResource.StatusEnum status = null,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionOptions(){ CreatedAfter = createdAfter, CreatedBefore = createdBefore, LanguageCode = languageCode, SourceId = sourceId, Status = status, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        public static ResourceSetResponse<TranscriptionReadResource> ReadWithHeaders(ReadTranscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<TranscriptionReadResource>.FromJson("transcriptions", response.Content);
+            var records = new ResourceSet<TranscriptionReadResource>(page, options, client);
+            return new ResourceSetResponse<TranscriptionReadResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<TranscriptionReadResource> ReadWithHeaders(
+            DateTime? createdAfter = null,
+            DateTime? createdBefore = null,
+            string languageCode = null,
+            string sourceId = null,
+            TranscriptionResource.StatusEnum status = null,
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionOptions(){ CreatedAfter = createdAfter, CreatedBefore = createdBefore, LanguageCode = languageCode, SourceId = sourceId, Status = status, PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<TranscriptionReadResource>> ReadWithHeadersAsync(ReadTranscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<TranscriptionReadResource>.FromJson("transcriptions", response.Content);
+            var records = new ResourceSet<TranscriptionReadResource>(page, options, client);
+            return new ResourceSetResponse<TranscriptionReadResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<TranscriptionResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<TranscriptionResource> PreviousPage(Page<TranscriptionResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
+        }
+
         /// <summary>
     /// Converts an object into a json string
     /// </summary>
