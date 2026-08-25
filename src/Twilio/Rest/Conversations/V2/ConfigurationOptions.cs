@@ -68,7 +68,7 @@ namespace Twilio.Rest.Conversations.V2
     {
         
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         ///<summary> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </summary> 
         public string IdempotencyKey { get; set; }
@@ -76,10 +76,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new DeleteConfigurationOptions </summary>
-        /// <param name="pathSid">  </param>
-        public DeleteConfigurationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public DeleteConfigurationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         
@@ -111,15 +111,15 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
 
 
         /// <summary> Construct a new FetchConfigurationOptions </summary>
-        /// <param name="pathSid">  </param>
-        public FetchConfigurationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public FetchConfigurationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         ///<summary> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </summary> 
         public string IdempotencyKey { get; set; }
@@ -183,10 +183,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new UpdateConfigurationOptions </summary>
-        /// <param name="pathSid">  </param>
-        public UpdateConfigurationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public UpdateConfigurationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         

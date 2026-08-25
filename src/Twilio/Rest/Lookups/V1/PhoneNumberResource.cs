@@ -51,7 +51,7 @@ namespace Twilio.Rest.Lookups.V1
             );
         }
 
-        /// <summary> fetch </summary>
+        /// <summary> Fetch information about a phone number. You can use this endpoint to retrieve the carrier and caller name for a phone number, as well as any installed Add-ons. </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Lookups.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Fetch information about a phone number. You can use this endpoint to retrieve the carrier and caller name for a phone number, as well as any installed Add-ons. </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Lookups.V1
             return FromJson(response.Content);
         }
         #endif
-        /// <summary> fetch </summary>
+        /// <summary> Fetch information about a phone number. You can use this endpoint to retrieve the carrier and caller name for a phone number, as well as any installed Add-ons. </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </param>
         /// <param name="countryCode"> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number to fetch. This is used to specify the country when the phone number is provided in a national format. </param>
         /// <param name="type"> The type of information to return. Can be: `carrier` or `caller-name`. The default is null. To retrieve both types of information, specify this parameter twice; once with `carrier` and once with `caller-name` as the value. </param>
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Lookups.V1
         }
 
         #if !NET35
-        /// <summary> fetch </summary>
+        /// <summary> Fetch information about a phone number. You can use this endpoint to retrieve the carrier and caller name for a phone number, as well as any installed Add-ons. </summary>
         /// <param name="pathPhoneNumber"> The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number. </param>
         /// <param name="countryCode"> The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the phone number to fetch. This is used to specify the country when the phone number is provided in a national format. </param>
         /// <param name="type"> The type of information to return. Can be: `carrier` or `caller-name`. The default is null. To retrieve both types of information, specify this parameter twice; once with `carrier` and once with `caller-name` as the value. </param>

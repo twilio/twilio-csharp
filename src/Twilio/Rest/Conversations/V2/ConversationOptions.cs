@@ -55,7 +55,7 @@ namespace Twilio.Rest.Conversations.V2
     {
         
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         ///<summary> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </summary> 
         public string IdempotencyKey { get; set; }
@@ -63,10 +63,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new DeleteConversationAsyncOptions </summary>
-        /// <param name="pathSid">  </param>
-        public DeleteConversationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public DeleteConversationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         
@@ -98,15 +98,15 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
 
 
         /// <summary> Construct a new FetchConversationOptions </summary>
-        /// <param name="pathSid">  </param>
-        public FetchConversationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public FetchConversationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         ///<summary> The conversation fields to update </summary> 
         public ConversationResource.PatchConversationByIdRequest PatchConversationByIdRequest { get; set; }
@@ -174,10 +174,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new PatchConversationByIdOptions </summary>
-        /// <param name="pathSid">  </param>
-        public PatchConversationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public PatchConversationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         ///<summary> The conversation to update </summary> 
         public ConversationResource.UpdateConversationByIdRequest UpdateConversationByIdRequest { get; set; }
@@ -211,10 +211,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new UpdateConversationByIdOptions </summary>
-        /// <param name="pathSid">  </param>
-        public UpdateConversationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public UpdateConversationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         

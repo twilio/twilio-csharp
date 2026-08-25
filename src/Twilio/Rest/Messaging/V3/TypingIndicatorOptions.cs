@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Messaging.V3
 {
 
-    /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
+    /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business, RCS. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
     public class CreateTypingIndicatorOptions : IOptions<TypingIndicatorResource>
     {
         

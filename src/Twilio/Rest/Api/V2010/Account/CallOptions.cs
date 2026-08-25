@@ -115,6 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. </summary> 
         public Twilio.Http.HttpMethod AsyncAmdStatusCallbackMethod { get; set; }
 
+        ///<summary> The STIR/SHAKEN passport for this call, provided as a base64 encoded string. Multiple passports (at max 5) are comma separated and provided as base64 encoded string </summary> 
+        public string Passports { get; set; }
+
         ///<summary> The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta) </summary> 
         public string Byoc { get; set; }
 
@@ -271,6 +274,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AsyncAmdStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("AsyncAmdStatusCallbackMethod", AsyncAmdStatusCallbackMethod.ToString()));
+            }
+            if (Passports != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passports", Passports));
             }
             if (Byoc != null)
             {

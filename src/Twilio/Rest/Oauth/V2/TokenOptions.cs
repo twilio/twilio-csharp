@@ -55,6 +55,9 @@ namespace Twilio.Rest.Oauth.V2
         ///<summary> The scope of token </summary> 
         public string Scope { get; set; }
 
+        ///<summary> The PKCE code verifier used to generate the code_challenge in the authorization request. </summary> 
+        public string CodeVerifier { get; set; }
+
 
 
         
@@ -98,6 +101,10 @@ namespace Twilio.Rest.Oauth.V2
             if (Scope != null)
             {
                 p.Add(new KeyValuePair<string, string>("scope", Scope));
+            }
+            if (CodeVerifier != null)
+            {
+                p.Add(new KeyValuePair<string, string>("code_verifier", CodeVerifier));
             }
             return p;
         }

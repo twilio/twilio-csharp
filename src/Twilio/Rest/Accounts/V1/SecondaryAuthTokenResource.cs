@@ -75,23 +75,27 @@ namespace Twilio.Rest.Accounts.V1
         #endif
 
         /// <summary> Create a new secondary Auth Token </summary>
+        /// <param name="suppressEmailNotification"> Whether to suppress the email notification that Twilio sends to the owners and administrators of the account about this Auth Token change. Defaults to `false`, so Twilio sends the email. Set to `true` when rotating Auth Tokens across many subaccounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SecondaryAuthToken </returns>
         public static SecondaryAuthTokenResource Create(
+                                          bool? suppressEmailNotification = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateSecondaryAuthTokenOptions(){  };
+            var options = new CreateSecondaryAuthTokenOptions(){  SuppressEmailNotification = suppressEmailNotification };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a new secondary Auth Token </summary>
+        /// <param name="suppressEmailNotification"> Whether to suppress the email notification that Twilio sends to the owners and administrators of the account about this Auth Token change. Defaults to `false`, so Twilio sends the email. Set to `true` when rotating Auth Tokens across many subaccounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SecondaryAuthToken </returns>
         public static async System.Threading.Tasks.Task<SecondaryAuthTokenResource> CreateAsync(
+                                                                                  bool? suppressEmailNotification = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateSecondaryAuthTokenOptions(){  };
+        var options = new CreateSecondaryAuthTokenOptions(){  SuppressEmailNotification = suppressEmailNotification };
             return await CreateAsync(options, client);
         }
         #endif
@@ -116,17 +120,19 @@ namespace Twilio.Rest.Accounts.V1
         #endif
 
         public static TwilioResponse<SecondaryAuthTokenResource> CreateWithHeaders(
+            bool? suppressEmailNotification = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateSecondaryAuthTokenOptions(){  };
+        var options = new CreateSecondaryAuthTokenOptions(){  SuppressEmailNotification = suppressEmailNotification };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<SecondaryAuthTokenResource>> CreateWithHeadersAsync(
+            bool? suppressEmailNotification = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateSecondaryAuthTokenOptions(){  };
+        var options = new CreateSecondaryAuthTokenOptions(){  SuppressEmailNotification = suppressEmailNotification };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

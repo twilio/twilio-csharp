@@ -839,45 +839,33 @@ namespace Twilio.Rest.Messaging.V1.Service
     }
 
     
+        ///<summary> The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+
         ///<summary> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Campaign belongs to. </summary> 
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
-
-        ///<summary> A boolean that specifies whether campaign is age gated or not. </summary> 
-        [JsonProperty("age_gated")]
-        public bool? AgeGated { get; private set; }
 
         ///<summary> The unique string to identify the A2P brand. </summary> 
         [JsonProperty("brand_registration_sid")]
         public string BrandRegistrationSid { get; private set; }
 
-        ///<summary> The Campaign Registry (TCR) Campaign ID. </summary> 
-        [JsonProperty("campaign_id")]
-        public string CampaignId { get; private set; }
-
-        ///<summary> Campaign status. Examples: IN_PROGRESS, VERIFIED, FAILED. </summary> 
-        [JsonProperty("campaign_status")]
-        public string CampaignStatus { get; private set; }
-
-        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-
-        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
+        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
+        [JsonProperty("messaging_service_sid")]
+        public string MessagingServiceSid { get; private set; }
 
         ///<summary> A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters. </summary> 
         [JsonProperty("description")]
         public string Description { get; private set; }
 
-        ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
-        [JsonProperty("direct_lending")]
-        public bool? DirectLending { get; private set; }
+        ///<summary> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </summary> 
+        [JsonProperty("message_samples")]
+        public List<string> MessageSamples { get; private set; }
 
-        ///<summary> Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements. </summary> 
-        [JsonProperty("errors")]
-        public List<object> Errors { get; private set; }
+        ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, SOLE_PROPRIETOR...]. SOLE_PROPRIETOR campaign use cases can only be created by SOLE_PROPRIETOR Brands, and there can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR Brand. </summary> 
+        [JsonProperty("us_app_to_person_usecase")]
+        public string UsAppToPersonUsecase { get; private set; }
 
         ///<summary> Indicate that this SMS campaign will send messages that contain links. </summary> 
         [JsonProperty("has_embedded_links")]
@@ -887,77 +875,89 @@ namespace Twilio.Rest.Messaging.V1.Service
         [JsonProperty("has_embedded_phone")]
         public bool? HasEmbeddedPhone { get; private set; }
 
-        ///<summary> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
-        [JsonProperty("help_keywords")]
-        public List<string> HelpKeywords { get; private set; }
+        ///<summary> A boolean that specifies whether campaign has Subscriber Optin or not. </summary> 
+        [JsonProperty("subscriber_opt_in")]
+        public bool? SubscriberOptIn { get; private set; }
 
-        ///<summary> When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </summary> 
-        [JsonProperty("help_message")]
-        public string HelpMessage { get; private set; }
+        ///<summary> A boolean that specifies whether campaign is age gated or not. </summary> 
+        [JsonProperty("age_gated")]
+        public bool? AgeGated { get; private set; }
+
+        ///<summary> A boolean that specifies whether campaign allows direct lending or not. </summary> 
+        [JsonProperty("direct_lending")]
+        public bool? DirectLending { get; private set; }
+
+        ///<summary> Campaign status. Examples: IN_PROGRESS, VERIFIED, FAILED. </summary> 
+        [JsonProperty("campaign_status")]
+        public string CampaignStatus { get; private set; }
+
+        ///<summary> The Campaign Registry (TCR) Campaign ID. </summary> 
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; private set; }
 
         ///<summary> Indicates whether the campaign was registered externally or not. </summary> 
         [JsonProperty("is_externally_registered")]
         public bool? IsExternallyRegistered { get; private set; }
 
+        ///<summary> Rate limit and/or classification set by each carrier, Ex. AT&T or T-Mobile. </summary> 
+        [JsonProperty("rate_limits")]
+        public object RateLimits { get; private set; }
+
         ///<summary> Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum. </summary> 
         [JsonProperty("message_flow")]
         public string MessageFlow { get; private set; }
-
-        ///<summary> An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars. </summary> 
-        [JsonProperty("message_samples")]
-        public List<string> MessageSamples { get; private set; }
-
-        ///<summary> The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with. </summary> 
-        [JsonProperty("messaging_service_sid")]
-        public string MessagingServiceSid { get; private set; }
-
-        ///<summary> A boolean that specifies whether campaign is a mock or not. Mock campaigns will be automatically created if using a mock brand. Mock campaigns should only be used for testing purposes. </summary> 
-        [JsonProperty("mock")]
-        public bool? Mock { get; private set; }
-
-        ///<summary> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </summary> 
-        [JsonProperty("opt_in_keywords")]
-        public List<string> OptInKeywords { get; private set; }
 
         ///<summary> If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum. </summary> 
         [JsonProperty("opt_in_message")]
         public string OptInMessage { get; private set; }
 
-        ///<summary> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
-        [JsonProperty("opt_out_keywords")]
-        public List<string> OptOutKeywords { get; private set; }
-
         ///<summary> Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </summary> 
         [JsonProperty("opt_out_message")]
         public string OptOutMessage { get; private set; }
 
-        ///<summary> The URL of the privacy policy for the campaign. </summary> 
-        [JsonProperty("privacy_policy_url")]
-        public Uri PrivacyPolicyUrl { get; private set; }
+        ///<summary> When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum. </summary> 
+        [JsonProperty("help_message")]
+        public string HelpMessage { get; private set; }
 
-        ///<summary> Rate limit and/or classification set by each carrier, Ex. AT&T or T-Mobile. </summary> 
-        [JsonProperty("rate_limits")]
-        public object RateLimits { get; private set; }
+        ///<summary> If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum. </summary> 
+        [JsonProperty("opt_in_keywords")]
+        public List<string> OptInKeywords { get; private set; }
 
-        ///<summary> The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`. </summary> 
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
+        ///<summary> End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
+        [JsonProperty("opt_out_keywords")]
+        public List<string> OptOutKeywords { get; private set; }
 
-        ///<summary> A boolean that specifies whether campaign has Subscriber Optin or not. </summary> 
-        [JsonProperty("subscriber_opt_in")]
-        public bool? SubscriberOptIn { get; private set; }
+        ///<summary> End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum. </summary> 
+        [JsonProperty("help_keywords")]
+        public List<string> HelpKeywords { get; private set; }
 
-        ///<summary> The URL of the terms and conditions for the campaign. </summary> 
-        [JsonProperty("terms_and_conditions_url")]
-        public Uri TermsAndConditionsUrl { get; private set; }
+        ///<summary> The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
+
+        ///<summary> The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. </summary> 
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; private set; }
 
         ///<summary> The absolute URL of the US App to Person resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        ///<summary> A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, SOLE_PROPRIETOR...]. SOLE_PROPRIETOR campaign use cases can only be created by SOLE_PROPRIETOR Brands, and there can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR Brand. </summary> 
-        [JsonProperty("us_app_to_person_usecase")]
-        public string UsAppToPersonUsecase { get; private set; }
+        ///<summary> A boolean that specifies whether campaign is a mock or not. Mock campaigns will be automatically created if using a mock brand. Mock campaigns should only be used for testing purposes. </summary> 
+        [JsonProperty("mock")]
+        public bool? Mock { get; private set; }
+
+        ///<summary> Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements. </summary> 
+        [JsonProperty("errors")]
+        public List<object> Errors { get; private set; }
+
+        ///<summary> The URL of the privacy policy for the campaign. </summary> 
+        [JsonProperty("privacy_policy_url")]
+        public Uri PrivacyPolicyUrl { get; private set; }
+
+        ///<summary> The URL of the terms and conditions for the campaign. </summary> 
+        [JsonProperty("terms_and_conditions_url")]
+        public Uri TermsAndConditionsUrl { get; private set; }
 
 
 

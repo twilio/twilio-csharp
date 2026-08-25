@@ -96,6 +96,14 @@ public class SearchCreateResource : Resource
             public string Content {get; private set;}
             [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime CreatedAt {get; private set;}
+            [JsonProperty("chunkIndex", NullValueHandling = NullValueHandling.Ignore)]
+            public int ChunkIndex {get; private set;}
+            [JsonProperty("documentTitle", NullValueHandling = NullValueHandling.Ignore)]
+            public string DocumentTitle {get; private set;}
+            [JsonProperty("documentUrl", NullValueHandling = NullValueHandling.Ignore)]
+            public string DocumentUrl {get; private set;}
+            [JsonProperty("documentNumber", NullValueHandling = NullValueHandling.Ignore)]
+            public int DocumentNumber {get; private set;}
             [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
             public float Score {get; private set;}
             [JsonProperty("knowledgeId", NullValueHandling = NullValueHandling.Ignore)]
@@ -115,6 +123,26 @@ public class SearchCreateResource : Resource
                 public Builder WithCreatedAt(DateTime createdAt)
                 {
                     _knowledgeChunkResult.CreatedAt= createdAt;
+                    return this;
+                }
+                public Builder WithChunkIndex(int chunkIndex)
+                {
+                    _knowledgeChunkResult.ChunkIndex= chunkIndex;
+                    return this;
+                }
+                public Builder WithDocumentTitle(string documentTitle)
+                {
+                    _knowledgeChunkResult.DocumentTitle= documentTitle;
+                    return this;
+                }
+                public Builder WithDocumentUrl(string documentUrl)
+                {
+                    _knowledgeChunkResult.DocumentUrl= documentUrl;
+                    return this;
+                }
+                public Builder WithDocumentNumber(int documentNumber)
+                {
+                    _knowledgeChunkResult.DocumentNumber= documentNumber;
                     return this;
                 }
                 public Builder WithScore(float score)

@@ -259,6 +259,8 @@ namespace Twilio.Rest.Messaging.V2
         {
             [JsonProperty("sender_id", NullValueHandling = NullValueHandling.Ignore)]
             public string SenderId {get; private set;}
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
+            public string FriendlyName {get; private set;}
             [JsonProperty("configuration", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
             [JsonProperty("webhook", NullValueHandling = NullValueHandling.Ignore)]
@@ -275,6 +277,11 @@ namespace Twilio.Rest.Messaging.V2
                 public Builder WithSenderId(string senderId)
                 {
                     _messagingV2ChannelsSenderRequestsCreate.SenderId= senderId;
+                    return this;
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _messagingV2ChannelsSenderRequestsCreate.FriendlyName= friendlyName;
                     return this;
                 }
                 public Builder WithConfiguration(MessagingV2ChannelsSenderConfiguration configuration)
@@ -300,6 +307,8 @@ namespace Twilio.Rest.Messaging.V2
         }
         public class MessagingV2ChannelsSenderRequestsUpdate
         {
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
+            public string FriendlyName {get; private set;}
             [JsonProperty("configuration", NullValueHandling = NullValueHandling.Ignore)]
             public MessagingV2ChannelsSenderConfiguration Configuration {get; private set;}
             [JsonProperty("webhook", NullValueHandling = NullValueHandling.Ignore)]
@@ -312,6 +321,11 @@ namespace Twilio.Rest.Messaging.V2
                 private MessagingV2ChannelsSenderRequestsUpdate _messagingV2ChannelsSenderRequestsUpdate = new MessagingV2ChannelsSenderRequestsUpdate();
                 public Builder()
                 {
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _messagingV2ChannelsSenderRequestsUpdate.FriendlyName= friendlyName;
+                    return this;
                 }
                 public Builder WithConfiguration(MessagingV2ChannelsSenderConfiguration configuration)
                 {
@@ -1439,6 +1453,10 @@ namespace Twilio.Rest.Messaging.V2
         ///<summary> The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format. </summary> 
         [JsonProperty("sender_id")]
         public string SenderId { get; private set; }
+
+        ///<summary> Optional display label for the sender in the Twilio Console. </summary> 
+        [JsonProperty("friendly_name")]
+        public string FriendlyName { get; private set; }
 
         ///<summary> The configuration </summary> 
         [JsonProperty("configuration")]

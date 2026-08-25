@@ -40,10 +40,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The content of the message, can be up to 1,600 characters long. </summary> 
         public string Body { get; set; }
 
-        ///<summary> The date that this resource was created. </summary> 
+        ///<summary> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </summary> 
         public DateTime? DateCreated { get; set; }
 
-        ///<summary> The date that this resource was last updated. `null` if the message has not been edited. </summary> 
+        ///<summary> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </summary> 
         public DateTime? DateUpdated { get; set; }
 
         ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
@@ -270,10 +270,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///<summary> The content of the message, can be up to 1,600 characters long. </summary> 
         public string Body { get; set; }
 
-        ///<summary> The date that this resource was created. </summary> 
+        ///<summary> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </summary> 
         public DateTime? DateCreated { get; set; }
 
-        ///<summary> The date that this resource was last updated. `null` if the message has not been edited. </summary> 
+        ///<summary> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </summary> 
         public DateTime? DateUpdated { get; set; }
 
         ///<summary> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </summary> 
