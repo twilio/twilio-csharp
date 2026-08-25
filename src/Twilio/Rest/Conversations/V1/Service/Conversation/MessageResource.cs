@@ -107,8 +107,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. Defaults to `system`. </param>
         /// <param name="body"> The content of the message, can be up to 1,600 characters long. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
+        /// <param name="dateCreated"> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
+        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
         /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
@@ -142,8 +142,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathConversationSid"> The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. Defaults to `system`. </param>
         /// <param name="body"> The content of the message, can be up to 1,600 characters long. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
+        /// <param name="dateCreated"> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
+        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
         /// <param name="contentSid"> The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored. </param>
@@ -676,8 +676,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="author"> The channel specific identifier of the message's author. Defaults to `system`. </param>
         /// <param name="body"> The content of the message, can be up to 1,600 characters long. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
+        /// <param name="dateCreated"> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
+        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
@@ -707,8 +707,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="author"> The channel specific identifier of the message's author. Defaults to `system`. </param>
         /// <param name="body"> The content of the message, can be up to 1,600 characters long. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. </param>
+        /// <param name="dateCreated"> The date that this resource was created. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
+        /// <param name="dateUpdated"> The date that this resource was last updated. `null` if the message has not been edited. If you set this parameter, Twilio ignores any milliseconds in the timestamp. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned. </param>
         /// <param name="subject"> The subject of the message, can be up to 256 characters long. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>

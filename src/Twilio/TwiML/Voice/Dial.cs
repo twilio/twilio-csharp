@@ -220,6 +220,10 @@ namespace Twilio.TwiML.Voice
         /// Subscription to events
         /// </summary>
         public Dial.EventsEnum Events { get; set; }
+        /// <summary>
+        /// Base64-encoded comma-separated identity passports (e.g. shaken, div)
+        /// </summary>
+        public string Passports { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -247,6 +251,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
         /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
         /// <param name="events"> Subscription to events </param>
+        /// <param name="passports"> Base64-encoded comma-separated identity passports (e.g. shaken, div) </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -266,7 +271,8 @@ namespace Twilio.TwiML.Voice
                     bool? sequential = null,
                     Uri referUrl = null,
                     Twilio.Http.HttpMethod referMethod = null,
-                    Dial.EventsEnum events = null) : base("Dial")
+                    Dial.EventsEnum events = null,
+                    string passports = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -288,6 +294,7 @@ namespace Twilio.TwiML.Voice
             this.ReferUrl = referUrl;
             this.ReferMethod = referMethod;
             this.Events = events;
+            this.Passports = passports;
         }
 
         /// <summary>
@@ -379,6 +386,10 @@ namespace Twilio.TwiML.Voice
             if (this.Events != null)
             {
                 attributes.Add(new XAttribute("events", this.Events.ToString()));
+            }
+            if (this.Passports != null)
+            {
+                attributes.Add(new XAttribute("passports", this.Passports));
             }
             return attributes;
         }

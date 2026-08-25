@@ -226,31 +226,105 @@ public class KnowledgeCreateResource : Resource
     public class KnowledgeResource : Resource
     {
     
+        public class KnowledgeErrorInstance
+        {
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+            public string Type {get; private set;}
+            [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Code {get; private set;}
+            [JsonProperty("instance", NullValueHandling = NullValueHandling.Ignore)]
+            public string Instance {get; private set;}
+            [JsonProperty("detail", NullValueHandling = NullValueHandling.Ignore)]
+            public string Detail {get; private set;}
+            public KnowledgeErrorInstance() { }
+            public class Builder
+            {
+                private KnowledgeErrorInstance _knowledgeErrorInstance = new KnowledgeErrorInstance();
+                public Builder()
+                {
+                }
+                public Builder WithType(string type)
+                {
+                    _knowledgeErrorInstance.Type= type;
+                    return this;
+                }
+                public Builder WithCode(int? code)
+                {
+                    _knowledgeErrorInstance.Code= code;
+                    return this;
+                }
+                public Builder WithInstance(string instance)
+                {
+                    _knowledgeErrorInstance.Instance= instance;
+                    return this;
+                }
+                public Builder WithDetail(string detail)
+                {
+                    _knowledgeErrorInstance.Detail= detail;
+                    return this;
+                }
+                public KnowledgeErrorInstance Build()
+                {
+                    return _knowledgeErrorInstance;
+                }
+            }
+        }
+        public class KnowledgeErrorGroup
+        {
+            [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
+            public string Title {get; private set;}
+            [JsonProperty("instances", NullValueHandling = NullValueHandling.Ignore)]
+            public List<KnowledgeResource.KnowledgeErrorInstance> Instances {get; private set;}
+            public KnowledgeErrorGroup() { }
+            public class Builder
+            {
+                private KnowledgeErrorGroup _knowledgeErrorGroup = new KnowledgeErrorGroup();
+                public Builder()
+                {
+                }
+                public Builder WithTitle(string title)
+                {
+                    _knowledgeErrorGroup.Title= title;
+                    return this;
+                }
+                public Builder WithInstances(List<KnowledgeResource.KnowledgeErrorInstance> instances)
+                {
+                    _knowledgeErrorGroup.Instances= instances;
+                    return this;
+                }
+                public KnowledgeErrorGroup Build()
+                {
+                    return _knowledgeErrorGroup;
+                }
+            }
+        }
         public class KnowledgeSourceTypes
         {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+            public KnowledgeResource.TypeEnum Type {get; private set;}
             [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
             public string Content {get; private set;}
+            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+            public Uri Url {get; private set;}
             [JsonProperty("crawlDepth", NullValueHandling = NullValueHandling.Ignore)]
             public int? CrawlDepth {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("crawlPeriod", NullValueHandling = NullValueHandling.Ignore)]
             public KnowledgeResource.CrawlPeriodEnum CrawlPeriod {get; private set;}
+            [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
+            public List<KnowledgeResource.KnowledgeErrorGroup> Errors {get; private set;}
             [JsonProperty("fileName", NullValueHandling = NullValueHandling.Ignore)]
             public string FileName {get; private set;}
             [JsonProperty("fileSize", NullValueHandling = NullValueHandling.Ignore)]
             public int? FileSize {get; private set;}
-            [JsonProperty("importUrl", NullValueHandling = NullValueHandling.Ignore)]
-            public Uri ImportUrl {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("mimeType", NullValueHandling = NullValueHandling.Ignore)]
             public KnowledgeResource.SupportedFileMimeType MimeType {get; private set;}
-            [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-            public KnowledgeResource.TypeEnum Type {get; private set;}
+            [JsonProperty("importUrl", NullValueHandling = NullValueHandling.Ignore)]
+            public Uri ImportUrl {get; private set;}
             [JsonProperty("uploadExpiration", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? UploadExpiration {get; private set;}
-            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-            public Uri Url {get; private set;}
             public KnowledgeSourceTypes() { }
             public class Builder
             {
@@ -258,9 +332,19 @@ public class KnowledgeCreateResource : Resource
                 public Builder()
                 {
                 }
+                public Builder WithType(KnowledgeResource.TypeEnum type)
+                {
+                    _knowledgeSourceTypes.Type= type;
+                    return this;
+                }
                 public Builder WithContent(string content)
                 {
                     _knowledgeSourceTypes.Content= content;
+                    return this;
+                }
+                public Builder WithUrl(Uri url)
+                {
+                    _knowledgeSourceTypes.Url= url;
                     return this;
                 }
                 public Builder WithCrawlDepth(int? crawlDepth)
@@ -273,6 +357,11 @@ public class KnowledgeCreateResource : Resource
                     _knowledgeSourceTypes.CrawlPeriod= crawlPeriod;
                     return this;
                 }
+                public Builder WithErrors(List<KnowledgeResource.KnowledgeErrorGroup> errors)
+                {
+                    _knowledgeSourceTypes.Errors= errors;
+                    return this;
+                }
                 public Builder WithFileName(string fileName)
                 {
                     _knowledgeSourceTypes.FileName= fileName;
@@ -283,29 +372,19 @@ public class KnowledgeCreateResource : Resource
                     _knowledgeSourceTypes.FileSize= fileSize;
                     return this;
                 }
-                public Builder WithImportUrl(Uri importUrl)
-                {
-                    _knowledgeSourceTypes.ImportUrl= importUrl;
-                    return this;
-                }
                 public Builder WithMimeType(KnowledgeResource.SupportedFileMimeType mimeType)
                 {
                     _knowledgeSourceTypes.MimeType= mimeType;
                     return this;
                 }
-                public Builder WithType(KnowledgeResource.TypeEnum type)
+                public Builder WithImportUrl(Uri importUrl)
                 {
-                    _knowledgeSourceTypes.Type= type;
+                    _knowledgeSourceTypes.ImportUrl= importUrl;
                     return this;
                 }
                 public Builder WithUploadExpiration(DateTime? uploadExpiration)
                 {
                     _knowledgeSourceTypes.UploadExpiration= uploadExpiration;
-                    return this;
-                }
-                public Builder WithUrl(Uri url)
-                {
-                    _knowledgeSourceTypes.Url= url;
                     return this;
                 }
                 public KnowledgeSourceTypes Build()
@@ -449,6 +528,8 @@ public class KnowledgeCreateResource : Resource
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("crawlPeriod", NullValueHandling = NullValueHandling.Ignore)]
             public KnowledgeResource.CrawlPeriodEnum CrawlPeriod {get; private set;}
+            [JsonProperty("errors", NullValueHandling = NullValueHandling.Ignore)]
+            public List<KnowledgeResource.KnowledgeErrorGroup> Errors {get; private set;}
             public WebSourceDetails() { }
             public class Builder
             {
@@ -474,6 +555,11 @@ public class KnowledgeCreateResource : Resource
                 public Builder WithCrawlPeriod(KnowledgeResource.CrawlPeriodEnum crawlPeriod)
                 {
                     _webSourceDetails.CrawlPeriod= crawlPeriod;
+                    return this;
+                }
+                public Builder WithErrors(List<KnowledgeResource.KnowledgeErrorGroup> errors)
+                {
+                    _webSourceDetails.Errors= errors;
                     return this;
                 }
                 public WebSourceDetails Build()
@@ -526,7 +612,6 @@ public class KnowledgeCreateResource : Resource
             }
             public static readonly SupportedFileMimeType TextCsv = new SupportedFileMimeType("text/csv");
             public static readonly SupportedFileMimeType TextMarkdown = new SupportedFileMimeType("text/markdown");
-            public static readonly SupportedFileMimeType TextMdx = new SupportedFileMimeType("text/mdx");
             public static readonly SupportedFileMimeType ApplicationPdf = new SupportedFileMimeType("application/pdf");
             public static readonly SupportedFileMimeType TextTabSeparatedValues = new SupportedFileMimeType("text/tab-separated-values");
             public static readonly SupportedFileMimeType TextPlain = new SupportedFileMimeType("text/plain");
@@ -542,6 +627,8 @@ public class KnowledgeCreateResource : Resource
                 return new TypeEnum(value);
             }
             public static readonly TypeEnum Text = new TypeEnum("Text");
+            public static readonly TypeEnum Web = new TypeEnum("Web");
+            public static readonly TypeEnum File = new TypeEnum("File");
 
         }
 

@@ -36,6 +36,22 @@ namespace Twilio.Rest.Knowledge.V2
             [JsonProperty("createdAt")]
                 public DateTime? CreatedAt { get; private set; }
 
+            ///<summary> 0-based position of this chunk within its source document for a single ingestion run. </summary> 
+            [JsonProperty("chunkIndex")]
+                public int? ChunkIndex { get; private set; }
+
+            ///<summary> Human-readable title of the source document. Web: HTML <title> from the crawled page. File: filename from Unstructured metadata. Text: knowledge name from the knowledge source. </summary> 
+            [JsonProperty("documentTitle")]
+                public string DocumentTitle { get; private set; }
+
+            ///<summary> Specific page URL this chunk was crawled from. Web sources only; null for File and Text sources. </summary> 
+            [JsonProperty("documentUrl")]
+                public Uri DocumentUrl { get; private set; }
+
+            ///<summary> Physical page number (1-based). PDF sources only; omitted for all other source types. </summary> 
+            [JsonProperty("documentNumber")]
+                public int? DocumentNumber { get; private set; }
+
 
     public static ChunkReadResource FromJson(string json) {
         try {

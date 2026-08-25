@@ -96,9 +96,9 @@ public class ConfigurationCreateResource : Resource
         [JsonProperty("description")]
             public string Description { get; private set;}
 
-        ///<summary> Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.  </summary> 
+        
         [JsonProperty("conversationGroupingType")]
-            public ConfigurationResource.ConversationGroupingTypeEnum ConversationGroupingType { get; private set;}
+            public ConfigurationResource.ConversationsV2ConversationGroupingType ConversationGroupingType { get; private set;}
 
         ///<summary> Memory Store ID for Profile resolution. </summary> 
         [JsonProperty("memoryStoreId")]
@@ -168,9 +168,9 @@ public class ConfigurationCreateResource : Resource
             [JsonProperty("description")]
                 public string Description { get; private set;}
 
-            ///<summary> Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.  </summary> 
+            
             [JsonProperty("conversationGroupingType")]
-                public ConfigurationResource.ConversationGroupingTypeEnum ConversationGroupingType { get; private set;}
+                public ConfigurationResource.ConversationsV2ConversationGroupingType ConversationGroupingType { get; private set;}
 
             ///<summary> Memory Store ID for Profile resolution. </summary> 
             [JsonProperty("memoryStoreId")]
@@ -382,6 +382,28 @@ public class ConfigurationCreateResource : Resource
                 }
             }
         }
+        public class CreateConfigurationRequestConversationsV1Bridge
+        {
+            [JsonProperty("serviceId", NullValueHandling = NullValueHandling.Ignore)]
+            public string ServiceId {get; private set;}
+            public CreateConfigurationRequestConversationsV1Bridge() { }
+            public class Builder
+            {
+                private CreateConfigurationRequestConversationsV1Bridge _createConfigurationRequestConversationsV1Bridge = new CreateConfigurationRequestConversationsV1Bridge();
+                public Builder()
+                {
+                }
+                public Builder WithServiceId(string serviceId)
+                {
+                    _createConfigurationRequestConversationsV1Bridge.ServiceId= serviceId;
+                    return this;
+                }
+                public CreateConfigurationRequestConversationsV1Bridge Build()
+                {
+                    return _createConfigurationRequestConversationsV1Bridge;
+                }
+            }
+        }
         public class CreateConfigurationRequest
         {
             [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
@@ -401,6 +423,8 @@ public class ConfigurationCreateResource : Resource
             public List<string> IntelligenceConfigurationIds {get; private set;}
             [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? MemoryExtractionEnabled {get; private set;}
+            [JsonProperty("conversationsV1Bridge", NullValueHandling = NullValueHandling.Ignore)]
+            public CreateConfigurationRequestConversationsV1Bridge ConversationsV1Bridge {get; private set;}
             public CreateConfigurationRequest() { }
             public class Builder
             {
@@ -446,6 +470,11 @@ public class ConfigurationCreateResource : Resource
                 public Builder WithMemoryExtractionEnabled(bool? memoryExtractionEnabled)
                 {
                     _createConfigurationRequest.MemoryExtractionEnabled= memoryExtractionEnabled;
+                    return this;
+                }
+                public Builder WithConversationsV1Bridge(CreateConfigurationRequestConversationsV1Bridge conversationsV1Bridge)
+                {
+                    _createConfigurationRequest.ConversationsV1Bridge= conversationsV1Bridge;
                     return this;
                 }
                 public CreateConfigurationRequest Build()
@@ -597,6 +626,8 @@ public class ConfigurationCreateResource : Resource
             public List<string> IntelligenceConfigurationIds {get; private set;}
             [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool? MemoryExtractionEnabled {get; private set;}
+            [JsonProperty("conversationsV1Bridge", NullValueHandling = NullValueHandling.Ignore)]
+            public CreateConfigurationRequestConversationsV1Bridge ConversationsV1Bridge {get; private set;}
             public UpdateConfigurationRequest() { }
             public class Builder
             {
@@ -642,6 +673,11 @@ public class ConfigurationCreateResource : Resource
                 public Builder WithMemoryExtractionEnabled(bool? memoryExtractionEnabled)
                 {
                     _updateConfigurationRequest.MemoryExtractionEnabled= memoryExtractionEnabled;
+                    return this;
+                }
+                public Builder WithConversationsV1Bridge(CreateConfigurationRequestConversationsV1Bridge conversationsV1Bridge)
+                {
+                    _updateConfigurationRequest.ConversationsV1Bridge= conversationsV1Bridge;
                     return this;
                 }
                 public UpdateConfigurationRequest Build()
@@ -825,6 +861,20 @@ public class ConfigurationCreateResource : Resource
             public static readonly ConversationGroupingTypeEnum GroupByParticipantAddressesAndChannelType = new ConversationGroupingTypeEnum("GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE");
 
         }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ConversationsV2ConversationGroupingType : StringEnum
+        {
+            private ConversationsV2ConversationGroupingType(string value) : base(value) {}
+            public ConversationsV2ConversationGroupingType() {}
+            public static implicit operator ConversationsV2ConversationGroupingType(string value)
+            {
+                return new ConversationsV2ConversationGroupingType(value);
+            }
+            public static readonly ConversationsV2ConversationGroupingType GroupByProfile = new ConversationsV2ConversationGroupingType("GROUP_BY_PROFILE");
+            public static readonly ConversationsV2ConversationGroupingType GroupByParticipantAddresses = new ConversationsV2ConversationGroupingType("GROUP_BY_PARTICIPANT_ADDRESSES");
+            public static readonly ConversationsV2ConversationGroupingType GroupByParticipantAddressesAndChannelType = new ConversationsV2ConversationGroupingType("GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE");
+
+        }
 
             
         private static Request BuildCreateRequest(CreateConfigurationOptions options, ITwilioRestClient client)
@@ -938,10 +988,10 @@ public class ConfigurationCreateResource : Resource
         private static Request BuildDeleteRequest(DeleteConfigurationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/ControlPlane/Configurations/{Sid}";
+            string path = "/v2/ControlPlane/Configurations/{id}";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Delete,
@@ -981,25 +1031,25 @@ public class ConfigurationCreateResource : Resource
         #endif
 
         /// <summary> Delete a Configuration </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
-        public static ConfigurationDeleteResource Delete(string pathSid, string idempotencyKey = null, ITwilioRestClient client = null)
+        public static ConfigurationDeleteResource Delete(string pathId, string idempotencyKey = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteConfigurationOptions(pathSid)      { IdempotencyKey = idempotencyKey }   ;
+            var options = new DeleteConfigurationOptions(pathId)      { IdempotencyKey = idempotencyKey }   ;
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary> Delete a Configuration </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
-        public static async System.Threading.Tasks.Task<ConfigurationDeleteResource> DeleteAsync(string pathSid, string idempotencyKey = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConfigurationDeleteResource> DeleteAsync(string pathId, string idempotencyKey = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteConfigurationOptions(pathSid)  { IdempotencyKey = idempotencyKey };
+            var options = new DeleteConfigurationOptions(pathId)  { IdempotencyKey = idempotencyKey };
             return await DeleteAsync(options, client);
         }
         #endif
@@ -1024,16 +1074,16 @@ public class ConfigurationCreateResource : Resource
         }
         #endif
 
-        public static TwilioResponse<ConfigurationDeleteResource> DeleteWithHeaders(string pathSid, string idempotencyKey = null, ITwilioRestClient client = null)
+        public static TwilioResponse<ConfigurationDeleteResource> DeleteWithHeaders(string pathId, string idempotencyKey = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteConfigurationOptions(pathSid)      { IdempotencyKey = idempotencyKey }   ;
+            var options = new DeleteConfigurationOptions(pathId)      { IdempotencyKey = idempotencyKey }   ;
             return DeleteWithHeaders(options, client);
         }
 
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationDeleteResource>> DeleteWithHeadersAsync(string pathSid, string idempotencyKey = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationDeleteResource>> DeleteWithHeadersAsync(string pathId, string idempotencyKey = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteConfigurationOptions(pathSid)  { IdempotencyKey = idempotencyKey };
+            var options = new DeleteConfigurationOptions(pathId)  { IdempotencyKey = idempotencyKey };
             return await DeleteWithHeadersAsync(options, client);
         }
         #endif
@@ -1041,10 +1091,10 @@ public class ConfigurationCreateResource : Resource
         private static Request BuildFetchRequest(FetchConfigurationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/ControlPlane/Configurations/{Sid}";
+            string path = "/v2/ControlPlane/Configurations/{id}";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,
@@ -1079,25 +1129,25 @@ public class ConfigurationCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve a Configuration. </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationFetchResource Fetch(
-                                         string pathSid, 
+                                         string pathId, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchConfigurationOptions(pathSid){  };
+            var options = new FetchConfigurationOptions(pathId){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a Configuration. </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
-        public static async System.Threading.Tasks.Task<ConfigurationFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConfigurationFetchResource> FetchAsync(string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchConfigurationOptions(pathSid){  };
+            var options = new FetchConfigurationOptions(pathId){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -1120,17 +1170,17 @@ public class ConfigurationCreateResource : Resource
         #endif
         
         public static TwilioResponse<ConfigurationFetchResource> FetchWithHeaders(
-                    string pathSid, 
+                    string pathId, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchConfigurationOptions(pathSid){  };
+            var options = new FetchConfigurationOptions(pathId){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationFetchResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationFetchResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchConfigurationOptions(pathSid){  };
+            var options = new FetchConfigurationOptions(pathId){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif
@@ -1292,10 +1342,10 @@ public class ConfigurationCreateResource : Resource
         private static Request BuildUpdateRequest(UpdateConfigurationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/ControlPlane/Configurations/{Sid}";
+            string path = "/v2/ControlPlane/Configurations/{id}";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Put,
@@ -1334,31 +1384,31 @@ public class ConfigurationCreateResource : Resource
         #endif
 
         /// <summary> Update an existing Configuration </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationUpdateResource Update(
-                                          string pathSid,
+                                          string pathId,
                                           string idempotencyKey = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathSid){ IdempotencyKey = idempotencyKey };
+            var options = new UpdateConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> Update an existing Configuration </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationUpdateResource> UpdateAsync(
-                                                                              string pathSid,
+                                                                              string pathId,
                                                                               string idempotencyKey = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathSid){ IdempotencyKey = idempotencyKey };
+            var options = new UpdateConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -1383,21 +1433,21 @@ public class ConfigurationCreateResource : Resource
         #endif
 
         public static TwilioResponse<ConfigurationUpdateResource> UpdateWithHeaders(
-            string pathSid,
+            string pathId,
             string idempotencyKey = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathSid){ IdempotencyKey = idempotencyKey };
+            var options = new UpdateConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
             return UpdateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationUpdateResource>> UpdateWithHeadersAsync(
-            string pathSid,
+            string pathId,
             string idempotencyKey = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathSid){ IdempotencyKey = idempotencyKey };
+            var options = new UpdateConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
             return await UpdateWithHeadersAsync(options, client);
         }
         #endif

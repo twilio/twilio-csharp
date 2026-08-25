@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Oauth.V2
@@ -32,6 +32,17 @@ namespace Twilio.Rest.Oauth.V2
     
 
     
+        public sealed class CodeChallengeMethodEnum : StringEnum
+        {
+            private CodeChallengeMethodEnum(string value) : base(value) {}
+            public CodeChallengeMethodEnum() {}
+            public static implicit operator CodeChallengeMethodEnum(string value)
+            {
+                return new CodeChallengeMethodEnum(value);
+            }
+            public static readonly CodeChallengeMethodEnum S256 = new CodeChallengeMethodEnum("S256");
+
+        }
 
         
         private static Request BuildFetchRequest(FetchAuthorizeOptions options, ITwilioRestClient client)
@@ -78,6 +89,8 @@ namespace Twilio.Rest.Oauth.V2
         /// <param name="redirectUri">  </param>
         /// <param name="scope">  </param>
         /// <param name="state">  </param>
+        /// <param name="codeChallenge">  </param>
+        /// <param name="codeChallengeMethod">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Authorize </returns>
         public static AuthorizeResource Fetch(
@@ -86,9 +99,11 @@ namespace Twilio.Rest.Oauth.V2
                                          string redirectUri = null, 
                                          string scope = null, 
                                          string state = null, 
+                                         string codeChallenge = null, 
+                                         AuthorizeResource.CodeChallengeMethodEnum codeChallengeMethod = null, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
+            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state,CodeChallenge = codeChallenge,CodeChallengeMethod = codeChallengeMethod };
             return Fetch(options, client);
         }
 
@@ -99,11 +114,13 @@ namespace Twilio.Rest.Oauth.V2
         /// <param name="redirectUri">  </param>
         /// <param name="scope">  </param>
         /// <param name="state">  </param>
+        /// <param name="codeChallenge">  </param>
+        /// <param name="codeChallengeMethod">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Authorize </returns>
-        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizeResource> FetchAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, string codeChallenge = null, AuthorizeResource.CodeChallengeMethodEnum codeChallengeMethod = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
+            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state,CodeChallenge = codeChallenge,CodeChallengeMethod = codeChallengeMethod };
             return await FetchAsync(options, client);
         }
         #endif
@@ -131,16 +148,18 @@ namespace Twilio.Rest.Oauth.V2
                     string redirectUri = null, 
                     string scope = null, 
                     string state = null, 
+                    string codeChallenge = null, 
+                    AuthorizeResource.CodeChallengeMethodEnum codeChallengeMethod = null, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
+            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state,CodeChallenge = codeChallenge,CodeChallengeMethod = codeChallengeMethod };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizeResource>> FetchWithHeadersAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<AuthorizeResource>> FetchWithHeadersAsync(string responseType = null, string clientId = null, string redirectUri = null, string scope = null, string state = null, string codeChallenge = null, AuthorizeResource.CodeChallengeMethodEnum codeChallengeMethod = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state };
+            var options = new FetchAuthorizeOptions(){ ResponseType = responseType,ClientId = clientId,RedirectUri = redirectUri,Scope = scope,State = state,CodeChallenge = codeChallenge,CodeChallengeMethod = codeChallengeMethod };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif

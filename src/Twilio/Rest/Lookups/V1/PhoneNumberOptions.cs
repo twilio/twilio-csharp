@@ -23,7 +23,7 @@ using System.Linq;
 
 namespace Twilio.Rest.Lookups.V1
 {
-    /// <summary> fetch </summary>
+    /// <summary> Fetch information about a phone number. You can use this endpoint to retrieve the carrier and caller name for a phone number, as well as any installed Add-ons. </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
     

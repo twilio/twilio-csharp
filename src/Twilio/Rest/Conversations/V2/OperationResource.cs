@@ -32,9 +32,9 @@ namespace Twilio.Rest.Conversations.V2
         [JsonProperty("operationId")]
             public string OperationId { get; private set;}
 
-        ///<summary> Current status of the operation. </summary> 
+        
         [JsonProperty("status")]
-            public OperationResource.StatusEnum Status { get; private set;}
+            public OperationResource.ConversationsV2OperationStatusValue Status { get; private set;}
 
         ///<summary> Timestamp when the operation was created. </summary> 
         [JsonProperty("createdAt")]
@@ -131,19 +131,17 @@ namespace Twilio.Rest.Conversations.V2
 
     
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class StatusEnum : StringEnum
+        public sealed class ConversationsV2OperationStatusValue : StringEnum
         {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
+            private ConversationsV2OperationStatusValue(string value) : base(value) {}
+            public ConversationsV2OperationStatusValue() {}
+            public static implicit operator ConversationsV2OperationStatusValue(string value)
             {
-                return new StatusEnum(value);
+                return new ConversationsV2OperationStatusValue(value);
             }
-            public static readonly StatusEnum Pending = new StatusEnum("PENDING");
-            public static readonly StatusEnum Running = new StatusEnum("RUNNING");
-            public static readonly StatusEnum Cancelled = new StatusEnum("CANCELLED");
-            public static readonly StatusEnum Completed = new StatusEnum("COMPLETED");
-            public static readonly StatusEnum Failed = new StatusEnum("FAILED");
+            public static readonly ConversationsV2OperationStatusValue Pending = new ConversationsV2OperationStatusValue("PENDING");
+            public static readonly ConversationsV2OperationStatusValue Completed = new ConversationsV2OperationStatusValue("COMPLETED");
+            public static readonly ConversationsV2OperationStatusValue Failed = new ConversationsV2OperationStatusValue("FAILED");
 
         }
 
@@ -151,10 +149,10 @@ namespace Twilio.Rest.Conversations.V2
         private static Request BuildFetchRequest(FetchOperationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/ControlPlane/Operations/{Sid}";
+            string path = "/v2/ControlPlane/Operations/{id}";
 
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,
@@ -189,25 +187,25 @@ namespace Twilio.Rest.Conversations.V2
         }
         #endif
         /// <summary> Retrieve the current status of a long-running operation. Operations progress through: PENDING -> RUNNING -> COMPLETED or FAILED.  </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Operation </returns>
         public static OperationFetchResource Fetch(
-                                         string pathSid, 
+                                         string pathId, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchOperationOptions(pathSid){  };
+            var options = new FetchOperationOptions(pathId){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve the current status of a long-running operation. Operations progress through: PENDING -> RUNNING -> COMPLETED or FAILED.  </summary>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Operation </returns>
-        public static async System.Threading.Tasks.Task<OperationFetchResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<OperationFetchResource> FetchAsync(string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchOperationOptions(pathSid){  };
+            var options = new FetchOperationOptions(pathId){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -230,17 +228,17 @@ namespace Twilio.Rest.Conversations.V2
         #endif
         
         public static TwilioResponse<OperationFetchResource> FetchWithHeaders(
-                    string pathSid, 
+                    string pathId, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchOperationOptions(pathSid){  };
+            var options = new FetchOperationOptions(pathId){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<OperationFetchResource>> FetchWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<OperationFetchResource>> FetchWithHeadersAsync(string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchOperationOptions(pathSid){  };
+            var options = new FetchOperationOptions(pathId){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif

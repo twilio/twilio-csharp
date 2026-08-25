@@ -485,8 +485,8 @@ namespace Twilio.Rest.Intelligence.V3
         #endif
         /// <summary> Retrieve a list of Conversations processed by an Intelligence Configuration. </summary>
         /// <param name="pageSize"> The maximum number of resources to return </param>
-        /// <param name="createdAtBefore"> Filter by Conversations created before this timestamp. </param>
-        /// <param name="createdAtAfter"> Filter by Conversations created after this timestamp. </param>
+        /// <param name="createdAtBefore"> Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </param>
+        /// <param name="createdAtAfter"> Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </param>
         /// <param name="status"> Filter by Conversation status. </param>
         /// <param name="channelId"> Filters Conversations by the underlying channel resource ID, such as a Call ID or Message ID. </param>
         /// <param name="channels"> Filters Conversations that include one or more of the specified communication channels (`OR` match). </param>
@@ -516,8 +516,8 @@ namespace Twilio.Rest.Intelligence.V3
         #if !NET35
         /// <summary> Retrieve a list of Conversations processed by an Intelligence Configuration. </summary>
         /// <param name="pageSize"> The maximum number of resources to return </param>
-        /// <param name="createdAtBefore"> Filter by Conversations created before this timestamp. </param>
-        /// <param name="createdAtAfter"> Filter by Conversations created after this timestamp. </param>
+        /// <param name="createdAtBefore"> Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </param>
+        /// <param name="createdAtAfter"> Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </param>
         /// <param name="status"> Filter by Conversation status. </param>
         /// <param name="channelId"> Filters Conversations by the underlying channel resource ID, such as a Call ID or Message ID. </param>
         /// <param name="channels"> Filters Conversations that include one or more of the specified communication channels (`OR` match). </param>

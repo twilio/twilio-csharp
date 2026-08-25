@@ -30,8 +30,659 @@ namespace Twilio.Rest.Insights.V1.Call
     public class EventResource : Resource
     {
     
+        public class BaseRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int? SequenceNumber {get; private set;}
+            public BaseRelayData() { }
+            public class Builder
+            {
+                private BaseRelayData _baseRelayData = new BaseRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _baseRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int? sequenceNumber)
+                {
+                    _baseRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public BaseRelayData Build()
+                {
+                    return _baseRelayData;
+                }
+            }
+        }
+        public class CallWrapUpEvent
+        {
+            [JsonProperty("duration_in_seconds", NullValueHandling = NullValueHandling.Ignore)]
+            public int? DurationInSeconds {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("end_status", NullValueHandling = NullValueHandling.Ignore)]
+            public EventResource.EndStatusEnum EndStatus {get; private set;}
+            public CallWrapUpEvent() { }
+            public class Builder
+            {
+                private CallWrapUpEvent _callWrapUpEvent = new CallWrapUpEvent();
+                public Builder()
+                {
+                }
+                public Builder WithDurationInSeconds(int? durationInSeconds)
+                {
+                    _callWrapUpEvent.DurationInSeconds= durationInSeconds;
+                    return this;
+                }
+                public Builder WithEndStatus(EventResource.EndStatusEnum endStatus)
+                {
+                    _callWrapUpEvent.EndStatus= endStatus;
+                    return this;
+                }
+                public CallWrapUpEvent Build()
+                {
+                    return _callWrapUpEvent;
+                }
+            }
+        }
+        public class CallWrapUpRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("call_wrap_up", NullValueHandling = NullValueHandling.Ignore)]
+            public CallWrapUpEvent CallWrapUp {get; private set;}
+            public CallWrapUpRelayData() { }
+            public class Builder
+            {
+                private CallWrapUpRelayData _callWrapUpRelayData = new CallWrapUpRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _callWrapUpRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _callWrapUpRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithCallWrapUp(CallWrapUpEvent callWrapUp)
+                {
+                    _callWrapUpRelayData.CallWrapUp= callWrapUp;
+                    return this;
+                }
+                public CallWrapUpRelayData Build()
+                {
+                    return _callWrapUpRelayData;
+                }
+            }
+        }
+        public class ConfigurationEventLanguagesValue
+        {
+            [JsonProperty("tts_provider", NullValueHandling = NullValueHandling.Ignore)]
+            public string TtsProvider {get; private set;}
+            [JsonProperty("voice", NullValueHandling = NullValueHandling.Ignore)]
+            public string Voice {get; private set;}
+            [JsonProperty("transcription_provider", NullValueHandling = NullValueHandling.Ignore)]
+            public string TranscriptionProvider {get; private set;}
+            [JsonProperty("speech_model", NullValueHandling = NullValueHandling.Ignore)]
+            public string SpeechModel {get; private set;}
+            public ConfigurationEventLanguagesValue() { }
+            public class Builder
+            {
+                private ConfigurationEventLanguagesValue _configurationEventLanguagesValue = new ConfigurationEventLanguagesValue();
+                public Builder()
+                {
+                }
+                public Builder WithTtsProvider(string ttsProvider)
+                {
+                    _configurationEventLanguagesValue.TtsProvider= ttsProvider;
+                    return this;
+                }
+                public Builder WithVoice(string voice)
+                {
+                    _configurationEventLanguagesValue.Voice= voice;
+                    return this;
+                }
+                public Builder WithTranscriptionProvider(string transcriptionProvider)
+                {
+                    _configurationEventLanguagesValue.TranscriptionProvider= transcriptionProvider;
+                    return this;
+                }
+                public Builder WithSpeechModel(string speechModel)
+                {
+                    _configurationEventLanguagesValue.SpeechModel= speechModel;
+                    return this;
+                }
+                public ConfigurationEventLanguagesValue Build()
+                {
+                    return _configurationEventLanguagesValue;
+                }
+            }
+        }
+        public class ConfigurationEvent
+        {
+            [JsonProperty("configurations", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, string> Configurations {get; private set;}
+            [JsonProperty("languages", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, ConfigurationEventLanguagesValue> Languages {get; private set;}
+            public ConfigurationEvent() { }
+            public class Builder
+            {
+                private ConfigurationEvent _configurationEvent = new ConfigurationEvent();
+                public Builder()
+                {
+                }
+                public Builder WithConfigurations(Dictionary<string, string> configurations)
+                {
+                    _configurationEvent.Configurations= configurations;
+                    return this;
+                }
+                public Builder WithLanguages(Dictionary<string, ConfigurationEventLanguagesValue> languages)
+                {
+                    _configurationEvent.Languages= languages;
+                    return this;
+                }
+                public ConfigurationEvent Build()
+                {
+                    return _configurationEvent;
+                }
+            }
+        }
+        public class ConfigurationsRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("configurations", NullValueHandling = NullValueHandling.Ignore)]
+            public ConfigurationEvent Configurations {get; private set;}
+            public ConfigurationsRelayData() { }
+            public class Builder
+            {
+                private ConfigurationsRelayData _configurationsRelayData = new ConfigurationsRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _configurationsRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _configurationsRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithConfigurations(ConfigurationEvent configurations)
+                {
+                    _configurationsRelayData.Configurations= configurations;
+                    return this;
+                }
+                public ConfigurationsRelayData Build()
+                {
+                    return _configurationsRelayData;
+                }
+            }
+        }
+        public class ErrorEvent
+        {
+            [JsonProperty("error_code", NullValueHandling = NullValueHandling.Ignore)]
+            public int? ErrorCode {get; private set;}
+            [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
+            public string Message {get; private set;}
+            public ErrorEvent() { }
+            public class Builder
+            {
+                private ErrorEvent _errorEvent = new ErrorEvent();
+                public Builder()
+                {
+                }
+                public Builder WithErrorCode(int? errorCode)
+                {
+                    _errorEvent.ErrorCode= errorCode;
+                    return this;
+                }
+                public Builder WithMessage(string message)
+                {
+                    _errorEvent.Message= message;
+                    return this;
+                }
+                public ErrorEvent Build()
+                {
+                    return _errorEvent;
+                }
+            }
+        }
+        public class ErrorRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("error", NullValueHandling = NullValueHandling.Ignore)]
+            public ErrorEvent Error {get; private set;}
+            public ErrorRelayData() { }
+            public class Builder
+            {
+                private ErrorRelayData _errorRelayData = new ErrorRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _errorRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _errorRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithError(ErrorEvent error)
+                {
+                    _errorRelayData.Error= error;
+                    return this;
+                }
+                public ErrorRelayData Build()
+                {
+                    return _errorRelayData;
+                }
+            }
+        }
+        public class InterruptEvent
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+            public EventResource.TypeEnum Type {get; private set;}
+            public InterruptEvent() { }
+            public class Builder
+            {
+                private InterruptEvent _interruptEvent = new InterruptEvent();
+                public Builder()
+                {
+                }
+                public Builder WithType(EventResource.TypeEnum type)
+                {
+                    _interruptEvent.Type= type;
+                    return this;
+                }
+                public InterruptEvent Build()
+                {
+                    return _interruptEvent;
+                }
+            }
+        }
+        public class InterruptRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("interrupt", NullValueHandling = NullValueHandling.Ignore)]
+            public InterruptEvent Interrupt {get; private set;}
+            public InterruptRelayData() { }
+            public class Builder
+            {
+                private InterruptRelayData _interruptRelayData = new InterruptRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _interruptRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _interruptRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithInterrupt(InterruptEvent interrupt)
+                {
+                    _interruptRelayData.Interrupt= interrupt;
+                    return this;
+                }
+                public InterruptRelayData Build()
+                {
+                    return _interruptRelayData;
+                }
+            }
+        }
+        public class LanguageChangedEvent
+        {
+            [JsonProperty("tts_language_code", NullValueHandling = NullValueHandling.Ignore)]
+            public string TtsLanguageCode {get; private set;}
+            [JsonProperty("transcription_language_code", NullValueHandling = NullValueHandling.Ignore)]
+            public string TranscriptionLanguageCode {get; private set;}
+            public LanguageChangedEvent() { }
+            public class Builder
+            {
+                private LanguageChangedEvent _languageChangedEvent = new LanguageChangedEvent();
+                public Builder()
+                {
+                }
+                public Builder WithTtsLanguageCode(string ttsLanguageCode)
+                {
+                    _languageChangedEvent.TtsLanguageCode= ttsLanguageCode;
+                    return this;
+                }
+                public Builder WithTranscriptionLanguageCode(string transcriptionLanguageCode)
+                {
+                    _languageChangedEvent.TranscriptionLanguageCode= transcriptionLanguageCode;
+                    return this;
+                }
+                public LanguageChangedEvent Build()
+                {
+                    return _languageChangedEvent;
+                }
+            }
+        }
+        public class LanguageChangedRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("language_changed", NullValueHandling = NullValueHandling.Ignore)]
+            public LanguageChangedEvent LanguageChanged {get; private set;}
+            public LanguageChangedRelayData() { }
+            public class Builder
+            {
+                private LanguageChangedRelayData _languageChangedRelayData = new LanguageChangedRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _languageChangedRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _languageChangedRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithLanguageChanged(LanguageChangedEvent languageChanged)
+                {
+                    _languageChangedRelayData.LanguageChanged= languageChanged;
+                    return this;
+                }
+                public LanguageChangedRelayData Build()
+                {
+                    return _languageChangedRelayData;
+                }
+            }
+        }
+        public class LastTokenReceivedEvent
+        {
+            [JsonProperty("total_tokens", NullValueHandling = NullValueHandling.Ignore)]
+            public int? TotalTokens {get; private set;}
+            [JsonProperty("total_words", NullValueHandling = NullValueHandling.Ignore)]
+            public int? TotalWords {get; private set;}
+            public LastTokenReceivedEvent() { }
+            public class Builder
+            {
+                private LastTokenReceivedEvent _lastTokenReceivedEvent = new LastTokenReceivedEvent();
+                public Builder()
+                {
+                }
+                public Builder WithTotalTokens(int? totalTokens)
+                {
+                    _lastTokenReceivedEvent.TotalTokens= totalTokens;
+                    return this;
+                }
+                public Builder WithTotalWords(int? totalWords)
+                {
+                    _lastTokenReceivedEvent.TotalWords= totalWords;
+                    return this;
+                }
+                public LastTokenReceivedEvent Build()
+                {
+                    return _lastTokenReceivedEvent;
+                }
+            }
+        }
+        public class LastTokenReceivedRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("last_token_received", NullValueHandling = NullValueHandling.Ignore)]
+            public LastTokenReceivedEvent LastTokenReceived {get; private set;}
+            public LastTokenReceivedRelayData() { }
+            public class Builder
+            {
+                private LastTokenReceivedRelayData _lastTokenReceivedRelayData = new LastTokenReceivedRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _lastTokenReceivedRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _lastTokenReceivedRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithLastTokenReceived(LastTokenReceivedEvent lastTokenReceived)
+                {
+                    _lastTokenReceivedRelayData.LastTokenReceived= lastTokenReceived;
+                    return this;
+                }
+                public LastTokenReceivedRelayData Build()
+                {
+                    return _lastTokenReceivedRelayData;
+                }
+            }
+        }
+        public class LatencyEvent
+        {
+            [JsonProperty("latency_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public int? LatencyMs {get; private set;}
+            public LatencyEvent() { }
+            public class Builder
+            {
+                private LatencyEvent _latencyEvent = new LatencyEvent();
+                public Builder()
+                {
+                }
+                public Builder WithLatencyMs(int? latencyMs)
+                {
+                    _latencyEvent.LatencyMs= latencyMs;
+                    return this;
+                }
+                public LatencyEvent Build()
+                {
+                    return _latencyEvent;
+                }
+            }
+        }
+        public class SttLatencyRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("stt_latency", NullValueHandling = NullValueHandling.Ignore)]
+            public LatencyEvent SttLatency {get; private set;}
+            public SttLatencyRelayData() { }
+            public class Builder
+            {
+                private SttLatencyRelayData _sttLatencyRelayData = new SttLatencyRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _sttLatencyRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _sttLatencyRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithSttLatency(LatencyEvent sttLatency)
+                {
+                    _sttLatencyRelayData.SttLatency= sttLatency;
+                    return this;
+                }
+                public SttLatencyRelayData Build()
+                {
+                    return _sttLatencyRelayData;
+                }
+            }
+        }
+        public class TtsLatencyRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int SequenceNumber {get; private set;}
+            [JsonProperty("tts_latency", NullValueHandling = NullValueHandling.Ignore)]
+            public LatencyEvent TtsLatency {get; private set;}
+            public TtsLatencyRelayData() { }
+            public class Builder
+            {
+                private TtsLatencyRelayData _ttsLatencyRelayData = new TtsLatencyRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _ttsLatencyRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int sequenceNumber)
+                {
+                    _ttsLatencyRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithTtsLatency(LatencyEvent ttsLatency)
+                {
+                    _ttsLatencyRelayData.TtsLatency= ttsLatency;
+                    return this;
+                }
+                public TtsLatencyRelayData Build()
+                {
+                    return _ttsLatencyRelayData;
+                }
+            }
+        }
+        public class InsightsV1CallEventConversationRelayData
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("sequence_number", NullValueHandling = NullValueHandling.Ignore)]
+            public int? SequenceNumber {get; private set;}
+            [JsonProperty("tts_latency", NullValueHandling = NullValueHandling.Ignore)]
+            public LatencyEvent TtsLatency {get; private set;}
+            [JsonProperty("stt_latency", NullValueHandling = NullValueHandling.Ignore)]
+            public LatencyEvent SttLatency {get; private set;}
+            [JsonProperty("interrupt", NullValueHandling = NullValueHandling.Ignore)]
+            public InterruptEvent Interrupt {get; private set;}
+            [JsonProperty("last_token_received", NullValueHandling = NullValueHandling.Ignore)]
+            public LastTokenReceivedEvent LastTokenReceived {get; private set;}
+            [JsonProperty("configurations", NullValueHandling = NullValueHandling.Ignore)]
+            public ConfigurationEvent Configurations {get; private set;}
+            [JsonProperty("language_changed", NullValueHandling = NullValueHandling.Ignore)]
+            public LanguageChangedEvent LanguageChanged {get; private set;}
+            [JsonProperty("call_wrap_up", NullValueHandling = NullValueHandling.Ignore)]
+            public CallWrapUpEvent CallWrapUp {get; private set;}
+            [JsonProperty("error", NullValueHandling = NullValueHandling.Ignore)]
+            public ErrorEvent Error {get; private set;}
+            public InsightsV1CallEventConversationRelayData() { }
+            public class Builder
+            {
+                private InsightsV1CallEventConversationRelayData _insightsV1CallEventConversationRelayData = new InsightsV1CallEventConversationRelayData();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _insightsV1CallEventConversationRelayData.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithSequenceNumber(int? sequenceNumber)
+                {
+                    _insightsV1CallEventConversationRelayData.SequenceNumber= sequenceNumber;
+                    return this;
+                }
+                public Builder WithTtsLatency(LatencyEvent ttsLatency)
+                {
+                    _insightsV1CallEventConversationRelayData.TtsLatency= ttsLatency;
+                    return this;
+                }
+                public Builder WithSttLatency(LatencyEvent sttLatency)
+                {
+                    _insightsV1CallEventConversationRelayData.SttLatency= sttLatency;
+                    return this;
+                }
+                public Builder WithInterrupt(InterruptEvent interrupt)
+                {
+                    _insightsV1CallEventConversationRelayData.Interrupt= interrupt;
+                    return this;
+                }
+                public Builder WithLastTokenReceived(LastTokenReceivedEvent lastTokenReceived)
+                {
+                    _insightsV1CallEventConversationRelayData.LastTokenReceived= lastTokenReceived;
+                    return this;
+                }
+                public Builder WithConfigurations(ConfigurationEvent configurations)
+                {
+                    _insightsV1CallEventConversationRelayData.Configurations= configurations;
+                    return this;
+                }
+                public Builder WithLanguageChanged(LanguageChangedEvent languageChanged)
+                {
+                    _insightsV1CallEventConversationRelayData.LanguageChanged= languageChanged;
+                    return this;
+                }
+                public Builder WithCallWrapUp(CallWrapUpEvent callWrapUp)
+                {
+                    _insightsV1CallEventConversationRelayData.CallWrapUp= callWrapUp;
+                    return this;
+                }
+                public Builder WithError(ErrorEvent error)
+                {
+                    _insightsV1CallEventConversationRelayData.Error= error;
+                    return this;
+                }
+                public InsightsV1CallEventConversationRelayData Build()
+                {
+                    return _insightsV1CallEventConversationRelayData;
+                }
+            }
+        }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class EndStatusEnum : StringEnum
+        {
+            private EndStatusEnum(string value) : base(value) {}
+            public EndStatusEnum() {}
+            public static implicit operator EndStatusEnum(string value)
+            {
+                return new EndStatusEnum(value);
+            }
+            public static readonly EndStatusEnum Unknown = new EndStatusEnum("unknown");
+            public static readonly EndStatusEnum Failure = new EndStatusEnum("failure");
+            public static readonly EndStatusEnum Ended = new EndStatusEnum("ended");
+            public static readonly EndStatusEnum HungUp = new EndStatusEnum("hung_up");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class LevelEnum : StringEnum
         {
@@ -46,6 +697,19 @@ namespace Twilio.Rest.Insights.V1.Call
             public static readonly LevelEnum Info = new LevelEnum("INFO");
             public static readonly LevelEnum Warning = new LevelEnum("WARNING");
             public static readonly LevelEnum Error = new LevelEnum("ERROR");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TypeEnum : StringEnum
+        {
+            private TypeEnum(string value) : base(value) {}
+            public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
+            public static readonly TypeEnum Dtmf = new TypeEnum("DTMF");
+            public static readonly TypeEnum Speech = new TypeEnum("SPEECH");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -304,6 +968,10 @@ namespace Twilio.Rest.Insights.V1.Call
         ///<summary> `object` Represents the Twilio media gateway for Client calls. The events here describe the call lifecycle as reported by Twilio's Voice SDK media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties. </summary> 
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
+
+        ///<summary> The conversation_relay_data </summary> 
+        [JsonProperty("conversation_relay_data")]
+        public InsightsV1CallEventConversationRelayData ConversationRelayData { get; private set; }
 
 
 

@@ -297,19 +297,24 @@ public class CommunicationCreateResource : Resource
         }
         public class CreateCommunicationInConversationRequestContent
         {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+            public CommunicationResource.TypeEnum Type {get; private set;}
             [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
             public string Text {get; private set;}
             [JsonProperty("transcription", NullValueHandling = NullValueHandling.Ignore)]
             public ContentTranscriptionTranscription Transcription {get; private set;}
-            [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-            public CommunicationResource.TypeEnum Type {get; private set;}
             public CreateCommunicationInConversationRequestContent() { }
             public class Builder
             {
                 private CreateCommunicationInConversationRequestContent _createCommunicationInConversationRequestContent = new CreateCommunicationInConversationRequestContent();
                 public Builder()
                 {
+                }
+                public Builder WithType(CommunicationResource.TypeEnum type)
+                {
+                    _createCommunicationInConversationRequestContent.Type= type;
+                    return this;
                 }
                 public Builder WithText(string text)
                 {
@@ -321,14 +326,46 @@ public class CommunicationCreateResource : Resource
                     _createCommunicationInConversationRequestContent.Transcription= transcription;
                     return this;
                 }
-                public Builder WithType(CommunicationResource.TypeEnum type)
-                {
-                    _createCommunicationInConversationRequestContent.Type= type;
-                    return this;
-                }
                 public CreateCommunicationInConversationRequestContent Build()
                 {
                     return _createCommunicationInConversationRequestContent;
+                }
+            }
+        }
+        public class CreateCommunicationInConversationRequestRecipients
+        {
+            [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
+            public string Address {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
+            public CommunicationResource.ChannelEnum Channel {get; private set;}
+            [JsonProperty("participantId", NullValueHandling = NullValueHandling.Ignore)]
+            public string ParticipantId {get; private set;}
+            public CreateCommunicationInConversationRequestRecipients() { }
+            public class Builder
+            {
+                private CreateCommunicationInConversationRequestRecipients _createCommunicationInConversationRequestRecipients = new CreateCommunicationInConversationRequestRecipients();
+                public Builder()
+                {
+                }
+                public Builder WithAddress(string address)
+                {
+                    _createCommunicationInConversationRequestRecipients.Address= address;
+                    return this;
+                }
+                public Builder WithChannel(CommunicationResource.ChannelEnum channel)
+                {
+                    _createCommunicationInConversationRequestRecipients.Channel= channel;
+                    return this;
+                }
+                public Builder WithParticipantId(string participantId)
+                {
+                    _createCommunicationInConversationRequestRecipients.ParticipantId= participantId;
+                    return this;
+                }
+                public CreateCommunicationInConversationRequestRecipients Build()
+                {
+                    return _createCommunicationInConversationRequestRecipients;
                 }
             }
         }
@@ -339,9 +376,11 @@ public class CommunicationCreateResource : Resource
             [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
             public CreateCommunicationInConversationRequestContent Content {get; private set;}
             [JsonProperty("recipients", NullValueHandling = NullValueHandling.Ignore)]
-            public List<CreateCommunicationInConversationRequestAuthor> Recipients {get; private set;}
+            public List<CreateCommunicationInConversationRequestRecipients> Recipients {get; private set;}
             [JsonProperty("channelId", NullValueHandling = NullValueHandling.Ignore)]
             public string ChannelId {get; private set;}
+            [JsonProperty("occurredAt", NullValueHandling = NullValueHandling.Ignore)]
+            public DateTime? OccurredAt {get; private set;}
             public CreateCommunicationInConversationRequest() { }
             public class Builder
             {
@@ -359,7 +398,7 @@ public class CommunicationCreateResource : Resource
                     _createCommunicationInConversationRequest.Content= content;
                     return this;
                 }
-                public Builder WithRecipients(List<CreateCommunicationInConversationRequestAuthor> recipients)
+                public Builder WithRecipients(List<CreateCommunicationInConversationRequestRecipients> recipients)
                 {
                     _createCommunicationInConversationRequest.Recipients= recipients;
                     return this;
@@ -367,6 +406,11 @@ public class CommunicationCreateResource : Resource
                 public Builder WithChannelId(string channelId)
                 {
                     _createCommunicationInConversationRequest.ChannelId= channelId;
+                    return this;
+                }
+                public Builder WithOccurredAt(DateTime? occurredAt)
+                {
+                    _createCommunicationInConversationRequest.OccurredAt= occurredAt;
                     return this;
                 }
                 public CreateCommunicationInConversationRequest Build()
@@ -381,7 +425,7 @@ public class CommunicationCreateResource : Resource
             public string Address {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
-            public CommunicationResource.ChannelEnum Channel {get; private set;}
+            public CommunicationResource.ConversationsV2Channel Channel {get; private set;}
             [JsonProperty("participantId", NullValueHandling = NullValueHandling.Ignore)]
             public string ParticipantId {get; private set;}
             public ConversationsV2ParticipantAddress() { }
@@ -396,7 +440,7 @@ public class CommunicationCreateResource : Resource
                     _conversationsV2ParticipantAddress.Address= address;
                     return this;
                 }
-                public Builder WithChannel(CommunicationResource.ChannelEnum channel)
+                public Builder WithChannel(CommunicationResource.ConversationsV2Channel channel)
                 {
                     _conversationsV2ParticipantAddress.Channel= channel;
                     return this;
@@ -558,18 +602,23 @@ public class CommunicationCreateResource : Resource
         }
         public class ListCommunicationByConversation200ResponseCommunicationsContent
         {
+            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+            public string Type {get; private set;}
             [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
             public string Text {get; private set;}
             [JsonProperty("transcription", NullValueHandling = NullValueHandling.Ignore)]
             public ConversationsV2ContentTranscriptionTranscription Transcription {get; private set;}
-            [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-            public string Type {get; private set;}
             public ListCommunicationByConversation200ResponseCommunicationsContent() { }
             public class Builder
             {
                 private ListCommunicationByConversation200ResponseCommunicationsContent _listCommunicationByConversation200ResponseCommunicationsContent = new ListCommunicationByConversation200ResponseCommunicationsContent();
                 public Builder()
                 {
+                }
+                public Builder WithType(string type)
+                {
+                    _listCommunicationByConversation200ResponseCommunicationsContent.Type= type;
+                    return this;
                 }
                 public Builder WithText(string text)
                 {
@@ -579,11 +628,6 @@ public class CommunicationCreateResource : Resource
                 public Builder WithTranscription(ConversationsV2ContentTranscriptionTranscription transcription)
                 {
                     _listCommunicationByConversation200ResponseCommunicationsContent.Transcription= transcription;
-                    return this;
-                }
-                public Builder WithType(string type)
-                {
-                    _listCommunicationByConversation200ResponseCommunicationsContent.Type= type;
                     return this;
                 }
                 public ListCommunicationByConversation200ResponseCommunicationsContent Build()
@@ -598,12 +642,12 @@ public class CommunicationCreateResource : Resource
             public string Address {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
-            public CommunicationResource.ChannelEnum Channel {get; private set;}
+            public CommunicationResource.ConversationsV2Channel Channel {get; private set;}
             [JsonProperty("participantId", NullValueHandling = NullValueHandling.Ignore)]
             public string ParticipantId {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("deliveryStatus", NullValueHandling = NullValueHandling.Ignore)]
-            public CommunicationResource.DeliveryStatusEnum DeliveryStatus {get; private set;}
+            public CommunicationResource.ConversationsV2RecipientDeliveryStatus DeliveryStatus {get; private set;}
             public ListCommunicationByConversation200ResponseCommunicationsRecipients() { }
             public class Builder
             {
@@ -616,7 +660,7 @@ public class CommunicationCreateResource : Resource
                     _listCommunicationByConversation200ResponseCommunicationsRecipients.Address= address;
                     return this;
                 }
-                public Builder WithChannel(CommunicationResource.ChannelEnum channel)
+                public Builder WithChannel(CommunicationResource.ConversationsV2Channel channel)
                 {
                     _listCommunicationByConversation200ResponseCommunicationsRecipients.Channel= channel;
                     return this;
@@ -626,7 +670,7 @@ public class CommunicationCreateResource : Resource
                     _listCommunicationByConversation200ResponseCommunicationsRecipients.ParticipantId= participantId;
                     return this;
                 }
-                public Builder WithDeliveryStatus(CommunicationResource.DeliveryStatusEnum deliveryStatus)
+                public Builder WithDeliveryStatus(CommunicationResource.ConversationsV2RecipientDeliveryStatus deliveryStatus)
                 {
                     _listCommunicationByConversation200ResponseCommunicationsRecipients.DeliveryStatus= deliveryStatus;
                     return this;
@@ -640,19 +684,19 @@ public class CommunicationCreateResource : Resource
 
     
         [JsonConverter(typeof(StringEnumConverter))]
-        public sealed class DeliveryStatusEnum : StringEnum
+        public sealed class ConversationsV2Channel : StringEnum
         {
-            private DeliveryStatusEnum(string value) : base(value) {}
-            public DeliveryStatusEnum() {}
-            public static implicit operator DeliveryStatusEnum(string value)
+            private ConversationsV2Channel(string value) : base(value) {}
+            public ConversationsV2Channel() {}
+            public static implicit operator ConversationsV2Channel(string value)
             {
-                return new DeliveryStatusEnum(value);
+                return new ConversationsV2Channel(value);
             }
-            public static readonly DeliveryStatusEnum Initiated = new DeliveryStatusEnum("INITIATED");
-            public static readonly DeliveryStatusEnum InProgress = new DeliveryStatusEnum("IN_PROGRESS");
-            public static readonly DeliveryStatusEnum Delivered = new DeliveryStatusEnum("DELIVERED");
-            public static readonly DeliveryStatusEnum Completed = new DeliveryStatusEnum("COMPLETED");
-            public static readonly DeliveryStatusEnum Failed = new DeliveryStatusEnum("FAILED");
+            public static readonly ConversationsV2Channel Voice = new ConversationsV2Channel("VOICE");
+            public static readonly ConversationsV2Channel Sms = new ConversationsV2Channel("SMS");
+            public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
+            public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
+            public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -665,6 +709,7 @@ public class CommunicationCreateResource : Resource
                 return new TypeEnum(value);
             }
             public static readonly TypeEnum Text = new TypeEnum("TEXT");
+            public static readonly TypeEnum Transcription = new TypeEnum("TRANSCRIPTION");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -683,15 +728,31 @@ public class CommunicationCreateResource : Resource
             public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
 
         }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ConversationsV2RecipientDeliveryStatus : StringEnum
+        {
+            private ConversationsV2RecipientDeliveryStatus(string value) : base(value) {}
+            public ConversationsV2RecipientDeliveryStatus() {}
+            public static implicit operator ConversationsV2RecipientDeliveryStatus(string value)
+            {
+                return new ConversationsV2RecipientDeliveryStatus(value);
+            }
+            public static readonly ConversationsV2RecipientDeliveryStatus Initiated = new ConversationsV2RecipientDeliveryStatus("INITIATED");
+            public static readonly ConversationsV2RecipientDeliveryStatus InProgress = new ConversationsV2RecipientDeliveryStatus("IN_PROGRESS");
+            public static readonly ConversationsV2RecipientDeliveryStatus Delivered = new ConversationsV2RecipientDeliveryStatus("DELIVERED");
+            public static readonly ConversationsV2RecipientDeliveryStatus Completed = new ConversationsV2RecipientDeliveryStatus("COMPLETED");
+            public static readonly ConversationsV2RecipientDeliveryStatus Failed = new ConversationsV2RecipientDeliveryStatus("FAILED");
+
+        }
 
             
         private static Request BuildCreateRequest(CreateCommunicationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Communications";
+            string path = "/v2/Conversations/{ConversationId}/Communications";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
 
             return new Request(
                 HttpMethod.Post,
@@ -729,27 +790,27 @@ public class CommunicationCreateResource : Resource
         #endif
 
         /// <summary> Create a Communication. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Communication </returns>
         public static CommunicationCreateResource Create(
-                                          string pathConversationSid,
+                                          string pathConversationId,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateCommunicationOptions(pathConversationSid){  };
+            var options = new CreateCommunicationOptions(pathConversationId){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a Communication. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Communication </returns>
         public static async System.Threading.Tasks.Task<CommunicationCreateResource> CreateAsync(
-                                                                                  string pathConversationSid,
+                                                                                  string pathConversationId,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateCommunicationOptions(pathConversationSid){  };
+        var options = new CreateCommunicationOptions(pathConversationId){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -774,19 +835,19 @@ public class CommunicationCreateResource : Resource
         #endif
 
         public static TwilioResponse<CommunicationCreateResource> CreateWithHeaders(
-            string pathConversationSid,
+            string pathConversationId,
         ITwilioRestClient client = null)
         {
-        var options = new CreateCommunicationOptions(pathConversationSid){  };
+        var options = new CreateCommunicationOptions(pathConversationId){  };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<CommunicationCreateResource>> CreateWithHeadersAsync(
-            string pathConversationSid,
+            string pathConversationId,
         ITwilioRestClient client = null)
         {
-        var options = new CreateCommunicationOptions(pathConversationSid){  };
+        var options = new CreateCommunicationOptions(pathConversationId){  };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
@@ -794,12 +855,12 @@ public class CommunicationCreateResource : Resource
         private static Request BuildFetchRequest(FetchCommunicationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Communications/{Sid}";
+            string path = "/v2/Conversations/{ConversationId}/Communications/{id}";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,
@@ -834,28 +895,28 @@ public class CommunicationCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve a Communication. </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Communication </returns>
         public static CommunicationFetchResource Fetch(
-                                         string pathConversationSid, 
-                                         string pathSid, 
+                                         string pathConversationId, 
+                                         string pathId, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchCommunicationOptions(pathConversationSid, pathSid){  };
+            var options = new FetchCommunicationOptions(pathConversationId, pathId){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a Communication. </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Communication </returns>
-        public static async System.Threading.Tasks.Task<CommunicationFetchResource> FetchAsync(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CommunicationFetchResource> FetchAsync(string pathConversationId, string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchCommunicationOptions(pathConversationSid, pathSid){  };
+            var options = new FetchCommunicationOptions(pathConversationId, pathId){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -878,18 +939,18 @@ public class CommunicationCreateResource : Resource
         #endif
         
         public static TwilioResponse<CommunicationFetchResource> FetchWithHeaders(
-                    string pathConversationSid, 
-                    string pathSid, 
+                    string pathConversationId, 
+                    string pathId, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchCommunicationOptions(pathConversationSid, pathSid){  };
+            var options = new FetchCommunicationOptions(pathConversationId, pathId){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<CommunicationFetchResource>> FetchWithHeadersAsync(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<CommunicationFetchResource>> FetchWithHeadersAsync(string pathConversationId, string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchCommunicationOptions(pathConversationSid, pathSid){  };
+            var options = new FetchCommunicationOptions(pathConversationId, pathId){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif
@@ -897,10 +958,10 @@ public class CommunicationCreateResource : Resource
         private static Request BuildReadRequest(ReadCommunicationOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Communications";
+            string path = "/v2/Conversations/{ConversationId}/Communications";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
 
             return new Request(
                 HttpMethod.Get,
@@ -937,39 +998,39 @@ public class CommunicationCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve a list of Communications in a Conversation. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="channelId"> Resource identifier to filter communications </param>
         /// <param name="pageSize"> Maximum number of items to return </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Communication </returns>
         public static ResourceSet<CommunicationReadResource> Read(
-                                                     string pathConversationSid,
+                                                     string pathConversationId,
                                                      string channelId = null,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadCommunicationOptions(pathConversationSid){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommunicationOptions(pathConversationId){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of Communications in a Conversation. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="channelId"> Resource identifier to filter communications </param>
         /// <param name="pageSize"> Maximum number of items to return </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Communication </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<CommunicationReadResource>> ReadAsync(
-                                                                                             string pathConversationSid,
+                                                                                             string pathConversationId,
                                                                                              string channelId = null,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadCommunicationOptions(pathConversationSid){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommunicationOptions(pathConversationId){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -984,13 +1045,13 @@ public class CommunicationCreateResource : Resource
         }
 
         public static ResourceSetResponse<CommunicationReadResource> ReadWithHeaders(
-            string pathConversationSid,
+            string pathConversationId,
             string channelId = null,
             int? pageSize = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadCommunicationOptions(pathConversationSid){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommunicationOptions(pathConversationId){ ChannelId = channelId, PageSize = pageSize, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 

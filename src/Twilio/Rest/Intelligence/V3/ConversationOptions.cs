@@ -57,10 +57,10 @@ namespace Twilio.Rest.Intelligence.V3
     public class ReadConversationOptions : ReadOptions<ConversationReadResource>
     {
     
-        ///<summary> Filter by Conversations created before this timestamp. </summary> 
+        ///<summary> Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </summary> 
         public DateTime? CreatedAtBefore { get; set; }
 
-        ///<summary> Filter by Conversations created after this timestamp. </summary> 
+        ///<summary> Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days. </summary> 
         public DateTime? CreatedAtAfter { get; set; }
 
         ///<summary> Filter by Conversation status. </summary> 
