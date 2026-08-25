@@ -123,30 +123,6 @@ namespace Twilio.Tests.TwiML
                 "events"
             );
 
-            elem.Assistant(
-                "id",
-                "language",
-                "tts_language",
-                "transcription_language",
-                "tts_provider",
-                "voice",
-                "transcription_provider",
-                "speech_model",
-                true,
-                true,
-                "welcome_greeting",
-                true,
-                "welcome_greeting_interruptible",
-                "interruptible",
-                true,
-                "hints",
-                "intelligence_service",
-                true,
-                "elevenlabs_text_normalization",
-                "interrupt_sensitivity",
-                "debug"
-            );
-
             elem.AiSession("ai_connector", "ai_session_configuration");
 
             elem.ConversationRelaySession("connector", "session_configuration");
@@ -160,7 +136,6 @@ namespace Twilio.Tests.TwiML
                 "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>" + Environment.NewLine +
                 "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>" + Environment.NewLine +
                 "  <ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\"></ConversationRelay>" + Environment.NewLine +
-                "  <Assistant id=\"id\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\"></Assistant>" + Environment.NewLine +
                 "  <AiSession aiConnector=\"ai_connector\" aiSessionConfiguration=\"ai_session_configuration\"></AiSession>" + Environment.NewLine +
                 "  <ConversationRelaySession connector=\"connector\" sessionConfiguration=\"session_configuration\"></ConversationRelaySession>" + Environment.NewLine +
                 "</Connect>",
