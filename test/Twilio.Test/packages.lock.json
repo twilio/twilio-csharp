@@ -311,15 +311,6 @@
           "System.Runtime.InteropServices": "4.3.0"
         }
       },
-      "System.IdentityModel.Tokens.Jwt": {
-        "type": "Transitive",
-        "resolved": "8.3.1",
-        "contentHash": "SxdCv+SmnKOhUvryKvrpWJnkuVHj3hU8pUwj7R8zthi73TlBUlMyavon9qfuJsjnqY+L7jusp3Zo0fWFX6mwtw==",
-        "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "8.3.1",
-          "Microsoft.IdentityModel.Tokens": "8.3.1"
-        }
-      },
       "System.IO": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -627,15 +618,6 @@
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
-        }
-      },
-      "twilio": {
-        "type": "Project",
-        "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "[8.3.1, )",
-          "Newtonsoft.Json": "[13.0.1, )",
-          "System.Collections.Specialized": "[4.3.0, )",
-          "System.IdentityModel.Tokens.Jwt": "[8.3.1, )"
         }
       }
     }

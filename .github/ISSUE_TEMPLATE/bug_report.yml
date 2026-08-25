@@ -52,7 +52,7 @@ body:
     attributes:
       label: Framework version
       description: Specify the target framework version you are using.
-      placeholder: e.g., net6.0, netstandard2.1, net35, net462
+      placeholder: e.g., net8.0, netstandard2.0, net35, net462
     validations:
       required: true
 

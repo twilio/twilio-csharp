@@ -29,7 +29,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 ### Supported .NET versions
 
-This library supports .NET applications that utilize .NET6+.
+This library supports .NET applications that utilize .NET 8+. For backward compatibility, the NuGet package also targets .NET Standard 2.0, .NET Framework 4.6.2, and .NET Framework 3.5.
 
 ## Installation
 
