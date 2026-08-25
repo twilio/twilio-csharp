@@ -2,6 +2,15 @@
 
 _`MAJOR` version bumps will have upgrade notes posted here._
 
+[2025-XX-XX] 7.x.x to 8.x.x
+----------------------------
+### Overview
+
+#### Twilio C# Helper Library's major version 8.0.0 is now available.
+#### The minimum supported .NET version has been raised to .NET 8.0.
+
+Support for .NET 6.0 has been dropped. Please upgrade your application to .NET 8.0 or later before upgrading to this version of the library.
+
 [2024-02-XX] 6.x.x to 7.x.x
 ----------------------------
 ### Overview

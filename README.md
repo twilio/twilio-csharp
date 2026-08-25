@@ -29,7 +29,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 ### Supported .NET versions
 
-This library supports .NET applications that utilize .NET6+.
+This library supports .NET applications that utilize .NET8+.
 
 ## Installation
 
