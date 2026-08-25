@@ -67,11 +67,14 @@ namespace Twilio.Rest.Verify.V2.Service
         ///<summary> Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`. </summary> 
         public string AppHash { get; set; }
 
-        ///<summary> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. </summary> 
+        ///<summary> The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only. If the `Templates` parameter is also provided, `Templates` takes precedence over this parameter. </summary> 
         public string TemplateSid { get; set; }
 
         ///<summary> A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions. </summary> 
         public string TemplateCustomSubstitutions { get; set; }
+
+        ///<summary> A stringified JSON array of template entries, ordered by preference. Each entry is an object with the following fields: `sid` (string, required, matching `^HJ[0-9a-fA-F]{32}$`) — the SID of the message [template](https://www.twilio.com/docs/verify/api/templates) to apply; and `substitutions` (object, optional) — a key-value map in which the keys are the template's special variables and the values are their substitution values. The array may contain up to 10 entries. If provided, `Templates` takes precedence over `TemplateSid` and `TemplateCustomSubstitutions`. </summary> 
+        public string Templates { get; set; }
 
         ///<summary> Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address. </summary> 
         public string DeviceIp { get; set; }
@@ -158,6 +161,10 @@ namespace Twilio.Rest.Verify.V2.Service
             if (TemplateCustomSubstitutions != null)
             {
                 p.Add(new KeyValuePair<string, string>("TemplateCustomSubstitutions", TemplateCustomSubstitutions));
+            }
+            if (Templates != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Templates", Templates));
             }
             if (DeviceIp != null)
             {

@@ -35,15 +35,15 @@ namespace Twilio.Rest.Messaging.V3
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
             public TypingIndicatorResource.ChannelEnum Channel {get; private set;}
+            [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
+            public string MessageId {get; private set;}
+            [JsonProperty("from", NullValueHandling = NullValueHandling.Ignore)]
+            public string From {get; private set;}
+            [JsonProperty("to", NullValueHandling = NullValueHandling.Ignore)]
+            public string To {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("event", NullValueHandling = NullValueHandling.Ignore)]
             public TypingIndicatorResource.EventEnum Event {get; private set;}
-            [JsonProperty("from", NullValueHandling = NullValueHandling.Ignore)]
-            public string From {get; private set;}
-            [JsonProperty("messageId", NullValueHandling = NullValueHandling.Ignore)]
-            public string MessageId {get; private set;}
-            [JsonProperty("to", NullValueHandling = NullValueHandling.Ignore)]
-            public string To {get; private set;}
             public TypingIndicatorRequest() { }
             public class Builder
             {
@@ -56,9 +56,9 @@ namespace Twilio.Rest.Messaging.V3
                     _typingIndicatorRequest.Channel= channel;
                     return this;
                 }
-                public Builder WithEvent(TypingIndicatorResource.EventEnum varEvent)
+                public Builder WithMessageId(string messageId)
                 {
-                    _typingIndicatorRequest.Event= varEvent;
+                    _typingIndicatorRequest.MessageId= messageId;
                     return this;
                 }
                 public Builder WithFrom(string from)
@@ -66,14 +66,14 @@ namespace Twilio.Rest.Messaging.V3
                     _typingIndicatorRequest.From= from;
                     return this;
                 }
-                public Builder WithMessageId(string messageId)
-                {
-                    _typingIndicatorRequest.MessageId= messageId;
-                    return this;
-                }
                 public Builder WithTo(string to)
                 {
                     _typingIndicatorRequest.To= to;
+                    return this;
+                }
+                public Builder WithEvent(TypingIndicatorResource.EventEnum varEvent)
+                {
+                    _typingIndicatorRequest.Event= varEvent;
                     return this;
                 }
                 public TypingIndicatorRequest Build()
@@ -107,6 +107,8 @@ namespace Twilio.Rest.Messaging.V3
                 return new ChannelEnum(value);
             }
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
+            public static readonly ChannelEnum Apple = new ChannelEnum("APPLE");
+            public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
 
         }
 
@@ -128,7 +130,7 @@ namespace Twilio.Rest.Messaging.V3
             );
         }
 
-        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
+        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business, RCS. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
         /// <param name="options"> Create TypingIndicator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TypingIndicator </returns>
@@ -140,7 +142,7 @@ namespace Twilio.Rest.Messaging.V3
         }
 
         #if !NET35
-        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
+        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business, RCS. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
         /// <param name="options"> Create TypingIndicator parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TypingIndicator </returns>
@@ -152,7 +154,7 @@ namespace Twilio.Rest.Messaging.V3
         }
         #endif
 
-        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
+        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business, RCS. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
         /// <param name="typingIndicatorRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TypingIndicator </returns>
@@ -165,7 +167,7 @@ namespace Twilio.Rest.Messaging.V3
         }
 
         #if !NET35
-        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
+        /// <summary> Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business, RCS. The request body varies by channel — use the `channel` field as the discriminator.  </summary>
         /// <param name="typingIndicatorRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TypingIndicator </returns>

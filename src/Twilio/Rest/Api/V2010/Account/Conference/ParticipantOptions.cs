@@ -181,11 +181,38 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///<summary> A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call. </summary> 
         public string CallToken { get; set; }
 
+        ///<summary> The STIR/SHAKEN passport for this call, provided as a base64 encoded string. Multiple passports (at max 5) are comma separated and provided as base64 encoded string </summary> 
+        public string Passports { get; set; }
+
         ///<summary> The URL that we should use to deliver `push call notification`. </summary> 
         public Uri ClientNotificationUrl { get; set; }
 
         ///<summary> The name that populates the display name in the From header. Must be between 2 and 255 characters. Only applicable for calls to sip address. </summary> 
         public string CallerDisplayName { get; set; }
+
+        ///<summary> The emergency caller's GPS coordinates in decimal degrees format. Format: \\\"latitude longitude\\\" (space-separated) - Latitude: decimal degrees, range -90.0 to +90.0 (negative for South, positive for North) - Longitude: decimal degrees, range -180.0 to +180.0 (negative for West, positive for East) - Precision: up to 6 decimal places recommended for meter-level accuracy  Note: If the value exceeds 150 characters, only the first 150 characters will be used.  </summary> 
+        public string EmergencyCallerPosition { get; set; }
+
+        ///<summary> The emergency caller's physical location description within a building or facility.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyCallerLocation { get; set; }
+
+        ///<summary> The emergency caller's organization or entity name.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyName { get; set; }
+
+        ///<summary> The emergency caller's street address including street number and street name.  Note: If the value exceeds 60 characters, only the first 60 characters will be used.  </summary> 
+        public string EmergencyAddress { get; set; }
+
+        ///<summary> The emergency caller's postal code or ZIP code.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyZipCode { get; set; }
+
+        ///<summary> The emergency caller's city or municipality name. Should be the official city name as recognized by local authorities. Used in combination with state and country for emergency call routing.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyCity { get; set; }
+
+        ///<summary> The emergency caller's state or province.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyState { get; set; }
+
+        ///<summary> The emergency caller's country. Currently supported US and CA only.  Note: If the value exceeds 20 characters, only the first 20 characters will be used.  </summary> 
+        public string EmergencyCountry { get; set; }
 
 
         /// <summary> Construct a new CreateParticipantOptions </summary>
@@ -405,6 +432,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             {
                 p.Add(new KeyValuePair<string, string>("CallToken", CallToken));
             }
+            if (Passports != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Passports", Passports));
+            }
             if (ClientNotificationUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("ClientNotificationUrl", Serializers.Url(ClientNotificationUrl)));
@@ -412,6 +443,38 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (CallerDisplayName != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallerDisplayName", CallerDisplayName));
+            }
+            if (EmergencyCallerPosition != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallerPosition", EmergencyCallerPosition));
+            }
+            if (EmergencyCallerLocation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallerLocation", EmergencyCallerLocation));
+            }
+            if (EmergencyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyName", EmergencyName));
+            }
+            if (EmergencyAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyAddress", EmergencyAddress));
+            }
+            if (EmergencyZipCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyZipCode", EmergencyZipCode));
+            }
+            if (EmergencyCity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCity", EmergencyCity));
+            }
+            if (EmergencyState != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyState", EmergencyState));
+            }
+            if (EmergencyCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCountry", EmergencyCountry));
             }
             return p;
         }

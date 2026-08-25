@@ -27,6 +27,9 @@ namespace Twilio.Rest.Accounts.V1
     public class UpdateAuthTokenPromotionOptions : IOptions<AuthTokenPromotionResource>
     {
     
+        ///<summary> Whether to suppress the email notification that Twilio sends to the owners and administrators of the account about this Auth Token change. Defaults to `false`, so Twilio sends the email. Set to `true` when rotating Auth Tokens across many subaccounts. </summary> 
+        public bool? SuppressEmailNotification { get; set; }
+
 
 
 
@@ -36,6 +39,10 @@ namespace Twilio.Rest.Accounts.V1
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (SuppressEmailNotification != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SuppressEmailNotification", SuppressEmailNotification.Value.ToString().ToLower()));
+            }
             return p;
         }
 

@@ -76,23 +76,27 @@ namespace Twilio.Rest.Accounts.V1
         #endif
 
         /// <summary> Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old primary Auth Token will result in an error. </summary>
+        /// <param name="suppressEmailNotification"> Whether to suppress the email notification that Twilio sends to the owners and administrators of the account about this Auth Token change. Defaults to `false`, so Twilio sends the email. Set to `true` when rotating Auth Tokens across many subaccounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthTokenPromotion </returns>
         public static AuthTokenPromotionResource Update(
+                                          bool? suppressEmailNotification = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthTokenPromotionOptions(){  };
+            var options = new UpdateAuthTokenPromotionOptions(){ SuppressEmailNotification = suppressEmailNotification };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old primary Auth Token will result in an error. </summary>
+        /// <param name="suppressEmailNotification"> Whether to suppress the email notification that Twilio sends to the owners and administrators of the account about this Auth Token change. Defaults to `false`, so Twilio sends the email. Set to `true` when rotating Auth Tokens across many subaccounts. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthTokenPromotion </returns>
         public static async System.Threading.Tasks.Task<AuthTokenPromotionResource> UpdateAsync(
+                                                                              bool? suppressEmailNotification = null,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthTokenPromotionOptions(){  };
+            var options = new UpdateAuthTokenPromotionOptions(){ SuppressEmailNotification = suppressEmailNotification };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -117,17 +121,19 @@ namespace Twilio.Rest.Accounts.V1
         #endif
 
         public static TwilioResponse<AuthTokenPromotionResource> UpdateWithHeaders(
+            bool? suppressEmailNotification = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthTokenPromotionOptions(){  };
+            var options = new UpdateAuthTokenPromotionOptions(){ SuppressEmailNotification = suppressEmailNotification };
             return UpdateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<AuthTokenPromotionResource>> UpdateWithHeadersAsync(
+            bool? suppressEmailNotification = null,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthTokenPromotionOptions(){  };
+            var options = new UpdateAuthTokenPromotionOptions(){ SuppressEmailNotification = suppressEmailNotification };
             return await UpdateWithHeadersAsync(options, client);
         }
         #endif

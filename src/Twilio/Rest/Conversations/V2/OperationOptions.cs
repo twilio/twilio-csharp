@@ -28,15 +28,15 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
 
 
         /// <summary> Construct a new FetchOperationStatusOptions </summary>
-        /// <param name="pathSid">  </param>
-        public FetchOperationOptions(string pathSid)
+        /// <param name="pathId">  </param>
+        public FetchOperationOptions(string pathId)
         {
-            PathSid = pathSid;
+            PathId = pathId;
         }
 
         

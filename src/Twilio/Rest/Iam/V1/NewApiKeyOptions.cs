@@ -34,8 +34,8 @@ namespace Twilio.Rest.Iam.V1
         ///<summary> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </summary> 
         public string FriendlyName { get; set; }
 
-        
-        public NewApiKeyResource.KeytypeEnum KeyType { get; set; }
+        ///<summary> The \\\\`KeyType\\\\` form parameter is used to specify the type of key you want to create.  **Default Behavior**: If \\\\`KeyType\\\\` is not specified, the API will generate a standard key.  **Restricted Key**: If \\\\`KeyType\\\\` is set to \\\\`restricted\\\\`, the API will create a new restricted key. In this case, a policy object is required to define the permissions. </summary> 
+        public string KeyType { get; set; }
 
         ///<summary> The \\\\`Policy\\\\` object is a collection that specifies the allowed Twilio permissions for the restricted key. For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys). </summary> 
         public object Policy { get; set; }
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Iam.V1
             }
             if (KeyType != null)
             {
-                p.Add(new KeyValuePair<string, string>("KeyType", KeyType.ToString()));
+                p.Add(new KeyValuePair<string, string>("KeyType", KeyType));
             }
             if (Policy != null)
             {

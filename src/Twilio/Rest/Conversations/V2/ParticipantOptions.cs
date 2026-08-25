@@ -29,17 +29,17 @@ namespace Twilio.Rest.Conversations.V2
     {
         
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         
         public ParticipantResource.CreateParticipantInConversationRequest CreateParticipantInConversationRequest { get; set; }
 
 
         /// <summary> Construct a new CreateParticipantInConversationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        public CreateParticipantOptions(string pathConversationSid)
+        /// <param name="pathConversationId">  </param>
+        public CreateParticipantOptions(string pathConversationId)
         {
-            PathConversationSid = pathConversationSid;
+            PathConversationId = pathConversationId;
         }
 
         
@@ -64,20 +64,20 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
 
 
         /// <summary> Construct a new FetchParticipantOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
-        public FetchParticipantOptions(string pathConversationSid, string pathSid)
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
+        public FetchParticipantOptions(string pathConversationId, string pathId)
         {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
+            PathConversationId = pathConversationId;
+            PathId = pathId;
         }
 
         
@@ -99,15 +99,15 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
 
 
         /// <summary> Construct a new ListParticipantByConversationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        public ReadParticipantOptions(string pathConversationSid)
+        /// <param name="pathConversationId">  </param>
+        public ReadParticipantOptions(string pathConversationId)
         {
-            PathConversationSid = pathConversationSid;
+            PathConversationId = pathConversationId;
         }
 
         
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
         
         public ParticipantResource.UpdateParticipantInConversationRequest UpdateParticipantInConversationRequest { get; set; }
@@ -143,12 +143,12 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new UpdateParticipantInConversationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
-        public UpdateParticipantOptions(string pathConversationSid, string pathSid)
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
+        public UpdateParticipantOptions(string pathConversationId, string pathId)
         {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
+            PathConversationId = pathConversationId;
+            PathId = pathId;
         }
 
         

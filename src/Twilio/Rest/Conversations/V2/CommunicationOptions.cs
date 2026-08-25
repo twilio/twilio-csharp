@@ -29,17 +29,17 @@ namespace Twilio.Rest.Conversations.V2
     {
         
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         
         public CommunicationResource.CreateCommunicationInConversationRequest CreateCommunicationInConversationRequest { get; set; }
 
 
         /// <summary> Construct a new CreateCommunicationInConversationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        public CreateCommunicationOptions(string pathConversationSid)
+        /// <param name="pathConversationId">  </param>
+        public CreateCommunicationOptions(string pathConversationId)
         {
-            PathConversationSid = pathConversationSid;
+            PathConversationId = pathConversationId;
         }
 
         
@@ -64,20 +64,20 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         
-        public string PathSid { get; }
+        public string PathId { get; }
 
 
 
         /// <summary> Construct a new FetchCommunicationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
-        public FetchCommunicationOptions(string pathConversationSid, string pathSid)
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
+        public FetchCommunicationOptions(string pathConversationId, string pathId)
         {
-            PathConversationSid = pathConversationSid;
-            PathSid = pathSid;
+            PathConversationId = pathConversationId;
+            PathId = pathId;
         }
 
         
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Conversations.V2
     {
     
         
-        public string PathConversationSid { get; }
+        public string PathConversationId { get; }
 
         ///<summary> Resource identifier to filter communications </summary> 
         public string ChannelId { get; set; }
@@ -107,10 +107,10 @@ namespace Twilio.Rest.Conversations.V2
 
 
         /// <summary> Construct a new ListCommunicationByConversationOptions </summary>
-        /// <param name="pathConversationSid">  </param>
-        public ReadCommunicationOptions(string pathConversationSid)
+        /// <param name="pathConversationId">  </param>
+        public ReadCommunicationOptions(string pathConversationId)
         {
-            PathConversationSid = pathConversationSid;
+            PathConversationId = pathConversationId;
         }
 
         
