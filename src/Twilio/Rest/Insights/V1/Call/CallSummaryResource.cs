@@ -30,6 +30,222 @@ namespace Twilio.Rest.Insights.V1.Call
     public class CallSummaryResource : Resource
     {
     
+        public class CallSummaryCrelayRateStats
+        {
+            [JsonProperty("min", NullValueHandling = NullValueHandling.Ignore)]
+            public float? Min {get; private set;}
+            [JsonProperty("max", NullValueHandling = NullValueHandling.Ignore)]
+            public float? Max {get; private set;}
+            [JsonProperty("avg", NullValueHandling = NullValueHandling.Ignore)]
+            public float? Avg {get; private set;}
+            public CallSummaryCrelayRateStats() { }
+            public class Builder
+            {
+                private CallSummaryCrelayRateStats _callSummaryCrelayRateStats = new CallSummaryCrelayRateStats();
+                public Builder()
+                {
+                }
+                public Builder WithMin(float? min)
+                {
+                    _callSummaryCrelayRateStats.Min= min;
+                    return this;
+                }
+                public Builder WithMax(float? max)
+                {
+                    _callSummaryCrelayRateStats.Max= max;
+                    return this;
+                }
+                public Builder WithAvg(float? avg)
+                {
+                    _callSummaryCrelayRateStats.Avg= avg;
+                    return this;
+                }
+                public CallSummaryCrelayRateStats Build()
+                {
+                    return _callSummaryCrelayRateStats;
+                }
+            }
+        }
+        public class CallSummaryCrelayTokenStats
+        {
+            [JsonProperty("total", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Total {get; private set;}
+            [JsonProperty("tokens_per_second", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats TokensPerSecond {get; private set;}
+            public CallSummaryCrelayTokenStats() { }
+            public class Builder
+            {
+                private CallSummaryCrelayTokenStats _callSummaryCrelayTokenStats = new CallSummaryCrelayTokenStats();
+                public Builder()
+                {
+                }
+                public Builder WithTotal(int? total)
+                {
+                    _callSummaryCrelayTokenStats.Total= total;
+                    return this;
+                }
+                public Builder WithTokensPerSecond(CallSummaryCrelayRateStats tokensPerSecond)
+                {
+                    _callSummaryCrelayTokenStats.TokensPerSecond= tokensPerSecond;
+                    return this;
+                }
+                public CallSummaryCrelayTokenStats Build()
+                {
+                    return _callSummaryCrelayTokenStats;
+                }
+            }
+        }
+        public class CallSummaryCrelayWordStats
+        {
+            [JsonProperty("total", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Total {get; private set;}
+            [JsonProperty("words_per_minute", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats WordsPerMinute {get; private set;}
+            public CallSummaryCrelayWordStats() { }
+            public class Builder
+            {
+                private CallSummaryCrelayWordStats _callSummaryCrelayWordStats = new CallSummaryCrelayWordStats();
+                public Builder()
+                {
+                }
+                public Builder WithTotal(int? total)
+                {
+                    _callSummaryCrelayWordStats.Total= total;
+                    return this;
+                }
+                public Builder WithWordsPerMinute(CallSummaryCrelayRateStats wordsPerMinute)
+                {
+                    _callSummaryCrelayWordStats.WordsPerMinute= wordsPerMinute;
+                    return this;
+                }
+                public CallSummaryCrelayWordStats Build()
+                {
+                    return _callSummaryCrelayWordStats;
+                }
+            }
+        }
+        public class CallSummaryCrelayInterruptions
+        {
+            [JsonProperty("customer_to_agent", NullValueHandling = NullValueHandling.Ignore)]
+            public int? CustomerToAgent {get; private set;}
+            [JsonProperty("agent_to_customer", NullValueHandling = NullValueHandling.Ignore)]
+            public int? AgentToCustomer {get; private set;}
+            public CallSummaryCrelayInterruptions() { }
+            public class Builder
+            {
+                private CallSummaryCrelayInterruptions _callSummaryCrelayInterruptions = new CallSummaryCrelayInterruptions();
+                public Builder()
+                {
+                }
+                public Builder WithCustomerToAgent(int? customerToAgent)
+                {
+                    _callSummaryCrelayInterruptions.CustomerToAgent= customerToAgent;
+                    return this;
+                }
+                public Builder WithAgentToCustomer(int? agentToCustomer)
+                {
+                    _callSummaryCrelayInterruptions.AgentToCustomer= agentToCustomer;
+                    return this;
+                }
+                public CallSummaryCrelayInterruptions Build()
+                {
+                    return _callSummaryCrelayInterruptions;
+                }
+            }
+        }
+        public class CallSummaryAgentSessionSummary
+        {
+            [JsonProperty("session_id", NullValueHandling = NullValueHandling.Ignore)]
+            public string SessionId {get; private set;}
+            [JsonProperty("tts_latency_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats TtsLatencyMs {get; private set;}
+            [JsonProperty("stt_latency_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats SttLatencyMs {get; private set;}
+            [JsonProperty("network_latency_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats NetworkLatencyMs {get; private set;}
+            [JsonProperty("time_to_first_audio_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats TimeToFirstAudioMs {get; private set;}
+            [JsonProperty("application_latency_ms", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayRateStats ApplicationLatencyMs {get; private set;}
+            [JsonProperty("tokens", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayTokenStats Tokens {get; private set;}
+            [JsonProperty("words", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayWordStats Words {get; private set;}
+            [JsonProperty("turns", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Turns {get; private set;}
+            [JsonProperty("interruptions", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryCrelayInterruptions Interruptions {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("session_state", NullValueHandling = NullValueHandling.Ignore)]
+            public CallSummaryResource.CallSummaryCrelaySessionState SessionState {get; private set;}
+            public CallSummaryAgentSessionSummary() { }
+            public class Builder
+            {
+                private CallSummaryAgentSessionSummary _callSummaryAgentSessionSummary = new CallSummaryAgentSessionSummary();
+                public Builder()
+                {
+                }
+                public Builder WithSessionId(string sessionId)
+                {
+                    _callSummaryAgentSessionSummary.SessionId= sessionId;
+                    return this;
+                }
+                public Builder WithTtsLatencyMs(CallSummaryCrelayRateStats ttsLatencyMs)
+                {
+                    _callSummaryAgentSessionSummary.TtsLatencyMs= ttsLatencyMs;
+                    return this;
+                }
+                public Builder WithSttLatencyMs(CallSummaryCrelayRateStats sttLatencyMs)
+                {
+                    _callSummaryAgentSessionSummary.SttLatencyMs= sttLatencyMs;
+                    return this;
+                }
+                public Builder WithNetworkLatencyMs(CallSummaryCrelayRateStats networkLatencyMs)
+                {
+                    _callSummaryAgentSessionSummary.NetworkLatencyMs= networkLatencyMs;
+                    return this;
+                }
+                public Builder WithTimeToFirstAudioMs(CallSummaryCrelayRateStats timeToFirstAudioMs)
+                {
+                    _callSummaryAgentSessionSummary.TimeToFirstAudioMs= timeToFirstAudioMs;
+                    return this;
+                }
+                public Builder WithApplicationLatencyMs(CallSummaryCrelayRateStats applicationLatencyMs)
+                {
+                    _callSummaryAgentSessionSummary.ApplicationLatencyMs= applicationLatencyMs;
+                    return this;
+                }
+                public Builder WithTokens(CallSummaryCrelayTokenStats tokens)
+                {
+                    _callSummaryAgentSessionSummary.Tokens= tokens;
+                    return this;
+                }
+                public Builder WithWords(CallSummaryCrelayWordStats words)
+                {
+                    _callSummaryAgentSessionSummary.Words= words;
+                    return this;
+                }
+                public Builder WithTurns(int? turns)
+                {
+                    _callSummaryAgentSessionSummary.Turns= turns;
+                    return this;
+                }
+                public Builder WithInterruptions(CallSummaryCrelayInterruptions interruptions)
+                {
+                    _callSummaryAgentSessionSummary.Interruptions= interruptions;
+                    return this;
+                }
+                public Builder WithSessionState(CallSummaryResource.CallSummaryCrelaySessionState sessionState)
+                {
+                    _callSummaryAgentSessionSummary.SessionState= sessionState;
+                    return this;
+                }
+                public CallSummaryAgentSessionSummary Build()
+                {
+                    return _callSummaryAgentSessionSummary;
+                }
+            }
+        }
 
     
         [JsonConverter(typeof(StringEnumConverter))]
@@ -96,6 +312,21 @@ namespace Twilio.Rest.Insights.V1.Call
             public static readonly CallTypeEnum Trunking = new CallTypeEnum("trunking");
             public static readonly CallTypeEnum Client = new CallTypeEnum("client");
             public static readonly CallTypeEnum Whatsapp = new CallTypeEnum("whatsapp");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class CallSummaryCrelaySessionState : StringEnum
+        {
+            private CallSummaryCrelaySessionState(string value) : base(value) {}
+            public CallSummaryCrelaySessionState() {}
+            public static implicit operator CallSummaryCrelaySessionState(string value)
+            {
+                return new CallSummaryCrelaySessionState(value);
+            }
+            public static readonly CallSummaryCrelaySessionState Unknown = new CallSummaryCrelaySessionState("unknown");
+            public static readonly CallSummaryCrelaySessionState Failure = new CallSummaryCrelaySessionState("failure");
+            public static readonly CallSummaryCrelaySessionState Ended = new CallSummaryCrelaySessionState("ended");
+            public static readonly CallSummaryCrelaySessionState HungUp = new CallSummaryCrelaySessionState("hung_up");
 
         }
 
@@ -326,6 +557,10 @@ namespace Twilio.Rest.Insights.V1.Call
         ///<summary> `object` Programmatically labeled annotations for the Call. Developers can update the Call Summary records with Annotation during or after a Call. Annotations can be updated as long as the Call Summary record is addressable via the API. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#annotation-object) for the object properties. </summary> 
         [JsonProperty("annotation")]
         public object Annotation { get; private set; }
+
+        ///<summary> `object` List of session summaries for conversation relay. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#conversation-relay-object) for the object properties. </summary> 
+        [JsonProperty("agent_session_summaries")]
+        public List<CallSummaryAgentSessionSummary> AgentSessionSummaries { get; private set; }
 
 
 

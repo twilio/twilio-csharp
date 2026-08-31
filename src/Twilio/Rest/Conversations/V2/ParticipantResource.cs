@@ -45,9 +45,9 @@ public class ParticipantCreateResource : Resource
         [JsonProperty("name")]
             public string Name { get; private set;}
 
-        ///<summary> Type of Participant in the Conversation. </summary> 
+        
         [JsonProperty("type")]
-            public ParticipantResource.TypeEnum Type { get; private set; }
+            public ParticipantResource.ConversationsV2ParticipantType Type { get; private set; }
 
         ///<summary> Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants. </summary> 
         [JsonProperty("profileId")]
@@ -100,9 +100,9 @@ public class ParticipantCreateResource : Resource
         [JsonProperty("name")]
             public string Name { get; private set;}
 
-        ///<summary> Type of Participant in the Conversation. </summary> 
+        
         [JsonProperty("type")]
-            public ParticipantResource.TypeEnum Type { get; private set; }
+            public ParticipantResource.ConversationsV2ParticipantType Type { get; private set; }
 
         ///<summary> Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants. </summary> 
         [JsonProperty("profileId")]
@@ -156,9 +156,9 @@ public class ParticipantCreateResource : Resource
             [JsonProperty("name")]
                 public string Name { get; private set;}
 
-            ///<summary> Type of Participant in the Conversation. </summary> 
+            
             [JsonProperty("type")]
-                public ParticipantResource.TypeEnum Type { get; private set; }
+                public ParticipantResource.ConversationsV2ParticipantType Type { get; private set; }
 
             ///<summary> Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants. </summary> 
             [JsonProperty("profileId")]
@@ -212,9 +212,9 @@ public class ParticipantCreateResource : Resource
         [JsonProperty("name")]
             public string Name { get; private set;}
 
-        ///<summary> Type of Participant in the Conversation. </summary> 
+        
         [JsonProperty("type")]
-            public ParticipantResource.TypeEnum Type { get; private set; }
+            public ParticipantResource.ConversationsV2ParticipantType Type { get; private set; }
 
         ///<summary> Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants. </summary> 
         [JsonProperty("profileId")]
@@ -254,7 +254,7 @@ public class ParticipantCreateResource : Resource
     public class ParticipantResource : Resource
     {
     
-        public class CreateParticipantInConversationRequestAddresses
+        public class CreateConversationWithConfigRequestParticipantsAddresses
         {
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
@@ -263,38 +263,38 @@ public class ParticipantCreateResource : Resource
             public string Address {get; private set;}
             [JsonProperty("channelId", NullValueHandling = NullValueHandling.Ignore)]
             public string ChannelId {get; private set;}
-            public CreateParticipantInConversationRequestAddresses() { }
+            public CreateConversationWithConfigRequestParticipantsAddresses() { }
             public class Builder
             {
-                private CreateParticipantInConversationRequestAddresses _createParticipantInConversationRequestAddresses = new CreateParticipantInConversationRequestAddresses();
+                private CreateConversationWithConfigRequestParticipantsAddresses _createConversationWithConfigRequestParticipantsAddresses = new CreateConversationWithConfigRequestParticipantsAddresses();
                 public Builder()
                 {
                 }
                 public Builder WithChannel(ParticipantResource.ChannelEnum channel)
                 {
-                    _createParticipantInConversationRequestAddresses.Channel= channel;
+                    _createConversationWithConfigRequestParticipantsAddresses.Channel= channel;
                     return this;
                 }
                 public Builder WithAddress(string address)
                 {
-                    _createParticipantInConversationRequestAddresses.Address= address;
+                    _createConversationWithConfigRequestParticipantsAddresses.Address= address;
                     return this;
                 }
                 public Builder WithChannelId(string channelId)
                 {
-                    _createParticipantInConversationRequestAddresses.ChannelId= channelId;
+                    _createConversationWithConfigRequestParticipantsAddresses.ChannelId= channelId;
                     return this;
                 }
-                public CreateParticipantInConversationRequestAddresses Build()
+                public CreateConversationWithConfigRequestParticipantsAddresses Build()
                 {
-                    return _createParticipantInConversationRequestAddresses;
+                    return _createConversationWithConfigRequestParticipantsAddresses;
                 }
             }
         }
         public class CreateParticipantInConversationRequest
         {
             [JsonProperty("addresses", NullValueHandling = NullValueHandling.Ignore)]
-            public List<CreateParticipantInConversationRequestAddresses> Addresses {get; private set;}
+            public List<CreateConversationWithConfigRequestParticipantsAddresses> Addresses {get; private set;}
             [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
@@ -309,7 +309,7 @@ public class ParticipantCreateResource : Resource
                 public Builder()
                 {
                 }
-                public Builder WithAddresses(List<CreateParticipantInConversationRequestAddresses> addresses)
+                public Builder WithAddresses(List<CreateConversationWithConfigRequestParticipantsAddresses> addresses)
                 {
                     _createParticipantInConversationRequest.Addresses= addresses;
                     return this;
@@ -345,7 +345,7 @@ public class ParticipantCreateResource : Resource
             [JsonProperty("profileId", NullValueHandling = NullValueHandling.Ignore)]
             public string ProfileId {get; private set;}
             [JsonProperty("addresses", NullValueHandling = NullValueHandling.Ignore)]
-            public List<CreateParticipantInConversationRequestAddresses> Addresses {get; private set;}
+            public List<CreateConversationWithConfigRequestParticipantsAddresses> Addresses {get; private set;}
             public UpdateParticipantInConversationRequest() { }
             public class Builder
             {
@@ -368,7 +368,7 @@ public class ParticipantCreateResource : Resource
                     _updateParticipantInConversationRequest.ProfileId= profileId;
                     return this;
                 }
-                public Builder WithAddresses(List<CreateParticipantInConversationRequestAddresses> addresses)
+                public Builder WithAddresses(List<CreateConversationWithConfigRequestParticipantsAddresses> addresses)
                 {
                     _updateParticipantInConversationRequest.Addresses= addresses;
                     return this;
@@ -383,7 +383,7 @@ public class ParticipantCreateResource : Resource
         {
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("channel", NullValueHandling = NullValueHandling.Ignore)]
-            public ParticipantResource.ChannelEnum Channel {get; private set;}
+            public ParticipantResource.ConversationsV2Channel Channel {get; private set;}
             [JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
             public string Address {get; private set;}
             [JsonProperty("channelId", NullValueHandling = NullValueHandling.Ignore)]
@@ -395,7 +395,7 @@ public class ParticipantCreateResource : Resource
                 public Builder()
                 {
                 }
-                public Builder WithChannel(ParticipantResource.ChannelEnum channel)
+                public Builder WithChannel(ParticipantResource.ConversationsV2Channel channel)
                 {
                     _conversationsV2Address.Channel= channel;
                     return this;
@@ -418,6 +418,38 @@ public class ParticipantCreateResource : Resource
         }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ConversationsV2Channel : StringEnum
+        {
+            private ConversationsV2Channel(string value) : base(value) {}
+            public ConversationsV2Channel() {}
+            public static implicit operator ConversationsV2Channel(string value)
+            {
+                return new ConversationsV2Channel(value);
+            }
+            public static readonly ConversationsV2Channel Voice = new ConversationsV2Channel("VOICE");
+            public static readonly ConversationsV2Channel Sms = new ConversationsV2Channel("SMS");
+            public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
+            public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
+            public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ConversationsV2ParticipantType : StringEnum
+        {
+            private ConversationsV2ParticipantType(string value) : base(value) {}
+            public ConversationsV2ParticipantType() {}
+            public static implicit operator ConversationsV2ParticipantType(string value)
+            {
+                return new ConversationsV2ParticipantType(value);
+            }
+            public static readonly ConversationsV2ParticipantType HumanAgent = new ConversationsV2ParticipantType("HUMAN_AGENT");
+            public static readonly ConversationsV2ParticipantType Customer = new ConversationsV2ParticipantType("CUSTOMER");
+            public static readonly ConversationsV2ParticipantType AiAgent = new ConversationsV2ParticipantType("AI_AGENT");
+            public static readonly ConversationsV2ParticipantType Agent = new ConversationsV2ParticipantType("AGENT");
+            public static readonly ConversationsV2ParticipantType Unknown = new ConversationsV2ParticipantType("UNKNOWN");
+
+        }
         [JsonConverter(typeof(StringEnumConverter))]
         public sealed class TypeEnum : StringEnum
         {
@@ -455,10 +487,10 @@ public class ParticipantCreateResource : Resource
         private static Request BuildCreateRequest(CreateParticipantOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Participants";
+            string path = "/v2/Conversations/{ConversationId}/Participants";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
 
             return new Request(
                 HttpMethod.Post,
@@ -496,27 +528,27 @@ public class ParticipantCreateResource : Resource
         #endif
 
         /// <summary> Create a Participant. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantCreateResource Create(
-                                          string pathConversationSid,
+                                          string pathConversationId,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConversationSid){  };
+            var options = new CreateParticipantOptions(pathConversationId){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a Participant. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantCreateResource> CreateAsync(
-                                                                                  string pathConversationSid,
+                                                                                  string pathConversationId,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateParticipantOptions(pathConversationSid){  };
+        var options = new CreateParticipantOptions(pathConversationId){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -541,19 +573,19 @@ public class ParticipantCreateResource : Resource
         #endif
 
         public static TwilioResponse<ParticipantCreateResource> CreateWithHeaders(
-            string pathConversationSid,
+            string pathConversationId,
         ITwilioRestClient client = null)
         {
-        var options = new CreateParticipantOptions(pathConversationSid){  };
+        var options = new CreateParticipantOptions(pathConversationId){  };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantCreateResource>> CreateWithHeadersAsync(
-            string pathConversationSid,
+            string pathConversationId,
         ITwilioRestClient client = null)
         {
-        var options = new CreateParticipantOptions(pathConversationSid){  };
+        var options = new CreateParticipantOptions(pathConversationId){  };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
@@ -561,12 +593,12 @@ public class ParticipantCreateResource : Resource
         private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Participants/{Sid}";
+            string path = "/v2/Conversations/{ConversationId}/Participants/{id}";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Get,
@@ -601,28 +633,28 @@ public class ParticipantCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve a Participant. </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantFetchResource Fetch(
-                                         string pathConversationSid, 
-                                         string pathSid, 
+                                         string pathConversationId, 
+                                         string pathId, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new FetchParticipantOptions(pathConversationId, pathId){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a Participant. </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
-        public static async System.Threading.Tasks.Task<ParticipantFetchResource> FetchAsync(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantFetchResource> FetchAsync(string pathConversationId, string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new FetchParticipantOptions(pathConversationId, pathId){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -645,18 +677,18 @@ public class ParticipantCreateResource : Resource
         #endif
         
         public static TwilioResponse<ParticipantFetchResource> FetchWithHeaders(
-                    string pathConversationSid, 
-                    string pathSid, 
+                    string pathConversationId, 
+                    string pathId, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new FetchParticipantOptions(pathConversationId, pathId){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantFetchResource>> FetchWithHeadersAsync(string pathConversationSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantFetchResource>> FetchWithHeadersAsync(string pathConversationId, string pathId, ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new FetchParticipantOptions(pathConversationId, pathId){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif
@@ -664,10 +696,10 @@ public class ParticipantCreateResource : Resource
         private static Request BuildReadRequest(ReadParticipantOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Participants";
+            string path = "/v2/Conversations/{ConversationId}/Participants";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
 
             return new Request(
                 HttpMethod.Get,
@@ -704,35 +736,35 @@ public class ParticipantCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve a list of Participants in a Conversation. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="pageSize"> Maximum number of items to return </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ResourceSet<ParticipantReadResource> Read(
-                                                     string pathConversationSid,
+                                                     string pathConversationId,
                                                      int? pageSize = null,
                                                      long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathConversationSid){ PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathConversationId){ PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve a list of Participants in a Conversation. </summary>
-        /// <param name="pathConversationSid">  </param>
+        /// <param name="pathConversationId">  </param>
         /// <param name="pageSize"> Maximum number of items to return </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantReadResource>> ReadAsync(
-                                                                                             string pathConversationSid,
+                                                                                             string pathConversationId,
                                                                                              int? pageSize = null,
                                                                                              long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathConversationSid){ PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathConversationId){ PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -747,12 +779,12 @@ public class ParticipantCreateResource : Resource
         }
 
         public static ResourceSetResponse<ParticipantReadResource> ReadWithHeaders(
-            string pathConversationSid,
+            string pathConversationId,
             int? pageSize = null,
             long? limit = null,
             ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathConversationSid){ PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathConversationId){ PageSize = pageSize, Limit = limit};
             return ReadWithHeaders(options, client);
         }
 
@@ -820,12 +852,12 @@ public class ParticipantCreateResource : Resource
         private static Request BuildUpdateRequest(UpdateParticipantOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v2/Conversations/{ConversationSid}/Participants/{Sid}";
+            string path = "/v2/Conversations/{ConversationId}/Participants/{id}";
 
-            string PathConversationSid = options.PathConversationSid;
-            path = path.Replace("{"+"ConversationSid"+"}", PathConversationSid);
-            string PathSid = options.PathSid;
-            path = path.Replace("{"+"Sid"+"}", PathSid);
+            string PathConversationId = options.PathConversationId;
+            path = path.Replace("{"+"ConversationId"+"}", PathConversationId);
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
 
             return new Request(
                 HttpMethod.Put,
@@ -864,31 +896,31 @@ public class ParticipantCreateResource : Resource
         #endif
 
         /// <summary> Update an existing Participant </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantUpdateResource Update(
-                                          string pathConversationSid,
-                                          string pathSid,
+                                          string pathConversationId,
+                                          string pathId,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new UpdateParticipantOptions(pathConversationId, pathId){  };
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary> Update an existing Participant </summary>
-        /// <param name="pathConversationSid">  </param>
-        /// <param name="pathSid">  </param>
+        /// <param name="pathConversationId">  </param>
+        /// <param name="pathId">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantUpdateResource> UpdateAsync(
-                                                                              string pathConversationSid,
-                                                                              string pathSid,
+                                                                              string pathConversationId,
+                                                                              string pathId,
                                                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new UpdateParticipantOptions(pathConversationId, pathId){  };
             return await UpdateAsync(options, client);
         }
         #endif
@@ -913,21 +945,21 @@ public class ParticipantCreateResource : Resource
         #endif
 
         public static TwilioResponse<ParticipantUpdateResource> UpdateWithHeaders(
-            string pathConversationSid,
-            string pathSid,
+            string pathConversationId,
+            string pathId,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new UpdateParticipantOptions(pathConversationId, pathId){  };
             return UpdateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<ParticipantUpdateResource>> UpdateWithHeadersAsync(
-            string pathConversationSid,
-            string pathSid,
+            string pathConversationId,
+            string pathId,
         ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){  };
+            var options = new UpdateParticipantOptions(pathConversationId, pathId){  };
             return await UpdateWithHeadersAsync(options, client);
         }
         #endif

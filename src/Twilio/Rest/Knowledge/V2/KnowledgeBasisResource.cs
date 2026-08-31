@@ -60,6 +60,10 @@ public class KnowledgeBasisCreateResource : Resource
         [JsonProperty("message")]
             public string Message { get; private set; }
 
+        ///<summary> URI to check operation status. </summary> 
+        [JsonProperty("statusUrl")]
+            public string StatusUrl { get; private set; }
+
 
     public static KnowledgeBasisDeleteResource FromJson(string json) {
         try {

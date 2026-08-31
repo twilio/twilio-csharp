@@ -98,6 +98,7 @@ namespace Twilio.Rest.Oauth.V2
                                           string codeVerifier = null,
                                             ITwilioRestClient client = null)
         {
+
             var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
             return Create(options, client);
         }
@@ -127,6 +128,7 @@ namespace Twilio.Rest.Oauth.V2
                                                                                   string codeVerifier = null,
                                                                                     ITwilioRestClient client = null)
         {
+
         var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
             return await CreateAsync(options, client);
         }

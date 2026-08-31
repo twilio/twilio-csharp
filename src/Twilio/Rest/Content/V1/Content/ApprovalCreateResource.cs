@@ -36,6 +36,8 @@ namespace Twilio.Rest.Content.V1.Content
             public string Name {get; private set;}
             [JsonProperty("category", NullValueHandling = NullValueHandling.Ignore)]
             public string Category {get; private set;}
+            [JsonProperty("send_ttl_seconds", NullValueHandling = NullValueHandling.Ignore)]
+            public int? SendTtlSeconds {get; private set;}
             public ContentApprovalRequest() { }
             public class Builder
             {
@@ -51,6 +53,11 @@ namespace Twilio.Rest.Content.V1.Content
                 public Builder WithCategory(string category)
                 {
                     _contentApprovalRequest.Category= category;
+                    return this;
+                }
+                public Builder WithSendTtlSeconds(int? sendTtlSeconds)
+                {
+                    _contentApprovalRequest.SendTtlSeconds= sendTtlSeconds;
                     return this;
                 }
                 public ContentApprovalRequest Build()
@@ -232,6 +239,10 @@ namespace Twilio.Rest.Content.V1.Content
         ///<summary> The allow_category_change </summary> 
         [JsonProperty("allow_category_change")]
         public bool? AllowCategoryChange { get; private set; }
+
+        ///<summary> Time-to-live in seconds for attempting to send a message with this Content </summary> 
+        [JsonProperty("send_ttl_seconds")]
+        public int? SendTtlSeconds { get; private set; }
 
 
 

@@ -1,0 +1,3 @@
+name: Test Gated release placeholder workflow
+on:
+  workflow_dispatch:

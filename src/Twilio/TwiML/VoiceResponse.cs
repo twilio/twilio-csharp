@@ -75,6 +75,7 @@ namespace Twilio.TwiML
         /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
         /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
         /// <param name="events"> Subscription to events </param>
+        /// <param name="passports"> Base64-encoded comma-separated identity passports (e.g. shaken, div) </param>
         public VoiceResponse Dial(string number = null,
                                   Uri action = null,
                                   Twilio.Http.HttpMethod method = null,
@@ -94,7 +95,8 @@ namespace Twilio.TwiML
                                   bool? sequential = null,
                                   Uri referUrl = null,
                                   Twilio.Http.HttpMethod referMethod = null,
-                                  Dial.EventsEnum events = null)
+                                  Dial.EventsEnum events = null,
+                                  string passports = null)
         {
             var newChild = new Dial(
                 number,
@@ -116,7 +118,8 @@ namespace Twilio.TwiML
                 sequential,
                 referUrl,
                 referMethod,
-                events
+                events,
+                passports
             );
             this.Append(newChild);
             return this;

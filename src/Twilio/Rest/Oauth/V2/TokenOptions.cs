@@ -59,6 +59,7 @@ namespace Twilio.Rest.Oauth.V2
         public string CodeVerifier { get; set; }
 
 
+
         /// <summary> Construct a new CreateOauth2TokenOptions </summary>
         /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
         public CreateTokenOptions(string grantType)

@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Iam.V1
@@ -71,6 +71,9 @@ namespace Twilio.Rest.Iam.V1
             public string Description {get; private set;}
             [JsonProperty("client_sid", NullValueHandling = NullValueHandling.Ignore)]
             public string ClientSid {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("token_endpoint_auth_method", NullValueHandling = NullValueHandling.Ignore)]
+            public OAuthAppResource.TokenEndpointAuthMethodEnum TokenEndpointAuthMethod {get; private set;}
             [JsonProperty("policy", NullValueHandling = NullValueHandling.Ignore)]
             public IamV1OrganizationVendoroauthappPolicy Policy {get; private set;}
             [JsonProperty("access_token_ttl", NullValueHandling = NullValueHandling.Ignore)]
@@ -105,6 +108,11 @@ namespace Twilio.Rest.Iam.V1
                 public Builder WithClientSid(string clientSid)
                 {
                     _iamV1AccountVendorOauthAppCreateRequest.ClientSid= clientSid;
+                    return this;
+                }
+                public Builder WithTokenEndpointAuthMethod(OAuthAppResource.TokenEndpointAuthMethodEnum tokenEndpointAuthMethod)
+                {
+                    _iamV1AccountVendorOauthAppCreateRequest.TokenEndpointAuthMethod= tokenEndpointAuthMethod;
                     return this;
                 }
                 public Builder WithPolicy(IamV1OrganizationVendoroauthappPolicy policy)
@@ -204,6 +212,18 @@ namespace Twilio.Rest.Iam.V1
         }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class TokenEndpointAuthMethodEnum : StringEnum
+        {
+            private TokenEndpointAuthMethodEnum(string value) : base(value) {}
+            public TokenEndpointAuthMethodEnum() {}
+            public static implicit operator TokenEndpointAuthMethodEnum(string value)
+            {
+                return new TokenEndpointAuthMethodEnum(value);
+            }
+            public static readonly TokenEndpointAuthMethodEnum ClientSecretBasic = new TokenEndpointAuthMethodEnum("client_secret_basic");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateOAuthAppOptions options, ITwilioRestClient client)
@@ -586,6 +606,10 @@ namespace Twilio.Rest.Iam.V1
         ///<summary> The created_by </summary> 
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
+
+        ///<summary> The unique identifier (SID) of the user who created this OAuth app. </summary> 
+        [JsonProperty("creator_sid")]
+        public string CreatorSid { get; private set; }
 
         ///<summary> The secret </summary> 
         [JsonProperty("secret")]

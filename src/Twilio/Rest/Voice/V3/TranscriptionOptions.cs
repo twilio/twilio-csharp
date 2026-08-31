@@ -99,5 +99,64 @@ namespace Twilio.Rest.Voice.V3
     }
 
 
+    /// <summary> Returns the account's transcriptions, newest first. Filters combine with AND, and paging uses the opaque cursors in meta rather than page numbers: pass meta.nextToken to advance and meta.previousToken to go back. A token is only valid for the filter set that produced it, so changing sourceId or the date range means starting a new walk. Items are the transcription resource itself. Create and fetch-by-id return the long running operation envelope instead, because creation is asynchronous. </summary>
+    public class ReadTranscriptionOptions : ReadOptions<TranscriptionReadResource>
+    {
+    
+        ///<summary> Only include transcriptions created at or after this time (inclusive) </summary> 
+        public DateTime? CreatedAfter { get; set; }
+
+        ///<summary> Only include transcriptions created strictly before this time (exclusive) </summary> 
+        public DateTime? CreatedBefore { get; set; }
+
+        ///<summary> Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US. </summary> 
+        public string LanguageCode { get; set; }
+
+        ///<summary> Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400. </summary> 
+        public string SourceId { get; set; }
+
+        ///<summary> Only include transcriptions in this status </summary> 
+        public TranscriptionResource.StatusEnum Status { get; set; }
+
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (CreatedAfter != null)
+            {
+                p.Add(new KeyValuePair<string, string>("createdAfter", Serializers.DateTimeIso8601(CreatedAfter)));
+            }
+            if (CreatedBefore != null)
+            {
+                p.Add(new KeyValuePair<string, string>("createdBefore", Serializers.DateTimeIso8601(CreatedBefore)));
+            }
+            if (LanguageCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("languageCode", LanguageCode));
+            }
+            if (SourceId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("sourceId", SourceId));
+            }
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("status", Status.ToString()));
+            }
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("pageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+
+    
+
+    }
+
 }
 

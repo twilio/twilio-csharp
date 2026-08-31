@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Types;
+
 
 
 namespace Twilio.Rest.Iam.V1
@@ -32,17 +32,6 @@ namespace Twilio.Rest.Iam.V1
     
 
     
-        public sealed class KeytypeEnum : StringEnum
-        {
-            private KeytypeEnum(string value) : base(value) {}
-            public KeytypeEnum() {}
-            public static implicit operator KeytypeEnum(string value)
-            {
-                return new KeytypeEnum(value);
-            }
-            public static readonly KeytypeEnum Restricted = new KeytypeEnum("restricted");
-
-        }
 
         
         private static Request BuildCreateRequest(CreateNewApiKeyOptions options, ITwilioRestClient client)
@@ -88,14 +77,14 @@ namespace Twilio.Rest.Iam.V1
         /// <summary> Create a new Signing Key for the account making the request. </summary>
         /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Payments resource. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
-        /// <param name="keyType">  </param>
+        /// <param name="keyType"> The \\\\`KeyType\\\\` form parameter is used to specify the type of key you want to create.  **Default Behavior**: If \\\\`KeyType\\\\` is not specified, the API will generate a standard key.  **Restricted Key**: If \\\\`KeyType\\\\` is set to \\\\`restricted\\\\`, the API will create a new restricted key. In this case, a policy object is required to define the permissions. </param>
         /// <param name="policy"> The \\\\`Policy\\\\` object is a collection that specifies the allowed Twilio permissions for the restricted key. For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewApiKey </returns>
         public static NewApiKeyResource Create(
                                           string accountSid,
                                           string friendlyName = null,
-                                          NewApiKeyResource.KeytypeEnum keyType = null,
+                                          string keyType = null,
                                           object policy = null,
                                             ITwilioRestClient client = null)
         {
@@ -107,14 +96,14 @@ namespace Twilio.Rest.Iam.V1
         /// <summary> Create a new Signing Key for the account making the request. </summary>
         /// <param name="accountSid"> The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Payments resource. </param>
         /// <param name="friendlyName"> A descriptive string that you create to describe the resource. It can be up to 64 characters long. </param>
-        /// <param name="keyType">  </param>
+        /// <param name="keyType"> The \\\\`KeyType\\\\` form parameter is used to specify the type of key you want to create.  **Default Behavior**: If \\\\`KeyType\\\\` is not specified, the API will generate a standard key.  **Restricted Key**: If \\\\`KeyType\\\\` is set to \\\\`restricted\\\\`, the API will create a new restricted key. In this case, a policy object is required to define the permissions. </param>
         /// <param name="policy"> The \\\\`Policy\\\\` object is a collection that specifies the allowed Twilio permissions for the restricted key. For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys). </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewApiKey </returns>
         public static async System.Threading.Tasks.Task<NewApiKeyResource> CreateAsync(
                                                                                   string accountSid,
                                                                                   string friendlyName = null,
-                                                                                  NewApiKeyResource.KeytypeEnum keyType = null,
+                                                                                  string keyType = null,
                                                                                   object policy = null,
                                                                                     ITwilioRestClient client = null)
         {
@@ -145,7 +134,7 @@ namespace Twilio.Rest.Iam.V1
         public static TwilioResponse<NewApiKeyResource> CreateWithHeaders(
             string accountSid,
             string friendlyName = null,
-            NewApiKeyResource.KeytypeEnum keyType = null,
+            string keyType = null,
             object policy = null,
         ITwilioRestClient client = null)
         {
@@ -157,7 +146,7 @@ namespace Twilio.Rest.Iam.V1
         public static async System.Threading.Tasks.Task<TwilioResponse<NewApiKeyResource>> CreateWithHeadersAsync(
             string accountSid,
             string friendlyName = null,
-            NewApiKeyResource.KeytypeEnum keyType = null,
+            string keyType = null,
             object policy = null,
         ITwilioRestClient client = null)
         {
