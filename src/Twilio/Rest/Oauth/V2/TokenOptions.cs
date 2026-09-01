@@ -28,11 +28,11 @@ namespace Twilio.Rest.Oauth.V2
     public class CreateTokenOptions : IOptions<TokenResource>
     {
         
+        ///<summary> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </summary> 
+        public string GrantType { get; }
+
         ///<summary> Optional Account SID to perform on behalf of requests. </summary> 
         public string AccountSid { get; set; }
-
-        ///<summary> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </summary> 
-        public string GrantType { get; set; }
 
         ///<summary> A 34 character string that uniquely identifies this OAuth App. </summary> 
         public string ClientId { get; set; }
@@ -60,19 +60,26 @@ namespace Twilio.Rest.Oauth.V2
 
 
 
+        /// <summary> Construct a new CreateOauth2TokenOptions </summary>
+        /// <param name="grantType"> Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token. </param>
+        public CreateTokenOptions(string grantType)
+        {
+            GrantType = grantType;
+        }
+
         
         /// <summary> Generate the necessary parameters </summary>
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
 
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("account_sid", AccountSid));
-            }
             if (GrantType != null)
             {
                 p.Add(new KeyValuePair<string, string>("grant_type", GrantType));
+            }
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("account_sid", AccountSid));
             }
             if (ClientId != null)
             {

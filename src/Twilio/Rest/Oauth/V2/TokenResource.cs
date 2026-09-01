@@ -87,7 +87,7 @@ namespace Twilio.Rest.Oauth.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns>
         public static TokenResource Create(
-                                          string grantType = null,
+                                          string grantType,
                                           string clientId = null,
                                           string clientSecret = null,
                                           string code = null,
@@ -98,7 +98,8 @@ namespace Twilio.Rest.Oauth.V2
                                           string codeVerifier = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
+
+            var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
             return Create(options, client);
         }
 
@@ -116,7 +117,7 @@ namespace Twilio.Rest.Oauth.V2
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns>
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(
-                                                                                  string grantType = null,
+                                                                                  string grantType,
                                                                                   string clientId = null,
                                                                                   string clientSecret = null,
                                                                                   string code = null,
@@ -127,7 +128,8 @@ namespace Twilio.Rest.Oauth.V2
                                                                                   string codeVerifier = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
+
+        var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
             return await CreateAsync(options, client);
         }
         #endif
@@ -152,7 +154,7 @@ namespace Twilio.Rest.Oauth.V2
         #endif
 
         public static TwilioResponse<TokenResource> CreateWithHeaders(
-            string grantType = null,
+            string grantType,
             string clientId = null,
             string clientSecret = null,
             string code = null,
@@ -163,13 +165,13 @@ namespace Twilio.Rest.Oauth.V2
             string codeVerifier = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
+        var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<TokenResource>> CreateWithHeadersAsync(
-            string grantType = null,
+            string grantType,
             string clientId = null,
             string clientSecret = null,
             string code = null,
@@ -180,7 +182,7 @@ namespace Twilio.Rest.Oauth.V2
             string codeVerifier = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateTokenOptions(){  GrantType = grantType, ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
+        var options = new CreateTokenOptions(grantType){  ClientId = clientId, ClientSecret = clientSecret, Code = code, RedirectUri = redirectUri, Audience = audience, RefreshToken = refreshToken, Scope = scope, CodeVerifier = codeVerifier };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
