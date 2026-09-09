@@ -697,6 +697,7 @@ public class CommunicationCreateResource : Resource
             public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
             public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
             public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
+            public static readonly ConversationsV2Channel Video = new ConversationsV2Channel("VIDEO");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -726,6 +727,7 @@ public class CommunicationCreateResource : Resource
             public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
             public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
+            public static readonly ChannelEnum Video = new ChannelEnum("VIDEO");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -740,6 +742,7 @@ public class CommunicationCreateResource : Resource
             public static readonly ConversationsV2RecipientDeliveryStatus Initiated = new ConversationsV2RecipientDeliveryStatus("INITIATED");
             public static readonly ConversationsV2RecipientDeliveryStatus InProgress = new ConversationsV2RecipientDeliveryStatus("IN_PROGRESS");
             public static readonly ConversationsV2RecipientDeliveryStatus Delivered = new ConversationsV2RecipientDeliveryStatus("DELIVERED");
+            public static readonly ConversationsV2RecipientDeliveryStatus Read = new ConversationsV2RecipientDeliveryStatus("READ");
             public static readonly ConversationsV2RecipientDeliveryStatus Completed = new ConversationsV2RecipientDeliveryStatus("COMPLETED");
             public static readonly ConversationsV2RecipientDeliveryStatus Failed = new ConversationsV2RecipientDeliveryStatus("FAILED");
 

@@ -302,6 +302,7 @@ public class ActionCreateResource : Resource
             public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
             public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
             public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
+            public static readonly ConversationsV2Channel Video = new ConversationsV2Channel("VIDEO");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

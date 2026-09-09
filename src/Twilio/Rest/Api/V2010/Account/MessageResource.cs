@@ -209,6 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
         /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
+        /// <param name="messageIntent">  </param>
         /// <param name="riskCheck">  </param>
         /// <param name="fallbackFrom"> A fallback SMS sender to use when the recipient cannot be reached over RCS. This parameter may only be used when also providing a [Messaging Service](https://twilio.com/docs/messaging/services) containing an RCS sender. The fallback SMS sender must be either a Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), or [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), hosted within Twilio and belong to the Account creating the Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -238,11 +239,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                           DateTime? sendAt = null,
                                           bool? sendAsMms = null,
                                           string contentVariables = null,
+                                          string messageIntent = null,
                                           MessageResource.RiskCheckEnum riskCheck = null,
                                           Types.PhoneNumber fallbackFrom = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
+            var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, MessageIntent = messageIntent, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
             return Create(options, client);
         }
 
@@ -272,6 +274,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sendAt"> The time that Twilio will send the message. Must be in ISO 8601 format. </param>
         /// <param name="sendAsMms"> If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media. </param>
         /// <param name="contentVariables"> For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used. </param>
+        /// <param name="messageIntent">  </param>
         /// <param name="riskCheck">  </param>
         /// <param name="fallbackFrom"> A fallback SMS sender to use when the recipient cannot be reached over RCS. This parameter may only be used when also providing a [Messaging Service](https://twilio.com/docs/messaging/services) containing an RCS sender. The fallback SMS sender must be either a Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), or [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), hosted within Twilio and belong to the Account creating the Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -301,11 +304,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   DateTime? sendAt = null,
                                                                                   bool? sendAsMms = null,
                                                                                   string contentVariables = null,
+                                                                                  string messageIntent = null,
                                                                                   MessageResource.RiskCheckEnum riskCheck = null,
                                                                                   Types.PhoneNumber fallbackFrom = null,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, MessageIntent = messageIntent, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
             return await CreateAsync(options, client);
         }
         #endif
@@ -354,11 +358,12 @@ namespace Twilio.Rest.Api.V2010.Account
             DateTime? sendAt = null,
             bool? sendAsMms = null,
             string contentVariables = null,
+            string messageIntent = null,
             MessageResource.RiskCheckEnum riskCheck = null,
             Types.PhoneNumber fallbackFrom = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, MessageIntent = messageIntent, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
         return CreateWithHeaders(options, client);
         }
 
@@ -388,11 +393,12 @@ namespace Twilio.Rest.Api.V2010.Account
             DateTime? sendAt = null,
             bool? sendAsMms = null,
             string contentVariables = null,
+            string messageIntent = null,
             MessageResource.RiskCheckEnum riskCheck = null,
             Types.PhoneNumber fallbackFrom = null,
         ITwilioRestClient client = null)
         {
-        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
+        var options = new CreateMessageOptions(to){  PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, ContentSid = contentSid, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction, TrafficType = trafficType, ShortenUrls = shortenUrls, ScheduleType = scheduleType, SendAt = sendAt, SendAsMms = sendAsMms, ContentVariables = contentVariables, MessageIntent = messageIntent, RiskCheck = riskCheck, FallbackFrom = fallbackFrom };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

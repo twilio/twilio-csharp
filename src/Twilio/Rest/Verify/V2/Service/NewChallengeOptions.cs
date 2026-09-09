@@ -32,16 +32,14 @@ namespace Twilio.Rest.Verify.V2.Service
         public string PathServiceSid { get; }
 
         
-        public NewChallengeResource.CreatePasskeysChallengeRequest CreatePasskeysChallengeRequest { get; }
+        public NewChallengeResource.CreatePasskeysChallengeRequest CreatePasskeysChallengeRequest { get; set; }
 
 
         /// <summary> Construct a new CreateChallengePasskeysOptions </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createPasskeysChallengeRequest">  </param>
-        public CreateNewChallengeOptions(string pathServiceSid, NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest)
+        public CreateNewChallengeOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
-            CreatePasskeysChallengeRequest = createPasskeysChallengeRequest;
         }
 
         

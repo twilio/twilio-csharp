@@ -1,6 +1,174 @@
 twilio-csharp Changelog
 =======================
 
+[2026-09-09] Version 8.0.1
+--------------------------
+**Library - Fix**
+- [PR #833](https://github.com/twilio/twilio-csharp/pull/833): making grant type required. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Audiences**
+- ## 2026-09-01
+- Backticked brace- and angle-bracket-bearing tokens in descriptions for MDX safety.
+- Updated a prose reference to the renamed `FetchCohortSnapshot` operation.
+- ## 2026-08-26
+- **Removed 5 path(s)**:
+- `/preview/Audiences` (AdminListAudiences)
+- `/preview/Audiences/{audienceId}` (AdminGetAudience)
+- `/preview/Snapshots` (AdminListSnapshots)
+- `/preview/Snapshots/{snapshotId}` (AdminGetSnapshot)
+- `/preview/Operations/{operationId}` (AdminGetOperation)
+- ## 2026-08-25
+- Minor updates (formatting, metadata)
+- ## 2026-08-24
+- **Added 1 new path(s)**:
+- `/preview/Snapshots/{cohortSnapshotId}/Operations` (AdminListSnapshotOperations)
+- **Removed 1 path(s)**:
+- `/preview/Snapshots/{snapshotId}/Operations` (ListAdminSnapshotOperations)
+- ## 2026-09-01
+- Renamed 3 `Get*` operations to `Fetch*` to match the operationId standard: `FetchCohort`, `FetchCohortSnapshot`, `FetchCohortOperation`. The transpiler skips operations whose operationId does not start with a standard keyword, which had been dropping all three from generated output.
+- Set `libraryVisibility` to `private` (was `hidden`) so the spec is eligible for the private docs pipeline.
+- Backticked brace- and angle-bracket-bearing tokens in descriptions for MDX safety.
+- ## 2026-08-28
+- **Removed 6 path(s)**:
+- `/preview/Audiences` (ListAudiences, CreateAudience)
+- `/preview/Audiences/{audienceId}` (FetchAudience, UpdateAudience, DeleteAudience)
+- `/preview/Snapshots` (ListSnapshots, CreateSnapshot)
+- `/preview/Snapshots/{snapshotId}` (FetchSnapshot, DeleteSnapshot)
+- `/preview/Snapshots/{snapshotId}/Profiles` (ListSnapshotProfiles)
+- `/preview/Operations/{operationId}` (FetchOperation)
+
+**Conversations**
+- Add PATCH support for partial updates to Configuration
+- Add `VIDEO` to the Conversations v2 Communication channel enum.
+
+**Data-ingress**
+- # API Changes
+- ## 2026-09-01
+- Minor updates (formatting, metadata)
+- ## 2026-08-12
+- Minor updates (formatting, metadata)
+- ## 2026-08-12
+- Initial release with 13 paths and 13 operations
+
+**Destinations**
+- ## 2026-09-08
+- Added `prod-ie1` to `supportedRealms` and `iamOperationEnabledRealms` for all endpoints
+- ## 2026-09-01
+- Removed the unused `admin-api` placeholder from `supportedRealms` on the public endpoints;
+- One Admin routes now live in `admin_openapi.yaml`.
+- **Added 6 new path(s)** (admin_openapi.yaml):
+- `/v1/ControlPlane/Destinations` (AdminListDestinations)
+- `/v1/ControlPlane/Destinations/{destinationId}` (AdminGetDestination)
+- `/v1/ControlPlane/Subscriptions` (AdminListSubscriptions)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}` (AdminGetSubscription)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes` (AdminListSubscribedEvents)
+- `/v1/ControlPlane/Subscriptions/{subscriptionId}/EventTypes/{eventType}` (AdminGetSubscribedEvent)
+- ## 2026-08-26
+- Minor updates (formatting, metadata)
+- ## 2026-08-26
+- Minor updates (formatting, metadata)
+- ## 2026-08-25
+- **Content updates**:
+- Updated description for `CreateDestination`
+
+**Email**
+- # API Changes
+- ## 2026-09-02
+- **Added 1 new path(s)**:
+- `/v1/Sends/Cohorts` (sendCohort)
+- ## 2026-08-28
+- **Content updates**:
+- Updated summary for `sendTransactional`
+- Added parameter(s) to `sendTransactional`: X-Twilio-Version
+- Updated schema description for `SuppressionsGroup`
+- Added properties to `SuppressionsGroup`: type
+- Removed properties from `SuppressionsGroup`: mode
+- Updated schema description for `SuppressionsGlobal`
+- Added properties to `SuppressionsGlobal`: type
+- Removed properties from `SuppressionsGlobal`: mode
+- Updated schema description for `Suppressions`
+- Updated schema description for `LongRunningOperationResponse`
+- ## 2026-08-27
+- **Content updates**:
+- Updated description for `SendEmail`
+- Added parameter(s) to `SendEmail`: Content-Encoding, Idempotency-Key
+- Updated schema description for `Envelope`
+- Updated schema description for `SuppressionsGroup`
+- Updated schema description for `SuppressionsGlobal`
+
+**Iam**
+- Removed redirect_urls from the GET /v1/Account/AuthorizedApps/{consentSid} response
+- Added company_name, homepage_url, tos_url, and redirect_urls to the GET /v1/Account/AuthorizedApps/{consentSid} response
+- Added GET /v1/Account/AuthorizedApps/{consentSid} - fetch authorized app details, including allowed permissions, by consent identifier SID
+- added container-scoped entitlements endpoint (GET /v2/Container/{containerId}/Entitlements)
+
+**Instrumentation**
+- # API Changes
+- ## 2026-09-04
+- **Content updates**:
+- Added `IdempotencyKeyHeader` to Create/Patch/Delete `AutoInstrumentationRule`; corrected the shared header's description
+- Added `operationId`/`createdAt` to `LongRunningOperationResponse`; corrected example `status` from `RUNNING` to `PENDING`
+- Renamed `Signal.timestamp` → `occurredAt`, `HourlyStats.hourTimestamp` → `hourAt`; uppercased `Signal.type` and `ListSignals`' `signalType` enums to SCREAMING_SNAKE_CASE
+- Renamed `UserBehaviors` request/response fields to camelCase; added the `summaryDelivery` webhook callback
+- Reshaped `PaginationMeta` (added required `key`, corrected `pageSize` bounds) and all 6 list operations (`ListEventSources`, `ListEventSourceDatasets`, `ListEventSchemas`, `ListAutoInstrumentationRules`, `ListSignals`, `ListSignalStats`) to the `meta` envelope; added `ListSignalStats`' `500` response
+- Narrowed the domain's default `supportedRealms` to `dev-us1` only; `POST /v1/UserBehaviors` (`AnalyzeUserBehaviors`) keeps its own `dev-us1`/`stage-us1` override (prod withheld pending stage validation) — every other operation is now dev-only
+- ## 2026-08-31
+- **Content updates**:
+- Fixed stale `tdi_` TTID prefix throughout (path params, examples, transaction URLs) to `events_`; unified dataset/schema ID formats (`tdi_dat_`/`tdi_dataset_` → `events_dataset_`, `tdi_schema_` → `events_evsch_`); fixed rule-version examples to match the real `version: integer` field
+- Fixed `operationId` to use the domain-agnostic `proc_job_` TTID prefix; corrected the `OperationId` parameter's length constraint (`max=34` → `max=35`) and added a `pattern`
+- Fixed two length constraints hardcoded for the old `tdi_` prefix length: `IngestEventBatch`'s `sourceId` path parameter (`maxLength` 37 → 40); removed the stale, redundant `Twilio-Write-Key` header parameter
+- Added the missing `AutoInstrumentationRuleId` regex `pattern`
+- Fixed `info.title` ("Twilio Data Ingress - Instrumentation API" → "Events Domain - Instrumentation API")
+- **Added 1 new API path**:
+- `/v1/UserBehaviors` (AnalyzeUserBehaviors)
+- ## 2026-07-28
+- **Initial release** — 21 paths, 37 operations across three API surfaces:
+- **Control Plane** (`/v1/ControlPlane/…`):
+- `/v1/ControlPlane/EventSources` (CreateEventSource, ListEventSources)
+- `/v1/ControlPlane/EventSources/{sourceId}` (FetchEventSource, PatchEventSource, DeleteEventSource)
+- `/v1/ControlPlane/EventSources/{sourceId}/WriteKeys` (CreateWriteKey, ListWriteKeys)
+- `/v1/ControlPlane/EventSources/{sourceId}/WriteKeys/{writeKey}` (DeleteWriteKey)
+- `/v1/ControlPlane/EventSources/{sourceId}/Datasets` (CreateEventSourceDataset, ListEventSourceDatasets)
+- `/v1/ControlPlane/EventSources/{sourceId}/Datasets/{datasetId}` (FetchEventSourceDataset, PatchEventSourceDataset, DeleteEventSourceDataset)
+- `/v1/ControlPlane/EventSources/{sourceId}/EventSchemas` (CreateEventSchema, ListEventSchemas)
+- `/v1/ControlPlane/EventSources/{sourceId}/EventSchemas/{schemaId}` (FetchEventSchema, PatchEventSchema, DeleteEventSchema)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules` (CreateAutoInstrumentationRule, ListAutoInstrumentationRules)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}` (FetchAutoInstrumentationRule, PatchAutoInstrumentationRule, DeleteAutoInstrumentationRule)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Versions` (ListAutoInstrumentationRuleVersions)
+- `/v1/ControlPlane/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Versions/{version}` (FetchAutoInstrumentationRuleVersion)
+- `/v1/ControlPlane/Datasets` (ListDatasets)
+- `/v1/ControlPlane/Datasets/{datasetId}` (FetchDataset)
+- `/v1/ControlPlane/Operations/{operationId}` (FetchControlPlaneOperationStatus)
+- `/v1/ControlPlane/Datasets` (ListDatasets)
+- `/v1/ControlPlane/Datasets/{datasetId}` (FetchDataset)
+- **Event Ingestion** (`/v1/EventSources/…`):
+- `/v1/EventSources/{sourceId}/Batch` (IngestEventBatch)
+- `/v1/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Preview` (TriggerAutoInstrumentationPreview)
+- `/v1/EventSources/{sourceId}/AutoInstrumentationRules/{autoInstrumentationRuleId}/Preview/{operationId}` (GetAutoInstrumentationPreviewResult)
+- **Signal API** (`/v1/EventSources/…`):
+- `/v1/EventSources/{sourceId}/Signals` (IngestSignals, ListSignals)
+- `/v1/EventSources/{sourceId}/Signals/{signalKey}` (GetSignalBySignalKey)
+- `/v1/EventSources/{sourceId}/SignalStats` (ListSignalStats)
+
+**Memory**
+- ## 2026-08-27
+- **Added 2 new path(s)** for Trait Extraction Strategies:
+- `/v1/ControlPlane/TraitExtractionStrategies` (ListTraitExtractionStrategies, CreateTraitExtractionStrategy)
+- `/v1/ControlPlane/TraitExtractionStrategies/{traitStrategyId}` (FetchTraitExtractionStrategy, UpdateTraitExtractionStrategy, DeleteTraitExtractionStrategy)
+
+**Messaging**
+- Remove the WhatsApp Senders v1 endpoints (`/v1/Channels/WhatsApp/Senders`) from RestProxy; the sender was routed to the sunsetting `messaging-whatsapp-k8s-orch` downstream. Use the Senders v2 API (`/v2/Channels/Senders`) instead.
+
+**Voice**
+- ## 2026-09-03
+- Added `links.conversation` to Transcription resources as the absolute Conversations API URL for the
+- transcript's `conversationId`. It is present once the transcript has been stored; the `links` object
+- is omitted otherwise.
+- ## 2026-09-01
+- Removed `mediaUrl` from `CreateRequestWithMediaUrl`'s required fields so a request with neither `sourceId` nor `mediaUrl` reaches the downstream service, which rejects it with the specific error code 17500 instead of a generic gateway 400
+- Set `additionalProperties: false` on both `CreateRequestWithSourceId` and `CreateRequestWithMediaUrl` so the two `oneOf` variants stay mutually exclusive: `sourceId` is undeclared on the media-URL variant and `mediaUrl` is undeclared on the source-ID variant, keeping every request shape resolvable to exactly one variant
+
+
 [2026-08-25] Version 8.0.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2025-XX-XX-7xx-to-8xx) for detailed migration notes.

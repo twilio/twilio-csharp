@@ -226,6 +226,34 @@ public class ConfigurationCreateResource : Resource
         }
     }
 }
+        public class ConfigurationPatchResource : Resource
+{
+        ///<summary> URL to poll for operation status. </summary> 
+        [JsonProperty("statusUrl")]
+            public Uri StatusUrl { get; private set;}
+
+        ///<summary> Named resource identifiers associated with this operation. Keys depend on the operation type: - config-create, config-update, config-delete: configurationId - conversation-delete: conversationId  </summary> 
+        [JsonProperty("related")]
+            public Dictionary<string, string> Related { get; private set; }
+
+
+    public static ConfigurationPatchResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<ConfigurationPatchResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
         public class ConfigurationUpdateResource : Resource
 {
         ///<summary> URL to poll for operation status. </summary> 
@@ -548,32 +576,32 @@ public class ConfigurationCreateResource : Resource
                 }
             }
         }
-        public class UpdateConfigurationRequestChannelSettingsValue
+        public class PatchConfigurationRequestChannelSettingsValue
         {
             [JsonProperty("statusTimeouts", NullValueHandling = NullValueHandling.Ignore)]
             public UpdateConfigurationRequestChannelSettingsValueStatusTimeouts StatusTimeouts {get; private set;}
             [JsonProperty("captureRules", NullValueHandling = NullValueHandling.Ignore)]
             public List<UpdateConfigurationRequestChannelSettingsValueCaptureRules> CaptureRules {get; private set;}
-            public UpdateConfigurationRequestChannelSettingsValue() { }
+            public PatchConfigurationRequestChannelSettingsValue() { }
             public class Builder
             {
-                private UpdateConfigurationRequestChannelSettingsValue _updateConfigurationRequestChannelSettingsValue = new UpdateConfigurationRequestChannelSettingsValue();
+                private PatchConfigurationRequestChannelSettingsValue _patchConfigurationRequestChannelSettingsValue = new PatchConfigurationRequestChannelSettingsValue();
                 public Builder()
                 {
                 }
                 public Builder WithStatusTimeouts(UpdateConfigurationRequestChannelSettingsValueStatusTimeouts statusTimeouts)
                 {
-                    _updateConfigurationRequestChannelSettingsValue.StatusTimeouts= statusTimeouts;
+                    _patchConfigurationRequestChannelSettingsValue.StatusTimeouts= statusTimeouts;
                     return this;
                 }
                 public Builder WithCaptureRules(List<UpdateConfigurationRequestChannelSettingsValueCaptureRules> captureRules)
                 {
-                    _updateConfigurationRequestChannelSettingsValue.CaptureRules= captureRules;
+                    _patchConfigurationRequestChannelSettingsValue.CaptureRules= captureRules;
                     return this;
                 }
-                public UpdateConfigurationRequestChannelSettingsValue Build()
+                public PatchConfigurationRequestChannelSettingsValue Build()
                 {
-                    return _updateConfigurationRequestChannelSettingsValue;
+                    return _patchConfigurationRequestChannelSettingsValue;
                 }
             }
         }
@@ -604,6 +632,136 @@ public class ConfigurationCreateResource : Resource
                 public UpdateConfigurationRequestStatusCallbacks Build()
                 {
                     return _updateConfigurationRequestStatusCallbacks;
+                }
+            }
+        }
+        public class PatchConfigurationRequestConversationsV1Bridge
+        {
+            [JsonProperty("serviceId", NullValueHandling = NullValueHandling.Ignore)]
+            public string ServiceId {get; private set;}
+            public PatchConfigurationRequestConversationsV1Bridge() { }
+            public class Builder
+            {
+                private PatchConfigurationRequestConversationsV1Bridge _patchConfigurationRequestConversationsV1Bridge = new PatchConfigurationRequestConversationsV1Bridge();
+                public Builder()
+                {
+                }
+                public Builder WithServiceId(string serviceId)
+                {
+                    _patchConfigurationRequestConversationsV1Bridge.ServiceId= serviceId;
+                    return this;
+                }
+                public PatchConfigurationRequestConversationsV1Bridge Build()
+                {
+                    return _patchConfigurationRequestConversationsV1Bridge;
+                }
+            }
+        }
+        public class PatchConfigurationRequest
+        {
+            [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
+            public string DisplayName {get; private set;}
+            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
+            public string Description {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("conversationGroupingType", NullValueHandling = NullValueHandling.Ignore)]
+            public ConfigurationResource.ConversationGroupingTypeEnum ConversationGroupingType {get; private set;}
+            [JsonProperty("memoryStoreId", NullValueHandling = NullValueHandling.Ignore)]
+            public string MemoryStoreId {get; private set;}
+            [JsonProperty("channelSettings", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, PatchConfigurationRequestChannelSettingsValue> ChannelSettings {get; private set;}
+            [JsonProperty("statusCallbacks", NullValueHandling = NullValueHandling.Ignore)]
+            public List<UpdateConfigurationRequestStatusCallbacks> StatusCallbacks {get; private set;}
+            [JsonProperty("intelligenceConfigurationIds", NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> IntelligenceConfigurationIds {get; private set;}
+            [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? MemoryExtractionEnabled {get; private set;}
+            [JsonProperty("conversationsV1Bridge", NullValueHandling = NullValueHandling.Ignore)]
+            public PatchConfigurationRequestConversationsV1Bridge ConversationsV1Bridge {get; private set;}
+            public PatchConfigurationRequest() { }
+            public class Builder
+            {
+                private PatchConfigurationRequest _patchConfigurationRequest = new PatchConfigurationRequest();
+                public Builder()
+                {
+                }
+                public Builder WithDisplayName(string displayName)
+                {
+                    _patchConfigurationRequest.DisplayName= displayName;
+                    return this;
+                }
+                public Builder WithDescription(string description)
+                {
+                    _patchConfigurationRequest.Description= description;
+                    return this;
+                }
+                public Builder WithConversationGroupingType(ConfigurationResource.ConversationGroupingTypeEnum conversationGroupingType)
+                {
+                    _patchConfigurationRequest.ConversationGroupingType= conversationGroupingType;
+                    return this;
+                }
+                public Builder WithMemoryStoreId(string memoryStoreId)
+                {
+                    _patchConfigurationRequest.MemoryStoreId= memoryStoreId;
+                    return this;
+                }
+                public Builder WithChannelSettings(Dictionary<string, PatchConfigurationRequestChannelSettingsValue> channelSettings)
+                {
+                    _patchConfigurationRequest.ChannelSettings= channelSettings;
+                    return this;
+                }
+                public Builder WithStatusCallbacks(List<UpdateConfigurationRequestStatusCallbacks> statusCallbacks)
+                {
+                    _patchConfigurationRequest.StatusCallbacks= statusCallbacks;
+                    return this;
+                }
+                public Builder WithIntelligenceConfigurationIds(List<string> intelligenceConfigurationIds)
+                {
+                    _patchConfigurationRequest.IntelligenceConfigurationIds= intelligenceConfigurationIds;
+                    return this;
+                }
+                public Builder WithMemoryExtractionEnabled(bool? memoryExtractionEnabled)
+                {
+                    _patchConfigurationRequest.MemoryExtractionEnabled= memoryExtractionEnabled;
+                    return this;
+                }
+                public Builder WithConversationsV1Bridge(PatchConfigurationRequestConversationsV1Bridge conversationsV1Bridge)
+                {
+                    _patchConfigurationRequest.ConversationsV1Bridge= conversationsV1Bridge;
+                    return this;
+                }
+                public PatchConfigurationRequest Build()
+                {
+                    return _patchConfigurationRequest;
+                }
+            }
+        }
+        public class UpdateConfigurationRequestChannelSettingsValue
+        {
+            [JsonProperty("statusTimeouts", NullValueHandling = NullValueHandling.Ignore)]
+            public UpdateConfigurationRequestChannelSettingsValueStatusTimeouts StatusTimeouts {get; private set;}
+            [JsonProperty("captureRules", NullValueHandling = NullValueHandling.Ignore)]
+            public List<UpdateConfigurationRequestChannelSettingsValueCaptureRules> CaptureRules {get; private set;}
+            public UpdateConfigurationRequestChannelSettingsValue() { }
+            public class Builder
+            {
+                private UpdateConfigurationRequestChannelSettingsValue _updateConfigurationRequestChannelSettingsValue = new UpdateConfigurationRequestChannelSettingsValue();
+                public Builder()
+                {
+                }
+                public Builder WithStatusTimeouts(UpdateConfigurationRequestChannelSettingsValueStatusTimeouts statusTimeouts)
+                {
+                    _updateConfigurationRequestChannelSettingsValue.StatusTimeouts= statusTimeouts;
+                    return this;
+                }
+                public Builder WithCaptureRules(List<UpdateConfigurationRequestChannelSettingsValueCaptureRules> captureRules)
+                {
+                    _updateConfigurationRequestChannelSettingsValue.CaptureRules= captureRules;
+                    return this;
+                }
+                public UpdateConfigurationRequestChannelSettingsValue Build()
+                {
+                    return _updateConfigurationRequestChannelSettingsValue;
                 }
             }
         }
@@ -1338,6 +1496,119 @@ public class ConfigurationCreateResource : Resource
             return Page<ConfigurationResource>.FromJson("configurations", response.Content);
         }
 
+            
+        private static Request BuildPatchRequest(PatchConfigurationOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v2/ControlPlane/Configurations/{id}";
+
+            string PathId = options.PathId;
+            path = path.Replace("{"+"id"+"}", PathId);
+
+            return new Request(
+            HttpMethod.Patch,
+            Rest.Domain.Conversations,
+            path,
+
+            contentType: EnumConstants.ContentTypeEnum.JSON,
+            body: options.GetBody(),
+            headerParams: options.GetHeaderParams()
+            );
+        }
+
+        /// <summary> Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it. </summary>
+        /// <param name="options"> Patch Configuration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Configuration </returns>
+        public static ConfigurationPatchResource Patch(PatchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            return ConfigurationPatchResource.FromJson(response.Content);
+        }
+
+        /// <summary> Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it. </summary>
+        /// <param name="options"> Patch Configuration parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ConfigurationPatchResource> PatchAsync(PatchConfigurationOptions options,
+            ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            return ConfigurationPatchResource.FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it. </summary>
+        /// <param name="pathId">  </param>
+        /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Configuration </returns>
+        public static ConfigurationPatchResource Patch(
+            string pathId,
+            string idempotencyKey = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
+            return Patch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it. </summary>
+        /// <param name="pathId">  </param>
+        /// <param name="idempotencyKey"> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationPatchResource> PatchAsync(
+            string pathId,
+            string idempotencyKey = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
+            return await PatchAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationPatchResource> PatchWithHeaders(PatchConfigurationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            var resource = ConfigurationPatchResource.FromJson(response.Content);
+            return new TwilioResponse<ConfigurationPatchResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationPatchResource>> PatchWithHeadersAsync(PatchConfigurationOptions options,
+                ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            var resource = ConfigurationPatchResource.FromJson(response.Content);
+            return new TwilioResponse<ConfigurationPatchResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ConfigurationPatchResource> PatchWithHeaders(
+            string pathId,
+            string idempotencyKey = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
+            return PatchWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ConfigurationPatchResource>> PatchWithHeadersAsync(
+            string pathId,
+            string idempotencyKey = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchConfigurationOptions(pathId){ IdempotencyKey = idempotencyKey };
+            return await PatchWithHeadersAsync(options, client);
+        }
+        #endif
             
         private static Request BuildUpdateRequest(UpdateConfigurationOptions options, ITwilioRestClient client)
         {

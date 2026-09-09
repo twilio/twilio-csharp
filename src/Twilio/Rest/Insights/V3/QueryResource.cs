@@ -484,22 +484,25 @@ public class QueryCreateResource : Resource
         }
         #endif
         /// <summary> Retrieve subsequent pages of a synchronous query using a page token. </summary>
+        /// <param name="pageToken"> Pagination token </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns>
         public static QueryFetchResource Fetch(
+                                         string pageToken, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(){  };
+            var options = new FetchQueryOptions(pageToken){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Retrieve subsequent pages of a synchronous query using a page token. </summary>
+        /// <param name="pageToken"> Pagination token </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns>
-        public static async System.Threading.Tasks.Task<QueryFetchResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<QueryFetchResource> FetchAsync(string pageToken, ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(){  };
+            var options = new FetchQueryOptions(pageToken){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -522,16 +525,17 @@ public class QueryCreateResource : Resource
         #endif
         
         public static TwilioResponse<QueryFetchResource> FetchWithHeaders(
+                    string pageToken, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(){  };
+            var options = new FetchQueryOptions(pageToken){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<QueryFetchResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<QueryFetchResource>> FetchWithHeadersAsync(string pageToken, ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(){  };
+            var options = new FetchQueryOptions(pageToken){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif

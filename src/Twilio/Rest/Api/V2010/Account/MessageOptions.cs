@@ -86,6 +86,9 @@ namespace Twilio.Rest.Api.V2010.Account
         public string ContentVariables { get; set; }
 
         
+        public string MessageIntent { get; set; }
+
+        
         public MessageResource.RiskCheckEnum RiskCheck { get; set; }
 
         ///<summary> The sender's Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), [Wireless SIM](https://www.twilio.com/docs/iot/wireless/programmable-wireless-send-machine-machine-sms-commands), [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), or [channel address](https://www.twilio.com/docs/messaging/channels) (e.g., `whatsapp:+15554449999`). The value of the `from` parameter must be a sender that is hosted within Twilio and belongs to the Account creating the Message. If you are using `messaging_service_sid`, this parameter can be empty (Twilio assigns a `from` value from the Messaging Service's Sender Pool) or you can provide a specific sender from your Sender Pool. </summary> 
@@ -193,6 +196,10 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ContentVariables != null)
             {
                 p.Add(new KeyValuePair<string, string>("ContentVariables", ContentVariables));
+            }
+            if (MessageIntent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessageIntent", MessageIntent));
             }
             if (RiskCheck != null)
             {

@@ -110,6 +110,9 @@ namespace Twilio.Rest.Memory.V1
         ///<summary> The maximum number of items to return per page, maximum of 100. </summary> 
         public int? PageSize { get; set; }
 
+        ///<summary> The token for the page of results to retrieve. </summary> 
+        public string PageToken { get; set; }
+
         ///<summary> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </summary> 
         public TraitGroupResource.OrderByEnum OrderBy { get; set; }
 
@@ -137,6 +140,10 @@ namespace Twilio.Rest.Memory.V1
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("pageSize", PageSize.ToString()));
+            }
+            if (PageToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("pageToken", PageToken));
             }
             if (OrderBy != null)
             {

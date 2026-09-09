@@ -23,33 +23,6 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Insights.V2
 {
-
-    /// <summary> Create Inbound specific Phone Numbers Report for a specific account with given time range. </summary>
-    public class CreateInboundOptions : IOptions<InboundResource>
-    {
-        
-        
-        public InboundResource.InsightsV2CreatePhoneNumbersReportRequest InsightsV2CreatePhoneNumbersReportRequest { get; set; }
-
-
-
-        
-        /// <summary> Generate the request body </summary>
-        public string GetBody()
-        {
-            string body = "";
-
-            if (InsightsV2CreatePhoneNumbersReportRequest != null)
-            {
-                body = InboundResource.ToJson(InsightsV2CreatePhoneNumbersReportRequest);
-            }
-            return body;
-        }
-
-        
-
-    }
-
     /// <summary> Get Inbound Phone Numbers Level Reports for the given Report Id. </summary>
     public class ReadInboundOptions : ReadOptions<InboundResource>
     {

@@ -63,8 +63,17 @@ namespace Twilio.Rest.Insights.V3
     public class FetchQueryOptions : IOptions<QueryFetchResource>
     {
     
+        ///<summary> Pagination token </summary> 
+        public string PageToken { get; }
 
 
+
+        /// <summary> Construct a new FetchQueryResultsOptions </summary>
+        /// <param name="pageToken"> Pagination token </param>
+        public FetchQueryOptions(string pageToken)
+        {
+            PageToken = pageToken;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -72,6 +81,10 @@ namespace Twilio.Rest.Insights.V3
         {
             var p = new List<KeyValuePair<string, string>>();
 
+            if (PageToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("pageToken", PageToken));
+            }
             return p;
         }
 
