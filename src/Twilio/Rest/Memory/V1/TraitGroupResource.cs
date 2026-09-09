@@ -980,6 +980,7 @@ public class TraitGroupCreateResource : Resource
         /// <param name="pathTraitGroupName"> A unique Name of the TraitGroup </param>
         /// <param name="includeTraits"> Whether to include trait definitions in the response </param>
         /// <param name="pageSize"> The maximum number of items to return per page, maximum of 100. </param>
+        /// <param name="pageToken"> The token for the page of results to retrieve. </param>
         /// <param name="orderBy"> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TraitGroup </returns>
@@ -988,10 +989,11 @@ public class TraitGroupCreateResource : Resource
                                          string pathTraitGroupName, 
                                          bool? includeTraits = null, 
                                          int? pageSize = null, 
+                                         string pageToken = null, 
                                          TraitGroupResource.OrderByEnum orderBy = null, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,OrderBy = orderBy };
+            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,PageToken = pageToken,OrderBy = orderBy };
             return Fetch(options, client);
         }
 
@@ -1001,12 +1003,13 @@ public class TraitGroupCreateResource : Resource
         /// <param name="pathTraitGroupName"> A unique Name of the TraitGroup </param>
         /// <param name="includeTraits"> Whether to include trait definitions in the response </param>
         /// <param name="pageSize"> The maximum number of items to return per page, maximum of 100. </param>
+        /// <param name="pageToken"> The token for the page of results to retrieve. </param>
         /// <param name="orderBy"> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TraitGroup </returns>
-        public static async System.Threading.Tasks.Task<TraitGroupFetchResource> FetchAsync(string pathStoreId, string pathTraitGroupName, bool? includeTraits = null, int? pageSize = null, TraitGroupResource.OrderByEnum orderBy = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TraitGroupFetchResource> FetchAsync(string pathStoreId, string pathTraitGroupName, bool? includeTraits = null, int? pageSize = null, string pageToken = null, TraitGroupResource.OrderByEnum orderBy = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,OrderBy = orderBy };
+            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,PageToken = pageToken,OrderBy = orderBy };
             return await FetchAsync(options, client);
         }
         #endif
@@ -1033,17 +1036,18 @@ public class TraitGroupCreateResource : Resource
                     string pathTraitGroupName, 
                     bool? includeTraits = null, 
                     int? pageSize = null, 
+                    string pageToken = null, 
                     TraitGroupResource.OrderByEnum orderBy = null, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,OrderBy = orderBy };
+            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,PageToken = pageToken,OrderBy = orderBy };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<TraitGroupFetchResource>> FetchWithHeadersAsync(string pathStoreId, string pathTraitGroupName, bool? includeTraits = null, int? pageSize = null, TraitGroupResource.OrderByEnum orderBy = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<TraitGroupFetchResource>> FetchWithHeadersAsync(string pathStoreId, string pathTraitGroupName, bool? includeTraits = null, int? pageSize = null, string pageToken = null, TraitGroupResource.OrderByEnum orderBy = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,OrderBy = orderBy };
+            var options = new FetchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IncludeTraits = includeTraits,PageSize = pageSize,PageToken = pageToken,OrderBy = orderBy };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif

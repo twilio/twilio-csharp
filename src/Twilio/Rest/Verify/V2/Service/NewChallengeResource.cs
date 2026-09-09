@@ -151,30 +151,26 @@ namespace Twilio.Rest.Verify.V2.Service
 
         /// <summary> Create a Passkeys Challenge </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createPasskeysChallengeRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewChallenge </returns>
         public static NewChallengeResource Create(
                                           string pathServiceSid,
-                                          NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+            var options = new CreateNewChallengeOptions(pathServiceSid){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> Create a Passkeys Challenge </summary>
         /// <param name="pathServiceSid"> The unique SID identifier of the Service. </param>
-        /// <param name="createPasskeysChallengeRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewChallenge </returns>
         public static async System.Threading.Tasks.Task<NewChallengeResource> CreateAsync(
                                                                                   string pathServiceSid,
-                                                                                  NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+        var options = new CreateNewChallengeOptions(pathServiceSid){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -200,20 +196,18 @@ namespace Twilio.Rest.Verify.V2.Service
 
         public static TwilioResponse<NewChallengeResource> CreateWithHeaders(
             string pathServiceSid,
-            NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+        var options = new CreateNewChallengeOptions(pathServiceSid){  };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<NewChallengeResource>> CreateWithHeadersAsync(
             string pathServiceSid,
-            NewChallengeResource.CreatePasskeysChallengeRequest createPasskeysChallengeRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateNewChallengeOptions(pathServiceSid, createPasskeysChallengeRequest){  };
+        var options = new CreateNewChallengeOptions(pathServiceSid){  };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

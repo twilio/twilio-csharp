@@ -167,6 +167,56 @@ namespace Twilio.Rest.Conversations.V2
 
     }
 
+    /// <summary> Partially update a Configuration. Only fields present in the request body are changed; omitted fields are left untouched. For `channelSettings`, an omitted channel key is preserved, a channel key mapped to a value replaces that channel's settings, and a channel key explicitly mapped to `null` removes it. </summary>
+    public class PatchConfigurationOptions : IOptions<ConfigurationResource>
+    {
+    
+        
+        public string PathId { get; }
+
+        ///<summary> Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL. </summary> 
+        public string IdempotencyKey { get; set; }
+
+        ///<summary> The partial configuration update. </summary> 
+        public ConfigurationResource.PatchConfigurationRequest PatchConfigurationRequest { get; set; }
+
+
+
+        /// <summary> Construct a new PatchConfigurationOptions </summary>
+        /// <param name="pathId">  </param>
+        public PatchConfigurationOptions(string pathId)
+        {
+            PathId = pathId;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (PatchConfigurationRequest != null)
+            {
+                body = ConfigurationResource.ToJson(PatchConfigurationRequest);
+            }
+            return body;
+        }
+
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (IdempotencyKey != null)
+        {
+            p.Add(new KeyValuePair<string, string>("Idempotency-Key", IdempotencyKey));
+        }
+        return p;
+    }
+
+    }
+
+
     /// <summary> Update an existing Configuration </summary>
     public class UpdateConfigurationOptions : IOptions<ConfigurationUpdateResource>
     {

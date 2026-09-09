@@ -152,6 +152,10 @@ public class TranscriptionCreateResource : Resource
             [JsonProperty("resolvedConfiguration")]
                 public TranscriptionResource.VoiceV3TranscriptionResolvedConfiguration ResolvedConfiguration { get; private set; }
 
+            ///<summary> Absolute URLs of resources related to this Transcription. Includes `conversation`, the Conversations API resource for this Transcription's `conversationId`, once the transcript has been stored. Omitted entirely when there is no related resource to link to.  </summary> 
+            [JsonProperty("links")]
+                public Dictionary<string, string> Links { get; private set; }
+
 
     public static TranscriptionReadResource FromJson(string json) {
         try {
@@ -432,6 +436,8 @@ public class TranscriptionCreateResource : Resource
             public int? Duration {get; private set;}
             [JsonProperty("resolvedConfiguration", NullValueHandling = NullValueHandling.Ignore)]
             public TranscriptionResource.VoiceV3TranscriptionResolvedConfiguration ResolvedConfiguration {get; private set;}
+            [JsonProperty("links", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, string> Links {get; private set;}
             public VoiceV3TranscriptionTranscription() { }
             public class Builder
             {
@@ -507,6 +513,11 @@ public class TranscriptionCreateResource : Resource
                 public Builder WithResolvedConfiguration(TranscriptionResource.VoiceV3TranscriptionResolvedConfiguration resolvedConfiguration)
                 {
                     _voiceV3TranscriptionTranscription.ResolvedConfiguration= resolvedConfiguration;
+                    return this;
+                }
+                public Builder WithLinks(Dictionary<string, string> links)
+                {
+                    _voiceV3TranscriptionTranscription.Links= links;
                     return this;
                 }
                 public VoiceV3TranscriptionTranscription Build()

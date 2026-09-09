@@ -863,6 +863,7 @@ public class ConversationCreateResource : Resource
             public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
             public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
             public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
+            public static readonly ConversationsV2Channel Video = new ConversationsV2Channel("VIDEO");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -939,6 +940,7 @@ public class ConversationCreateResource : Resource
             public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
             public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
+            public static readonly ChannelEnum Video = new ChannelEnum("VIDEO");
 
         }
 
