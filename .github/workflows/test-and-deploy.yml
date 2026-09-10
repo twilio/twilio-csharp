@@ -153,7 +153,7 @@ jobs:
 
       - name: Code signing with Software Trust Manager
         id: SSMClientToolSetup
-        uses: digicert/code-signing-software-trust-action@9b30180369343eb1ce0dcbebb933cfa3e17b6cc8 # v1.0.0
+        uses: digicert/code-signing-software-trust-action@fae23a455ba4bde62b64fd7cb2f81ade788f5a95 # v1.2.1
         env:
           SM_API_KEY: ${{ env.SM_API_KEY }}
           SM_CLIENT_CERT_PASSWORD: ${{ env.SM_CLIENT_CERT_PASSWORD }}
