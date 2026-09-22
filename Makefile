@@ -1,11 +1,14 @@
-.PHONY: clean test test-docker install release docs
+.PHONY: clean githooks test test-docker install release docs
 PROJECT_NAME ?= twilio_twilio-csharp
 SONAR_SOURCES ?= /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*
 
 clean:
 	dotnet clean
 
-install:
+githooks:
+	ln -sf ../../githooks/pre-commit .git/hooks/pre-commit
+
+install: githooks
 	@dotnet --version || (echo "Dotnet is not installed, please install Dotnet CLI"; exit 1);
 	dotnet restore
 
