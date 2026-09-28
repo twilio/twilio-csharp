@@ -821,30 +821,34 @@ public class StoreCreateResource : Resource
 
         /// <summary> Partially update a Memory Store. Only the fields provided in the request body will be updated. </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="patchStoreRequest">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Store </returns>
         public static StorePatchResource Patch(
             string pathStoreId,
+            StoreResource.PatchStoreRequest patchStoreRequest,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchStoreOptions(pathStoreId){ IfMatch = ifMatch };
+            var options = new PatchStoreOptions(pathStoreId, patchStoreRequest){ IfMatch = ifMatch };
             return Patch(options, client);
         }
 
         #if !NET35
         /// <summary> Partially update a Memory Store. Only the fields provided in the request body will be updated. </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
+        /// <param name="patchStoreRequest">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Store </returns>
         public static async System.Threading.Tasks.Task<StorePatchResource> PatchAsync(
             string pathStoreId,
+            StoreResource.PatchStoreRequest patchStoreRequest,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchStoreOptions(pathStoreId){ IfMatch = ifMatch };
+            var options = new PatchStoreOptions(pathStoreId, patchStoreRequest){ IfMatch = ifMatch };
             return await PatchAsync(options, client);
         }
         #endif
@@ -870,20 +874,22 @@ public class StoreCreateResource : Resource
 
         public static TwilioResponse<StorePatchResource> PatchWithHeaders(
             string pathStoreId,
+            StoreResource.PatchStoreRequest patchStoreRequest,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchStoreOptions(pathStoreId){ IfMatch = ifMatch };
+            var options = new PatchStoreOptions(pathStoreId, patchStoreRequest){ IfMatch = ifMatch };
             return PatchWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<StorePatchResource>> PatchWithHeadersAsync(
             string pathStoreId,
+            StoreResource.PatchStoreRequest patchStoreRequest,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchStoreOptions(pathStoreId){ IfMatch = ifMatch };
+            var options = new PatchStoreOptions(pathStoreId, patchStoreRequest){ IfMatch = ifMatch };
             return await PatchWithHeadersAsync(options, client);
         }
         #endif

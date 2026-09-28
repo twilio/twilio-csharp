@@ -155,7 +155,7 @@ namespace Twilio.Rest.Routes.V3
             );
         }
 
-        /// <summary> Fetch the Inbound Processing Region assigned to a phone number. </summary>
+        /// <summary> Fetch the Processing Region assigned to a phone number. </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Routes.V3
         }
 
         #if !NET35
-        /// <summary> Fetch the Inbound Processing Region assigned to a phone number. </summary>
+        /// <summary> Fetch the Processing Region assigned to a phone number. </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Routes.V3
             return PhoneNumberFetchResource.FromJson(response.Content);
         }
         #endif
-        /// <summary> Fetch the Inbound Processing Region assigned to a phone number. </summary>
+        /// <summary> Fetch the Processing Region assigned to a phone number. </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Routes.V3
         }
 
         #if !NET35
-        /// <summary> Fetch the Inbound Processing Region assigned to a phone number. </summary>
+        /// <summary> Fetch the Processing Region assigned to a phone number. </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Routes.V3
             );
         }
 
-        /// <summary> Assign an Inbound Processing Region to a phone number. </summary>
+        /// <summary> Assign an Processing Region to a phone number. </summary>
         /// <param name="options"> Update PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns>
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Routes.V3
             return PhoneNumberUpdateResource.FromJson(response.Content);
         }
 
-        /// <summary> Assign an Inbound Processing Region to a phone number. </summary>
+        /// <summary> Assign an Processing Region to a phone number. </summary>
         /// <param name="options"> Update PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Routes.V3
         }
         #endif
 
-        /// <summary> Assign an Inbound Processing Region to a phone number. </summary>
+        /// <summary> Assign an Processing Region to a phone number. </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
         /// <param name="voiceRegion"> The Inbound Processing Region used for this phone number for voice </param>
         /// <param name="messagingRegion"> The Inbound Processing Region used for this phone number for messaging </param>
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Routes.V3
         }
 
         #if !NET35
-        /// <summary> Assign an Inbound Processing Region to a phone number. </summary>
+        /// <summary> Assign an Processing Region to a phone number. </summary>
         /// <param name="pathPhoneNumber"> The phone number in E.164 format </param>
         /// <param name="voiceRegion"> The Inbound Processing Region used for this phone number for voice </param>
         /// <param name="messagingRegion"> The Inbound Processing Region used for this phone number for messaging </param>

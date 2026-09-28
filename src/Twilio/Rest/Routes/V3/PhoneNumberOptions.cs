@@ -23,7 +23,7 @@ using Twilio.Converters;
 
 namespace Twilio.Rest.Routes.V3
 {
-    /// <summary> Fetch the Inbound Processing Region assigned to a phone number. </summary>
+    /// <summary> Fetch the Processing Region assigned to a phone number. </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberFetchResource>
     {
     
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Routes.V3
     }
 
 
-    /// <summary> Assign an Inbound Processing Region to a phone number. </summary>
+    /// <summary> Assign an Processing Region to a phone number. </summary>
     public class UpdatePhoneNumberOptions : IOptions<PhoneNumberUpdateResource>
     {
     
