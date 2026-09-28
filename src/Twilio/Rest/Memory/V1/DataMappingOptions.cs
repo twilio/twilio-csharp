@@ -188,21 +188,23 @@ namespace Twilio.Rest.Memory.V1
         ///<summary> A unique DataMapping ID using Twilio Type ID (TTID) format </summary> 
         public string PathDataMappingId { get; }
 
+        
+        public DataMappingResource.DataMappingCore DataMappingCore { get; }
+
         ///<summary> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </summary> 
         public string IfMatch { get; set; }
-
-        
-        public DataMappingResource.DataMappingCore DataMappingCore { get; set; }
 
 
 
         /// <summary> Construct a new PatchDataMappingOptions </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathDataMappingId"> A unique DataMapping ID using Twilio Type ID (TTID) format </param>
-        public PatchDataMappingOptions(string pathStoreId, string pathDataMappingId)
+        /// <param name="dataMappingCore">  </param>
+        public PatchDataMappingOptions(string pathStoreId, string pathDataMappingId, DataMappingResource.DataMappingCore dataMappingCore)
         {
             PathStoreId = pathStoreId;
             PathDataMappingId = pathDataMappingId;
+            DataMappingCore = dataMappingCore;
         }
 
         

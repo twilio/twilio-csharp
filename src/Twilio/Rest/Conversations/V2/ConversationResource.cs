@@ -61,9 +61,17 @@ public class ConversationCreateResource : Resource
         [JsonProperty("configuration")]
             public ConversationResource.ListConversationByAccount200ResponseConversationsConfiguration Configuration { get; private set; }
 
+        ///<summary> Customer-managed key-value pairs. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters. </summary> 
+        [JsonProperty("metadata")]
+            public Dictionary<string, string> Metadata { get; private set; }
+
         ///<summary> Participants in this Conversation. </summary> 
         [JsonProperty("participants")]
             public List<ConversationResource.ConversationsV2Participant> Participants { get; private set; }
+
+        ///<summary> The Action created for the request's `action`, present only on the create response that dispatched one. Poll `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` for its status.  </summary> 
+        [JsonProperty("actionId")]
+            public string ActionId { get; private set; }
 
     public static ConversationCreateResource FromJson(string json) {
         try {
@@ -144,9 +152,17 @@ public class ConversationCreateResource : Resource
         [JsonProperty("configuration")]
             public ConversationResource.ListConversationByAccount200ResponseConversationsConfiguration Configuration { get; private set; }
 
+        ///<summary> Customer-managed key-value pairs. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters. </summary> 
+        [JsonProperty("metadata")]
+            public Dictionary<string, string> Metadata { get; private set; }
+
         ///<summary> Participants in this Conversation. </summary> 
         [JsonProperty("participants")]
             public List<ConversationResource.ConversationsV2Participant> Participants { get; private set; }
+
+        ///<summary> The Action created for the request's `action`, present only on the create response that dispatched one. Poll `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` for its status.  </summary> 
+        [JsonProperty("actionId")]
+            public string ActionId { get; private set; }
 
 
     public static ConversationFetchResource FromJson(string json) {
@@ -200,9 +216,17 @@ public class ConversationCreateResource : Resource
             [JsonProperty("configuration")]
                 public ConversationResource.ListConversationByAccount200ResponseConversationsConfiguration Configuration { get; private set; }
 
+            ///<summary> Customer-managed key-value pairs. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters. </summary> 
+            [JsonProperty("metadata")]
+                public Dictionary<string, string> Metadata { get; private set; }
+
             ///<summary> Participants in this Conversation. </summary> 
             [JsonProperty("participants")]
                 public List<ConversationResource.ConversationsV2Participant> Participants { get; private set; }
+
+            ///<summary> The Action created for the request's `action`, present only on the create response that dispatched one. Poll `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` for its status.  </summary> 
+            [JsonProperty("actionId")]
+                public string ActionId { get; private set; }
 
 
     public static ConversationReadResource FromJson(string json) {
@@ -256,9 +280,17 @@ public class ConversationCreateResource : Resource
         [JsonProperty("configuration")]
             public ConversationResource.ListConversationByAccount200ResponseConversationsConfiguration Configuration { get; private set; }
 
+        ///<summary> Customer-managed key-value pairs. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters. </summary> 
+        [JsonProperty("metadata")]
+            public Dictionary<string, string> Metadata { get; private set; }
+
         ///<summary> Participants in this Conversation. </summary> 
         [JsonProperty("participants")]
             public List<ConversationResource.ConversationsV2Participant> Participants { get; private set; }
+
+        ///<summary> The Action created for the request's `action`, present only on the create response that dispatched one. Poll `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` for its status.  </summary> 
+        [JsonProperty("actionId")]
+            public string ActionId { get; private set; }
 
 
     public static ConversationPatchResource FromJson(string json) {
@@ -312,9 +344,17 @@ public class ConversationCreateResource : Resource
         [JsonProperty("configuration")]
             public ConversationResource.ListConversationByAccount200ResponseConversationsConfiguration Configuration { get; private set; }
 
+        ///<summary> Customer-managed key-value pairs. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters. </summary> 
+        [JsonProperty("metadata")]
+            public Dictionary<string, string> Metadata { get; private set; }
+
         ///<summary> Participants in this Conversation. </summary> 
         [JsonProperty("participants")]
             public List<ConversationResource.ConversationsV2Participant> Participants { get; private set; }
+
+        ///<summary> The Action created for the request's `action`, present only on the create response that dispatched one. Poll `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` for its status.  </summary> 
+        [JsonProperty("actionId")]
+            public string ActionId { get; private set; }
 
 
     public static ConversationUpdateResource FromJson(string json) {
@@ -338,10 +378,34 @@ public class ConversationCreateResource : Resource
     public class ConversationResource : Resource
     {
     
+        public class ConversationWorkflow
+        {
+            [JsonProperty("flowId", NullValueHandling = NullValueHandling.Ignore)]
+            public string FlowId {get; private set;}
+            public ConversationWorkflow() { }
+            public class Builder
+            {
+                private ConversationWorkflow _conversationWorkflow = new ConversationWorkflow();
+                public Builder()
+                {
+                }
+                public Builder WithFlowId(string flowId)
+                {
+                    _conversationWorkflow.FlowId= flowId;
+                    return this;
+                }
+                public ConversationWorkflow Build()
+                {
+                    return _conversationWorkflow;
+                }
+            }
+        }
         public class CreateConversationWithConfigRequestConfiguration
         {
             [JsonProperty("intelligenceConfigurationIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> IntelligenceConfigurationIds {get; private set;}
+            [JsonProperty("workflows", NullValueHandling = NullValueHandling.Ignore)]
+            public List<ConversationWorkflow> Workflows {get; private set;}
             public CreateConversationWithConfigRequestConfiguration() { }
             public class Builder
             {
@@ -352,6 +416,11 @@ public class ConversationCreateResource : Resource
                 public Builder WithIntelligenceConfigurationIds(List<string> intelligenceConfigurationIds)
                 {
                     _createConversationWithConfigRequestConfiguration.IntelligenceConfigurationIds= intelligenceConfigurationIds;
+                    return this;
+                }
+                public Builder WithWorkflows(List<ConversationWorkflow> workflows)
+                {
+                    _createConversationWithConfigRequestConfiguration.Workflows= workflows;
                     return this;
                 }
                 public CreateConversationWithConfigRequestConfiguration Build()
@@ -451,6 +520,8 @@ public class ConversationCreateResource : Resource
             public CreateConversationWithConfigRequestConfiguration Configuration {get; private set;}
             [JsonProperty("participants", NullValueHandling = NullValueHandling.Ignore)]
             public List<CreateConversationWithConfigRequestParticipants> Participants {get; private set;}
+            [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, string> Metadata {get; private set;}
             public CreateConversationWithConfigRequest() { }
             public class Builder
             {
@@ -476,6 +547,11 @@ public class ConversationCreateResource : Resource
                 public Builder WithParticipants(List<CreateConversationWithConfigRequestParticipants> participants)
                 {
                     _createConversationWithConfigRequest.Participants= participants;
+                    return this;
+                }
+                public Builder WithMetadata(Dictionary<string, string> metadata)
+                {
+                    _createConversationWithConfigRequest.Metadata= metadata;
                     return this;
                 }
                 public CreateConversationWithConfigRequest Build()
@@ -545,6 +621,8 @@ public class ConversationCreateResource : Resource
             public ConversationResource.StatusEnum Status {get; private set;}
             [JsonProperty("configuration", NullValueHandling = NullValueHandling.Ignore)]
             public PatchConversationByIdRequestConfiguration Configuration {get; private set;}
+            [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, string> Metadata {get; private set;}
             public PatchConversationByIdRequest() { }
             public class Builder
             {
@@ -567,6 +645,11 @@ public class ConversationCreateResource : Resource
                     _patchConversationByIdRequest.Configuration= configuration;
                     return this;
                 }
+                public Builder WithMetadata(Dictionary<string, string> metadata)
+                {
+                    _patchConversationByIdRequest.Metadata= metadata;
+                    return this;
+                }
                 public PatchConversationByIdRequest Build()
                 {
                     return _patchConversationByIdRequest;
@@ -580,6 +663,8 @@ public class ConversationCreateResource : Resource
             public ConversationResource.StatusEnum Status {get; private set;}
             [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
+            [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, string> Metadata {get; private set;}
             public UpdateConversationByIdRequest() { }
             public class Builder
             {
@@ -595,6 +680,11 @@ public class ConversationCreateResource : Resource
                 public Builder WithName(string name)
                 {
                     _updateConversationByIdRequest.Name= name;
+                    return this;
+                }
+                public Builder WithMetadata(Dictionary<string, string> metadata)
+                {
+                    _updateConversationByIdRequest.Metadata= metadata;
                     return this;
                 }
                 public UpdateConversationByIdRequest Build()

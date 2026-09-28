@@ -50,6 +50,57 @@ public class RuleExecutionCreateResource : Resource
     public class RuleExecutionResource : Resource
     {
     
+        public class OperatorOverride
+        {
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+            public string Id {get; private set;}
+            [JsonProperty("parameters", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, object> Parameters {get; private set;}
+            public OperatorOverride() { }
+            public class Builder
+            {
+                private OperatorOverride _operatorOverride = new OperatorOverride();
+                public Builder()
+                {
+                }
+                public Builder WithId(string id)
+                {
+                    _operatorOverride.Id= id;
+                    return this;
+                }
+                public Builder WithParameters(Dictionary<string, object> parameters)
+                {
+                    _operatorOverride.Parameters= parameters;
+                    return this;
+                }
+                public OperatorOverride Build()
+                {
+                    return _operatorOverride;
+                }
+            }
+        }
+        public class RuleOverride
+        {
+            [JsonProperty("operators", NullValueHandling = NullValueHandling.Ignore)]
+            public List<OperatorOverride> Operators {get; private set;}
+            public RuleOverride() { }
+            public class Builder
+            {
+                private RuleOverride _ruleOverride = new RuleOverride();
+                public Builder()
+                {
+                }
+                public Builder WithOperators(List<OperatorOverride> operators)
+                {
+                    _ruleOverride.Operators= operators;
+                    return this;
+                }
+                public RuleOverride Build()
+                {
+                    return _ruleOverride;
+                }
+            }
+        }
         public class CreateRuleExecutionRequest
         {
             [JsonProperty("intelligenceConfigurationId", NullValueHandling = NullValueHandling.Ignore)]
@@ -58,6 +109,8 @@ public class RuleExecutionCreateResource : Resource
             public string RuleId {get; private set;}
             [JsonProperty("conversationId", NullValueHandling = NullValueHandling.Ignore)]
             public string ConversationId {get; private set;}
+            [JsonProperty("rule", NullValueHandling = NullValueHandling.Ignore)]
+            public RuleOverride Rule {get; private set;}
             public CreateRuleExecutionRequest() { }
             public class Builder
             {
@@ -78,6 +131,11 @@ public class RuleExecutionCreateResource : Resource
                 public Builder WithConversationId(string conversationId)
                 {
                     _createRuleExecutionRequest.ConversationId= conversationId;
+                    return this;
+                }
+                public Builder WithRule(RuleOverride rule)
+                {
+                    _createRuleExecutionRequest.Rule= rule;
                     return this;
                 }
                 public CreateRuleExecutionRequest Build()
@@ -107,7 +165,7 @@ public class RuleExecutionCreateResource : Resource
             );
         }
 
-        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation.  </summary>
+        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation. Optionally, `rule.operators[]` can be provided to override specific operator parameters for this execution only; the stored rule configuration is not modified.  </summary>
         /// <param name="options"> Create RuleExecution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RuleExecution </returns>
@@ -119,7 +177,7 @@ public class RuleExecutionCreateResource : Resource
         }
 
         #if !NET35
-        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation.  </summary>
+        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation. Optionally, `rule.operators[]` can be provided to override specific operator parameters for this execution only; the stored rule configuration is not modified.  </summary>
         /// <param name="options"> Create RuleExecution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RuleExecution </returns>
@@ -131,7 +189,7 @@ public class RuleExecutionCreateResource : Resource
         }
         #endif
 
-        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation.  </summary>
+        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation. Optionally, `rule.operators[]` can be provided to override specific operator parameters for this execution only; the stored rule configuration is not modified.  </summary>
         /// <param name="createRuleExecutionRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RuleExecution </returns>
@@ -144,7 +202,7 @@ public class RuleExecutionCreateResource : Resource
         }
 
         #if !NET35
-        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation.  </summary>
+        /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation. Optionally, `rule.operators[]` can be provided to override specific operator parameters for this execution only; the stored rule configuration is not modified.  </summary>
         /// <param name="createRuleExecutionRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RuleExecution </returns>

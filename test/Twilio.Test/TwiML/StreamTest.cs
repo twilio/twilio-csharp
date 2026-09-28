@@ -35,11 +35,13 @@ namespace Twilio.Tests.TwiML
                 "url",
                 Stream.TrackEnum.InboundTrack,
                 "status_callback",
-                Stream.StatusCallbackMethodEnum.Get
+                Stream.StatusCallbackMethodEnum.Get,
+                "audio_format",
+                "sample_rate"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>",
+                "<Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" audioFormat=\"audio_format\" sampleRate=\"sample_rate\"></Stream>",
                 elem.ToString()
             );
         }

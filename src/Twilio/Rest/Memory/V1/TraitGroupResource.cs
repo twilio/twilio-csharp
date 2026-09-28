@@ -1267,16 +1267,18 @@ public class TraitGroupCreateResource : Resource
         /// <summary> Partially updates a Trait Group. Only the fields provided in the request body will be updated. For traits: existing traits with matching keys will be updated, new keys will be added. To remove a trait, set its dataType to an empty string (\"\") - this serves as an explicit deletion marker.  </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathTraitGroupName"> A unique Name of the TraitGroup </param>
+        /// <param name="patchTraitGroupRequest">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TraitGroup </returns>
         public static TraitGroupPatchResource Patch(
             string pathStoreId,
             string pathTraitGroupName,
+            TraitGroupResource.PatchTraitGroupRequest patchTraitGroupRequest,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IfMatch = ifMatch };
+            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName, patchTraitGroupRequest){ IfMatch = ifMatch };
             return Patch(options, client);
         }
 
@@ -1284,16 +1286,18 @@ public class TraitGroupCreateResource : Resource
         /// <summary> Partially updates a Trait Group. Only the fields provided in the request body will be updated. For traits: existing traits with matching keys will be updated, new keys will be added. To remove a trait, set its dataType to an empty string (\"\") - this serves as an explicit deletion marker.  </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathTraitGroupName"> A unique Name of the TraitGroup </param>
+        /// <param name="patchTraitGroupRequest">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TraitGroup </returns>
         public static async System.Threading.Tasks.Task<TraitGroupPatchResource> PatchAsync(
             string pathStoreId,
             string pathTraitGroupName,
+            TraitGroupResource.PatchTraitGroupRequest patchTraitGroupRequest,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IfMatch = ifMatch };
+            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName, patchTraitGroupRequest){ IfMatch = ifMatch };
             return await PatchAsync(options, client);
         }
         #endif
@@ -1320,10 +1324,11 @@ public class TraitGroupCreateResource : Resource
         public static TwilioResponse<TraitGroupPatchResource> PatchWithHeaders(
             string pathStoreId,
             string pathTraitGroupName,
+            TraitGroupResource.PatchTraitGroupRequest patchTraitGroupRequest,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IfMatch = ifMatch };
+            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName, patchTraitGroupRequest){ IfMatch = ifMatch };
             return PatchWithHeaders(options, client);
         }
 
@@ -1331,10 +1336,11 @@ public class TraitGroupCreateResource : Resource
         public static async System.Threading.Tasks.Task<TwilioResponse<TraitGroupPatchResource>> PatchWithHeadersAsync(
             string pathStoreId,
             string pathTraitGroupName,
+            TraitGroupResource.PatchTraitGroupRequest patchTraitGroupRequest,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName){ IfMatch = ifMatch };
+            var options = new PatchTraitGroupOptions(pathStoreId, pathTraitGroupName, patchTraitGroupRequest){ IfMatch = ifMatch };
             return await PatchWithHeadersAsync(options, client);
         }
         #endif

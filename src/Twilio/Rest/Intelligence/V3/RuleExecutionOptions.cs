@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Intelligence.V3
 {
 
-    /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation.  </summary>
+    /// <summary> Resolves the given configuration, rule, and conversation, derives the memoryStoreId from the conversation's configuration. Then executes the rule on the conversation. Optionally, `rule.operators[]` can be provided to override specific operator parameters for this execution only; the stored rule configuration is not modified.  </summary>
     public class CreateRuleExecutionOptions : IOptions<RuleExecutionCreateResource>
     {
         

@@ -154,19 +154,21 @@ namespace Twilio.Rest.Memory.V1
         ///<summary> A unique Memory Store ID using Twilio Type ID (TTID) format </summary> 
         public string PathStoreId { get; }
 
+        
+        public StoreResource.PatchStoreRequest PatchStoreRequest { get; }
+
         ///<summary> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </summary> 
         public string IfMatch { get; set; }
-
-        
-        public StoreResource.PatchStoreRequest PatchStoreRequest { get; set; }
 
 
 
         /// <summary> Construct a new PatchStoreOptions </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
-        public PatchStoreOptions(string pathStoreId)
+        /// <param name="patchStoreRequest">  </param>
+        public PatchStoreOptions(string pathStoreId, StoreResource.PatchStoreRequest patchStoreRequest)
         {
             PathStoreId = pathStoreId;
+            PatchStoreRequest = patchStoreRequest;
         }
 
         

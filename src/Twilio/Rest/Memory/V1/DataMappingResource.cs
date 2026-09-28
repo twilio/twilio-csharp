@@ -1092,16 +1092,18 @@ public class DataMappingCreateResource : Resource
         /// <summary> Partially update a data mapping. Only the fields provided in the request body will be updated, including replacing the entire contents of the `mappings` array.  For `DATASET_CLOUDAPP` and `DATASET_WAREHOUSE` types, validates that all mapped Trait Groups and traits exist and that dataset field data types match their respective mapped trait data types. </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathDataMappingId"> A unique DataMapping ID using Twilio Type ID (TTID) format </param>
+        /// <param name="dataMappingCore">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DataMapping </returns>
         public static DataMappingPatchResource Patch(
             string pathStoreId,
             string pathDataMappingId,
+            DataMappingResource.DataMappingCore dataMappingCore,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId){ IfMatch = ifMatch };
+            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId, dataMappingCore){ IfMatch = ifMatch };
             return Patch(options, client);
         }
 
@@ -1109,16 +1111,18 @@ public class DataMappingCreateResource : Resource
         /// <summary> Partially update a data mapping. Only the fields provided in the request body will be updated, including replacing the entire contents of the `mappings` array.  For `DATASET_CLOUDAPP` and `DATASET_WAREHOUSE` types, validates that all mapped Trait Groups and traits exist and that dataset field data types match their respective mapped trait data types. </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathDataMappingId"> A unique DataMapping ID using Twilio Type ID (TTID) format </param>
+        /// <param name="dataMappingCore">  </param>
         /// <param name="ifMatch"> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DataMapping </returns>
         public static async System.Threading.Tasks.Task<DataMappingPatchResource> PatchAsync(
             string pathStoreId,
             string pathDataMappingId,
+            DataMappingResource.DataMappingCore dataMappingCore,
             string ifMatch = null,
             ITwilioRestClient client = null)
         {
-            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId){ IfMatch = ifMatch };
+            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId, dataMappingCore){ IfMatch = ifMatch };
             return await PatchAsync(options, client);
         }
         #endif
@@ -1145,10 +1149,11 @@ public class DataMappingCreateResource : Resource
         public static TwilioResponse<DataMappingPatchResource> PatchWithHeaders(
             string pathStoreId,
             string pathDataMappingId,
+            DataMappingResource.DataMappingCore dataMappingCore,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId){ IfMatch = ifMatch };
+            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId, dataMappingCore){ IfMatch = ifMatch };
             return PatchWithHeaders(options, client);
         }
 
@@ -1156,10 +1161,11 @@ public class DataMappingCreateResource : Resource
         public static async System.Threading.Tasks.Task<TwilioResponse<DataMappingPatchResource>> PatchWithHeadersAsync(
             string pathStoreId,
             string pathDataMappingId,
+            DataMappingResource.DataMappingCore dataMappingCore,
             string ifMatch = null,
                 ITwilioRestClient client = null)
         {
-            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId){ IfMatch = ifMatch };
+            var options = new PatchDataMappingOptions(pathStoreId, pathDataMappingId, dataMappingCore){ IfMatch = ifMatch };
             return await PatchWithHeadersAsync(options, client);
         }
         #endif
