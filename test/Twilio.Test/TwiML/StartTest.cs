@@ -80,7 +80,9 @@ namespace Twilio.Tests.TwiML
                 "url",
                 Stream.TrackEnum.InboundTrack,
                 "status_callback",
-                Stream.StatusCallbackMethodEnum.Get
+                Stream.StatusCallbackMethodEnum.Get,
+                "audio_format",
+                "sample_rate"
             );
 
             elem.Siprec(
@@ -121,7 +123,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Start>" + Environment.NewLine +
-                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
+                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" audioFormat=\"audio_format\" sampleRate=\"sample_rate\"></Stream>" + Environment.NewLine +
                 "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
                 "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>" + Environment.NewLine +
                 "  <Recording recordingStatusCallback=\"recording_status_callback\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" trim=\"trim-silence\" track=\"inbound\" channels=\"mono\" recordingConfigurationId=\"recording_configuration_id\"></Recording>" + Environment.NewLine +

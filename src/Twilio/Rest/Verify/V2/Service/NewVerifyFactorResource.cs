@@ -384,7 +384,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("config")]
         public object Config { get; private set; }
 
-        ///<summary> Custom metadata associated with the factor. </summary> 
+        ///<summary> Metadata associated with the factor. For `passkeys` factors, it contains the `aaguid` of the authenticator once the factor is verified, and `date_last_approved` (ISO 8601) once the factor has been used to approve a challenge. </summary> 
         [JsonProperty("metadata")]
         public object Metadata { get; private set; }
 
