@@ -214,21 +214,23 @@ namespace Twilio.Rest.Memory.V1
         ///<summary> A unique Name of the TraitGroup </summary> 
         public string PathTraitGroupName { get; }
 
+        
+        public TraitGroupResource.PatchTraitGroupRequest PatchTraitGroupRequest { get; }
+
         ///<summary> Allows for optimistic concurrency control by making the request conditional. Server will only act if the resource's current Entity Tag (ETag) matches the one provided, preventing accidental overwrites. </summary> 
         public string IfMatch { get; set; }
-
-        
-        public TraitGroupResource.PatchTraitGroupRequest PatchTraitGroupRequest { get; set; }
 
 
 
         /// <summary> Construct a new PatchTraitGroupOptions </summary>
         /// <param name="pathStoreId"> A unique Memory Store ID using Twilio Type ID (TTID) format </param>
         /// <param name="pathTraitGroupName"> A unique Name of the TraitGroup </param>
-        public PatchTraitGroupOptions(string pathStoreId, string pathTraitGroupName)
+        /// <param name="patchTraitGroupRequest">  </param>
+        public PatchTraitGroupOptions(string pathStoreId, string pathTraitGroupName, TraitGroupResource.PatchTraitGroupRequest patchTraitGroupRequest)
         {
             PathStoreId = pathStoreId;
             PathTraitGroupName = pathTraitGroupName;
+            PatchTraitGroupRequest = patchTraitGroupRequest;
         }
 
         

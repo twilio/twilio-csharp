@@ -64,14 +64,27 @@ namespace Twilio.TwiML.Voice
         /// <param name="track"> Track to be streamed to remote service </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        /// <param name="audioFormat"> Required Audio Format </param>
+        /// <param name="sampleRate"> Sample Rate for HD Codec </param>
         public Start Stream(string name = null,
                             string connectorName = null,
                             string url = null,
                             Stream.TrackEnum track = null,
                             string statusCallback = null,
-                            Stream.StatusCallbackMethodEnum statusCallbackMethod = null)
+                            Stream.StatusCallbackMethodEnum statusCallbackMethod = null,
+                            string audioFormat = null,
+                            string sampleRate = null)
         {
-            var newChild = new Stream(name, connectorName, url, track, statusCallback, statusCallbackMethod);
+            var newChild = new Stream(
+                name,
+                connectorName,
+                url,
+                track,
+                statusCallback,
+                statusCallbackMethod,
+                audioFormat,
+                sampleRate
+            );
             this.Append(newChild);
             return this;
         }

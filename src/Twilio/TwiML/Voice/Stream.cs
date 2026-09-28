@@ -69,6 +69,14 @@ namespace Twilio.TwiML.Voice
         /// Status Callback URL method
         /// </summary>
         public Stream.StatusCallbackMethodEnum StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Required Audio Format
+        /// </summary>
+        public string AudioFormat { get; set; }
+        /// <summary>
+        /// Sample Rate for HD Codec
+        /// </summary>
+        public string SampleRate { get; set; }
 
         /// <summary>
         /// Create a new Stream
@@ -79,12 +87,16 @@ namespace Twilio.TwiML.Voice
         /// <param name="track"> Track to be streamed to remote service </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        /// <param name="audioFormat"> Required Audio Format </param>
+        /// <param name="sampleRate"> Sample Rate for HD Codec </param>
         public Stream(string name = null,
                       string connectorName = null,
                       string url = null,
                       Stream.TrackEnum track = null,
                       string statusCallback = null,
-                      Stream.StatusCallbackMethodEnum statusCallbackMethod = null) : base("Stream")
+                      Stream.StatusCallbackMethodEnum statusCallbackMethod = null,
+                      string audioFormat = null,
+                      string sampleRate = null) : base("Stream")
         {
             this.Name = name;
             this.ConnectorName = connectorName;
@@ -92,6 +104,8 @@ namespace Twilio.TwiML.Voice
             this.Track = track;
             this.StatusCallback = statusCallback;
             this.StatusCallbackMethod = statusCallbackMethod;
+            this.AudioFormat = audioFormat;
+            this.SampleRate = sampleRate;
         }
 
         /// <summary>
@@ -123,6 +137,14 @@ namespace Twilio.TwiML.Voice
             if (this.StatusCallbackMethod != null)
             {
                 attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
+            }
+            if (this.AudioFormat != null)
+            {
+                attributes.Add(new XAttribute("audioFormat", this.AudioFormat));
+            }
+            if (this.SampleRate != null)
+            {
+                attributes.Add(new XAttribute("sampleRate", this.SampleRate));
             }
             return attributes;
         }
