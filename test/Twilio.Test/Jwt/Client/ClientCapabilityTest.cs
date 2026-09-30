@@ -10,7 +10,9 @@ namespace Twilio.Tests.Jwt.Client
     public class ClientCapabilityTest
     {
         private static readonly string AccountSid = "AC123";
-        private static readonly string Secret = "superdupersecretsecret";
+        // HS256 signing requires a key of at least 256 bits (32 bytes); Microsoft.IdentityModel
+        // rejects anything shorter with IDX10720. Keep this at 32+ characters.
+        private static readonly string Secret = "superdupersecretsecretsuperdupersecret";
 
         [Test]
         public void TestEmptyToken()

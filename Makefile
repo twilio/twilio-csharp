@@ -2,6 +2,12 @@
 PROJECT_NAME ?= twilio_twilio-csharp
 SONAR_SOURCES ?= /d:sonar.exclusions=src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*
 
+# Twilio.Test is an OutputType=Exe NUnitLite host (see test/Twilio.Test/Program.cs) and
+# does not reference Microsoft.NET.Test.Sdk, so `dotnet test` finds no test project,
+# runs nothing and exits 0. Invoke the built test host directly instead.
+TEST_FRAMEWORK ?= net8.0
+TEST_HOST = test/Twilio.Test/bin/Release/$(TEST_FRAMEWORK)/Twilio.Test.dll
+
 clean:
 	dotnet clean
 
@@ -11,7 +17,7 @@ install:
 
 test:
 	dotnet build -c Release
-	dotnet test -c Release --filter TestCategory!="ClusterTest"
+	dotnet $(TEST_HOST) --where "cat != ClusterTest"
 
 test-docker:
 	docker build -t twilio/twilio-csharp .
