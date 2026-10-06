@@ -30,6 +30,42 @@ namespace Twilio.Rest.Numbers.V1
     public class SmsVerificationResource : Resource
     {
     
+        public class NumbersV1SmsVerificationRequest
+        {
+            [JsonProperty("to", NullValueHandling = NullValueHandling.Ignore)]
+            public string To {get; private set;}
+            [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
+            public string Locale {get; private set;}
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
+            public string FriendlyName {get; private set;}
+            public NumbersV1SmsVerificationRequest() { }
+            public class Builder
+            {
+                private NumbersV1SmsVerificationRequest _numbersV1SmsVerificationRequest = new NumbersV1SmsVerificationRequest();
+                public Builder()
+                {
+                }
+                public Builder WithTo(string to)
+                {
+                    _numbersV1SmsVerificationRequest.To= to;
+                    return this;
+                }
+                public Builder WithLocale(string locale)
+                {
+                    _numbersV1SmsVerificationRequest.Locale= locale;
+                    return this;
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _numbersV1SmsVerificationRequest.FriendlyName= friendlyName;
+                    return this;
+                }
+                public NumbersV1SmsVerificationRequest Build()
+                {
+                    return _numbersV1SmsVerificationRequest;
+                }
+            }
+        }
         public class NumbersV1SmsVerificationSendCodeAttempts
         {
             [JsonProperty("attemptSid", NullValueHandling = NullValueHandling.Ignore)]
@@ -73,8 +109,9 @@ namespace Twilio.Rest.Numbers.V1
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
-                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
-                postParams: options.GetParams(),
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
                 headerParams: null
             );
         }
@@ -104,23 +141,27 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         /// <summary> create </summary>
+        /// <param name="numbersV1SmsVerificationRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SmsVerification </returns>
         public static SmsVerificationResource Create(
+                                          SmsVerificationResource.NumbersV1SmsVerificationRequest numbersV1SmsVerificationRequest,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateSmsVerificationOptions(){  };
+            var options = new CreateSmsVerificationOptions(numbersV1SmsVerificationRequest){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> create </summary>
+        /// <param name="numbersV1SmsVerificationRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SmsVerification </returns>
         public static async System.Threading.Tasks.Task<SmsVerificationResource> CreateAsync(
+                                                                                  SmsVerificationResource.NumbersV1SmsVerificationRequest numbersV1SmsVerificationRequest,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateSmsVerificationOptions(){  };
+        var options = new CreateSmsVerificationOptions(numbersV1SmsVerificationRequest){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -145,17 +186,19 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         public static TwilioResponse<SmsVerificationResource> CreateWithHeaders(
+            SmsVerificationResource.NumbersV1SmsVerificationRequest numbersV1SmsVerificationRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateSmsVerificationOptions(){  };
+        var options = new CreateSmsVerificationOptions(numbersV1SmsVerificationRequest){  };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<SmsVerificationResource>> CreateWithHeadersAsync(
+            SmsVerificationResource.NumbersV1SmsVerificationRequest numbersV1SmsVerificationRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateSmsVerificationOptions(){  };
+        var options = new CreateSmsVerificationOptions(numbersV1SmsVerificationRequest){  };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

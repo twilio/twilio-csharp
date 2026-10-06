@@ -100,6 +100,36 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
     }
 
+    /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+    public class DeleteAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
+    {
+        
+        ///<summary> The SID of the AuthorizationDocument resource to delete. </summary> 
+        public string PathSid { get; }
+
+
+
+        /// <summary> Construct a new DeleteAuthorizationDocumentRequestOptions </summary>
+        /// <param name="pathSid"> The SID of the AuthorizationDocument resource to delete. </param>
+        public DeleteAuthorizationDocumentOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            return p;
+        }
+
+    
+
+    }
+
+
     /// <summary> Fetch a specific AuthorizationDocument. </summary>
     public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {

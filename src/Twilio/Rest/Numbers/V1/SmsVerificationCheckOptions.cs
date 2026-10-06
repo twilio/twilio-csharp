@@ -28,15 +28,28 @@ namespace Twilio.Rest.Numbers.V1
     public class CreateSmsVerificationCheckOptions : IOptions<SmsVerificationCheckResource>
     {
         
+        
+        public SmsVerificationCheckResource.NumbersV1SmsVerificationCheckRequest NumbersV1SmsVerificationCheckRequest { get; }
 
+
+        /// <summary> Construct a new CreateSmsVerificationCheckOptions </summary>
+        /// <param name="numbersV1SmsVerificationCheckRequest">  </param>
+        public CreateSmsVerificationCheckOptions(SmsVerificationCheckResource.NumbersV1SmsVerificationCheckRequest numbersV1SmsVerificationCheckRequest)
+        {
+            NumbersV1SmsVerificationCheckRequest = numbersV1SmsVerificationCheckRequest;
+        }
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
-            return p;
+            if (NumbersV1SmsVerificationCheckRequest != null)
+            {
+                body = SmsVerificationCheckResource.ToJson(NumbersV1SmsVerificationCheckRequest);
+            }
+            return body;
         }
 
         

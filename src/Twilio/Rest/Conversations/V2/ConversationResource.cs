@@ -404,6 +404,10 @@ public class ConversationCreateResource : Resource
         {
             [JsonProperty("intelligenceConfigurationIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> IntelligenceConfigurationIds {get; private set;}
+            [JsonProperty("traitExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> TraitExtractionStrategyIds {get; private set;}
+            [JsonProperty("observationExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> ObservationExtractionStrategyIds {get; private set;}
             [JsonProperty("workflows", NullValueHandling = NullValueHandling.Ignore)]
             public List<ConversationWorkflow> Workflows {get; private set;}
             public CreateConversationWithConfigRequestConfiguration() { }
@@ -416,6 +420,16 @@ public class ConversationCreateResource : Resource
                 public Builder WithIntelligenceConfigurationIds(List<string> intelligenceConfigurationIds)
                 {
                     _createConversationWithConfigRequestConfiguration.IntelligenceConfigurationIds= intelligenceConfigurationIds;
+                    return this;
+                }
+                public Builder WithTraitExtractionStrategyIds(List<string> traitExtractionStrategyIds)
+                {
+                    _createConversationWithConfigRequestConfiguration.TraitExtractionStrategyIds= traitExtractionStrategyIds;
+                    return this;
+                }
+                public Builder WithObservationExtractionStrategyIds(List<string> observationExtractionStrategyIds)
+                {
+                    _createConversationWithConfigRequestConfiguration.ObservationExtractionStrategyIds= observationExtractionStrategyIds;
                     return this;
                 }
                 public Builder WithWorkflows(List<ConversationWorkflow> workflows)
@@ -732,6 +746,10 @@ public class ConversationCreateResource : Resource
             public List<ConversationResource.ConversationsV2StatusCallbackConfig> StatusCallbacks {get; private set;}
             [JsonProperty("intelligenceConfigurationIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> IntelligenceConfigurationIds {get; private set;}
+            [JsonProperty("traitExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> TraitExtractionStrategyIds {get; private set;}
+            [JsonProperty("observationExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
+            public List<string> ObservationExtractionStrategyIds {get; private set;}
             [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool MemoryExtractionEnabled {get; private set;}
             [JsonProperty("conversationsV1Bridge", NullValueHandling = NullValueHandling.Ignore)]
@@ -776,6 +794,16 @@ public class ConversationCreateResource : Resource
                 public Builder WithIntelligenceConfigurationIds(List<string> intelligenceConfigurationIds)
                 {
                     _listConversationByAccount200ResponseConversationsConfiguration.IntelligenceConfigurationIds= intelligenceConfigurationIds;
+                    return this;
+                }
+                public Builder WithTraitExtractionStrategyIds(List<string> traitExtractionStrategyIds)
+                {
+                    _listConversationByAccount200ResponseConversationsConfiguration.TraitExtractionStrategyIds= traitExtractionStrategyIds;
+                    return this;
+                }
+                public Builder WithObservationExtractionStrategyIds(List<string> observationExtractionStrategyIds)
+                {
+                    _listConversationByAccount200ResponseConversationsConfiguration.ObservationExtractionStrategyIds= observationExtractionStrategyIds;
                     return this;
                 }
                 public Builder WithMemoryExtractionEnabled(bool memoryExtractionEnabled)
