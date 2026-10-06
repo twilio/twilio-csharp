@@ -766,6 +766,24 @@ namespace Twilio.Rest.Messaging.V2
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class PendingDisplayNameStatusEnum : StringEnum
+        {
+            private PendingDisplayNameStatusEnum(string value) : base(value) {}
+            public PendingDisplayNameStatusEnum() {}
+            public static implicit operator PendingDisplayNameStatusEnum(string value)
+            {
+                return new PendingDisplayNameStatusEnum(value);
+            }
+            public static readonly PendingDisplayNameStatusEnum PendingReview = new PendingDisplayNameStatusEnum("PENDING_REVIEW");
+            public static readonly PendingDisplayNameStatusEnum Approved = new PendingDisplayNameStatusEnum("APPROVED");
+            public static readonly PendingDisplayNameStatusEnum Declined = new PendingDisplayNameStatusEnum("DECLINED");
+            public static readonly PendingDisplayNameStatusEnum PinMismatch = new PendingDisplayNameStatusEnum("PIN_MISMATCH");
+            public static readonly PendingDisplayNameStatusEnum RegistrationFailed = new PendingDisplayNameStatusEnum("REGISTRATION_FAILED");
+            public static readonly PendingDisplayNameStatusEnum Expired = new PendingDisplayNameStatusEnum("EXPIRED");
+            public static readonly PendingDisplayNameStatusEnum Completed = new PendingDisplayNameStatusEnum("COMPLETED");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class MessagingV2RcsCarrierStatus : StringEnum
         {
             private MessagingV2RcsCarrierStatus(string value) : base(value) {}
@@ -808,6 +826,21 @@ namespace Twilio.Rest.Messaging.V2
             public static readonly UseCaseEnum Transactional = new UseCaseEnum("TRANSACTIONAL");
             public static readonly UseCaseEnum Otp = new UseCaseEnum("OTP");
             public static readonly UseCaseEnum MultiUse = new UseCaseEnum("MULTI_USE");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class DisplayNameStatusEnum : StringEnum
+        {
+            private DisplayNameStatusEnum(string value) : base(value) {}
+            public DisplayNameStatusEnum() {}
+            public static implicit operator DisplayNameStatusEnum(string value)
+            {
+                return new DisplayNameStatusEnum(value);
+            }
+            public static readonly DisplayNameStatusEnum Updating = new DisplayNameStatusEnum("updating");
+            public static readonly DisplayNameStatusEnum NoChange = new DisplayNameStatusEnum("no_change");
+            public static readonly DisplayNameStatusEnum PendingReview = new DisplayNameStatusEnum("pending_review");
+            public static readonly DisplayNameStatusEnum Error = new DisplayNameStatusEnum("error");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -1470,6 +1503,18 @@ namespace Twilio.Rest.Messaging.V2
         [JsonProperty("profile")]
         public MessagingV2ChannelsSenderProfileGenericResponse Profile { get; private set; }
 
+        ///<summary> WhatsApp only. The display name the most recent change applies to — awaiting Meta review, approved by Meta and awaiting re-registration, or, once `pending_display_name_status` is `COMPLETED`, the name now in effect (identical to `name`). Absent when no display name change has been made, and once a completed change stops being reported.  </summary> 
+        [JsonProperty("pending_display_name")]
+        public string PendingDisplayName { get; private set; }
+
+        ///<summary> WhatsApp only. The status of the most recent display name change. `PENDING_REVIEW`, `APPROVED` and `DECLINED` are reported by Meta. `PIN_MISMATCH` and `REGISTRATION_FAILED` mean Meta approved the name but it could not be applied; `EXPIRED` means Meta's 14-day window to apply an approved name elapsed. In all three cases, re-submit the same `profile.name` to retry. `COMPLETED` means the name was approved and applied — `name` now returns it. A `COMPLETED` change is reported for 14 days after it completes and is absent afterwards, so treat its presence as \"recently completed\" rather than a permanent flag; use `pending_display_name_status_date` to tell how recent. Absent when no display name change has been made.  </summary> 
+        [JsonProperty("pending_display_name_status")]
+        public ChannelsSenderResource.PendingDisplayNameStatusEnum PendingDisplayNameStatus { get; private set; }
+
+        ///<summary> WhatsApp only. The date and time in UTC when `pending_display_name_status` last changed, specified in ISO 8601 format. Absent whenever `pending_display_name_status` is absent, so the three `pending_display_name*` fields are always present or absent together.  </summary> 
+        [JsonProperty("pending_display_name_status_date")]
+        public DateTime? PendingDisplayNameStatusDate { get; private set; }
+
         ///<summary> The properties </summary> 
         [JsonProperty("properties")]
         public MessagingV2ChannelsSenderProperties Properties { get; private set; }
@@ -1485,6 +1530,10 @@ namespace Twilio.Rest.Messaging.V2
         ///<summary> The URL of the resource. </summary> 
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+
+        ///<summary> WhatsApp only. The outcome of the display name operation in this request. Present only when the request included `profile.name`. `updating` — accepted; either submitted to Meta for review, or, when Meta had already approved this exact name, routed straight to re-registration. `no_change` — the name already matches the sender's active display name; nothing was submitted to Meta. `pending_review` — the same name is already under review at Meta; the existing request continues unchanged. `error` — the display name could not be processed, while other profile fields in the same request were still applied. Returned with a 202 and carries no error code or message. This covers every failure mode, including the case where Meta accepted the name but tracking could not be started — poll `pending_display_name_status` to establish the real state rather than assuming the name was rejected. When `profile.name` is the only field in the request, the failure is returned as an error response with a specific code instead of this status.  </summary> 
+        [JsonProperty("display_name_status")]
+        public ChannelsSenderResource.DisplayNameStatusEnum DisplayNameStatus { get; private set; }
 
 
 

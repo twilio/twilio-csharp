@@ -379,6 +379,8 @@ public class CommunicationCreateResource : Resource
             public List<CreateCommunicationInConversationRequestRecipients> Recipients {get; private set;}
             [JsonProperty("channelId", NullValueHandling = NullValueHandling.Ignore)]
             public string ChannelId {get; private set;}
+            [JsonProperty("resourceId", NullValueHandling = NullValueHandling.Ignore)]
+            public string ResourceId {get; private set;}
             [JsonProperty("occurredAt", NullValueHandling = NullValueHandling.Ignore)]
             public DateTime? OccurredAt {get; private set;}
             public CreateCommunicationInConversationRequest() { }
@@ -406,6 +408,11 @@ public class CommunicationCreateResource : Resource
                 public Builder WithChannelId(string channelId)
                 {
                     _createCommunicationInConversationRequest.ChannelId= channelId;
+                    return this;
+                }
+                public Builder WithResourceId(string resourceId)
+                {
+                    _createCommunicationInConversationRequest.ResourceId= resourceId;
                     return this;
                 }
                 public Builder WithOccurredAt(DateTime? occurredAt)

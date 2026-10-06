@@ -179,7 +179,7 @@ namespace Twilio.Rest.Memory.V1
         ///<summary> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </summary> 
         public ObservationResource.OrderByEnum OrderBy { get; set; }
 
-        ///<summary> Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+        ///<summary> Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
         public string Source { get; set; }
 
         ///<summary> Filter observations created after this timestamp (inclusive). </summary> 

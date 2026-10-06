@@ -48,7 +48,7 @@ namespace Twilio.Rest.Memory.V1
             [JsonProperty("occurredAt")]
                 public DateTime? OccurredAt { get; private set; }
 
-            ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+            ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
             [JsonProperty("source")]
                 public string Source { get; private set; }
 

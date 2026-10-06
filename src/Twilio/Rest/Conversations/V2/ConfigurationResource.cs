@@ -116,6 +116,14 @@ public class ConfigurationCreateResource : Resource
         [JsonProperty("intelligenceConfigurationIds")]
             public List<string> IntelligenceConfigurationIds { get; private set; }
 
+        ///<summary> A list of Trait Extraction Strategy IDs. </summary> 
+        [JsonProperty("traitExtractionStrategyIds")]
+            public List<string> TraitExtractionStrategyIds { get; private set; }
+
+        ///<summary> A list of Observation Extraction Strategy IDs. </summary> 
+        [JsonProperty("observationExtractionStrategyIds")]
+            public List<string> ObservationExtractionStrategyIds { get; private set; }
+
         ///<summary> Whether memory extraction is enabled for conversations under this configuration. Defaults to false. </summary> 
         [JsonProperty("memoryExtractionEnabled")]
             public bool? MemoryExtractionEnabled { get; private set; }
@@ -187,6 +195,14 @@ public class ConfigurationCreateResource : Resource
             ///<summary> A list of Conversational Intelligence configuration IDs. </summary> 
             [JsonProperty("intelligenceConfigurationIds")]
                 public List<string> IntelligenceConfigurationIds { get; private set; }
+
+            ///<summary> A list of Trait Extraction Strategy IDs. </summary> 
+            [JsonProperty("traitExtractionStrategyIds")]
+                public List<string> TraitExtractionStrategyIds { get; private set; }
+
+            ///<summary> A list of Observation Extraction Strategy IDs. </summary> 
+            [JsonProperty("observationExtractionStrategyIds")]
+                public List<string> ObservationExtractionStrategyIds { get; private set; }
 
             ///<summary> Whether memory extraction is enabled for conversations under this configuration. Defaults to false. </summary> 
             [JsonProperty("memoryExtractionEnabled")]
