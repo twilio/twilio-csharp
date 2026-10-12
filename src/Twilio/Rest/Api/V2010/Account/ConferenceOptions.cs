@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///<summary> The string that identifies the Conference resources to read. </summary> 
         public string FriendlyName { get; set; }
 
-        ///<summary> The status of the resources to read. Can be: `init`, `in-progress`, or `completed`. </summary> 
+        ///<summary> The status of the resources to read. Can be: `init`, `in-progress`, or `completed`. Starting from September 30th, 2026, the default is `in-progress`. To read completed conferences, set `Status` to `completed`. </summary> 
         public ConferenceResource.StatusEnum Status { get; set; }
 
 

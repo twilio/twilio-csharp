@@ -22,7 +22,7 @@ using Twilio.Constant;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-
+using Twilio.Types;
 
 
 namespace Twilio.Rest.Numbers.V1
@@ -30,8 +30,97 @@ namespace Twilio.Rest.Numbers.V1
     public class VoiceVerificationResource : Resource
     {
     
+        public class NumbersV1VoiceVerificationRequest
+        {
+            [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Ignore)]
+            public string PhoneNumber {get; private set;}
+            [JsonProperty("friendly_name", NullValueHandling = NullValueHandling.Ignore)]
+            public string FriendlyName {get; private set;}
+            [JsonProperty("custom_code", NullValueHandling = NullValueHandling.Ignore)]
+            public string CustomCode {get; private set;}
+            [JsonProperty("call_delay", NullValueHandling = NullValueHandling.Ignore)]
+            public string CallDelay {get; private set;}
+            [JsonProperty("status_callback", NullValueHandling = NullValueHandling.Ignore)]
+            public Uri StatusCallback {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("status_callback_method", NullValueHandling = NullValueHandling.Ignore)]
+            public VoiceVerificationResource.StatusCallbackMethodEnum StatusCallbackMethod {get; private set;}
+            [JsonProperty("extension", NullValueHandling = NullValueHandling.Ignore)]
+            public string Extension {get; private set;}
+            [JsonProperty("custom_success_message", NullValueHandling = NullValueHandling.Ignore)]
+            public string CustomSuccessMessage {get; private set;}
+            public NumbersV1VoiceVerificationRequest() { }
+            public class Builder
+            {
+                private NumbersV1VoiceVerificationRequest _numbersV1VoiceVerificationRequest = new NumbersV1VoiceVerificationRequest();
+                public Builder()
+                {
+                }
+                public Builder WithPhoneNumber(string phoneNumber)
+                {
+                    _numbersV1VoiceVerificationRequest.PhoneNumber= phoneNumber;
+                    return this;
+                }
+                public Builder WithFriendlyName(string friendlyName)
+                {
+                    _numbersV1VoiceVerificationRequest.FriendlyName= friendlyName;
+                    return this;
+                }
+                public Builder WithCustomCode(string customCode)
+                {
+                    _numbersV1VoiceVerificationRequest.CustomCode= customCode;
+                    return this;
+                }
+                public Builder WithCallDelay(string callDelay)
+                {
+                    _numbersV1VoiceVerificationRequest.CallDelay= callDelay;
+                    return this;
+                }
+                public Builder WithStatusCallback(Uri statusCallback)
+                {
+                    _numbersV1VoiceVerificationRequest.StatusCallback= statusCallback;
+                    return this;
+                }
+                public Builder WithStatusCallbackMethod(VoiceVerificationResource.StatusCallbackMethodEnum statusCallbackMethod)
+                {
+                    _numbersV1VoiceVerificationRequest.StatusCallbackMethod= statusCallbackMethod;
+                    return this;
+                }
+                public Builder WithExtension(string extension)
+                {
+                    _numbersV1VoiceVerificationRequest.Extension= extension;
+                    return this;
+                }
+                public Builder WithCustomSuccessMessage(string customSuccessMessage)
+                {
+                    _numbersV1VoiceVerificationRequest.CustomSuccessMessage= customSuccessMessage;
+                    return this;
+                }
+                public NumbersV1VoiceVerificationRequest Build()
+                {
+                    return _numbersV1VoiceVerificationRequest;
+                }
+            }
+        }
 
     
+        [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class StatusCallbackMethodEnum : StringEnum
+        {
+            private StatusCallbackMethodEnum(string value) : base(value) {}
+            public StatusCallbackMethodEnum() {}
+            public static implicit operator StatusCallbackMethodEnum(string value)
+            {
+                return new StatusCallbackMethodEnum(value);
+            }
+            public static readonly StatusCallbackMethodEnum Head = new StatusCallbackMethodEnum("HEAD");
+            public static readonly StatusCallbackMethodEnum Get = new StatusCallbackMethodEnum("GET");
+            public static readonly StatusCallbackMethodEnum Post = new StatusCallbackMethodEnum("POST");
+            public static readonly StatusCallbackMethodEnum Patch = new StatusCallbackMethodEnum("PATCH");
+            public static readonly StatusCallbackMethodEnum Put = new StatusCallbackMethodEnum("PUT");
+            public static readonly StatusCallbackMethodEnum Delete = new StatusCallbackMethodEnum("DELETE");
+
+        }
 
         
         private static Request BuildCreateRequest(CreateVoiceVerificationOptions options, ITwilioRestClient client)
@@ -44,8 +133,9 @@ namespace Twilio.Rest.Numbers.V1
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 path,
-                contentType: EnumConstants.ContentTypeEnum.FORM_URLENCODED,
-                postParams: options.GetParams(),
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
                 headerParams: null
             );
         }
@@ -75,23 +165,27 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         /// <summary> create </summary>
+        /// <param name="numbersV1VoiceVerificationRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VoiceVerification </returns>
         public static VoiceVerificationResource Create(
+                                          VoiceVerificationResource.NumbersV1VoiceVerificationRequest numbersV1VoiceVerificationRequest,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateVoiceVerificationOptions(){  };
+            var options = new CreateVoiceVerificationOptions(numbersV1VoiceVerificationRequest){  };
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary> create </summary>
+        /// <param name="numbersV1VoiceVerificationRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VoiceVerification </returns>
         public static async System.Threading.Tasks.Task<VoiceVerificationResource> CreateAsync(
+                                                                                  VoiceVerificationResource.NumbersV1VoiceVerificationRequest numbersV1VoiceVerificationRequest,
                                                                                     ITwilioRestClient client = null)
         {
-        var options = new CreateVoiceVerificationOptions(){  };
+        var options = new CreateVoiceVerificationOptions(numbersV1VoiceVerificationRequest){  };
             return await CreateAsync(options, client);
         }
         #endif
@@ -116,17 +210,19 @@ namespace Twilio.Rest.Numbers.V1
         #endif
 
         public static TwilioResponse<VoiceVerificationResource> CreateWithHeaders(
+            VoiceVerificationResource.NumbersV1VoiceVerificationRequest numbersV1VoiceVerificationRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateVoiceVerificationOptions(){  };
+        var options = new CreateVoiceVerificationOptions(numbersV1VoiceVerificationRequest){  };
         return CreateWithHeaders(options, client);
         }
 
         #if !NET35
         public static async System.Threading.Tasks.Task<TwilioResponse<VoiceVerificationResource>> CreateWithHeadersAsync(
+            VoiceVerificationResource.NumbersV1VoiceVerificationRequest numbersV1VoiceVerificationRequest,
         ITwilioRestClient client = null)
         {
-        var options = new CreateVoiceVerificationOptions(){  };
+        var options = new CreateVoiceVerificationOptions(numbersV1VoiceVerificationRequest){  };
         return await CreateWithHeadersAsync(options, client);
         }
         #endif

@@ -104,7 +104,7 @@ public class ObservationCreateResource : Resource
         [JsonProperty("occurredAt")]
             public DateTime? OccurredAt { get; private set; }
 
-        ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+        ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
         [JsonProperty("source")]
             public string Source { get; private set; }
 
@@ -152,7 +152,7 @@ public class ObservationCreateResource : Resource
             [JsonProperty("occurredAt")]
                 public DateTime? OccurredAt { get; private set; }
 
-            ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+            ///<summary> The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
             [JsonProperty("source")]
                 public string Source { get; private set; }
 
@@ -760,7 +760,7 @@ public class ObservationCreateResource : Resource
         /// <param name="acceptEncoding"> Compression algorithms supported by the client (e.g., gzip, deflate, br) </param>
         /// <param name="pageSize"> The maximum number of items to return per page, maximum of 1000. </param>
         /// <param name="orderBy"> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </param>
-        /// <param name="source"> Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </param>
+        /// <param name="source"> Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </param>
         /// <param name="createdAfter"> Filter observations created after this timestamp (inclusive). </param>
         /// <param name="createdBefore"> Filter observations created before this timestamp (exclusive). </param>
         /// <param name="conversationId"> Filter by conversation ID. Returns only items associated with the specified conversation. </param>
@@ -791,7 +791,7 @@ public class ObservationCreateResource : Resource
         /// <param name="acceptEncoding"> Compression algorithms supported by the client (e.g., gzip, deflate, br) </param>
         /// <param name="pageSize"> The maximum number of items to return per page, maximum of 1000. </param>
         /// <param name="orderBy"> Either 'ASC' or 'DESC' to sort results ascending or descending respectively. </param>
-        /// <param name="source"> Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </param>
+        /// <param name="source"> Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </param>
         /// <param name="createdAfter"> Filter observations created after this timestamp (inclusive). </param>
         /// <param name="createdBefore"> Filter observations created before this timestamp (exclusive). </param>
         /// <param name="conversationId"> Filter by conversation ID. Returns only items associated with the specified conversation. </param>

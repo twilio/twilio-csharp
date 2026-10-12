@@ -534,7 +534,7 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("sip_edge")]
         public object SipEdge { get; private set; }
 
-        ///<summary> Tags applied to calls by Voice Insights analysis indicating a condition that could result in subjective degradation of the call quality. </summary> 
+        ///<summary> [Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags) that Voice Insights analysis applies to calls. They indicate a condition that may influence the subjective experience of call audio quality. </summary> 
         [JsonProperty("tags")]
         public List<string> Tags { get; private set; }
 

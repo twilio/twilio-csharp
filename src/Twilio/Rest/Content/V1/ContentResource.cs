@@ -844,7 +844,7 @@ namespace Twilio.Rest.Content.V1
             public string Id {get; private set;}
             [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
             public string Title {get; private set;}
-            [JsonProperty("timeSlots", NullValueHandling = NullValueHandling.Ignore)]
+            [JsonProperty("time_slots", NullValueHandling = NullValueHandling.Ignore)]
             public string TimeSlots {get; private set;}
             public TwilioSchedule() { }
             public class Builder

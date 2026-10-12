@@ -33,7 +33,7 @@ public class ActionCreateResource : Resource
         [JsonProperty("id")]
             public string Id { get; private set;}
 
-        ///<summary> The type of action. Accepted values: SEND_MESSAGE. </summary> 
+        ///<summary> The type of action: action-send-message or action-start-flow. </summary> 
         [JsonProperty("type")]
             public string Type { get; private set;}
 
@@ -49,7 +49,7 @@ public class ActionCreateResource : Resource
         [JsonProperty("createdAt")]
             public DateTime? CreatedAt { get; private set;}
 
-        ///<summary> Named identifiers from downstream. For SEND_MESSAGE: - messageSid: The downstream message SID (present when PENDING or COMPLETED) - communicationId: The Communication ID (present when COMPLETED)  </summary> 
+        ///<summary> Named identifiers from downstream. For SEND_MESSAGE: - messageSid: The downstream message SID (present when PENDING or COMPLETED) - communicationId: The Communication ID (present when COMPLETED) For START_FLOW: - executionSid: The Studio Flow execution SID (present when COMPLETED)  </summary> 
         [JsonProperty("related")]
             public Dictionary<string, string> Related { get; private set; }
 
@@ -60,6 +60,10 @@ public class ActionCreateResource : Resource
         ///<summary> Timestamp when the action reached a terminal status. </summary> 
         [JsonProperty("completedAt")]
             public DateTime? CompletedAt { get; private set; }
+
+        ///<summary> Human-readable failure reason. Null unless status is FAILED. </summary> 
+        [JsonProperty("failureReason")]
+            public string FailureReason { get; private set; }
 
     public static ActionCreateResource FromJson(string json) {
         try {
@@ -84,7 +88,7 @@ public class ActionCreateResource : Resource
         [JsonProperty("id")]
             public string Id { get; private set;}
 
-        ///<summary> The type of action. Accepted values: SEND_MESSAGE. </summary> 
+        ///<summary> The type of action: action-send-message or action-start-flow. </summary> 
         [JsonProperty("type")]
             public string Type { get; private set;}
 
@@ -100,7 +104,7 @@ public class ActionCreateResource : Resource
         [JsonProperty("createdAt")]
             public DateTime? CreatedAt { get; private set;}
 
-        ///<summary> Named identifiers from downstream. For SEND_MESSAGE: - messageSid: The downstream message SID (present when PENDING or COMPLETED) - communicationId: The Communication ID (present when COMPLETED)  </summary> 
+        ///<summary> Named identifiers from downstream. For SEND_MESSAGE: - messageSid: The downstream message SID (present when PENDING or COMPLETED) - communicationId: The Communication ID (present when COMPLETED) For START_FLOW: - executionSid: The Studio Flow execution SID (present when COMPLETED)  </summary> 
         [JsonProperty("related")]
             public Dictionary<string, string> Related { get; private set; }
 
@@ -111,6 +115,10 @@ public class ActionCreateResource : Resource
         ///<summary> Timestamp when the action reached a terminal status. </summary> 
         [JsonProperty("completedAt")]
             public DateTime? CompletedAt { get; private set; }
+
+        ///<summary> Human-readable failure reason. Null unless status is FAILED. </summary> 
+        [JsonProperty("failureReason")]
+            public string FailureReason { get; private set; }
 
 
     public static ActionFetchResource FromJson(string json) {
