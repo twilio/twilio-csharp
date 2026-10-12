@@ -108,7 +108,7 @@ public class ConversationSummaryCreateResource : Resource
         [JsonProperty("updatedAt")]
             public DateTime? UpdatedAt { get; private set;}
 
-        ///<summary> The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+        ///<summary> The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
         [JsonProperty("source")]
             public string Source { get; private set; }
 
@@ -156,7 +156,7 @@ public class ConversationSummaryCreateResource : Resource
             [JsonProperty("updatedAt")]
                 public DateTime? UpdatedAt { get; private set;}
 
-            ///<summary> The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters. </summary> 
+            ///<summary> The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes. </summary> 
             [JsonProperty("source")]
                 public string Source { get; private set; }
 

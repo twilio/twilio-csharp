@@ -84,11 +84,11 @@ namespace Twilio.Rest.Knowledge.V2
     
         public class OperationResultResourceId
         {
+            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+            public string Id {get; private set;}
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
             public OperationResource.TypeEnum Type {get; private set;}
-            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-            public string Id {get; private set;}
             public OperationResultResourceId() { }
             public class Builder
             {
@@ -96,14 +96,14 @@ namespace Twilio.Rest.Knowledge.V2
                 public Builder()
                 {
                 }
-                public Builder WithType(OperationResource.TypeEnum type)
-                {
-                    _operationResultResourceId.Type= type;
-                    return this;
-                }
                 public Builder WithId(string id)
                 {
                     _operationResultResourceId.Id= id;
+                    return this;
+                }
+                public Builder WithType(OperationResource.TypeEnum type)
+                {
+                    _operationResultResourceId.Type= type;
                     return this;
                 }
                 public OperationResultResourceId Build()

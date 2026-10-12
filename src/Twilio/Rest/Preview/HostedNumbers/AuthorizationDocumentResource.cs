@@ -183,6 +183,111 @@ namespace Twilio.Rest.Preview.HostedNumbers
         }
         #endif
         
+        /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+        /// <param name="options"> Delete AuthorizationDocument parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizationDocument </returns>
+        private static Request BuildDeleteRequest(DeleteAuthorizationDocumentOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/HostedNumbers/AuthorizationDocuments/{Sid}";
+
+            string PathSid = options.PathSid;
+            path = path.Replace("{"+"Sid"+"}", PathSid);
+
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+        /// <param name="options"> Delete AuthorizationDocument parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizationDocument </returns>
+        public static bool Delete(DeleteAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+           
+        }
+
+        #if !NET35
+        /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+        /// <param name="options"> Delete AuthorizationDocument parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAuthorizationDocumentOptions options,
+                                                                        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+        
+          return (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+        }
+        #endif
+
+        /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+        /// <param name="pathSid"> The SID of the AuthorizationDocument resource to delete. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizationDocument </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAuthorizationDocumentOptions(pathSid)     ;
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Delete the AuthorizationDocument and remove any associations with HostedNumberOrders. </summary>
+        /// <param name="pathSid"> The SID of the AuthorizationDocument resource to delete. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAuthorizationDocumentOptions(pathSid) ;
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(DeleteAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(DeleteAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+        
+          var success = (int)response.StatusCode >= 200 && (int)response.StatusCode < 400; 
+            return new TwilioResponse<bool>(success, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<bool> DeleteWithHeaders(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAuthorizationDocumentOptions(pathSid)     ;
+            return DeleteWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<bool>> DeleteWithHeadersAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAuthorizationDocumentOptions(pathSid) ;
+            return await DeleteWithHeadersAsync(options, client);
+        }
+        #endif
+        
         private static Request BuildFetchRequest(FetchAuthorizationDocumentOptions options, ITwilioRestClient client)
         {
             

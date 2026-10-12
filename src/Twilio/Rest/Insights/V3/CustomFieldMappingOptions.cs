@@ -24,7 +24,7 @@ using Twilio.Converters;
 namespace Twilio.Rest.Insights.V3
 {
 
-    /// <summary> Registers a custom field for an account under a category, sourced from an upstream entity — selected via the `entityMetadata.sourceType` discriminator, which determines the required shape of `entityMetadata`. Only the `MEASURE` category is supported for now.  For sources with a resolvable field-path concept, validates that `entityMetadata.field` resolves on the entity's latest active version by calling that source's own resolution API (the Intelligence fetch-operator API for `sourceType: INTELLIGENCE_OPERATOR`), then performs an idempotent upsert keyed on (accountSid, category, name). `entityMetadata.sourceType` plus that variant's own identity field (`operatorId` for `INTELLIGENCE_OPERATOR`) must match the existing registration's owner for the upsert to succeed — a mismatch returns `409`. Enforces the per-account, per-category capacity limit.  </summary>
+    /// <summary> Registers a custom field for the account. `entityMetadata.sourceType` selects where the field's value comes from, and the matching property on `entityMetadata` (`intelligenceOperator` for `INTELLIGENCE_OPERATOR`) carries its details. Only the `MEASURE` category is supported for now.  The request is validated before the mapping is created: - `name` contains only letters, digits and `_`, and is not already   registered for the account (otherwise `409`); - `description`, when present, is at most 150 characters; - for `INTELLIGENCE_OPERATOR`, the operator has an active version with   `outputFormat` `JSON`, and `entityMetadata.intelligenceOperator.field`   is one or two `.`-separated segments that resolve to a `number` or   `integer` property in that version's output schema (otherwise `400`); - the account has a free slot in the category; by default an account can   register up to 3 custom measures (otherwise `403`). Use   `GET /v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity`   to check the remaining slots.  Create-only: if a mapping with the same `name` already exists for the account, `409` is returned with the existing mapping's `id` and nothing is changed. To modify an existing mapping, use `PATCH /v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}`.  </summary>
     public class CreateCustomFieldMappingOptions : IOptions<CustomFieldMappingCreateResource>
     {
         
@@ -56,12 +56,21 @@ namespace Twilio.Rest.Insights.V3
 
     }
 
-    /// <summary> Returns custom field mappings registered for the account.  </summary>
+    /// <summary> Returns a single custom field mapping by its `mappingId`. The `ETag` response header identifies the mapping's current version; supply it as `If-Match` on `PATCH` to guard against concurrent updates.  </summary>
     public class FetchCustomFieldMappingOptions : IOptions<CustomFieldMappingFetchResource>
     {
     
+        ///<summary> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </summary> 
+        public string PathMappingId { get; }
 
 
+
+        /// <summary> Construct a new FetchCustomFieldMappingOptions </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
+        public FetchCustomFieldMappingOptions(string pathMappingId)
+        {
+            PathMappingId = pathMappingId;
+        }
 
         
         /// <summary> Generate the necessary parameters </summary>
@@ -73,6 +82,82 @@ namespace Twilio.Rest.Insights.V3
         }
 
     
+
+    }
+
+
+    /// <summary> Returns the custom field mappings registered for the account, one page at a time. Use `pageSize` to limit the number of mappings returned, and pass `meta.nextToken` from a response as `pageToken` to fetch the next page. On the last page, `meta.nextToken` is `null`.  </summary>
+    public class ReadCustomFieldMappingOptions : ReadOptions<CustomFieldMappingReadResource>
+    {
+    
+
+
+
+        
+        /// <summary> Generate the necessary parameters </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("pageSize", PageSize.ToString()));
+            }
+            return p;
+        }
+
+    
+
+    }
+
+    /// <summary> Partially updates an existing custom field mapping. Only the properties present in the body are changed. The updatable properties depend on the mapping's `sourceType`; for `INTELLIGENCE_OPERATOR`, only `entityMetadata.intelligenceOperator.field` can be updated today.  The new `field` is validated the same way as at registration: it must be one or two `.`-separated segments of letters, digits and `_`, and resolve to a `number` or `integer` property in the output schema of the operator's latest active version.  The mapping's `id`, `name`, `category`, `createdAt` and owning entity never change. Sending a `field` value equal to the current one is a no-op that returns `200` without modifying the mapping, so the operation is idempotent. Supply `If-Match` with the `ETag` returned by `GET`, `POST` or a previous `PATCH` to guard against concurrent updates.  Values already ingested are not recomputed; results processed after the update use the new `field`.  </summary>
+    public class PatchCustomFieldMappingOptions : IOptions<CustomFieldMappingResource>
+    {
+    
+        ///<summary> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </summary> 
+        public string PathMappingId { get; }
+
+        
+        public CustomFieldMappingResource.CustomFieldMappingUpdateRequest CustomFieldMappingUpdateRequest { get; }
+
+        ///<summary> ETag of the custom field mapping, as returned in the `ETag` response header. When supplied, the update is applied only if the mapping has not changed since that ETag was issued; otherwise `412` is returned.  </summary> 
+        public string IfMatch { get; set; }
+
+
+
+        /// <summary> Construct a new PatchCustomFieldMappingOptions </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
+        /// <param name="customFieldMappingUpdateRequest">  </param>
+        public PatchCustomFieldMappingOptions(string pathMappingId, CustomFieldMappingResource.CustomFieldMappingUpdateRequest customFieldMappingUpdateRequest)
+        {
+            PathMappingId = pathMappingId;
+            CustomFieldMappingUpdateRequest = customFieldMappingUpdateRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (CustomFieldMappingUpdateRequest != null)
+            {
+                body = CustomFieldMappingResource.ToJson(CustomFieldMappingUpdateRequest);
+            }
+            return body;
+        }
+
+        
+    /// <summary> Generate the necessary header parameters </summary>
+    public List<KeyValuePair<string, string>> GetHeaderParams()
+    {
+        var p = new List<KeyValuePair<string, string>>();
+        if (IfMatch != null)
+        {
+            p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+        }
+        return p;
+    }
 
     }
 

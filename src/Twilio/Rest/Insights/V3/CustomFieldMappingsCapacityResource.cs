@@ -26,16 +26,16 @@ using Twilio.Http;
 
 namespace Twilio.Rest.Insights.V3
 {
-            public class CapacityFetchResource : Resource
+            public class CustomFieldMappingsCapacityFetchResource : Resource
 {
         ///<summary> The measure </summary> 
         [JsonProperty("measure")]
-            public CapacityResource.CategoryCapacity Measure { get; private set; }
+            public CustomFieldMappingsCapacityResource.CategoryCapacity Measure { get; private set; }
 
 
-    public static CapacityFetchResource FromJson(string json) {
+    public static CustomFieldMappingsCapacityFetchResource FromJson(string json) {
         try {
-            return JsonConvert.DeserializeObject<CapacityFetchResource>(json);
+            return JsonConvert.DeserializeObject<CustomFieldMappingsCapacityFetchResource>(json);
         }
         catch (JsonException e) {
             throw new ApiException(e.Message, e);
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Insights.V3
     }
 }
 
-    public class CapacityResource : Resource
+    public class CustomFieldMappingsCapacityResource : Resource
     {
     
         public class CategoryCapacity
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Insights.V3
     
 
             
-        private static Request BuildFetchRequest(FetchCapacityOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchCustomFieldMappingsCapacityOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappings/Capacity";
+            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity";
 
 
             return new Request(
@@ -103,77 +103,77 @@ namespace Twilio.Rest.Insights.V3
         }
 
         /// <summary> Returns the account's custom measure slot capacity — slots consumed and remaining. Only the `measure` category is supported for now.  </summary>
-        /// <param name="options"> Fetch Capacity parameters </param>
+        /// <param name="options"> Fetch CustomFieldMappingsCapacity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Capacity </returns>
-        public static CapacityFetchResource Fetch(FetchCapacityOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of CustomFieldMappingsCapacity </returns>
+        public static CustomFieldMappingsCapacityFetchResource Fetch(FetchCustomFieldMappingsCapacityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
-            return CapacityFetchResource.FromJson(response.Content);
+            return CustomFieldMappingsCapacityFetchResource.FromJson(response.Content);
         }
 
         #if !NET35
         /// <summary> Returns the account's custom measure slot capacity — slots consumed and remaining. Only the `measure` category is supported for now.  </summary>
-        /// <param name="options"> Fetch Capacity parameters </param>
+        /// <param name="options"> Fetch CustomFieldMappingsCapacity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Capacity </returns>
-        public static async System.Threading.Tasks.Task<CapacityFetchResource> FetchAsync(FetchCapacityOptions options, ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of CustomFieldMappingsCapacity </returns>
+        public static async System.Threading.Tasks.Task<CustomFieldMappingsCapacityFetchResource> FetchAsync(FetchCustomFieldMappingsCapacityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            return CapacityFetchResource.FromJson(response.Content);
+            return CustomFieldMappingsCapacityFetchResource.FromJson(response.Content);
         }
         #endif
         /// <summary> Returns the account's custom measure slot capacity — slots consumed and remaining. Only the `measure` category is supported for now.  </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Capacity </returns>
-        public static CapacityFetchResource Fetch(
+        /// <returns> A single instance of CustomFieldMappingsCapacity </returns>
+        public static CustomFieldMappingsCapacityFetchResource Fetch(
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchCapacityOptions(){  };
+            var options = new FetchCustomFieldMappingsCapacityOptions(){  };
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary> Returns the account's custom measure slot capacity — slots consumed and remaining. Only the `measure` category is supported for now.  </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Capacity </returns>
-        public static async System.Threading.Tasks.Task<CapacityFetchResource> FetchAsync(ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of CustomFieldMappingsCapacity </returns>
+        public static async System.Threading.Tasks.Task<CustomFieldMappingsCapacityFetchResource> FetchAsync(ITwilioRestClient client = null)
         {
-            var options = new FetchCapacityOptions(){  };
+            var options = new FetchCustomFieldMappingsCapacityOptions(){  };
             return await FetchAsync(options, client);
         }
         #endif
             
-        public static TwilioResponse<CapacityFetchResource> FetchWithHeaders(FetchCapacityOptions options, ITwilioRestClient client = null)
+        public static TwilioResponse<CustomFieldMappingsCapacityFetchResource> FetchWithHeaders(FetchCustomFieldMappingsCapacityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
-            var resource = CapacityFetchResource.FromJson(response.Content);
-            return new TwilioResponse<CapacityFetchResource>(resource, response.Headers, response.StatusCode);
+            var resource = CustomFieldMappingsCapacityFetchResource.FromJson(response.Content);
+            return new TwilioResponse<CustomFieldMappingsCapacityFetchResource>(resource, response.Headers, response.StatusCode);
         }
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<CapacityFetchResource>> FetchWithHeadersAsync(FetchCapacityOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingsCapacityFetchResource>> FetchWithHeadersAsync(FetchCustomFieldMappingsCapacityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
-            var resource = CapacityFetchResource.FromJson(response.Content);
-            return new TwilioResponse<CapacityFetchResource>(resource, response.Headers, response.StatusCode);
+            var resource = CustomFieldMappingsCapacityFetchResource.FromJson(response.Content);
+            return new TwilioResponse<CustomFieldMappingsCapacityFetchResource>(resource, response.Headers, response.StatusCode);
         }
         #endif
         
-        public static TwilioResponse<CapacityFetchResource> FetchWithHeaders(
+        public static TwilioResponse<CustomFieldMappingsCapacityFetchResource> FetchWithHeaders(
                 ITwilioRestClient client = null)
         {
-            var options = new FetchCapacityOptions(){  };
+            var options = new FetchCustomFieldMappingsCapacityOptions(){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<CapacityFetchResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingsCapacityFetchResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
         {
-            var options = new FetchCapacityOptions(){  };
+            var options = new FetchCustomFieldMappingsCapacityOptions(){  };
             return await FetchWithHeadersAsync(options, client);
         }
         #endif

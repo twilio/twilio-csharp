@@ -33,15 +33,15 @@ public class CustomFieldMappingCreateResource : Resource
         [JsonProperty("category")]
             public CustomFieldMappingResource.MappingCategory Category { get; private set; }
 
-        ///<summary> The name </summary> 
+        ///<summary> Name of the custom field, unique within the account. </summary> 
         [JsonProperty("name")]
             public string Name { get; private set;}
 
         ///<summary> The entityMetadata </summary> 
         [JsonProperty("entityMetadata")]
-            public CustomFieldMappingResource.IntelligenceOperatorEntityMetadata EntityMetadata { get; private set;}
+            public CustomFieldMappingResource.EntityMetadata _EntityMetadata { get; private set;}
 
-        ///<summary> TTID for conversation insights custom field mapping </summary> 
+        ///<summary> The unique identifier of the custom field mapping. </summary> 
         [JsonProperty("id")]
             public string Id { get; private set; }
 
@@ -53,7 +53,7 @@ public class CustomFieldMappingCreateResource : Resource
         [JsonProperty("createdAt")]
             public DateTime? CreatedAt { get; private set; }
 
-        ///<summary> When the mapping was last materially modified in-place. Null until the first update-in-place. </summary> 
+        ///<summary> When the mapping was last modified via `PATCH`. Null until the first update. </summary> 
         [JsonProperty("updatedAt")]
             public DateTime? UpdatedAt { get; private set; }
 
@@ -76,9 +76,33 @@ public class CustomFieldMappingCreateResource : Resource
 }
         public class CustomFieldMappingFetchResource : Resource
 {
-        ///<summary> The mappings </summary> 
-        [JsonProperty("mappings")]
-            public List<CustomFieldMappingResource.CustomFieldMappingResponse> Mappings { get; private set;}
+        
+        [JsonProperty("category")]
+            public CustomFieldMappingResource.MappingCategory Category { get; private set;}
+
+        ///<summary> Name of the custom field, unique within the account. </summary> 
+        [JsonProperty("name")]
+            public string Name { get; private set;}
+
+        ///<summary> The entityMetadata </summary> 
+        [JsonProperty("entityMetadata")]
+            public CustomFieldMappingResource.EntityMetadata _EntityMetadata { get; private set;}
+
+        ///<summary> The unique identifier of the custom field mapping. </summary> 
+        [JsonProperty("id")]
+            public string Id { get; private set; }
+
+        ///<summary> Optional, free-text description supplied at registration time. Display-only — not part of any uniqueness check.  </summary> 
+        [JsonProperty("description")]
+            public string Description { get; private set; }
+
+        ///<summary> When the mapping was registered. </summary> 
+        [JsonProperty("createdAt")]
+            public DateTime? CreatedAt { get; private set; }
+
+        ///<summary> When the mapping was last modified via `PATCH`. Null until the first update. </summary> 
+        [JsonProperty("updatedAt")]
+            public DateTime? UpdatedAt { get; private set; }
 
 
     public static CustomFieldMappingFetchResource FromJson(string json) {
@@ -98,51 +122,169 @@ public class CustomFieldMappingCreateResource : Resource
         }
     }
 }
+        public class CustomFieldMappingReadResource : Resource
+{
+            
+            [JsonProperty("category")]
+                public CustomFieldMappingResource.MappingCategory Category { get; private set;}
+
+            ///<summary> Name of the custom field, unique within the account. </summary> 
+            [JsonProperty("name")]
+                public string Name { get; private set;}
+
+            ///<summary> The entityMetadata </summary> 
+            [JsonProperty("entityMetadata")]
+                public CustomFieldMappingResource.EntityMetadata _EntityMetadata { get; private set;}
+
+            ///<summary> The unique identifier of the custom field mapping. </summary> 
+            [JsonProperty("id")]
+                public string Id { get; private set; }
+
+            ///<summary> Optional, free-text description supplied at registration time. Display-only — not part of any uniqueness check.  </summary> 
+            [JsonProperty("description")]
+                public string Description { get; private set; }
+
+            ///<summary> When the mapping was registered. </summary> 
+            [JsonProperty("createdAt")]
+                public DateTime? CreatedAt { get; private set; }
+
+            ///<summary> When the mapping was last modified via `PATCH`. Null until the first update. </summary> 
+            [JsonProperty("updatedAt")]
+                public DateTime? UpdatedAt { get; private set; }
+
+
+    public static CustomFieldMappingReadResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<CustomFieldMappingReadResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
+        public class CustomFieldMappingPatchResource : Resource
+{
+        
+        [JsonProperty("category")]
+            public CustomFieldMappingResource.MappingCategory Category { get; private set;}
+
+        ///<summary> Name of the custom field, unique within the account. </summary> 
+        [JsonProperty("name")]
+            public string Name { get; private set;}
+
+        ///<summary> The entityMetadata </summary> 
+        [JsonProperty("entityMetadata")]
+            public CustomFieldMappingResource.EntityMetadata _EntityMetadata { get; private set;}
+
+        ///<summary> The unique identifier of the custom field mapping. </summary> 
+        [JsonProperty("id")]
+            public string Id { get; private set; }
+
+        ///<summary> Optional, free-text description supplied at registration time. Display-only — not part of any uniqueness check.  </summary> 
+        [JsonProperty("description")]
+            public string Description { get; private set; }
+
+        ///<summary> When the mapping was registered. </summary> 
+        [JsonProperty("createdAt")]
+            public DateTime? CreatedAt { get; private set; }
+
+        ///<summary> When the mapping was last modified via `PATCH`. Null until the first update. </summary> 
+        [JsonProperty("updatedAt")]
+            public DateTime? UpdatedAt { get; private set; }
+
+
+    public static CustomFieldMappingPatchResource FromJson(string json) {
+        try {
+            return JsonConvert.DeserializeObject<CustomFieldMappingPatchResource>(json);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+    public static string ToJson(object model) {
+        try {
+            return JsonConvert.SerializeObject(model);
+        }
+        catch (JsonException e) {
+            throw new ApiException(e.Message, e);
+        }
+    }
+}
 
     public class CustomFieldMappingResource : Resource
     {
     
-        public class IntelligenceOperatorEntityMetadata
+        public class IntelligenceOperatorSource
         {
-            [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("sourceType", NullValueHandling = NullValueHandling.Ignore)]
-            public CustomFieldMappingResource.SourceType SourceType {get; private set;}
             [JsonProperty("operatorId", NullValueHandling = NullValueHandling.Ignore)]
             public string OperatorId {get; private set;}
             [JsonProperty("field", NullValueHandling = NullValueHandling.Ignore)]
             public string Field {get; private set;}
             [JsonProperty("operatorName", NullValueHandling = NullValueHandling.Ignore)]
             public string OperatorName {get; private set;}
-            public IntelligenceOperatorEntityMetadata() { }
+            public IntelligenceOperatorSource() { }
             public class Builder
             {
-                private IntelligenceOperatorEntityMetadata _intelligenceOperatorEntityMetadata = new IntelligenceOperatorEntityMetadata();
+                private IntelligenceOperatorSource _intelligenceOperatorSource = new IntelligenceOperatorSource();
+                public Builder()
+                {
+                }
+                public Builder WithOperatorId(string operatorId)
+                {
+                    _intelligenceOperatorSource.OperatorId= operatorId;
+                    return this;
+                }
+                public Builder WithField(string field)
+                {
+                    _intelligenceOperatorSource.Field= field;
+                    return this;
+                }
+                public Builder WithOperatorName(string operatorName)
+                {
+                    _intelligenceOperatorSource.OperatorName= operatorName;
+                    return this;
+                }
+                public IntelligenceOperatorSource Build()
+                {
+                    return _intelligenceOperatorSource;
+                }
+            }
+        }
+        public class EntityMetadata
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("sourceType", NullValueHandling = NullValueHandling.Ignore)]
+            public CustomFieldMappingResource.SourceType SourceType {get; private set;}
+            [JsonProperty("intelligenceOperator", NullValueHandling = NullValueHandling.Ignore)]
+            public CustomFieldMappingResource.IntelligenceOperatorSource IntelligenceOperator {get; private set;}
+            public EntityMetadata() { }
+            public class Builder
+            {
+                private EntityMetadata _entityMetadata = new EntityMetadata();
                 public Builder()
                 {
                 }
                 public Builder WithSourceType(CustomFieldMappingResource.SourceType sourceType)
                 {
-                    _intelligenceOperatorEntityMetadata.SourceType= sourceType;
+                    _entityMetadata.SourceType= sourceType;
                     return this;
                 }
-                public Builder WithOperatorId(string operatorId)
+                public Builder WithIntelligenceOperator(CustomFieldMappingResource.IntelligenceOperatorSource intelligenceOperator)
                 {
-                    _intelligenceOperatorEntityMetadata.OperatorId= operatorId;
+                    _entityMetadata.IntelligenceOperator= intelligenceOperator;
                     return this;
                 }
-                public Builder WithField(string field)
+                public EntityMetadata Build()
                 {
-                    _intelligenceOperatorEntityMetadata.Field= field;
-                    return this;
-                }
-                public Builder WithOperatorName(string operatorName)
-                {
-                    _intelligenceOperatorEntityMetadata.OperatorName= operatorName;
-                    return this;
-                }
-                public IntelligenceOperatorEntityMetadata Build()
-                {
-                    return _intelligenceOperatorEntityMetadata;
+                    return _entityMetadata;
                 }
             }
         }
@@ -154,7 +296,7 @@ public class CustomFieldMappingCreateResource : Resource
             [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
             public string Name {get; private set;}
             [JsonProperty("entityMetadata", NullValueHandling = NullValueHandling.Ignore)]
-            public IntelligenceOperatorEntityMetadata EntityMetadata {get; private set;}
+            public EntityMetadata EntityMetadata {get; private set;}
             [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
             public string Description {get; private set;}
             public CustomFieldMappingRequest() { }
@@ -174,7 +316,7 @@ public class CustomFieldMappingCreateResource : Resource
                     _customFieldMappingRequest.Name= name;
                     return this;
                 }
-                public Builder WithEntityMetadata(IntelligenceOperatorEntityMetadata entityMetadata)
+                public Builder WithEntityMetadata(EntityMetadata entityMetadata)
                 {
                     _customFieldMappingRequest.EntityMetadata= entityMetadata;
                     return this;
@@ -190,68 +332,77 @@ public class CustomFieldMappingCreateResource : Resource
                 }
             }
         }
-        public class CustomFieldMappingResponse
+        public class IntelligenceOperatorSourceUpdate
         {
-            [JsonConverter(typeof(StringEnumConverter))]
-            [JsonProperty("category", NullValueHandling = NullValueHandling.Ignore)]
-            public CustomFieldMappingResource.MappingCategory Category {get; private set;}
-            [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-            public string Name {get; private set;}
-            [JsonProperty("entityMetadata", NullValueHandling = NullValueHandling.Ignore)]
-            public CustomFieldMappingResource.IntelligenceOperatorEntityMetadata EntityMetadata {get; private set;}
-            [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-            public string Id {get; private set;}
-            [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-            public string Description {get; private set;}
-            [JsonProperty("createdAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime? CreatedAt {get; private set;}
-            [JsonProperty("updatedAt", NullValueHandling = NullValueHandling.Ignore)]
-            public DateTime? UpdatedAt {get; private set;}
-            public CustomFieldMappingResponse() { }
+            [JsonProperty("field", NullValueHandling = NullValueHandling.Ignore)]
+            public string Field {get; private set;}
+            public IntelligenceOperatorSourceUpdate() { }
             public class Builder
             {
-                private CustomFieldMappingResponse _customFieldMappingResponse = new CustomFieldMappingResponse();
+                private IntelligenceOperatorSourceUpdate _intelligenceOperatorSourceUpdate = new IntelligenceOperatorSourceUpdate();
                 public Builder()
                 {
                 }
-                public Builder WithCategory(CustomFieldMappingResource.MappingCategory category)
+                public Builder WithField(string field)
                 {
-                    _customFieldMappingResponse.Category= category;
+                    _intelligenceOperatorSourceUpdate.Field= field;
                     return this;
                 }
-                public Builder WithName(string name)
+                public IntelligenceOperatorSourceUpdate Build()
                 {
-                    _customFieldMappingResponse.Name= name;
+                    return _intelligenceOperatorSourceUpdate;
+                }
+            }
+        }
+        public class EntityMetadataUpdate
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("sourceType", NullValueHandling = NullValueHandling.Ignore)]
+            public CustomFieldMappingResource.SourceType SourceType {get; private set;}
+            [JsonProperty("intelligenceOperator", NullValueHandling = NullValueHandling.Ignore)]
+            public IntelligenceOperatorSourceUpdate IntelligenceOperator {get; private set;}
+            public EntityMetadataUpdate() { }
+            public class Builder
+            {
+                private EntityMetadataUpdate _entityMetadataUpdate = new EntityMetadataUpdate();
+                public Builder()
+                {
+                }
+                public Builder WithSourceType(CustomFieldMappingResource.SourceType sourceType)
+                {
+                    _entityMetadataUpdate.SourceType= sourceType;
                     return this;
                 }
-                public Builder WithEntityMetadata(CustomFieldMappingResource.IntelligenceOperatorEntityMetadata entityMetadata)
+                public Builder WithIntelligenceOperator(IntelligenceOperatorSourceUpdate intelligenceOperator)
                 {
-                    _customFieldMappingResponse.EntityMetadata= entityMetadata;
+                    _entityMetadataUpdate.IntelligenceOperator= intelligenceOperator;
                     return this;
                 }
-                public Builder WithId(string id)
+                public EntityMetadataUpdate Build()
                 {
-                    _customFieldMappingResponse.Id= id;
+                    return _entityMetadataUpdate;
+                }
+            }
+        }
+        public class CustomFieldMappingUpdateRequest
+        {
+            [JsonProperty("entityMetadata", NullValueHandling = NullValueHandling.Ignore)]
+            public EntityMetadataUpdate EntityMetadata {get; private set;}
+            public CustomFieldMappingUpdateRequest() { }
+            public class Builder
+            {
+                private CustomFieldMappingUpdateRequest _customFieldMappingUpdateRequest = new CustomFieldMappingUpdateRequest();
+                public Builder()
+                {
+                }
+                public Builder WithEntityMetadata(EntityMetadataUpdate entityMetadata)
+                {
+                    _customFieldMappingUpdateRequest.EntityMetadata= entityMetadata;
                     return this;
                 }
-                public Builder WithDescription(string description)
+                public CustomFieldMappingUpdateRequest Build()
                 {
-                    _customFieldMappingResponse.Description= description;
-                    return this;
-                }
-                public Builder WithCreatedAt(DateTime? createdAt)
-                {
-                    _customFieldMappingResponse.CreatedAt= createdAt;
-                    return this;
-                }
-                public Builder WithUpdatedAt(DateTime? updatedAt)
-                {
-                    _customFieldMappingResponse.UpdatedAt= updatedAt;
-                    return this;
-                }
-                public CustomFieldMappingResponse Build()
-                {
-                    return _customFieldMappingResponse;
+                    return _customFieldMappingUpdateRequest;
                 }
             }
         }
@@ -300,7 +451,7 @@ public class CustomFieldMappingCreateResource : Resource
             );
         }
 
-        /// <summary> Registers a custom field for an account under a category, sourced from an upstream entity — selected via the `entityMetadata.sourceType` discriminator, which determines the required shape of `entityMetadata`. Only the `MEASURE` category is supported for now.  For sources with a resolvable field-path concept, validates that `entityMetadata.field` resolves on the entity's latest active version by calling that source's own resolution API (the Intelligence fetch-operator API for `sourceType: INTELLIGENCE_OPERATOR`), then performs an idempotent upsert keyed on (accountSid, category, name). `entityMetadata.sourceType` plus that variant's own identity field (`operatorId` for `INTELLIGENCE_OPERATOR`) must match the existing registration's owner for the upsert to succeed — a mismatch returns `409`. Enforces the per-account, per-category capacity limit.  </summary>
+        /// <summary> Registers a custom field for the account. `entityMetadata.sourceType` selects where the field's value comes from, and the matching property on `entityMetadata` (`intelligenceOperator` for `INTELLIGENCE_OPERATOR`) carries its details. Only the `MEASURE` category is supported for now.  The request is validated before the mapping is created: - `name` contains only letters, digits and `_`, and is not already   registered for the account (otherwise `409`); - `description`, when present, is at most 150 characters; - for `INTELLIGENCE_OPERATOR`, the operator has an active version with   `outputFormat` `JSON`, and `entityMetadata.intelligenceOperator.field`   is one or two `.`-separated segments that resolve to a `number` or   `integer` property in that version's output schema (otherwise `400`); - the account has a free slot in the category; by default an account can   register up to 3 custom measures (otherwise `403`). Use   `GET /v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity`   to check the remaining slots.  Create-only: if a mapping with the same `name` already exists for the account, `409` is returned with the existing mapping's `id` and nothing is changed. To modify an existing mapping, use `PATCH /v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}`.  </summary>
         /// <param name="options"> Create CustomFieldMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomFieldMapping </returns>
@@ -312,7 +463,7 @@ public class CustomFieldMappingCreateResource : Resource
         }
 
         #if !NET35
-        /// <summary> Registers a custom field for an account under a category, sourced from an upstream entity — selected via the `entityMetadata.sourceType` discriminator, which determines the required shape of `entityMetadata`. Only the `MEASURE` category is supported for now.  For sources with a resolvable field-path concept, validates that `entityMetadata.field` resolves on the entity's latest active version by calling that source's own resolution API (the Intelligence fetch-operator API for `sourceType: INTELLIGENCE_OPERATOR`), then performs an idempotent upsert keyed on (accountSid, category, name). `entityMetadata.sourceType` plus that variant's own identity field (`operatorId` for `INTELLIGENCE_OPERATOR`) must match the existing registration's owner for the upsert to succeed — a mismatch returns `409`. Enforces the per-account, per-category capacity limit.  </summary>
+        /// <summary> Registers a custom field for the account. `entityMetadata.sourceType` selects where the field's value comes from, and the matching property on `entityMetadata` (`intelligenceOperator` for `INTELLIGENCE_OPERATOR`) carries its details. Only the `MEASURE` category is supported for now.  The request is validated before the mapping is created: - `name` contains only letters, digits and `_`, and is not already   registered for the account (otherwise `409`); - `description`, when present, is at most 150 characters; - for `INTELLIGENCE_OPERATOR`, the operator has an active version with   `outputFormat` `JSON`, and `entityMetadata.intelligenceOperator.field`   is one or two `.`-separated segments that resolve to a `number` or   `integer` property in that version's output schema (otherwise `400`); - the account has a free slot in the category; by default an account can   register up to 3 custom measures (otherwise `403`). Use   `GET /v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity`   to check the remaining slots.  Create-only: if a mapping with the same `name` already exists for the account, `409` is returned with the existing mapping's `id` and nothing is changed. To modify an existing mapping, use `PATCH /v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}`.  </summary>
         /// <param name="options"> Create CustomFieldMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
@@ -324,7 +475,7 @@ public class CustomFieldMappingCreateResource : Resource
         }
         #endif
 
-        /// <summary> Registers a custom field for an account under a category, sourced from an upstream entity — selected via the `entityMetadata.sourceType` discriminator, which determines the required shape of `entityMetadata`. Only the `MEASURE` category is supported for now.  For sources with a resolvable field-path concept, validates that `entityMetadata.field` resolves on the entity's latest active version by calling that source's own resolution API (the Intelligence fetch-operator API for `sourceType: INTELLIGENCE_OPERATOR`), then performs an idempotent upsert keyed on (accountSid, category, name). `entityMetadata.sourceType` plus that variant's own identity field (`operatorId` for `INTELLIGENCE_OPERATOR`) must match the existing registration's owner for the upsert to succeed — a mismatch returns `409`. Enforces the per-account, per-category capacity limit.  </summary>
+        /// <summary> Registers a custom field for the account. `entityMetadata.sourceType` selects where the field's value comes from, and the matching property on `entityMetadata` (`intelligenceOperator` for `INTELLIGENCE_OPERATOR`) carries its details. Only the `MEASURE` category is supported for now.  The request is validated before the mapping is created: - `name` contains only letters, digits and `_`, and is not already   registered for the account (otherwise `409`); - `description`, when present, is at most 150 characters; - for `INTELLIGENCE_OPERATOR`, the operator has an active version with   `outputFormat` `JSON`, and `entityMetadata.intelligenceOperator.field`   is one or two `.`-separated segments that resolve to a `number` or   `integer` property in that version's output schema (otherwise `400`); - the account has a free slot in the category; by default an account can   register up to 3 custom measures (otherwise `403`). Use   `GET /v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity`   to check the remaining slots.  Create-only: if a mapping with the same `name` already exists for the account, `409` is returned with the existing mapping's `id` and nothing is changed. To modify an existing mapping, use `PATCH /v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}`.  </summary>
         /// <param name="customFieldMappingRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomFieldMapping </returns>
@@ -337,7 +488,7 @@ public class CustomFieldMappingCreateResource : Resource
         }
 
         #if !NET35
-        /// <summary> Registers a custom field for an account under a category, sourced from an upstream entity — selected via the `entityMetadata.sourceType` discriminator, which determines the required shape of `entityMetadata`. Only the `MEASURE` category is supported for now.  For sources with a resolvable field-path concept, validates that `entityMetadata.field` resolves on the entity's latest active version by calling that source's own resolution API (the Intelligence fetch-operator API for `sourceType: INTELLIGENCE_OPERATOR`), then performs an idempotent upsert keyed on (accountSid, category, name). `entityMetadata.sourceType` plus that variant's own identity field (`operatorId` for `INTELLIGENCE_OPERATOR`) must match the existing registration's owner for the upsert to succeed — a mismatch returns `409`. Enforces the per-account, per-category capacity limit.  </summary>
+        /// <summary> Registers a custom field for the account. `entityMetadata.sourceType` selects where the field's value comes from, and the matching property on `entityMetadata` (`intelligenceOperator` for `INTELLIGENCE_OPERATOR`) carries its details. Only the `MEASURE` category is supported for now.  The request is validated before the mapping is created: - `name` contains only letters, digits and `_`, and is not already   registered for the account (otherwise `409`); - `description`, when present, is at most 150 characters; - for `INTELLIGENCE_OPERATOR`, the operator has an active version with   `outputFormat` `JSON`, and `entityMetadata.intelligenceOperator.field`   is one or two `.`-separated segments that resolve to a `number` or   `integer` property in that version's output schema (otherwise `400`); - the account has a free slot in the category; by default an account can   register up to 3 custom measures (otherwise `403`). Use   `GET /v3/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity`   to check the remaining slots.  Create-only: if a mapping with the same `name` already exists for the account, `409` is returned with the existing mapping's `id` and nothing is changed. To modify an existing mapping, use `PATCH /v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}`.  </summary>
         /// <param name="customFieldMappingRequest">  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
@@ -390,8 +541,10 @@ public class CustomFieldMappingCreateResource : Resource
         private static Request BuildFetchRequest(FetchCustomFieldMappingOptions options, ITwilioRestClient client)
         {
             
-            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappings";
+            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}";
 
+            string PathMappingId = options.PathMappingId;
+            path = path.Replace("{"+"mappingId"+"}", PathMappingId);
 
             return new Request(
                 HttpMethod.Get,
@@ -402,7 +555,7 @@ public class CustomFieldMappingCreateResource : Resource
             );
         }
 
-        /// <summary> Returns custom field mappings registered for the account.  </summary>
+        /// <summary> Returns a single custom field mapping by its `mappingId`. The `ETag` response header identifies the mapping's current version; supply it as `If-Match` on `PATCH` to guard against concurrent updates.  </summary>
         /// <param name="options"> Fetch CustomFieldMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomFieldMapping </returns>
@@ -414,7 +567,7 @@ public class CustomFieldMappingCreateResource : Resource
         }
 
         #if !NET35
-        /// <summary> Returns custom field mappings registered for the account.  </summary>
+        /// <summary> Returns a single custom field mapping by its `mappingId`. The `ETag` response header identifies the mapping's current version; supply it as `If-Match` on `PATCH` to guard against concurrent updates.  </summary>
         /// <param name="options"> Fetch CustomFieldMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
@@ -425,23 +578,26 @@ public class CustomFieldMappingCreateResource : Resource
             return CustomFieldMappingFetchResource.FromJson(response.Content);
         }
         #endif
-        /// <summary> Returns custom field mappings registered for the account.  </summary>
+        /// <summary> Returns a single custom field mapping by its `mappingId`. The `ETag` response header identifies the mapping's current version; supply it as `If-Match` on `PATCH` to guard against concurrent updates.  </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CustomFieldMapping </returns>
         public static CustomFieldMappingFetchResource Fetch(
+                                         string pathMappingId, 
                                         ITwilioRestClient client = null)
         {
-            var options = new FetchCustomFieldMappingOptions(){  };
+            var options = new FetchCustomFieldMappingOptions(pathMappingId){  };
             return Fetch(options, client);
         }
 
         #if !NET35
-        /// <summary> Returns custom field mappings registered for the account.  </summary>
+        /// <summary> Returns a single custom field mapping by its `mappingId`. The `ETag` response header identifies the mapping's current version; supply it as `If-Match` on `PATCH` to guard against concurrent updates.  </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
-        public static async System.Threading.Tasks.Task<CustomFieldMappingFetchResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CustomFieldMappingFetchResource> FetchAsync(string pathMappingId, ITwilioRestClient client = null)
         {
-            var options = new FetchCustomFieldMappingOptions(){  };
+            var options = new FetchCustomFieldMappingOptions(pathMappingId){  };
             return await FetchAsync(options, client);
         }
         #endif
@@ -464,17 +620,286 @@ public class CustomFieldMappingCreateResource : Resource
         #endif
         
         public static TwilioResponse<CustomFieldMappingFetchResource> FetchWithHeaders(
+                    string pathMappingId, 
                 ITwilioRestClient client = null)
         {
-            var options = new FetchCustomFieldMappingOptions(){  };
+            var options = new FetchCustomFieldMappingOptions(pathMappingId){  };
             return FetchWithHeaders(options, client);
         }
         
         #if !NET35
-        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingFetchResource>> FetchWithHeadersAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingFetchResource>> FetchWithHeadersAsync(string pathMappingId, ITwilioRestClient client = null)
         {
-            var options = new FetchCustomFieldMappingOptions(){  };
+            var options = new FetchCustomFieldMappingOptions(pathMappingId){  };
             return await FetchWithHeadersAsync(options, client);
+        }
+        #endif
+            
+        private static Request BuildReadRequest(ReadCustomFieldMappingOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappings";
+
+
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Insights,
+                path,
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+        /// <summary> Returns the custom field mappings registered for the account, one page at a time. Use `pageSize` to limit the number of mappings returned, and pass `meta.nextToken` from a response as `pageToken` to fetch the next page. On the last page, `meta.nextToken` is `null`.  </summary>
+        /// <param name="options"> Read CustomFieldMapping parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of CustomFieldMapping </returns>
+        public static ResourceSet<CustomFieldMappingReadResource> Read(ReadCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomFieldMappingReadResource>.FromJson("items", response.Content);
+            return new ResourceSet<CustomFieldMappingReadResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary> Returns the custom field mappings registered for the account, one page at a time. Use `pageSize` to limit the number of mappings returned, and pass `meta.nextToken` from a response as `pageToken` to fetch the next page. On the last page, `meta.nextToken` is `null`.  </summary>
+        /// <param name="options"> Read CustomFieldMapping parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomFieldMappingReadResource>> ReadAsync(ReadCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomFieldMappingReadResource>.FromJson("items", response.Content);
+            return new ResourceSet<CustomFieldMappingReadResource>(page, options, client);
+        }
+        #endif
+        /// <summary> Returns the custom field mappings registered for the account, one page at a time. Use `pageSize` to limit the number of mappings returned, and pass `meta.nextToken` from a response as `pageToken` to fetch the next page. On the last page, `meta.nextToken` is `null`.  </summary>
+        /// <param name="pageSize"> The maximum number of resources to return </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of CustomFieldMapping </returns>
+        public static ResourceSet<CustomFieldMappingReadResource> Read(
+                                                     int? pageSize = null,
+                                                     long? limit = null,
+                                                    ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomFieldMappingOptions(){ PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Returns the custom field mappings registered for the account, one page at a time. Use `pageSize` to limit the number of mappings returned, and pass `meta.nextToken` from a response as `pageToken` to fetch the next page. On the last page, `meta.nextToken` is `null`.  </summary>
+        /// <param name="pageSize"> The maximum number of resources to return </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CustomFieldMappingReadResource>> ReadAsync(
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
+                                                                                            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomFieldMappingOptions(){ PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        public static ResourceSetResponse<CustomFieldMappingReadResource> ReadWithHeaders(ReadCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            var page = Page<CustomFieldMappingReadResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<CustomFieldMappingReadResource>(page, options, client);
+            return new ResourceSetResponse<CustomFieldMappingReadResource>(records, response.Headers, response.StatusCode);
+        }
+
+        public static ResourceSetResponse<CustomFieldMappingReadResource> ReadWithHeaders(
+            int? pageSize = null,
+            long? limit = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new ReadCustomFieldMappingOptions(){ PageSize = pageSize, Limit = limit};
+            return ReadWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ResourceSetResponse<CustomFieldMappingReadResource>> ReadWithHeadersAsync(ReadCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<CustomFieldMappingReadResource>.FromJson("items", response.Content);
+            var records = new ResourceSet<CustomFieldMappingReadResource>(page, options, client);
+            return new ResourceSetResponse<CustomFieldMappingReadResource>(records, response.Headers, response.StatusCode);
+        }
+        #endif
+        
+        
+        /// <summary> Fetch the target page of records </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<CustomFieldMappingResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<CustomFieldMappingResource>.FromJson("items", response.Content);
+        }
+
+        /// <summary> Fetch the next page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<CustomFieldMappingResource> NextPage(Page<CustomFieldMappingResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<CustomFieldMappingResource>.FromJson("items", response.Content);
+        }
+
+        /// <summary> Fetch the previous page of records </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<CustomFieldMappingResource> PreviousPage(Page<CustomFieldMappingResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Api)
+            );
+
+            var response = client.Request(request);
+            return Page<CustomFieldMappingResource>.FromJson("items", response.Content);
+        }
+
+            
+        private static Request BuildPatchRequest(PatchCustomFieldMappingOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v3/ControlPlane/ConversationInsights/CustomFieldMappings/{mappingId}";
+
+            string PathMappingId = options.PathMappingId;
+            path = path.Replace("{"+"mappingId"+"}", PathMappingId);
+
+            return new Request(
+            HttpMethod.Patch,
+            Rest.Domain.Insights,
+            path,
+
+            contentType: EnumConstants.ContentTypeEnum.JSON,
+            body: options.GetBody(),
+            headerParams: options.GetHeaderParams()
+            );
+        }
+
+        /// <summary> Partially updates an existing custom field mapping. Only the properties present in the body are changed. The updatable properties depend on the mapping's `sourceType`; for `INTELLIGENCE_OPERATOR`, only `entityMetadata.intelligenceOperator.field` can be updated today.  The new `field` is validated the same way as at registration: it must be one or two `.`-separated segments of letters, digits and `_`, and resolve to a `number` or `integer` property in the output schema of the operator's latest active version.  The mapping's `id`, `name`, `category`, `createdAt` and owning entity never change. Sending a `field` value equal to the current one is a no-op that returns `200` without modifying the mapping, so the operation is idempotent. Supply `If-Match` with the `ETag` returned by `GET`, `POST` or a previous `PATCH` to guard against concurrent updates.  Values already ingested are not recomputed; results processed after the update use the new `field`.  </summary>
+        /// <param name="options"> Patch CustomFieldMapping parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of CustomFieldMapping </returns>
+        public static CustomFieldMappingPatchResource Patch(PatchCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            return CustomFieldMappingPatchResource.FromJson(response.Content);
+        }
+
+        /// <summary> Partially updates an existing custom field mapping. Only the properties present in the body are changed. The updatable properties depend on the mapping's `sourceType`; for `INTELLIGENCE_OPERATOR`, only `entityMetadata.intelligenceOperator.field` can be updated today.  The new `field` is validated the same way as at registration: it must be one or two `.`-separated segments of letters, digits and `_`, and resolve to a `number` or `integer` property in the output schema of the operator's latest active version.  The mapping's `id`, `name`, `category`, `createdAt` and owning entity never change. Sending a `field` value equal to the current one is a no-op that returns `200` without modifying the mapping, so the operation is idempotent. Supply `If-Match` with the `ETag` returned by `GET`, `POST` or a previous `PATCH` to guard against concurrent updates.  Values already ingested are not recomputed; results processed after the update use the new `field`.  </summary>
+        /// <param name="options"> Patch CustomFieldMapping parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<CustomFieldMappingPatchResource> PatchAsync(PatchCustomFieldMappingOptions options,
+            ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            return CustomFieldMappingPatchResource.FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Partially updates an existing custom field mapping. Only the properties present in the body are changed. The updatable properties depend on the mapping's `sourceType`; for `INTELLIGENCE_OPERATOR`, only `entityMetadata.intelligenceOperator.field` can be updated today.  The new `field` is validated the same way as at registration: it must be one or two `.`-separated segments of letters, digits and `_`, and resolve to a `number` or `integer` property in the output schema of the operator's latest active version.  The mapping's `id`, `name`, `category`, `createdAt` and owning entity never change. Sending a `field` value equal to the current one is a no-op that returns `200` without modifying the mapping, so the operation is idempotent. Supply `If-Match` with the `ETag` returned by `GET`, `POST` or a previous `PATCH` to guard against concurrent updates.  Values already ingested are not recomputed; results processed after the update use the new `field`.  </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
+        /// <param name="customFieldMappingUpdateRequest">  </param>
+        /// <param name="ifMatch"> ETag of the custom field mapping, as returned in the `ETag` response header. When supplied, the update is applied only if the mapping has not changed since that ETag was issued; otherwise `412` is returned.  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of CustomFieldMapping </returns>
+        public static CustomFieldMappingPatchResource Patch(
+            string pathMappingId,
+            CustomFieldMappingResource.CustomFieldMappingUpdateRequest customFieldMappingUpdateRequest,
+            string ifMatch = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchCustomFieldMappingOptions(pathMappingId, customFieldMappingUpdateRequest){ IfMatch = ifMatch };
+            return Patch(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Partially updates an existing custom field mapping. Only the properties present in the body are changed. The updatable properties depend on the mapping's `sourceType`; for `INTELLIGENCE_OPERATOR`, only `entityMetadata.intelligenceOperator.field` can be updated today.  The new `field` is validated the same way as at registration: it must be one or two `.`-separated segments of letters, digits and `_`, and resolve to a `number` or `integer` property in the output schema of the operator's latest active version.  The mapping's `id`, `name`, `category`, `createdAt` and owning entity never change. Sending a `field` value equal to the current one is a no-op that returns `200` without modifying the mapping, so the operation is idempotent. Supply `If-Match` with the `ETag` returned by `GET`, `POST` or a previous `PATCH` to guard against concurrent updates.  Values already ingested are not recomputed; results processed after the update use the new `field`.  </summary>
+        /// <param name="pathMappingId"> The unique identifier of the custom field mapping, as returned in `id` when the mapping was created. </param>
+        /// <param name="customFieldMappingUpdateRequest">  </param>
+        /// <param name="ifMatch"> ETag of the custom field mapping, as returned in the `ETag` response header. When supplied, the update is applied only if the mapping has not changed since that ETag was issued; otherwise `412` is returned.  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of CustomFieldMapping </returns>
+        public static async System.Threading.Tasks.Task<CustomFieldMappingPatchResource> PatchAsync(
+            string pathMappingId,
+            CustomFieldMappingResource.CustomFieldMappingUpdateRequest customFieldMappingUpdateRequest,
+            string ifMatch = null,
+            ITwilioRestClient client = null)
+        {
+            var options = new PatchCustomFieldMappingOptions(pathMappingId, customFieldMappingUpdateRequest){ IfMatch = ifMatch };
+            return await PatchAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<CustomFieldMappingPatchResource> PatchWithHeaders(PatchCustomFieldMappingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildPatchRequest(options, client));
+            var resource = CustomFieldMappingPatchResource.FromJson(response.Content);
+            return new TwilioResponse<CustomFieldMappingPatchResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingPatchResource>> PatchWithHeadersAsync(PatchCustomFieldMappingOptions options,
+                ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildPatchRequest(options, client));
+            var resource = CustomFieldMappingPatchResource.FromJson(response.Content);
+            return new TwilioResponse<CustomFieldMappingPatchResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<CustomFieldMappingPatchResource> PatchWithHeaders(
+            string pathMappingId,
+            CustomFieldMappingResource.CustomFieldMappingUpdateRequest customFieldMappingUpdateRequest,
+            string ifMatch = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchCustomFieldMappingOptions(pathMappingId, customFieldMappingUpdateRequest){ IfMatch = ifMatch };
+            return PatchWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<CustomFieldMappingPatchResource>> PatchWithHeadersAsync(
+            string pathMappingId,
+            CustomFieldMappingResource.CustomFieldMappingUpdateRequest customFieldMappingUpdateRequest,
+            string ifMatch = null,
+                ITwilioRestClient client = null)
+        {
+            var options = new PatchCustomFieldMappingOptions(pathMappingId, customFieldMappingUpdateRequest){ IfMatch = ifMatch };
+            return await PatchWithHeadersAsync(options, client);
         }
         #endif
         /// <summary>

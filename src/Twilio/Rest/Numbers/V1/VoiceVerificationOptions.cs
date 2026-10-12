@@ -28,15 +28,28 @@ namespace Twilio.Rest.Numbers.V1
     public class CreateVoiceVerificationOptions : IOptions<VoiceVerificationResource>
     {
         
+        
+        public VoiceVerificationResource.NumbersV1VoiceVerificationRequest NumbersV1VoiceVerificationRequest { get; }
 
+
+        /// <summary> Construct a new CreateVoiceVerificationOptions </summary>
+        /// <param name="numbersV1VoiceVerificationRequest">  </param>
+        public CreateVoiceVerificationOptions(VoiceVerificationResource.NumbersV1VoiceVerificationRequest numbersV1VoiceVerificationRequest)
+        {
+            NumbersV1VoiceVerificationRequest = numbersV1VoiceVerificationRequest;
+        }
 
         
-        /// <summary> Generate the necessary parameters </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
         {
-            var p = new List<KeyValuePair<string, string>>();
+            string body = "";
 
-            return p;
+            if (NumbersV1VoiceVerificationRequest != null)
+            {
+                body = VoiceVerificationResource.ToJson(NumbersV1VoiceVerificationRequest);
+            }
+            return body;
         }
 
         
