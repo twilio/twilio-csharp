@@ -56,7 +56,7 @@ namespace Twilio.Security
             if (string.IsNullOrEmpty(url))
                 throw new ArgumentException("Parameter 'url' cannot be null or empty.", nameof(url));
             if (string.IsNullOrEmpty(expected))
-                throw new ArgumentException("Parameter 'expected' cannot be null or empty.", nameof(url));
+                throw new ArgumentException("Parameter 'expected' cannot be null or empty.", nameof(expected));
 
 #if NET6_0_OR_GREATER
             {
