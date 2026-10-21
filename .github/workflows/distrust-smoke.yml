@@ -1,0 +1,87 @@
+name: Distrust smoke test
+
+# Runs on pushes to smoke/distrust-* branches only, so it never runs on main or on the PR.
+on:
+  push:
+    branches: ['smoke/distrust-*']
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
+jobs:
+  unit-tests:
+    name: Unit tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-x64, windows-latest-large]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+
+      - name: Artifactory OIDC Auth
+        if: runner.os == 'Linux'
+        uses: twilio/sdk-actions/artifactory-oidc@e22fa7d16d9cfd4f046cb00f471301f5e0a9c546 # v1
+        with:
+          ecosystem: dotnet
+
+      - name: Distrusted-intermediate unit tests
+        run: dotnet test test/Twilio.Test/Twilio.Test.csproj --filter "FullyQualifiedName~DistrustedIntermediates" --logger "console;verbosity=normal"
+
+  smoke:
+    name: Smoke ${{ matrix.framework }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # App framework -> SDK build it loads: net8.0 -> net8.0, net6.0 -> netstandard2.0,
+          # net48 -> net462, net452 -> net35 (running on the runner's .NET Framework 4.8).
+          - { os: windows-latest-large, framework: net8.0 }
+          - { os: windows-latest-large, framework: net6.0 }
+          - { os: windows-latest-large, framework: net48 }
+          - { os: windows-latest-large, framework: net452 }
+          - { os: ubuntu-x64, framework: net8.0 }
+          - { os: ubuntu-x64, framework: net6.0 }
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK and the .NET 6 runtime
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+          dotnet-version: 6.0.x
+
+      - name: Artifactory OIDC Auth
+        if: runner.os == 'Linux'
+        uses: twilio/sdk-actions/artifactory-oidc@e22fa7d16d9cfd4f046cb00f471301f5e0a9c546 # v1
+        with:
+          ecosystem: dotnet
+
+      - name: Build
+        run: dotnet build .github/distrust-smoke -f ${{ matrix.framework }}
+
+      # Dummy credentials: a 401 from Twilio proves the TLS connection succeeded.
+      - name: Real list connects
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build
+
+      - name: DigiCert intermediate distrusted is refused
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --distrust-digicert
