@@ -89,7 +89,8 @@ jobs:
         run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --distrust-digicert
 
   # The .NET Framework 3.5 runtime (CLR 2.0) has no per-request certificate callback, so the SDK can't apply the
-  # check there. This job confirms the SDK still works on it and that the check skips itself instead of failing.
+  # check there. This job confirms the SDK still works on it, that the check skips itself instead of failing, and
+  # that the documented ServicePointManager opt-in works.
   smoke-clr2:
     name: Smoke net35 on CLR 2.0 (windows-latest-large)
     runs-on: windows-latest-large
@@ -133,3 +134,9 @@ jobs:
       # Expected: not protected. The connection still succeeds with the DigiCert intermediate distrusted.
       - name: Check skips itself on CLR 2.0
         run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --expect-connected; exit $LASTEXITCODE
+
+      - name: Opt-in through ServicePointManager connects
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --global-callback; exit $LASTEXITCODE
+
+      - name: Opt-in through ServicePointManager refuses the DigiCert intermediate
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --global-callback --distrust-digicert; exit $LASTEXITCODE

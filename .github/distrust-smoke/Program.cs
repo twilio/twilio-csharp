@@ -16,6 +16,7 @@ using Twilio.Rest.Api.V2010.Account;
 //                         connection must be refused
 //   --expect-connected    the connection must succeed even so: for runtimes where the check can't run
 //   --require-clr2        fail unless running on the .NET Framework 2.0-3.5 runtime (CLR 2.0)
+//   --global-callback     opt in through ServicePointManager, as the docs tell .NET Framework 3.5 apps to (net35 only)
 // Exits 0 when the outcome is the expected one, 1 otherwise.
 static class Program
 {
@@ -44,6 +45,15 @@ static class Program
         // Apps targeting .NET Framework 4.5.x don't enable TLS 1.2 by default, and api.twilio.com requires it.
         ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072;
 #endif
+        if (args.Contains("--global-callback"))
+        {
+#if NET35
+            ServicePointManager.ServerCertificateValidationCallback = DistrustedIntermediates.ValidateServerCertificate;
+#else
+            Console.WriteLine("FAIL: --global-callback is for the net35 build only");
+            return 1;
+#endif
+        }
         if (distrustDigiCert)
         {
             var field = typeof(DistrustedIntermediates).GetField("DistrustedSpkiSha256",
