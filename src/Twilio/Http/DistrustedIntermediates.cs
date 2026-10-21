@@ -29,6 +29,12 @@ namespace Twilio.Http
     /// var httpClient = new System.Net.Http.HttpClient(DistrustedIntermediates.CreateHttpClientHandler());
     /// var twilioClient = new TwilioRestClient(accountSid, authToken, httpClient: new SystemNetHttpClient(httpClient));
     /// </code>
+    ///
+    /// On the .NET Framework 3.5 runtime, HttpWebRequest has no per-request certificate callback, so the SDK can't
+    /// apply the check. To opt in there, use <c>ValidateServerCertificate</c> as the app-wide callback:
+    /// <code>
+    /// ServicePointManager.ServerCertificateValidationCallback = DistrustedIntermediates.ValidateServerCertificate;
+    /// </code>
     /// </remarks>
     public static class DistrustedIntermediates
     {
@@ -116,6 +122,21 @@ namespace Twilio.Http
             RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
                 Validate(sender, certificate, chain, errors, distrusted, baseValidation);
             RequestCallbackProperty.SetValue(request, callback, null);
+        }
+
+        /// <summary>
+        /// A ServicePointManager.ServerCertificateValidationCallback that accepts only certificates the system trusts,
+        /// and refuses distrusted intermediates.
+        /// </summary>
+        /// <remarks>
+        /// For apps on the .NET Framework 3.5 runtime, where the SDK can't apply the check per request. It applies to
+        /// every HttpWebRequest in the app, not just the SDK's; to keep a callback of your own, call this from it.
+        /// </remarks>
+        public static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors errors)
+        {
+            // Not DefaultValidation: it calls the ServicePointManager callback, which may be this method.
+            return errors == SslPolicyErrors.None && !ContainsDistrusted(certificate, chain, DistrustedSpkiSha256);
         }
 #endif
 

@@ -129,6 +129,14 @@ namespace CustomClientDotNet4x
 
 The default `SystemNetHttpClient` refuses TLS connections whose certificate chain contains one of eight intermediate certificates with compromised keys (CVE-2026-111943, the same list Go distrusts as of Go 1.27.3 and 1.26.10). A client built from your own `System.Net.Http.HttpClient` only gets this check if its handler comes from `DistrustedIntermediates.CreateHttpClientHandler()`, as the example above does.
 
+On the .NET Framework 3.5 runtime (CLR 2.0), the SDK can't apply the check, because `HttpWebRequest` has no per-request certificate callback there. Apps on .NET Framework 4.5 or later are covered, even when they load the SDK's .NET 3.5 build. To opt in on 3.5, set the app-wide callback once at startup:
+
+```csharp
+ServicePointManager.ServerCertificateValidationCallback = Twilio.Http.DistrustedIntermediates.ValidateServerCertificate;
+```
+
+This applies to every `HttpWebRequest` in your app, not just the SDK's. If your app already sets this callback, call `DistrustedIntermediates.ValidateServerCertificate` from it instead of replacing it.
+
 Notice the use of `ConfigurationManager.AppSettings` to retrieve various configuration settings:
 
 - Your Twilio Account Sid and Auth Token ([found here, in the Twilio console](https://console.twilio.con))
