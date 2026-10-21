@@ -1,12 +1,13 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+FROM ubuntu:24.04
 
-# Ubuntu-based image; keep ca-certificates current. net462/net35 targets build on
+# Ubuntu 24.04 base with the .NET 8 SDK from the Ubuntu archive; ca-certificates kept current. net462/net35 targets build on
 # Linux via NuGet reference assemblies (see src/Twilio/Twilio.csproj), so Mono is not needed.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
+        dotnet-sdk-8.0 \
         make \
-    && apt-get upgrade -y ca-certificates \
+    && apt-get install -y --only-upgrade ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /twilio
