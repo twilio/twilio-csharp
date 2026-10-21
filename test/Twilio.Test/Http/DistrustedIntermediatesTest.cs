@@ -57,7 +57,8 @@ namespace Twilio.Tests.Http
                 request.CertificateExtensions.Add(names.Build());
                 request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(
                     new OidCollection { new Oid("1.3.6.1.5.5.7.3.1") }, false));
-                var leaf = request.Create(_intermediate, now.AddHours(-1), now.AddDays(1), new[] { serial })
+                // A leaf can't outlive its issuer, so end it well before the intermediate created a moment ago.
+                var leaf = request.Create(_intermediate, now.AddHours(-1), now.AddHours(12), new[] { serial })
                     .CopyWithPrivateKey(key);
                 // SslStream on macOS needs the key in a keychain-backed certificate, so round-trip through PKCS#12.
                 return new X509Certificate2(leaf.Export(X509ContentType.Pkcs12), (string)null,
