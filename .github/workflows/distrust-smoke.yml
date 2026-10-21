@@ -87,3 +87,49 @@ jobs:
 
       - name: DigiCert intermediate distrusted is refused
         run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --distrust-digicert
+
+  # The .NET Framework 3.5 runtime (CLR 2.0) has no per-request certificate callback, so the SDK can't apply the
+  # check there. This job confirms the SDK still works on it and that the check skips itself instead of failing.
+  smoke-clr2:
+    name: Smoke net35 on CLR 2.0 (windows-latest-large)
+    runs-on: windows-latest-large
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+
+      - name: Enable .NET Framework 3.5
+        run: |
+          $feature = Get-WindowsFeature -Name Net-Framework-Core
+          if (-not $feature.Installed) { Install-WindowsFeature -Name Net-Framework-Core | Out-Host }
+          Get-WindowsFeature -Name Net-Framework-Core | Out-Host
+
+      # api.twilio.com requires TLS 1.2, which the 3.5 runtime only uses with these settings.
+      - name: Enable TLS 1.2 for the 3.5 runtime
+        run: |
+          foreach ($key in 'HKLM:\SOFTWARE\Microsoft\.NETFramework\v2.0.50727',
+                           'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v2.0.50727') {
+            New-Item -Path $key -Force | Out-Null
+            New-ItemProperty -Path $key -Name SystemDefaultTlsVersions -Value 1 -PropertyType DWord -Force | Out-Null
+            New-ItemProperty -Path $key -Name SchUseStrongCrypto -Value 1 -PropertyType DWord -Force | Out-Null
+          }
+
+      - name: Build
+        run: dotnet build .github/distrust-smoke -f net35
+
+      - name: Real list connects
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2; exit $LASTEXITCODE
+
+      # Expected: not protected. The connection still succeeds with the DigiCert intermediate distrusted.
+      - name: Check skips itself on CLR 2.0
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --expect-connected; exit $LASTEXITCODE

@@ -14,6 +14,8 @@ using Twilio.Rest.Api.V2010.Account;
 //   (no args)             the connection must succeed (a 401 for dummy credentials counts)
 //   --distrust-digicert   the intermediate api.twilio.com sends is added to the SDK's list for this run, so the
 //                         connection must be refused
+//   --expect-connected    the connection must succeed even so: for runtimes where the check can't run
+//   --require-clr2        fail unless running on the .NET Framework 2.0-3.5 runtime (CLR 2.0)
 // Exits 0 when the outcome is the expected one, 1 otherwise.
 static class Program
 {
@@ -21,15 +23,28 @@ static class Program
 
     private static int Main(string[] args)
     {
-        var expectRefused = args.Contains("--distrust-digicert");
+        var distrustDigiCert = args.Contains("--distrust-digicert");
+        var expectRefused = distrustDigiCert && !args.Contains("--expect-connected");
+#if NET35
+        var sdkBuild = "net35";
+#else
         var sdkBuild = typeof(TwilioClient).Assembly.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName;
-        Console.WriteLine($"runtime {Environment.Version}, SDK build {sdkBuild}, expect {(expectRefused ? "REFUSED" : "CONNECTED")}");
+#endif
+        var hasRequestCallback = typeof(HttpWebRequest).GetProperty("ServerCertificateValidationCallback") != null;
+        Console.WriteLine($"runtime {Environment.Version}, SDK build {sdkBuild}, " +
+            $"HttpWebRequest.ServerCertificateValidationCallback {(hasRequestCallback ? "present" : "missing")}, " +
+            $"expect {(expectRefused ? "REFUSED" : "CONNECTED")}");
+        if (args.Contains("--require-clr2") && Environment.Version.Major != 2)
+        {
+            Console.WriteLine("FAIL: not running on CLR 2.0");
+            return 1;
+        }
 
 #if NETFRAMEWORK
         // Apps targeting .NET Framework 4.5.x don't enable TLS 1.2 by default, and api.twilio.com requires it.
         ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072;
 #endif
-        if (expectRefused)
+        if (distrustDigiCert)
         {
             var field = typeof(DistrustedIntermediates).GetField("DistrustedSpkiSha256",
                 BindingFlags.NonPublic | BindingFlags.Static);
@@ -65,9 +80,10 @@ static class Program
             {
                 messages.Add($"{inner.GetType().Name}: {inner.Message}");
             }
-            Console.WriteLine("ERROR: " + string.Join(" -> ", messages));
+            Console.WriteLine("ERROR: " + string.Join(" -> ", messages.ToArray()));
             // Only a certificate failure counts as refused; any other error (DNS, timeout) fails both modes.
-            return Regex.IsMatch(string.Join(" ", messages), "certificate|trust relationship|SSL", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(string.Join(" ", messages.ToArray()), "certificate|trust relationship|SSL",
+                RegexOptions.IgnoreCase);
         }
     }
 }
