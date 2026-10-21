@@ -146,6 +146,8 @@ Console.WriteLine(response);
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
 
+The default HTTP client refuses TLS connections whose certificate chain contains one of eight intermediate certificates with compromised keys (CVE-2026-111943). A client built from your own `System.Net.Http.HttpClient` doesn't get this check unless you create its handler with `DistrustedIntermediates.CreateHttpClientHandler()`, as the [advanced example](./advanced-examples/custom-http-client.md#keep-the-distrusted-intermediate-check) shows.
+
 ## Annotations
 
 ### Beta
