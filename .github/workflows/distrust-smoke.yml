@@ -35,8 +35,10 @@ jobs:
         with:
           ecosystem: dotnet
 
+      # Twilio.Test is an NUnitLite console app, so `dotnet test` finds no tests in it; run it instead. Its exit code
+      # is the number of failed tests.
       - name: Distrusted-intermediate unit tests
-        run: dotnet test test/Twilio.Test/Twilio.Test.csproj --filter "FullyQualifiedName~DistrustedIntermediates" --logger "console;verbosity=normal"
+        run: dotnet run --project test/Twilio.Test -- --where "class == Twilio.Tests.Http.DistrustedIntermediatesTest"
 
   smoke:
     name: Smoke ${{ matrix.framework }} (${{ matrix.os }})
