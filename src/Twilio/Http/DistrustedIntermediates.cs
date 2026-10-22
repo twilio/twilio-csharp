@@ -29,6 +29,10 @@ namespace Twilio.Http
     /// var httpClient = new System.Net.Http.HttpClient(DistrustedIntermediates.CreateHttpClientHandler());
     /// var twilioClient = new TwilioRestClient(accountSid, authToken, httpClient: new SystemNetHttpClient(httpClient));
     /// </code>
+    ///
+    /// On the .NET Framework 3.5 runtime, HttpWebRequest has no per-request certificate callback, so the SDK sets
+    /// ServicePointManager.ServerCertificateValidationCallback. It calls any callback the app set, and applies the
+    /// check only to the SDK's own requests.
     /// </remarks>
     public static class DistrustedIntermediates
     {
@@ -97,10 +101,18 @@ namespace Twilio.Http
         }
 #else
         // HttpWebRequest.ServerCertificateValidationCallback exists from .NET Framework 4.5 on, which is the runtime
-        // most apps that load this net35 build run on. On a .NET Framework 3.5 runtime it's missing, and requests
-        // keep their default validation.
+        // most apps that load this net35 build run on. On a .NET Framework 3.5 runtime it's missing, so the SDK uses
+        // the app-wide ServicePointManager callback instead, and applies the check only to its own requests.
         private static readonly PropertyInfo RequestCallbackProperty =
             typeof(HttpWebRequest).GetProperty("ServerCertificateValidationCallback");
+
+        // Marks the SDK's requests on the .NET Framework 3.5 runtime. It also gives them their own connections, so
+        // they never reuse one the app opened, which the check didn't cover.
+        internal const string ConnectionGroupName = "Twilio.DistrustedIntermediates";
+
+        private static readonly object AppWideCallbackLock = new object();
+        private static RemoteCertificateValidationCallback _appWideCallback;
+        private static RemoteCertificateValidationCallback _wrappedAppCallback;
 
         internal static void Apply(HttpWebRequest request)
         {
@@ -111,11 +123,110 @@ namespace Twilio.Http
         {
             if (RequestCallbackProperty == null)
             {
+                request.ConnectionGroupName = ConnectionGroupName;
+                InstallAppWideCallback(distrusted);
                 return;
             }
             RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
                 Validate(sender, certificate, chain, errors, distrusted, baseValidation);
             RequestCallbackProperty.SetValue(request, callback, null);
+        }
+
+        // Installs a ServicePointManager callback that wraps the app's own, if it has one. Every request still gets
+        // the app's verdict; only the SDK's requests also get the distrust check. Called for every SDK request, so if
+        // the app replaces the callback later, the next request wraps the new one.
+        private static void InstallAppWideCallback(ICollection<string> distrusted)
+        {
+            lock (AppWideCallbackLock)
+            {
+                var appCallback = ServicePointManager.ServerCertificateValidationCallback;
+                var installed = appCallback != null && ReferenceEquals(appCallback, _appWideCallback);
+                if (HasLegacyCertificatePolicy())
+                {
+                    // Any callback makes the runtime ignore a CertificatePolicy, so leave the app's settings alone.
+                    // The SDK's requests then keep their default validation.
+                    if (installed)
+                    {
+                        ServicePointManager.ServerCertificateValidationCallback = _wrappedAppCallback;
+                        _appWideCallback = null;
+                    }
+                    return;
+                }
+                if (installed)
+                {
+                    return;
+                }
+                RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
+                {
+                    var request = sender as HttpWebRequest;
+                    var accepted = appCallback != null
+                        ? appCallback(sender, certificate, chain, errors)
+                        : AppDefaultValidation(request, certificate, chain, errors);
+                    if (!accepted || request == null || request.ConnectionGroupName != ConnectionGroupName)
+                    {
+                        return accepted;
+                    }
+                    return !ContainsDistrusted(certificate, chain, distrusted);
+                };
+                _appWideCallback = callback;
+                _wrappedAppCallback = appCallback;
+                ServicePointManager.ServerCertificateValidationCallback = callback;
+            }
+        }
+
+#pragma warning disable 618
+        private static bool HasLegacyCertificatePolicy()
+        {
+            var policy = ServicePointManager.CertificatePolicy;
+            return policy != null && policy.GetType().FullName != "System.Net.DefaultCertPolicy";
+        }
+
+        // What the runtime does when no callback is set. A CertificatePolicy set after the SDK installed its callback
+        // gets a problem code approximated from the chain, since the runtime's own codes aren't available here.
+        private static bool AppDefaultValidation(HttpWebRequest request, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors errors)
+        {
+            if (request == null || !HasLegacyCertificatePolicy())
+            {
+                return errors == SslPolicyErrors.None;
+            }
+            return ServicePointManager.CertificatePolicy.CheckValidationResult(request.ServicePoint, certificate,
+                request, CertificateProblem(chain, errors));
+        }
+#pragma warning restore 618
+
+        private static int CertificateProblem(X509Chain chain, SslPolicyErrors errors)
+        {
+            if (errors == SslPolicyErrors.None)
+            {
+                return 0;
+            }
+            if ((errors & SslPolicyErrors.RemoteCertificateChainErrors) != 0 && chain != null)
+            {
+                foreach (var status in chain.ChainStatus)
+                {
+                    switch (status.Status)
+                    {
+                        case X509ChainStatusFlags.NoError:
+                            continue;
+                        case X509ChainStatusFlags.NotTimeValid:
+                            return unchecked((int)0x800B0101); // CERT_E_EXPIRED
+                        case X509ChainStatusFlags.Revoked:
+                            return unchecked((int)0x80092010); // CRYPT_E_REVOKED
+                        case X509ChainStatusFlags.UntrustedRoot:
+                            return unchecked((int)0x800B0109); // CERT_E_UNTRUSTEDROOT
+                        case X509ChainStatusFlags.PartialChain:
+                            return unchecked((int)0x800B010A); // CERT_E_CHAINING
+                        default:
+                            return unchecked((int)0x800B010B); // TRUST_E_FAIL
+                    }
+                }
+            }
+            if ((errors & SslPolicyErrors.RemoteCertificateNameMismatch) != 0)
+            {
+                return unchecked((int)0x800B010F); // CERT_E_CN_NO_MATCH
+            }
+            return unchecked((int)0x800B010B); // TRUST_E_FAIL
         }
 #endif
 
