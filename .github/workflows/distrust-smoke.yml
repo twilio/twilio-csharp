@@ -90,11 +90,11 @@ jobs:
 
       # An app that accepts every certificate, such as one behind a TLS-inspecting proxy, must keep working.
       - name: SDK honors the app's accept-all callback
-        if: startsWith(matrix.framework, 'net4')
+        if: ${{ !cancelled() && startsWith(matrix.framework, 'net4') }}
         run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --accept-all-callback --sdk-self-signed
 
       - name: SDK honors the app's accept-all CertificatePolicy
-        if: startsWith(matrix.framework, 'net4')
+        if: ${{ !cancelled() && startsWith(matrix.framework, 'net4') }}
         run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --legacy-policy --sdk-self-signed
 
   # The .NET Framework 3.5 runtime (CLR 2.0) has no per-request certificate callback, so the SDK uses the app-wide

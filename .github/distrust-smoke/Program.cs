@@ -129,7 +129,12 @@ static class Program
         }
         catch (ApiConnectionException e)
         {
-            Console.WriteLine($"SDK request to {url} FAILED: {e.Message} -> {e.InnerException?.Message}");
+            var messages = new List<string>();
+            for (Exception inner = e; inner != null; inner = inner.InnerException)
+            {
+                messages.Add($"{inner.GetType().Name}: {inner.Message}");
+            }
+            Console.WriteLine($"SDK request to {url} FAILED: " + string.Join(" -> ", messages.ToArray()));
             return false;
         }
         catch (Exception)

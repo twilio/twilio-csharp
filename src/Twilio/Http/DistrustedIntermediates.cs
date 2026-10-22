@@ -165,19 +165,53 @@ namespace Twilio.Http
                     var request = sender as HttpWebRequest;
                     var accepted = appCallback != null
                         ? appCallback(sender, certificate, chain, errors)
-                        : AppDefaultValidation(request, certificate, chain, errors);
+                        : LegacyPolicyValidation(request, certificate, chain, errors);
                     if (!accepted || request == null || request.ConnectionGroupName != ConnectionGroupName)
                     {
                         return accepted;
                     }
-                    return Refuse(certificate, chain, distrusted);
+                    return EnsureNotDistrusted(certificate, chain, distrusted);
                 };
                 _appWideCallback = callback;
                 _wrappedAppCallback = appCallback;
                 ServicePointManager.ServerCertificateValidationCallback = callback;
             }
         }
+#endif
 
+        // A handler or request callback replaces the platform's default validation, so reproduce it: the system's
+        // verdict, or on HttpWebRequest-based stacks, ServicePointManager.ServerCertificateValidationCallback or
+        // CertificatePolicy, which the app may have set and a per-handler callback would otherwise bypass.
+        internal static bool DefaultValidation(object sender, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors errors)
+        {
+#if !NET8_0_OR_GREATER
+            if (HonorsServicePointManager)
+            {
+                var callback = ServicePointManager.ServerCertificateValidationCallback;
+                if (callback != null)
+                {
+                    return callback(sender, certificate, chain, errors);
+                }
+            }
+#endif
+#if NET35 || NET462
+            return LegacyPolicyValidation(sender as HttpWebRequest, certificate, chain, errors);
+#else
+            return errors == SslPolicyErrors.None;
+#endif
+        }
+
+#if !NET8_0_OR_GREATER
+#if NET35 || NET462
+        private static readonly bool HonorsServicePointManager = true;
+#else
+        // HttpClientHandler is HttpWebRequest-based on Mono, but not on .NET Core.
+        private static readonly bool HonorsServicePointManager = Type.GetType("Mono.Runtime") != null;
+#endif
+#endif
+
+#if NET35 || NET462
 #pragma warning disable 618
         private static bool HasLegacyCertificatePolicy()
         {
@@ -185,9 +219,10 @@ namespace Twilio.Http
             return policy != null && policy.GetType().FullName != "System.Net.DefaultCertPolicy";
         }
 
-        // What the runtime does when no callback is set. A CertificatePolicy set after the SDK installed its callback
-        // gets a problem code approximated from the chain, since the runtime's own codes aren't available here.
-        private static bool AppDefaultValidation(HttpWebRequest request, X509Certificate certificate, X509Chain chain,
+        // What the runtime does when no callback is set: ask the app's CertificatePolicy, if it set one. Any callback
+        // makes the runtime skip that policy, so the SDK asks it instead, with a problem code approximated from the
+        // chain, since the runtime's own codes aren't available here.
+        private static bool LegacyPolicyValidation(HttpWebRequest request, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors errors)
         {
             if (request == null || !HasLegacyCertificatePolicy())
@@ -234,43 +269,15 @@ namespace Twilio.Http
         }
 #endif
 
-        // A handler or request callback replaces the platform's default validation, so reproduce it: the system's
-        // verdict, or ServicePointManager.ServerCertificateValidationCallback on HttpWebRequest-based stacks,
-        // where the app may have set one and a per-handler callback would otherwise bypass it.
-        internal static bool DefaultValidation(object sender, X509Certificate certificate, X509Chain chain,
-            SslPolicyErrors errors)
-        {
-#if !NET8_0_OR_GREATER
-            if (HonorsServicePointManager)
-            {
-                var callback = ServicePointManager.ServerCertificateValidationCallback;
-                if (callback != null)
-                {
-                    return callback(sender, certificate, chain, errors);
-                }
-            }
-#endif
-            return errors == SslPolicyErrors.None;
-        }
-
-#if !NET8_0_OR_GREATER
-#if NET35 || NET462
-        private static readonly bool HonorsServicePointManager = true;
-#else
-        // HttpClientHandler is HttpWebRequest-based on Mono, but not on .NET Core.
-        private static readonly bool HonorsServicePointManager = Type.GetType("Mono.Runtime") != null;
-#endif
-#endif
-
         private static bool Validate(object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors errors, ICollection<string> distrusted, BaseValidation baseValidation)
         {
-            return baseValidation(sender, certificate, chain, errors) && Refuse(certificate, chain, distrusted);
+            return baseValidation(sender, certificate, chain, errors) && EnsureNotDistrusted(certificate, chain, distrusted);
         }
 
         // Returns true when the chain is clean. A distrusted chain throws instead of returning false, so the error the
         // caller sees says why: the platform wraps the exception, and the SDK's clients look for it.
-        private static bool Refuse(X509Certificate certificate, X509Chain chain, ICollection<string> distrusted)
+        private static bool EnsureNotDistrusted(X509Certificate certificate, X509Chain chain, ICollection<string> distrusted)
         {
             if (ContainsDistrusted(certificate, chain, distrusted))
             {
