@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Twilio.Clients;
+using Twilio.Exceptions;
 using Twilio.Http;
 
 namespace Twilio.Tests.Http
@@ -144,8 +146,10 @@ namespace Twilio.Tests.Http
             var distrusted = new HashSet<string>(DistrustedIntermediates.DistrustedSpkiSha256) { Hash(_intermediate) };
             var handler = DistrustedIntermediates.CreateHttpClientHandler(distrusted, TrustTestRoot);
 
-            Assert.Throws<HttpRequestException>(() => Get(handler));
+            var e = Assert.Throws<HttpRequestException>(() => Get(handler));
             Assert.AreEqual(0, _server.RequestCount, "the request must not reach the server");
+            Assert.AreEqual(DistrustedIntermediates.RefusedMessage,
+                DistrustedIntermediates.ConnectionErrorMessage(e, "Connection Error"));
         }
 
         [Test]
@@ -168,8 +172,9 @@ namespace Twilio.Tests.Http
 
             using (var otherHost = new TlsServer(_otherHostLeaf, _intermediate))
             {
-                Assert.Throws<HttpRequestException>(() => Get(handler, otherHost));
+                var e = Assert.Throws<HttpRequestException>(() => Get(handler, otherHost));
                 Assert.AreEqual(0, otherHost.RequestCount, "the request must not reach the server");
+                Assert.AreEqual("Connection Error", DistrustedIntermediates.ConnectionErrorMessage(e, "Connection Error"));
             }
         }
 
@@ -224,6 +229,48 @@ namespace Twilio.Tests.Http
                         SHA256.HashData(certificate.PublicKey.ExportSubjectPublicKeyInfo())).ToLowerInvariant();
                     Assert.AreEqual(expected, Hash(certificate), certificate.Subject);
                 }
+            }
+        }
+
+        [Test]
+        public void TestRestClientReportsDistrustedIntermediate()
+        {
+            var client = new TwilioRestClient("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "token",
+                httpClient: new ThrowingHttpClient(new HttpRequestException("ssl", new DistrustedIntermediateException())));
+            var request = new Request(Twilio.Http.HttpMethod.Get, "https://api.twilio.com/2010-04-01/Accounts.json");
+
+            var e = Assert.Throws<ApiConnectionException>(() => client.Request(request));
+            Assert.AreEqual("Certificate chain which you are using contains a distrusted intermediate certificate", e.Message);
+        }
+
+        [Test]
+        public void TestRestClientKeepsOtherConnectionErrors()
+        {
+            var client = new TwilioRestClient("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "token",
+                httpClient: new ThrowingHttpClient(new HttpRequestException("ssl")));
+            var request = new Request(Twilio.Http.HttpMethod.Get, "https://api.twilio.com/2010-04-01/Accounts.json");
+
+            var e = Assert.Throws<ApiConnectionException>(() => client.Request(request));
+            StringAssert.StartsWith("Connection Error: GET", e.Message);
+        }
+
+        private sealed class ThrowingHttpClient : Twilio.Http.HttpClient
+        {
+            private readonly Exception _exception;
+
+            public ThrowingHttpClient(Exception exception)
+            {
+                _exception = exception;
+            }
+
+            public override Response MakeRequest(Request request)
+            {
+                throw _exception;
+            }
+
+            public override Task<Response> MakeRequestAsync(Request request)
+            {
+                throw _exception;
             }
         }
 
