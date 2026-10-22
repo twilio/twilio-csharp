@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Twilio.Exceptions;
 #if NET35
 using System.Reflection;
 #else
@@ -36,6 +37,9 @@ namespace Twilio.Http
     /// </remarks>
     public static class DistrustedIntermediates
     {
+        internal const string RefusedMessage =
+            "Certificate chain which you are using contains a distrusted intermediate certificate";
+
         // Copied from Go commit 7f86f957633ee31a1c17a1eb8452ca7a3d9bc141 (src/crypto/x509/verify.go).
         internal static readonly ICollection<string> DistrustedSpkiSha256 = new HashSet<string>(StringComparer.Ordinal)
         {
@@ -166,7 +170,7 @@ namespace Twilio.Http
                     {
                         return accepted;
                     }
-                    return !ContainsDistrusted(certificate, chain, distrusted);
+                    return Refuse(certificate, chain, distrusted);
                 };
                 _appWideCallback = callback;
                 _wrappedAppCallback = appCallback;
@@ -261,8 +265,32 @@ namespace Twilio.Http
         private static bool Validate(object sender, X509Certificate certificate, X509Chain chain,
             SslPolicyErrors errors, ICollection<string> distrusted, BaseValidation baseValidation)
         {
-            return baseValidation(sender, certificate, chain, errors)
-                && !ContainsDistrusted(certificate, chain, distrusted);
+            return baseValidation(sender, certificate, chain, errors) && Refuse(certificate, chain, distrusted);
+        }
+
+        // Returns true when the chain is clean. A distrusted chain throws instead of returning false, so the error the
+        // caller sees says why: the platform wraps the exception, and the SDK's clients look for it.
+        private static bool Refuse(X509Certificate certificate, X509Chain chain, ICollection<string> distrusted)
+        {
+            if (ContainsDistrusted(certificate, chain, distrusted))
+            {
+                throw new DistrustedIntermediateException();
+            }
+            return true;
+        }
+
+        // The message for an ApiConnectionException: RefusedMessage when the distrust check refused the connection,
+        // otherwise connectionError.
+        internal static string ConnectionErrorMessage(Exception exception, string connectionError)
+        {
+            for (var inner = exception; inner != null; inner = inner.InnerException)
+            {
+                if (inner is DistrustedIntermediateException)
+                {
+                    return RefusedMessage;
+                }
+            }
+            return connectionError;
         }
 
         // Checks the chain the platform built, like Go, plus the server's certificate in case there's no chain.
@@ -369,6 +397,14 @@ namespace Twilio.Http
                 throw new ArgumentException("Truncated DER element");
             }
             return contentOffset;
+        }
+    }
+
+    internal sealed class DistrustedIntermediateException : CertificateValidationException
+    {
+        public DistrustedIntermediateException()
+            : base(DistrustedIntermediates.RefusedMessage, (Request)null, (Response)null)
+        {
         }
     }
 }

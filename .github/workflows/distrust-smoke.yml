@@ -88,6 +88,15 @@ jobs:
       - name: DigiCert intermediate distrusted is refused
         run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --distrust-digicert
 
+      # An app that accepts every certificate, such as one behind a TLS-inspecting proxy, must keep working.
+      - name: SDK honors the app's accept-all callback
+        if: startsWith(matrix.framework, 'net4')
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --accept-all-callback --sdk-self-signed
+
+      - name: SDK honors the app's accept-all CertificatePolicy
+        if: startsWith(matrix.framework, 'net4')
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --legacy-policy --sdk-self-signed
+
   # The .NET Framework 3.5 runtime (CLR 2.0) has no per-request certificate callback, so the SDK uses the app-wide
   # ServicePointManager callback, for its own requests only. This job checks that, and that the app's own requests
   # and callbacks behave as before.
@@ -145,3 +154,9 @@ jobs:
 
       - name: The app's legacy CertificatePolicy set later is kept
         run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --late-legacy-policy; exit $LASTEXITCODE
+
+      - name: SDK honors the app's accept-all callback
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --accept-all-callback --sdk-self-signed; exit $LASTEXITCODE
+
+      - name: SDK honors the app's accept-all CertificatePolicy
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --legacy-policy --sdk-self-signed; exit $LASTEXITCODE

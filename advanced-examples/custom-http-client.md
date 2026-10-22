@@ -129,7 +129,7 @@ namespace CustomClientDotNet4x
 
 The default `SystemNetHttpClient` refuses TLS connections whose certificate chain contains one of eight intermediate certificates with compromised keys (CVE-2026-111943, the same list Go distrusts as of Go 1.27.3 and 1.26.10). A client built from your own `System.Net.Http.HttpClient` only gets this check if its handler comes from `DistrustedIntermediates.CreateHttpClientHandler()`, as the example above does.
 
-On the .NET Framework 3.5 runtime (CLR 2.0), `HttpWebRequest` has no per-request certificate callback, so the SDK sets `ServicePointManager.ServerCertificateValidationCallback` on its first request. That callback applies the check only to the SDK's own requests, and calls any callback your app set, so your app's other requests are validated as before. If your app sets the callback after that, the SDK wraps the new one on its next request.
+On the .NET Framework 3.5 runtime (CLR 2.0), `HttpWebRequest` has no per-request certificate callback, so the SDK sets `ServicePointManager.ServerCertificateValidationCallback` on its first request. That callback applies the check only to the SDK's own requests, and calls any callback your app set, so your app's other requests are validated as before. If your app sets the callback after that, the SDK wraps the new one on its next request. The runtime ignores the obsolete `ServicePointManager.CertificatePolicy` once any callback is set, so while your app sets a `CertificatePolicy` the SDK leaves the callback alone, and its requests don't get the check.
 
 Notice the use of `ConfigurationManager.AppSettings` to retrieve various configuration settings:
 

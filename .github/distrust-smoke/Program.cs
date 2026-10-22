@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.Versioning;
-using System.Text.RegularExpressions;
 using Twilio;
 using Twilio.Exceptions;
 using Twilio.Http;
@@ -21,9 +20,13 @@ using Twilio.Rest.Api.V2010.Account;
 //                         self-signed site must still pass it
 //   --late-legacy-policy  the same, but the app sets the policy after the SDK's first request
 //   --repeat              list messages twice, and require the expected outcome both times
+//   --accept-all-callback the app sets a ServicePointManager callback that accepts every certificate
+//   --sdk-self-signed     afterwards, an SDK request to a self-signed site must connect, because the app accepts it
 // Exits 0 when the outcome is the expected one, 1 otherwise.
 static class Program
 {
+    private const string RefusedMessage =
+        "Certificate chain which you are using contains a distrusted intermediate certificate";
     private const string DigiCertG2Intermediate = "59e738e674221702af1edb87c5200c1a4b75f64fae3d2c3d265124c61bd83c79";
 
     private static int Main(string[] args)
@@ -59,6 +62,10 @@ static class Program
                 Console.WriteLine($"app callback: {request?.RequestUri.Host}, group '{request?.ConnectionGroupName}', {errors}");
                 return errors == System.Net.Security.SslPolicyErrors.None;
             };
+        }
+        if (args.Contains("--accept-all-callback"))
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => true;
         }
         if (args.Contains("--legacy-policy"))
         {
@@ -105,8 +112,31 @@ static class Program
         {
             passed &= AppRequestConnects("https://self-signed.badssl.com/");
         }
+        if (args.Contains("--sdk-self-signed"))
+        {
+            passed &= SdkRequestConnects("https://self-signed.badssl.com/");
+        }
         Console.WriteLine(passed ? "PASS" : "FAIL");
         return passed ? 0 : 1;
+    }
+
+    // An SDK request to any URL. Anything but an ApiConnectionException means the TLS connection succeeded.
+    private static bool SdkRequestConnects(string url)
+    {
+        try
+        {
+            TwilioClient.GetRestClient().Request(new Request(Twilio.Http.HttpMethod.Get, url));
+        }
+        catch (ApiConnectionException e)
+        {
+            Console.WriteLine($"SDK request to {url} FAILED: {e.Message} -> {e.InnerException?.Message}");
+            return false;
+        }
+        catch (Exception)
+        {
+        }
+        Console.WriteLine($"SDK request to {url} CONNECTED");
+        return true;
     }
 
     // The app's own request, outside the SDK. Any HTTP response means the TLS connection succeeded.
@@ -169,9 +199,9 @@ static class Program
                 messages.Add($"{inner.GetType().Name}: {inner.Message}");
             }
             Console.WriteLine("ERROR: " + string.Join(" -> ", messages.ToArray()));
-            // Only a certificate failure counts as refused; any other error (DNS, timeout) fails both modes.
-            return Regex.IsMatch(string.Join(" ", messages.ToArray()), "certificate|trust relationship|SSL",
-                RegexOptions.IgnoreCase);
+            // Only the SDK's distrust error counts as refused; any other error (DNS, timeout, another certificate
+            // problem) fails both modes.
+            return e is ApiConnectionException && e.Message == RefusedMessage;
         }
     }
 }
