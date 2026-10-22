@@ -131,8 +131,8 @@ jobs:
       - name: Real list connects
         run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2; exit $LASTEXITCODE
 
-      - name: DigiCert intermediate distrusted is refused
-        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert; exit $LASTEXITCODE
+      - name: DigiCert intermediate distrusted is refused, twice
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --repeat; exit $LASTEXITCODE
 
       - name: The app's own requests are unaffected
         run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --other-request; exit $LASTEXITCODE
@@ -142,3 +142,6 @@ jobs:
 
       - name: The app's legacy CertificatePolicy is kept
         run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --legacy-policy; exit $LASTEXITCODE
+
+      - name: The app's legacy CertificatePolicy set later is kept
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --late-legacy-policy; exit $LASTEXITCODE

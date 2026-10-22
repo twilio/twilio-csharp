@@ -17,7 +17,10 @@ using Twilio.Rest.Api.V2010.Account;
 //   --require-clr2        fail unless running on the .NET Framework 2.0-3.5 runtime (CLR 2.0)
 //   --app-callback        the app sets its own ServicePointManager callback first, which must still be called
 //   --other-request       afterwards, the app's own HttpWebRequest to api.twilio.com must connect, distrusted or not
-//   --legacy-policy       afterwards, the app's own request to a self-signed site must still pass its CertificatePolicy
+//   --legacy-policy       the app sets an accept-all CertificatePolicy first; afterwards, its own request to a
+//                         self-signed site must still pass it
+//   --late-legacy-policy  the same, but the app sets the policy after the SDK's first request
+//   --repeat              list messages twice, and require the expected outcome both times
 // Exits 0 when the outcome is the expected one, 1 otherwise.
 static class Program
 {
@@ -52,6 +55,8 @@ static class Program
             ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
             {
                 appCallbackCalls++;
+                var request = sender as HttpWebRequest;
+                Console.WriteLine($"app callback: {request?.RequestUri.Host}, group '{request?.ConnectionGroupName}', {errors}");
                 return errors == System.Net.Security.SslPolicyErrors.None;
             };
         }
@@ -75,6 +80,18 @@ static class Program
 
         var refused = ListMessages();
         var passed = refused == expectRefused;
+        if (args.Contains("--repeat"))
+        {
+            passed &= ListMessages() == expectRefused;
+        }
+        if (args.Contains("--late-legacy-policy"))
+        {
+#if NETFRAMEWORK
+#pragma warning disable 618
+            ServicePointManager.CertificatePolicy = new AcceptAllPolicy();
+#pragma warning restore 618
+#endif
+        }
         if (args.Contains("--app-callback"))
         {
             Console.WriteLine($"app callback called {appCallbackCalls} times");
@@ -84,7 +101,7 @@ static class Program
         {
             passed &= AppRequestConnects("https://api.twilio.com/2010-04-01.json");
         }
-        if (args.Contains("--legacy-policy"))
+        if (args.Contains("--legacy-policy") || args.Contains("--late-legacy-policy"))
         {
             passed &= AppRequestConnects("https://self-signed.badssl.com/");
         }
