@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Smoke test for the distrusted-intermediate check. Each target framework makes the SDK load a different build:
+      net8.0 -> net8.0, net6.0 -> netstandard2.0, net48 -> net462, net452 -> net35, net35 -> net35.
+    The net35 app runs on the .NET Framework 2.0-3.5 runtime (CLR 2.0), forced by App.net35.config.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net6.0;net48;net452;net35</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net35'">
+    <AppConfig>App.net35.config</AppConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Twilio/Twilio.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) OR '$(TargetFramework)' == 'net35'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net35'">
+    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
