@@ -112,6 +112,7 @@ namespace Twilio.Http
 
         private static readonly object AppWideCallbackLock = new object();
         private static RemoteCertificateValidationCallback _appWideCallback;
+        private static RemoteCertificateValidationCallback _wrappedAppCallback;
 
         internal static void Apply(HttpWebRequest request)
         {
@@ -139,16 +140,28 @@ namespace Twilio.Http
             lock (AppWideCallbackLock)
             {
                 var appCallback = ServicePointManager.ServerCertificateValidationCallback;
-                if (appCallback != null && ReferenceEquals(appCallback, _appWideCallback))
+                var installed = appCallback != null && ReferenceEquals(appCallback, _appWideCallback);
+                if (HasLegacyCertificatePolicy())
+                {
+                    // Any callback makes the runtime ignore a CertificatePolicy, so leave the app's settings alone.
+                    // The SDK's requests then keep their default validation.
+                    if (installed)
+                    {
+                        ServicePointManager.ServerCertificateValidationCallback = _wrappedAppCallback;
+                        _appWideCallback = null;
+                    }
+                    return;
+                }
+                if (installed)
                 {
                     return;
                 }
                 RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
                 {
+                    var request = sender as HttpWebRequest;
                     var accepted = appCallback != null
                         ? appCallback(sender, certificate, chain, errors)
-                        : errors == SslPolicyErrors.None;
-                    var request = sender as HttpWebRequest;
+                        : AppDefaultValidation(request, certificate, chain, errors);
                     if (!accepted || request == null || request.ConnectionGroupName != ConnectionGroupName)
                     {
                         return accepted;
@@ -156,8 +169,64 @@ namespace Twilio.Http
                     return !ContainsDistrusted(certificate, chain, distrusted);
                 };
                 _appWideCallback = callback;
+                _wrappedAppCallback = appCallback;
                 ServicePointManager.ServerCertificateValidationCallback = callback;
             }
+        }
+
+#pragma warning disable 618
+        private static bool HasLegacyCertificatePolicy()
+        {
+            var policy = ServicePointManager.CertificatePolicy;
+            return policy != null && policy.GetType().FullName != "System.Net.DefaultCertPolicy";
+        }
+
+        // What the runtime does when no callback is set. A CertificatePolicy set after the SDK installed its callback
+        // gets a problem code approximated from the chain, since the runtime's own codes aren't available here.
+        private static bool AppDefaultValidation(HttpWebRequest request, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors errors)
+        {
+            if (request == null || !HasLegacyCertificatePolicy())
+            {
+                return errors == SslPolicyErrors.None;
+            }
+            return ServicePointManager.CertificatePolicy.CheckValidationResult(request.ServicePoint, certificate,
+                request, CertificateProblem(chain, errors));
+        }
+#pragma warning restore 618
+
+        private static int CertificateProblem(X509Chain chain, SslPolicyErrors errors)
+        {
+            if (errors == SslPolicyErrors.None)
+            {
+                return 0;
+            }
+            if ((errors & SslPolicyErrors.RemoteCertificateChainErrors) != 0 && chain != null)
+            {
+                foreach (var status in chain.ChainStatus)
+                {
+                    switch (status.Status)
+                    {
+                        case X509ChainStatusFlags.NoError:
+                            continue;
+                        case X509ChainStatusFlags.NotTimeValid:
+                            return unchecked((int)0x800B0101); // CERT_E_EXPIRED
+                        case X509ChainStatusFlags.Revoked:
+                            return unchecked((int)0x80092010); // CRYPT_E_REVOKED
+                        case X509ChainStatusFlags.UntrustedRoot:
+                            return unchecked((int)0x800B0109); // CERT_E_UNTRUSTEDROOT
+                        case X509ChainStatusFlags.PartialChain:
+                            return unchecked((int)0x800B010A); // CERT_E_CHAINING
+                        default:
+                            return unchecked((int)0x800B010B); // TRUST_E_FAIL
+                    }
+                }
+            }
+            if ((errors & SslPolicyErrors.RemoteCertificateNameMismatch) != 0)
+            {
+                return unchecked((int)0x800B010F); // CERT_E_CN_NO_MATCH
+            }
+            return unchecked((int)0x800B010B); // TRUST_E_FAIL
         }
 #endif
 
