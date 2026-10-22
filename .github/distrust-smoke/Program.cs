@@ -14,9 +14,10 @@ using Twilio.Rest.Api.V2010.Account;
 //   (no args)             the connection must succeed (a 401 for dummy credentials counts)
 //   --distrust-digicert   the intermediate api.twilio.com sends is added to the SDK's list for this run, so the
 //                         connection must be refused
-//   --expect-connected    the connection must succeed even so: for runtimes where the check can't run
 //   --require-clr2        fail unless running on the .NET Framework 2.0-3.5 runtime (CLR 2.0)
-//   --global-callback     opt in through ServicePointManager, as the docs tell .NET Framework 3.5 apps to (net35 only)
+//   --app-callback        the app sets its own ServicePointManager callback first, which must still be called
+//   --other-request       afterwards, the app's own HttpWebRequest to api.twilio.com must connect, distrusted or not
+//   --legacy-policy       afterwards, the app's own request to a self-signed site must still pass its CertificatePolicy
 // Exits 0 when the outcome is the expected one, 1 otherwise.
 static class Program
 {
@@ -25,7 +26,7 @@ static class Program
     private static int Main(string[] args)
     {
         var distrustDigiCert = args.Contains("--distrust-digicert");
-        var expectRefused = distrustDigiCert && !args.Contains("--expect-connected");
+        var expectRefused = distrustDigiCert;
 #if NET35
         var sdkBuild = "net35";
 #else
@@ -45,12 +46,23 @@ static class Program
         // Apps targeting .NET Framework 4.5.x don't enable TLS 1.2 by default, and api.twilio.com requires it.
         ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072;
 #endif
-        if (args.Contains("--global-callback"))
+        var appCallbackCalls = 0;
+        if (args.Contains("--app-callback"))
         {
-#if NET35
-            ServicePointManager.ServerCertificateValidationCallback = DistrustedIntermediates.ValidateServerCertificate;
+            ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, errors) =>
+            {
+                appCallbackCalls++;
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            };
+        }
+        if (args.Contains("--legacy-policy"))
+        {
+#if NETFRAMEWORK
+#pragma warning disable 618
+            ServicePointManager.CertificatePolicy = new AcceptAllPolicy();
+#pragma warning restore 618
 #else
-            Console.WriteLine("FAIL: --global-callback is for the net35 build only");
+            Console.WriteLine("FAIL: --legacy-policy is for .NET Framework only");
             return 1;
 #endif
         }
@@ -63,9 +75,58 @@ static class Program
 
         var refused = ListMessages();
         var passed = refused == expectRefused;
+        if (args.Contains("--app-callback"))
+        {
+            Console.WriteLine($"app callback called {appCallbackCalls} times");
+            passed &= appCallbackCalls > 0;
+        }
+        if (args.Contains("--other-request"))
+        {
+            passed &= AppRequestConnects("https://api.twilio.com/2010-04-01.json");
+        }
+        if (args.Contains("--legacy-policy"))
+        {
+            passed &= AppRequestConnects("https://self-signed.badssl.com/");
+        }
         Console.WriteLine(passed ? "PASS" : "FAIL");
         return passed ? 0 : 1;
     }
+
+    // The app's own request, outside the SDK. Any HTTP response means the TLS connection succeeded.
+    private static bool AppRequestConnects(string url)
+    {
+        var request = (HttpWebRequest)WebRequest.Create(url);
+        try
+        {
+            using (request.GetResponse())
+            {
+            }
+        }
+        catch (WebException e) when (e.Response != null)
+        {
+            e.Response.Close();
+        }
+        catch (WebException e)
+        {
+            Console.WriteLine($"app request to {url} FAILED: {e.Message}");
+            return false;
+        }
+        Console.WriteLine($"app request to {url} CONNECTED");
+        return true;
+    }
+
+#if NETFRAMEWORK
+#pragma warning disable 618
+    private sealed class AcceptAllPolicy : ICertificatePolicy
+    {
+        public bool CheckValidationResult(ServicePoint srvPoint, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+            WebRequest request, int certificateProblem)
+        {
+            return true;
+        }
+    }
+#pragma warning restore 618
+#endif
 
     // Returns true when the TLS connection was refused.
     private static bool ListMessages()
