@@ -30,11 +30,9 @@ namespace Twilio.Http
     /// var twilioClient = new TwilioRestClient(accountSid, authToken, httpClient: new SystemNetHttpClient(httpClient));
     /// </code>
     ///
-    /// On the .NET Framework 3.5 runtime, HttpWebRequest has no per-request certificate callback, so the SDK can't
-    /// apply the check. To opt in there, use <c>ValidateServerCertificate</c> as the app-wide callback:
-    /// <code>
-    /// ServicePointManager.ServerCertificateValidationCallback = DistrustedIntermediates.ValidateServerCertificate;
-    /// </code>
+    /// On the .NET Framework 3.5 runtime, HttpWebRequest has no per-request certificate callback, so the SDK sets
+    /// ServicePointManager.ServerCertificateValidationCallback. It calls any callback the app set, and applies the
+    /// check only to the SDK's own requests.
     /// </remarks>
     public static class DistrustedIntermediates
     {
@@ -103,10 +101,17 @@ namespace Twilio.Http
         }
 #else
         // HttpWebRequest.ServerCertificateValidationCallback exists from .NET Framework 4.5 on, which is the runtime
-        // most apps that load this net35 build run on. On a .NET Framework 3.5 runtime it's missing, and requests
-        // keep their default validation.
+        // most apps that load this net35 build run on. On a .NET Framework 3.5 runtime it's missing, so the SDK uses
+        // the app-wide ServicePointManager callback instead, and applies the check only to its own requests.
         private static readonly PropertyInfo RequestCallbackProperty =
             typeof(HttpWebRequest).GetProperty("ServerCertificateValidationCallback");
+
+        // Marks the SDK's requests on the .NET Framework 3.5 runtime. It also gives them their own connections, so
+        // they never reuse one the app opened, which the check didn't cover.
+        internal const string ConnectionGroupName = "Twilio.DistrustedIntermediates";
+
+        private static readonly object AppWideCallbackLock = new object();
+        private static RemoteCertificateValidationCallback _appWideCallback;
 
         internal static void Apply(HttpWebRequest request)
         {
@@ -117,6 +122,8 @@ namespace Twilio.Http
         {
             if (RequestCallbackProperty == null)
             {
+                request.ConnectionGroupName = ConnectionGroupName;
+                InstallAppWideCallback(distrusted);
                 return;
             }
             RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
@@ -124,19 +131,33 @@ namespace Twilio.Http
             RequestCallbackProperty.SetValue(request, callback, null);
         }
 
-        /// <summary>
-        /// A ServicePointManager.ServerCertificateValidationCallback that accepts only certificates the system trusts,
-        /// and refuses distrusted intermediates.
-        /// </summary>
-        /// <remarks>
-        /// For apps on the .NET Framework 3.5 runtime, where the SDK can't apply the check per request. It applies to
-        /// every HttpWebRequest in the app, not just the SDK's; to keep a callback of your own, call this from it.
-        /// </remarks>
-        public static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain,
-            SslPolicyErrors errors)
+        // Installs a ServicePointManager callback that wraps the app's own, if it has one. Every request still gets
+        // the app's verdict; only the SDK's requests also get the distrust check. Called for every SDK request, so if
+        // the app replaces the callback later, the next request wraps the new one.
+        private static void InstallAppWideCallback(ICollection<string> distrusted)
         {
-            // Not DefaultValidation: it calls the ServicePointManager callback, which may be this method.
-            return errors == SslPolicyErrors.None && !ContainsDistrusted(certificate, chain, DistrustedSpkiSha256);
+            lock (AppWideCallbackLock)
+            {
+                var appCallback = ServicePointManager.ServerCertificateValidationCallback;
+                if (appCallback != null && ReferenceEquals(appCallback, _appWideCallback))
+                {
+                    return;
+                }
+                RemoteCertificateValidationCallback callback = (sender, certificate, chain, errors) =>
+                {
+                    var accepted = appCallback != null
+                        ? appCallback(sender, certificate, chain, errors)
+                        : errors == SslPolicyErrors.None;
+                    var request = sender as HttpWebRequest;
+                    if (!accepted || request == null || request.ConnectionGroupName != ConnectionGroupName)
+                    {
+                        return accepted;
+                    }
+                    return !ContainsDistrusted(certificate, chain, distrusted);
+                };
+                _appWideCallback = callback;
+                ServicePointManager.ServerCertificateValidationCallback = callback;
+            }
         }
 #endif
 
