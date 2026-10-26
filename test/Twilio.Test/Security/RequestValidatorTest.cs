@@ -188,6 +188,52 @@ namespace Twilio.Tests.Security
         }
 
         [Test]
+        public void TestValidateHmacSha256()
+        {
+            const string signature = "033hgUJA9M/hXIZsYjwkerEP/DBm35nEri5FhCYjA5s=";
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature, RequestValidator.HmacSha256), "HMAC-SHA256 signature should be valid");
+            Assert.IsFalse(_validator.Validate(Url, _parameters, signature), "HMAC-SHA256 signature must not pass as HMAC-SHA1");
+            Assert.IsFalse(_validator.Validate(Url, _parameters, "RSOYDt4T1cUTdK1PDd93/VVr8B8=", RequestValidator.HmacSha256), "HMAC-SHA1 signature must not pass as HMAC-SHA256");
+        }
+
+        [Test]
+        public void TestValidateDefaultsToHmacSha1WhenAlgorithmMissing()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature, null));
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature, ""));
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature, RequestValidator.HmacSha1));
+        }
+
+        [Test]
+        public void TestValidateFailsForUnknownAlgorithm()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            Assert.IsFalse(_validator.Validate(Url, _parameters, signature, "HMAC_MD5"));
+        }
+
+        [Test]
+        public void TestValidateWithBodyHmacSha256()
+        {
+            const string url = Url + "&bodySHA256=" + BodyHash;
+            const string signature = "+UOCWf84gdgo/5Hpg4m5/EgKnJA2/TbOw5sPNVr3bPk=";
+            Assert.IsTrue(_validator.Validate(url, Body, signature, RequestValidator.HmacSha256), "HMAC-SHA256 body request should be valid");
+            Assert.IsFalse(_validator.Validate(url, Body, signature), "HMAC-SHA256 signature must not pass as HMAC-SHA1");
+            Assert.IsFalse(_validator.Validate(url, "tampered", signature, RequestValidator.HmacSha256), "Tampered body must fail");
+        }
+
+        [Test]
+        public void TestGetSignatureAlgorithm()
+        {
+            Assert.AreEqual(RequestValidator.HmacSha256, RequestValidator.GetSignatureAlgorithm("key=webhooks_sharedkey_01abc,algorithm=HMAC_SHA256"));
+            Assert.AreEqual(RequestValidator.HmacSha1, RequestValidator.GetSignatureAlgorithm("key=webhooks_sharedkey_01abc, algorithm=HMAC_SHA1"));
+            Assert.AreEqual(RequestValidator.HmacSha1, RequestValidator.GetSignatureAlgorithm(null));
+            Assert.AreEqual(RequestValidator.HmacSha1, RequestValidator.GetSignatureAlgorithm(""));
+            Assert.AreEqual(RequestValidator.HmacSha1, RequestValidator.GetSignatureAlgorithm("key=webhooks_sharedkey_01abc"));
+            Assert.AreEqual(RequestValidator.HmacSha1, RequestValidator.GetSignatureAlgorithm("algorithm="));
+        }
+
+        [Test]
         public void TestIsThreadSafe()
         {
             var validator = new RequestValidator("secret");

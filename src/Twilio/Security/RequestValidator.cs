@@ -13,12 +13,24 @@ namespace Twilio.Security
     /// </summary>
     public class RequestValidator
     {
+        /// <summary>
+        /// Header Twilio adds to webhooks signed with a SharedKey: <c>key=&lt;sharedKeyId&gt;,algorithm=&lt;algorithm&gt;</c>.
+        /// When it is absent, the webhook was signed with the account Auth Token using HMAC-SHA1.
+        /// </summary>
+        public const string SignatureSettingsHeader = "X-Twilio-Webhooks-Signature-Settings";
+
+        /// <summary>HMAC-SHA1 signature algorithm, the legacy Auth Token scheme.</summary>
+        public const string HmacSha1 = "HMAC_SHA1";
+
+        /// <summary>HMAC-SHA256 signature algorithm.</summary>
+        public const string HmacSha256 = "HMAC_SHA256";
+
         private readonly byte[] _secret;
 
         /// <summary>
         /// Create a new RequestValidator
         /// </summary>
-        /// <param name="secret">Signing secret</param>
+        /// <param name="secret">Signing secret: the account Auth Token, or the SharedKey secret when the request carries <see cref="SignatureSettingsHeader"/></param>
         public RequestValidator(string secret)
         {
             _secret = Encoding.UTF8.GetBytes(secret);
@@ -41,6 +53,19 @@ namespace Twilio.Security
         }
 
         /// <summary>
+        /// Validate against a request signed with the given algorithm.
+        /// </summary>
+        /// <param name="url">Request URL - This URL should include all query parameters and bodySHA256</param>
+        /// <param name="parameters">Request parameters. This includes any body that is part of the request.</param>
+        /// <param name="expected">The X-Twilio-Signature header of the request.</param>
+        /// <param name="algorithm"><see cref="HmacSha1"/> or <see cref="HmacSha256"/>; null or empty means <see cref="HmacSha1"/>. Any other value fails validation. See <see cref="GetSignatureAlgorithm"/>.</param>
+        /// <returns>true if the signature matches the result; false otherwise</returns>
+        public bool Validate(string url, NameValueCollection parameters, string expected, string algorithm)
+        {
+            return Validate(url, ToDictionary(parameters), expected, algorithm);
+        }
+
+        /// <summary>
         /// Validate against a request.
         /// The validate function is provided to validate incoming webhook requests from Twilio.
         /// It does this by comparing the expected signature passed in with a signature it generates itself.
@@ -53,48 +78,81 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
+            return Validate(url, parameters, expected, null);
+        }
+
+        /// <summary>
+        /// Validate against a request signed with the given algorithm.
+        /// </summary>
+        /// <param name="url">Request URL - This URL should include all query parameters and bodySHA256</param>
+        /// <param name="parameters">Request parameters. This includes any body that is part of the request.</param>
+        /// <param name="expected">The X-Twilio-Signature header of the request.</param>
+        /// <param name="algorithm"><see cref="HmacSha1"/> or <see cref="HmacSha256"/>; null or empty means <see cref="HmacSha1"/>. Any other value fails validation. See <see cref="GetSignatureAlgorithm"/>.</param>
+        /// <returns>true if the signature matches the result; false otherwise</returns>
+        public bool Validate(string url, IDictionary<string, string> parameters, string expected, string algorithm)
+        {
             if (string.IsNullOrEmpty(url))
                 throw new ArgumentException("Parameter 'url' cannot be null or empty.", nameof(url));
             if (string.IsNullOrEmpty(expected))
                 throw new ArgumentException("Parameter 'expected' cannot be null or empty.", nameof(url));
 
+            if (string.IsNullOrEmpty(algorithm) || string.Equals(algorithm, HmacSha1, StringComparison.OrdinalIgnoreCase))
+            {
 #if NET6_0_OR_GREATER
-            {
-                byte[] computeHash(byte[] buffer) => HMACSHA1.HashData(_secret, buffer);
+                return ValidateSignature(url, parameters, expected, buffer => HMACSHA1.HashData(_secret, buffer));
 #else
-            using (var hmac = new HMACSHA1(_secret))
-            {
-                Func<byte[], byte[]> computeHash = hmac.ComputeHash;
+                using (var hmac = new HMACSHA1(_secret))
+                {
+                    return ValidateSignature(url, parameters, expected, hmac.ComputeHash);
+                }
 #endif
-                if (parameters == null || parameters.Count == 0)
+            }
+
+            if (string.Equals(algorithm, HmacSha256, StringComparison.OrdinalIgnoreCase))
+            {
+#if NET6_0_OR_GREATER
+                return ValidateSignature(url, parameters, expected, buffer => HMACSHA256.HashData(_secret, buffer));
+#else
+                using (var hmac = new HMACSHA256(_secret))
                 {
-                    var signature = GetValidationSignature(url, computeHash);
-                    if (SecureCompare(signature, expected)) return true;
-
-                    // check signature of url with and without port, since sig generation on back end is inconsistent
-                    // If either url produces a valid signature, we accept the request as valid
-                    url = GetUriVariation(url);
-                    signature = GetValidationSignature(url, computeHash);
-                    if (SecureCompare(signature, expected)) return true;
-                    return false;
+                    return ValidateSignature(url, parameters, expected, hmac.ComputeHash);
                 }
-                else
-                {
-                    var parameterStringBuilder = GetJoinedParametersStringBuilder(parameters);
-                    parameterStringBuilder.Insert(0, url);
-                    var signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
-                    if (SecureCompare(signature, expected)) return true;
-                    parameterStringBuilder.Remove(0, url.Length);
+#endif
+            }
 
-                    // check signature of url with and without port, since sig generation on back end is inconsistent
-                    // If either url produces a valid signature, we accept the request as valid
-                    url = GetUriVariation(url);
-                    parameterStringBuilder.Insert(0, url);
-                    signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
-                    if (SecureCompare(signature, expected)) return true;
+            return false;
+        }
 
-                    return false;
-                }
+        private bool ValidateSignature(string url, IDictionary<string, string> parameters, string expected, Func<byte[], byte[]> computeHash)
+        {
+            if (parameters == null || parameters.Count == 0)
+            {
+                var signature = GetValidationSignature(url, computeHash);
+                if (SecureCompare(signature, expected)) return true;
+
+                // check signature of url with and without port, since sig generation on back end is inconsistent
+                // If either url produces a valid signature, we accept the request as valid
+                url = GetUriVariation(url);
+                signature = GetValidationSignature(url, computeHash);
+                if (SecureCompare(signature, expected)) return true;
+                return false;
+            }
+            else
+            {
+                var parameterStringBuilder = GetJoinedParametersStringBuilder(parameters);
+                parameterStringBuilder.Insert(0, url);
+                var signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
+                if (SecureCompare(signature, expected)) return true;
+                parameterStringBuilder.Remove(0, url.Length);
+
+                // check signature of url with and without port, since sig generation on back end is inconsistent
+                // If either url produces a valid signature, we accept the request as valid
+                url = GetUriVariation(url);
+                parameterStringBuilder.Insert(0, url);
+                signature = GetValidationSignature(parameterStringBuilder.ToString(), computeHash);
+                if (SecureCompare(signature, expected)) return true;
+
+                return false;
             }
         }
 
@@ -112,7 +170,27 @@ namespace Twilio.Security
             return b;
         }
 
+        /// <summary>
+        /// Validate a request with a JSON body; the URL carries the bodySHA256 query parameter.
+        /// </summary>
+        /// <param name="url">Request URL, including bodySHA256</param>
+        /// <param name="body">Raw body of the request</param>
+        /// <param name="expected">The X-Twilio-Signature header of the request.</param>
+        /// <returns>true if the signature and body hash match; false otherwise</returns>
         public bool Validate(string url, string body, string expected)
+        {
+            return Validate(url, body, expected, null);
+        }
+
+        /// <summary>
+        /// Validate a request with a JSON body, signed with the given algorithm; the URL carries the bodySHA256 query parameter.
+        /// </summary>
+        /// <param name="url">Request URL, including bodySHA256</param>
+        /// <param name="body">Raw body of the request</param>
+        /// <param name="expected">The X-Twilio-Signature header of the request.</param>
+        /// <param name="algorithm">See <see cref="Validate(string, IDictionary{string, string}, string, string)"/>.</param>
+        /// <returns>true if the signature and body hash match; false otherwise</returns>
+        public bool Validate(string url, string body, string expected, string algorithm)
         {
             if (string.IsNullOrEmpty(url))
                 throw new ArgumentException("Parameter 'url' cannot be null or empty.", nameof(url));
@@ -130,7 +208,29 @@ namespace Twilio.Security
                 }
             }
 
-            return Validate(url, (IDictionary<string, string>)null, expected) && ValidateBody(body, bodyHash);
+            return Validate(url, (IDictionary<string, string>)null, expected, algorithm) && ValidateBody(body, bodyHash);
+        }
+
+        /// <summary>
+        /// Returns the signing algorithm named in the <see cref="SignatureSettingsHeader"/> value. A missing or empty
+        /// header (or one without <c>algorithm=</c>) means the legacy Auth Token signature, <see cref="HmacSha1"/>.
+        /// </summary>
+        /// <param name="signatureSettingsHeader">The header value, e.g. <c>key=webhooks_sharedkey_...,algorithm=HMAC_SHA256</c></param>
+        public static string GetSignatureAlgorithm(string signatureSettingsHeader)
+        {
+            if (signatureSettingsHeader != null)
+            {
+                foreach (var part in signatureSettingsHeader.Split(','))
+                {
+                    var keyValue = part.Split(new[] { '=' }, 2);
+                    if (keyValue.Length == 2 && keyValue[0].Trim() == "algorithm" && keyValue[1].Trim().Length > 0)
+                    {
+                        return keyValue[1].Trim();
+                    }
+                }
+            }
+
+            return HmacSha1;
         }
 
         /// <summary>
