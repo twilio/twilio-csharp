@@ -29,10 +29,20 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Language("code", "tts_provider", "voice", "transcription_provider", "speech_model");
+            var elem = new Language(
+                "code",
+                "tts_provider",
+                "voice",
+                "transcription_provider",
+                "speech_model",
+                "hints",
+                true,
+                "tts_text_normalization",
+                true
+            );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Language code=\"code\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\"></Language>",
+                "<Language code=\"code\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" hints=\"hints\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\"></Language>",
                 elem.ToString()
             );
         }

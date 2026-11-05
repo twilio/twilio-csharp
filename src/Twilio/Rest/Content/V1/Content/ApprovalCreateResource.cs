@@ -38,6 +38,8 @@ namespace Twilio.Rest.Content.V1.Content
             public string Category {get; private set;}
             [JsonProperty("send_ttl_seconds", NullValueHandling = NullValueHandling.Ignore)]
             public int? SendTtlSeconds {get; private set;}
+            [JsonProperty("bid_amount", NullValueHandling = NullValueHandling.Ignore)]
+            public int? BidAmount {get; private set;}
             public ContentApprovalRequest() { }
             public class Builder
             {
@@ -60,9 +62,36 @@ namespace Twilio.Rest.Content.V1.Content
                     _contentApprovalRequest.SendTtlSeconds= sendTtlSeconds;
                     return this;
                 }
+                public Builder WithBidAmount(int? bidAmount)
+                {
+                    _contentApprovalRequest.BidAmount= bidAmount;
+                    return this;
+                }
                 public ContentApprovalRequest Build()
                 {
                     return _contentApprovalRequest;
+                }
+            }
+        }
+        public class ContentApprovalUpdateRequest
+        {
+            [JsonProperty("bid_amount", NullValueHandling = NullValueHandling.Ignore)]
+            public int? BidAmount {get; private set;}
+            public ContentApprovalUpdateRequest() { }
+            public class Builder
+            {
+                private ContentApprovalUpdateRequest _contentApprovalUpdateRequest = new ContentApprovalUpdateRequest();
+                public Builder()
+                {
+                }
+                public Builder WithBidAmount(int? bidAmount)
+                {
+                    _contentApprovalUpdateRequest.BidAmount= bidAmount;
+                    return this;
+                }
+                public ContentApprovalUpdateRequest Build()
+                {
+                    return _contentApprovalUpdateRequest;
                 }
             }
         }
@@ -181,6 +210,120 @@ namespace Twilio.Rest.Content.V1.Content
         return await CreateWithHeadersAsync(options, client);
         }
         #endif
+        
+        private static Request BuildUpdateRequest(UpdateApprovalCreateOptions options, ITwilioRestClient client)
+        {
+            
+            string path = "/v1/Content/{ContentSid}/ApprovalRequests/whatsapp";
+
+            string PathContentSid = options.PathContentSid;
+            path = path.Replace("{"+"ContentSid"+"}", PathContentSid);
+
+            return new Request(
+                HttpMethod.Patch,
+                Rest.Domain.Content,
+                path,
+
+                contentType: EnumConstants.ContentTypeEnum.JSON,
+                body: options.GetBody(),
+                headerParams: null
+            );
+        }
+
+        /// <summary> Update the optimization spec (bid amount) of a ContentApprovalRequest for a content item </summary>
+        /// <param name="options"> Update ApprovalCreate parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ApprovalCreate </returns>
+        public static ApprovalCreateResource Update(UpdateApprovalCreateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        /// <summary> Update the optimization spec (bid amount) of a ContentApprovalRequest for a content item </summary>
+        /// <param name="options"> Update ApprovalCreate parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ApprovalCreate </returns>
+        #if !NET35
+        public static async System.Threading.Tasks.Task<ApprovalCreateResource> UpdateAsync(UpdateApprovalCreateOptions options,
+                                                                                                    ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary> Update the optimization spec (bid amount) of a ContentApprovalRequest for a content item </summary>
+        /// <param name="pathContentSid">  </param>
+        /// <param name="contentApprovalUpdateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ApprovalCreate </returns>
+        public static ApprovalCreateResource Update(
+                                          string pathContentSid,
+                                          ApprovalCreateResource.ContentApprovalUpdateRequest contentApprovalUpdateRequest,
+                                            ITwilioRestClient client = null)
+        {
+            var options = new UpdateApprovalCreateOptions(pathContentSid, contentApprovalUpdateRequest){  };
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary> Update the optimization spec (bid amount) of a ContentApprovalRequest for a content item </summary>
+        /// <param name="pathContentSid">  </param>
+        /// <param name="contentApprovalUpdateRequest">  </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ApprovalCreate </returns>
+        public static async System.Threading.Tasks.Task<ApprovalCreateResource> UpdateAsync(
+                                                                              string pathContentSid,
+                                                                              ApprovalCreateResource.ContentApprovalUpdateRequest contentApprovalUpdateRequest,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new UpdateApprovalCreateOptions(pathContentSid, contentApprovalUpdateRequest){  };
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
+        public static TwilioResponse<ApprovalCreateResource> UpdateWithHeaders(UpdateApprovalCreateOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApprovalCreateResource>(resource, response.Headers, response.StatusCode);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApprovalCreateResource>> UpdateWithHeadersAsync(UpdateApprovalCreateOptions options,
+        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            var resource = FromJson(response.Content);
+            return new TwilioResponse<ApprovalCreateResource>(resource, response.Headers, response.StatusCode);
+        }
+        #endif
+
+        public static TwilioResponse<ApprovalCreateResource> UpdateWithHeaders(
+            string pathContentSid,
+            ApprovalCreateResource.ContentApprovalUpdateRequest contentApprovalUpdateRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateApprovalCreateOptions(pathContentSid, contentApprovalUpdateRequest){  };
+            return UpdateWithHeaders(options, client);
+        }
+
+        #if !NET35
+        public static async System.Threading.Tasks.Task<TwilioResponse<ApprovalCreateResource>> UpdateWithHeadersAsync(
+            string pathContentSid,
+            ApprovalCreateResource.ContentApprovalUpdateRequest contentApprovalUpdateRequest,
+        ITwilioRestClient client = null)
+        {
+            var options = new UpdateApprovalCreateOptions(pathContentSid, contentApprovalUpdateRequest){  };
+            return await UpdateWithHeadersAsync(options, client);
+        }
+        #endif
+
     
         /// <summary>
         /// Converts a JSON string into a ApprovalCreateResource object
@@ -243,6 +386,10 @@ namespace Twilio.Rest.Content.V1.Content
         ///<summary> Time-to-live in seconds for attempting to send a message with this Content </summary> 
         [JsonProperty("send_ttl_seconds")]
         public int? SendTtlSeconds { get; private set; }
+
+        ///<summary> Maximum price per 1,000 message deliveries, expressed in the WABA currency's smallest unit (cents for USD). Only set for MARKETING templates onboarded to Max Pricing. </summary> 
+        [JsonProperty("bid_amount")]
+        public int? BidAmount { get; private set; }
 
 
 

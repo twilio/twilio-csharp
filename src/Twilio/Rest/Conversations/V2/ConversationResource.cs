@@ -37,9 +37,9 @@ public class ConversationCreateResource : Resource
         [JsonProperty("accountId")]
             public string AccountId { get; private set;}
 
-        ///<summary> Configuration ID. </summary> 
+        ///<summary> Configuration ID. Null when the Conversation was created with an inline configuration. </summary> 
         [JsonProperty("configurationId")]
-            public string ConfigurationId { get; private set;}
+            public string ConfigurationId { get; private set; }
 
         
         [JsonProperty("status")]
@@ -128,9 +128,9 @@ public class ConversationCreateResource : Resource
         [JsonProperty("accountId")]
             public string AccountId { get; private set;}
 
-        ///<summary> Configuration ID. </summary> 
+        ///<summary> Configuration ID. Null when the Conversation was created with an inline configuration. </summary> 
         [JsonProperty("configurationId")]
-            public string ConfigurationId { get; private set;}
+            public string ConfigurationId { get; private set; }
 
         
         [JsonProperty("status")]
@@ -192,9 +192,9 @@ public class ConversationCreateResource : Resource
             [JsonProperty("accountId")]
                 public string AccountId { get; private set;}
 
-            ///<summary> Configuration ID. </summary> 
+            ///<summary> Configuration ID. Null when the Conversation was created with an inline configuration. </summary> 
             [JsonProperty("configurationId")]
-                public string ConfigurationId { get; private set;}
+                public string ConfigurationId { get; private set; }
 
             
             [JsonProperty("status")]
@@ -256,9 +256,9 @@ public class ConversationCreateResource : Resource
         [JsonProperty("accountId")]
             public string AccountId { get; private set;}
 
-        ///<summary> Configuration ID. </summary> 
+        ///<summary> Configuration ID. Null when the Conversation was created with an inline configuration. </summary> 
         [JsonProperty("configurationId")]
-            public string ConfigurationId { get; private set;}
+            public string ConfigurationId { get; private set; }
 
         
         [JsonProperty("status")]
@@ -320,9 +320,9 @@ public class ConversationCreateResource : Resource
         [JsonProperty("accountId")]
             public string AccountId { get; private set;}
 
-        ///<summary> Configuration ID. </summary> 
+        ///<summary> Configuration ID. Null when the Conversation was created with an inline configuration. </summary> 
         [JsonProperty("configurationId")]
-            public string ConfigurationId { get; private set;}
+            public string ConfigurationId { get; private set; }
 
         
         [JsonProperty("status")]
@@ -378,6 +378,87 @@ public class ConversationCreateResource : Resource
     public class ConversationResource : Resource
     {
     
+        public class CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts
+        {
+            [JsonProperty("closed", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Closed {get; private set;}
+            [JsonProperty("inactive", NullValueHandling = NullValueHandling.Ignore)]
+            public int? Inactive {get; private set;}
+            public CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts() { }
+            public class Builder
+            {
+                private CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts _createConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts = new CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts();
+                public Builder()
+                {
+                }
+                public Builder WithClosed(int? closed)
+                {
+                    _createConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts.Closed= closed;
+                    return this;
+                }
+                public Builder WithInactive(int? inactive)
+                {
+                    _createConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts.Inactive= inactive;
+                    return this;
+                }
+                public CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts Build()
+                {
+                    return _createConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts;
+                }
+            }
+        }
+        public class CreateConversationWithConfigRequestConfigurationChannelSettingsValue
+        {
+            [JsonProperty("statusTimeouts", NullValueHandling = NullValueHandling.Ignore)]
+            public CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts StatusTimeouts {get; private set;}
+            public CreateConversationWithConfigRequestConfigurationChannelSettingsValue() { }
+            public class Builder
+            {
+                private CreateConversationWithConfigRequestConfigurationChannelSettingsValue _createConversationWithConfigRequestConfigurationChannelSettingsValue = new CreateConversationWithConfigRequestConfigurationChannelSettingsValue();
+                public Builder()
+                {
+                }
+                public Builder WithStatusTimeouts(CreateConversationWithConfigRequestConfigurationChannelSettingsValueStatusTimeouts statusTimeouts)
+                {
+                    _createConversationWithConfigRequestConfigurationChannelSettingsValue.StatusTimeouts= statusTimeouts;
+                    return this;
+                }
+                public CreateConversationWithConfigRequestConfigurationChannelSettingsValue Build()
+                {
+                    return _createConversationWithConfigRequestConfigurationChannelSettingsValue;
+                }
+            }
+        }
+        public class CreateConversationWithConfigRequestConfigurationStatusCallbacks
+        {
+            [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+            public Uri Url {get; private set;}
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("method", NullValueHandling = NullValueHandling.Ignore)]
+            public ConversationResource.MethodEnum Method {get; private set;}
+            public CreateConversationWithConfigRequestConfigurationStatusCallbacks() { }
+            public class Builder
+            {
+                private CreateConversationWithConfigRequestConfigurationStatusCallbacks _createConversationWithConfigRequestConfigurationStatusCallbacks = new CreateConversationWithConfigRequestConfigurationStatusCallbacks();
+                public Builder()
+                {
+                }
+                public Builder WithUrl(Uri url)
+                {
+                    _createConversationWithConfigRequestConfigurationStatusCallbacks.Url= url;
+                    return this;
+                }
+                public Builder WithMethod(ConversationResource.MethodEnum method)
+                {
+                    _createConversationWithConfigRequestConfigurationStatusCallbacks.Method= method;
+                    return this;
+                }
+                public CreateConversationWithConfigRequestConfigurationStatusCallbacks Build()
+                {
+                    return _createConversationWithConfigRequestConfigurationStatusCallbacks;
+                }
+            }
+        }
         public class ConversationWorkflow
         {
             [JsonProperty("flowId", NullValueHandling = NullValueHandling.Ignore)]
@@ -402,12 +483,23 @@ public class ConversationCreateResource : Resource
         }
         public class CreateConversationWithConfigRequestConfiguration
         {
+            [JsonConverter(typeof(StringEnumConverter))]
+            [JsonProperty("conversationGroupingType", NullValueHandling = NullValueHandling.Ignore)]
+            public ConversationResource.ConversationGroupingTypeEnum ConversationGroupingType {get; private set;}
+            [JsonProperty("memoryStoreId", NullValueHandling = NullValueHandling.Ignore)]
+            public string MemoryStoreId {get; private set;}
+            [JsonProperty("channelSettings", NullValueHandling = NullValueHandling.Ignore)]
+            public Dictionary<string, CreateConversationWithConfigRequestConfigurationChannelSettingsValue> ChannelSettings {get; private set;}
+            [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
+            public bool? MemoryExtractionEnabled {get; private set;}
             [JsonProperty("intelligenceConfigurationIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> IntelligenceConfigurationIds {get; private set;}
             [JsonProperty("traitExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> TraitExtractionStrategyIds {get; private set;}
             [JsonProperty("observationExtractionStrategyIds", NullValueHandling = NullValueHandling.Ignore)]
             public List<string> ObservationExtractionStrategyIds {get; private set;}
+            [JsonProperty("statusCallbacks", NullValueHandling = NullValueHandling.Ignore)]
+            public List<CreateConversationWithConfigRequestConfigurationStatusCallbacks> StatusCallbacks {get; private set;}
             [JsonProperty("workflows", NullValueHandling = NullValueHandling.Ignore)]
             public List<ConversationWorkflow> Workflows {get; private set;}
             public CreateConversationWithConfigRequestConfiguration() { }
@@ -416,6 +508,26 @@ public class ConversationCreateResource : Resource
                 private CreateConversationWithConfigRequestConfiguration _createConversationWithConfigRequestConfiguration = new CreateConversationWithConfigRequestConfiguration();
                 public Builder()
                 {
+                }
+                public Builder WithConversationGroupingType(ConversationResource.ConversationGroupingTypeEnum conversationGroupingType)
+                {
+                    _createConversationWithConfigRequestConfiguration.ConversationGroupingType= conversationGroupingType;
+                    return this;
+                }
+                public Builder WithMemoryStoreId(string memoryStoreId)
+                {
+                    _createConversationWithConfigRequestConfiguration.MemoryStoreId= memoryStoreId;
+                    return this;
+                }
+                public Builder WithChannelSettings(Dictionary<string, CreateConversationWithConfigRequestConfigurationChannelSettingsValue> channelSettings)
+                {
+                    _createConversationWithConfigRequestConfiguration.ChannelSettings= channelSettings;
+                    return this;
+                }
+                public Builder WithMemoryExtractionEnabled(bool? memoryExtractionEnabled)
+                {
+                    _createConversationWithConfigRequestConfiguration.MemoryExtractionEnabled= memoryExtractionEnabled;
+                    return this;
                 }
                 public Builder WithIntelligenceConfigurationIds(List<string> intelligenceConfigurationIds)
                 {
@@ -430,6 +542,11 @@ public class ConversationCreateResource : Resource
                 public Builder WithObservationExtractionStrategyIds(List<string> observationExtractionStrategyIds)
                 {
                     _createConversationWithConfigRequestConfiguration.ObservationExtractionStrategyIds= observationExtractionStrategyIds;
+                    return this;
+                }
+                public Builder WithStatusCallbacks(List<CreateConversationWithConfigRequestConfigurationStatusCallbacks> statusCallbacks)
+                {
+                    _createConversationWithConfigRequestConfiguration.StatusCallbacks= statusCallbacks;
                     return this;
                 }
                 public Builder WithWorkflows(List<ConversationWorkflow> workflows)
@@ -752,6 +869,8 @@ public class ConversationCreateResource : Resource
             public List<string> ObservationExtractionStrategyIds {get; private set;}
             [JsonProperty("memoryExtractionEnabled", NullValueHandling = NullValueHandling.Ignore)]
             public bool MemoryExtractionEnabled {get; private set;}
+            [JsonProperty("redactionConfigurationId", NullValueHandling = NullValueHandling.Ignore)]
+            public string RedactionConfigurationId {get; private set;}
             [JsonProperty("conversationsV1Bridge", NullValueHandling = NullValueHandling.Ignore)]
             public ConversationResource.ConversationsV2ConversationsV1Bridge ConversationsV1Bridge {get; private set;}
             public ListConversationByAccount200ResponseConversationsConfiguration() { }
@@ -809,6 +928,11 @@ public class ConversationCreateResource : Resource
                 public Builder WithMemoryExtractionEnabled(bool memoryExtractionEnabled)
                 {
                     _listConversationByAccount200ResponseConversationsConfiguration.MemoryExtractionEnabled= memoryExtractionEnabled;
+                    return this;
+                }
+                public Builder WithRedactionConfigurationId(string redactionConfigurationId)
+                {
+                    _listConversationByAccount200ResponseConversationsConfiguration.RedactionConfigurationId= redactionConfigurationId;
                     return this;
                 }
                 public Builder WithConversationsV1Bridge(ConversationResource.ConversationsV2ConversationsV1Bridge conversationsV1Bridge)
@@ -979,6 +1103,7 @@ public class ConversationCreateResource : Resource
             public static readonly ConversationsV2Channel Voice = new ConversationsV2Channel("VOICE");
             public static readonly ConversationsV2Channel Sms = new ConversationsV2Channel("SMS");
             public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
+            public static readonly ConversationsV2Channel Email = new ConversationsV2Channel("EMAIL");
             public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
             public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
             public static readonly ConversationsV2Channel Video = new ConversationsV2Channel("VIDEO");
@@ -1031,6 +1156,20 @@ public class ConversationCreateResource : Resource
 
         }
         [JsonConverter(typeof(StringEnumConverter))]
+        public sealed class ConversationGroupingTypeEnum : StringEnum
+        {
+            private ConversationGroupingTypeEnum(string value) : base(value) {}
+            public ConversationGroupingTypeEnum() {}
+            public static implicit operator ConversationGroupingTypeEnum(string value)
+            {
+                return new ConversationGroupingTypeEnum(value);
+            }
+            public static readonly ConversationGroupingTypeEnum GroupByProfile = new ConversationGroupingTypeEnum("GROUP_BY_PROFILE");
+            public static readonly ConversationGroupingTypeEnum GroupByParticipantAddresses = new ConversationGroupingTypeEnum("GROUP_BY_PARTICIPANT_ADDRESSES");
+            public static readonly ConversationGroupingTypeEnum GroupByParticipantAddressesAndChannelType = new ConversationGroupingTypeEnum("GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE");
+
+        }
+        [JsonConverter(typeof(StringEnumConverter))]
         public sealed class ConversationsV2ConversationGroupingType : StringEnum
         {
             private ConversationsV2ConversationGroupingType(string value) : base(value) {}
@@ -1056,6 +1195,7 @@ public class ConversationCreateResource : Resource
             public static readonly ChannelEnum Voice = new ChannelEnum("VOICE");
             public static readonly ChannelEnum Sms = new ChannelEnum("SMS");
             public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
+            public static readonly ChannelEnum Email = new ChannelEnum("EMAIL");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
             public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
             public static readonly ChannelEnum Video = new ChannelEnum("VIDEO");

@@ -55,11 +55,22 @@ namespace Twilio.Tests.TwiML
                 "speechTimeout",
                 "deepgramSmartFormat",
                 "ignoreBackchannel",
-                "events"
+                "events",
+                true,
+                "eager_eot_threshold",
+                true,
+                "tts_text_normalization",
+                true,
+                true,
+                "include_in_prompt",
+                "customer_name",
+                true,
+                true,
+                true
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\"></ConversationRelay>",
+                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\" partialPromptOnHangup=\"true\" eagerEotThreshold=\"eager_eot_threshold\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\" elevenlabsLanguageTextNormalization=\"true\" includeInPrompt=\"include_in_prompt\" customerName=\"customer_name\" applicationReconnect=\"true\" echoPromptFiltering=\"true\" turnDetection=\"true\"></ConversationRelay>",
                 elem.ToString()
             );
         }
@@ -83,14 +94,24 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new ConversationRelay();
 
-            elem.Language("code", "tts_provider", "voice", "transcription_provider", "speech_model");
+            elem.Language(
+                "code",
+                "tts_provider",
+                "voice",
+                "transcription_provider",
+                "speech_model",
+                "hints",
+                true,
+                "tts_text_normalization",
+                true
+            );
 
             elem.Parameter("name", "value");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<ConversationRelay>" + Environment.NewLine +
-                "  <Language code=\"code\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\"></Language>" + Environment.NewLine +
+                "  <Language code=\"code\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" hints=\"hints\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\"></Language>" + Environment.NewLine +
                 "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
                 "</ConversationRelay>",
                 elem.ToString()

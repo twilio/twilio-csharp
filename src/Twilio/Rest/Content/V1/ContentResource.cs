@@ -374,6 +374,8 @@ namespace Twilio.Rest.Content.V1
             [JsonConverter(typeof(StringEnumConverter))]
             [JsonProperty("webview_size", NullValueHandling = NullValueHandling.Ignore)]
             public ContentResource.WebviewSizeType WebviewSize {get; private set;}
+            [JsonProperty("digitable_line", NullValueHandling = NullValueHandling.Ignore)]
+            public string DigitableLine {get; private set;}
             public CardAction() { }
             public class Builder
             {
@@ -414,6 +416,11 @@ namespace Twilio.Rest.Content.V1
                 public Builder WithWebviewSize(ContentResource.WebviewSizeType webviewSize)
                 {
                     _cardAction.WebviewSize= webviewSize;
+                    return this;
+                }
+                public Builder WithDigitableLine(string digitableLine)
+                {
+                    _cardAction.DigitableLine= digitableLine;
                     return this;
                 }
                 public CardAction Build()
@@ -1302,6 +1309,9 @@ namespace Twilio.Rest.Content.V1
             public static readonly CardActionType QuickReply = new CardActionType("QUICK_REPLY");
             public static readonly CardActionType CopyCode = new CardActionType("COPY_CODE");
             public static readonly CardActionType VoiceCall = new CardActionType("VOICE_CALL");
+            public static readonly CardActionType Pix = new CardActionType("PIX");
+            public static readonly CardActionType Boleto = new CardActionType("BOLETO");
+            public static readonly CardActionType PaymentLink = new CardActionType("PAYMENT_LINK");
 
         }
         [JsonConverter(typeof(StringEnumConverter))]

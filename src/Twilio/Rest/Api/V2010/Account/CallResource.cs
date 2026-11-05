@@ -1111,6 +1111,10 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("queue_time")]
         public string QueueTime { get; private set; }
 
+        ///<summary> The STIR/SHAKEN verification status of the call, for example `TN-Validation-Passed-A`. Empty if the incoming call had no STIR/SHAKEN information. </summary> 
+        [JsonProperty("stir_verstat")]
+        public string StirVerstat { get; private set; }
+
         ///<summary> The unique identifier of the trunk resource that was used for this call. The field is empty if the call was not made using a SIP trunk or if the call is not terminated. </summary> 
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }

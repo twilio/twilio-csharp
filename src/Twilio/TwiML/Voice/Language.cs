@@ -36,6 +36,22 @@ namespace Twilio.TwiML.Voice
         /// Speech model to be used for transcription of this language
         /// </summary>
         public string SpeechModel { get; set; }
+        /// <summary>
+        /// Phrases to help better accuracy in speech recognition of this language
+        /// </summary>
+        public string Hints { get; set; }
+        /// <summary>
+        /// Whether smart formatting should be applied to transcripts of this language
+        /// </summary>
+        public bool? AsrSmartFormat { get; set; }
+        /// <summary>
+        /// Text normalization for text-to-speech of this language. The value can be auto, on, or off
+        /// </summary>
+        public string TtsTextNormalization { get; set; }
+        /// <summary>
+        /// Whether language-specific text normalization should be applied for text-to-speech of this language
+        /// </summary>
+        public bool? TtsLanguageTextNormalization { get; set; }
 
         /// <summary>
         /// Create a new Language
@@ -45,17 +61,31 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to be used for text-to-speech of this language </param>
         /// <param name="transcriptionProvider"> Provider to be used for transcription of this language </param>
         /// <param name="speechModel"> Speech model to be used for transcription of this language </param>
+        /// <param name="hints"> Phrases to help better accuracy in speech recognition of this language </param>
+        /// <param name="asrSmartFormat"> Whether smart formatting should be applied to transcripts of this language </param>
+        /// <param name="ttsTextNormalization"> Text normalization for text-to-speech of this language. The value can be auto,
+        ///                            on, or off </param>
+        /// <param name="ttsLanguageTextNormalization"> Whether language-specific text normalization should be applied for
+        ///                                    text-to-speech of this language </param>
         public Language(string code = null,
                         string ttsProvider = null,
                         string voice = null,
                         string transcriptionProvider = null,
-                        string speechModel = null) : base("Language")
+                        string speechModel = null,
+                        string hints = null,
+                        bool? asrSmartFormat = null,
+                        string ttsTextNormalization = null,
+                        bool? ttsLanguageTextNormalization = null) : base("Language")
         {
             this.Code = code;
             this.TtsProvider = ttsProvider;
             this.Voice = voice;
             this.TranscriptionProvider = transcriptionProvider;
             this.SpeechModel = speechModel;
+            this.Hints = hints;
+            this.AsrSmartFormat = asrSmartFormat;
+            this.TtsTextNormalization = ttsTextNormalization;
+            this.TtsLanguageTextNormalization = ttsLanguageTextNormalization;
         }
 
         /// <summary>
@@ -83,6 +113,22 @@ namespace Twilio.TwiML.Voice
             if (this.SpeechModel != null)
             {
                 attributes.Add(new XAttribute("speechModel", this.SpeechModel));
+            }
+            if (this.Hints != null)
+            {
+                attributes.Add(new XAttribute("hints", this.Hints));
+            }
+            if (this.AsrSmartFormat != null)
+            {
+                attributes.Add(new XAttribute("asrSmartFormat", this.AsrSmartFormat.Value.ToString().ToLower()));
+            }
+            if (this.TtsTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("ttsTextNormalization", this.TtsTextNormalization));
+            }
+            if (this.TtsLanguageTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("ttsLanguageTextNormalization", this.TtsLanguageTextNormalization.Value.ToString().ToLower()));
             }
             return attributes;
         }

@@ -61,5 +61,44 @@ namespace Twilio.Rest.Content.V1.Content
 
     }
 
+    /// <summary> Update the optimization spec (bid amount) of a ContentApprovalRequest for a content item </summary>
+    public class UpdateApprovalCreateOptions : IOptions<ApprovalCreateResource>
+    {
+    
+        
+        public string PathContentSid { get; }
+
+        
+        public ApprovalCreateResource.ContentApprovalUpdateRequest ContentApprovalUpdateRequest { get; }
+
+
+
+        /// <summary> Construct a new UpdateApprovalCreateOptions </summary>
+        /// <param name="pathContentSid">  </param>
+        /// <param name="contentApprovalUpdateRequest">  </param>
+        public UpdateApprovalCreateOptions(string pathContentSid, ApprovalCreateResource.ContentApprovalUpdateRequest contentApprovalUpdateRequest)
+        {
+            PathContentSid = pathContentSid;
+            ContentApprovalUpdateRequest = contentApprovalUpdateRequest;
+        }
+
+        
+        /// <summary> Generate the request body </summary>
+        public string GetBody()
+        {
+            string body = "";
+
+            if (ContentApprovalUpdateRequest != null)
+            {
+                body = ApprovalCreateResource.ToJson(ContentApprovalUpdateRequest);
+            }
+            return body;
+        }
+
+        
+
+    }
+
+
 }
 

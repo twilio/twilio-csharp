@@ -77,7 +77,7 @@ namespace Twilio.Rest.Trusthub.V1
         #endif
 
         /// <summary> Resume an A2P Brand Registration embedded compliance session. Returns the existing active session if one is still valid, or creates a new session if the previous one has expired. </summary>
-        /// <param name="pathId"> The unique identifier for the A2P Brand Registration. </param>
+        /// <param name="pathId"> The unique identifier for the A2P Brand Registration, as returned in the `id` field when the brand registration was created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of A2PBrandRegistrationEmbeddedSession </returns>
         public static A2PBrandRegistrationEmbeddedSessionResource Create(
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Trusthub.V1
 
         #if !NET35
         /// <summary> Resume an A2P Brand Registration embedded compliance session. Returns the existing active session if one is still valid, or creates a new session if the previous one has expired. </summary>
-        /// <param name="pathId"> The unique identifier for the A2P Brand Registration. </param>
+        /// <param name="pathId"> The unique identifier for the A2P Brand Registration, as returned in the `id` field when the brand registration was created. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of A2PBrandRegistrationEmbeddedSession </returns>
         public static async System.Threading.Tasks.Task<A2PBrandRegistrationEmbeddedSessionResource> CreateAsync(
@@ -175,15 +175,15 @@ namespace Twilio.Rest.Trusthub.V1
     
         ///<summary> The unique A2P Brand or Campaign Registration identifier, formatted as `tri1.us1.account.AC.../registration.BU...`. </summary> 
         [JsonProperty("id")]
-        public string Id { get; private set; }
+        public string Id { get; }
 
         ///<summary> The Persona inquiry ID used to start the embedded compliance session. </summary> 
         [JsonProperty("sessionId")]
-        public string SessionId { get; private set; }
+        public string SessionId { get; }
 
         ///<summary> The Persona session token for embedding the compliance UI. Expires in 24 hours. </summary> 
         [JsonProperty("sessionToken")]
-        public string SessionToken { get; private set; }
+        public string SessionToken { get; }
 
 
 

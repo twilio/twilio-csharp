@@ -37,6 +37,18 @@ public class ImportCreateResource : Resource
         [JsonProperty("url")]
             public string Url { get; private set;}
 
+        ///<summary> The ID of an asynchronous profile domain operation. </summary> 
+        [JsonProperty("operationId")]
+            public string OperationId { get; private set; }
+
+        ///<summary> ISO 8601 timestamp when the operation was created. </summary> 
+        [JsonProperty("createdAt")]
+            public DateTime? CreatedAt { get; private set; }
+
+        ///<summary> URL to query the operation status. </summary> 
+        [JsonProperty("statusUrl")]
+            public string StatusUrl { get; private set; }
+
     public static ImportCreateResource FromJson(string json) {
         try {
             return JsonConvert.DeserializeObject<ImportCreateResource>(json);

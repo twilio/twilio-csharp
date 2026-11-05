@@ -120,6 +120,50 @@ namespace Twilio.TwiML.Voice
         /// This parameter allows you to enable event subscriptions
         /// </summary>
         public string Events { get; set; }
+        /// <summary>
+        /// Whether the in-progress partial transcript should be reported as a prompt when the call hangs up
+        /// </summary>
+        public bool? PartialPromptOnHangup { get; set; }
+        /// <summary>
+        /// Eager end-of-turn confidence threshold, which fires before the end-of-turn threshold. The value can be between 0.3 and 0.9
+        /// </summary>
+        public string EagerEotThreshold { get; set; }
+        /// <summary>
+        /// Whether smart formatting should be applied to transcripts. Takes precedence over deepgramSmartFormat
+        /// </summary>
+        public bool? AsrSmartFormat { get; set; }
+        /// <summary>
+        /// Text normalization for text-to-speech. The value can be auto, on, or off. Takes precedence over elevenlabsTextNormalization
+        /// </summary>
+        public string TtsTextNormalization { get; set; }
+        /// <summary>
+        /// Whether language-specific text normalization should be applied for text-to-speech
+        /// </summary>
+        public bool? TtsLanguageTextNormalization { get; set; }
+        /// <summary>
+        /// Legacy alias of ttsLanguageTextNormalization
+        /// </summary>
+        public bool? ElevenlabsLanguageTextNormalization { get; set; }
+        /// <summary>
+        /// Extra fields to be included in prompt messages. The value can be turn-state or prompt-segments
+        /// </summary>
+        public string IncludeInPrompt { get; set; }
+        /// <summary>
+        /// Customer name sent to Conversations and Conversational Intelligence. Defaults to the caller ID
+        /// </summary>
+        public string CustomerName { get; set; }
+        /// <summary>
+        /// Whether the WebSocket connection to the application should be reconnected if it drops during the call. Defaults to false
+        /// </summary>
+        public bool? ApplicationReconnect { get; set; }
+        /// <summary>
+        /// Whether transcripts that echo the agent's own text-to-speech should be dropped. Defaults to false
+        /// </summary>
+        public bool? EchoPromptFiltering { get; set; }
+        /// <summary>
+        /// Whether turn detection should be used to decide when the caller has finished speaking. Defaults to false
+        /// </summary>
+        public bool? TurnDetection { get; set; }
 
         /// <summary>
         /// Create a new ConversationRelay
@@ -163,6 +207,27 @@ namespace Twilio.TwiML.Voice
         /// <param name="ignorebackchannel"> This parameter brief caller acknowledgments (e.g. "yeah", "uh-huh") are ignored
         ///                         and will not interrupt the agent while it is speaking. </param>
         /// <param name="events"> This parameter allows you to enable event subscriptions </param>
+        /// <param name="partialPromptOnHangup"> Whether the in-progress partial transcript should be reported as a prompt when
+        ///                             the call hangs up </param>
+        /// <param name="eagerEotThreshold"> Eager end-of-turn confidence threshold, which fires before the end-of-turn
+        ///                         threshold. The value can be between 0.3 and 0.9 </param>
+        /// <param name="asrSmartFormat"> Whether smart formatting should be applied to transcripts. Takes precedence over
+        ///                      deepgramSmartFormat </param>
+        /// <param name="ttsTextNormalization"> Text normalization for text-to-speech. The value can be auto, on, or off. Takes
+        ///                            precedence over elevenlabsTextNormalization </param>
+        /// <param name="ttsLanguageTextNormalization"> Whether language-specific text normalization should be applied for
+        ///                                    text-to-speech </param>
+        /// <param name="elevenlabsLanguageTextNormalization"> Legacy alias of ttsLanguageTextNormalization </param>
+        /// <param name="includeInPrompt"> Extra fields to be included in prompt messages. The value can be turn-state or
+        ///                       prompt-segments </param>
+        /// <param name="customerName"> Customer name sent to Conversations and Conversational Intelligence. Defaults to the
+        ///                    caller ID </param>
+        /// <param name="applicationReconnect"> Whether the WebSocket connection to the application should be reconnected if it
+        ///                            drops during the call. Defaults to false </param>
+        /// <param name="echoPromptFiltering"> Whether transcripts that echo the agent's own text-to-speech should be dropped.
+        ///                           Defaults to false </param>
+        /// <param name="turnDetection"> Whether turn detection should be used to decide when the caller has finished speaking.
+        ///                     Defaults to false </param>
         public ConversationRelay(string url = null,
                                  string language = null,
                                  string ttsLanguage = null,
@@ -188,7 +253,18 @@ namespace Twilio.TwiML.Voice
                                  string speechtimeout = null,
                                  string deepgramsmartformat = null,
                                  string ignorebackchannel = null,
-                                 string events = null) : base("ConversationRelay")
+                                 string events = null,
+                                 bool? partialPromptOnHangup = null,
+                                 string eagerEotThreshold = null,
+                                 bool? asrSmartFormat = null,
+                                 string ttsTextNormalization = null,
+                                 bool? ttsLanguageTextNormalization = null,
+                                 bool? elevenlabsLanguageTextNormalization = null,
+                                 string includeInPrompt = null,
+                                 string customerName = null,
+                                 bool? applicationReconnect = null,
+                                 bool? echoPromptFiltering = null,
+                                 bool? turnDetection = null) : base("ConversationRelay")
         {
             this.Url = url;
             this.LanguageAttribute = language;
@@ -216,6 +292,17 @@ namespace Twilio.TwiML.Voice
             this.Deepgramsmartformat = deepgramsmartformat;
             this.Ignorebackchannel = ignorebackchannel;
             this.Events = events;
+            this.PartialPromptOnHangup = partialPromptOnHangup;
+            this.EagerEotThreshold = eagerEotThreshold;
+            this.AsrSmartFormat = asrSmartFormat;
+            this.TtsTextNormalization = ttsTextNormalization;
+            this.TtsLanguageTextNormalization = ttsLanguageTextNormalization;
+            this.ElevenlabsLanguageTextNormalization = elevenlabsLanguageTextNormalization;
+            this.IncludeInPrompt = includeInPrompt;
+            this.CustomerName = customerName;
+            this.ApplicationReconnect = applicationReconnect;
+            this.EchoPromptFiltering = echoPromptFiltering;
+            this.TurnDetection = turnDetection;
         }
 
         /// <summary>
@@ -328,6 +415,50 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("events", this.Events));
             }
+            if (this.PartialPromptOnHangup != null)
+            {
+                attributes.Add(new XAttribute("partialPromptOnHangup", this.PartialPromptOnHangup.Value.ToString().ToLower()));
+            }
+            if (this.EagerEotThreshold != null)
+            {
+                attributes.Add(new XAttribute("eagerEotThreshold", this.EagerEotThreshold));
+            }
+            if (this.AsrSmartFormat != null)
+            {
+                attributes.Add(new XAttribute("asrSmartFormat", this.AsrSmartFormat.Value.ToString().ToLower()));
+            }
+            if (this.TtsTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("ttsTextNormalization", this.TtsTextNormalization));
+            }
+            if (this.TtsLanguageTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("ttsLanguageTextNormalization", this.TtsLanguageTextNormalization.Value.ToString().ToLower()));
+            }
+            if (this.ElevenlabsLanguageTextNormalization != null)
+            {
+                attributes.Add(new XAttribute("elevenlabsLanguageTextNormalization", this.ElevenlabsLanguageTextNormalization.Value.ToString().ToLower()));
+            }
+            if (this.IncludeInPrompt != null)
+            {
+                attributes.Add(new XAttribute("includeInPrompt", this.IncludeInPrompt));
+            }
+            if (this.CustomerName != null)
+            {
+                attributes.Add(new XAttribute("customerName", this.CustomerName));
+            }
+            if (this.ApplicationReconnect != null)
+            {
+                attributes.Add(new XAttribute("applicationReconnect", this.ApplicationReconnect.Value.ToString().ToLower()));
+            }
+            if (this.EchoPromptFiltering != null)
+            {
+                attributes.Add(new XAttribute("echoPromptFiltering", this.EchoPromptFiltering.Value.ToString().ToLower()));
+            }
+            if (this.TurnDetection != null)
+            {
+                attributes.Add(new XAttribute("turnDetection", this.TurnDetection.Value.ToString().ToLower()));
+            }
             return attributes;
         }
 
@@ -339,13 +470,33 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to be used for text-to-speech of this language </param>
         /// <param name="transcriptionProvider"> Provider to be used for transcription of this language </param>
         /// <param name="speechModel"> Speech model to be used for transcription of this language </param>
+        /// <param name="hints"> Phrases to help better accuracy in speech recognition of this language </param>
+        /// <param name="asrSmartFormat"> Whether smart formatting should be applied to transcripts of this language </param>
+        /// <param name="ttsTextNormalization"> Text normalization for text-to-speech of this language. The value can be auto,
+        ///                            on, or off </param>
+        /// <param name="ttsLanguageTextNormalization"> Whether language-specific text normalization should be applied for
+        ///                                    text-to-speech of this language </param>
         public ConversationRelay Language(string code = null,
                                           string ttsProvider = null,
                                           string voice = null,
                                           string transcriptionProvider = null,
-                                          string speechModel = null)
+                                          string speechModel = null,
+                                          string hints = null,
+                                          bool? asrSmartFormat = null,
+                                          string ttsTextNormalization = null,
+                                          bool? ttsLanguageTextNormalization = null)
         {
-            var newChild = new Language(code, ttsProvider, voice, transcriptionProvider, speechModel);
+            var newChild = new Language(
+                code,
+                ttsProvider,
+                voice,
+                transcriptionProvider,
+                speechModel,
+                hints,
+                asrSmartFormat,
+                ttsTextNormalization,
+                ttsLanguageTextNormalization
+            );
             this.Append(newChild);
             return this;
         }

@@ -59,6 +59,7 @@ namespace Twilio.Rest
         public static readonly Domain Verify = new Domain("verify");
         public static readonly Domain Video = new Domain("video");
         public static readonly Domain Voice = new Domain("voice");
+        public static readonly Domain Webhooks = new Domain("webhooks");
         public static readonly Domain Wireless = new Domain("wireless");
     }
 

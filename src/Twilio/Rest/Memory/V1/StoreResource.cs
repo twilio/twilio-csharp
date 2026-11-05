@@ -108,6 +108,10 @@ public class StoreCreateResource : Resource
         [JsonProperty("intelligenceServiceId")]
             public string IntelligenceServiceId { get; private set;}
 
+        ///<summary> The time up to which data sent to this Memory Store has been processed by downstream systems. Equals the time the Memory Store was created when no data has been processed yet. Omitted when no value is available. Represents a high water mark for ingested data. </summary> 
+        [JsonProperty("dataAsOf")]
+            public DateTime? DataAsOf { get; private set; }
+
 
     public static StoreFetchResource FromJson(string json) {
         try {
