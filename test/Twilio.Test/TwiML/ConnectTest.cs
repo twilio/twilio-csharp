@@ -122,7 +122,18 @@ namespace Twilio.Tests.TwiML
                 "speechTimeout",
                 "deepgramSmartFormat",
                 "ignoreBackchannel",
-                "events"
+                "events",
+                true,
+                "eager_eot_threshold",
+                true,
+                "tts_text_normalization",
+                true,
+                true,
+                "include_in_prompt",
+                "customer_name",
+                true,
+                true,
+                true
             );
 
             elem.AiSession("ai_connector", "ai_session_configuration");
@@ -137,7 +148,7 @@ namespace Twilio.Tests.TwiML
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" audioFormat=\"audio_format\" sampleRate=\"sample_rate\"></Stream>" + Environment.NewLine +
                 "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></VirtualAgent>" + Environment.NewLine +
                 "  <Conversation serviceInstanceSid=\"service_instance_sid\" inboundAutocreation=\"true\" routingAssignmentTimeout=\"1\" inboundTimeout=\"1\" url=\"https://example.com\" method=\"GET\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" statusCallbackEvent=\"call-initiated\"></Conversation>" + Environment.NewLine +
-                "  <ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\"></ConversationRelay>" + Environment.NewLine +
+                "  <ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\" partialPromptOnHangup=\"true\" eagerEotThreshold=\"eager_eot_threshold\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\" elevenlabsLanguageTextNormalization=\"true\" includeInPrompt=\"include_in_prompt\" customerName=\"customer_name\" applicationReconnect=\"true\" echoPromptFiltering=\"true\" turnDetection=\"true\"></ConversationRelay>" + Environment.NewLine +
                 "  <AiSession aiConnector=\"ai_connector\" aiSessionConfiguration=\"ai_session_configuration\"></AiSession>" + Environment.NewLine +
                 "  <ConversationRelaySession connector=\"connector\" sessionConfiguration=\"session_configuration\"></ConversationRelaySession>" + Environment.NewLine +
                 "</Connect>",

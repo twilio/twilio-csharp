@@ -28,12 +28,12 @@ namespace Twilio.Rest.Trusthub.V1
     public class CreateA2PCampaignRegistrationEmbeddedSessionOptions : IOptions<A2PCampaignRegistrationEmbeddedSessionResource>
     {
         
-        ///<summary> The unique identifier for the A2P Campaign Registration. This can be either an A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned from the Initialize Campaign endpoint, or a Messaging Service SID (`MG...`) for campaigns created outside the embeddable. </summary> 
+        ///<summary> The unique identifier for the A2P Campaign Registration. This is the A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned in the `id` field when the campaign registration was created. For a campaign in FAILED status, use the Messaging Service SID (`MG...`) of the campaign instead. </summary> 
         public string PathId { get; }
 
 
         /// <summary> Construct a new CreateA2pCampaignRegistrationEmbeddedSessionOptions </summary>
-        /// <param name="pathId"> The unique identifier for the A2P Campaign Registration. This can be either an A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned from the Initialize Campaign endpoint, or a Messaging Service SID (`MG...`) for campaigns created outside the embeddable. </param>
+        /// <param name="pathId"> The unique identifier for the A2P Campaign Registration. This is the A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned in the `id` field when the campaign registration was created. For a campaign in FAILED status, use the Messaging Service SID (`MG...`) of the campaign instead. </param>
         public CreateA2PCampaignRegistrationEmbeddedSessionOptions(string pathId)
         {
             PathId = pathId;

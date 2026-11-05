@@ -286,6 +286,27 @@ namespace Twilio.TwiML.Voice
         /// <param name="ignorebackchannel"> This parameter brief caller acknowledgments (e.g. "yeah", "uh-huh") are ignored
         ///                         and will not interrupt the agent while it is speaking. </param>
         /// <param name="events"> This parameter allows you to enable event subscriptions </param>
+        /// <param name="partialPromptOnHangup"> Whether the in-progress partial transcript should be reported as a prompt when
+        ///                             the call hangs up </param>
+        /// <param name="eagerEotThreshold"> Eager end-of-turn confidence threshold, which fires before the end-of-turn
+        ///                         threshold. The value can be between 0.3 and 0.9 </param>
+        /// <param name="asrSmartFormat"> Whether smart formatting should be applied to transcripts. Takes precedence over
+        ///                      deepgramSmartFormat </param>
+        /// <param name="ttsTextNormalization"> Text normalization for text-to-speech. The value can be auto, on, or off. Takes
+        ///                            precedence over elevenlabsTextNormalization </param>
+        /// <param name="ttsLanguageTextNormalization"> Whether language-specific text normalization should be applied for
+        ///                                    text-to-speech </param>
+        /// <param name="elevenlabsLanguageTextNormalization"> Legacy alias of ttsLanguageTextNormalization </param>
+        /// <param name="includeInPrompt"> Extra fields to be included in prompt messages. The value can be turn-state or
+        ///                       prompt-segments </param>
+        /// <param name="customerName"> Customer name sent to Conversations and Conversational Intelligence. Defaults to the
+        ///                    caller ID </param>
+        /// <param name="applicationReconnect"> Whether the WebSocket connection to the application should be reconnected if it
+        ///                            drops during the call. Defaults to false </param>
+        /// <param name="echoPromptFiltering"> Whether transcripts that echo the agent's own text-to-speech should be dropped.
+        ///                           Defaults to false </param>
+        /// <param name="turnDetection"> Whether turn detection should be used to decide when the caller has finished speaking.
+        ///                     Defaults to false </param>
         public Connect ConversationRelay(string url = null,
                                          string language = null,
                                          string ttsLanguage = null,
@@ -311,7 +332,18 @@ namespace Twilio.TwiML.Voice
                                          string speechtimeout = null,
                                          string deepgramsmartformat = null,
                                          string ignorebackchannel = null,
-                                         string events = null)
+                                         string events = null,
+                                         bool? partialPromptOnHangup = null,
+                                         string eagerEotThreshold = null,
+                                         bool? asrSmartFormat = null,
+                                         string ttsTextNormalization = null,
+                                         bool? ttsLanguageTextNormalization = null,
+                                         bool? elevenlabsLanguageTextNormalization = null,
+                                         string includeInPrompt = null,
+                                         string customerName = null,
+                                         bool? applicationReconnect = null,
+                                         bool? echoPromptFiltering = null,
+                                         bool? turnDetection = null)
         {
             var newChild = new ConversationRelay(
                 url,
@@ -339,7 +371,18 @@ namespace Twilio.TwiML.Voice
                 speechtimeout,
                 deepgramsmartformat,
                 ignorebackchannel,
-                events
+                events,
+                partialPromptOnHangup,
+                eagerEotThreshold,
+                asrSmartFormat,
+                ttsTextNormalization,
+                ttsLanguageTextNormalization,
+                elevenlabsLanguageTextNormalization,
+                includeInPrompt,
+                customerName,
+                applicationReconnect,
+                echoPromptFiltering,
+                turnDetection
             );
             this.Append(newChild);
             return this;

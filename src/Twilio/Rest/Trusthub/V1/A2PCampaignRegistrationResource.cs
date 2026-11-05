@@ -364,15 +364,15 @@ namespace Twilio.Rest.Trusthub.V1
     
         ///<summary> The unique A2P Brand or Campaign Registration identifier, formatted as `tri1.us1.account.AC.../registration.BU...`. </summary> 
         [JsonProperty("id")]
-        public string Id { get; private set; }
+        public string Id { get; }
 
         ///<summary> The Persona inquiry ID used to start the embedded compliance session. </summary> 
         [JsonProperty("sessionId")]
-        public string SessionId { get; private set; }
+        public string SessionId { get; }
 
         ///<summary> The Persona session token for embedding the compliance UI. Expires in 24 hours. </summary> 
         [JsonProperty("sessionToken")]
-        public string SessionToken { get; private set; }
+        public string SessionToken { get; }
 
 
 

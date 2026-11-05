@@ -430,6 +430,7 @@ public class ParticipantCreateResource : Resource
             public static readonly ConversationsV2Channel Voice = new ConversationsV2Channel("VOICE");
             public static readonly ConversationsV2Channel Sms = new ConversationsV2Channel("SMS");
             public static readonly ConversationsV2Channel Rcs = new ConversationsV2Channel("RCS");
+            public static readonly ConversationsV2Channel Email = new ConversationsV2Channel("EMAIL");
             public static readonly ConversationsV2Channel Whatsapp = new ConversationsV2Channel("WHATSAPP");
             public static readonly ConversationsV2Channel Chat = new ConversationsV2Channel("CHAT");
             public static readonly ConversationsV2Channel Video = new ConversationsV2Channel("VIDEO");
@@ -479,6 +480,7 @@ public class ParticipantCreateResource : Resource
             public static readonly ChannelEnum Voice = new ChannelEnum("VOICE");
             public static readonly ChannelEnum Sms = new ChannelEnum("SMS");
             public static readonly ChannelEnum Rcs = new ChannelEnum("RCS");
+            public static readonly ChannelEnum Email = new ChannelEnum("EMAIL");
             public static readonly ChannelEnum Whatsapp = new ChannelEnum("WHATSAPP");
             public static readonly ChannelEnum Chat = new ChannelEnum("CHAT");
             public static readonly ChannelEnum Video = new ChannelEnum("VIDEO");

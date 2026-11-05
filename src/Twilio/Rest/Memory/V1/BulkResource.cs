@@ -28,9 +28,21 @@ namespace Twilio.Rest.Memory.V1
 {
             public class BulkUpdateResource : Resource
 {
-        ///<summary> The message </summary> 
+        ///<summary> Confirmation message for the operation. </summary> 
         [JsonProperty("message")]
             public string Message { get; private set;}
+
+        ///<summary> The ID of an asynchronous profile domain operation. </summary> 
+        [JsonProperty("operationId")]
+            public string OperationId { get; private set; }
+
+        ///<summary> ISO 8601 timestamp when the operation was created. </summary> 
+        [JsonProperty("createdAt")]
+            public DateTime? CreatedAt { get; private set; }
+
+        ///<summary> URL to query the operation status. </summary> 
+        [JsonProperty("statusUrl")]
+            public string StatusUrl { get; private set; }
 
 
     public static BulkUpdateResource FromJson(string json) {

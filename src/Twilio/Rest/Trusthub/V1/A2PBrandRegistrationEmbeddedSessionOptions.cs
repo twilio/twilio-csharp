@@ -28,12 +28,12 @@ namespace Twilio.Rest.Trusthub.V1
     public class CreateA2PBrandRegistrationEmbeddedSessionOptions : IOptions<A2PBrandRegistrationEmbeddedSessionResource>
     {
         
-        ///<summary> The unique identifier for the A2P Brand Registration. </summary> 
+        ///<summary> The unique identifier for the A2P Brand Registration, as returned in the `id` field when the brand registration was created. </summary> 
         public string PathId { get; }
 
 
         /// <summary> Construct a new CreateA2pBrandRegistrationEmbeddedSessionOptions </summary>
-        /// <param name="pathId"> The unique identifier for the A2P Brand Registration. </param>
+        /// <param name="pathId"> The unique identifier for the A2P Brand Registration, as returned in the `id` field when the brand registration was created. </param>
         public CreateA2PBrandRegistrationEmbeddedSessionOptions(string pathId)
         {
             PathId = pathId;

@@ -128,6 +128,10 @@ public class ConfigurationCreateResource : Resource
         [JsonProperty("memoryExtractionEnabled")]
             public bool? MemoryExtractionEnabled { get; private set; }
 
+        ///<summary> The ID of the redaction configuration applied to communications in this configuration's conversations. </summary> 
+        [JsonProperty("redactionConfigurationId")]
+            public string RedactionConfigurationId { get; private set; }
+
         ///<summary> The conversationsV1Bridge </summary> 
         [JsonProperty("conversationsV1Bridge")]
             public ConfigurationResource.ConversationsV2ConversationsV1Bridge ConversationsV1Bridge { get; private set; }
@@ -207,6 +211,10 @@ public class ConfigurationCreateResource : Resource
             ///<summary> Whether memory extraction is enabled for conversations under this configuration. Defaults to false. </summary> 
             [JsonProperty("memoryExtractionEnabled")]
                 public bool? MemoryExtractionEnabled { get; private set; }
+
+            ///<summary> The ID of the redaction configuration applied to communications in this configuration's conversations. </summary> 
+            [JsonProperty("redactionConfigurationId")]
+                public string RedactionConfigurationId { get; private set; }
 
             ///<summary> The conversationsV1Bridge </summary> 
             [JsonProperty("conversationsV1Bridge")]
