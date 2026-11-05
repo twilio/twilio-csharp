@@ -25,7 +25,9 @@ namespace Twilio.Tests.Jwt.AccessToken
     [TestFixture]
     public class AccessTokenTests
     {
-        private static readonly string Secret = "superdupersecretsecret";
+        // HS256 signing requires a key of at least 256 bits (32 bytes); Microsoft.IdentityModel
+        // rejects anything shorter with IDX10720. Keep this at 32+ characters.
+        private static readonly string Secret = "superdupersecretsecretsuperdupersecret";
 
         private Dictionary<string, object> ToDict(object o)
         {
