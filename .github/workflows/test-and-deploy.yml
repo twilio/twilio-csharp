@@ -119,6 +119,9 @@ jobs:
   code-signing:
     runs-on: windows-latest-large
     needs: [ deploy ]
+    permissions:
+      contents: read
+      id-token: write  # lets NuGet/login exchange the GitHub OIDC token for a short-lived API key
     steps:
       - name: Checkout twilio-csharp
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -178,14 +181,27 @@ jobs:
         run: smctl certificate ls
         shell: cmd
 
-      - name: Sign and Push to NuGet
+      - name: Build, Pack and Sign
         run: |
           dotnet build -c Release
           dotnet pack -c Release
           nuget sign **/*.nupkg -Timestamper http://timestamp.digicert.com -outputdirectory .\NugetSigned -CertificateFingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA256_HASH }} -HashAlgorithm SHA256 -Verbosity detailed -Overwrite
-          nuget push .\NugetSigned\*.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source https://api.nuget.org/v3/index.json -SkipDuplicate
         env:
           RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
+
+      # Trusted Publishing: swaps the job's OIDC token for a short-lived nuget.org API key.
+      # Needs a trusted-publisher policy for this repo and workflow on nuget.org.
+      - name: NuGet login (OIDC to temporary API key)
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }} # nuget.org profile name, not an email address
+
+      - name: Push to NuGet
+        run: nuget push .\NugetSigned\*.nupkg -ApiKey %NUGET_API_KEY% -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+        shell: cmd
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
 
 #  notify-on-failure:
 #    name: Slack notify on failure
