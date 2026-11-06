@@ -44,6 +44,8 @@ jobs:
     runs-on: windows-latest-large
     needs: [ test ]
     if: github.repository_owner == 'twilio' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    permissions:
+      contents: read
     steps:
       - name: Checkout twilio-csharp
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
