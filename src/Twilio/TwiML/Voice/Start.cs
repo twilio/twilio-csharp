@@ -147,6 +147,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="hints"> Hints to be provided to the transcription engine </param>
         /// <param name="enableAutomaticPunctuation"> Enable Automatic Punctuation </param>
         /// <param name="intelligenceService"> The SID or the unique name of the Intelligence Service to be used </param>
+        /// <param name="conversationId"> The ID of the Conversation </param>
+        /// <param name="conversationConfiguration"> The ID or the unique name of the Conversation configuration to be used
+        ///                                 </param>
         public Start Transcription(string name = null,
                                    Transcription.TrackEnum track = null,
                                    string statusCallbackUrl = null,
@@ -160,7 +163,9 @@ namespace Twilio.TwiML.Voice
                                    string speechModel = null,
                                    string hints = null,
                                    bool? enableAutomaticPunctuation = null,
-                                   string intelligenceService = null)
+                                   string intelligenceService = null,
+                                   string conversationId = null,
+                                   string conversationConfiguration = null)
         {
             var newChild = new Transcription(
                 name,
@@ -176,7 +181,9 @@ namespace Twilio.TwiML.Voice
                 speechModel,
                 hints,
                 enableAutomaticPunctuation,
-                intelligenceService
+                intelligenceService,
+                conversationId,
+                conversationConfiguration
             );
             this.Append(newChild);
             return this;
@@ -190,6 +197,34 @@ namespace Twilio.TwiML.Voice
         public Start Transcription(Transcription transcription)
         {
             this.Append(transcription);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <MediaFilter/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> Friendly name given to the Media Filter </param>
+        /// <param name="filterType"> Type of filter to be applied to the media </param>
+        /// <param name="model"> Model used by the media filter </param>
+        /// <param name="track"> Track to be filtered </param>
+        public Start MediaFilter(string name = null,
+                                 MediaFilter.FilterTypeEnum filterType = null,
+                                 string model = null,
+                                 MediaFilter.TrackEnum track = null)
+        {
+            var newChild = new MediaFilter(name, filterType, model, track);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <MediaFilter/> element as a child of this element
+        /// </summary>
+        /// <param name="mediaFilter"> A MediaFilter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Start MediaFilter(MediaFilter mediaFilter)
+        {
+            this.Append(mediaFilter);
             return this;
         }
 
