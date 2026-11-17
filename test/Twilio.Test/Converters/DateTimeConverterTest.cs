@@ -70,8 +70,14 @@ namespace Twilio.Tests.Converters
             var json = "{\"Dates\": [\"2024-01-01T00:00:00Z\", \"2024-12-31T00:00:00Z\"]}";
             var result = JsonConvert.DeserializeObject<DateListModel>(json, settings);
             Assert.AreEqual(2, result.Dates.Count);
-            Assert.AreEqual(1, result.Dates[0].Month);
-            Assert.AreEqual(12, result.Dates[1].Month);
+            // With DateParseHandling.None the values reach the converter as strings and are
+            // parsed into local-kind DateTimes, so normalise to UTC before comparing. These
+            // are midnight-UTC dates: at a negative offset the local date falls in the
+            // previous month (2024-01-01Z is December 31st in, say, America/Los_Angeles).
+            // The sibling tests below need no such handling, as Newtonsoft hands the
+            // converter values that keep Kind=Utc.
+            Assert.AreEqual(1, result.Dates[0].ToUniversalTime().Month);
+            Assert.AreEqual(12, result.Dates[1].ToUniversalTime().Month);
         }
 
         [Test]
