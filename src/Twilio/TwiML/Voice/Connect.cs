@@ -307,6 +307,9 @@ namespace Twilio.TwiML.Voice
         ///                           Defaults to false </param>
         /// <param name="turnDetection"> Whether turn detection should be used to decide when the caller has finished speaking.
         ///                     Defaults to false </param>
+        /// <param name="conversationId"> The ID of the Conversation </param>
+        /// <param name="conversationConfiguration"> The ID or the unique name of the Conversation configuration to be used
+        ///                                 </param>
         public Connect ConversationRelay(string url = null,
                                          string language = null,
                                          string ttsLanguage = null,
@@ -343,7 +346,9 @@ namespace Twilio.TwiML.Voice
                                          string customerName = null,
                                          bool? applicationReconnect = null,
                                          bool? echoPromptFiltering = null,
-                                         bool? turnDetection = null)
+                                         bool? turnDetection = null,
+                                         string conversationId = null,
+                                         string conversationConfiguration = null)
         {
             var newChild = new ConversationRelay(
                 url,
@@ -382,7 +387,9 @@ namespace Twilio.TwiML.Voice
                 customerName,
                 applicationReconnect,
                 echoPromptFiltering,
-                turnDetection
+                turnDetection,
+                conversationId,
+                conversationConfiguration
             );
             this.Append(newChild);
             return this;

@@ -101,6 +101,14 @@ namespace Twilio.TwiML.Voice
         /// The SID or the unique name of the Intelligence Service to be used
         /// </summary>
         public string IntelligenceService { get; set; }
+        /// <summary>
+        /// The ID of the Conversation
+        /// </summary>
+        public string ConversationId { get; set; }
+        /// <summary>
+        /// The ID or the unique name of the Conversation configuration to be used
+        /// </summary>
+        public string ConversationConfiguration { get; set; }
 
         /// <summary>
         /// Create a new Transcription
@@ -119,6 +127,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="hints"> Hints to be provided to the transcription engine </param>
         /// <param name="enableAutomaticPunctuation"> Enable Automatic Punctuation </param>
         /// <param name="intelligenceService"> The SID or the unique name of the Intelligence Service to be used </param>
+        /// <param name="conversationId"> The ID of the Conversation </param>
+        /// <param name="conversationConfiguration"> The ID or the unique name of the Conversation configuration to be used
+        ///                                 </param>
         public Transcription(string name = null,
                              Transcription.TrackEnum track = null,
                              string statusCallbackUrl = null,
@@ -132,7 +143,9 @@ namespace Twilio.TwiML.Voice
                              string speechModel = null,
                              string hints = null,
                              bool? enableAutomaticPunctuation = null,
-                             string intelligenceService = null) : base("Transcription")
+                             string intelligenceService = null,
+                             string conversationId = null,
+                             string conversationConfiguration = null) : base("Transcription")
         {
             this.Name = name;
             this.Track = track;
@@ -148,6 +161,8 @@ namespace Twilio.TwiML.Voice
             this.Hints = hints;
             this.EnableAutomaticPunctuation = enableAutomaticPunctuation;
             this.IntelligenceService = intelligenceService;
+            this.ConversationId = conversationId;
+            this.ConversationConfiguration = conversationConfiguration;
         }
 
         /// <summary>
@@ -211,6 +226,14 @@ namespace Twilio.TwiML.Voice
             if (this.IntelligenceService != null)
             {
                 attributes.Add(new XAttribute("intelligenceService", this.IntelligenceService));
+            }
+            if (this.ConversationId != null)
+            {
+                attributes.Add(new XAttribute("conversationId", this.ConversationId));
+            }
+            if (this.ConversationConfiguration != null)
+            {
+                attributes.Add(new XAttribute("conversationConfiguration", this.ConversationConfiguration));
             }
             return attributes;
         }

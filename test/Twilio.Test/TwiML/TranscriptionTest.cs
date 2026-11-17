@@ -43,11 +43,13 @@ namespace Twilio.Tests.TwiML
                 "speech_model",
                 "hints",
                 true,
-                "intelligence_service"
+                "intelligence_service",
+                "conversation_id",
+                "conversation_configuration"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>",
+                "<Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\" conversationId=\"conversation_id\" conversationConfiguration=\"conversation_configuration\"></Transcription>",
                 elem.ToString()
             );
         }

@@ -44,6 +44,10 @@ namespace Twilio.Rest.Memory.V1
             [JsonProperty("timestamp")]
                 public DateTime? Timestamp { get; private set; }
 
+            ///<summary> Caller-set, descriptive, untrusted provenance metadata. Must follow the {company}/{product}/{version}/_* convention. \"twilio\" is a reserved company name, only usable by authenticated internal callers. </summary> 
+            [JsonProperty("source")]
+                public string Source { get; private set; }
+
             ///<summary> The uri </summary> 
             [JsonProperty("uri")]
                 public string Uri { get; private set;}

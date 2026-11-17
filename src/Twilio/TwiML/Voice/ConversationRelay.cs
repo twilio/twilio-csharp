@@ -164,6 +164,14 @@ namespace Twilio.TwiML.Voice
         /// Whether turn detection should be used to decide when the caller has finished speaking. Defaults to false
         /// </summary>
         public bool? TurnDetection { get; set; }
+        /// <summary>
+        /// The ID of the Conversation
+        /// </summary>
+        public string ConversationId { get; set; }
+        /// <summary>
+        /// The ID or the unique name of the Conversation configuration to be used
+        /// </summary>
+        public string ConversationConfiguration { get; set; }
 
         /// <summary>
         /// Create a new ConversationRelay
@@ -228,6 +236,9 @@ namespace Twilio.TwiML.Voice
         ///                           Defaults to false </param>
         /// <param name="turnDetection"> Whether turn detection should be used to decide when the caller has finished speaking.
         ///                     Defaults to false </param>
+        /// <param name="conversationId"> The ID of the Conversation </param>
+        /// <param name="conversationConfiguration"> The ID or the unique name of the Conversation configuration to be used
+        ///                                 </param>
         public ConversationRelay(string url = null,
                                  string language = null,
                                  string ttsLanguage = null,
@@ -264,7 +275,9 @@ namespace Twilio.TwiML.Voice
                                  string customerName = null,
                                  bool? applicationReconnect = null,
                                  bool? echoPromptFiltering = null,
-                                 bool? turnDetection = null) : base("ConversationRelay")
+                                 bool? turnDetection = null,
+                                 string conversationId = null,
+                                 string conversationConfiguration = null) : base("ConversationRelay")
         {
             this.Url = url;
             this.LanguageAttribute = language;
@@ -303,6 +316,8 @@ namespace Twilio.TwiML.Voice
             this.ApplicationReconnect = applicationReconnect;
             this.EchoPromptFiltering = echoPromptFiltering;
             this.TurnDetection = turnDetection;
+            this.ConversationId = conversationId;
+            this.ConversationConfiguration = conversationConfiguration;
         }
 
         /// <summary>
@@ -458,6 +473,14 @@ namespace Twilio.TwiML.Voice
             if (this.TurnDetection != null)
             {
                 attributes.Add(new XAttribute("turnDetection", this.TurnDetection.Value.ToString().ToLower()));
+            }
+            if (this.ConversationId != null)
+            {
+                attributes.Add(new XAttribute("conversationId", this.ConversationId));
+            }
+            if (this.ConversationConfiguration != null)
+            {
+                attributes.Add(new XAttribute("conversationConfiguration", this.ConversationConfiguration));
             }
             return attributes;
         }

@@ -96,7 +96,16 @@ namespace Twilio.Tests.TwiML
                 "speech_model",
                 "hints",
                 true,
-                "intelligence_service"
+                "intelligence_service",
+                "conversation_id",
+                "conversation_configuration"
+            );
+
+            elem.MediaFilter(
+                "name",
+                MediaFilter.FilterTypeEnum.Noise,
+                "model",
+                MediaFilter.TrackEnum.InboundTrack
             );
 
             Assert.AreEqual(
@@ -104,7 +113,8 @@ namespace Twilio.Tests.TwiML
                 "<Stop>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\" audioFormat=\"audio_format\" sampleRate=\"sample_rate\"></Stream>" + Environment.NewLine +
                 "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Siprec>" + Environment.NewLine +
-                "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\"></Transcription>" + Environment.NewLine +
+                "  <Transcription name=\"name\" track=\"inbound_track\" statusCallbackUrl=\"status_callback_url\" statusCallbackMethod=\"GET\" inboundTrackLabel=\"inbound_track_label\" outboundTrackLabel=\"outbound_track_label\" partialResults=\"true\" languageCode=\"language_code\" transcriptionEngine=\"transcription_engine\" profanityFilter=\"true\" speechModel=\"speech_model\" hints=\"hints\" enableAutomaticPunctuation=\"true\" intelligenceService=\"intelligence_service\" conversationId=\"conversation_id\" conversationConfiguration=\"conversation_configuration\"></Transcription>" + Environment.NewLine +
+                "  <MediaFilter name=\"name\" filterType=\"noise\" model=\"model\" track=\"inbound_track\"></MediaFilter>" + Environment.NewLine +
                 "</Stop>",
                 elem.ToString()
             );

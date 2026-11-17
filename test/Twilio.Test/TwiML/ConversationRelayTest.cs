@@ -66,11 +66,13 @@ namespace Twilio.Tests.TwiML
                 "customer_name",
                 true,
                 true,
-                true
+                true,
+                "conversation_id",
+                "conversation_configuration"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\" partialPromptOnHangup=\"true\" eagerEotThreshold=\"eager_eot_threshold\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\" elevenlabsLanguageTextNormalization=\"true\" includeInPrompt=\"include_in_prompt\" customerName=\"customer_name\" applicationReconnect=\"true\" echoPromptFiltering=\"true\" turnDetection=\"true\"></ConversationRelay>",
+                "<ConversationRelay url=\"url\" language=\"language\" ttsLanguage=\"tts_language\" transcriptionLanguage=\"transcription_language\" ttsProvider=\"tts_provider\" voice=\"voice\" transcriptionProvider=\"transcription_provider\" speechModel=\"speech_model\" profanityFilter=\"true\" dtmfDetection=\"true\" welcomeGreeting=\"welcome_greeting\" partialPrompts=\"true\" welcomeGreetingInterruptible=\"welcome_greeting_interruptible\" interruptible=\"interruptible\" preemptible=\"true\" hints=\"hints\" intelligenceService=\"intelligence_service\" reportInputDuringAgentSpeech=\"true\" elevenlabsTextNormalization=\"elevenlabs_text_normalization\" interruptSensitivity=\"interrupt_sensitivity\" debug=\"debug\" backgroundnoisereduction=\"backgroundNoiseReduction\" speechtimeout=\"speechTimeout\" deepgramsmartformat=\"deepgramSmartFormat\" ignorebackchannel=\"ignoreBackchannel\" events=\"events\" partialPromptOnHangup=\"true\" eagerEotThreshold=\"eager_eot_threshold\" asrSmartFormat=\"true\" ttsTextNormalization=\"tts_text_normalization\" ttsLanguageTextNormalization=\"true\" elevenlabsLanguageTextNormalization=\"true\" includeInPrompt=\"include_in_prompt\" customerName=\"customer_name\" applicationReconnect=\"true\" echoPromptFiltering=\"true\" turnDetection=\"true\" conversationId=\"conversation_id\" conversationConfiguration=\"conversation_configuration\"></ConversationRelay>",
                 elem.ToString()
             );
         }
