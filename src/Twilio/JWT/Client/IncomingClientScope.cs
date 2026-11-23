@@ -1,5 +1,11 @@
 ﻿using System;
 
+#if !NET35
+using System.Net;
+#else
+using System.Web;
+#endif
+
 namespace Twilio.Jwt.Client
 {
     /// <summary>
@@ -27,7 +33,12 @@ namespace Twilio.Jwt.Client
         {
             get
             {
-                var query = "clientName=" + _clientName;
+#if !NET35
+                var encodedName = WebUtility.UrlEncode(_clientName);
+#else
+                var encodedName = HttpUtility.UrlEncode(_clientName);
+#endif
+                var query = "clientName=" + encodedName;
                 return Scope + "?" + query;
             }
         }
