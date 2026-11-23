@@ -257,5 +257,34 @@ namespace Twilio.Tests.Security
                 ((RequestValidator)obj).Validate("https://foo.com", "123", "foo");
             }
         }
+
+        [Test]
+        public void TestDuplicateParametersAreRejected()
+        {
+            var single = new NameValueCollection { { "Body", "hello" } };
+            var duplicate = new NameValueCollection();
+            duplicate.Add("Body", "hello");
+            duplicate.Add("Body", "hello");
+
+            // "Body=hello" signed; a duplicate replay must not validate under the same signature.
+            var signed = new Dictionary<string, string> { { "Body", "hello" } };
+            var sig = ComputeSignature(Url, signed);
+
+            Assert.IsTrue(_validator.Validate(Url, single, sig));
+            Assert.IsFalse(_validator.Validate(Url, duplicate, sig));
+            Assert.IsFalse(_validator.Validate(Url, duplicate, sig, RequestValidator.HmacSha1));
+        }
+
+        private static string ComputeSignature(string url, IDictionary<string, string> parameters)
+        {
+            var data = url;
+            var keys = new List<string>(parameters.Keys);
+            keys.Sort(StringComparer.Ordinal);
+            foreach (var k in keys) data += k + parameters[k];
+            using (var hmac = new System.Security.Cryptography.HMACSHA1(System.Text.Encoding.UTF8.GetBytes("12345")))
+            {
+                return Convert.ToBase64String(hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data)));
+            }
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, NameValueCollection parameters, string expected)
         {
+            if (HasDuplicateParameters(parameters)) return false;
             return Validate(url, ToDictionary(parameters), expected);
         }
 
@@ -62,6 +63,7 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, NameValueCollection parameters, string expected, string algorithm)
         {
+            if (HasDuplicateParameters(parameters)) return false;
             return Validate(url, ToDictionary(parameters), expected, algorithm);
         }
 
@@ -252,6 +254,20 @@ namespace Twilio.Security
 #endif
                 return SecureCompare(BitConverter.ToString(signature).Replace("-", "").ToLower(), expected);
             }
+        }
+
+        // Twilio signs each parameter once. Duplicate names would be comma-joined into the signed string
+        // by col[k] while remaining separately observable via GetValues(), so they must not validate.
+        private static bool HasDuplicateParameters(NameValueCollection col)
+        {
+            if (col == null) return false;
+            foreach (var k in col.AllKeys)
+            {
+                var values = col.GetValues(k);
+                if (values != null && values.Length > 1) return true;
+            }
+
+            return false;
         }
 
         private static IDictionary<string, string> ToDictionary(NameValueCollection col)
