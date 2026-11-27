@@ -49,6 +49,7 @@ namespace Twilio.Http.Net35
         {
             this._httpWebRequest = (HttpWebRequest) WebRequest.Create(uri);
             this._httpWebRequest.AllowAutoRedirect=false;
+            DistrustedIntermediates.Apply(this._httpWebRequest);
         }
 
         public string UserAgent

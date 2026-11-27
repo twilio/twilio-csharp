@@ -1,0 +1,162 @@
+name: Distrust smoke test
+
+# Runs on pushes to smoke/distrust-* branches only, so it never runs on main or on the PR.
+on:
+  push:
+    branches: ['smoke/distrust-*']
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
+jobs:
+  unit-tests:
+    name: Unit tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-x64, windows-latest-large]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+
+      - name: Artifactory OIDC Auth
+        if: runner.os == 'Linux'
+        uses: twilio/sdk-actions/artifactory-oidc@e22fa7d16d9cfd4f046cb00f471301f5e0a9c546 # v1
+        with:
+          ecosystem: dotnet
+
+      # Twilio.Test is an NUnitLite console app, so `dotnet test` finds no tests in it; run it instead. Its exit code
+      # is the number of failed tests.
+      - name: Distrusted-intermediate unit tests
+        run: dotnet run --project test/Twilio.Test -- --where "class == Twilio.Tests.Http.DistrustedIntermediatesTest"
+
+  smoke:
+    name: Smoke ${{ matrix.framework }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # App framework -> SDK build it loads: net8.0 -> net8.0, net6.0 -> netstandard2.0,
+          # net48 -> net462, net452 -> net35 (running on the runner's .NET Framework 4.8).
+          - { os: windows-latest-large, framework: net8.0 }
+          - { os: windows-latest-large, framework: net6.0 }
+          - { os: windows-latest-large, framework: net48 }
+          - { os: windows-latest-large, framework: net452 }
+          - { os: ubuntu-x64, framework: net8.0 }
+          - { os: ubuntu-x64, framework: net6.0 }
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK and the .NET 6 runtime
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+          dotnet-version: 6.0.x
+
+      - name: Artifactory OIDC Auth
+        if: runner.os == 'Linux'
+        uses: twilio/sdk-actions/artifactory-oidc@e22fa7d16d9cfd4f046cb00f471301f5e0a9c546 # v1
+        with:
+          ecosystem: dotnet
+
+      - name: Build
+        run: dotnet build .github/distrust-smoke -f ${{ matrix.framework }}
+
+      # Dummy credentials: a 401 from Twilio proves the TLS connection succeeded.
+      - name: Real list connects
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build
+
+      - name: DigiCert intermediate distrusted is refused
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --distrust-digicert
+
+      # An app that accepts every certificate, such as one behind a TLS-inspecting proxy, must keep working.
+      - name: SDK honors the app's accept-all callback
+        if: ${{ !cancelled() && startsWith(matrix.framework, 'net4') }}
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --accept-all-callback --sdk-self-signed
+
+      - name: SDK honors the app's accept-all CertificatePolicy
+        if: ${{ !cancelled() && startsWith(matrix.framework, 'net4') }}
+        run: dotnet run --project .github/distrust-smoke -f ${{ matrix.framework }} --no-build -- --legacy-policy --sdk-self-signed
+
+  # The .NET Framework 3.5 runtime (CLR 2.0) has no per-request certificate callback, so the SDK uses the app-wide
+  # ServicePointManager callback, for its own requests only. This job checks that, and that the app's own requests
+  # and callbacks behave as before.
+  smoke-clr2:
+    name: Smoke net35 on CLR 2.0 (windows-latest-large)
+    runs-on: windows-latest-large
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+
+      - name: Enable .NET Framework 3.5
+        run: |
+          $feature = Get-WindowsFeature -Name Net-Framework-Core
+          if (-not $feature.Installed) { Install-WindowsFeature -Name Net-Framework-Core | Out-Host }
+          Get-WindowsFeature -Name Net-Framework-Core | Out-Host
+
+      # api.twilio.com requires TLS 1.2, which the 3.5 runtime only uses with these settings.
+      - name: Enable TLS 1.2 for the 3.5 runtime
+        run: |
+          foreach ($key in 'HKLM:\SOFTWARE\Microsoft\.NETFramework\v2.0.50727',
+                           'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v2.0.50727') {
+            New-Item -Path $key -Force | Out-Null
+            New-ItemProperty -Path $key -Name SystemDefaultTlsVersions -Value 1 -PropertyType DWord -Force | Out-Null
+            New-ItemProperty -Path $key -Name SchUseStrongCrypto -Value 1 -PropertyType DWord -Force | Out-Null
+          }
+
+      - name: Build
+        run: dotnet build .github/distrust-smoke -f net35
+
+      - name: Real list connects
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2; exit $LASTEXITCODE
+
+      - name: DigiCert intermediate distrusted is refused, twice
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --repeat; exit $LASTEXITCODE
+
+      - name: The app's own requests are unaffected
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --other-request; exit $LASTEXITCODE
+
+      - name: The app's own callback is kept
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --distrust-digicert --app-callback --other-request; exit $LASTEXITCODE
+
+      - name: The app's legacy CertificatePolicy is kept
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --legacy-policy; exit $LASTEXITCODE
+
+      - name: The app's legacy CertificatePolicy set later is kept
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --late-legacy-policy; exit $LASTEXITCODE
+
+      - name: SDK honors the app's accept-all callback
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --accept-all-callback --sdk-self-signed; exit $LASTEXITCODE
+
+      - name: SDK honors the app's accept-all CertificatePolicy
+        run: .github/distrust-smoke/bin/Debug/net35/DistrustSmoke.exe --require-clr2 --legacy-policy --sdk-self-signed; exit $LASTEXITCODE

@@ -31,7 +31,7 @@ namespace Twilio.Http.NoAuth
         /// <param name="httpClient">HTTP client to use</param>
         public SystemNetNoAuthHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
-            _httpClient = httpClient ?? new System.Net.Http.HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
+            _httpClient = httpClient ?? new System.Net.Http.HttpClient(DistrustedIntermediates.CreateDefaultHandler());
         }
 
         /// <summary>

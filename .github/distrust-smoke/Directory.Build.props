@@ -1,0 +1,3 @@
+<Project>
+  <!-- Don't inherit the repo's lock-file setting: this smoke test isn't shipped. -->
+</Project>
