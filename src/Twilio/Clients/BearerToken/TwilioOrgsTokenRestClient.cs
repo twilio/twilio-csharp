@@ -149,7 +149,8 @@ namespace Twilio.Clients.BearerToken
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
-                    "Connection Error: " + request.Method + request.ConstructUrl(),
+                    DistrustedIntermediates.ConnectionErrorMessage(clientException,
+                        "Connection Error: " + request.Method + request.ConstructUrl()),
                     clientException
                 );
             }
@@ -257,7 +258,8 @@ namespace Twilio.Clients.BearerToken
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
-                    "Connection Error: " + request.Method + request.ConstructUrl(),
+                    DistrustedIntermediates.ConnectionErrorMessage(clientException,
+                        "Connection Error: " + request.Method + request.ConstructUrl()),
                     clientException
                 );
             }

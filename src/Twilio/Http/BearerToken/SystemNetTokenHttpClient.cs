@@ -31,7 +31,7 @@ namespace Twilio.Http.BearerToken
         /// <param name="httpClient">HTTP client to use</param>
         public SystemNetTokenHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
-            _httpClient = httpClient ?? new System.Net.Http.HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
+            _httpClient = httpClient ?? new System.Net.Http.HttpClient(DistrustedIntermediates.CreateDefaultHandler());
         }
 
         /// <summary>
